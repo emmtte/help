@@ -71,18 +71,6 @@ fi
 
 }
 
-Logitech () {
-clear
-echo "${GREEN}Configuration Télécommande Logitech Harmony${NORMAL}"
-sudo apt-get -y --force-yes install concordance
-}
-
-Mail () {
-echo $PASSWORD | sudo -S -v; clear
-echo "${GREEN}Installation de Mailutils${NORMAL}"
-sudo apt-get -y install mailutils
-}
-
 
 Ruby () {
 clear
@@ -91,7 +79,6 @@ sudo apt-get -y install pdftk
 wget https://dl.dropbox.com//Jbig2Encode
 sudo mv Jbig2Encode /bin/Jbig2Encode
 sudo chmod +x /bin/Jbig2Encode
-sudo apt-get -y install ruby1.9.1 ruby1.9.1-deb
 }
 
 
@@ -406,17 +393,14 @@ choice=$(whiptail --backtitle "Raspberry Pi Software Installation" --title "List
 "m" "mc" OFF \
 "n" "ntfs" OFF \
 "f" "sshfs" OFF \
-"D" "Configuration de OpenDNS" OFF \
-"D" "Stockage et de partage de" OFF \
-"L" "Télécommande Harmony" OFF \
-"l" "Réception infrarouge" OFF \
-"r" "MPartage de médias" OFF \
-"d" "Envoyer des eMails" OFF \
+"D" "concordance" OFF \
+"r" "minidlna" OFF \
 "Y" "youtube-dl" OFF \
-"T" "Transmission" OFF \
-"S" "" OFF \
+"T" "transmission" OFF \
+"S" "sendxmpp" OFF \
 3>&1 1>&2 2>&3)
 echo $choice
+sudo apt-get -y install $choice
 }
 
 echo "Le 1er paramètre est : $1"
