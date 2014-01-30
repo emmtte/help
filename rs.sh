@@ -387,9 +387,9 @@ y) Resize; Menu;;
 g) GoPro; Menu;;
 v) CatGo; Menu;;
 g) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
-   ruby gdrive.rb
+   ruby gdrive.rb;;
 m) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh; Menu;;
-s) sudo umount /media/ssh; Menu
+s) sudo umount /media/ssh; Menu;;
 esac 
 }
 
