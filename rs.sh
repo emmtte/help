@@ -361,12 +361,13 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 "g" "GoPro copy files" \
 "d" "Programme la télécommande Logitech" \
 "n" "Installe des logiciels sur le serveur" \
-"e" "Entrer une nouvelle adresse email"  \
+"e" "Entrer une nouvelle adresse email" \
 "u" "Mise à jour de Ubuntu" \
 "g" "gdrive-pdf-fusion" \
-"m" "sshfs mount pi@192.168.0.1:\/media\/hdd1\/" \
-"s" "umount ssh"\
+"m" "sshfs mount pi@192.168.0.1" \
+"s" "umount ssh" \
 3>&1 1>&2 2>&3)
+
 case $choice in
 
 t) Transmission; Menu;;
