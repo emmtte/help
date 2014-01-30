@@ -364,7 +364,7 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 "e" "Entrer une nouvelle adresse email"  \
 "u" "Mise à jour de Ubuntu" \
 "g" "gdrive-pdf-fusion" \
-"m" "sshfs mount pi@192.168.0.1:/media/hdd1/" \
+"m" "sshfs mount pi@192.168.0.1:\/media\/hdd1\/" \
 "s" "umount ssh"\
 3>&1 1>&2 2>&3)
 case $choice in
