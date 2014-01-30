@@ -81,26 +81,6 @@ sudo mv Jbig2Encode /bin/Jbig2Encode
 sudo chmod +x /bin/Jbig2Encode
 }
 
-
-Samba () {
-echo $PASSWORD | sudo -S -v; clear
-echo "${GREEN}Installation et configuration de Samba${NORMAL}"
-sudo stop smbd
-sudo apt-get -y install samba
-sudo mkdir /public
-sudo chmod 777 -R /public
-smb_conf
-sudo mv ./smb.conf /etc/samba/smb.conf
-sudo start smbd
-}
-
-Transmission () {
-clear
-echo "${GREEN}Configuration de transmission${NORMAL}"
-sudo apt-get install -y transmission-daemon
-}
-
-
 Concordance() {
 clear
 if [ ! -e "/usr/bin/concordance" ]; then Logitech; fi
@@ -389,8 +369,9 @@ choice=$(whiptail --backtitle "Raspberry Pi Software Installation" --title "List
 "D" "concordance" OFF \
 "r" "minidlna" OFF \
 "Y" "youtube-dl" OFF \
-"T" "transmission" OFF \
+"T" "transmission-daemon" OFF \
 "S" "sendxmpp" OFF \
+"a" "samba" OFF \
 3>&1 1>&2 2>&3)
 echo $choice
 sudo apt-get -y install $choice
