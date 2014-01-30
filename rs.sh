@@ -161,13 +161,6 @@ echo "rename done!"
 }
 
 
-
-Email() {
-whiptail --backtitle "Post-Installation Ubuntu" --title "Entrer votre email pour recevoir les informations" \
---inputbox "Entrez votre adresse email:" 18 80 `cat $HOME/.email` 2> .email
-mailuser=`cat $HOME/.email`
-}
-
 Minidlna(){
 choice=$(whiptail --title "minidlna" --menu "Choose an action" $conf \
   "R" "minidlna reload" \
