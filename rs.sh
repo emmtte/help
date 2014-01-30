@@ -207,7 +207,8 @@ Sst(){
 System(){
  choice=$(whiptail --title "System" --menu "Choose an action" $conf \
   "C" "Configuration" \
-  "U" "Mise à jour des logiciels" \
+  "U" "Update Raspbian" \
+  "G" "Update Google Pdf Fusion" \
   "R" "Redémarer le Raspberry Pi" \
   "S" "Shutdown" \
   "E" "Exit" \
@@ -218,6 +219,7 @@ System(){
     U) sudo apt-get -y autoremove
        sudo apt-get -y update
        sudo apt-get -y upgrade ;;
+    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
     R) sudo reboot ;;
     S) sudo halt ;;
     E) exit ;;
@@ -358,6 +360,7 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 "y" "Crop Slow Motion Movie" \
 "v" "Cat Videos" \
 "r" "Renomme les photos" \
+"p" "Pdf Fusion"
 "g" "GoPro copy files" \
 "d" "Programme la télécommande Logitech" \
 "n" "Installe des logiciels sur le serveur" \
@@ -384,6 +387,7 @@ r) Sst; Menu;;
 x) Tmux; Menu;;
 n) Install; Menu;;
 w) SlowMotion; Menu;;
+p) ruby gdrive.rb; Menu;;
 y) Resize; Menu;;
 g) GoPro; Menu;;
 v) CatGo; Menu;;
