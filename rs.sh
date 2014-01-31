@@ -320,7 +320,7 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 "y" "Crop Slow Motion Movie" \
 "v" "Cat Videos" \
 "r" "Renomme les photos" \
-"p" "Pdf Fusion"
+"p" "Pdf Fusion" \
 "g" "GoPro copy files" \
 "d" "Programme la télécommande Logitech" \
 "n" "Installe des logiciels sur le serveur" \
