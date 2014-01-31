@@ -336,8 +336,6 @@ case $choice in
 t) Transmission; Menu;;
 b) Concordance; Menu;;
 u) wget --no-check-certificate -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
-   chmod -x rs
-   chmod 0755 rs
    exec bash rs;;
 r) exec bash rs; Menu;;
 m) /usr/bin/mc; Menu;;
