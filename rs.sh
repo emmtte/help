@@ -183,13 +183,13 @@ System(){
        sudo apt-get -y update
        sudo apt-get -y upgrade ;;
     R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
-       exec bash rs;;
-    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
+       exec bash rs ;;
+    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
     R) sudo reboot ;;
     S) sudo halt ;;
     E) exit ;;
-    M) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh;;
-    N) sudo umount /media/ssh;;
+    M) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh ;;
+    N) sudo umount /media/ssh ;;
   esac
 read -t 10
 }
