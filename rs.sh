@@ -168,10 +168,13 @@ System(){
  choice=$(whiptail --title "System" --menu "Choose an action" $conf \
   "C" "Configuration" \
   "U" "Update Raspbian" \
+  "R" "Update Raspberry Service" \
   "G" "Update Google Pdf Fusion" \
   "R" "Redémarer le Raspberry Pi" \
   "S" "Shutdown" \
   "E" "Exit" \
+  "M" "sshfs mount pi@192.168.0.1" \
+  "N" "umount ssh" \
   3>&1 1>&2 2>&3)
   clear
   case $choice in
@@ -179,12 +182,16 @@ System(){
     U) sudo apt-get -y autoremove
        sudo apt-get -y update
        sudo apt-get -y upgrade ;;
-    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
+    R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
+       exec bash rs;;
+    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
     R) sudo reboot ;;
     S) sudo halt ;;
     E) exit ;;
+    M) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh;;
+    N) sudo umount /media/ssh;;
   esac
-read -t 5
+read -t 10
 }
   
 Tmux(){
@@ -308,8 +315,6 @@ fi
 Menu(){
 choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 --menu "Choisisser un outils à exécuter :" $conf \
-"u" "Update PiTools" \
-"r" "Restart PiTools" \
 "m" "Midnight Commander" \
 "s" "System" \
 "d" "Minidlna" \
@@ -325,19 +330,13 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 "d" "Programme la télécommande Logitech" \
 "n" "Installe des logiciels sur le serveur" \
 "e" "Entrer une nouvelle adresse email" \
-"u" "Mise à jour de Ubuntu" \
-"g" "gdrive-pdf-fusion" \
-"m" "sshfs mount pi@192.168.0.1" \
-"s" "umount ssh" \
+"f" "gdrive-pdf-fusion" \
 3>&1 1>&2 2>&3)
 
 case $choice in
 
 t) Transmission; Menu;;
 b) Concordance; Menu;;
-u) wget --no-check-certificate -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
-   exec bash rs;;
-r) exec bash rs; Menu;;
 m) /usr/bin/mc; Menu;;
 s) System; Menu;;
 d) Minidlna; Menu;;
@@ -349,11 +348,10 @@ p) ruby gdrive.rb; Menu;;
 y) Resize; Menu;;
 g) GoPro; Menu;;
 v) CatGo; Menu;;
-g) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
-   ruby gdrive.rb;;
-m) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh; Menu;;
-s) sudo umount /media/ssh; Menu;;
+f) ruby gdrive.rb;;
+
 esac 
+read -t 10
 }
 
 
