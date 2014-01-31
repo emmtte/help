@@ -179,7 +179,7 @@ System(){
     U) sudo apt-get -y autoremove
        sudo apt-get -y update
        sudo apt-get -y upgrade ;;
-    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
+    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
     R) sudo reboot ;;
     S) sudo halt ;;
     E) exit ;;
