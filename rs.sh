@@ -328,19 +328,19 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 3>&1 1>&2 2>&3)
 clear
 case $choice in
-  t) Transmission;
-  m) /usr/bin/mc;
-  C) Configuration;
-  I) Installation;
-  S) System;
-  d) Minidlna;
-  r) Sst;
-  x) Tmux;
-  w) SlowMotion;
-  p) ruby gdrive.rb;
-  y) Resize;
-  g) GoPro;
-  v) CatGo;
+  t) Transmission;;
+  m) /usr/bin/mc;;
+  C) Configuration;;
+  I) Installation;;
+  S) System;;
+  d) Minidlna;;
+  r) Sst;;
+  x) Tmux;;
+  w) SlowMotion;;
+  p) ruby gdrive.rb;;
+  y) Resize;;
+  g) GoPro;;
+  v) CatGo;;
   f) ruby gdrive.rb;;
 esac 
 read -t 10
