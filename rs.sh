@@ -152,7 +152,7 @@ choice=$(whiptail --title "streaming soundtracks" --menu "Choose an action" $con
 }
 
 Configuration(){
-choice=$(whiptail --title "System" --menu "Choose an action" $conf \
+choice=$(whiptail --title "Configuration" --menu "Choose an action" $conf \
   "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
   "C" "Remote Control Configuration" \
@@ -163,7 +163,6 @@ choice=$(whiptail --title "System" --menu "Choose an action" $conf \
     U) ;;
     C) concordance ;;
   esac
-read -t 10
 }
 
 System(){
@@ -308,7 +307,7 @@ fi
 }
 
 Menu(){
-choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
+choice=$(whiptail --title "Outils" \
 --menu "Choisisser un outils à exécuter :" $conf \
 "m" "Midnight Commander" \
 "C" "Configuration" \
@@ -345,9 +344,8 @@ case $choice in
 esac
 }
 
-
 Installation () {
-choice=$(whiptail --backtitle "Raspberry Pi Software Installation" --title "Liste des Utilitaires" \
+choice=$(whiptail --backtitle "Raspberry Pi" --title "Packages" \
 --checklist "Cochez les logiciels dont vous souhaitez linstallation." $conf \
 "C" "concordance" OFF \
 "M" "mc" OFF \
@@ -377,6 +375,6 @@ men=$((lin - 7))
 echo "Lines: " $lin
 echo "Columns: " $col
 echo "Menu: " $men
-conf="$lin $col $men"
+conf="--backtitle \"Raspberry Pi\" $lin $col $men"
 echo "Conf: " $conf
 Menu
