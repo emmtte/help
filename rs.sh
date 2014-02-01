@@ -342,8 +342,7 @@ case $choice in
   g) GoPro;;
   v) CatGo;;
   f) ruby gdrive.rb;;
-esac 
-read -t 10
+esac
 }
 
 
