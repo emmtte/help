@@ -166,13 +166,15 @@ Sst(){
 
 Configuration(){
  choice=$(whiptail --title "System" --menu "Choose an action" $conf \
-  "R" "Raspy-Config" \
+  "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
+  "C" "Remote Control Configuration" \
   3>&1 1>&2 2>&3)
   clear
   case $choice in
-    C) sudo raspi-config ;;
+    R) sudo raspi-config ;;
     U) ;;
+    C) concordance ;;
   esac
 read -t 10
 }
@@ -339,7 +341,6 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 "r" "Renomme les photos" \
 "p" "Pdf Fusion" \
 "g" "GoPro copy files" \
-"d" "Programme la télécommande Logitech" \
 "n" "Installe des logiciels sur le serveur" \
 "e" "Entrer une nouvelle adresse email" \
 "f" "gdrive-pdf-fusion" \
@@ -348,14 +349,13 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 case $choice in
 
 t) Transmission; Menu;;
-b) Concordance; Menu;;
 m) /usr/bin/mc; Menu;;
-c) Configuration; Menu;;
-s) System; Menu;;
+C) Configuration; Menu;;
+I) Installation; Menu;;
+S) System; Menu;;
 d) Minidlna; Menu;;
 r) Sst; Menu;;
 x) Tmux; Menu;;
-n) Install; Menu;;
 w) SlowMotion; Menu;;
 p) ruby gdrive.rb; Menu;;
 y) Resize; Menu;;
@@ -367,7 +367,7 @@ read -t 10
 }
 
 
-Install () {
+Installation () {
 choice=$(whiptail --backtitle "Raspberry Pi Software Installation" --title "Liste des Utilitaires" \
 --checklist "Cochez les logiciels dont vous souhaitez linstallation." $conf \
 "s" "sudo" OFF \
