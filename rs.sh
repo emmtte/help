@@ -1,7 +1,4 @@
 #!/bin/sh
-NORMAL="\033[00m"
-GREEN="\033[32;01m"
-RED="\033[31;01m"
 
 Check(){
 clear
@@ -72,19 +69,10 @@ fi
 }
 
 
-Ruby () {
-clear
-echo "${GREEN}Installation de Ruby${NORMAL}"
-sudo apt-get -y install pdftk
-wget https://dl.dropbox.com//Jbig2Encode
-sudo mv Jbig2Encode /bin/Jbig2Encode
-sudo chmod +x /bin/Jbig2Encode
-}
 
 Concordance() {
 clear
 if [ ! -e "/usr/bin/concordance" ]; then Logitech; fi
-
 whiptail --backtitle "Post-Installation Ubuntu" --title "Répertoire temporaire" \
 --inputbox "Sauvegarder les fichiers créé par le site dans le répertoire temporaire Dropbox" 18 60 "./Dropbox/Temporary" 2> /tmp/.temporary
 temp=`cat /tmp/.temporary`
@@ -98,8 +86,6 @@ Popup "Brancher la télécommande Logitech Harmony";
 if [ -e "./Connectivity.EZHex" ]; then rm $temp/Connectivity.EZHex; fi
 if [ -e "./Update.EZHex" ]; then rm $temp/Update.EZHex; fi
 Popup "Attente de la connexion avec le serveur";
-
-
 while [ ! -e "$temp/Connectivity.EZHex" ] ; do sleep 1; done
 concordance -t $temp/Connectivity.EZHex
 echo "Serveur connecté...Début de la mise à jour"
@@ -146,6 +132,7 @@ choice=$(whiptail --title "minidlna" --menu "Choose an action" $conf \
   "R" "minidlna reload" \
   "U" "minidlna status" \
   3>&1 1>&2 2>&3)
+  clear
   case $choice in
     R) sudo service minidlna force-reload ;;
     U) sudo service minidlna status ;;
@@ -153,7 +140,7 @@ choice=$(whiptail --title "minidlna" --menu "Choose an action" $conf \
 }
 
 Sst(){
-	choice=$(whiptail --title "streaming soundtracks" --menu "Choose an action" $conf \
+choice=$(whiptail --title "streaming soundtracks" --menu "Choose an action" $conf \
   "P" "play" \
   "O" "stop" \
   3>&1 1>&2 2>&3)
@@ -165,7 +152,7 @@ Sst(){
 }
 
 Configuration(){
- choice=$(whiptail --title "System" --menu "Choose an action" $conf \
+choice=$(whiptail --title "System" --menu "Choose an action" $conf \
   "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
   "C" "Remote Control Configuration" \
@@ -196,7 +183,7 @@ System(){
        sudo apt-get -y update
        sudo apt-get -y upgrade ;;
     R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
-       exec bash rs ;;
+       exec sh rs ;;
     G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
     R) sudo reboot ;;
     S) sudo halt ;;
@@ -204,7 +191,6 @@ System(){
     M) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh ;;
     N) sudo umount /media/ssh ;;
   esac
-read -t 10
 }
   
 Tmux(){
@@ -243,14 +229,12 @@ Transmission(){
   "P" "Stop" \
   "U" "Status" \
   3>&1 1>&2 2>&3)
-  #tput cup 3 30
   clear
   case $choice in
     A) sudo service transmission-daemon start ;;
     P) sudo service transmission-daemon stop ;;
     U) sudo service transmission-daemon status ;;
   esac
-read -t 5
 }
 
 GoPro(){
@@ -337,27 +321,26 @@ choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 "y" "Crop Slow Motion Movie" \
 "v" "Cat Videos" \
 "r" "Renomme les photos" \
-"p" "Pdf Fusion" \
 "g" "GoPro copy files" \
 "n" "Installe des logiciels sur le serveur" \
 "e" "Entrer une nouvelle adresse email" \
 "f" "gdrive-pdf-fusion" \
 3>&1 1>&2 2>&3)
-
+clear
 case $choice in
-  t) Transmission; Menu;;
-  m) /usr/bin/mc; Menu;;
-  C) Configuration; Menu;;
-  I) Installation; Menu;;
-  S) System; Menu;;
-  d) Minidlna; Menu;;
-  r) Sst; Menu;;
-  x) Tmux; Menu;;
-  w) SlowMotion; Menu;;
-  p) ruby gdrive.rb; Menu;;
-  y) Resize; Menu;;
-  g) GoPro; Menu;;
-  v) CatGo; Menu;;
+  t) Transmission;
+  m) /usr/bin/mc;
+  C) Configuration;
+  I) Installation;
+  S) System;
+  d) Minidlna;
+  r) Sst;
+  x) Tmux;
+  w) SlowMotion;
+  p) ruby gdrive.rb;
+  y) Resize;
+  g) GoPro;
+  v) CatGo;
   f) ruby gdrive.rb;;
 esac 
 read -t 10
@@ -367,19 +350,20 @@ read -t 10
 Installation () {
 choice=$(whiptail --backtitle "Raspberry Pi Software Installation" --title "Liste des Utilitaires" \
 --checklist "Cochez les logiciels dont vous souhaitez linstallation." $conf \
-"s" "sudo" OFF \
-"m" "mc" OFF \
-"n" "ntfs" OFF \
-"f" "sshfs" OFF \
-"D" "concordance" OFF \
-"r" "minidlna" OFF \
-"Y" "youtube-dl" OFF \
+"C" "concordance" OFF \
+"M" "mc" OFF \
+"D" "minidlna" OFF \
+"N" "ntfs" OFF \
 "T" "transmission-daemon" OFF \
-"S" "sendxmpp" OFF \
-"a" "samba" OFF \
+"P" "pdftk" OFF \
+"B" "samba" OFF \
+"X" "sendxmpp" OFF \
+"F" "sshfs" OFF \
+"S" "sudo" OFF \
+"Y" "youtube-dl" OFF \
 3>&1 1>&2 2>&3)
 echo $choice
-sudo apt-get -y install $choice
+#sudo apt-get -y install $choice
 }
 
 echo "Le 1er paramètre est : $1"
