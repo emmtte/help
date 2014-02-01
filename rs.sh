@@ -327,7 +327,7 @@ Menu(){
 choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 --menu "Choisisser un outils à exécuter :" $conf \
 "m" "Midnight Commander" \
-"C" "Configuration"
+"C" "Configuration" \
 "s" "System" \
 "d" "Minidlna" \
 "r" "Streaming Soundtracks" \
