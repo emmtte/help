@@ -164,9 +164,21 @@ Sst(){
   esac
 }
 
+Configuration(){
+ choice=$(whiptail --title "System" --menu "Choose an action" $conf \
+  "R" "Raspy-Config" \
+  "M" "Mail Configuration" \
+  3>&1 1>&2 2>&3)
+  clear
+  case $choice in
+    C) sudo raspi-config ;;
+    U) ;;
+  esac
+read -t 10
+}
+
 System(){
  choice=$(whiptail --title "System" --menu "Choose an action" $conf \
-  "C" "Configuration" \
   "U" "Update Raspbian" \
   "R" "Update Raspberry Service" \
   "G" "Update Google Pdf Fusion" \
@@ -178,7 +190,6 @@ System(){
   3>&1 1>&2 2>&3)
   clear
   case $choice in
-    C) sudo raspi-config ;;
     U) sudo apt-get -y autoremove
        sudo apt-get -y update
        sudo apt-get -y upgrade ;;
@@ -316,6 +327,7 @@ Menu(){
 choice=$(whiptail --backtitle "Raspberry Pi" --title "Outils" \
 --menu "Choisisser un outils à exécuter :" $conf \
 "m" "Midnight Commander" \
+"C" "Configuration"
 "s" "System" \
 "d" "Minidlna" \
 "r" "Streaming Soundtracks" \
@@ -338,6 +350,7 @@ case $choice in
 t) Transmission; Menu;;
 b) Concordance; Menu;;
 m) /usr/bin/mc; Menu;;
+c) Configuration; Menu;;
 s) System; Menu;;
 d) Minidlna; Menu;;
 r) Sst; Menu;;
@@ -349,7 +362,6 @@ y) Resize; Menu;;
 g) GoPro; Menu;;
 v) CatGo; Menu;;
 f) ruby gdrive.rb;;
-
 esac 
 read -t 10
 }
