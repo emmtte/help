@@ -313,8 +313,6 @@ fi
 }
 
 CatGo(){
-echo "clear" > ~/task.sh
-echo "cd /media/hdd1/gopro/videos/" >> ~/task.sh
 INIT="/media/hdd1/ConcatVideos"
 dir=$(whiptail --inputbox "Entrez le chemin des photos" 8 $col $INIT --title "Concat Videos" 3>&1 1>&2 2>&3)
 exitstatus=$?
