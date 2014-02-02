@@ -131,7 +131,7 @@ echo "rename done!"
 
 Configuration() {
 echo "ok"
-choice=$(whiptail --menu --title "Configuration" $conf \
+choice=$(whiptail --menu "" --title "Configuration" $conf \
   "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
   "C" "Remote Control Configuration" \
@@ -145,7 +145,7 @@ choice=$(whiptail --menu --title "Configuration" $conf \
 }
 
 Music() {
-choice=$(whiptail --menu --title "Music" $conf \
+choice=$(whiptail --menu "" --title "Music" $conf \
   "P" "play sst" \
   "O" "stop sst" \
   3>&1 1>&2 2>&3)
@@ -157,7 +157,7 @@ choice=$(whiptail --menu --title "Music" $conf \
 }
 
 Services() {
-choice=$(whiptail --menu --title "Services" $conf \
+choice=$(whiptail --menu "" --title "Services" $conf \
   "R" "minidlna reload" \
   "U" "minidlna status" \
   "A" "transmission Start" \
@@ -177,7 +177,7 @@ choice=$(whiptail --menu --title "Services" $conf \
 }
 
 System() {
- choice=$(whiptail --title "System" --menu $conf \
+ choice=$(whiptail --title "System" --menu "" $conf \
   "U" "Update Raspbian" \
   "R" "Update Raspberry Service" \
   "G" "Update Google Pdf Fusion" \
@@ -206,7 +206,7 @@ System() {
 }
   
 Sessions() {
-  choice=$(whiptail --title "Sessions" --menu "Use Ctrl+b d to detach session" $conf \
+  choice=$(whiptail --title "Sessions" --menu "" $conf \
   "Y" "Youtube" \
   "M" "Mencoder" \
   "S1" "Attach Session 1" \
