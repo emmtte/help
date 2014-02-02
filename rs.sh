@@ -24,7 +24,7 @@ echo "rename done!"
 echo "Résultats de Rename" | mail -s "Photos Rename" $mailuser < Rename.log
 }
 
-C() {
+Cddf() {
 
 find "/home/manu/Dropbox/TestPhotos/" -iname "*.jpg" -type f | sort | while read name ; do
 	cible="`dirname "$name"`/IMG_$(printf "%05d" $x).JPG"
