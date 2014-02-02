@@ -173,7 +173,7 @@ choice=$(whiptail --title "Services" $conf \
 }
 
 System() {
- choice=$(whiptail --title "System" $conf \
+ choice=$(whiptail --title "System" --menu "Use Ctrl+b d to detach session" $conf \
   "U" "Update Raspbian" \
   "R" "Update Raspberry Service" \
   "G" "Update Google Pdf Fusion" \
