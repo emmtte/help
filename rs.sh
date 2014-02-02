@@ -304,7 +304,7 @@ choice=$(whiptail --title "Outils" \
 --menu "Choisisser un outils à exécuter :" $conf \
 "m" "Midnight Commander" \
 "C" "Configuration" \
-"s" "System" \
+"S" "System" \
 "d" "Services" \
 "r" "Music" \
 "x" "Sessions" \
@@ -321,7 +321,6 @@ clear
 case $choice in
   m) /usr/bin/mc;;
   C) Configuration; Menu ;;
-  I) Menu;;
   S) System ;;
   d) Services;;
   r) Music; Menu;;
