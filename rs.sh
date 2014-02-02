@@ -26,7 +26,7 @@ echo "Résultats de Rename" | mail -s "Photos Rename" $mailuser < Rename.log
 
 C() {
 
-find "/home/manu/Dropbox/TestPhotos/" -iname "*.jpg" -type f | sort | while read name ; do 
+find "/home/manu/Dropbox/TestPhotos/" -iname "*.jpg" -type f | sort | while read name ; do
 	cible="`dirname "$name"`/IMG_$(printf "%05d" $x).JPG"
 	if [ "$name" = "$cible" ] ; then 
 		echo "SKIP $name ==>> $cible" >> Rename.log;
@@ -127,32 +127,12 @@ echo "rename done!"
 }
 
 
-Minidlna(){
-choice=$(whiptail --title "minidlna" --menu "Choose an action" $conf \
-  "R" "minidlna reload" \
-  "U" "minidlna status" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    R) sudo service minidlna force-reload ;;
-    U) sudo service minidlna status ;;
-  esac
-}
 
-Sst(){
-choice=$(whiptail --title "streaming soundtracks" --menu "Choose an action" $conf \
-  "P" "play" \
-  "O" "stop" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
-    U) killall mplayer ;;
-  esac
-}
+Application(){
+	}
 
 Configuration(){
-choice=$(whiptail --title "Configuration" --menu "Choose an action" $conf \
+choice=$(whiptail --title "Configuration" $conf \
   "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
   "C" "Remote Control Configuration" \
@@ -165,8 +145,38 @@ choice=$(whiptail --title "Configuration" --menu "Choose an action" $conf \
   esac
 }
 
+Music(){
+choice=$(whiptail --title "Music" $conf \
+  "P" "play sst" \
+  "O" "stop sst" \
+  3>&1 1>&2 2>&3)
+  clear
+  case $choice in
+    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
+    U) killall mplayer ;;
+  esac
+}
+
+Service(){
+choice=$(whiptail --title "Services" $conf \
+  "R" "minidlna reload" \
+  "U" "minidlna status" \
+  "A" "transmission Start" \
+  "P" "transmission Stop" \
+  "Q" "transmission Status" \
+  3>&1 1>&2 2>&3)
+  clear
+  case $choice in
+    R) sudo service minidlna force-reload ;;
+    U) sudo service minidlna status ;;
+    A) sudo service transmission-daemon start ;;
+    P) sudo service transmission-daemon stop ;;
+    Q) sudo service transmission-daemon status ;;
+  esac
+}
+
 System(){
- choice=$(whiptail --title "System" --menu "Choose an action" $conf \
+ choice=$(whiptail --title "System" $conf \
   "U" "Update Raspbian" \
   "R" "Update Raspberry Service" \
   "G" "Update Google Pdf Fusion" \
@@ -192,8 +202,8 @@ System(){
   esac
 }
   
-Tmux(){
-  choice=$(whiptail --title "tmux sessions" --menu "Use Ctrl+b d to detach session" $conf \
+Sessions(){
+  choice=$(whiptail --title "Sessions" --menu "Use Ctrl+b d to detach session" $conf \
   "Y" "Youtube" \
   "M" "Mencoder" \
   "S1" "Attach Session 1" \
@@ -210,32 +220,18 @@ Tmux(){
   case $choice in
     M) tmux attach-session -t mencoder ;;
     Y) tmux attach-session -t youtube ;;
-	S1) tmux attach-session -t session-01;;
-	S2) tmux attach-session -t session-02;;
-	S3) tmux attach-session -t session-03;;
-	S4) tmux attach-session -t session-04;;
-	L) tmux list-sessions;;
-	N1) tmux new -s session-01;;
-	N2) tmux new -s session-02;;
-	N3) tmux new -s session-03;;
-	N4) tmux new -s session-04;;
-  esac
+    S1) tmux attach-session -t session-01;;
+    S2) tmux attach-session -t session-02;;
+    S3) tmux attach-session -t session-03;;
+    S4) tmux attach-session -t session-04;;
+     L) tmux list-sessions;;
+    N1) tmux new -s session-01;;
+    N2) tmux new -s session-02;;
+    N3) tmux new -s session-03;;
+    N4) tmux new -s session-04;;
+esac
 }
   
-Transmission(){
- choice=$(whiptail --title "Transmission" --menu "Choose an option" $conf \
-  "A" "Start" \
-  "P" "Stop" \
-  "U" "Status" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    A) sudo service transmission-daemon start ;;
-    P) sudo service transmission-daemon stop ;;
-    U) sudo service transmission-daemon status ;;
-  esac
-}
-
 GoPro(){
 sudo mount -t auto UUID=6634-3132 /media/gopro
 mkdir /media/hdd1/gopro /media/hdd1/gopro/photos /media/hdd1/gopro/videos 
@@ -312,10 +308,9 @@ choice=$(whiptail --title "Outils" \
 "m" "Midnight Commander" \
 "C" "Configuration" \
 "s" "System" \
-"d" "Minidlna" \
-"r" "Streaming Soundtracks" \
-"x" "Tmux sessions" \
-"t" "transmission" \
+"d" "Services" \
+"r" "Music" \
+"x" "Sessions" \
 "w" "Create Slow Motion Movie" \
 "y" "Crop Slow Motion Movie" \
 "v" "Cat Videos" \
@@ -345,7 +340,7 @@ esac
 }
 
 Installation () {
-choice=$(whiptail --backtitle "Raspberry Pi" --title "Packages" \
+choice=$(whiptail --title "Packages" \
 --checklist "Cochez les logiciels dont vous souhaitez linstallation." $conf \
 "C" "concordance" OFF \
 "M" "mc" OFF \
@@ -375,7 +370,7 @@ men=$((lin - 7))
 echo "Lines: " $lin
 echo "Columns: " $col
 echo "Menu: " $men
-conf="--backtitle Raspberry_Pi $lin $col $men"
+conf="--backtitle Raspberry_Pi --menu Choose $lin $col $men"
 #conf="$lin $col $men"
 echo "Conf: " $conf
 Menu
