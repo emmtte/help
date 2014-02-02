@@ -319,10 +319,9 @@ choice=$(whiptail --title "Outils" \
 3>&1 1>&2 2>&3)
 clear
 case $choice in
-  t) Transmission;;
   m) /usr/bin/mc;;
   C) Configuration; Menu ;;
-  I) Installation; Menu;;
+  I) Menu;;
   S) System ;;
   d) Services;;
   r) Music; Menu;;
