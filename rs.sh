@@ -128,6 +128,7 @@ echo "rename done!"
 
 
 Configuration(){
+echo "ok"
 choice=$(whiptail --title "Configuration" $conf \
   "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
@@ -333,6 +334,7 @@ case $choice in
   v) CatGo;;
   f) ruby gdrive.rb;;
 esac
+echo 'fin'
 }
 
 Installation () {
