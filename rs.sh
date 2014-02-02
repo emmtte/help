@@ -129,7 +129,7 @@ echo "rename done!"
 
 Configuration() {
 echo "ok"
-choice=$(whiptail --title "Configuration" $conf \
+choice=$(whiptail --menu "Use Ctrl+b d to detach session" --title "Configuration" $conf \
   "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
   "C" "Remote Control Configuration" \
@@ -143,7 +143,7 @@ choice=$(whiptail --title "Configuration" $conf \
 }
 
 Music() {
-choice=$(whiptail --title "Music" $conf \
+choice=$(whiptail --menu "Use Ctrl+b d to detach session" --title "Music" $conf \
   "P" "play sst" \
   "O" "stop sst" \
   3>&1 1>&2 2>&3)
