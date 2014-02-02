@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$1" == "" ]; then $1
+if [ "$1" == "" ]; then $1; fi
 
 Check(){
 clear
