@@ -366,7 +366,7 @@ men=$((lin - 7))
 echo "Lines: " $lin
 echo "Columns: " $col
 echo "Menu: " $men
-conf="--backtitle Raspberry_Pi $lin $col $men"
-#conf="$lin $col $men"
+#conf="--backtitle Raspberry_Pi $lin $col $men"
+conf="$lin $col $men"
 echo "Conf: " $conf
 Menu
