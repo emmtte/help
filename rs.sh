@@ -321,11 +321,11 @@ clear
 case $choice in
   t) Transmission;;
   m) /usr/bin/mc;;
-  C) Configuration;;
-  I) Installation;;
-  S) System;;
+  C) Configuration; Menu ;;
+  I) Installation; Menu;;
+  S) System ;;
   d) Services;;
-  r) Music;;
+  r) Music; Menu;;
   x) Sessions;;
   w) SlowMotion;;
   p) ruby gdrive.rb;;
