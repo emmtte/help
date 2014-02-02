@@ -324,7 +324,7 @@ case $choice in
   I) Installation;;
   S) System;;
   d) Services;;
-  r) Sst;;
+  r) Music;;
   x) Tmux;;
   w) SlowMotion;;
   p) ruby gdrive.rb;;
