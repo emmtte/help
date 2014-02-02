@@ -1,5 +1,7 @@
 #!/bin/sh
 
+if [ "$1" == "" ]; then $1
+
 Check(){
 clear
 SOURCE="-"
@@ -161,6 +163,7 @@ choice=$(whiptail --title "Services" $conf \
   "A" "transmission Start" \
   "P" "transmission Stop" \
   "Q" "transmission Status" \
+  "X" "transmission Status" \
   3>&1 1>&2 2>&3)
   clear
   case $choice in
@@ -169,6 +172,7 @@ choice=$(whiptail --title "Services" $conf \
     A) sudo service transmission-daemon start ;;
     P) sudo service transmission-daemon stop ;;
     Q) sudo service transmission-daemon status ;;
+    X) ruby xmpp.rb
   esac
 }
 
@@ -177,6 +181,7 @@ System() {
   "U" "Update Raspbian" \
   "R" "Update Raspberry Service" \
   "G" "Update Google Pdf Fusion" \
+  "X" "Update ruby xmpp" \
   "R" "Redémarer le Raspberry Pi" \
   "S" "Shutdown" \
   "E" "Exit" \
@@ -191,6 +196,7 @@ System() {
     R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
        exec sh rs ;;
     G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
+    X) wget -O gdrive.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb ;;
     R) sudo reboot ;;
     S) sudo halt ;;
     E) exit ;;
