@@ -153,7 +153,7 @@ choice=$(whiptail --title "Music" $conf \
   esac
 }
 
-Service(){
+Services(){
 choice=$(whiptail --title "Services" $conf \
   "R" "minidlna reload" \
   "U" "minidlna status" \
@@ -323,7 +323,7 @@ case $choice in
   C) Configuration;;
   I) Installation;;
   S) System;;
-  d) Minidlna;;
+  d) Services;;
   r) Sst;;
   x) Tmux;;
   w) SlowMotion;;
