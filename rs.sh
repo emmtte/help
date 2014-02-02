@@ -127,7 +127,7 @@ echo "rename done!"
 }
 
 
-Configuration(){
+Configuration() {
 echo "ok"
 choice=$(whiptail --title "Configuration" $conf \
   "R" "Raspberry Configuration" \
@@ -142,7 +142,7 @@ choice=$(whiptail --title "Configuration" $conf \
   esac
 }
 
-Music(){
+Music() {
 choice=$(whiptail --title "Music" $conf \
   "P" "play sst" \
   "O" "stop sst" \
@@ -154,7 +154,7 @@ choice=$(whiptail --title "Music" $conf \
   esac
 }
 
-Services(){
+Services() {
 choice=$(whiptail --title "Services" $conf \
   "R" "minidlna reload" \
   "U" "minidlna status" \
@@ -172,7 +172,7 @@ choice=$(whiptail --title "Services" $conf \
   esac
 }
 
-System(){
+System() {
  choice=$(whiptail --title "System" $conf \
   "U" "Update Raspbian" \
   "R" "Update Raspberry Service" \
@@ -199,7 +199,7 @@ System(){
   esac
 }
   
-Sessions(){
+Sessions() {
   choice=$(whiptail --title "Sessions" --menu "Use Ctrl+b d to detach session" $conf \
   "Y" "Youtube" \
   "M" "Mencoder" \
