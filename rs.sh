@@ -127,10 +127,6 @@ echo "rename done!"
 }
 
 
-
-Application(){
-	}
-
 Configuration(){
 choice=$(whiptail --title "Configuration" $conf \
   "R" "Raspberry Configuration" \
