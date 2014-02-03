@@ -1,9 +1,12 @@
 Raspberry-Service
 =================
 
-Raspberry Service Software &amp; Tools
+Raspberry Service Tools
+
+####Installation
 
     wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
     chmod +x rs
-    export PATH=$PATH:/$HOME
+    sudo echo "export PATH=$PATH:/$HOME" > ~/.profile
+    source ~/.profile
     rs
