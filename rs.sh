@@ -317,6 +317,8 @@ choice=$(whiptail --title "Outils" \
 "e" "Entrer une nouvelle adresse email" \
 "f" "gdrive-pdf-fusion" \
 3>&1 1>&2 2>&3)
+exitstatus=$?
+if [ $exitstatus = 0 ]; then
 clear
 case $choice in
   m) /usr/bin/mc;;
@@ -332,7 +334,8 @@ case $choice in
   v) CatGo;;
   f) ruby gdrive.rb;;
 esac
-echo 'fin'
+Menu
+fi
 }
 
 Installation () {
