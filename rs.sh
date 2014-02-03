@@ -134,42 +134,54 @@ choice=$(whiptail --menu "" --title "Configuration" $conf \
   "M" "Mail Configuration" \
   "C" "Remote Control Configuration" \
   3>&1 1>&2 2>&3)
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
   clear
   case $choice in
     R) sudo raspi-config ;;
     U) ;;
     C) concordance ;;
   esac
+  echo "Press any key to continue"
+  read -t 5
+  Configuration
+  fi
 }
 
-
-Utilities() {
-choice=$(whiptail --menu "" --title "Services" $conf \
-  "M" "Midnight Commander" \
-  "R" "minidlna reload" \
-  "U" "minidlna status" \
-  "P" "sst play" \
-  "O" "sst stop" \
-  "A" "transmission Start" \
-  "P" "transmission Stop" \
-  "Q" "transmission Status" \
-  "X" "transmission Status" \
-  "m" "Midnight Commander" \
+Control() {
+  choice=$(whiptail --title "Sessions" --menu "" $conf \
+  "Y" "Youtube" \
+  "M" "Mencoder" \
+  "S1" "Attach Session 1" \
+  "S2" "Attach Session 2" \
+  "S3" "Attach Session 3" \
+  "S4" "Attach Session 4" \
+  "L" "List Sessions" \
+  "N1" "New Session 1" \
+  "N2" "New Session 2" \
+  "N3" "New Session 3" \
+  "N4" "New Session 4" \
   3>&1 1>&2 2>&3)
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
   clear
   case $choice in
-    M) mc ;;
-    R) sudo service minidlna force-reload ;;
-    U) sudo service minidlna status ;;
-    A) sudo service transmission-daemon start ;;
-    P) sudo service transmission-daemon stop ;;
-    Q) sudo service transmission-daemon status ;;
-    X) ruby xmpp.rb ;;
-    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
-    K) killall mplayer ;;
+    M) tmux attach-session -t mencoder ;;
+    Y) tmux attach-session -t youtube ;;
+    S1) tmux attach-session -t session-01;;
+    S2) tmux attach-session -t session-02;;
+    S3) tmux attach-session -t session-03;;
+    S4) tmux attach-session -t session-04;;
+     L) tmux list-sessions;;
+    N1) tmux new -s session-01;;
+    N2) tmux new -s session-02;;
+    N3) tmux new -s session-03;;
+    N4) tmux new -s session-04;;
   esac
-echo "Press any key to continue"
-read -t 5
+  echo "Press any key to continue"
+  read -t 5
+  Control
+  fi
 }
 
 System() {
@@ -184,6 +196,8 @@ System() {
   "M" "sshfs mount pi@192.168.0.1" \
   "N" "umount ssh" \
   3>&1 1>&2 2>&3)
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
   clear
   case $choice in
     U) sudo apt-get -y autoremove
@@ -199,37 +213,46 @@ System() {
     M) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh ;;
     N) sudo umount /media/ssh ;;
   esac
+  echo "Press any key to continue"
+  read -t 5
+  System
+  fi
 }
-  
-Control() {
-  choice=$(whiptail --title "Sessions" --menu "" $conf \
-  "Y" "Youtube" \
-  "M" "Mencoder" \
-  "S1" "Attach Session 1" \
-  "S2" "Attach Session 2" \
-  "S3" "Attach Session 3" \
-  "S4" "Attach Session 4" \
-  "L" "List Sessions" \
-  "N1" "New Session 1" \
-  "N2" "New Session 2" \
-  "N3" "New Session 3" \
-  "N4" "New Session 4" \
+
+Utilities() {
+choice=$(whiptail --menu "" --title "Services" $conf \
+  "M" "Midnight Commander" \
+  "R" "minidlna reload" \
+  "U" "minidlna status" \
+  "P" "sst play" \
+  "O" "sst stop" \
+  "A" "transmission Start" \
+  "P" "transmission Stop" \
+  "Q" "transmission Status" \
+  "X" "transmission Status" \
+  "m" "Midnight Commander" \
   3>&1 1>&2 2>&3)
+  exitstatus=$?
+  if [ $exitstatus = 0 ]; then
   clear
   case $choice in
-    M) tmux attach-session -t mencoder ;;
-    Y) tmux attach-session -t youtube ;;
-    S1) tmux attach-session -t session-01;;
-    S2) tmux attach-session -t session-02;;
-    S3) tmux attach-session -t session-03;;
-    S4) tmux attach-session -t session-04;;
-     L) tmux list-sessions;;
-    N1) tmux new -s session-01;;
-    N2) tmux new -s session-02;;
-    N3) tmux new -s session-03;;
-    N4) tmux new -s session-04;;
-esac
+    M) mc ;;
+    R) sudo service minidlna force-reload ;;
+    U) sudo service minidlna status ;;
+    A) sudo service transmission-daemon start ;;
+    P) sudo service transmission-daemon stop ;;
+    Q) sudo service transmission-daemon status ;;
+    X) ruby xmpp.rb ;;
+    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
+    K) killall mplayer ;;
+  esac
+  echo "Press any key to continue"
+  read -t 5
+  Utilities
+  fi
 }
+  
+
   
 GoPro(){
 sudo mount -t auto UUID=6634-3132 /media/gopro
