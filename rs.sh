@@ -159,7 +159,7 @@ choice=$(whiptail --menu "" --title "Services" $conf \
   3>&1 1>&2 2>&3)
   clear
   case $choice in
-    m) mc
+    m) mc ;;
     R) sudo service minidlna force-reload ;;
     U) sudo service minidlna status ;;
     A) sudo service transmission-daemon start ;;
