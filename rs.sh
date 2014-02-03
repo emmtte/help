@@ -325,7 +325,7 @@ case $choice in
   S) System ;;
   d) Services;;
   r) Music; Menu;;
-  x) Sessions;;
+  x) Utilities;;
   w) SlowMotion;;
   p) ruby gdrive.rb;;
   y) Resize;;
