@@ -204,7 +204,7 @@ System() {
        sudo apt-get -y update
        sudo apt-get -y upgrade ;;
     R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
-       exec rs ;;
+       exec bash rs ;;
     G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
     X) wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb ;;
     R) sudo reboot ;;
