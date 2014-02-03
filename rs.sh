@@ -144,36 +144,33 @@ choice=$(whiptail --menu "" --title "Configuration" $conf \
   esac
 }
 
-Music() {
-choice=$(whiptail --menu "" --title "Music" $conf \
-  "P" "play sst" \
-  "O" "stop sst" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
-    U) killall mplayer ;;
-  esac
-}
 
-Services() {
+Utilities() {
 choice=$(whiptail --menu "" --title "Services" $conf \
   "R" "minidlna reload" \
   "U" "minidlna status" \
+  "P" "sst play" \
+  "O" "sst stop" \
   "A" "transmission Start" \
   "P" "transmission Stop" \
   "Q" "transmission Status" \
   "X" "transmission Status" \
+  "m" "Midnight Commander" \
   3>&1 1>&2 2>&3)
   clear
   case $choice in
+    m) mc
     R) sudo service minidlna force-reload ;;
     U) sudo service minidlna status ;;
     A) sudo service transmission-daemon start ;;
     P) sudo service transmission-daemon stop ;;
     Q) sudo service transmission-daemon status ;;
     X) ruby xmpp.rb
+    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
+    U) killall mplayer ;;
   esac
+echo "Press any key to continue"
+read -t 5
 }
 
 System() {
@@ -205,7 +202,7 @@ System() {
   esac
 }
   
-Sessions() {
+Control() {
   choice=$(whiptail --title "Sessions" --menu "" $conf \
   "Y" "Youtube" \
   "M" "Mencoder" \
@@ -308,12 +305,10 @@ fi
 Menu(){
 choice=$(whiptail --title "Outils" \
 --menu "Choisisser un outils à exécuter :" $conf \
-"m" "Midnight Commander" \
 "C" "Configuration" \
+"d" "Control" \
 "S" "System" \
-"d" "Services" \
-"r" "Music" \
-"x" "Sessions" \
+"x" "Utilities" \
 "w" "Create Slow Motion Movie" \
 "y" "Crop Slow Motion Movie" \
 "v" "Cat Videos" \
