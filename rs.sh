@@ -305,9 +305,9 @@ Menu(){
 choice=$(whiptail --title "Outils" \
 --menu "Choisisser un outils à exécuter :" $conf \
 "C" "Configuration" \
-"d" "Control" \
+"L" "Control" \
 "S" "System" \
-"x" "Utilities" \
+"U" "Utilities" \
 "w" "Create Slow Motion Movie" \
 "y" "Crop Slow Motion Movie" \
 "v" "Cat Videos" \
@@ -321,12 +321,11 @@ exitstatus=$?
 if [ $exitstatus = 0 ]; then
 clear
 case $choice in
-  m) /usr/bin/mc;;
-  C) Configuration; Menu ;;
+  C) Configuration;;
+  L) Control;;
   S) System ;;
+  U) Utilities;;
   d) Services;;
-  r) Music; Menu;;
-  x) Utilities;;
   w) SlowMotion;;
   p) ruby gdrive.rb;;
   y) Resize;;
