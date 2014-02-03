@@ -146,6 +146,7 @@ choice=$(whiptail --menu "" --title "Configuration" $conf \
 
 Utilities() {
 choice=$(whiptail --menu "" --title "Services" $conf \
+  "M" "Midnight Commander" \
   "R" "minidlna reload" \
   "U" "minidlna status" \
   "P" "sst play" \
@@ -158,15 +159,15 @@ choice=$(whiptail --menu "" --title "Services" $conf \
   3>&1 1>&2 2>&3)
   clear
   case $choice in
-    m) mc ;;
+    M) mc ;;
     R) sudo service minidlna force-reload ;;
     U) sudo service minidlna status ;;
     A) sudo service transmission-daemon start ;;
     P) sudo service transmission-daemon stop ;;
     Q) sudo service transmission-daemon status ;;
-    X) ruby xmpp.rb
+    X) ruby xmpp.rb ;;
     R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
-    U) killall mplayer ;;
+    K) killall mplayer ;;
   esac
 echo "Press any key to continue"
 read -t 5
