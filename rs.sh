@@ -78,7 +78,7 @@ System() {
        sudo apt-get -y upgrade ;;
     R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
        exec bash rs ;;
-    G) wget -O gdrive.rb https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
+    G) wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
     X) wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb ;;
     R) sudo reboot ;;
     S) sudo halt ;;
@@ -155,7 +155,7 @@ case $choice in
   y) Resize;;
   g) GoPro;;
   v) CatGo;;
-  f) ruby gdrive.rb;;
+  f) gdrive;;
 esac
 Menu
 fi
