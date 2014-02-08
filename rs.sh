@@ -62,6 +62,7 @@ System() {
   "U" "Update Raspbian" \
   "R" "Update Raspberry Service" \
   "G" "Update Google Pdf Fusion" \
+  "P" "Update GoPro Script" \
   "X" "Update ruby xmpp" \
   "R" "Redémarer le Raspberry Pi" \
   "S" "Shutdown" \
@@ -79,6 +80,7 @@ System() {
     R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
        exec bash rs ;;
     G) wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
+    P) wget -O gopro https://raw.github.com/ManuCart/GPtoYT/master/gopro.sh;;
     X) wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb ;;
     R) sudo reboot ;;
     S) sudo halt ;;
