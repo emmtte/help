@@ -74,7 +74,7 @@ System() {
     U) sudo apt-get -y autoremove
        sudo apt-get update
        sudo apt-get -y upgrade
-       sudo apt-get -y dist-upgrade
+       sudo apt-get -y dist-upgrade ;;
     R) wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
        exec bash rs ;;
     G) wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb ;;
