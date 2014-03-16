@@ -5,7 +5,6 @@ echo "ok"
 choice=$(whiptail --menu "" --title "Configuration" $conf \
   "R" "Raspberry Configuration" \
   "M" "Mail Configuration" \
-  "C" "Remote Control Configuration" \
   3>&1 1>&2 2>&3)
   exitstatus=$?
   if [ $exitstatus = 0 ]; then
@@ -13,7 +12,7 @@ choice=$(whiptail --menu "" --title "Configuration" $conf \
   case $choice in
     R) sudo raspi-config ;;
     U) ;;
-    C) concordance ;;
+    C) ;;
   esac
   echo "Press any key to continue"
   read -t 5
@@ -67,8 +66,6 @@ System() {
   "R" "Redémarer le Raspberry Pi" \
   "S" "Shutdown" \
   "E" "Exit" \
-  "M" "sshfs mount pi@192.168.0.1" \
-  "N" "umount ssh" \
   3>&1 1>&2 2>&3)
   exitstatus=$?
   if [ $exitstatus = 0 ]; then
@@ -86,8 +83,6 @@ System() {
     R) sudo reboot ;;
     S) sudo halt ;;
     E) exit ;;
-    M) sudo sshfs -oIdentityFile=/home/w7/id_rsa pi@192.168.0.1:/media/hdd1 /media/ssh ;;
-    N) sudo umount /media/ssh ;;
   esac
   echo "Press any key to continue"
   read -t 5
@@ -97,7 +92,7 @@ System() {
 
 Utilities() {
 choice=$(whiptail --menu "" --title "Services" $conf \
-  "M" "Midnight Commander" \
+  "M" "midnight commander" \
   "R" "minidlna reload" \
   "U" "minidlna status" \
   "P" "sst play" \
@@ -105,8 +100,6 @@ choice=$(whiptail --menu "" --title "Services" $conf \
   "A" "transmission Start" \
   "P" "transmission Stop" \
   "Q" "transmission Status" \
-  "X" "transmission Status" \
-  "m" "Midnight Commander" \
   3>&1 1>&2 2>&3)
   exitstatus=$?
   if [ $exitstatus = 0 ]; then
@@ -119,8 +112,8 @@ choice=$(whiptail --menu "" --title "Services" $conf \
     P) sudo service transmission-daemon stop ;;
     Q) sudo service transmission-daemon status ;;
     X) ruby xmpp.rb ;;
-    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
-    K) killall mplayer ;;
+    P) omxplayer http://hi1.streamingsoundtracks.com:8000 ;;
+    O) killall omxplayer ;;
   esac
   echo "Press any key to continue"
   read -t 5
