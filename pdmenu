@@ -1,4 +1,8 @@
 #!/usr/bin/pdmenu
+preproc: echo "Title: test"
+color:desktop:blue:blue
+color:title:red:white
+color:base:blue:white
 menu:home:Home Menu:Welcome to pdmenu
         show:<This is pdmenu>
         nop
