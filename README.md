@@ -10,3 +10,9 @@ Raspberry Service Tools
     sudo echo "export PATH=$PATH:/$HOME" > ~/.profile
     source ~/.profile
     rs
+
+####New Version with pdmenu
+    
+    sudo apt-get install pdmenu
+    wget -O pdmenu https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu
+    chmod +x pdmenu
