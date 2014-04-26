@@ -1,3 +1,4 @@
+#!/usr/bin/pdmenu
 menu:home:Home Menu:Welcome to pdmenu
         show:<This is pdmenu>
         nop
