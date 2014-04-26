@@ -1,0 +1,39 @@
+menu:home:Home Menu:Welcome to pdmenu
+        show:<This is pdmenu>
+        nop
+        nop:Main Menu
+        nop:--------------------------------------
+        show:   Network Configuration::network_conf
+ 
+        nop
+        nop:Miscellaneous
+        nop:--------------------------------------
+        exec:   Reboot::clear;reboot
+        exec:   Change Password:pause:clear;passwd
+        nop
+        exit:Exit
+ 
+menu:network_conf:Network Configuration:Network Configuration
+        show:<Network Configuration>::
+        nop
+        nop:Network Information
+        nop:--------------------------------------
+        exec:   Show IP Address and Subnet:display:/sbin/ifconfig eth0
+        exec:   Show Routes:display:/sbin/route -n
+        nop
+ 
+        nop:Configuration
+        nop:--------------------------------------
+        exec:   Change IP Address and Subnet:edit,pause:clear;sudo /sbin/ifconfig eth0 ~New IP Address:~ netmask ~New Subnet$
+        exec:   Add Default Gateway:edit,pause:clear;sudo /sbin/route add default gw ~Default Gateway:~
+        exec:   Add Route:edit,pause:clear;sudo /sbin/route add -net ~Destination:~ netmask ~Subnet:~ gw ~Gateway:~
+        exec:   Remove Default Gateway:edit,pause:clear;sudo /sbin/route del default gw ~Default Gateway:~
+        exec:   Remove Route:edit,pause:clear;sudo /sbin/route del -net ~Destination:~ netmask ~Subnet:~ gw ~Gateway:~
+        nop
+ 
+        nop:Diagnosis
+        nop:--------------------------------------
+        exec:   Ping:edit,pause:clear;ping ~Address:~
+        exec:   Show netstat:display:netstat -tuna
+        nop
+        exit:Return to Main Menu
