@@ -13,9 +13,9 @@ menu:home:Home Menu:Welcome to pdmenu
         exit:Exit
  
 menu:Transmission:Transmission:Transmission
-        exec:_Start:edit,pause,exit:clear;sudo service transmission-daemon start
-        exec:Sto_p:edit,pause,exit:clear;sudo service transmission-daemon stop
-        exec:S_tatus:edit,pause,exit:clear;sudo service transmission-daemon status
+        exec:_Start:display:clear;sudo service transmission-daemon start
+        exec:Sto_p:display:clear;sudo service transmission-daemon stop
+        exec:S_tatus:display:clear;sudo service transmission-daemon status
  
 menu:network_conf:Network Configuration:Network Configuration
         show:<Network Configuration>::
