@@ -7,7 +7,8 @@ color:base:blue:white
 
 menu:home:Home Menu:Welcome to pdmenu
         show:<This is pdmenu>
-        nop
+        show:   Transmission::Transmission
+        
         nop:Main Menu
         nop:--------------------------------------
         show:   Network Configuration::network_conf
@@ -19,6 +20,13 @@ menu:home:Home Menu:Welcome to pdmenu
         exec:   Change Password:pause:clear;passwd
         nop
         exit:Exit
+ 
+menu:Transmission:Transmission:Transmission
+        show:<Transmission>::
+        exec:_Start:edit,pause:clear;sudo service transmission-daemon start
+        exec:Sto_p:edit,pause:clear;sudo service transmission-daemon stop
+        exec:S_tatus:edit,pause:clear;sudo service transmission-daemon status
+        exit:Return to Main Menu
  
 menu:network_conf:Network Configuration:Network Configuration
         show:<Network Configuration>::
