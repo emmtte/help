@@ -1,9 +1,16 @@
 #!/usr/bin/pdmenu -c
 
 preproc: echo "Title: test"
-color:desktop:blue:blue
-color:title:red:white
-color:base:blue:white
+#color:desktop:blue:blue
+#color:title:red:white
+#color:base:blue:white
+
+color:desktop:black:gray
+color:base:black:black
+color:title:black:black
+color:menu:lightgray:blue
+color:selbarhot:yellow:black
+color:menuhot:yellow:blue
 
 menu:home:Home Menu:Welcome to pdmenu
         show:_Transmission::Transmission
@@ -16,7 +23,7 @@ menu:home:Home Menu:Welcome to pdmenu
         
 menu:System:System:System
         exec:_Update:pause:sudo apt-get -y autoremove;sudo apt-get update;sudo apt-get -y upgrade;sudo apt-get -y dist-upgrade
-        exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu
+        exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu;exec pdm
         exec:Update _rs:pause:wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
         exec:Update _gdrive:pause:wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
         exec:Update go_pro:pause:wget -O gopro https://raw.github.com/ManuCart/GPtoYT/master/gopro.sh
