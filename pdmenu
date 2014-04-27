@@ -8,10 +8,19 @@ color:base:blue:white
 menu:home:Home Menu:Welcome to pdmenu
         show:_Transmission::Transmission
         show:_Minidlna::Minidlna
+        show:_System::System
         show:Network Configuration::network_conf
         exec:Reboot::clear;reboot
         exec:Change Password:pause:clear;passwd
         exit:Exit
+        
+menu:System:System:System
+        exec:_Update:pause:sudo apt-get -y autoremove;sudo apt-get update;sudo apt-get -y upgrade;sudo apt-get -y dist-upgrade
+        exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu
+        exec:Update _rs:pause:wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
+        exec:Update _gdrive:pause:wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
+        exec:Update go_pro:pause:wget -O gopro https://raw.github.com/ManuCart/GPtoYT/master/gopro.sh
+        exec:Update _xmpp:pause:wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb
  
 menu:Transmission:Transmission:Transmission
         exec:_Start:truncate:sudo service transmission-daemon start
