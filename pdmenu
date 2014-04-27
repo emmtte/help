@@ -7,7 +7,7 @@ preproc: echo "Title: test"
 
 color:desktop:black:gray
 color:base:black:black
-color:title:black:black
+color:title:yellow:red
 color:menu:lightgray:blue
 color:selbarhot:yellow:black
 color:menuhot:yellow:blue
