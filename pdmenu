@@ -19,8 +19,8 @@ menu:Transmission:Transmission:Transmission
         exec:S_tatus:truncate:sudo service transmission-daemon status
         
 menu:Minidlna:Minidlna:Minidlna
-        exec:_Reload:display:clear;sudo service minidlna force-reload
-        exec:S_tatus:display:clear;sudo service minidlna status
+        exec:_Reload:truncate:sudo service minidlna force-reload
+        exec:S_tatus:truncate:sudo service minidlna status
  
 menu:network_conf:Network Configuration:Network Configuration
         show:<Network Configuration>::
