@@ -11,12 +11,18 @@ color:menuhot:yellow:blue
 menu:home:Home Menu:Welcome to pdmenu
         show:_Transmission::Transmission
         show:_Minidlna::Minidlna
+        show:_GoPro::Gopro
         nop
         show:_System::System
         show:Network Configuration::network_conf
         exec:Reboot::clear;reboot
         exec:Change Password:pause:clear;passwd
         exit:_Exit
+
+menu:Gopro:Gopro:Gopro
+        exec:New Session:clear:tmux new -s Gopro
+        exec:Session Gopro:clear:tmux attach-session -t Gopro
+        
         
 menu:System:System:System
         exec:_Update:pause:sudo apt-get -y autoremove;sudo apt-get update;sudo apt-get -y upgrade;sudo apt-get -y dist-upgrade
