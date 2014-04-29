@@ -17,29 +17,39 @@ menu:home:Home Menu:Welcome to pdmenu
         show:Network Configuration::network_conf
         exec:Reboot::clear;reboot
         exec:Change Password:pause:clear;passwd
+        nop
         exit:_Exit
 
 menu:Gopro:Gopro:Gopro
+        exec:Update go_pro:pause:wget -O gopro https://raw.github.com/ManuCart/GoPro/master/gopro.sh
         exec:New Session:clear:tmux new -s Gopro
         exec:Session Gopro:clear:tmux attach-session -t Gopro
+        exec:GoPro to Youtube:gopro -f /media/hdd/gopro -c -g
+        nop
+        exit:E_xit
         
         
 menu:System:System:System
         exec:_Update:pause:sudo apt-get -y autoremove;sudo apt-get update;sudo apt-get -y upgrade;sudo apt-get -y dist-upgrade
-        exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu;exec pdm
+        exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu;exec /usr/bin/pdmenu -c pdm
         exec:Update _rs:pause:wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
         exec:Update _gdrive:pause:wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
-        exec:Update go_pro:pause:wget -O gopro https://raw.github.com/ManuCart/GoPro/master/gopro.sh
         exec:Update _xmpp:pause:wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb
+        nop
+        exit:E_xit
  
 menu:Transmission:Transmission:Transmission
         exec:_Start:truncate:sudo service transmission-daemon start
         exec:Sto_p:truncate:sudo service transmission-daemon stop
         exec:S_tatus:truncate:sudo service transmission-daemon status
+        nop
+        exit:E_xit
         
 menu:Minidlna:Minidlna:Minidlna
         exec:_Reload:truncate:sudo service minidlna force-reload
         exec:S_tatus:truncate:sudo service minidlna status
+        nop
+        exit:E_xit
  
 menu:network_conf:Network Configuration:Network Configuration
         show:<Network Configuration>::
