@@ -5,8 +5,8 @@ color:desktop:black:gray
 color:base:white:green
 color:title:yellow:red
 color:menu:white:cyan
-color:selbarhot:yellow:cyan
-color:menuhot:yellow:blue
+color:selbarhot:green:blue
+color:menuhot:yellow:cyan
 
 menu:home:Home Menu:Welcome to pdmenu
         show:_Transmission::Transmission
