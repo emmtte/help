@@ -2,10 +2,10 @@
 
 preproc: echo "Title: test"
 color:desktop:black:gray
-color:base:white:red
+color:base:white:green
 color:title:yellow:red
-color:menu:lightgray:cyan
-color:selbarhot:yellow:black
+color:menu:white:cyan
+color:selbarhot:yellow:cyan
 color:menuhot:yellow:blue
 
 menu:home:Home Menu:Welcome to pdmenu
