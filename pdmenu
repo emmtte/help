@@ -18,7 +18,7 @@ menu:home:Home Menu:Welcome to pdmenu
         exec:Reboot::clear;reboot
         exec:Change Password:pause:clear;passwd
         nop
-        exit:_Exit
+        exit:E_xit
 
 menu:Gopro:Gopro:Gopro
         exec:Update go_pro:pause:wget -O gopro https://raw.github.com/ManuCart/GoPro/master/gopro.sh
@@ -74,4 +74,4 @@ menu:network_conf:Network Configuration:Network Configuration
         exec:   Ping:edit,pause:clear;ping ~Address:~
         exec:   Show netstat:display:netstat -tuna
         nop
-        exit:Return to Main Menu
+        exit:E_xit
