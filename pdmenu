@@ -2,9 +2,9 @@
 
 preproc: echo "Title: test"
 color:desktop:black:gray
-color:base:black:black
+color:base:white:red
 color:title:yellow:red
-color:menu:lightgray:blue
+color:menu:lightgray:cyan
 color:selbarhot:yellow:black
 color:menuhot:yellow:blue
 
