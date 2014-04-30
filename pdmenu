@@ -1,7 +1,7 @@
 #!/usr/bin/pdmenu -c
 
 preproc: echo "Title: test"
-color:desktop:black:gray
+color:desktop:blue:gray
 color:title:yellow:red
 color:base:white:green
 color:menu:white:cyan
