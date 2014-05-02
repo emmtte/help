@@ -13,19 +13,28 @@ menu:home:Home Menu:Welcome to pdmenu
         show:_Transmission::Transmission
         show:_Minidlna::Minidlna
         show:_GoPro::Gopro
+        show:_Remote Control::RC
         nop
         show:_System::System
-        show:Network Configuration::network_conf
-        exec:Reboot::clear;reboot
-        exec:Change Password:pause:clear;passwd
+        show:_Network Configuration::network_conf
+        exec:_Reboot::clear;reboot
+        exec:_Change Password:pause:clear;passwd
         nop
         exit:E_xit
 
-menu:Gopro:Gopro:Gopro
-        exec:Update go_pro:pause:wget -O gopro https://raw.github.com/ManuCart/GoPro/master/gopro.sh
-        exec:New Session:clear:tmux new -s Gopro
-        exec:Session Gopro:clear:tmux attach-session -t Gopro
-        exec:GoPro to Youtube:gopro -f /media/hdd/gopro -c -g
+menu:RC:Remote Control:Update Remote Control
+        exec:_Update: \
+                wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip; \
+                unzip rc.zip; \
+                rm rc.zip; \
+                mv Raspberry-Control-master .rc
+        exit:E_xit
+
+menu:Gopro:Gopro:Gopro videos to YouTube
+        exec:_Update go_pro:pause:wget -O gopro https://raw.github.com/ManuCart/GoPro/master/gopro.sh
+        exec:_New Session:clear:tmux new -s Gopro
+        exec:_Session Gopro:clear:tmux attach-session -t Gopro
+        exec:_GoPro to Youtube:gopro -f /media/hdd/gopro -c -g
         nop
         exit:E_xit
         
