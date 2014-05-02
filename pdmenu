@@ -23,8 +23,7 @@ menu:home:Home Menu:Welcome to pdmenu
         exit:E_xit
 
 menu:RC:Remote Control:Update Remote Control
-        exec:_Update: \
-                wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip; \
+        exec:_Update:wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip; \
                 unzip rc.zip; \
                 rm rc.zip; \
                 mv Raspberry-Control-master .rc
@@ -37,7 +36,6 @@ menu:Gopro:Gopro:Gopro videos to YouTube
         exec:_GoPro to Youtube:gopro -f /media/hdd/gopro -c -g
         nop
         exit:E_xit
-        
         
 menu:System:System:System
         exec:_Update:pause:sudo apt-get -y autoremove;sudo apt-get update;sudo apt-get -y upgrade;sudo apt-get -y dist-upgrade
