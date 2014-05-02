@@ -23,7 +23,8 @@ menu:home:Home Menu:Welcome to pdmenu
         exit:E_xit
 
 menu:RC:Remote Control:Update Remote Control
-        exec:_Update:wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip; \
+        exec:_Update:pause \
+                wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip; \
                 unzip rc.zip; \
                 rm rc.zip; \
                 mv Raspberry-Control-master .rc
@@ -42,7 +43,7 @@ menu:System:System:System
         exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu;exec /usr/bin/pdmenu -c pdm
         exec:Update _rs:pause:wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
         exec:Update _gdrive:pause:wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
-        exec:Update _xmpp:pause:wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb
+        exec:Update x_mpp:pause:wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb
         nop
         exit:E_xit
  
