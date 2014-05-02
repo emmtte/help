@@ -23,7 +23,7 @@ menu:home:Home Menu:Welcome to pdmenu
         exit:E_xit
 
 menu:RC:Remote Control:Update Remote Control
-        exec:_Update:pause \
+        exec:_Update:pause: \
                 wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip; \
                 unzip rc.zip; \
                 rm rc.zip; \
