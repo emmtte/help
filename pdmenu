@@ -41,7 +41,7 @@ menu:Gopro:Gopro:Gopro videos to YouTube
         
 menu:System:System:System
         exec:_Update:pause:sudo apt-get -y autoremove;sudo apt-get update;sudo apt-get -y upgrade;sudo apt-get -y dist-upgrade
-        exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu;exec /usr/bin/pdmenu -c pdm
+        exec:Update _pdm:pause:wget -O pdm https://raw.github.com/ManuCart/Raspberry-Service/master/pdmenu;exit;
         exec:Update _rs:pause:wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
         exec:Update _gdrive:pause:wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
         exec:Update x_mpp:pause:wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb
