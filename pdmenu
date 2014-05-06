@@ -28,7 +28,8 @@ menu:RC:Remote Control:Update Remote Control
                 unzip rc.zip; \
                 rm rc.zip; \
                 mv -u Raspberry-Control-master/* .rc; \
-                mv -u Raspberry-Control-master/public/* .rc/public;
+                mv -u Raspberry-Control-master/public/* .rc/public \
+                rm -r Raspberry-Control-master
         exit:E_xit
 
 menu:Gopro:Gopro:Gopro videos to YouTube
