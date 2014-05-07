@@ -24,11 +24,11 @@ menu:home:Home Menu:Welcome to pdmenu
 
 menu:RC:Remote Control:Update Remote Control
         exec:_Update:pause: \
-               wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip \
-                unzip rc.zip \
-                rm rc.zip \
-                mv -u Raspberry-Control-master/* .rc \
-                mv -u Raspberry-Control-master/public/* .rc/public \
+               wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip; \
+                unzip rc.zip; \
+                rm rc.zip; \
+                mv -u Raspberry-Control-master/* .rc; \
+                mv -u Raspberry-Control-master/public/* .rc/public; \
                 rm -r Raspberry-Control-master
         exit:E_xit
 
