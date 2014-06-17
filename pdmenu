@@ -80,7 +80,7 @@ menu:network_conf:Network Configuration:Network Configuration
         nop
         exit:E_xit
 
-menu:main:Main Menu
+menu:main:main:Main Menu
         group:_Test
         exec::makemenu: \
                 echo menu:sample:Dir; \
