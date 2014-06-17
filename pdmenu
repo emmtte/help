@@ -78,3 +78,11 @@ menu:network_conf:Network Configuration:Network Configuration
         exec:   Show netstat:display:netstat -tuna
         nop
         exit:E_xit
+
+menu:main:Main Menu
+        group:_Test
+        exec::makemenu: \
+                echo menu:sample:Dir; \
+                echo exec:_Directory:pause:ls
+        show:::sample
+        endgroup
