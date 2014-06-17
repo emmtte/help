@@ -90,3 +90,10 @@ menu:main:main:Main Menu
 		show:::show_directory
 		remove:::show_directory
 	endgroup
+
+menu:dropbox:upload to dropbox:upload to dropbox
+        group:_File viewer
+		exec::makemenu:./showdir.pl `pwd` "" show_directory
+		show:::show_directory
+		remove:::show_directory
+	endgroup
