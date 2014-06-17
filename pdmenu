@@ -19,6 +19,7 @@ menu:home:Home Menu:Welcome to pdmenu
         show:_Network Configuration::network_conf
         exec:_Reboot::clear;reboot
         exec:_Change Password:pause:clear;passwd
+        exec:_Test::main
         nop
         exit:E_xit
 
