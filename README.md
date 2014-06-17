@@ -17,3 +17,7 @@ Raspberry Service Tools
     curl -o pdm https://raw.githubusercontent.com/ManuCart/ServicePi/master/pdmenu
     chmod +x pdm
     pdm
+
+curl -O menu.zip https://raw.githubusercontent.com/ManuCart/ServicePi/master.zip
+unzip menu.zip
+rm menu.zip
