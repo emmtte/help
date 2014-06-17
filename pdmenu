@@ -81,11 +81,12 @@ menu:network_conf:Network Configuration:Network Configuration
         exit:E_xit
 
 menu:main:main:Main Menu
-        menu:main:Main Menu
-        group:_Test
-        exec::makemenu: \
-        echo menu:sample:Dir; \
-        echo exec:_Directory:pause:ls
-        show:::sample
-        remove:::sample
-        endgroup
+        group:_File viewer
+		exec::makemenu: (\
+			./showdir.pl `pwd` "" show_directory || \
+			examples/showdir.pl `pwd` "" show_directory || \
+			@PDMENU_LIBDIR@/pdmenu/showdir.pl `pwd` "" show_directory \
+			) 2>/dev/null
+		show:::show_directory
+		remove:::show_directory
+	endgroup
