@@ -13,12 +13,10 @@ Raspberry Service Tools
 
 ####New Version with pdmenu
 ```
-    sudo apt-get install pdmenu
+    sudo apt-get install curl pdmenu
     curl -o pdm https://raw.githubusercontent.com/ManuCart/ServicePi/master/pdmenu
+    curl https://raw.githubusercontent.com/ManuCart/ServicePi/master/showdir.pl
+    curl https://raw.githubusercontent.com/ManuCart/ServicePi/master/editdir.pl
     chmod +x pdm
     pdm
-
-curl -o menu.zip https://github.com/ManuCart/ServicePi/archive/master.zip
-unzip menu.zip
-rm menu.zip
 ```
