@@ -84,8 +84,8 @@ menu:main:main:Main Menu
         group:_File viewer
 		exec::makemenu: (\
 			./showdir.pl `pwd` "" show_directory || \
-			examples/showdir.pl `pwd` "" show_directory || \
-			@PDMENU_LIBDIR@/pdmenu/showdir.pl `pwd` "" show_directory \
+			./showdir.pl /media/hdd "" show_directory || \
+			./showdir.pl /media/hdd/.torrent "" show_directory \
 			) 2>/dev/null
 		show:::show_directory
 		remove:::show_directory
