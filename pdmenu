@@ -81,9 +81,11 @@ menu:network_conf:Network Configuration:Network Configuration
         exit:E_xit
 
 menu:main:main:Main Menu
+        menu:main:Main Menu
         group:_Test
         exec::makemenu: \
-                echo menu:sample:Dir; \
-                echo exec:_Directory:pause:ls
+        echo menu:sample:Dir; \
+        echo exec:_Directory:pause:ls
         show:::sample
+        remove:::sample
         endgroup
