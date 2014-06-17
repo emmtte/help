@@ -17,6 +17,6 @@ Raspberry Service Tools
     curl -o pdm https://raw.githubusercontent.com/ManuCart/ServicePi/master/pdmenu
     curl -o showdir.pl https://raw.githubusercontent.com/ManuCart/ServicePi/master/showdir.pl
     curl -o editdir.pl https://raw.githubusercontent.com/ManuCart/ServicePi/master/editdir.pl
-    chmod +x pdm
+    chmod +x pdm showdir.pl editdir.pl
     pdm
 ```
