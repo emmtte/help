@@ -20,6 +20,7 @@ menu:home:Home Menu:Welcome to pdmenu
         exec:_Reboot::clear;reboot
         exec:_Change Password:pause:clear;passwd
         show:_Test::main
+        show:_Dropbox::dropbox
         nop
         exit:E_xit
 
