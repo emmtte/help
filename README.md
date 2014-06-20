@@ -16,10 +16,7 @@ Raspberry Service Tools
     sudo apt-get install curl pdmenu
     curl -o pdm https://raw.githubusercontent.com/ManuCart/ServicePi/master/pdmenu
     curl -o showdir.pl https://raw.githubusercontent.com/ManuCart/ServicePi/master/showdir.pl
-    echo "showdir.pl" > editdir.pl
-    echo "showdir.pl" > deldir.pl
-    echo "showdir.pl" > adddir.pl
-    echo "showdir.pl" > addfile.pl
+    ln -s showdir.pl editdir.pl
     chmod +x pdm showdir.pl editdir.pl deldir.pl adddir.pl addfile.pl
     pdm
 ```
