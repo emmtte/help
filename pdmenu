@@ -83,7 +83,7 @@ menu:network_conf:Network Configuration:Network Configuration
 	# File manager
 menu:main:main:Main Menu
 group:_Edit a file
-    exec::makemenu:./editdir.pl `pwd` "" show_directory
+    exec::makemenu:./showdir.pl `pwd` "" show_directory
     show:::show_directory
     remove:::show_directory
 endgroup
