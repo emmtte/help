@@ -80,17 +80,40 @@ menu:network_conf:Network Configuration:Network Configuration
         exec:   Show netstat:display:netstat -tuna
         nop
         exit:E_xit
-
+	# File manager
 menu:main:main:Main Menu
-        group:_File viewer
-		exec::makemenu: (\
-			./showdir.pl `pwd` "" show_directory || \
-			./showdir.pl /media/hdd "" show_directory || \
-			./showdir.pl /media/hdd/.torrent "" show_directory \
-			) 2>/dev/null
-		show:::show_directory
-		remove:::show_directory
-	endgroup
+group:_Edit a file
+    exec::makemenu: (\
+            /usr/share/pdmenu/editdir.pl /var/www "" show_directory \
+            ) 2>/dev/null
+    show:::show_directory
+    remove:::show_directory
+endgroup
+group:_Remove a file or directory
+    exec::makemenu: (\
+            /usr/share/pdmenu/deldir.pl /var/www "" del_directory \
+            ) 2>/dev/null
+    show:::del_directory
+    remove:::del_directory
+endgroup
+group:Add a _directory
+    exec::makemenu: (\
+            /usr/share/pdmenu/adddir.pl /var/www "" add_directory \
+            ) 2>/dev/null
+    show:::add_directory
+    remove:::add_directory
+endgroup
+group:Add a _file
+    exec::makemenu: (\
+            /usr/share/pdmenu/addfile.pl /var/www "" add_file \
+            ) 2>/dev/null
+    show:::add_file
+    remove:::add_file
+endgroup
+nop
+ 
+nop
+exit:E_xit
 
 menu:dropbox:upload to dropbox:upload to dropbox
         group:_File viewer
