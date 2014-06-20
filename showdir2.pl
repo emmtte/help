@@ -27,14 +27,14 @@
 
 if ($0=~m/editdir/ ne undef) {
 	$mode='edit';
-	$editor=$ENV{EDITOR} || $ENV{VISUAL} || 'pico';
+	$editor=$ENV{EDITOR} || $ENV{VISUAL} || 'mcedit';
 }elsif ($0=~m/deldir/ ne undef) {
 	$mode='delete';
 }elsif ($0=~m/adddir/ ne undef) {
 	$mode='create';
 }elsif ($0=~m/addfile/ ne undef) {
 	$mode='addfile';
-	$editor=$ENV{EDITOR} || $ENV{VISUAL} || 'pico';
+	$editor=$ENV{EDITOR} || $ENV{VISUAL} || 'mcedit';
 }
 else {
 	$mode='show';
