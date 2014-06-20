@@ -83,27 +83,27 @@ menu:network_conf:Network Configuration:Network Configuration
 	# File manager
 menu:main:main:Main Menu
 group:_Edit a file
-    exec::makemenu: (editdir.pl `pwd` "" show_director) 2>/dev/null
+    exec::makemenu: (./editdir.pl `pwd` "" show_director) 2>/dev/null
     show:::show_directory
     remove:::show_directory
 endgroup
 group:_Remove a file or directory
     exec::makemenu: (\
-            deldir.pl `pwd` "" del_directory \
+            ./deldir.pl `pwd` "" del_directory \
             ) 2>/dev/null
     show:::del_directory
     remove:::del_directory
 endgroup
 group:Add a _directory
     exec::makemenu: (\
-            adddir.pl `pwd` "" add_directory \
+            ./adddir.pl `pwd` "" add_directory \
             ) 2>/dev/null
     show:::add_directory
     remove:::add_directory
 endgroup
 group:Add a _file
     exec::makemenu: (\
-            addfile.pl `pwd` "" add_file \
+            ./addfile.pl `pwd` "" add_file \
             ) 2>/dev/null
     show:::add_file
     remove:::add_file
