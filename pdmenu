@@ -84,28 +84,28 @@ menu:network_conf:Network Configuration:Network Configuration
 menu:main:main:Main Menu
 group:_Edit a file
     exec::makemenu: (\
-            /usr/share/pdmenu/editdir.pl /var/www "" show_directory \
+            ./editdir.pl `pwd` "" show_directory \
             ) 2>/dev/null
     show:::show_directory
     remove:::show_directory
 endgroup
 group:_Remove a file or directory
     exec::makemenu: (\
-            /usr/share/pdmenu/deldir.pl /var/www "" del_directory \
+            ./deldir.pl `pwd` "" del_directory \
             ) 2>/dev/null
     show:::del_directory
     remove:::del_directory
 endgroup
 group:Add a _directory
     exec::makemenu: (\
-            /usr/share/pdmenu/adddir.pl /var/www "" add_directory \
+            ./adddir.pl `pwd` "" add_directory \
             ) 2>/dev/null
     show:::add_directory
     remove:::add_directory
 endgroup
 group:Add a _file
     exec::makemenu: (\
-            /usr/share/pdmenu/addfile.pl /var/www "" add_file \
+            ./addfile.pl `pwd` "" add_file \
             ) 2>/dev/null
     show:::add_file
     remove:::add_file
