@@ -115,13 +115,13 @@ foreach $fn (sort(@dirlist)) {
 	}
 	elsif ($fn ne '.' && $fn ne '..') {
 		if ($mode eq 'show') {
-			print "exec:$fne:display:cat $dir$fn 2>/dev/null\n";
+			print "exec:$fne:display:cat $dir$fn\n";
 		}
 		elsif ($mode eq 'delete') {
 			print "exec:$fne:edit:rm -rf \"~Enter file name:$dir~\"\n";
 		}
 		elsif ($mode eq 'edit') {
-			print "exec:$fne:edit:mcedit \"~Enter file name:$fne~\"\n";
+			print "exec:$fne:edit:mcedit \"~Enter file name:$dir$fn~\"\n";
 		}
 		else {
 			print "exec:$fne:\n";
