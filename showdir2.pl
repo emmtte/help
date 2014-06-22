@@ -121,7 +121,7 @@ foreach $fn (sort(@dirlist)) {
 			print "exec:$fne:edit:rm -rf \"~Enter file name:$dir~\"\n";
 		}
 		elsif ($mode eq 'edit') {
-			print "exec:$fne:edit:mcedit \"~Enter file name:$dir$fn~\"\n";
+			print "exec:$fne:edit:mcedit $dir$fn\n";
 		}
 		else {
 			print "exec:$fne:\n";
