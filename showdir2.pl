@@ -27,14 +27,14 @@
 
 if ($0=~m/editdir/ ne undef) {
 	$mode='edit';
-	$editor=$ENV{EDITOR} || $ENV{VISUAL} || 'mcedit';
+	$editor='mcedit';
 }elsif ($0=~m/deldir/ ne undef) {
 	$mode='delete';
 }elsif ($0=~m/adddir/ ne undef) {
 	$mode='create';
 }elsif ($0=~m/addfile/ ne undef) {
 	$mode='addfile';
-	$editor=$ENV{EDITOR} || $ENV{VISUAL} || 'mcedit';
+	$editor='mcedit';
 }
 else {
 	$mode='show';
@@ -58,16 +58,16 @@ $dir=~s/\\_/_/g;
 opendir(PWD,$dir);
 
 if ($mode eq 'create') {
-	print "exec:_Create a new directory here:edit:mkdir \"~Enter directory name:$dir~\"\n"; 
+	print "exec:_New dir:edit:mkdir \"~Enter directory name:$dir~\"\n"; 
 	print "nop\n";
 }
 elsif ($mode eq 'addfile') {
 	#print "exec:_Create a new file here::clear;read -p 'Enter file name: ' name; $editor $dir\$name\n";
-	print "exec:_Create a new file here:edit:$editor \"~Enter file name:$dir~\"\n"; 
+	print "exec:_New file:edit:mcedit \"~Enter file name:$dir~\"\n"; 
 	print "nop\n";
 }
 elsif ($mode eq 'delete') {
-	print "exec:_Delete this directory::clear;read -p 'I am executing rm -rf $dir [Y/N]: ' r; [ \"\$r\" == \"Y\" ] && rm -rf \"$dir\"\n";
+	print "exec:_Delete dir:edit:rm -rf \"~Enter file name:$dir~\"\n";
 	print "nop\n";
 }
 
