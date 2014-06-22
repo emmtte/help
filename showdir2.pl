@@ -118,10 +118,10 @@ foreach $fn (sort(@dirlist)) {
 			print "exec:$fne:display:cat $dir$fn 2>/dev/null\n";
 		}
 		elsif ($mode eq 'delete') {
-			print "exec:$fne::clear;read -p 'I am executing rm -rf $dir$fn [Y/N]: ' r; [ \"\$r\" == \"Y\" ] && rm -rf \"$dir$fn\"\n";
+			print "exec:$fne::edit:rm -rf \"~Enter file name:$dir~\"\n";
 		}
 		elsif ($mode eq 'edit') {
-			print "exec:$fne::$editor \"$dir$fn\"\n";
+			print "exec:$fne::mcedit \"~Enter file name:$fne~\"\n";
 		}
 		else {
 			print "exec:$fne:\n";
