@@ -65,7 +65,7 @@ menu:Minidlna:Minidlna:Minidlna
         exit:E_xit
  
 menu:dropbox:dropbox:dropbox
-	exec:_Upload from .torrent:edit:./dropbox_uploader.sh ~Enter file name:`pwd && ls -Art | tail -n 1`~
+	exec:_Upload from:edit:./dropbox_uploader.sh ~Enter file name:`pwd && ls -Art | tail -n 1`~
 	exit:E_xit
 
 menu:network_conf:Network Configuration:Network Configuration
@@ -116,10 +116,3 @@ group:Add a _file
 endgroup
 nop
 exit:E_xit
-
-menu:dropbox1:upload to dropbox:upload to dropbox
-        group:_File viewer
-		exec::makemenu:./showdir.pl `pwd` "" show_directory
-		show:::show_directory
-		remove:::show_directory
-	endgroup
