@@ -10,6 +10,14 @@ Raspberry Service Tools
     sudo echo "export PATH=$PATH:/$HOME" > ~/.profile
     source ~/.profile
     rs
+### Prerequisites
+## Youtube-dl
+````
+sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/bin/youtube-dl
+sudo chmod a+x /usr/bin/youtube-dl
+````
+
+
 
 ####New Version with pdmenu
 ```
