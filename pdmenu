@@ -64,7 +64,9 @@ menu:Minidlna:Minidlna:Minidlna
         exit:E_xit
  
 menu:dropbox:dropbox:dropbox
-	exec:_Upload from:edit:./dropbox_uploader.sh ~Enter file name:`pwd && ls -Art | tail -n 1`~
+	exec:_Upload from:edit: \
+		name=`pwd`/`ls -Art | tail -n 1` \
+		./dropbox_uploader.sh ~Enter file name:$name~
 	exit:E_xit
 
 menu:network_conf:Network Configuration:Network Configuration
