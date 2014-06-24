@@ -64,7 +64,7 @@ menu:Minidlna:Minidlna:Minidlna
         exit:E_xit
  
 menu:dropbox:dropbox:dropbox
-	exec:_Upload from:edit: \
+	exec:_Upload from:exec: \
 		name=`pwd`/`ls -Art | tail -n 1` \
 		./dropbox_uploader.sh ~"Enter file name:$name"~
 	exit:E_xit
