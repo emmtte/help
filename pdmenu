@@ -20,8 +20,17 @@ menu:home:Home Menu:Welcome to pdmenu
         exec:_Change Password:pause:clear;passwd
         show:_Test::main
         show:_Dropbox::dropbox
+        show:_Youtube::youtube
         nop
         exit:E_xit
+
+menu:youtube:Youtube Download Playlist:Youtube Download
+	exec:_Download:edit: \
+		tmux has-session -t youtube \
+  		if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi \
+		tmux send -t youtube "youtube-dl -citk --max-quality FORMAT ~http://www.youtube.com/playlist?list=~" ENTER;
+	exec:_Session:clear:tmux attach-session -t youtube
+	exit:E_xit
 
 menu:RC:Remote Control:Update Remote Control
         exec:_Update:pause: \
