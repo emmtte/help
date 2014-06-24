@@ -44,7 +44,6 @@ menu:Gopro:Gopro:Gopro videos to YouTube
 menu:System:System:System
         exec:_Update:pause:sudo apt-get -y autoremove;sudo apt-get update;sudo apt-get -y upgrade;sudo apt-get -y dist-upgrade
         exec:Update _pdm:truncate:curl -o pdm https://raw.githubusercontent.com/ManuCart/ServicePi/master/pdmenu
-        exec:Update _rs:pause:wget -O rs https://raw.github.com/ManuCart/Raspberry-Service/master/rs.sh
         exec:Update _gdrive:pause:wget -O gdrive https://raw.github.com/ManuCart/gdrive-pdf-fusion/master/gdrive.rb
         exec:Update x_mpp:pause:wget -O xmpp.rb https://raw.github.com/ManuCart/ruby-xmpp/master/xmpp.rb
         nop
@@ -64,15 +63,15 @@ menu:Minidlna:Minidlna:Minidlna
         exit:E_xit
  
 menu:dropbox:dropbox:dropbox
-	exec:_Chmod Hdd:truncate:sudo chmod 777 -R /media/hdd/
-	exec:_Upload:exec: \
+	exec:_Chmod Hdd:clear:sudo chmod 777 -R /media/hdd/
+	exec:_Upload:clear: \
 		tmux has-session -t dropbox \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi \
 		tmux send -t dropbox "./dropbox_uploader.sh -s upload ~Dir upload:/media/hdd/dropbox/~ /raspberry/" ENTER;
-	exec:_Session:display:tmux attach-session -t dropbox
+	exec:_Session:clear:tmux attach-session -t dropbox
 	exit:E_xit
 
-menu:network_conf:Network Configuration:Network Configuration
+menu:network_conf:Network Tools:Network Tools
         show:<Network Configuration>::
         nop
         exec:   Show IP Address and Subnet:display:/sbin/ifconfig eth0
@@ -88,35 +87,3 @@ menu:network_conf:Network Configuration:Network Configuration
         exec:   Show netstat:display:netstat -tuna
         nop
         exit:E_xit
-	# File manager
-menu:main:main:Main Menu
-group:_Edit a file
-    exec::makemenu: (\
-            ./editdir.pl `pwd` "" show_directory \
-            ) 2>/dev/null
-    show:::show_directory
-    remove:::show_directory
-endgroup
-group:_Remove a file or directory
-    exec::makemenu: (\
-            ./deldir.pl `pwd` "" del_directory \
-            ) 2>/dev/null
-    show:::del_directory
-    remove:::del_directory
-endgroup
-group:Add a _directory
-    exec::makemenu: (\
-            ./adddir.pl `pwd` "" add_directory \
-            ) 2>/dev/null
-    show:::add_directory
-    remove:::add_directory
-endgroup
-group:Add a _file
-    exec::makemenu: (\
-            ./addfile.pl `pwd` "" add_file \
-            ) 2>/dev/null
-    show:::add_file
-    remove:::add_file
-endgroup
-nop
-exit:E_xit
