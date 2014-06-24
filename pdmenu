@@ -66,7 +66,7 @@ menu:Minidlna:Minidlna:Minidlna
 menu:dropbox:dropbox:dropbox
 	exec:_Chmod Hdd:truncate:sudo chmod 777 -R /media/hdd/ \
 		echo "OK"
-	exec:_Upload from:pause \
+	exec:_Upload from:pause:clear; \
 		tmux has-session -t dropbox; \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi; \
 		tmux send -t dropbox './dropbox_uploader.sh ~Enter file name:/media/hdd/dropbox/~' ENTER;
