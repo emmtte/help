@@ -66,11 +66,10 @@ menu:Minidlna:Minidlna:Minidlna
 menu:dropbox:dropbox:dropbox
 	exec:_Upload from:pause: \
 		name=`pwd`/`ls -Art | tail -n 1` \
-		 tmux has-session -t dropbox \
+		tmux has-session -t dropbox \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi \
-		
 		./dropbox_uploader.sh ~Enter file name:/media/hdd/.torrent/`ls -Art | tail -n 1`~ \
-  		 tmux send -t dropbox 'mencoder -ovc copy -oac copy -o %d.avi %t' ENTER
+  		 tmux send -t dropbox './dropbox_uploader.sh' ENTER
 	exit:E_xit
 
 menu:network_conf:Network Configuration:Network Configuration
