@@ -29,7 +29,7 @@ menu:youtube:Youtube Download Playlist:Youtube Download
 		tmux has-session -t youtube \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi \
   		tmux send -t youtube "cd /media/hdd/youtube" ENTER \
-		"youtube-dl -cit --netrc --max-quality FORMAT --output %(title) ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
+		"youtube-dl -cit --netrc --max-quality FORMAT --output %(title)s ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
 	exec:_Session:clear:tmux attach-session -t youtube
 	exit:E_xit
 
