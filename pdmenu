@@ -63,8 +63,8 @@ menu:Minidlna:Minidlna:Minidlna
         exit:E_xit
  
 menu:dropbox:dropbox:dropbox
-	exec:_Chmod Hdd:clear:sudo chmod 777 -R /media/hdd/
-	exec:_Upload:clear: \
+	exec:_Chmod Hdd:display:sudo chmod 777 -R /media/hdd/
+	exec:_Upload:edit: \
 		tmux has-session -t dropbox \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi \
 		tmux send -t dropbox "./dropbox_uploader.sh -s upload ~Dir upload:/media/hdd/dropbox/~ /raspberry/" ENTER;
