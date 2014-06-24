@@ -68,7 +68,7 @@ menu:dropbox:dropbox:dropbox
 	exec:_Upload:truncate: \
 		tmux has-session -t dropbox \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi \
-		tmux send -t dropbox ./dropbox_uploader.sh /media/hdd/dropbox/ ENTER;
+		tmux send -t dropbox dropbox_uploader.sh "/media/hdd/dropbox/" ENTER;
 	exec:_Session:truncate:tmux attach-session -t dropbox
 	exit:E_xit
 
