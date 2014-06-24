@@ -15,6 +15,10 @@ Raspberry Service Tools
 ````
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/bin/youtube-dl
 sudo chmod a+x /usr/bin/youtube-dl
+
+echo "login user@gmail.com" > .netrc
+echo "password XXXXXXXX" >> .netrc
+
 ````
 
 
