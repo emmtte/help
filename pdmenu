@@ -69,7 +69,7 @@ menu:dropbox:dropbox:dropbox
 		tmux has-session -t dropbox \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi \
 		tmux send -t dropbox "./dropbox_uploader.sh ~Dir upload:/media/hdd/dropbox/~" ENTER;
-	exec:_Session:truncate:tmux attach-session -t dropbox
+	exec:_Session:display:tmux attach-session -t dropbox
 	exit:E_xit
 
 menu:network_conf:Network Configuration:Network Configuration
