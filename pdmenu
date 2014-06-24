@@ -64,7 +64,8 @@ menu:Minidlna:Minidlna:Minidlna
         exit:E_xit
  
 menu:dropbox:dropbox:dropbox
-	exec:_Chmod Hdd:truncate:sudo chmod 777 -R /media/hdd/
+	exec:_Chmod Hdd:truncate:sudo chmod 777 -R /media/hdd/ \
+		echo "OK"
 	exec:_Upload from:truncate \
 		tmux has-session -t dropbox \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi \
