@@ -21,8 +21,18 @@ menu:home:Home Menu:Welcome to pdmenu
         show:_Test::main
         show:_Dropbox::dropbox
         show:_Youtube::youtube
+        show:_Entertainment::Entertainment
         nop
         exit:E_xit
+
+menu:Entertainment:Entertainment:Entertainment
+        exec:_Play SST:	mkfifo /tmp/cmd \
+        		omxplayer http://hi1.streamingsoundtracks.com:8000 < /tmp/cmd & \
+        		echo -n p > /tmp/cmd
+        exec:_Stop SST: echo -n q > /tmp/cmd
+        nop
+        exit:E_xit
+
 
 menu:youtube:Youtube Download Playlist:Youtube Download
 	exec:_Download:edit: \
