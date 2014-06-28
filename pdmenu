@@ -27,7 +27,7 @@ menu:home:Home Menu:Welcome to pdmenu
 
 menu:Entertainment:Entertainment:Entertainment
         exec:_Play SST:	mkfifo /tmp/cmd \
-        		omxplayer 'http://hi1.streamingsoundtracks.com:8000' < /tmp/cmd & \
+        		omxplayer \"http://hi1.streamingsoundtracks.com:8000\" < /tmp/cmd & \
         		echo -n p > /tmp/cmd
         exec:_Stop SST: echo -n q > /tmp/cmd
         nop
