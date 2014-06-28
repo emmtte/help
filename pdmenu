@@ -26,10 +26,9 @@ menu:home:Home Menu:Welcome to pdmenu
         exit:E_xit
 
 menu:Entertainment:Entertainment:Entertainment
-        exec:_Play SST:	mkfifo /tmp/cmd \
-        		omxplayer http://hi1.streamingsoundtracks.com:8000 < /tmp/cmd & \
-        		echo -n p > /tmp/cmd
-        exec:_Stop SST: echo -n q > /tmp/cmd
+        exec:_Play SST:	tmux new-session -d -s omxplayer \
+        		tmux send -t omxplayer "omxplayer http://hi1.streamingsoundtracks.com:8000" ENTER
+        exec:_Stop SST: killall omxplayer
         nop
         exit:E_xit
 
