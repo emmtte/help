@@ -103,20 +103,3 @@ menu:dropbox:dropbox:dropbox
 		tmux send -t dropbox "./dropbox_uploader.sh -s upload ~Dir upload:/media/hdd/dropbox/~ /raspberry/" ENTER;
 	exec:_Session:clear:tmux attach-session -t dropbox
 	exit:E_xit
-
-menu:network_conf:Network Tools:Network Tools
-        show:<Network Configuration>::
-        nop
-        exec:   Show IP Address and Subnet:display:/sbin/ifconfig eth0
-        exec:   Show Routes:display:/sbin/route -n
-        nop
-        exec:   Change IP Address and Subnet:edit,pause:clear;sudo /sbin/ifconfig eth0 ~New IP Address:~ netmask ~New Subnet$
-        exec:   Add Default Gateway:edit,pause:clear;sudo /sbin/route add default gw ~Default Gateway:~
-        exec:   Add Route:edit,pause:clear;sudo /sbin/route add -net ~Destination:~ netmask ~Subnet:~ gw ~Gateway:~
-        exec:   Remove Default Gateway:edit,pause:clear;sudo /sbin/route del default gw ~Default Gateway:~
-        exec:   Remove Route:edit,pause:clear;sudo /sbin/route del -net ~Destination:~ netmask ~Subnet:~ gw ~Gateway:~
-        nop
-        exec:   Ping:edit,pause:clear;ping ~Address:~
-        exec:   Show netstat:display:netstat -tuna
-        nop
-        exit:E_xit
