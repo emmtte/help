@@ -108,6 +108,6 @@ menu:unite:unite:unite
 	exec:_Gdrive:edit: \
 		tmux has-session -t unite \
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s unite ; fi \
-		tmux send -t dropbox "./unite" ENTER;
+		tmux send -t unite "./unite" ENTER;
 	exec:_Session:clear:tmux attach-session -t unite
 	exit:E_xit
