@@ -15,6 +15,7 @@ menu:home:Home Menu:Welcome to pdmenu
         show:_Nginx::nginx
         show:_GoPro::Gopro
         show:_Remote Control::RC
+        show:_Gdrive Unite::unite
         nop
         show:_System::System
         exec:_Reboot::clear;sudo reboot
@@ -25,6 +26,8 @@ menu:home:Home Menu:Welcome to pdmenu
         show:_Entertainment::Entertainment
         nop
         exit:E_xit
+
+
 
 menu:btsync:btsync:btsync
         exec:_Start:truncate:sudo btsync
@@ -99,4 +102,12 @@ menu:dropbox:dropbox:dropbox
   		if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi \
 		tmux send -t dropbox "./dropbox_uploader.sh -s upload ~Dir upload:/media/hdd/dropbox/~ /raspberry/" ENTER;
 	exec:_Session:clear:tmux attach-session -t dropbox
+	exit:E_xit
+
+menu:unite:unite:unite
+	exec:_Gdrive:edit: \
+		tmux has-session -t unite \
+  		if [ "$?" -eq 1 ] ; then tmux new-session -d -s unite ; fi \
+		tmux send -t dropbox "./unite" ENTER;
+	exec:_Session:clear:tmux attach-session -t unite
 	exit:E_xit
