@@ -11,6 +11,7 @@ color:menuhot:yellow:cyan
 menu:home:Home Menu:Welcome to pdmenu
         show:_Transmission::Transmission
         show:_Minidlna::Minidlna
+        show:_Btsync::btsync
         show:_GoPro::Gopro
         show:_Remote Control::RC
         nop
@@ -22,6 +23,12 @@ menu:home:Home Menu:Welcome to pdmenu
         show:_Dropbox::dropbox
         show:_Youtube::youtube
         show:_Entertainment::Entertainment
+        nop
+        exit:E_xit
+
+menu:btsync:btsync:btsync
+        exec:_Start:truncate:sudo btsync
+        exec:_Stop:truncate:sudo killall btsync
         nop
         exit:E_xit
 
