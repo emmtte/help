@@ -2,6 +2,15 @@ Raspberry-Service
 =================
 
 ### Prerequisites
+#### Midnight commander
+wget http://ftp.midnight-commander.org/mc-4.8.12.tar.bz2
+tar -xvzf ~/mc-4.8.12.tar.bz2
+cd mc-4.8.12.tar.bz2/
+./configure
+make
+sudo make install
+
+
 #### Youtube-dl
 
 ````
