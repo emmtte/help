@@ -1,0 +1,160 @@
+h Help
+  whiptail --title "Aide" --msgbox "pour fusionner, Sélectionner les fichiers à traiter avec les touches CTRL+t. Pour les autres commandes se positionner sur le fichier. Pour ajouter un dossier aux favoris CTRL+x+h. Pour voir la liste des favoris CTRL+\" 10 40
+
+d minidlna
+ choice=$(whiptail --title "minidlna" --menu "Choose an action" 10 30 2 \
+  "R" "minidlna reload" \
+  "U" "minidlna status" \
+  3>&1 1>&2 2>&3)
+  case $choice in
+    R) sudo service minidlna force-reload ;;
+    U) sudo service minidlna status ;;
+  esac
+
+m sst
+ choice=$(whiptail --title "streaming soundtracks" --menu "Choose an action" 10 30 2 \
+  "P" "play" \
+  "O" "stop" \
+  3>&1 1>&2 2>&3)
+  clear
+  case $choice in
+    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
+    U) killall mplayer ;;
+  esac
+
+P gphotos2
+  clear
+  path=/media/hdd1/photos
+  stamp=$(date +%%Y%%m%%d%%H%%M%%S)
+  mkdir -p "${path}/${stamp}"
+  cd "${path}/${stamp}"
+  gphoto2 --get-all-files --filename "%%Y%%m%%d%%H%%M%%S.%%C"
+    if [ $? != 0 ]; then
+    echo "*** error executing gphoto2, aborting."
+    popd &> /dev/null
+    exit 1
+    fi
+  google picasa create ${stamp} ${path}/${stamp}/*.JPG
+
+u update mc menu
+  clear
+  wget -O .mc.menu https://
+  mv .mc.menu ~/.config/mc/menu
+
+R update ruby pdf
+  clear
+  wget -O pdf.rb https://
+
+s system
+ choice=$(whiptail --title "System" --menu "Choose an action" 13 40 5 \
+  "C" "Configuration" \
+  "U" "Update" \
+  "R" "Reboot" \
+  "S" "Shutdown" \
+  "E" "Exit" \
+  3>&1 1>&2 2>&3)
+  clear
+  case $choice in
+    C) sudo raspi-config ;;
+    U) sudo apt-get -y autoremove
+       sudo apt-get -y update
+       sudo apt-get -y upgrade ;;
+    R) sudo reboot ;;
+    S) sudo halt ;;
+    E) exit ;;
+  esac
+
+v merge videos
+  tmux has-session -t mencoder
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
+  tmux send -t mencoder 'clear' ENTER
+  tmux send -t mencoder 'cd %d' ENTER
+  tmux send -t mencoder 'mencoder -ovc copy -oac copy -o %d.avi %t' ENTER
+  tmux send -t mencoder 'echo "La vidéo %d.avi est maintenant compilée" | sendxmpp -t cat .\email' ENTER
+
+q x286 test
+  tmux has-session -t mencoder
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
+  tmux send -t mencoder 'clear' ENTER
+  tmux send -t mencoder 'cd %d' ENTER
+  set %t
+  while [ -n "$1" ]; do
+     tmux send -t mencoder 'mencoder -vf yadif=1 -ovc x264 -oac mp3lame -o test.x264.avi %t' ENTER
+    shift
+  done
+  tmux send -t mencoder 'echo "La vidéo %t est maintenant compilée" | sendxmpp -t cat .\email' ENTER
+
+w merge videos mp3
+  tmux has-session -t mencoder
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
+  tmux send -t mencoder 'clear' ENTER
+  tmux send -t mencoder 'cd %d' ENTER
+  tmux send -t mencoder 'mencoder -ovc copy -oac mp3lame -o %d.avi %t' ENTER
+  tmux send -t mencoder 'echo "La vidéo %d.avi est maintenant compilée" | sendxmpp -t cat .\email' ENTER
+
+y upload to youtube
+  echo "clear" > ~/task.sh
+  d=%d
+  echo "cd $d" >> ~/task.sh
+  set %t
+  while [ -n "$1" ]; do
+    echo "mv \"$1\" video.avi" >> ~/task.sh
+    echo "google youtube post --category Entertainment --access=unlisted --title=\"$1\" video.avi" >> ~/task.sh
+    echo "mv video.avi \"$1\"" >> ~/task.sh
+    echo "echo \"La vidéo $1 est maintenant sur YouTube\" | sendxmpp -t `cat ~/.email`" >> ~/task.sh
+    shift
+  done
+  tmux has-session -t youtube
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
+  tmux send -t youtube 'sh ~/task.sh' ENTER
+
+x tmux
+  choice=$(whiptail --title "tmux sessions" --menu "Use Ctrl+b d to detach session" 10 40 2 \
+  "Y" "Youtube" \
+  "M" "Mencoder" \
+  3>&1 1>&2 2>&3)
+  clear
+  case $choice in
+    M) tmux attach-session -t mencoder ;;
+    Y) tmux attach-session -t youtube ;;
+  esac
+
+t transmission
+ choice=$(whiptail --title "Transmission" --menu "Choose an option" 11 40 3 \
+  "A" "Start" \
+  "P" "Stop" \
+  "U" "Status" \
+  3>&1 1>&2 2>&3)
+  clear
+  case $choice in
+    A) sudo service transmission-daemon start ;;
+    P) sudo service transmission-daemon stop ;;
+    U) sudo service transmission-daemon status ;;
+  esac
+
+= f *.djv | f *.djvu & t n
+Décompose un fichier djvu en PBM
+  x=0
+  cible=""
+  mkdir -p /tmp/djvu/
+  mkdir -p /tmp/pbm/
+  djvmcvt -i %f /tmp/djvu/ /tmp/index.djv
+  find "/tmp/djvu/" -iname "*.djv" -type f | while read n; do
+    xi=`expr $xi + 1`
+    echo $xi
+    ddjvu -format=tiff "$n" "/tmp/pbm/$xi.TIF"
+  done
+
+Transforme un fichier PDF sécurisé en normal
+  set %t
+  while [ -n "$1" ]; do
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.test.pdf" "$1"
+    shift
+  done
+
+Convertir Un fichier EPS,AI en SVG
+  set %t
+  while [ -n "$1" ]; do
+    pstoedit -f plot-svg $1 $1.svg
+    shift
+  done
