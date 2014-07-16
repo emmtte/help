@@ -6,8 +6,8 @@ Raspberry-Service
 ````
 sudo apt-get remove mc
 wget http://ftp.midnight-commander.org/mc-4.8.12.tar.bz2
-tar -xvzf mc-4.8.12.tar.bz2
-cd mc-4.8.12.tar.bz2/
+bzip2 -cd mc-4.8.12.tar.bz2 | tar xvf -
+cd mc-4.8.12
 ./configure
 make
 sudo make install
