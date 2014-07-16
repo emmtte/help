@@ -14,6 +14,10 @@ make
 sudo make install
 ````
 
+````
+Menu bar -> Options -> Panel Options -> Main Panel Options
+[x] Show hidden files
+````
 #### Youtube-dl
 
 ````
