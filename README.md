@@ -5,6 +5,7 @@ Raspberry-Service
 #### Midnight commander
 ````
 sudo apt-get remove mc
+sudo apt-get install libglib2.0-dev
 wget http://ftp.midnight-commander.org/mc-4.8.12.tar.bz2
 bzip2 -cd mc-4.8.12.tar.bz2 | tar xvf -
 cd mc-4.8.12
