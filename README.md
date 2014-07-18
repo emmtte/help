@@ -14,6 +14,7 @@ make
 sudo make install
 
 curl -o .mc.menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/mc.menu
+cp /etc/mc/mc.keymap ~/.config/mc/
 
 ````
 Menu bar -> Options -> Panel Options -> Main Panel Options
