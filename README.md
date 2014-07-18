@@ -13,7 +13,7 @@ cd mc-4.8.12
 make
 sudo make install
 
-curl -o .mc.menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/mc.menu
+curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/mc.menu
 cp /etc/mc/mc.keymap ~/.config/mc/
 
 ````
