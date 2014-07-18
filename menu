@@ -1,5 +1,5 @@
 h Help
-  %{"Sélectionner les fichiers à traiter avec les touches CTRL+t. Pour les autres commandes se positionner sur le fichier. Pour ajouter un dossier aux favoris CTRL+x+h. Pour voir la liste des favoris CTRL+"}
+  "%{Sélectionner les fichiers à traiter avec les touches CTRL+t. Pour les autres commandes se positionner sur le fichier. Pour ajouter un dossier aux favoris CTRL+x+h. Pour voir la liste des favoris CTRL+}"
 
 d minidlna
  choice=$(whiptail --title "minidlna" --menu "Choose an action" 10 30 2 \
