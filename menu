@@ -5,6 +5,7 @@ r run
 h user menu
   %{Sélectionner les fichiers à traiter avec les touches CTRL+t. Pour les autres commandes se positionner sur le fichier. Pour ajouter un dossier aux favoris CTRL+x+h. Pour voir la liste des favoris CTRL+"}
 
+#system
 + f system & t r
 c raspi-config
   sudo raspi-config
@@ -23,7 +24,7 @@ h shutdown
 r reboot
   sudo reboot
 
-
+#minidlna
 + f minidlna &  t r
 r minidlna reload
   sudo service minidlna force-reload
@@ -57,22 +58,25 @@ P gphotos2
     fi
   google picasa create ${stamp} ${path}/${stamp}/*.JPG
 
-u update mc menu
+# update
++ f update &  t r
+m mc menu
   clear
-  wget -O .mc.menu https://
-  mv .mc.menu ~/.config/mc/menu
+  wget -O menu https://
+  mv menu ~/.config/mc/menu
 
-R update ruby pdf
++ f update &  t r
+r update ruby pdf
   clear
   wget -O pdf.rb https://
 
++ f *.avi | *.mp4 & t t
 v merge videos
   tmux has-session -t mencoder
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
   tmux send -t mencoder 'clear' ENTER
   tmux send -t mencoder 'cd %d' ENTER
   tmux send -t mencoder 'mencoder -ovc copy -oac copy -o %d.avi %t' ENTER
-  tmux send -t mencoder 'echo "La vidéo %d.avi est maintenant compilée" | sendxmpp -t cat .\email' ENTER
 
 q x286 test
   tmux has-session -t mencoder
@@ -84,7 +88,6 @@ q x286 test
      tmux send -t mencoder 'mencoder -vf yadif=1 -ovc x264 -oac mp3lame -o test.x264.avi %t' ENTER
     shift
   done
-  tmux send -t mencoder 'echo "La vidéo %t est maintenant compilée" | sendxmpp -t cat .\email' ENTER
 
 w merge videos mp3
   tmux has-session -t mencoder
@@ -92,7 +95,6 @@ w merge videos mp3
   tmux send -t mencoder 'clear' ENTER
   tmux send -t mencoder 'cd %d' ENTER
   tmux send -t mencoder 'mencoder -ovc copy -oac mp3lame -o %d.avi %t' ENTER
-  tmux send -t mencoder 'echo "La vidéo %d.avi est maintenant compilée" | sendxmpp -t cat .\email' ENTER
 
 y upload to youtube
   echo "clear" > ~/task.sh
@@ -103,7 +105,6 @@ y upload to youtube
     echo "mv \"$1\" video.avi" >> ~/task.sh
     echo "google youtube post --category Entertainment --access=unlisted --title=\"$1\" video.avi" >> ~/task.sh
     echo "mv video.avi \"$1\"" >> ~/task.sh
-    echo "echo \"La vidéo $1 est maintenant sur YouTube\" | sendxmpp -t `cat ~/.email`" >> ~/task.sh
     shift
   done
   tmux has-session -t youtube
@@ -134,27 +135,18 @@ t transmission
     U) sudo service transmission-daemon status ;;
   esac
 
-= f *.djv | f *.djvu & t n
-Décompose un fichier djvu en PBM
-  x=0
-  cible=""
-  mkdir -p /tmp/djvu/
-  mkdir -p /tmp/pbm/
-  djvmcvt -i %f /tmp/djvu/ /tmp/index.djv
-  find "/tmp/djvu/" -iname "*.djv" -type f | while read n; do
-    xi=`expr $xi + 1`
-    echo $xi
-    ddjvu -format=tiff "$n" "/tmp/pbm/$xi.TIF"
-  done
 
-Transforme un fichier PDF sécurisé en normal
+# Divers
+= f *.pdf & t t
+p Transforme un fichier PDF sécurisé en normal
   set %t
   while [ -n "$1" ]; do
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.test.pdf" "$1"
     shift
   done
 
-Convertir Un fichier EPS,AI en SVG
+= f *.eps | *.ai & t t
+S Convertir Un fichier EPS,AI en SVG
   set %t
   while [ -n "$1" ]; do
     pstoedit -f plot-svg $1 $1.svg
