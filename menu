@@ -1,15 +1,36 @@
-h Help
-  "%{Sélectionner les fichiers à traiter avec les touches CTRL+t. Pour les autres commandes se positionner sur le fichier. Pour ajouter un dossier aux favoris CTRL+x+h. Pour voir la liste des favoris CTRL+}"
+r run
+  PARAM=%{parametes}
+  %f $PARAM
 
-d minidlna
- choice=$(whiptail --title "minidlna" --menu "Choose an action" 10 30 2 \
-  "R" "minidlna reload" \
-  "U" "minidlna status" \
-  3>&1 1>&2 2>&3)
-  case $choice in
-    R) sudo service minidlna force-reload ;;
-    U) sudo service minidlna status ;;
-  esac
+h user menu
+  %{Sélectionner les fichiers à traiter avec les touches CTRL+t. Pour les autres commandes se positionner sur le fichier. Pour ajouter un dossier aux favoris CTRL+x+h. Pour voir la liste des favoris CTRL+"}
+
++ f system & t r
+c raspi-config
+  sudo raspi-config
+
++ f system & t r
+a update/upgrade
+  sudo apt-get -y autoremove
+  sudo apt-get -y update
+  sudo apt-get -y upgrade
+
++ f system & t r
+h shutdown
+  sudo halt
+
++ f system & t r
+r reboot
+  sudo reboot
+
+
++ f minidlna &  t r
+r minidlna reload
+  sudo service minidlna force-reload
+
++ f minidlna & t r
+t minidlna status
+  sudo service minidlna status
 
 m sst
  choice=$(whiptail --title "streaming soundtracks" --menu "Choose an action" 10 30 2 \
@@ -44,25 +65,6 @@ u update mc menu
 R update ruby pdf
   clear
   wget -O pdf.rb https://
-
-s system
- choice=$(whiptail --title "System" --menu "Choose an action" 13 40 5 \
-  "C" "Configuration" \
-  "U" "Update" \
-  "R" "Reboot" \
-  "S" "Shutdown" \
-  "E" "Exit" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    C) sudo raspi-config ;;
-    U) sudo apt-get -y autoremove
-       sudo apt-get -y update
-       sudo apt-get -y upgrade ;;
-    R) sudo reboot ;;
-    S) sudo halt ;;
-    E) exit ;;
-  esac
 
 v merge videos
   tmux has-session -t mencoder
