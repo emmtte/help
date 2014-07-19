@@ -13,6 +13,8 @@ cd mc-4.8.12
 make
 sudo make install
 
+sudo make uninstall
+
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 cp /etc/mc/mc.keymap ~/.config/mc/
 
