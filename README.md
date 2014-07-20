@@ -19,6 +19,15 @@ curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/m
 cp /etc/mc/mc.keymap ~/.config/mc/
 
 ````
+Go to https://www.pushbullet.com/account
+and copy TOKEN
+
+````
+curl -o pushbullet https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet
+echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
+````
+
+````
 Menu bar -> Options -> Panel Options -> Main Panel Options
 [x] Show hidden files
 ````
