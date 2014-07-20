@@ -24,6 +24,7 @@ and copy TOKEN
 
 ````
 curl -o pushbullet https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet
+sudo chmod a+x pushbullet
 echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
 
