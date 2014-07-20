@@ -2,6 +2,11 @@ Raspberry-Service
 =================
 
 ### Prerequisites
+````
+sudo apt-get install mencoder
+````
+
+
 #### Midnight commander
 ````
 sudo apt-get remove mc
