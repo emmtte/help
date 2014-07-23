@@ -1,11 +1,3 @@
-r run
-  PARAM=%{parametes}
-  %f $PARAM
-
-h user menu
-  %{Sélectionner les fichiers à traiter avec les touches CTRL+t. Pour les autres commandes se positionner sur le fichier. Pour ajouter un dossier aux favoris CTRL+x+h. Pour voir la liste des favoris CTRL+"}
-
-#system
 + f system & t r
 c raspi-config
   sudo raspi-config
@@ -24,27 +16,32 @@ h shutdown
 r reboot
   sudo reboot
 
-#minidlna
-+ f minidlna &  t r
++ f 3rd_party & t r
 r minidlna reload
-  sudo service minidlna force-reload
+  %view sudo service minidlna force-reload
 
-+ f minidlna & t r
++ f 3rd_party  & t r
 t minidlna status
-  sudo service minidlna status
+  %view sudo service minidlna status
 
-m sst
- choice=$(whiptail --title "streaming soundtracks" --menu "Choose an action" 10 30 2 \
-  "P" "play" \
-  "O" "stop" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    R) mplayer http://hi1.streamingsoundtracks.com:8000 ;;
-    U) killall mplayer ;;
-  esac
++ f 3rd_party  & t r
+b btsync
+  %view sudo btsync
 
-P gphotos2
++ f 3rd_party & t r
+k killall btsync
+  %view sudo killall btsync
+
++ f 3rd_party & t r
+m sst start
+  mplayer http://hi1.streamingsoundtracks.com:8000
+
++ f 3rd_party & t r
+m sst stop
+  killall mplayer
+
++ f *.jpg | f *.JPG & t t
+P gphotos2 to picasa
   clear
   path=/media/hdd1/photos
   stamp=$(date +%%Y%%m%%d%%H%%M%%S)
@@ -58,26 +55,27 @@ P gphotos2
     fi
   google picasa create ${stamp} ${path}/${stamp}/*.JPG
 
-# update
-+ f update &  t r
-m mc menu
++ f update & t r
+u update mc menu
   clear
-  wget -O menu https://
-  mv menu ~/.config/mc/menu
+  wget -O .mc.menu https://
+  mv .mc.menu ~/.config/mc/menu
 
-+ f update &  t r
-r update ruby pdf
++ f update & t r
+R update ruby pdf
   clear
   wget -O pdf.rb https://
 
-+ f *.avi | *.mp4 & t t
-v merge videos
++ f *.MP4 & t r
+v merge gopro videos
   tmux has-session -t mencoder
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
   tmux send -t mencoder 'clear' ENTER
   tmux send -t mencoder 'cd %d' ENTER
-  tmux send -t mencoder 'mencoder -ovc copy -oac copy -o %d.avi %t' ENTER
+  tmux send -t mencoder 'mencoder `ls %d/*.MP4 | sort` -ovc copy -oac pcm -o %{Nom du fichier video}.AVI' ENTER
+  tmux send -t mencoder 'pushbullet push all note Raspberry_Pi Video_Merged' ENTER
 
++ f *.avi | f *.AVI & t t
 q x286 test
   tmux has-session -t mencoder
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
@@ -88,56 +86,77 @@ q x286 test
      tmux send -t mencoder 'mencoder -vf yadif=1 -ovc x264 -oac mp3lame -o test.x264.avi %t' ENTER
     shift
   done
+  tmux send -t mencoder 'echo "La vidéo %t est maintenant compilée" | sendxmpp -t cat .\email' ENTER
 
-w merge videos mp3
++ f *.avi | f *.AVI & t t
+m merge videos mp3
   tmux has-session -t mencoder
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
   tmux send -t mencoder 'clear' ENTER
   tmux send -t mencoder 'cd %d' ENTER
   tmux send -t mencoder 'mencoder -ovc copy -oac mp3lame -o %d.avi %t' ENTER
+  tmux send -t mencoder 'pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est compilée"' ENTER
 
++ f system & t r
+i init youtube upload
+  google youtube post -u %{Enter your gmail address} 
+
++ f system & t r
+p init pushbullet API
+  echo "API_KEY=%{Enter your API pushbullet}" > ~/.config/pushbullet
+
++ f *.avi & t t
 y upload to youtube
+  mkdir /media/hdd/tmp
   echo "clear" > ~/task.sh
   d=%d
   echo "cd $d" >> ~/task.sh
   set %t
   while [ -n "$1" ]; do
-    echo "mv \"$1\" video.avi" >> ~/task.sh
-    echo "google youtube post --category Entertainment --access=unlisted --title=\"$1\" video.avi" >> ~/task.sh
-    echo "mv video.avi \"$1\"" >> ~/task.sh
+    echo "mv \"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
+    echo "google youtube post --category Entertainment --access=unlisted --title=\"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
+    echo "mv /media/hdd/tmp/video.avi \"$1\"" >> ~/task.sh
+    echo "pushbullet push all note \"Raspberry Pi\" \"La vidéo $1 est maintenant sur YouTube\"" >> ~/task.sh
     shift
   done
   tmux has-session -t youtube
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
   tmux send -t youtube 'sh ~/task.sh' ENTER
 
-x tmux
-  choice=$(whiptail --title "tmux sessions" --menu "Use Ctrl+b d to detach session" 10 40 2 \
-  "Y" "Youtube" \
-  "M" "Mencoder" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    M) tmux attach-session -t mencoder ;;
-    Y) tmux attach-session -t youtube ;;
-  esac
++ f tmux & t r
+m attach mencoder session 
+  tmux attach-session -t mencoder
 
-t transmission
- choice=$(whiptail --title "Transmission" --menu "Choose an option" 11 40 3 \
-  "A" "Start" \
-  "P" "Stop" \
-  "U" "Status" \
-  3>&1 1>&2 2>&3)
-  clear
-  case $choice in
-    A) sudo service transmission-daemon start ;;
-    P) sudo service transmission-daemon stop ;;
-    U) sudo service transmission-daemon status ;;
-  esac
++ f tmux & t r
+y attach youtube sessionn
+  tmux attach-session -t youtube
 
++ f 3rd_party & t r
+s transmission start
+  %view sudo service transmission-daemon start
 
-# Divers
-= f *.pdf & t t
++ f 3rd_party & t r
+p transmission stop
+  %view sudo service transmission-daemon stop
+
++ f 3rd_party & t r
+t transmission status
+  %view sudo service transmission-daemon status
+
++ f *.djv | f *.djvu & t n
+Décompose un fichier djvu en PBM
+  x=0
+  cible=""
+  mkdir -p /tmp/djvu/
+  mkdir -p /tmp/pbm/
+  djvmcvt -i %f /tmp/djvu/ /tmp/index.djv
+  find "/tmp/djvu/" -iname "*.djv" -type f | while read n; do
+    xi=`expr $xi + 1`
+    echo $xi
+    ddjvu -format=tiff "$n" "/tmp/pbm/$xi.TIF"
+  done
+
++ f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
   set %t
   while [ -n "$1" ]; do
@@ -145,8 +164,8 @@ p Transforme un fichier PDF sécurisé en normal
     shift
   done
 
-= f *.eps | *.ai & t t
-S Convertir Un fichier EPS,AI en SVG
++ f *.eps | f *.EPS | f *.ai | f *.AI & t t
+s Convertir Un fichier EPS,AI en SVG
   set %t
   while [ -n "$1" ]; do
     pstoedit -f plot-svg $1 $1.svg
