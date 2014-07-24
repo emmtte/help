@@ -59,11 +59,11 @@ k killall btsync
 
 + f 3rd_party & t r
 m sst start
-  mplayer http://hi1.streamingsoundtracks.com:8000
-
+  omxplayer http://hi1.streamingsoundtracks.com:8000
+  
 + f 3rd_party & t r
 m sst stop
-  killall mplayer
+  killall omxplayer
 
 + f *.jpg | f *.JPG & t t
 P gphotos2 to picasa
