@@ -23,6 +23,12 @@ sudo make uninstall
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 cp /etc/mc/mc.keymap ~/.config/mc/
 
+mkdir ~/.mc
+cat << EOF | sudo tee ~/.mc/ini
+[Colors]
+base_color=default,default:menu=black,cyan:menuhot=brightmagenta,cyan:menusel=white,blue:menuhotsel=brightmagenta,blue
+EOF
+
 ````
 Go to https://www.pushbullet.com/account
 and copy TOKEN
