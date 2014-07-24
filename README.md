@@ -56,3 +56,6 @@ sudo chmod a+x /usr/bin/youtube-dl
 echo "login user@gmail.com" > .netrc
 echo "password XXXXXXXX" >> .netrc
 ````
+
+flickr utf8
+convmv -f cp1252 -t utf-8 -r --notest /media/hdd/photos
