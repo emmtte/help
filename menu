@@ -1,3 +1,28 @@
+d upload to dropbox
+  echo "clear" > ~/dropbox.sh
+  d=%d
+  echo "cd $d" >> ~/dropbox.sh
+  set %t
+  while [ -n "$1" ] ; do
+    echo "~/dropbox_uploader.sh upload \"$1\" \"$1\"" >> ~/dropbox.sh
+    shift
+  done
+  tmux has-session -t dropbox
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi
+  tmux send -t dropbox 'sh ~/dropbox.sh' ENTER
+
++ f system & t r
+i dropbox info
+  %view ~/dropbox_uploader.sh info
+
++ f system & t r
+t dropbox init
+  ~/dropbox_uploader.sh info
+
++ f system & t r
+u dropbox unlink
+  ~/dropbox_uploader.sh unlink
+
 + f system & t r
 c raspi-config
   sudo raspi-config
@@ -43,7 +68,7 @@ m sst stop
 + f *.jpg | f *.JPG & t t
 P gphotos2 to picasa
   clear
-  path=/media/hdd1/photos
+  path=/media/hdd/photos
   stamp=$(date +%%Y%%m%%d%%H%%M%%S)
   mkdir -p "${path}/${stamp}"
   cd "${path}/${stamp}"
@@ -128,8 +153,12 @@ m attach mencoder session
   tmux attach-session -t mencoder
 
 + f tmux & t r
-y attach youtube sessionn
+y attach youtube session
   tmux attach-session -t youtube
+
++ f tmux & t r
+y attach dropbox session
+  tmux attach-session -t dropbox
 
 + f 3rd_party & t r
 s transmission start
