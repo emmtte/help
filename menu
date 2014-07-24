@@ -148,6 +148,16 @@ y upload to youtube
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
   tmux send -t youtube 'sh ~/task.sh' ENTER
 
++ f 3rd_party & t r
+y Youtube Download Playlist
+	tmux has-session -t youtube_dl
+  f [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
+  tmux send -t youtube "youtube-dl -cit --netrc --max-quality FORMAT --output '/media/hdd/youtube/%(title)s.%(ext)s' ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
+
++ f tmux & t r
+d attach youtube_dl session 
+  tmux attach-session -t youtube_dl
+
 + f tmux & t r
 m attach mencoder session 
   tmux attach-session -t mencoder
@@ -200,3 +210,14 @@ s Convertir Un fichier EPS,AI en SVG
     pstoedit -f plot-svg $1 $1.svg
     shift
   done
+
++ f update & t r
+r Update Remote Control
+  wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip
+  unzip rc.zip
+  rm rc.zip
+  mv -u Raspberry-Control-master/* .rc
+  mv -u Raspberry-Control-master/public/* .rc/public
+  rm -r Raspberry-Control-master
+
+
