@@ -2,7 +2,7 @@
 # curl -o ~/rename.sh https://raw.githubusercontent.com/ManuCart/ServicePi/master/rename.sh
 # Get a list of all jpeg files files in the current directory.  Assumes extensions of 
 # ".jpg" or ".JPG"
-LIST1=`ls *.jpg *.JPG`
+LIST1=`ls -R *.jpg *.JPG`
 
 # Loop through the list, renaming each to a date/time based name
 COUNTER=1
@@ -17,7 +17,7 @@ for CURFILE in $LIST1; do
 done
 
 # Get the list of files, which by default will be in sorted order
-LIST2=`ls *.JPG`
+LIST2=`ls -R *.JPG`
 
 # Set up a counter for the file names
 COUNTER=1
