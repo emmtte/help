@@ -57,6 +57,22 @@ b btsync
 + f 3rd_party & t r
 k killall btsync
   %view sudo killall btsync
+  
++ f 3rd_party & t r
+g tmux has-session -t gopro
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
+  tmux send -t gopro 'clear' ENTER
+  tmux send -t gopro 'sudo mkdir /media/gopro' ENTER
+  tmux send -t gopro 'sudo mount /dev/sdb1 /media/gopro' ENTER
+  tmux send -t gopro 'mkdir /media/hdd/gopro/photos /media/hdd/gopro/videos' ENTER
+  tmux send -t gopro 'cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos' ENTER
+  tmux send -t gopro 'cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos' ENTER
+  tmux send -t gopro 'pushbullet push all photos and videos from gopro are saved' ENTER
+
+mount & copy gopro files
+  
+  cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
+  cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
 
 + f 3rd_party & t r
 m sst start
