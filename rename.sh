@@ -13,7 +13,7 @@ find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
 	#NAME="$EXIFDATE $EXIFTIME $COUNTER"
 	NEWFILE="$EXIFDATE_$(printf '%05d' $COUNTER).JPG"
 	echo ""
-	mv -u "$FILE" "`dirname "$FILE"`"/"$NEWFILE"
+	mv -u "$FILE" "`dirname "$FILE"`/$NEWFILE"
 	COUNTER=$((COUNTER + 1))
 done
 exit
@@ -23,7 +23,7 @@ COUNTER=1
 # Loop through list2, renaming as "pic###.jpg"
 find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do 
         NEWNAME="IMG_$(printf "%05d" $COUNTER).JPG"
-        mv "$FILE" "`dirname "$FILE"`"/"$NEWNAME"
+        mv "$FILE" "`dirname "$FILE"`/$NEWNAME"
         # Increment COUNTER
         COUNTER=$((COUNTER + 1))
 done
