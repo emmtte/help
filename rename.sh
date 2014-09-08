@@ -11,8 +11,6 @@ find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
         #EXIFDATE=`exif $FILE | grep "Date" | grep -v "(" | cut -d '|' -f 2 | cut -d ' ' -f 1 | tr ':' '-'`
 	#EXIFTIME=`exif $FILE | grep "Date" | grep -v "(" | cut -d '|' -f 2 | cut -d ' ' -f 2 | tr ':' '.'`
 	#NAME="$EXIFDATE $EXIFTIME $COUNTER"
-	C=(printf "%05d" $COUNTER)
-	echo $C
 	NEWFILE="$EXIFDATE_$(printf '%05d' $COUNTER).JPG"
 	mv -u "$FILE" `dirname "$FILE"`/"$NEWFILE"
 	COUNTER=$((COUNTER + 1))
