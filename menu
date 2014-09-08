@@ -59,7 +59,8 @@ k killall btsync
   %view sudo killall btsync
   
 + f 3rd_party & t r
-g cat >> ~/gopro_task.sh << EOF
+g copy gopro files
+  cat >> ~/gopro_task.sh << EOF
   clear
   sudo mkdir /media/gopro
   sudo mount /dev/sdb1 /media/gopro
