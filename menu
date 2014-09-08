@@ -67,7 +67,7 @@ g copy gopro files
   mkdir /media/hdd/gopro/photos /media/hdd/gopro/videos
   cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
   cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
-  pushbullet push all "photos and videos from gopro are saved"
+  pushbullet push all note "photos and videos from gopro are saved"
   EOF
   tmux has-session -t gopro
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
