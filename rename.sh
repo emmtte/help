@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# curl -o ~/rename.sh https://raw.githubusercontent.com/ManuCart/ServicePi/master/rename.sh
 # Get a list of all jpeg files files in the current directory.  Assumes extensions of 
 # ".jpg" or ".JPG"
 LIST1=`ls *.jpg *.JPG`
