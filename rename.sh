@@ -18,6 +18,7 @@ find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
 done
 exit
 
+
 # Set up a counter for the file names
 COUNTER=1
 # Loop through list2, renaming as "pic###.jpg"
