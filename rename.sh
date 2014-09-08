@@ -6,7 +6,7 @@
 # Loop through the list, renaming each to a date/time based name
 COUNTER=1
 find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do 
-        EXIFDATE=`exif $FILE | grep "Date and Time (Origi" | cut -d '|' -f 2 | tr ' ' '_'`
+        EXIFDATE=`exif "$FILE" | grep "Date and Time (Origi" | cut -d '|' -f 2 | tr ' ' '_'`
         echo "|$FILE|$EXIFDATE|$(printf '%05d' $COUNTER)|"
         #EXIFDATE=`exif $FILE | grep "Date" | grep -v "(" | cut -d '|' -f 2 | cut -d ' ' -f 1 | tr ':' '-'`
 	#EXIFTIME=`exif $FILE | grep "Date" | grep -v "(" | cut -d '|' -f 2 | cut -d ' ' -f 2 | tr ':' '.'`
