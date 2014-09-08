@@ -160,6 +160,25 @@ y upload to youtube
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
   tmux send -t youtube 'sh ~/task.sh' ENTER
 
++ f 3rd_party & t r
+g gopro: create stopmotion
+  cd %d
+  mkdir CROP
+  for img in *.JPG; do
+  convert "$img" -crop 2592x1456+0+488 "CROP/$img-CROP.JPG" #bottom
+  #convert $img -crop 2592x1456+0+0 CROP/$img-CROP.JPG #top
+  #convert $img -crop 2592x1456+0+244 CROP/$img-CROP.JPG #middle
+  done
+  fi
+  obr=$(($width * $height * 60 * 25 / 256))
+  opt="vbitrate=$obr:mbd=2:keyint=132:vqblur=1.0:cmp=2:subcmp=2:dia=2:mv0:last_pred=3"
+  codec="msmpeg4v2"
+  ls -1 *-CROP.JPG >  files.lst
+  mencoder -ovc lavc -lavcopts vcodec=$codec:vpass=1:$opt -mf type=jpg:w=$width:h=$height:fps=15 -vf harddup -nosound -o /dev/null mf://@files.lst
+  mencoder -ovc lavc -lavcopts vcodec=$codec:vpass=2:$opt -mf type=jpg:w=$width:h=$height:fps=15 -vf harddup -nosound -o video.avi mf://@files.lst
+  rm -f divx2pass.log
+  fi
+
 + f *.avi | f *.AVI & t t
 q x286 test
   tmux has-session -t mencoder
