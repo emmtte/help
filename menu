@@ -99,8 +99,7 @@ P gphotos2 to picasa
 + f update & t r
 u update mc menu
   clear
-  wget -O .mc.menu https://
-  mv .mc.menu ~/.config/mc/menu
+  curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 
 + f update & t r
 R update ruby pdf
