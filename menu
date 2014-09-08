@@ -1,3 +1,11 @@
+##### usefull #####
+
++ f pdf & t r
+p gdrive Unite
+  tmux has-session -t unite
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s unite ; fi
+  tmux send -t unite "./unite" ENTER
+
 + f * & t r
 d upload to dropbox
   echo "clear" > ~/dropbox.sh
@@ -11,6 +19,8 @@ d upload to dropbox
   tmux has-session -t dropbox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi
   tmux send -t dropbox 'sh ~/dropbox.sh' ENTER
+
+##### system #####
 
 + f system & t r
 i dropbox info
@@ -42,13 +52,17 @@ h shutdown
 r reboot
   sudo reboot
 
-+ f 3rd_party & t r
-r minidlna reload
-  %view sudo service minidlna force-reload
+##### config #####
 
-+ f 3rd_party  & t r
-t minidlna status
-  %view sudo service minidlna status
++ f system & t r
+i init youtube upload
+  google youtube post -u %{Enter your gmail address} 
+
++ f system & t r
+p init pushbullet API
+  echo "API_KEY=%{Enter your API pushbullet}" > ~/.config/pushbullet
+
+##### 3rd party #####
 
 + f 3rd_party  & t r
 b btsync
@@ -59,7 +73,44 @@ k killall btsync
   %view sudo killall btsync
   
 + f 3rd_party & t r
-g copy gopro files
+r minidlna reload
+  %view sudo service minidlna force-reload
+
++ f 3rd_party  & t r
+t minidlna status
+  %view sudo service minidlna status
+
++ f 3rd_party & t r
+s transmission start
+  %view sudo service transmission-daemon start
+  
++ f 3rd_party & t r
+t transmission status
+  %view sudo service transmission-daemon status
+
++ f 3rd_party & t r
+p transmission stop
+  %view sudo service transmission-daemon stop
+
++ f 3rd_party & t r
+m sst start
+  omxplayer http://hi1.streamingsoundtracks.com:8000
+  
++ f 3rd_party & t r
+m sst stop
+  killall omxplayer
+
++ f 3rd_party & t r
+y Youtube Download Playlist
+	tmux has-session -t youtube_dl
+  f [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
+  tmux send -t youtube "youtube-dl -cit --netrc --max-quality FORMAT --output '/media/hdd/youtube/%(title)s.%(ext)s' ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
+
+
+##### gopro #####  
+
++ f 3rd_party & t r
+g gopro: sd copy
   cat >> ~/gopro_task.sh << EOF
   clear
   sudo mkdir /media/gopro
@@ -74,7 +125,7 @@ g copy gopro files
   tmux send -t gopro 'sh ~/gopro_task.sh' ENTER
   
 + f *.MP4 & t r
-g concat gopro files & upload
+g gopro: concat & upload
   clear
   tmux send -t gopro 'clear' ENTER
   tmux send -t gopro 'cd %d' ENTER
@@ -83,46 +134,31 @@ g concat gopro files & upload
   tmux send -t gopro 'pushbullet push all note "concatenate and upload to youtube"' ENTER
   
 + f *.MP4 & t r
-v merge gopro videos
+v gopro: old merge
   tmux has-session -t mencoder
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
   tmux send -t mencoder 'clear' ENTER
   tmux send -t mencoder 'cd %d' ENTER
   tmux send -t mencoder 'mencoder `ls %d/*.MP4 | sort` -ovc copy -oac pcm -o %d/%{Nom du fichier video}.AVI' ENTER
   tmux send -t mencoder 'pushbullet push all note Raspberry_Pi Video_Merged' ENTER
-  
-+ f 3rd_party & t r
-m sst start
-  omxplayer http://hi1.streamingsoundtracks.com:8000
-  
-+ f 3rd_party & t r
-m sst stop
-  killall omxplayer
 
-+ f *.jpg | f *.JPG & t t
-P gphotos2 to picasa
-  clear
-  path=/media/hdd/photos
-  stamp=$(date +%%Y%%m%%d%%H%%M%%S)
-  mkdir -p "${path}/${stamp}"
-  cd "${path}/${stamp}"
-  gphoto2 --get-all-files --filename "%%Y%%m%%d%%H%%M%%S.%%C"
-    if [ $? != 0 ]; then
-    echo "*** error executing gphoto2, aborting."
-    popd &> /dev/null
-    exit 1
-    fi
-  google picasa create ${stamp} ${path}/${stamp}/*.JPG
-
-+ f update & t r
-u update mc menu
-  clear
-  curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
-
-+ f update & t r
-R update ruby pdf
-  clear
-  wget -O pdf.rb https://
++ f *.avi & t t
+y upload to youtube
+  mkdir /media/hdd/tmp
+  echo "clear" > ~/task.sh
+  d=%d
+  echo "cd $d" >> ~/task.sh
+  set %t
+  while [ -n "$1" ]; do
+    echo "mv \"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
+    echo "google youtube post --category Entertainment --access=unlisted --title=\"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
+    echo "mv /media/hdd/tmp/video.avi \"$1\"" >> ~/task.sh
+    echo "pushbullet push all note \"Raspberry Pi\" \"La vidéo $1 est maintenant sur YouTube\"" >> ~/task.sh
+    shift
+  done
+  tmux has-session -t youtube
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
+  tmux send -t youtube 'sh ~/task.sh' ENTER
 
 + f *.avi | f *.AVI & t t
 q x286 test
@@ -146,37 +182,47 @@ m merge videos mp3
   tmux send -t mencoder 'mencoder -ovc copy -oac mp3lame -o %d.avi %t' ENTER
   tmux send -t mencoder 'pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est compilée"' ENTER
 
-+ f system & t r
-i init youtube upload
-  google youtube post -u %{Enter your gmail address} 
+##### gphotos2 #####
 
-+ f system & t r
-p init pushbullet API
-  echo "API_KEY=%{Enter your API pushbullet}" > ~/.config/pushbullet
++ f *.jpg | f *.JPG & t t
+P gphotos2 to hdd
+  clear
+  path=/media/hdd/photos
+  stamp=$(date +%%Y%%m%%d%%H%%M%%S)
+  mkdir -p "${path}/${stamp}"
+  cd "${path}/${stamp}"
+  gphoto2 --get-all-files --filename "%%Y%%m%%d%%H%%M%%S.%%C"
+    if [ $? != 0 ]; then
+    echo "*** error executing gphoto2, aborting."
+    popd &> /dev/null
+    exit 1
+    fi
+  google picasa create ${stamp} ${path}/${stamp}/*.JPG
 
-+ f *.avi & t t
-y upload to youtube
-  mkdir /media/hdd/tmp
-  echo "clear" > ~/task.sh
-  d=%d
-  echo "cd $d" >> ~/task.sh
-  set %t
-  while [ -n "$1" ]; do
-    echo "mv \"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
-    echo "google youtube post --category Entertainment --access=unlisted --title=\"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
-    echo "mv /media/hdd/tmp/video.avi \"$1\"" >> ~/task.sh
-    echo "pushbullet push all note \"Raspberry Pi\" \"La vidéo $1 est maintenant sur YouTube\"" >> ~/task.sh
-    shift
-  done
-  tmux has-session -t youtube
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
-  tmux send -t youtube 'sh ~/task.sh' ENTER
 
-+ f 3rd_party & t r
-y Youtube Download Playlist
-	tmux has-session -t youtube_dl
-  f [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
-  tmux send -t youtube "youtube-dl -cit --netrc --max-quality FORMAT --output '/media/hdd/youtube/%(title)s.%(ext)s' ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
+##### update #####
+
++ f update & t r
+u update mc menu
+  clear
+  curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
+
++ f update & t r
+R update ruby pdf
+  clear
+  wget -O pdf.rb https://
+  
++ f update & t r
+r Update Remote Control
+  wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip
+  unzip rc.zip
+  rm rc.zip
+  mv -u Raspberry-Control-master/* .rc
+  mv -u Raspberry-Control-master/public/* .rc/public
+  rm -r Raspberry-Control-master
+
+
+##### tmux #####
 
 + f tmux & t r
 d attach youtube_dl session 
@@ -198,17 +244,8 @@ y attach dropbox session
 y attach gopro session
   tmux attach-session -t gopro
 
-+ f 3rd_party & t r
-s transmission start
-  %view sudo service transmission-daemon start
 
-+ f 3rd_party & t r
-p transmission stop
-  %view sudo service transmission-daemon stop
-
-+ f 3rd_party & t r
-t transmission status
-  %view sudo service transmission-daemon status
+##### useless ######
 
 + f *.djv | f *.djvu & t n
 Décompose un fichier djvu en PBM
@@ -238,18 +275,3 @@ s Convertir Un fichier EPS,AI en SVG
     pstoedit -f plot-svg $1 $1.svg
     shift
   done
-
-+ f update & t r
-r Update Remote Control
-  wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip
-  unzip rc.zip
-  rm rc.zip
-  mv -u Raspberry-Control-master/* .rc
-  mv -u Raspberry-Control-master/public/* .rc/public
-  rm -r Raspberry-Control-master
-
-+ f pdf & t r
-p gdrive Unite
-  tmux has-session -t unite
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s unite ; fi
-  tmux send -t unite "./unite" ENTER
