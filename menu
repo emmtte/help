@@ -72,7 +72,25 @@ g copy gopro files
   tmux has-session -t gopro
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
   tmux send -t gopro 'sh ~/gopro_task.sh' ENTER
-
+  
++ f *.MP4 & t r
+g concat gopro files & upload
+  clear
+  tmux send -t gopro 'clear' ENTER
+  tmux send -t gopro 'cd %d' ENTER
+  tmux send -t gopro 'mencoder `ls %d/*.MP4 | sort` -ovc copy -oac pcm -o %d/video.avi' ENTER
+  tmux send -t gopro 'google youtube post --category Entertainment --access=unlisted %d/video.avi' ENTER
+  tmux send -t gopro 'pushbullet push all note "concatenate and upload to youtube"' ENTER
+  
++ f *.MP4 & t r
+v merge gopro videos
+  tmux has-session -t mencoder
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
+  tmux send -t mencoder 'clear' ENTER
+  tmux send -t mencoder 'cd %d' ENTER
+  tmux send -t mencoder 'mencoder `ls %d/*.MP4 | sort` -ovc copy -oac pcm -o %d/%{Nom du fichier video}.AVI' ENTER
+  tmux send -t mencoder 'pushbullet push all note Raspberry_Pi Video_Merged' ENTER
+  
 + f 3rd_party & t r
 m sst start
   omxplayer http://hi1.streamingsoundtracks.com:8000
@@ -105,15 +123,6 @@ u update mc menu
 R update ruby pdf
   clear
   wget -O pdf.rb https://
-
-+ f *.MP4 & t r
-v merge gopro videos
-  tmux has-session -t mencoder
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
-  tmux send -t mencoder 'clear' ENTER
-  tmux send -t mencoder 'cd %d' ENTER
-  tmux send -t mencoder 'mencoder `ls %d/*.MP4 | sort` -ovc copy -oac pcm -o %{Nom du fichier video}.AVI' ENTER
-  tmux send -t mencoder 'pushbullet push all note Raspberry_Pi Video_Merged' ENTER
 
 + f *.avi | f *.AVI & t t
 q x286 test
