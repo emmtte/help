@@ -184,6 +184,10 @@ y attach youtube session
 + f tmux & t r
 y attach dropbox session
   tmux attach-session -t dropbox
+  
++ f tmux & t r
+y attach gopro session
+  tmux attach-session -t gopro
 
 + f 3rd_party & t r
 s transmission start
