@@ -6,7 +6,7 @@ p gdrive Unite
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s unite ; fi
   tmux send -t unite "./unite" ENTER
 
-+ f * & t r
++ f *
 d upload to dropbox
   echo "clear" > ~/dropbox.sh
   d=%d
