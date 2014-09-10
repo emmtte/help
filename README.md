@@ -17,47 +17,22 @@ cd mc-4.8.13
 ./configure
 make
 sudo make install
-
-sudo make uninstall
-
+````
+#### Menu
+````
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
-cp /etc/mc/mc.keymap ~/.config/mc/
-
-cat << EOF | sudo tee -a ~/.config/mc/ini
-
-[Colors]
-base_color=default,default
-menu=black,cyan
-menuhot=brightmagenta,cyan
-menusel=white,blue
-menuhotsel=brightmagenta,blue
-
-EOF
-
 ````
+#### Pushbullet
+
 Go to https://www.pushbullet.com/account
-and copy TOKEN
-
 ````
-curl -o pushbullet https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet
-sudo chmod a+x pushbullet
+sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/bin/pushbullet
+sudo chmod a+x /usr/bin/pushbullet
 echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
 
-````
-Menu bar -> Options -> Panel Options -> Main Panel Options
-[x] Show hidden files
-````
 #### Youtube-dl
-
 ````
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/bin/youtube-dl
 sudo chmod a+x /usr/bin/youtube-dl
-echo "login user@gmail.com" > .netrc
-echo "password XXXXXXXX" >> .netrc
-````
-
-#### flickr utf8
-````
-convmv -f cp1252 -t utf-8 -r --notest /media/hdd/photos
 ````
