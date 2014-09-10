@@ -23,8 +23,7 @@ sudo make install
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 ````
 #### Pushbullet
-
-Go to https://www.pushbullet.com/account
+https://www.pushbullet.com/account
 ````
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/bin/pushbullet
 sudo chmod a+x /usr/bin/pushbullet
