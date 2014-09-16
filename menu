@@ -131,7 +131,7 @@ g gopro: concat & upload
   clear
   tmux send -t gopro 'clear' ENTER
   tmux send -t gopro 'cd %d' ENTER
-  tmux send -t gopro 'mencoder `ls %d/*.{mp4,MP4} | sort` -ovc copy -oac pcm -o %d/video.avi' ENTER
+  tmux send -t gopro 'mencoder `ls %d/*.MP4 | sort` -ovc copy -oac pcm -o %d/video.avi' ENTER
   tmux send -t gopro 'google youtube post --category Entertainment --access=unlisted %d/video.avi' ENTER
   tmux send -t gopro 'pushbullet push all note "concatenate and upload to youtube"' ENTER
   
