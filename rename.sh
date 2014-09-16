@@ -16,8 +16,6 @@ find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
 	mv -u "$FILE" "`dirname "$FILE"`/$NEWFILE"
 	COUNTER=$((COUNTER + 1))
 done
-exit
-
 
 # Set up a counter for the file names
 COUNTER=1
