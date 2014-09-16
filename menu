@@ -240,6 +240,9 @@ R Rename photos
     COUNTER=$((COUNTER + 1))
   done
   EOF
+  tmux has-session -t photos
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
+  tmux send -t gopro 'sh ~/rename_task.sh' ENTER
 
 ##### update #####
 
