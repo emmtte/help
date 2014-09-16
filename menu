@@ -222,7 +222,7 @@ P gphotos2 to hdd
 
 + d * & t d & t t
 R Rename photos
-  set %t
+  set "%t"
   cat >> ~/rename_task.sh << EOF
   if [ ! -f /usr/bin/exif ]; then echo "ERROR: Please install exif"; exit; fi
   # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
