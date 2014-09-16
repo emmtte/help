@@ -223,7 +223,8 @@ P gphotos2 to hdd
 + f
 R Rename photos
   cat >> ~/rename_task.sh << EOF
-  # Loop through files, renaming each to a date/time/number based name
+  if [ ! -f /usr/bin/exif ]; then echo "ERROR: Please install exif"; exit; fi
+  # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
     EXIF=`exif "$FILE" | grep "Date and Time (Origi" | cut -d '|' -f 2 | tr ' ' '_'`
@@ -288,6 +289,9 @@ y attach dropbox session
 y attach gopro session
   tmux attach-session -t gopro
 
++ f tmux & t r
+y attach photos session
+  tmux attach-session -t photos
 
 ##### useless ######
 
