@@ -227,8 +227,8 @@ R Rename photos
   # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
-    EXIF=`exif "$FILE" | grep "Date and Time (Origi" | cut -d '|' -f 2 | tr ' ' '_'`
-    NEWFILE="$EXIF_$(printf '%%05d' $COUNTER).JPG"
+    EXIF=`/usr/bin/exif "$FILE" | grep "Date and Time (Origi" | cut -d '|' -f 2 | tr ' ' '-'`
+    NEWFILE="$EXIF-$(printf '%%05d' $COUNTER).JPG"
     echo "`basename "$FILE"`=>$NEWFILE"
     mv -u "$FILE" "`dirname "$FILE"`/$NEWFILE"
     COUNTER=$((COUNTER + 1))
@@ -240,7 +240,7 @@ R Rename photos
     mv "$FILE" "`dirname "$FILE"`/$NEWNAME"
     COUNTER=$((COUNTER + 1))
   done
-  rm -f ~/rename_task.sh
+  #rm -f ~/rename_task.sh
   EOF
   tmux has-session -t photos
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
