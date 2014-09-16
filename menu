@@ -222,6 +222,7 @@ P gphotos2 to hdd
 
 + f
 R Rename photos
+  cat >> ~/rename_task.sh << EOF
   # Loop through files, renaming each to a date/time/number based name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
@@ -238,6 +239,7 @@ R Rename photos
     mv "$FILE" "`dirname "$FILE"`/$NEWNAME"
     COUNTER=$((COUNTER + 1))
   done
+  EOF
 
 ##### update #####
 
