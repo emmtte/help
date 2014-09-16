@@ -3,7 +3,7 @@ Raspberry-Service
 
 ### Prerequisites
 ````
-sudo apt-get install googlecl imagemagick mencoder
+sudo apt-get install exif googlecl imagemagick mencoder
 ````
 
 
