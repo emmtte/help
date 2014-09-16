@@ -220,7 +220,7 @@ P gphotos2 to hdd
     fi
   google picasa create ${stamp} ${path}/${stamp}/*.JPG
 
-+ d /media/hdd/photos & t d
++ d * & t d
 R Rename photos
   cat >> ~/rename_task.sh << EOF
   if [ ! -f /usr/bin/exif ]; then echo "ERROR: Please install exif"; exit; fi
