@@ -227,8 +227,7 @@ R Rename photos
   # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do
-    #EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr '-' ' '`
-    EXIF=`exif "$FILE" | grep "Date and Time (Origi" | cut -d '|' -f 2 | tr ' ' '-'`
+    EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4,5 | tr ' ' '-'`
     NEWFILE="$EXIF-$(printf '%%05d' $COUNTER).JPG"
     echo "`basename "$FILE"`=>$NEWFILE"
     mv -u "$FILE" "`dirname "$FILE"`/$NEWFILE"
