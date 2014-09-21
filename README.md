@@ -25,7 +25,7 @@ curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/m
 #### Drive
 ````
 sudo apt-get install golang git mercurial
-go get github.com/rakyll/drive
+sudo go get github.com/rakyll/drive
 drive help
 drive init
 
