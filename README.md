@@ -22,6 +22,15 @@ sudo make install
 ````
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 ````
+#### Drive
+````
+sudo apt-get install golang git mercurial
+go get github.com/rakyll/drive
+drive help
+drive init
+
+````
+
 #### Pushbullet
 https://www.pushbullet.com/account
 ````
