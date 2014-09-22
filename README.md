@@ -25,6 +25,16 @@ curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/m
 #### Drive
 ````
 sudo apt-get install golang git mercurial
+
+wget http://xivilization.net/~marek/raspbian/xivilization-raspbian.gpg.key -O - | sudo apt-key add -
+sudo wget http://xivilization.net/~marek/raspbian/xivilization-raspbian.list -O /etc/apt/sources.list.d/xivilization-raspbian.list
+
+sudo aptitude update
+sudo aptitude install golang
+
+
+
+
 sudo go get github.com/rakyll/drive
 drive help
 drive init
