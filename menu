@@ -28,11 +28,11 @@ i dropbox info
 
 + f system & t r
 t dropbox init
-  ~/dropbox_uploader.sh info
+  clear && ~/dropbox_uploader.sh info
 
 + f system & t r
 u dropbox unlink
-  ~/dropbox_uploader.sh unlink
+  clear && ~/dropbox_uploader.sh unlink
 
 + f system & t r
 c raspi-config
