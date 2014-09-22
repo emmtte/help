@@ -31,7 +31,7 @@ sudo apt-get install golang
 
 sudo go get github.com/rakyll/drive
 drive help
-drive init
+/usr/lib/go/bin/drive init /media/hdd/drive
 
 ````
 
