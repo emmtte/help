@@ -21,7 +21,7 @@ sudo make install
 #### Menu
 ````
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
-alias mc = 'mc /home/pi/service'
+alias mc='mc /home/pi/service'
 ````
 #### Drive
 ````
