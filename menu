@@ -252,17 +252,6 @@ R Rename photos
 u update mc menu
   clear && curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 
-+ f update & t r
-r Update Remote Control
-  clear
-  wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip
-  unzip rc.zip
-  rm rc.zip
-  mv -u Raspberry-Control-master/* .rc
-  mv -u Raspberry-Control-master/public/* .rc/public
-  rm -r Raspberry-Control-master
-
-
 ##### tmux #####
 
 + f tmux & t r
