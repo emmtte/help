@@ -24,11 +24,11 @@ d upload to dropbox
 
 + f system & t r
 i dropbox info
-  %view ~/dropbox_uploader.sh info
+  clear && ~/dropbox_uploader.sh info
 
 + f system & t r
 t dropbox init
-  clear && ~/dropbox_uploader.sh info
+  clear && ~/dropbox_uploader.sh init
 
 + f system & t r
 u dropbox unlink
@@ -66,31 +66,31 @@ p init pushbullet API
 
 + f 3rd_party  & t r
 b btsync
-  %view sudo btsync
+  clear && sudo btsync
 
 + f 3rd_party & t r
 k killall btsync
-  %view sudo killall btsync
+  clear && sudo killall btsync
   
 + f 3rd_party & t r
 r minidlna reload
-  %view sudo service minidlna force-reload
+  clera && sudo service minidlna force-reload
 
 + f 3rd_party  & t r
 t minidlna status
-  %view sudo service minidlna status
+  clear && sudo service minidlna status
 
 + f 3rd_party & t r
 s transmission start
-  %view sudo service transmission-daemon start
+  clear && sudo service transmission-daemon start
   
 + f 3rd_party & t r
 t transmission status
-  %view sudo service transmission-daemon status
+  clear && sudo service transmission-daemon status
 
 + f 3rd_party & t r
 p transmission stop
-  %view sudo service transmission-daemon stop
+  clear && sudo service transmission-daemon stop
 
 + f 3rd_party & t r
 m sst start
@@ -98,11 +98,11 @@ m sst start
   
 + f 3rd_party & t r
 m sst stop
-  killall omxplayer
+  clear && killall omxplayer
 
 + f 3rd_party & t r
 y Youtube Download Playlist
-	tmux has-session -t youtube_dl
+  tmux has-session -t youtube_dl
   f [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube "youtube-dl -cit --netrc --max-quality FORMAT --output '/media/hdd/youtube/%(title)s.%(ext)s' ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
 
@@ -250,16 +250,11 @@ R Rename photos
 
 + f update & t r
 u update mc menu
-  clear
-  curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
+  clear && curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 
 + f update & t r
-R update ruby pdf
-  clear
-  wget -O pdf.rb https://
-  
-+ f update & t r
 r Update Remote Control
+  clear
   wget -O rc.zip https://github.com/ManuCart/Raspberry-Control/archive/master.zip
   unzip rc.zip
   rm rc.zip
