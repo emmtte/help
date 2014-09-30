@@ -23,6 +23,7 @@ sudo make install
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.bashrc
+source ~/.bashrc
 ````
 #### Drive
 ````
