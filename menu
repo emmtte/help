@@ -20,6 +20,10 @@ d upload to dropbox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi
   tmux send -t dropbox 'sh ~/dropbox.sh' ENTER
 
++ f * & t r
+e download from dropbox
+  ~/dropbox_uploader.sh download %{Dropbox name file} 
+  
 ##### system #####
 
 + f system & t r
