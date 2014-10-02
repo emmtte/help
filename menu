@@ -223,7 +223,7 @@ P gphotos2 to hdd
 + d * & t d
 R Rename photos
   cat > ~/rename_task.sh << 'EOF'
-  if [ ! -f /usr/bin/exiv2 ]; then echo "ERROR: Please install exiv2"; exit; fi
+  if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
   # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do
@@ -241,6 +241,7 @@ R Rename photos
     COUNTER=$((COUNTER + 1))
   done
   rm -f ~/rename_task.sh
+  pushbullet push all note "Rasperry Pi" "Photos Renamer Done"
   EOF
   tmux has-session -t photos
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
