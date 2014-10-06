@@ -41,7 +41,8 @@ drive help
 #### rclone
 ````
 curl -o rclone.zip http://downloads.rclone.org/rclone-v1.05-linux-arm.zip
-
+unzip rclone.zip
+./rclone config
 ````
 #### Pushbullet
 https://www.pushbullet.com/account
