@@ -27,6 +27,13 @@ e download from dropbox
 ##### system #####
 
 + f system & t r
+r rclone photos
+  tmux has-session -t rclone
+  f [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
+  tmux send -t rclone 'rclone sync gdrive:/Photos pi:/media/hdd/rclone' ENTER
+  tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: sync finished"' ENTER
+
++ f system & t r
 i dropbox info
   clear && ~/dropbox_uploader.sh info
 
@@ -78,7 +85,7 @@ k killall btsync
   
 + f 3rd_party & t r
 r minidlna reload
-  clera && sudo service minidlna force-reload
+  clear && sudo service minidlna force-reload
 
 + f 3rd_party  & t r
 t minidlna status
@@ -262,6 +269,10 @@ u update mc menu
 + f tmux & t r
 d attach youtube_dl session 
   tmux attach-session -t youtube_dl
+
++ f tmux & t r
+d attach rclone session 
+  tmux attach-session -t rclone
 
 + f tmux & t r
 m attach mencoder session 
