@@ -30,7 +30,7 @@ e download from dropbox
 r rclone photos
   tmux has-session -t rclone
   f [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
-  tmux send -t rclone 'rclone sync gdrive:/Photos pi:/media/hdd/rclone' ENTER
+  tmux send -t rclone 'rclone sync gdrive:/test pi:/media/hdd/test' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: sync finished"' ENTER
 
 + f system & t r
