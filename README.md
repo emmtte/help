@@ -44,6 +44,7 @@ curl -o rclone.zip http://downloads.rclone.org/rclone-v1.05-linux-arm.zip
 unzip rclone.zip
 sudo cp rclone-v1.05-linux-arm/rclone /usr/bin/rclone
 rclone config
+rclone sync --dry-run gdrive:/Photos_Old pi:/media/hdd/rclone
 ````
 #### Pushbullet
 https://www.pushbullet.com/account
