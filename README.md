@@ -37,9 +37,12 @@ drive help
 /usr/lib/go/bin/drive init /media/hdd/drive
 /usr/lib/go/bin/drive push /media/hdd/drive
 /usr/lib/go/bin/drive pull /media/hdd/drive
+````
+#### rclone
+````
+curl -o rclone.zip http://downloads.rclone.org/rclone-v1.05-linux-arm.zip
 
 ````
-
 #### Pushbullet
 https://www.pushbullet.com/account
 ````
