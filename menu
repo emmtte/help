@@ -315,7 +315,7 @@ e Affiche l'EXIF de la photo
   clear
   exiv2 %f
   printf 'Press [Enter] key to continue...'
-  read
+  read null
 
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
