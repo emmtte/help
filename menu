@@ -16,6 +16,7 @@ d upload to dropbox
     echo "~/dropbox_uploader.sh upload \"$1\" \"$1\"" >> ~/dropbox.sh
     shift
   done
+  echo "pushbullet push all note Raspberry_Pi FilesUploadedToDropbox" >> ~/dropbox.sh
   tmux has-session -t dropbox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi
   tmux send -t dropbox 'sh ~/dropbox.sh' ENTER
