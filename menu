@@ -312,6 +312,7 @@ Décompose un fichier djvu en PBM
 
 + f *.jpg | f *.JPG & t r
 e Affiche l'EXIF de la photo
+  clear
   exiv2 %f
   read
 
