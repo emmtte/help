@@ -233,6 +233,24 @@ P gphotos2 to hdd
   google picasa create ${stamp} ${path}/${stamp}/*.JPG
 
 + d * & t d
+e write exif when missing in jpg files
+  cat > ~/exif_task.sh << 'EOF'
+  clear
+  find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do
+    EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
+    DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    if [ -z "$EXI" ]; then
+      exiv2 -M "add Exif.Photo.DateTimeOriginal $DAT 00:00:00" "$FILE"
+    fi
+    printf "\r$(basename "$FILE")"
+  done
+  EOF
+  tmux has-session -t photos
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
+  tmux send -t photos 'sh ~/exif_task.sh' ENTER
+  tmux send -t photos 'rm ~/exif_task.sh' ENTER
+
++ d * & t d
 R Rename photos
   cat > ~/rename_task.sh << 'EOF'
   if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
@@ -258,6 +276,7 @@ R Rename photos
   tmux has-session -t photos
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
   tmux send -t photos 'sh ~/rename_task.sh' ENTER
+  tmux send -t photos 'rm ~/rename_task.sh' ENTER
 
 ##### update #####
 
