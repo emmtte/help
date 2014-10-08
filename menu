@@ -310,6 +310,11 @@ Décompose un fichier djvu en PBM
     ddjvu -format=tiff "$n" "/tmp/pbm/$xi.TIF"
   done
 
++ f *.jpg | f *.JPG & t r
+e Affiche l'EXIF de la photo
+  exiv2 %f
+  read
+
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
   set %t
