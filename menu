@@ -314,7 +314,8 @@ Décompose un fichier djvu en PBM
 e Affiche l'EXIF de la photo
   clear
   exiv2 %f
-  read -p 'Press [Enter] key to continue...'
+  printf 'Press [Enter] key to continue...'
+  read
 
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
