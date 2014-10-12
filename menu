@@ -28,11 +28,18 @@ e download from dropbox
 ##### system #####
 
 + f system & t r
-r rclone photos
+r sync rclone folder with gdrive
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
   tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync pi://media/hdd/rclone gdrive://rclone' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: sync finished"' ENTER
+
++ f system & t r
+r copy photos folder to Google Drive
+  tmux has-session -t rclone
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
+  tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" copy pi://media/hdd/photos gdrive://Photos' ENTER
+  tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos copy finished"' ENTER
 
 + f system & t r
 i dropbox info
