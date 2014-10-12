@@ -25,19 +25,7 @@ alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
-#### Drive
-````
-wget http://xivilization.net/~marek/raspbian/xivilization-raspbian.gpg.key -O - | sudo apt-key add -
-sudo wget http://xivilization.net/~marek/raspbian/xivilization-raspbian.list -O /etc/apt/sources.list.d/xivilization-raspbian.list
-sudo apt-get update
-sudo apt-get install golang
 
-sudo go get github.com/rakyll/drive
-drive help
-/usr/lib/go/bin/drive init /media/hdd/drive
-/usr/lib/go/bin/drive push /media/hdd/drive
-/usr/lib/go/bin/drive pull /media/hdd/drive
-````
 #### rclone
 ````
 curl -o rclone.zip http://downloads.rclone.org/rclone-v1.05-linux-arm.zip
