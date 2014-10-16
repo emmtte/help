@@ -69,17 +69,18 @@ c raspi-config
 
 + f system & t r
 a update/upgrade
+  clear
   sudo apt-get -y autoremove
   sudo apt-get -y update
   sudo apt-get -y upgrade
 
 + f system & t r
 h shutdown
-  sudo halt
+  clear && sudo halt
 
 + f system & t r
 r reboot
-  sudo reboot
+  clear && sudo reboot
 
 ##### config #####
 
@@ -127,7 +128,7 @@ p transmission stop
 
 + f 3rd_party & t r
 m sst start
-  omxplayer http://hi1.streamingsoundtracks.com:8000
+  clear && omxplayer http://hi1.streamingsoundtracks.com:8000
   
 + f 3rd_party & t r
 m sst stop
