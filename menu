@@ -31,7 +31,7 @@ d upload to dropbox
 
 + f * & t r
 e download from dropbox
-  ~/dropbox_uploader.sh download %{Dropbox name file} 
+  ~/dropbox_uploader.sh download %{Dropbox Filename} 
   
 ##### system #####
 
