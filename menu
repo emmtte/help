@@ -52,6 +52,8 @@ r copy photos folder to Google Drive
 + f system & t r
 i dropbox info
   clear && ~/dropbox_uploader.sh info
+  printf 'Press [Enter] key to continue...'
+  read null
 
 + f system & t r
 t dropbox init
@@ -92,11 +94,11 @@ p init pushbullet API
 ##### 3rd party #####
 
 + f 3rd_party  & t r
-b btsync
+b start btsync
   clear && sudo btsync
 
 + f 3rd_party & t r
-k killall btsync
+k stop btsync
   clear && sudo killall btsync
   
 + f 3rd_party & t r
@@ -106,6 +108,8 @@ r minidlna reload
 + f 3rd_party  & t r
 t minidlna status
   clear && sudo service minidlna status
+  printf 'Press [Enter] key to continue...'
+  read null
 
 + f 3rd_party & t r
 s transmission start
@@ -114,6 +118,8 @@ s transmission start
 + f 3rd_party & t r
 t transmission status
   clear && sudo service transmission-daemon status
+  printf 'Press [Enter] key to continue...'
+  read null
 
 + f 3rd_party & t r
 p transmission stop
