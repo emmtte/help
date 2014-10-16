@@ -7,6 +7,14 @@ p gdrive Unite
   tmux send -t unite "./unite" ENTER
 
 + f * & t t
+b move to btsync folder
+  set %t
+  while [ -n "$1" ] ; do
+    mv "$1" /media/hdd/btsync/$(basename "$1")
+    shift
+  done
+
++ f * & t t
 d upload to dropbox
   echo "clear" > ~/dropbox.sh
   d=%d
