@@ -51,14 +51,14 @@ e download from dropbox
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: sync finished"' ENTER
 
 + f backup & t r
-3 sync Google Drive/photos => /media/hdd/photos 
+3 sync /media/hdd/photos => Google Drive/photos
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
   tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync pi://media/hdd/photos gdrive://Photos' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
   
 + f backup & t r
-4 sync /media/hdd/photos => Google Drive/photos
+4 sync Google Drive/photos => /media/hdd/photos
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
   tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync gdrive://Photos pi://media/hdd/photos' ENTER
