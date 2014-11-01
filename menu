@@ -336,32 +336,36 @@ u update mc menu
 ##### tmux #####
 
 + f tmux & t r
-1 attach youtube_dl session 
-  tmux attach-session -t youtube_dl
+1 attach dropbox session
+  tmux attach-session -t dropbox
 
 + f tmux & t r
-2 attach rclone session 
-  tmux attach-session -t rclone
+2 attach flickr session
+  tmux attach-session -t flickr
 
 + f tmux & t r
-3 attach mencoder session 
+3 attach mencoder session
   tmux attach-session -t mencoder
 
 + f tmux & t r
-4 attach youtube session
-  tmux attach-session -t youtube
+4 attach photos session
+  tmux attach-session -t photos
 
 + f tmux & t r
-5 attach dropbox session
-  tmux attach-session -t dropbox
-  
+5 attach rclone session
+  tmux attach-session -t rclone
+
 + f tmux & t r
 6 attach gopro session
   tmux attach-session -t gopro
 
 + f tmux & t r
-7 attach photos session
-  tmux attach-session -t photos
+7 attach youtube session
+  tmux attach-session -t youtube
+
++ f tmux & t r
+8 attach youtube_dl session
+  tmux attach-session -t youtube_dl
 
 ##### useless ######
 
