@@ -28,6 +28,7 @@ d upload to dropbox
   tmux has-session -t dropbox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi
   tmux send -t dropbox 'sh ~/dropbox.sh' ENTER
+  tmux send -t dropbox 'rm ~/dropbox.sh' ENTER
 
 + f * & t r
 e download from dropbox
@@ -300,31 +301,31 @@ u update mc menu
 ##### tmux #####
 
 + f tmux & t r
-d attach youtube_dl session 
+1 attach youtube_dl session 
   tmux attach-session -t youtube_dl
 
 + f tmux & t r
-d attach rclone session 
+2 attach rclone session 
   tmux attach-session -t rclone
 
 + f tmux & t r
-m attach mencoder session 
+3 attach mencoder session 
   tmux attach-session -t mencoder
 
 + f tmux & t r
-y attach youtube session
+4 attach youtube session
   tmux attach-session -t youtube
 
 + f tmux & t r
-y attach dropbox session
+5 attach dropbox session
   tmux attach-session -t dropbox
   
 + f tmux & t r
-y attach gopro session
+6 attach gopro session
   tmux attach-session -t gopro
 
 + f tmux & t r
-y attach photos session
+7 attach photos session
   tmux attach-session -t photos
 
 ##### useless ######
