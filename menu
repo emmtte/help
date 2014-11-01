@@ -292,6 +292,32 @@ R Rename photos
   tmux send -t photos 'sh ~/rename_task.sh' ENTER
   tmux send -t photos 'rm ~/rename_task.sh' ENTER
 
++ d * & t d
+R Do list of error JPG exif with folder name
+  cat > ~/checkjpg_task.sh << 'EOF'
+  if [ ! -f /usr/bin/exiv2 ]; then echo "ERROR: Please install exiv2"; exit; fi
+  printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > "result.txt"
+  # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
+  COUNTER=1
+  find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
+  EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
+  printf "$(basename "$FILE"):" >> "result.txt" 
+  DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ' '`
+  printf "$DAT==>$EXI" >> "result.txt"
+    if [ -z "$EXI" ]; then
+      printf " NO  DA TE" >> "result.txt"
+    fi
+    if [ "$DAT" != "$EXI" ] ; then 
+      printf " NOT MATCH" >> "result.txt"
+    fi
+  printf "\n" >> "result.txt"
+  done
+  EOF
+  tmux has-session -t photos
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
+  tmux send -t photos 'sh ~/checkjpg_task.sh' ENTER
+  #tmux send -t photos 'rm ~/checkjpg_task.sh' ENTER
+  
 ##### update #####
 
 + f update & t r
