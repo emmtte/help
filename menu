@@ -84,6 +84,13 @@ E download from google drive
   tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync gdrive://Photos pi://media/hdd/photos' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
 
++ f backup & t r
+5 shrink photos to family google+ account
+  tmux has-session -t gplus
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gplus ; fi
+  tmux send -t gplus 'picasawebsync.py -d /media/hdd/photos --shrink' ENTER
+  tmux send -t gplus 'pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"' ENTER
+
 ##### system #####
 
 + f system & t r
@@ -371,27 +378,31 @@ u update mc menu
   tmux attach-session -t flickr
 
 + f tmux & t r
-3 attach mencoder session
+3 attach gplus session
+  tmux attach-session -t gplus
+
++ f tmux & t r
+4 attach mencoder session
   tmux attach-session -t mencoder
 
 + f tmux & t r
-4 attach photos session
+5 attach photos session
   tmux attach-session -t photos
 
 + f tmux & t r
-5 attach rclone session
+6 attach rclone session
   tmux attach-session -t rclone
 
 + f tmux & t r
-6 attach gopro session
+7 attach gopro session
   tmux attach-session -t gopro
 
 + f tmux & t r
-7 attach youtube session
+8 attach youtube session
   tmux attach-session -t youtube
 
 + f tmux & t r
-8 attach youtube_dl session
+9 attach youtube_dl session
   tmux attach-session -t youtube_dl
 
 ##### useless ######
