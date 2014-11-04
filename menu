@@ -7,7 +7,7 @@ p gdrive Unite
   tmux send -t unite "./unite" ENTER
 
 + f * & t t
-b move to btsync folder
+A move to btsync folder
   set %t
   while [ -n "$1" ] ; do
     mv "$1" "/media/hdd/btsync/$(basename "$1")"
@@ -15,7 +15,7 @@ b move to btsync folder
   done
 
 + f * & t t
-d upload to dropbox
+B upload to dropbox
   echo "clear" > ~/dropbox.sh
   d=%d
   echo "cd $d" >> ~/dropbox.sh
@@ -31,8 +31,28 @@ d upload to dropbox
   tmux send -t dropbox 'rm ~/dropbox.sh' ENTER
 
 + f * & t r
-e download from dropbox
+C download from dropbox
   ~/dropbox_uploader.sh download %{Dropbox Filename}
+  
++ f * & t t
+D upload to google drive
+  echo "clear" > ~/google_drive.sh
+  d=%d
+  echo "cd $d" >> ~/google_drive.sh
+  set %t
+  while [ -n "$1" ] ; do
+    echo "drive push \"$1\"" >> ~/google_drive.sh
+    shift
+  done
+  echo "pushbullet push all note Raspberry_Pi FilesUploadedToGoogleDrive" >> ~/google_drive.sh
+  tmux has-session -t dropbox
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi
+  tmux send -t dropbox 'sh ~/google_drive.sh' ENTER
+  tmux send -t dropbox 'rm ~/google_drive.sh' ENTER
+
++ f * & t r
+E download from google drive
+  drive pull %{Dropbox Filename}
 
 ##### backup #####
 
