@@ -91,6 +91,25 @@ E download from google drive
   tmux send -t gplus 'picasawebsync.py -d /media/hdd/photos --shrink' ENTER
   tmux send -t gplus 'pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"' ENTER
 
++ f backup & t r
+6 backup youtube files to /hdd/youtube
+  cat > ~/youtube_task.sh << 'EOF'
+  google youtube list > youtube.txt
+  read -e -p "Youtube Username: " -i "@gmail.com" USER
+  read -e -p "Youtube Password: " -s PASS
+  while read ligne  
+  do 
+    FILENAME=`echo "$ligne" | cut -d ',' -f  1`
+    if [ "${FILENAME: -4}" != ".avi" ] ; then FILENAME="$FILENAME.avi" ; fi
+    URL=`echo "$ligne" | cut -d ',' -f  2`
+    youtube-dl --username $USER --password $PASS -o "/media/hdd/youtube/$FILENAME" "$URL"
+  done < /home/pi/youtube.txt
+  EOF
+  tmux has-session -t youtube_dl
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
+  tmux send -t youtube_dl 'sh ~/youtube_task.sh' ENTER
+  tmux send -t youtube_dl 'rm ~/youtube_task.sh' ENTER
+  
 ##### system #####
 
 + f system & t r
@@ -183,7 +202,6 @@ y Youtube Download Playlist
   tmux has-session -t youtube_dl
   f [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube "youtube-dl -cit --netrc --max-quality FORMAT --output '/media/hdd/youtube/%(title)s.%(ext)s' ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
-
 
 ##### gopro #####  
 
