@@ -105,11 +105,12 @@ E download from google drive
     URL=`echo "$ligne" | cut -d ',' -f  2`
     youtube-dl --username $USER --password $PASS -o "/media/hdd/youtube/$FILENAME" "$URL"
   done < /home/pi/youtube.txt
+  rm youtube.txt
+  rm ~/youtube_task.sh
   EOF
   tmux has-session -t youtube_dl
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube_dl 'bash ~/youtube_task.sh' ENTER
-  tmux send -t youtube_dl 'rm ~/youtube_task.sh' ENTER
   
 ##### system #####
 
