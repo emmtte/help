@@ -93,24 +93,24 @@ E download from google drive
 
 + f backup & t r
 6 backup youtube files to /hdd/youtube
-  cat > ~/youtube_task.sh << 'EOF'
+  cat > /tmp/youtube_task.sh << 'EOF'
   clear
   read -e -p "Youtube Username: " -i "@gmail.com" USER
   read -e -p "Youtube Password: " -s PASS
-  google youtube list > youtube.txt
+  google youtube list > /tmp/youtube.txt
   while read ligne
   do 
     FILENAME=`echo "$ligne" | cut -d ',' -f  1`
     if [ "${FILENAME: -4}" != ".avi" ] ; then FILENAME="$FILENAME.avi" ; fi
     URL=`echo "$ligne" | cut -d ',' -f  2`
     youtube-dl --username $USER --password $PASS -o "/media/hdd/youtube/$FILENAME" "$URL"
-  done < /home/pi/youtube.txt
-  rm youtube.txt
-  rm ~/youtube_task.sh
+  done < /tmp/youtube.txt
+  rm /tmp/youtube.txt
+  rm /tmp/youtube_task.sh
   EOF
   tmux has-session -t youtube_dl
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
-  tmux send -t youtube_dl 'bash ~/youtube_task.sh' ENTER
+  tmux send -t youtube_dl 'bash /tmp/youtube_task.sh' ENTER
   
 ##### system #####
 
