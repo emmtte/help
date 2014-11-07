@@ -108,7 +108,7 @@ E download from google drive
   tmux has-session -t youtube_dl
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube_dl 'sh ~/youtube_task.sh' ENTER
-  tmux send -t youtube_dl 'rm ~/youtube_task.sh' ENTER
+  #tmux send -t youtube_dl 'rm ~/youtube_task.sh' ENTER
   
 ##### system #####
 
