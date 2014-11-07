@@ -103,7 +103,7 @@ E download from google drive
     FILENAME=`echo "$ligne" | cut -d ',' -f  1`
     if [ "${FILENAME: -4}" != ".avi" ] ; then FILENAME="$FILENAME.avi" ; fi
     URL=`echo "$ligne" | cut -d ',' -f  2`
-    youtube-dl --username $USER --password $PASS -o "/media/hdd/youtube/$FILENAME" "$URL"
+    youtube-dl --username $USER --password $PASS --twofactor -o "/media/hdd/youtube/$FILENAME" "$URL"
   done < /tmp/youtube.txt
   rm /tmp/youtube.txt
   rm /tmp/youtube_task.sh
