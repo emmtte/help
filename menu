@@ -359,21 +359,21 @@ R Rename photos
 R Do list of error JPG exif with folder name
   cat > ~/checkjpg_task.sh << 'EOF'
   if [ ! -f /usr/bin/exiv2 ]; then echo "ERROR: Please install exiv2"; exit; fi
-  printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > "result.txt"
+  printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > "/tmp/photos.txt"
   # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
   EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
-  printf "$(basename "$FILE"):" >> "result.txt" 
+  printf "$(basename "$FILE"):" >> /tmp/photos.txt" 
   DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ' '`
-  printf "$DAT==>$EXI" >> "result.txt"
+  printf "$DAT==>$EXI" >> "/tmp/photos.txt"
     if [ -z "$EXI" ]; then
-      printf " NO  DA TE" >> "result.txt"
+      printf " NO  DA TE" >> "/tmp/photos.txt"
     fi
     if [ "$DAT" != "$EXI" ] ; then 
-      printf " NOT MATCH" >> "result.txt"
+      printf " NOT MATCH" >> "/tmp/photos.txt"
     fi
-  printf "\n" >> "result.txt"
+  printf "\n" >> "/tmp/photos.txt"
   done
   EOF
   tmux has-session -t photos
