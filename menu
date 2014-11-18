@@ -161,7 +161,7 @@ p init pushbullet API
 
 + f 3rd_party  & t r
 b start btsync
-  clear && sudo btsync
+  clear && sudo btsync --webui.listen 0.0.0.0:8888
 
 + f 3rd_party & t r
 k stop btsync
