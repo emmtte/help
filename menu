@@ -364,7 +364,7 @@ R Do list of error JPG exif with folder name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
   EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
-  printf "$(basename "$FILE"):" >> /tmp/photos.txt" 
+  printf "$(basename "$FILE"):" >> "/tmp/photos.txt" 
   DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ' '`
   printf "$DAT==>$EXI" >> "/tmp/photos.txt"
     if [ -z "$EXI" ]; then
