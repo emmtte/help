@@ -3,10 +3,12 @@ Raspberry-Service
 
 ### Prerequisites
 ````
-sudo apt-get install exif googlecl imagemagick mencoder
+sudo apt-get install mc exif googlecl imagemagick mencoder
+mkdir /home/pi/service/
+touch /home/pi/service/system
+touch /home/pi/service/tmux
+
 ````
-
-
 #### Midnight commander
 ````
 sudo apt-get remove mc
