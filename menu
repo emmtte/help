@@ -122,7 +122,7 @@ i dropbox info
 
 + f system & t r
 t dropbox init
-  clear && ~/dropbox_uploader.sh init
+  clear && dropbox_uploader init
 
 + f system & t r
 u dropbox unlink
