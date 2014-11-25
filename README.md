@@ -5,6 +5,8 @@ Raspberry-Service
 ````
 sudo apt-get install mc exif googlecl imagemagick mencoder
 mkdir /home/pi/service/
+touch /home/pi/service/3rd_party
+touch /home/pi/service/backup
 touch /home/pi/service/system
 touch /home/pi/service/tmux
 
