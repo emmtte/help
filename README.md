@@ -9,6 +9,7 @@ touch /home/pi/service/3rd_party
 touch /home/pi/service/backup
 touch /home/pi/service/system
 touch /home/pi/service/tmux
+touch /home/pi/service/update
 
 ````
 #### Midnight commander
