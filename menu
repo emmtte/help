@@ -21,7 +21,7 @@ B upload to dropbox
   echo "cd $d" >> ~/dropbox.sh
   set %t
   while [ -n "$1" ] ; do
-    echo "~/dropbox_uploader.sh upload \"$1\" \"$1\"" >> ~/dropbox.sh
+    echo "dropbox_uploader upload \"$1\" \"$1\"" >> ~/dropbox.sh
     shift
   done
   echo "pushbullet push all note Raspberry_Pi FilesUploadedToDropbox" >> ~/dropbox.sh
@@ -32,7 +32,7 @@ B upload to dropbox
 
 + f * & t r
 C download from dropbox
-  ~/dropbox_uploader.sh download %{Dropbox Filename}
+  dropbox_uploader download %{Dropbox Filename}
   
 + f * & t t
 D upload to google drive
