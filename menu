@@ -156,6 +156,7 @@ p init pushbullet API
   clear && echo "Please visit https://www.pushbullet.com/account and"
   read -p "Enter Access Token: " API
   echo "API_KEY=$API" > ~/.config/pushbullet
+  pushbullet push all note "Pushbullet tested :)"
   
 + f system & t r
 t init dropbox
