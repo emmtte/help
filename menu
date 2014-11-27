@@ -151,6 +151,8 @@ i init youtube upload
 
 + f system & t r
 p init pushbullet API
+  sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/bin/pushbullet
+  sudo chmod a+x /usr/bin/pushbullet
   echo "API_KEY=%{Enter your API pushbullet}" > ~/.config/pushbullet
   
 + f system & t r
