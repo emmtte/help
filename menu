@@ -153,7 +153,9 @@ i init youtube upload
 p init pushbullet API
   sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/bin/pushbullet
   sudo chmod a+x /usr/bin/pushbullet
-  echo "API_KEY=%{Enter your API pushbullet}" > ~/.config/pushbullet
+  clear && echo "Please visit https://www.pushbullet.com/account and"
+  read -e -p "Enter Access Token: " API
+  echo "API_KEY=$API" > ~/.config/pushbullet
   
 + f system & t r
 t init dropbox
