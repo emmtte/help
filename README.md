@@ -22,8 +22,8 @@ cd mc-4.8.13
 ./configure
 make
 sudo make install
-update-alternatives --set editor /usr/local/bin/mcedit
-export EDITOR=/usr/local/bin/mcedit
+
+echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
 ````
 #### Menu
 ````
