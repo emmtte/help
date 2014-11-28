@@ -3,7 +3,7 @@ Raspberry-Service
 
 ### Prerequisites
 ````
-sudo apt-get install mc exif googlecl imagemagick mencoder
+sudo apt-get install tmux exif mencoder
 mkdir /home/pi/service/
 touch /home/pi/service/3rd_party
 touch /home/pi/service/backup
