@@ -22,7 +22,6 @@ J Convert TIFF to JPG
     shift
   done
 
-
 + f * & t t
 B upload to dropbox
   echo "clear" > ~/dropbox.sh
