@@ -33,7 +33,8 @@ echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
 
-#### rclone
+#### Rclone
+https://github.com/ncw/rclone
 ````
 curl -o rclone.zip http://downloads.rclone.org/rclone-v1.07-linux-arm.zip
 unzip rclone.zip
@@ -42,7 +43,7 @@ rclone config
 rclone sync gdrive:/Photos_Old pi:/media/hdd/rclone
 ````
 #### Pushbullet
-https://www.pushbullet.com/account
+https://github.com/Red5d/pushbullet-bash
 ````
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/bin/pushbullet
 sudo chmod a+x /usr/bin/pushbullet
@@ -50,6 +51,7 @@ sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh
 sudo chmod a+x /usr/bin/JSON.sh
 echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
+https://www.pushbullet.com/account
 
 #### Youtube-Upload
 https://github.com/tokland/youtube-upload
