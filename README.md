@@ -65,6 +65,7 @@ youtube-upload --title="test" --category="Music" --privacy="private" --location=
 ````
 
 #### Youtube-dl
+https://github.com/rg3/youtube-dl
 ````
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/bin/youtube-dl
 sudo chmod a+x /usr/bin/youtube-dl
