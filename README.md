@@ -5,12 +5,8 @@ Raspberry-Service
 ````
 sudo apt-get install tmux exif mencoder
 mkdir /home/pi/service/
-touch /home/pi/service/3rd_party
-touch /home/pi/service/backup
-touch /home/pi/service/system
-touch /home/pi/service/tmux
-touch /home/pi/service/update
-
+cd /home/pi/service/
+touch 3rd_party backup system tmux update
 ````
 #### Midnight commander
 ````
