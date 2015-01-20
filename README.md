@@ -51,6 +51,11 @@ sudo chmod a+x /usr/bin/JSON.sh
 echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
 
+#### GoogleCL
+````
+sudo apt-get install googlecl
+````
+
 #### Youtube-dl
 ````
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/bin/youtube-dl
