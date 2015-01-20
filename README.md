@@ -54,7 +54,7 @@ echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 #### Youtube-Upload
 https://github.com/tokland/youtube-upload
 ````
-pip install --upgrade google-api-python-client
+sudo easy_install --upgrade google-api-python-client
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
 cd youtube-upload-master
