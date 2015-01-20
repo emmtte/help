@@ -51,9 +51,16 @@ sudo chmod a+x /usr/bin/JSON.sh
 echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
 
-#### GoogleCL
+#### Youtube-Upload
 ````
-sudo apt-get install googlecl
+pip install --upgrade google-api-python-client
+wget https://github.com/tokland/youtube-upload/archive/master.zip
+unzip master.zip
+cd youtube-upload-master
+sudo python setup.py install
+
+mv youtube.json /home/pi/.config/youtube.json
+youtube-upload --category=Entertainment --access=unlisted --client-secrets=/home/pi/.config/youtube.json /media/hdd/gopro/videos/chats/youtube.avi
 ````
 
 #### Youtube-dl
