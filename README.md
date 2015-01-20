@@ -32,8 +32,8 @@ alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
-Third-Party Command Line Operations
-===================================
+Third-Party Command Line Utilities
+==================================
 #### Rclone
 https://github.com/ncw/rclone
 ````
