@@ -18,7 +18,7 @@ A move to btsync folder
 J Convert TIFF to JPG
   set %t
   while [ -n "$1" ] ; do
-    convert "$1" -quality 100 "/media/hdd/btsync/$(basename "$1")"
+    convert "$1" "`$1 | cut -d '.' -f1`.jpg"
     shift
   done
 
