@@ -258,10 +258,10 @@ y upload to youtube
   echo "cd $d" >> ~/task.sh
   set %t
   while [ -n "$1" ]; do
-    echo "mv \"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
-    echo "google youtube post --category Entertainment --access=unlisted --title=\"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
-    echo "mv /media/hdd/tmp/video.avi \"$1\"" >> ~/task.sh
-    echo "pushbullet push all note \"Raspberry Pi\" \"La vidéo $1 est maintenant sur YouTube\"" >> ~/task.sh
+    echo 'mv "$1" /media/hdd/tmp/video.avi' >> ~/task.sh
+    echo 'youtube-upload --title="$1" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" /media/hdd/tmp/video.avi" >> ~/task.sh
+    echo 'mv /media/hdd/tmp/video.avi "$1"' >> ~/task.sh
+    echo 'pushbullet push all note "Raspberry Pi" "La vidéo $1 est maintenant sur YouTube"' >> ~/task.sh
     shift
   done
   tmux has-session -t youtube
