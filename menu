@@ -253,9 +253,8 @@ g gopro: concat & upload
 + f *.MP4 & t t
 y upload to youtube
   mkdir /media/hdd/tmp
-  echo "clear" > ~/task.sh
-  d=%d
-  echo "cd $d" >> ~/task.sh
+  echo 'clear' > ~/task.sh
+  echo 'cd "%d"' >> ~/task.sh
   set %t
   while [ -n "$1" ]; do
     echo 'mv "$1" /media/hdd/tmp/video.avi' >> ~/task.sh
