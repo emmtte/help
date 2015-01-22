@@ -258,7 +258,7 @@ y upload to youtube
   echo "cd $d" >> ~/task.sh
   set %t
   while [ -n "$1" ]; do
-    echo "mv \"$1\" /media/hdd/tmp/video.avi" >> ~/task.sh
+    echo 'mv "$1" /media/hdd/tmp/video.avi' >> ~/task.sh
     echo 'youtube-upload --title="$1" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" /media/hdd/tmp/video.avi" >> ~/task.sh
     echo 'mv /media/hdd/tmp/video.avi "$1"' >> ~/task.sh
     echo 'pushbullet push all note "Raspberry Pi" "La vidéo $1 est maintenant sur YouTube"' >> ~/task.sh
@@ -285,7 +285,7 @@ g gopro: create stopmotion
   mencoder -ovc lavc -lavcopts vcodec=$codec:vpass=1:$opt -mf type=jpg:w=$width:h=$height:fps=15 -vf harddup -nosound -o /dev/null mf://@files.lst
   mencoder -ovc lavc -lavcopts vcodec=$codec:vpass=2:$opt -mf type=jpg:w=$width:h=$height:fps=15 -vf harddup -nosound -o video.avi mf://@files.lst
   rm -f divx2pass.log
-  fi
+  f
 
 + f *.avi | f *.AVI & t t
 q x286 test
