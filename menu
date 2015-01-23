@@ -253,10 +253,10 @@ g gopro: concat & upload
 ##################################################################################################
 + f *.MP4 & t t
 y upload to youtube test
-for i in %t
-do
+  for i in %t
+  do
    echo "$i"
-done
+  done
 
 
 + f *.MP4 & t t
