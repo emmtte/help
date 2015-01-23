@@ -253,8 +253,7 @@ g gopro: concat & upload
 ##################################################################################################
 + f *.MP4 & t t
 y upload to youtube test
-  for i in %t
-  do
+  for i in %t; do
    echo "$i"
   done
 
@@ -264,16 +263,14 @@ y upload to youtube
   mkdir /media/hdd/tmp
   clear
   cd "%d"
-  set %t
-  while [ -n "$1" ]; do
+  for f in %t; do
     cat > /tmp/youtube_task.sh << 'EOF'
-    mv "$1" /media/hdd/tmp/video.avi
-    youtube-upload --title="$1" --category="Entertainment" --privacy="private" \
+    mv "$f" /media/hdd/tmp/video.avi
+    youtube-upload --title="$f" --category="Entertainment" --privacy="private" \
     --location="=" --client-secrets="/home/pi/.config/youtube.json" /media/hdd/tmp/video.avi
-    mv /media/hdd/tmp/video.avi "$1"
-    pushbullet push all note "Raspberry Pi" "La vidéo $1 est maintenant sur YouTube"
+    mv /media/hdd/tmp/video.avi "$f"
+    pushbullet push all note "Raspberry Pi" "La vidéo $f est maintenant sur YouTube"
     EOF
-    shift
   done
   tmux has-session -t youtube
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
