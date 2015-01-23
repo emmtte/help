@@ -260,18 +260,18 @@ y upload to youtube test
 
 + f *.MP4 & t t
 y upload to youtube
+  cat > /tmp/youtube_task.sh << 'EOF'
   mkdir /media/hdd/tmp
   clear
   cd "%d"
   for f in %t; do
-    cat > /tmp/youtube_task.sh << 'EOF'
     mv "$f" /media/hdd/tmp/video.avi
     youtube-upload --title="$f" --category="Entertainment" --privacy="private" \
     --location="=" --client-secrets="/home/pi/.config/youtube.json" /media/hdd/tmp/video.avi
     mv /media/hdd/tmp/video.avi "$f"
     pushbullet push all note "Raspberry Pi" "La vidéo $f est maintenant sur YouTube"
-    EOF
   done
+  EOF
   tmux has-session -t youtube
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
   tmux send -t youtube 'sh /tmp/youtube_task.sh' ENTER
