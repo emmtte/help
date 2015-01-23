@@ -256,7 +256,7 @@ y upload to youtube
   cat > /tmp/youtube_task.sh << EOF
   clear
   cd "%d"
-  set %t
+  set "%t"
   while [ -n "$1" ]; do
     mv "$1" /media/hdd/tmp/video.avi
     youtube-upload --title="$1" --category="Entertainment" --privacy="private" \
