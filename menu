@@ -257,7 +257,7 @@ y upload to youtube
   cd "%d"
   set %t
   while [ -n "$1" ]; do
-    cat > /tmp/youtube_task.sh << "EOF"
+    cat > /tmp/youtube_task.sh << 'EOF'
     mv "$1" /media/hdd/tmp/video.avi
     youtube-upload --title="$1" --category="Entertainment" --privacy="private" \
     --location="=" --client-secrets="/home/pi/.config/youtube.json" /media/hdd/tmp/video.avi
