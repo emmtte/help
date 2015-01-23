@@ -250,6 +250,15 @@ g gopro: concat & upload
   tmux send -t gopro 'youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "%d/youtube.avi"' ENTER
   tmux send -t gopro 'pushbullet push all note "Concatenated & Uploaded to Youtube"' ENTER
 
+##################################################################################################
++ f *.MP4 & t t
+y upload to youtube test
+for i in %t
+do
+   echo "$i"
+done
+
+
 + f *.MP4 & t t
 y upload to youtube
   mkdir /media/hdd/tmp
