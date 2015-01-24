@@ -30,6 +30,13 @@ source ~/.profile
 ````
 Third-Party Command Line Utilities
 ==================================
+#### Google CL
+https://github.com/vinitkumar/googlecl
+````
+git clone https://github.com/vinitkumar/googlecl.git
+cd googlecl
+sudo python setup.py install
+````
 #### Rclone
 https://github.com/ncw/rclone
 ````
