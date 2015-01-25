@@ -317,6 +317,14 @@ m merge videos mp3
   tmux send -t mencoder 'mencoder -ovc copy -oac mp3lame -o %d.avi %t' ENTER
   tmux send -t mencoder 'pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est compilée"' ENTER
 
++ f *.mov | f *.MOV | f *.avi | f *.AVI & tr
+c cut video
+  read -e -p "Start cut: " -i "00:00:00" start
+  read -e -p "Stop cut: " -i "00:00:00" stop
+  mencoder -ss $start -endpos $stop -oac copy -ovc copy %f -o out.avi
+  pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
+
+
 ##### gphotos2 #####
 
 + f *.jpg | f *.JPG & t t
