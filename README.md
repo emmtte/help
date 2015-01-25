@@ -28,6 +28,12 @@ alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
+#### dash to bash and vice cersa
+````
+sudo ln -sf bash /bin/sh
+sudo ln -sf dash /bin/sh
+````
+
 Third-Party Command Line Utilities
 ==================================
 #### Google CL
