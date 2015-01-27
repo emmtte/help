@@ -252,7 +252,6 @@ g gopro: concat & upload
   tmux send -t gopro 'youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "%d/youtube.avi"' ENTER
   tmux send -t gopro 'pushbullet push all note "Concatenated & Uploaded to Youtube"' ENTER
 
-##################################################################################################
 + f *.MP4 & t t
 y upload to youtube
   cat > /tmp/youtube_task.sh << 'EOF'
@@ -311,14 +310,14 @@ m merge videos mp3
   tmux send -t mencoder 'cd %d' ENTER
   tmux send -t mencoder 'mencoder -ovc copy -oac mp3lame -o %d.avi %t' ENTER
   tmux send -t mencoder 'pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est compilée"' ENTER
-
+##############################################################################
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
 c cut video
   clear
   read -e -p "Start : " -i "00:00:00" start
   read -e -p "Stop  : " -i "00:00:00" stop
   echo "Please Wait..."
-  mencoder -ss $start -endpos $stop  −really−quiet -ovc copy -oac pcm %f -o %b-CUT.%x
+  mencoder -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
   #pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 
