@@ -460,7 +460,7 @@ u update mc menu
 t convert to jpg
   set %t
   while [ -n "$1" ]; do
-    convert "$1" -quality 100 "basename("$1").jpg"
+    convert "$1" -quality 100 $(basename "$1").jpg
     shift
   done
 
