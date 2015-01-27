@@ -222,7 +222,9 @@ y Youtube Download Playlist
   f [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube "youtube-dl -cit --netrc --max-quality FORMAT --output '/media/hdd/youtube/%(title)s.%(ext)s' ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
 
+#################
 ##### gopro #####  
+#################
 
 + f 3rd_party & t r
 g gopro: sd copy
@@ -251,13 +253,6 @@ g gopro: concat & upload
   tmux send -t gopro 'pushbullet push all note "Concatenated & Uploaded to Youtube"' ENTER
 
 ##################################################################################################
-+ f *.MP4 & t t
-y upload to youtube test
-  for i in %t; do
-   echo "$i"
-  done
-
-
 + f *.MP4 & t t
 y upload to youtube
   cat > /tmp/youtube_task.sh << 'EOF'
@@ -461,20 +456,6 @@ u update mc menu
   tmux attach-session -t youtube_dl
 
 ##### useless ######
-
-+ f *.djv | f *.djvu & t n
-Décompose un fichier djvu en PBM
-  x=0
-  cible=""
-  mkdir -p /tmp/djvu/
-  mkdir -p /tmp/pbm/
-  djvmcvt -i %f /tmp/djvu/ /tmp/index.djv
-  find "/tmp/djvu/" -iname "*.djv" -type f | while read n; do
-    xi=`expr $xi + 1`
-    echo $xi
-    ddjvu -format=tiff "$n" "/tmp/pbm/$xi.TIF"
-  done
-
 + f *.jpg | f *.JPG & t r
 e Affiche l'EXIF de la photo
   clear
