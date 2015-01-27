@@ -319,10 +319,12 @@ m merge videos mp3
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
 c cut video
-  read -e -p "Start cut: " -i "00:00:00" start
-  read -e -p "Stop cut: " -i "00:00:00" stop
-  mencoder -ss $start -endpos $stop -oac copy -ovc copy %f -o out.avi
-  pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
+  clear
+  read -e -p "Start : " -i "00:00:00" start
+  read -e -p "Stop  : " -i "00:00:00" stop
+  echo "Please Wait..."
+  mencoder -ss $start -endpos $stop -quiet -oac copy -ovc copy %b-CUT.%x -o out.avi
+  #pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 
 ##### gphotos2 #####
