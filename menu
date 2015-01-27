@@ -455,6 +455,15 @@ u update mc menu
   tmux attach-session -t youtube_dl
 
 ##### useless ######
+
++ f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
+t convert to jpg
+  set %t
+  while [ -n "$1" ]; do
+    convert "$1" -quality 100 "basename("$1").jpg"
+    shift
+  done
+
 + f *.jpg | f *.JPG & t r
 e Affiche l'EXIF de la photo
   clear
