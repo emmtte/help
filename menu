@@ -318,7 +318,7 @@ c cut video
   read -e -p "Start : " -i "00:00:00" start
   read -e -p "Stop  : " -i "00:00:00" stop
   echo "Please Wait..."
-  mencoder -ss $start -endpos $stop -quiet -oac copy -ovc copy %b-CUT.%x -o out.avi
+  mencoder -ss $start -endpos $stop -quiet -oac copy -ovc copy %f -o %b-CUT.%x
   #pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 
