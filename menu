@@ -214,12 +214,6 @@ m sst start
 m sst stop
   clear && killall omxplayer
 
-+ f 3rd_party & t r
-y Youtube Download Playlist
-  tmux has-session -t youtube_dl
-  f [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
-  tmux send -t youtube "youtube-dl -cit --netrc --max-quality FORMAT --output '/media/hdd/youtube/%(title)s.%(ext)s' ~Playlist:http://www.youtube.com/playlist?list=~" ENTER
-
 #################
 ##### gopro #####  
 #################
