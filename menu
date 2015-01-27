@@ -109,10 +109,10 @@ E download from google drive
     FILENAME=`echo "$ligne" | cut -d ',' -f  1`
     if [ "${FILENAME: -4}" != ".avi" ] ; then FILENAME="$FILENAME.avi" ; fi
     URL=`echo "$ligne" | cut -d ',' -f  2`
-    youtube-dl -o "/media/hdd/youtube/$FILENAME" "$URL"
+    youtube-dl --max-quality FORMAT --output "/media/hdd/youtube/%(title)s.%(ext)s" "$URL"
   done < /tmp/youtube.txt
-  rm /tmp/youtube.txt
-  rm /tmp/youtube_task.sh
+  #rm /tmp/youtube.txt
+  #rm /tmp/youtube_task.sh
   EOF
   tmux has-session -t youtube_dl
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
