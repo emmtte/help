@@ -241,7 +241,7 @@ g gopro: sd copy
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
   tmux send -t gopro 'sh ~/gopro_task.sh' ENTER
   
-+ f *.MP4 & t r
++ f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t r
 g gopro: concat & upload
   tmux has-session -t gopro
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
@@ -252,7 +252,7 @@ g gopro: concat & upload
   tmux send -t gopro 'youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "%d/youtube.avi"' ENTER
   tmux send -t gopro 'pushbullet push all note "Concatenated & Uploaded to Youtube"' ENTER
 
-+ f *.MP4 & t t
++ f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t t
 y upload to youtube
   cat > /tmp/youtube_task.sh << 'EOF'
   mkdir /media/hdd/tmp
