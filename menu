@@ -262,12 +262,20 @@ y upload to youtube
 
 + f 3rd_party & t r
 g gopro: create stopmotion
+  clear
+  while true; do
+    read -p "Image Crop : Top, Center or Bottom ?" answer
+    case $answer in
+        [Tt]* ) CUT="2592x1456+0+0"  ;;
+        [Cc]* ) CUT="2592x1456+0+244";;
+        [Bb]* ) CUT="2592x1456+0+488";;
+        * ) echo "Please answer [T], [C] or [B]";;
+    esac
+  done
   cd %d
   mkdir CROP
   for img in *.JPG; do
-  convert "$img" -crop 2592x1456+0+488 "CROP/$img-CROP.JPG" #bottom
-  #convert $img -crop 2592x1456+0+0 CROP/$img-CROP.JPG #top
-  #convert $img -crop 2592x1456+0+244 CROP/$img-CROP.JPG #middle
+  convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
   done
   fi
   obr=$(($width * $height * 60 * 25 / 256))
