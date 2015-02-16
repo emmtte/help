@@ -286,29 +286,6 @@ g GOPRO: Create Stopmotion
   rm -f divx2pass.log
   f
 
-+ f *.avi | f *.AVI & t t
-q x286 test
-  tmux has-session -t mencoder
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
-  tmux send -t mencoder 'clear' ENTER
-  tmux send -t mencoder 'cd %d' ENTER
-  set %t
-  while [ -n "$1" ]; do
-     tmux send -t mencoder 'mencoder -vf yadif=1 -ovc x264 -oac mp3lame -o test.x264.avi %t' ENTER
-    shift
-  done
-  tmux send -t mencoder 'echo "La vidéo %t est maintenant compilée" | sendxmpp -t cat .\email' ENTER
-
-+ f *.avi | f *.AVI & t t
-m merge videos mp3
-  tmux has-session -t mencoder
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s mencoder ; fi
-  tmux send -t mencoder 'clear' ENTER
-  tmux send -t mencoder 'cd %d' ENTER
-  tmux send -t mencoder 'mencoder -ovc copy -oac mp3lame -o %d.avi %t' ENTER
-  tmux send -t mencoder 'pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est compilée"' ENTER
-  
-
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
 c cut video
   clear
