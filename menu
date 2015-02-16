@@ -266,9 +266,9 @@ g GOPRO: Create Stopmotion
   while true; do
     read -p "Image Crop : Top, Center or Bottom ?" answer
     case $answer in
-        [Tt]* ) CUT="2592x1456+0+0"  ;;
-        [Cc]* ) CUT="2592x1456+0+244";;
-        [Bb]* ) CUT="2592x1456+0+488";;
+        [Tt]* ) CUT="2592x1456+0+0"  ;break;;
+        [Cc]* ) CUT="2592x1456+0+244";break;;
+        [Bb]* ) CUT="2592x1456+0+488";break;;
         * ) echo "Please answer [T], [C] or [B]";;
     esac
   done
