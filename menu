@@ -277,7 +277,6 @@ g GOPRO: Create Stopmotion
   for img in *.JPG; do
   convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
   done
-  fi
   obr=$(($width * $height * 60 * 25 / 256))
   opt="vbitrate=$obr:mbd=2:keyint=132:vqblur=1.0:cmp=2:subcmp=2:dia=2:mv0:last_pred=3"
   codec="msmpeg4v2"
