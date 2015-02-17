@@ -1,4 +1,9 @@
-##### usefull #####
+#    # # #####  #    # #  ####  #    # #####   ####   ####  #    # #    #   ##   #    # #####  ###### #####
+##  ## # #    # ##   # # #    # #    #   #    #    # #    # ##  ## ##  ##  #  #  ##   # #    # #      #    #
+# ## # # #    # # #  # # #      ######   #    #      #    # # ## # # ## # #    # # #  # #    # #####  #    #
+#    # # #    # #  # # # #  ### #    #   #    #      #    # #    # #    # ###### #  # # #    # #      #####
+#    # # #    # #   ## # #    # #    #   #    #    # #    # #    # #    # #    # #   ## #    # #      #   #
+#    # # #####  #    # #  ####  #    #   #     ####   ####  #    # #    # #    # #    # #####  ###### #    #
 
 + f *.pdf & t r
 p gdrive Unite
@@ -61,8 +66,13 @@ D upload to google drive
 + f * & t r
 E download from google drive
   drive pull %{Dropbox Filename}
-
-##### backup #####
+  
+#####    ##    ####  #    # #    # #####
+#    #  #  #  #    # #   #  #    # #    #
+#####  #    # #      ####   #    # #    #
+#    # ###### #      #  #   #    # #####
+#    # #    # #    # #   #  #    # #
+#####  #    #  ####  #    #  ####  #
 
 + f backup & t r
 1 sync /media/hdd/photos to flickr
@@ -116,7 +126,12 @@ E download from google drive
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube_dl 'bash /tmp/youtube_task.sh' ENTER
   
-##### system #####
+ ####  #   #  ####  ##### ###### #    #
+#       # #  #        #   #      ##  ##
+ ####    #    ####    #   #####  # ## #
+     #   #        #   #   #      #    #
+#    #   #   #    #   #   #      #    #
+ ####    #    ####    #   ###### #    #
 
 + f system & t r
 i dropbox info
@@ -148,7 +163,12 @@ h shutdown
 r reboot
   clear && sudo reboot
 
-##### config #####
+ ####   ####  #    # ###### #  ####
+#    # #    # ##   # #      # #    #
+#      #    # # #  # #####  # #
+#      #    # #  # # #      # #  ###
+#    # #    # #   ## #      # #    #
+ ####   ####  #    # #      #  ####
 
 + f system & t r
 i init youtube upload
@@ -169,8 +189,12 @@ t init dropbox
   sudo chmod a+x /usr/bin/dropbox_uploader
   clear && dropbox_uploader init
 
-
-##### 3rd party #####
+##### #    # # #####  #####     #####    ##   #####  ##### #   #
+  #   #    # # #    # #    #    #    #  #  #  #    #   #    # #
+  #   ###### # #    # #    #    #    # #    # #    #   #     #
+  #   #    # # #####  #    #    #####  ###### #####    #     #
+  #   #    # # #   #  #    #    #      #    # #   #    #     #
+  #   #    # # #    # #####     #      #    # #    #   #     #
 
 + f 3rd_party  & t r
 b start btsync
@@ -212,9 +236,12 @@ m sst start
 m sst stop
   clear && killall omxplayer
 
-#################
-##### gopro #####  
-#################
+ ####   ####  #####  #####   ####
+#    # #    # #    # #    # #    #
+#      #    # #    # #    # #    #
+#  ### #    # #####  #####  #    #
+#    # #    # #      #   #  #    #
+ ####   ####  #      #    #  ####
 
 + f 3rd_party & t r
 g gopro: sd copy
@@ -294,8 +321,12 @@ c cut video [no screen]
   mencoder -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
   pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
 
-
-##### gphotos2 #####
+ ####  #####  #    #  ####  #####  ####
+#    # #    # #    # #    #   #   #    #
+#      #    # ###### #    #   #   #    #
+#  ### #####  #    # #    #   #   #    #
+#    # #      #    # #    #   #   #    #
+ ####  #      #    #  ####    #    ####
 
 + f *.jpg | f *.JPG & t t
 P gphotos2 to hdd
@@ -390,12 +421,13 @@ R Do list of error JPG exif with folder name
 u update mc menu
   clear && curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 
-
- _____  __  __  _   _ __  __
-|_   _||  \/  || | | |\ \/ /
-  | |  | |\/| || | | | \  / 
-  | |  | |  | || |_| | /  \ 
-  |_|  |_|  |_| \___/ /_/\_\
+####### #     # #     # #     #
+   #    ##   ## #     #  #   #
+   #    # # # # #     #   # #
+   #    #  #  # #     #    #
+   #    #     # #     #   # #
+   #    #     # #     #  #   #
+   #    #     #  #####  #     #
 
 + f tmux & t r
 1 attach dropbox session
@@ -433,7 +465,12 @@ u update mc menu
 9 attach youtube_dl session
   tmux attach-session -t youtube_dl
 
-##### useless ######
+#    #  ####  ###### #      ######  ####   ####
+#    # #      #      #      #      #      #
+#    #  ####  #####  #      #####   ####   ####
+#    #      # #      #      #           #      #
+#    # #    # #      #      #      #    # #    #
+ ####   ####  ###### ###### ######  ####   ####
 
 + f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
 t convert to jpg
