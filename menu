@@ -416,7 +416,12 @@ R Do list of error JPG exif with folder name
   tmux send -t photos 'sh ~/checkjpg_task.sh' ENTER
   #tmux send -t photos 'rm ~/checkjpg_task.sh' ENTER
   
-##### update #####
+#    # #####  #####    ##   ##### ######
+#    # #    # #    #  #  #    #   #
+#    # #    # #    # #    #   #   #####
+#    # #####  #    # ######   #   #
+#    # #      #    # #    #   #   #
+ ####  #      #####  #    #   #   ######
 
 + f update & t r
 u update mc menu
