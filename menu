@@ -277,14 +277,8 @@ g GOPRO: Create Stopmotion
   for img in *.JPG; do
   convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
   done
-  obr=$(($width * $height * 60 * 25 / 256))
-  opt="vbitrate=$obr:mbd=2:keyint=132:vqblur=1.0:cmp=2:subcmp=2:dia=2:mv0:last_pred=3"
-  codec="msmpeg4v2"
   ls -1 *-CROP.JPG >  files.lst
-  mencoder -ovc lavc -lavcopts vcodec=$codec:vpass=1:$opt -mf type=jpg:w=$width:h=$height:fps=15 -vf harddup -nosound -o /dev/null mf://@files.lst
-  mencoder -ovc lavc -lavcopts vcodec=$codec:vpass=2:$opt -mf type=jpg:w=$width:h=$height:fps=15 -vf harddup -nosound -o video.avi mf://@files.lst
-  rm -f divx2pass.log
-  f
+  mencoder mf://@files.lst -mf w=2592:h=1456:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -nosound -o stopmotion.avi
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
 c cut video
