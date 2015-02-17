@@ -243,7 +243,7 @@ g gopro: concat & upload
   tmux send -t gopro 'pushbullet push all note "Concatenated & Uploaded to Youtube"' ENTER
 
 + f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t t
-y upload to youtube
+y upload to youtube [youtube screen]
   cat > /tmp/youtube_task.sh << 'EOF'
   mkdir /media/hdd/tmp
   clear
@@ -261,7 +261,7 @@ y upload to youtube
   tmux send -t youtube 'sh /tmp/youtube_task.sh' ENTER
 
 + f *.jpg | f *.JPG | & t r
-g GOPRO: Create Stopmotion
+g GOPRO: Create Stopmotion [stopmotion screen]
   clear
   while true; do
     read -p "Image Crop : Top, Center or Bottom ?" answer
@@ -279,9 +279,14 @@ g GOPRO: Create Stopmotion
   done
   ls -1 *-CROP.JPG >  files.lst
   mencoder mf://@files.lst -mf w=2592:h=1456:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -nosound -o stopmotion.avi
+  tmux has-session -t stopmotion
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s stopmotion ; fi
+  tmux send -t stopmotion 'sh /tmp/stopmotion.sh' ENTER
+
+
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
-c cut video
+c cut video [no screen]
   clear
   read -e -p "Start : " -i "00:00:00" start
   read -e -p "Stop  : " -i "00:00:00" stop
