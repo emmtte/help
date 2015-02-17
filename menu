@@ -287,8 +287,8 @@ y upload to youtube [youtube screen]
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
   tmux send -t youtube 'sh /tmp/youtube_task.sh' ENTER
 
-+ f *.jpg | f *.JPG | & t r
-g GOPRO: Create Stopmotion [stopmotion screen]
++ f *.jpg | f *.JPG & t r
+g GOPRO : Create Stopmotion [stopmotion]
   cat > /tmp/stopmotion.sh << 'EOF'
   clear
   while true; do
