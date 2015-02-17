@@ -390,7 +390,12 @@ R Do list of error JPG exif with folder name
 u update mc menu
   clear && curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 
-##### tmux #####
+
+ _____  __  __  _   _ __  __
+|_   _||  \/  || | | |\ \/ /
+  | |  | |\/| || | | | \  / 
+  | |  | |  | || |_| | /  \ 
+  |_|  |_|  |_| \___/ /_/\_\
 
 + f tmux & t r
 1 attach dropbox session
