@@ -448,27 +448,31 @@ u update mc menu
   tmux attach-session -t gplus
 
 + f tmux & t r
-4 attach mencoder session
-  tmux attach-session -t mencoder
-
-+ f tmux & t r
-5 attach photos session
-  tmux attach-session -t photos
-
-+ f tmux & t r
-6 attach rclone session
-  tmux attach-session -t rclone
-
-+ f tmux & t r
-7 attach gopro session
+4 attach gopro session
   tmux attach-session -t gopro
 
 + f tmux & t r
-8 attach youtube session
+5 attach mencoder session
+  tmux attach-session -t mencoder
+
++ f tmux & t r
+6 attach photos session
+  tmux attach-session -t photos
+
++ f tmux & t r
+7 attach rclone session
+  tmux attach-session -t rclone
+
++ f tmux & t r
+8 attach stopmotion session
+  tmux attach-session -t stopmotion
+
++ f tmux & t r
+9 attach youtube session
   tmux attach-session -t youtube
 
 + f tmux & t r
-9 attach youtube_dl session
+0 attach youtube_dl session
   tmux attach-session -t youtube_dl
 
 #    #  ####  ###### #      ######  ####   ####
