@@ -307,7 +307,8 @@ g GOPRO : Create Stopmotion [stopmotion]
   done
   ls -1 *-CROP.JPG >  files.lst
   #mencoder mf://@files.lst -mf w=2592:h=1456:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -nosound -o stopmotion.avi
-  mencoder mf://@files.lst -mf type=jpg:fps=10 -ovc lavc -lavcopts vcodec=mjpeg -nosound -o stopmotion1.avi
+  mencoder mf://@files.lst -mf type=jpg:fps=7.5 -ovc lavc -lavcopts vcodec=mjpeg -nosound -o stopmotion.avi
+  youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "stopmotion.avi"
   pushbullet push all note "Raspberry Pi" "Stopmotion created"
   EOF
   tmux has-session -t stopmotion
