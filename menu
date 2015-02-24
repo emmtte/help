@@ -303,7 +303,7 @@ g GOPRO : Create Stopmotion [stopmotion]
   cd %d
   mkdir CROP
   for img in *.JPG; do
-  convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
+  convert "$img" -crop $CUT "$img-CROP.JPG"
   done
   ls -1 *-CROP.JPG >  files.lst
   mencoder mf://@files.lst -mf w=2592:h=1456:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -nosound -o stopmotion.avi
