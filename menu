@@ -314,6 +314,7 @@ g GOPRO : Create Stopmotion [stopmotion]
   tmux has-session -t stopmotion
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s stopmotion ; fi
   tmux send -t stopmotion 'sh /tmp/stopmotion.sh' ENTER
+  tmux attach-session -t stopmotion
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
 c cut video [no screen]
