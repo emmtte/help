@@ -19,11 +19,11 @@ A move to btsync folder
     shift
   done
 
-+ f *.tif | f *.tiff | f *.TIF & t t
++ f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
 J Convert TIFF to JPG
   set %t
   while [ -n "$1" ] ; do
-    convert "$1" "`$1 | cut -d '.' -f1`.jpg"
+    convert -auto-level -quality 85 "$1" "`$1 | cut -d '.' -f1`.jpg"
     shift
   done
 
