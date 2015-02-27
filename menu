@@ -333,6 +333,14 @@ c cut video [no screen]
  ####  #      #    #  ####    #    ####
 
 + f *.jpg | f *.JPG & t t
+s Autolevel photos
+  set %t
+  while [ -n "$1" ]; do
+    mogrify -auto-level $1
+    shift
+  done
+
++ f *.jpg | f *.JPG & t t
 P gphotos2 to hdd
   clear
   path=/media/hdd/photos
