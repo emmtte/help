@@ -134,7 +134,7 @@ E download from google drive
  ####    #    ####    #   ###### #    #
 
 + f system & t r
-i dropbox info
+i [dropbox info]
   clear && ~/dropbox_uploader.sh info
   printf 'Press [Enter] key to continue...'
   read null
@@ -148,7 +148,7 @@ c raspi-config
   sudo raspi-config
 
 + f system & t r
-a update/upgrade
+a [update/upgrade]
   clear
   sudo apt-get -y autoremove
   sudo apt-get -y update
@@ -156,11 +156,11 @@ a update/upgrade
   sudo apt-get -y upgrade
   
 + f system & t r
-h shutdown
+h [shutdown]
   clear && sudo halt
 
 + f system & t r
-r reboot
+r [reboot]
   clear && sudo reboot
 
  ####   ####  #    # ###### #  ####
