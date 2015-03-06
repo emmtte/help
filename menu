@@ -15,7 +15,7 @@ p gdrive Unite
 A move to btsync folder
   set %t
   while [ -n "$1" ] ; do
-    mv "$1" "/media/hdd/btsync/$(basename "$1")"
+    mv "$1" "/media/hdd/BitTorrent Sync/$(basename "$1")"
     shift
   done
 
