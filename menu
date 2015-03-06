@@ -12,7 +12,7 @@ p gdrive Unite
   tmux send -t unite "./unite" ENTER
 
 + f * & t t
-A move to btsync folder
+A move to "BitTorrent Sync" folder
   set %t
   while [ -n "$1" ] ; do
     mv "$1" "/media/hdd/BitTorrent Sync/$(basename "$1")"
