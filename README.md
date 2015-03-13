@@ -6,44 +6,39 @@ Installation
 ## Prepare Sd Card
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
 Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) realease
-
-## Raspi Config
+## Config
 ````
 sudo raspi-config
 > Expand Filesystem
 > Internationalisation Options
-    - Change Locale add [*] fr_FR.UTF-8 UTF-8
-    - Default locale for the system environement : fr_FR.UTF-8
-    - Change Timezone with Geographic area : Europe and Time zone : Paris
+ - Change Locale add [*] fr_FR.UTF-8 UTF-8
+ - Default locale for the system environement : fr_FR.UTF-8
+ - Change Timezone with Geographic area : Europe and Time zone : Paris
 > Enable Camera
 > Overclock
-    - Medium
+ - Medium
 > Reboot
 ````
-
-## Update Raspbian & Firmware
+## Update
 ````
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
 ````
-    
-##ssh
+## ssh
 ````
 mkdir ~/.ssh
 cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
 mv id_rsa.pub authorized_keys
 sudo chmod 600 authorized_keys
-   
 cat << EOF | sudo tee -a /etc/ssh/sshd_config
 AuthorizedKeysFile /home/pi/.ssh/authorized_keys
 PasswordAuthentication no
 Match Address 192.168.0.0/24
     PasswordAuthentication yes
 EOF
-
 sudo service ssh restart
 ````
 ## Prerequisites
