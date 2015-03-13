@@ -75,11 +75,96 @@ source ~/.profile
 ````
 Tools
 =====
-##Remove X Server
+## External Usb Drive
+````
+sudo mkdir /media/hdd
+sudo e2label /dev/sda1 RaspberryPi
+sudo mount LABEL=RaspberryPi /media/hdd
+echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
+sudo chown -R pi:pi /media/hdd
+````
+## minidlna
+```
+sudo apt-get -y install minidlna
+sudo mcedit /etc/minidlna.conf
+```
+```
+> media_dir=/media/hdd/dlna
+> root_container=B
+> friendly_name=RaspberryPi
+````
+````
+sudo service minidlna status
+sudo service minidlna force-reload
+sudo service minidlna start
+```
+```
+?????? sudo chmod 777 -R /media/hdd/
+```
+## transmission
+```
+sudo apt-get -y install transmission-daemon
+mkdir /media/hdd/torrent
+sudo usermod -a -G debian-transmission pi
+sudo chgrp debian-transmission /media/hdd/torrent
+sudo chmod 777 -R /media/hdd/torrent
+sudo service transmission-daemon reload
+```
+```
+sudo sed -ie '$d' /etc/transmission-daemon/settings.json
+cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
+,
+"download-dir": "/media/hdd/torrent" ,
+"incomplete-dir": "/media/hdd/torrent" ,
+"rpc-authentication-required": false ,
+"rpc-whitelist": "127.0.0.1,192.168.0.*" ,
+"speed-limit-down": 500 ,
+"speed-limit-down-enable": true ,
+"speed-limit-up": 10 ,
+"speed-limit-up-enable": true ,
+"umask": 0
+}
+EOF
+```
+```
+sudo service transmission-daemon reload
+sudo service transmission-daemon restart
+```
+##btsync
+````
+cd /tmp
+curl -o btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
+tar -xvf btsync.tar.gz
+sudo mv btsync /usr/bin
+sudo chmod 755 /usr/bin/btsync
+sudo btsync
+````
+## GoPro
+````
+sudo mkdir /media/gopro
+sudo mount /dev/sdb1 /media/gopro
+````    
+## Format HDD
+````
+sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
+sudo e2label /dev/sda1 RaspberryPi
+sudo mount LABEL=RaspberryPi /media/hdd
+````
+## Disable ext4 journal (not tested)
+````
+tune4fs -O ^has_journal /dev/sdaX
+e4fsck –f /dev/sdaX
+sudo reboot
+````    
+## Alias
+````
+echo "alias smc='sudo mc'" >> ~/.bashrc
+````
+## Remove X Server
 ````
 sudo apt-get remove --auto-remove --purge libx11-.*
 ````
-##fail2ban
+## Fail 2 Ban
 ````
 sudo apt-get install fail2ban
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
