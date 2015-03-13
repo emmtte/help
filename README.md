@@ -116,6 +116,15 @@ EOF
 sudo service samba restart
 sudo smbpasswd -a pi
 ````
+##tmux
+````
+sudo apt-get -y install tmux
+tmux new -s session_name creates a new tmux session named session_name
+tmux attach -t session_name attaches to an existing tmux session named session_name
+tmux switch -t session_name switches to an existing session named session_name
+tmux list-sessions lists existing tmux sessions
+tmux detach (ctrl b + d) detach the currently attached session
+````
 ## External Usb Drive
 ````
 sudo mkdir /media/hdd
