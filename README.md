@@ -189,6 +189,65 @@ sudo mv btsync /usr/bin
 sudo chmod 755 /usr/bin/btsync
 sudo btsync
 ````
+## motion
+````
+echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
+````
+````
+sudo modprobe bcm2835-v4l2
+echo 'bcm2835-v4l2' | sudo tee -a /etc/modules
+sudo apt-get install motion
+sudo chmod 664 /etc/motion/motion.conf
+````
+````
+mkdir /tmp/motion
+````
+````
+echo 'start_motion_daemon=no' | sudo tee /etc/default/motion
+````
+````
+sudo mcedit /etc/motion/motion.conf
+````
+````
+process_id_file /var/run/motion.pid
+ffmpeg_cap_new off
+width 1280
+height 720
+webcam_localhost off
+target_dir /tmp/motion
+control_localhost off
+on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
+````
+#now.sh
+````
+#!/bin/bash
+if /bin/ping -c 1 192.168.0.8
+  then
+    if pgrep motion
+         then logger -p warn -t now "ping is ok and shutdown motion"
+        killall motion
+         else logger -p warn -t now "ping is ok and nothing to do"
+    fi
+    else
+    if pgrep motion
+        then logger -p warn -t now "ping is not ok and nothing to do motion already up"
+        else logger -p warn -t now "ping is not ok and motion is starting now"
+        motion
+    fi
+fi
+````
+#upload
+````
+````
+#cron
+````
+apt-get install inotify-tools
+echo "*/5 * * * * /home/pi/now.sh >/dev/null 2>&1"
+echo "@reboot /home/pi/remote.sh >>/dev/null 2>&1"
+* * * * * root  /usr/bin/flock -xn /var/lock/script.lock -c '/bin/bash updb.sh'
+crontab /tmp/cron.tmp
+sudo service cron restart
+````
 ## GoPro
 ````
 sudo mkdir /media/gopro
