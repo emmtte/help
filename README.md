@@ -75,6 +75,47 @@ source ~/.profile
 ````
 Tools
 =====
+## nfs
+````
+sudo chmod -R 777 /media/hdd
+sudo apt-get install nfs-kernel-server
+add in
+sudo nano /etc/exports
+this
+/media/hdd *(rw,all_squash,no_subtree_check,anonuid=1000,anongid=1000,sync)
+sudo exportfs -ra
+
+A verifier
+sudo exportfs -ra
+sudo /etc/init.d/nfs-kernel-server start
+sudo update-rc.d rpcbind enable
+sudo service rpcbind restart
+sudo service nfs-kernel-server restart
+````
+## samba
+````
+sudo apt-get -y install samba samba-common-bin
+cat << EOF | sudo tee -a /etc/samba/smb.conf
+[HDD]
+comment = Raspberry Pi Hard Drive
+path = /media/hdd
+valid users = @users
+force group = users
+create mask = 0660
+directory mask = 0771
+read only = no
+[PI]
+comment = Raspberry Pi Hard Drive
+path = /home/pi
+valid users = @users
+force group = users
+create mask = 0660
+directory mask = 0771
+read only = no
+EOF
+sudo service samba restart
+sudo smbpasswd -a pi
+````
 ## External Usb Drive
 ````
 sudo mkdir /media/hdd
