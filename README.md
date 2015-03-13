@@ -363,3 +363,75 @@ sudo python setup.py install
 mv youtube.json /home/pi/.config/youtube.json
 youtube-upload --title="test" --category="Music" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/gopro/videos/youtube.avi"
 ````
+Remote Control with lirc
+========================
+### [Schematics](https://upverter.com/ManuCart/cb215faab64eae4f/Raspberry-Pi-with-Seeds-Grove---Infrared-Emitter/)
+
+### Installation
+Add modules
+```
+cat << EOF | sudo tee -a /etc/modules
+lirc_dev
+lirc_rpi gpio_in_pin=23 gpio_out_pin=22
+EOF
+```
+Install lirc
+```
+sudo apt-get install -y lirc
+```
+Test lirc
+````
+sudo service lirc stop
+mode2 -d /dev/lirc0
+sudo service lirc start
+irw
+````
+
+Check ```/etc/lirc/hardware.conf``` file
+```sudo mcedit /etc/lirc/hardware.conf```
+```
+# /etc/lirc/hardware.conf
+#
+# Arguments which will be used when launching lircd
+LIRCD_ARGS="--uinput"
+
+# Don't start lircmd even if there seems to be a good config file
+# START_LIRCMD=false
+
+# Don't start irexec, even if a good config file seems to exist.
+# START_IREXEC=false
+
+# Try to load appropriate kernel modules
+LOAD_MODULES=true
+
+# Run "lircd --driver=help" for a list of supported drivers.
+DRIVER="default"
+# usually /dev/lirc0 is the correct setting for systems using udev
+DEVICE="/dev/lirc0"
+MODULES="lirc_rpi"
+
+# Default configuration files for your hardware if any
+LIRCD_CONF=""
+LIRCMD_CONF=""
+```
+Reboot
+```
+sudo reboot
+```
+Config new remote control
+```
+sudo /etc/init.d/lirc stop
+irrecord -n -d /dev/lirc0 tv
+irrecord -n -d /dev/lirc0 hifi
+cat tv hifi > lircd.conf
+sudo cp lircd.conf /etc/lirc/lircd.conf
+```
+Use already remote control
+```
+wget -O lircd.conf https://github.com/ManuCart/Raspberry-Installation/raw/master/lirc/Z5400.conf
+sudo cp lircd.conf /etc/lirc/lircd.conf
+```
+```
+sudo service lirc start
+sudo service lirc stop
+```
