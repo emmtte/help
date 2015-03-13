@@ -365,29 +365,27 @@ youtube-upload --title="test" --category="Music" --privacy="private" --location=
 ````
 Remote Control with lirc
 ========================
-### [Schematics](https://upverter.com/ManuCart/cb215faab64eae4f/Raspberry-Pi-with-Seeds-Grove---Infrared-Emitter/)
+[Schematics](https://upverter.com/ManuCart/cb215faab64eae4f/Raspberry-Pi-with-Seeds-Grove---Infrared-Emitter/)
 
-### Installation
-Add modules
+##Add module
 ```
 cat << EOF | sudo tee -a /etc/modules
 lirc_dev
 lirc_rpi gpio_in_pin=23 gpio_out_pin=22
 EOF
 ```
-Install lirc
+##Installation
 ```
 sudo apt-get install -y lirc
 ```
-Test lirc
+##Tests
 ````
 sudo service lirc stop
 mode2 -d /dev/lirc0
 sudo service lirc start
 irw
 ````
-
-Check ```/etc/lirc/hardware.conf``` file
+##Check ```/etc/lirc/hardware.conf``` file
 ```sudo mcedit /etc/lirc/hardware.conf```
 ```
 # /etc/lirc/hardware.conf
@@ -414,11 +412,11 @@ MODULES="lirc_rpi"
 LIRCD_CONF=""
 LIRCMD_CONF=""
 ```
-Reboot
+##Reboot
 ```
 sudo reboot
 ```
-Config new remote control
+##Config new remote control
 ```
 sudo /etc/init.d/lirc stop
 irrecord -n -d /dev/lirc0 tv
@@ -426,7 +424,7 @@ irrecord -n -d /dev/lirc0 hifi
 cat tv hifi > lircd.conf
 sudo cp lircd.conf /etc/lirc/lircd.conf
 ```
-Use already remote control
+##Use already remote control
 ```
 wget -O lircd.conf https://github.com/ManuCart/Raspberry-Installation/raw/master/lirc/Z5400.conf
 sudo cp lircd.conf /etc/lirc/lircd.conf
