@@ -36,6 +36,18 @@ sudo ln -sf dash /bin/sh
 
 Third-Party Command Line Utilities
 ==================================
+#### FlickrSmartSync
+https://github.com/faisalraja/flickrsmartsync
+````
+sudo apt-get install python-dev python-setuptools
+git clone https://github.com/faisalraja/flickrsmartsync.git
+cd flickrsmartsync
+sudo python setup.py install
+sudo rm /home/pi/flickrsmartsync
+flickrsmartsync --sync-path /media/hdd/photos
+`````
+
+
 #### Google CL
 https://github.com/vinitkumar/googlecl
 ````
