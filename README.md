@@ -435,3 +435,28 @@ sudo cp lircd.conf /etc/lirc/lircd.conf
 sudo service lirc start
 sudo service lirc stop
 ```
+OMXPlayer on Raspberry PI
+
+Status
+
+    tvservice -s
+    
+Help
+
+http://www.raspberrypi.org/phpBB3/viewtopic.php?t=5851
+    
+Configuration
+
+    cat << EOF | sudo tee -a /boot/config.txt
+    hdmi_group=1 #CEA
+    hdmi_mode=19 #720p50
+    hdmi_force_hotplug=1
+    EOF
+
+Utilisation
+
+    dd if=/dev/zero of=/dev/fb0
+    tvservice -p #Start HDMI preferd
+    omxplayer /media/hdd1/omx/test.mkv
+    tvservice -o #Shutdown HDMI
+
