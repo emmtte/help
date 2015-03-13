@@ -1,13 +1,13 @@
 Raspberry-Service
 =================
-# Installation
-#### Prepare Sd Card
 
+Installation
+============
+## Prepare Sd Card
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
-
 Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) realease
 
-
+## Raspi Config
 ````
 sudo raspi-config
 
@@ -24,19 +24,16 @@ sudo raspi-config
     sudo apt-get install -y mc
 ````
 
-#### Update Raspbian & Firmware
+## Update Raspbian & Firmware
 ````
-
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
-
 ````
     
-###ssh
+##ssh
 ````
-
 mkdir ~/.ssh
 cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
@@ -52,11 +49,11 @@ EOF
 
 sudo service ssh restart
 ````
-###Remove X Server
+##Remove X Server
 ````
 sudo apt-get remove --auto-remove --purge libx11-.*
 ````
-###fail2ban
+##fail2ban
 ````
 sudo apt-get install fail2ban
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
