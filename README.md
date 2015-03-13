@@ -69,6 +69,8 @@ source ~/.profile
 ````
 Tools
 =====
+##Loggly
+https://raspberry.loggly.com/sources/setup/linux
 ## nfs
 ````
 sudo chmod -R 777 /media/hdd
