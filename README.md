@@ -10,7 +10,6 @@ Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) reale
 ## Raspi Config
 ````
 sudo raspi-config
-
 > Expand Filesystem
 > Internationalisation Options
     - Change Locale add [*] fr_FR.UTF-8 UTF-8
@@ -20,8 +19,6 @@ sudo raspi-config
 > Overclock
     - Medium
 > Reboot
-
-    sudo apt-get install -y mc
 ````
 
 ## Update Raspbian & Firmware
@@ -49,24 +46,14 @@ EOF
 
 sudo service ssh restart
 ````
-##Remove X Server
-````
-sudo apt-get remove --auto-remove --purge libx11-.*
-````
-##fail2ban
-````
-sudo apt-get install fail2ban
-sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-sudo service fail2ban restart
-````
-# Prerequisites
+## Prerequisites
 ````
 sudo apt-get install tmux exif mencoder
 mkdir /home/pi/service/
 cd /home/pi/service/
 touch 3rd_party backup system tmux update
 ````
-### Midnight commander
+## Midnight commander
 ````
 sudo apt-get remove mc
 sudo apt-get install libglib2.0-dev libslang2-dev
@@ -79,19 +66,30 @@ sudo make install
 
 echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
 ````
-### Menu
+## Menu
 ````
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
-### dash to bash and vice cersa
+Tools
+=====
+##Remove X Server
+````
+sudo apt-get remove --auto-remove --purge libx11-.*
+````
+##fail2ban
+````
+sudo apt-get install fail2ban
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+sudo service fail2ban restart
+````
+## dash to bash and vice cersa
 ````
 sudo ln -sf bash /bin/sh
 sudo ln -sf dash /bin/sh
 ````
-
 Third-Party Command Line Utilities
 ==================================
 ### Flickr Smart Sync
