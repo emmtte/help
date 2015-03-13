@@ -1,12 +1,11 @@
 Raspberry-Service
 =================
 
-Installation
+Preparation
 ============
-## Prepare Sd Card
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
 Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) realease
-## Config
+## Configuration
 ````
 sudo raspi-config
 > Expand Filesystem
@@ -19,14 +18,14 @@ sudo raspi-config
  - Medium
 > Reboot
 ````
-## Update
+## Updating
 ````
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
 ````
-## ssh
+## Secure Shell
 ````
 mkdir ~/.ssh
 cd ~/.ssh
