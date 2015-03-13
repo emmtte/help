@@ -36,7 +36,7 @@ sudo ln -sf dash /bin/sh
 
 Third-Party Command Line Utilities
 ==================================
-#### FlickrSmartSync
+#### Flickr Smart Sync
 https://github.com/faisalraja/flickrsmartsync
 ````
 sudo apt-get install python-dev python-setuptools
@@ -55,6 +55,18 @@ git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
 ````
+#### Picasa Web Uploader
+https://github.com/jackpal/picasawebuploader
+`````
+sudo apt-get install python-pip
+sudo apt-get install libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
+sudo pip install pil
+sudo pip install gdata
+sudo apt-get install python-pyexiv2
+curl -o picasawebuploader.py https://raw.githubusercontent.com/jackpal/picasawebuploader/master/main.py
+sudo chmod +x picasawebuploader.py 
+picasawebuploader.py --email @gmail.com --source /media/hdd/photos
+`````
 #### Pushbullet
 https://github.com/Red5d/pushbullet-bash
 ````
