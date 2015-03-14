@@ -5,7 +5,8 @@ Preparations
 ============
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
 Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) realease
-## Configuration
+Configuration
+-------------
 ````
 sudo raspi-config
 > Expand Filesystem
@@ -18,14 +19,16 @@ sudo raspi-config
  - Medium
 > Reboot
 ````
-## Updating
+Updating
+--------
 ````
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
 ````
-## Secure Shell
+Secure Shell
+------------
 ````
 mkdir ~/.ssh
 cd ~/.ssh
@@ -40,7 +43,8 @@ Match Address 192.168.0.0/24
 EOF
 sudo service ssh restart
 ````
-## Prerequisites
+Prerequisites
+-------------
 ````
 sudo apt-get install tmux exif mencoder
 mkdir /home/pi/service/
