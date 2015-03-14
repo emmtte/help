@@ -1,8 +1,8 @@
 Raspberry-Service
 =================
 Quick Links
-*This is [Outils](#Tools) reference-style link.
-*
+*This is [Outils](#tools) reference-style link.
+*[Third-Party Command Line Utilities](#third-party-command-line-utilities)
 *
 *
 Preparations
@@ -72,7 +72,7 @@ alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
-# Tools
+
 Tools
 =====
 ###Loggly
