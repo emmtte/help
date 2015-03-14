@@ -23,7 +23,7 @@ Raspberry-Service
  - [cron](#cron)
  - [GoPro](#gopro)
  - [Format HDD](#format-hdd)
- - [Disable ext4 journal (not tested)](#disable-ext4-journal-(not-tested)
+ - [Disable ext4 journal not tested](#disable-ext4-journal-not-tested)
  - [Alias](#alias)
  - [Remove X Server](#remove-x-server)
  - [Fail 2 Ban](#fail-2-ban)
@@ -43,6 +43,7 @@ Raspberry-Service
  - [Check](#check)
  - [Reboot](#reboot)
  - [Config](#config)
+
 Preparations
 ============
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
