@@ -5,8 +5,7 @@ Preparations
 ============
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
 Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) realease
-Configuration
--------------
+###Configuration
 ````
 sudo raspi-config
 > Expand Filesystem
@@ -19,16 +18,15 @@ sudo raspi-config
  - Medium
 > Reboot
 ````
-Updating
---------
+###Updating
 ````
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
 ````
-Secure Shell
-------------
+###Secure Shell
+
 ````
 mkdir ~/.ssh
 cd ~/.ssh
@@ -43,15 +41,14 @@ Match Address 192.168.0.0/24
 EOF
 sudo service ssh restart
 ````
-Prerequisites
--------------
+###Prerequisites
 ````
 sudo apt-get install tmux exif mencoder
 mkdir /home/pi/service/
 cd /home/pi/service/
 touch 3rd_party backup system tmux update
 ````
-## Midnight commander
+### Midnight commander
 ````
 sudo apt-get remove mc
 sudo apt-get install libglib2.0-dev libslang2-dev
@@ -64,7 +61,7 @@ sudo make install
 
 echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
 ````
-## Menu
+### Menu
 ````
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 alias mc='mc /home/pi/service'
@@ -73,9 +70,9 @@ source ~/.profile
 ````
 Tools
 =====
-##Loggly
+###Loggly
 https://raspberry.loggly.com/sources/setup/linux
-## nfs
+### nfs
 ````
 sudo chmod -R 777 /media/hdd
 sudo apt-get install nfs-kernel-server
@@ -92,7 +89,7 @@ sudo update-rc.d rpcbind enable
 sudo service rpcbind restart
 sudo service nfs-kernel-server restart
 ````
-## samba
+### samba
 ````
 sudo apt-get -y install samba samba-common-bin
 cat << EOF | sudo tee -a /etc/samba/smb.conf
@@ -116,7 +113,7 @@ EOF
 sudo service samba restart
 sudo smbpasswd -a pi
 ````
-##tmux
+### tmux
 ````
 sudo apt-get -y install tmux
 tmux new -s session_name creates a new tmux session named session_name
@@ -125,7 +122,7 @@ tmux switch -t session_name switches to an existing session named session_name
 tmux list-sessions lists existing tmux sessions
 tmux detach (ctrl b + d) detach the currently attached session
 ````
-## External Usb Drive
+### External Usb Drive
 ````
 sudo mkdir /media/hdd
 sudo e2label /dev/sda1 RaspberryPi
@@ -133,7 +130,7 @@ sudo mount LABEL=RaspberryPi /media/hdd
 echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
 sudo chown -R pi:pi /media/hdd
 ````
-## minidlna
+### minidlna
 ```
 sudo apt-get -y install minidlna
 sudo mcedit /etc/minidlna.conf
@@ -151,7 +148,7 @@ sudo service minidlna start
 ```
 ?????? sudo chmod 777 -R /media/hdd/
 ```
-## transmission
+### transmission
 ```
 sudo apt-get -y install transmission-daemon
 mkdir /media/hdd/torrent
@@ -180,7 +177,7 @@ EOF
 sudo service transmission-daemon reload
 sudo service transmission-daemon restart
 ```
-##btsync
+### btsync
 ````
 cd /tmp
 curl -o btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
@@ -189,7 +186,7 @@ sudo mv btsync /usr/bin
 sudo chmod 755 /usr/bin/btsync
 sudo btsync
 ````
-## motion
+### motion
 ````
 echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
 ````
@@ -218,7 +215,7 @@ target_dir /tmp/motion
 control_localhost off
 on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
 ````
-#now.sh
+###now.sh
 ````
 #!/bin/bash
 if /bin/ping -c 1 192.168.0.8
@@ -236,10 +233,10 @@ if /bin/ping -c 1 192.168.0.8
     fi
 fi
 ````
-#upload
+###upload
 ````
 ````
-#cron
+### cron
 ````
 apt-get install inotify-tools
 echo "*/5 * * * * /home/pi/now.sh >/dev/null 2>&1"
@@ -248,38 +245,38 @@ echo "@reboot /home/pi/remote.sh >>/dev/null 2>&1"
 crontab /tmp/cron.tmp
 sudo service cron restart
 ````
-## GoPro
+### GoPro
 ````
 sudo mkdir /media/gopro
 sudo mount /dev/sdb1 /media/gopro
 ````    
-## Format HDD
+### Format HDD
 ````
 sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 sudo e2label /dev/sda1 RaspberryPi
 sudo mount LABEL=RaspberryPi /media/hdd
 ````
-## Disable ext4 journal (not tested)
+### Disable ext4 journal (not tested)
 ````
 tune4fs -O ^has_journal /dev/sdaX
 e4fsck –f /dev/sdaX
 sudo reboot
 ````    
-## Alias
+### Alias
 ````
 echo "alias smc='sudo mc'" >> ~/.bashrc
 ````
-## Remove X Server
+### Remove X Server
 ````
 sudo apt-get remove --auto-remove --purge libx11-.*
 ````
-## Fail 2 Ban
+### Fail 2 Ban
 ````
 sudo apt-get install fail2ban
 sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 sudo service fail2ban restart
 ````
-## dash to bash and vice cersa
+### dash to bash and vice cersa
 ````
 sudo ln -sf bash /bin/sh
 sudo ln -sf dash /bin/sh
@@ -367,25 +364,24 @@ Remote Control with lirc
 ========================
 [Schematics](https://upverter.com/ManuCart/cb215faab64eae4f/Raspberry-Pi-with-Seeds-Grove---Infrared-Emitter/)
 
-##Add module
+###Add module
 ```
 cat << EOF | sudo tee -a /etc/modules
 lirc_dev
 lirc_rpi gpio_in_pin=23 gpio_out_pin=22
 EOF
 ```
-##Installation
-```
-sudo apt-get install -y lirc
-```
-##Tests
+###Installation
+
+    sudo apt-get install -y lirc
+###Tests
 ````
 sudo service lirc stop
 mode2 -d /dev/lirc0
 sudo service lirc start
 irw
 ````
-##Check ```/etc/lirc/hardware.conf``` file
+###Check ```/etc/lirc/hardware.conf``` file
 ```sudo mcedit /etc/lirc/hardware.conf```
 ```
 # /etc/lirc/hardware.conf
@@ -412,11 +408,11 @@ MODULES="lirc_rpi"
 LIRCD_CONF=""
 LIRCMD_CONF=""
 ```
-##Reboot
+###Reboot
 ```
 sudo reboot
 ```
-##Config new remote control
+###Config new remote control
 ```
 sudo /etc/init.d/lirc stop
 irrecord -n -d /dev/lirc0 tv
@@ -424,7 +420,7 @@ irrecord -n -d /dev/lirc0 hifi
 cat tv hifi > lircd.conf
 sudo cp lircd.conf /etc/lirc/lircd.conf
 ```
-##Use already remote control
+###Use already remote control
 ```
 wget -O lircd.conf https://github.com/ManuCart/Raspberry-Installation/raw/master/lirc/Z5400.conf
 sudo cp lircd.conf /etc/lirc/lircd.conf
@@ -433,7 +429,7 @@ sudo cp lircd.conf /etc/lirc/lircd.conf
 sudo service lirc start
 sudo service lirc stop
 ```
-OMXPlayer on Raspberry PI
+###OMXPlayer on Raspberry PI
 
 Status
 
