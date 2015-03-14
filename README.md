@@ -1,6 +1,10 @@
 Raspberry-Service
 =================
-
+Quick Links
+*This is [Tools] reference-style link.
+*
+*
+*
 Preparations
 ============
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
