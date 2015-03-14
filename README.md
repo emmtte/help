@@ -72,7 +72,7 @@ alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
-Tools
+# Tools
 =====
 ###Loggly
 https://raspberry.loggly.com/sources/setup/linux
