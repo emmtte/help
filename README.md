@@ -1,7 +1,7 @@
 Raspberry-Service
 =================
 Quick Links
-*This is [Tools] []reference-style link.
+*This is [Tools][] reference-style link.
 *
 *
 *
