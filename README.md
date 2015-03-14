@@ -2,6 +2,12 @@ Raspberry-Service
 =================
 ###Quick Navigation
 * [Preparations](#preparations)
+- [Configuration](#configuration)
+- [Updating](#updating)
+- [Secure Shell](#secure-shell)
+- [Prerequisites](#prerequisites)
+- [Midnight commander](#midnight-commander)
+- [Menu](#menu)
 * [Tools](#tools)
 * [Third-Party Command Line Utilities](#third-party-command-line-utilities)
 *
@@ -32,7 +38,6 @@ sudo apt-get -y upgrade
 sudo rpi-update
 ````
 ###Secure Shell
-
 ````
 mkdir ~/.ssh
 cd ~/.ssh
