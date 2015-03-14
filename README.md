@@ -6,6 +6,7 @@ Quick Links
 * [Third-Party Command Line Utilities](#third-party-command-line-utilities)
 *
 *
+
 Preparations
 ============
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
