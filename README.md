@@ -1,6 +1,6 @@
 Raspberry-Service
 =================
-Quick Links
+###Quick Navigation
 * [Preparations](#preparations)
 * [Tools](#tools)
 * [Third-Party Command Line Utilities](#third-party-command-line-utilities)
