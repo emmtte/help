@@ -336,6 +336,7 @@ sudo dpkg -i RepetierServer0.51.1.deb
 /etc/init.d/RepetierServer stop
 # Restart server
 /etc/init.d/RepetierServer restart
+http://192.168.0.1:3344/
 ````
 
 
