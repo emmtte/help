@@ -327,6 +327,7 @@ sudo ln -sf dash /bin/sh
 ````
 ### Repetier-Server
 ````
+sudo ln -sf dash /bin/sh
 curl -o ~/RepetierServer0.51.1.deb http://www.repetier-server.com/en/?wpdmdl=187
 sudo dpkg -i RepetierServer0.51.1.deb
 # Start server
