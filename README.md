@@ -28,6 +28,7 @@ Raspberry-Service
  - [Remove X Server](#remove-x-server)
  - [Fail 2 Ban](#fail-2-ban)
  - [dash to bash and vice cersa](#dash-to-bash-and-vice-cersa)
+ - [Repetier-Server](#repetier-server)
 * [Third-Party Command Line Utilities](#third-party-command-line-utilities)
  - [Flickr Smart Sync](#flickr-smart-sync)
  - [Google CL](#google-cl)
@@ -324,6 +325,19 @@ sudo service fail2ban restart
 sudo ln -sf bash /bin/sh
 sudo ln -sf dash /bin/sh
 ````
+### Repetier-Server
+````
+curl -o ~/RepetierServer0.51.1.deb http://www.repetier-server.com/en/?wpdmdl=187
+sudo dpkg -i RepetierServer0.51.1.deb
+# Start server
+/etc/init.d/RepetierServer start
+# Stop server
+/etc/init.d/RepetierServer stop
+# Restart server
+/etc/init.d/RepetierServer restart
+````
+
+
 Third-Party Command Line Utilities
 ==================================
 ### Flickr Smart Sync
