@@ -19,6 +19,15 @@ A move to "BitTorrent Sync" folder
     shift
   done
 
+B move to "Freebox Server" folder
+  cat > /tmp/freebox.sh << 'EOF'
+  set %t
+  while [ -n "$1" ] ; do
+    mv "$1" "/media/freebox/$(basename "$1")"
+    shift
+  done
+  EOF
+
 + f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
 J Convert TIFF to JPG
   set %t
@@ -485,6 +494,10 @@ u update mc menu
 + f tmux & t r
 0 attach youtube_dl session
   tmux attach-session -t youtube_dl
+  
++ f tmux & t r
+A attach freebox session
+  tmux attach-session -t freebox
 
 #    #  ####  ###### #      ######  ####   ####
 #    # #      #      #      #      #      #
