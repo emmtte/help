@@ -19,14 +19,18 @@ A move to "BitTorrent Sync" folder
     shift
   done
 
++ f * & t t
 B move to "Freebox Server" folder
   cat > /tmp/freebox.sh << 'EOF'
-  set %t
-  while [ -n "$1" ] ; do
-    mv "$1" "/media/freebox/$(basename "$1")"
-    shift
+  clear
+  cd "%d"
+  for f in %t; do
+    cp "$f" /media/freebox
   done
   EOF
+  tmux has-session -t freebox
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s freebox ; fi
+  tmux send -t youtube 'sh /tmp/freebox.sh' ENTER
 
 + f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
 J Convert TIFF to JPG
