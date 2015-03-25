@@ -31,7 +31,7 @@ B move to "Freebox Server" folder
   EOF
   tmux has-session -t freebox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s freebox ; fi
-  tmux send -t youtube 'sh /tmp/freebox.sh' ENTER
+  tmux send -t freebox 'sh /tmp/freebox.sh' ENTER
 
 + f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
 J Convert TIFF to JPG
