@@ -28,6 +28,7 @@ B move to "Freebox Server" folder
   for f in %t; do
     mv "$f" /media/freebox
   done
+  pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
   EOF
   tmux has-session -t freebox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s freebox ; fi
