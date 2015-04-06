@@ -192,6 +192,11 @@ sudo service minidlna start
 ```
 ?????? sudo chmod 777 -R /media/hdd/
 ```
+### mpd
+```
+sudo apt-get install mpd
+sudo mcedit /etc/mpd.conf
+```
 ### transmission
 ```
 sudo apt-get -y install transmission-daemon
