@@ -196,6 +196,13 @@ sudo service minidlna start
 ```
 sudo apt-get install mpd
 sudo mcedit /etc/mpd.conf
+
+music_directory "/media/hdd/music"
+bind_to_address "any"
+audio_output { device "hw:1,0"    # optional. Keep 0,0 if using the Pi audio }
+mixer_type "software"
+chmod -R 777 /media/hdd/music/
+sudo service mpd restart
 ```
 ### transmission
 ```
