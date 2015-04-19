@@ -15,7 +15,7 @@ p gdrive Unite
 A move to "BitTorrent Sync" folder
   set %t
   while [ -n "$1" ] ; do
-    mv "$1" "/media/hdd/BitTorrent Sync/$(basename "$1")"
+    mv "$1" "/media/hdd/BitTorrentSync/$(basename "$1")"
     shift
   done
 
@@ -30,7 +30,7 @@ B move to "Freebox Server" folder
     rsync -aP --remove-sent-files "$f" /media/freebox
   done
   pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
-  #rm /tmp/freebox.sh
+  rm /tmp/freebox.sh
   EOF
   tmux has-session -t freebox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s freebox ; fi
