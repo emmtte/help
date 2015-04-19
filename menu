@@ -171,6 +171,7 @@ a [update/upgrade]
   sudo apt-get -y update
   sudo apt-get -y dist-upgrade
   sudo apt-get -y upgrade
+  sudo apt-get -y remove --auto-remove --purge libx11-.*
   
 + f system & t r
 h [shutdown]
