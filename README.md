@@ -358,9 +358,10 @@ Third-Party Command Line Utilities
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
 ````
-curl -o dropbox_uploader.sh https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
-chmod +x dropbox_uploader.sh
-./dropbox_uploader.sh
+sudo curl -o /usr/bin/dropbox_uploader \
+https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
+sudo chmod +x /usr/bin/dropbox_uploader
+dropbox_uploader
 ````
 ### Flickr Smart Sync
 https://github.com/faisalraja/flickrsmartsync
