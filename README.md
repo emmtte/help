@@ -30,6 +30,7 @@ Raspberry-Service
  - [dash to bash and vice cersa](#dash-to-bash-and-vice-cersa)
  - [Repetier-Server](#repetier-server)
 * [Third-Party Command Line Utilities](#third-party-command-line-utilities)
+ - [Dropbox-Uploader](#dropbox-uploader)
  - [Flickr Smart Sync](#flickr-smart-sync)
  - [Google CL](#google-cl)
  - [Picasa Web Uploader](#picasa-web-uploader)
@@ -354,6 +355,13 @@ http://192.168.0.1:3344/
 
 Third-Party Command Line Utilities
 ==================================
+### Dropbox-Uploader
+https://github.com/andreafabrizi/Dropbox-Uploader
+````
+curl -o dropbox_uploader.sh https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
+chmod +x dropbox_uploader.sh
+./dropbox_uploader.sh
+````
 ### Flickr Smart Sync
 https://github.com/faisalraja/flickrsmartsync
 ````
@@ -363,7 +371,7 @@ cd flickrsmartsync
 sudo python setup.py install
 sudo rm /home/pi/flickrsmartsync
 flickrsmartsync --sync-path /media/hdd/photos
-`````
+````
 ### Google CL
 https://github.com/vinitkumar/googlecl
 ````
