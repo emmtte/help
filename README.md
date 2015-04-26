@@ -500,6 +500,29 @@ sudo cp lircd.conf /etc/lirc/lircd.conf
 sudo service lirc start
 sudo service lirc stop
 ```
+```
+[ON]
+irsend send_once tv power
+irsend send_once hifi power; sleep .5
+irsend send_once hifi st3
+sleep 25
+irsend send_once hdmi 1; sleep .2
+irsend send_once hdmi 1; sleep .2
+irsend send_once tv next; sleep 2
+irsend send_once tv format; sleep .2
+irsend send_once tv format; sleep .2
+irsend send_once tv format; sleep .2
+irsend send_once tv format; sleep .2
+irsend send_once tv format; sleep .2
+irsend send_once tv format; sleep .2
+irsend send_once tv format; sleep .2
+irsend send_once tv format; sleep .2
+
+[OFF]
+irsend send_once tv power;sleep .1
+irsend send_once hifi power
+```
+
 ###OMXPlayer on Raspberry PI
 
 Status
