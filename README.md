@@ -271,25 +271,7 @@ webcam_localhost off
 target_dir /tmp/motion
 control_localhost off
 on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
-on_picture_save /usr/bin/dropbox_uploader upload %f "/motion/%d-%m-%Y %H-%M-%S.jpg"
-````
-###now.sh
-````
-#!/bin/bash
-if /bin/ping -c 1 192.168.0.8
-  then
-    if pgrep motion
-         then logger -p warn -t now "ping is ok and shutdown motion"
-        killall motion
-         else logger -p warn -t now "ping is ok and nothing to do"
-    fi
-    else
-    if pgrep motion
-        then logger -p warn -t now "ping is not ok and nothing to do motion already up"
-        else logger -p warn -t now "ping is not ok and motion is starting now"
-        motion
-    fi
-fi
+on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
 ````
 ###upload
 ````
