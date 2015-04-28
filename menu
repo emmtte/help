@@ -232,6 +232,14 @@ t minidlna status
   printf 'Press [Enter] key to continue...'
   read null
 
++ f 3rd_party  & t r
+b start motion
+  clear && motion
+
++ f 3rd_party & t r
+k stop motion
+  clear && sudo killall motion
+
 + f 3rd_party & t r
 s transmission start
   clear && sudo service transmission-daemon start
