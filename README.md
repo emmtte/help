@@ -398,9 +398,9 @@ echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ### Rclone
 https://github.com/ncw/rclone
 ````
-curl -o rclone.zip http://downloads.rclone.org/rclone-v1.07-linux-arm.zip
+curl -o rclone.zip http://downloads.rclone.org/rclone-v1.12-linux-arm.zip
 unzip rclone.zip
-sudo cp rclone-v1.05-linux-arm/rclone /usr/bin/rclone
+sudo cp rclone-v1.12-linux-arm/rclone /usr/bin/rclone
 rclone config
 rclone sync gdrive:/Photos_Old pi:/media/hdd/rclone
 ````
