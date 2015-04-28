@@ -92,42 +92,42 @@ E download from google drive
 #####  #    #  ####  #    #  ####  #
 
 + f backup & t r
-1 sync /media/hdd/photos to flickr
+1 sync /media/hdd/photos ==>> flickr
   tmux has-session -t flickr
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s flickr ; fi
   tmux send -t flickr 'flickrsmartsync --sync-path /media/hdd/photos' ENTER
   tmux send -t flickr 'pushbullet push all note "Rasperry Pi" "flickr: sync finished"' ENTER
 
 + f backup & t r
-2 sync /media/hdd/rclone with Google Drive/rclone
+2 sync /media/hdd/rclone ==>> Google Drive/rclone
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
   tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync pi://media/hdd/rclone gdrive://rclone' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: sync finished"' ENTER
 
 + f backup & t r
-3 sync /media/hdd/photos => Google Drive/photos
+3 sync /media/hdd/photos ==>> Google Drive/photos
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
   tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync pi://media/hdd/photos gdrive://Photos' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
   
 + f backup & t r
-4 sync Google Drive/photos => /media/hdd/photos
+4 sync Google Drive/photos ==>> /media/hdd/photos
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
   tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync gdrive://Photos pi://media/hdd/photos' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
 
 + f backup & t r
-5 shrink photos to family google+ account
+5 shrink /media/hdd/photos==>> Google+ account
   tmux has-session -t gplus
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gplus ; fi
   tmux send -t gplus 'picasawebsync.py -d /media/hdd/photos --shrink' ENTER
   tmux send -t gplus 'pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"' ENTER
 
 + f backup & t r
-6 backup youtube files to /hdd/youtube
+6 backup Youtube ==>> /hdd/youtube
   cat > /tmp/youtube_task.sh << 'EOF'
   clear
   google youtube list > /tmp/youtube.txt
