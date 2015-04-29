@@ -161,6 +161,7 @@ chmod -R 777 /media/hdd/music/
 sudo service mpd restart
 ```
 ### transmission
+http://www.transmissionbt.com/
 ```
 sudo apt-get -y install transmission-daemon
 mkdir /media/hdd/torrent
