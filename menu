@@ -94,21 +94,21 @@ E download from google drive
 2 sync /media/hdd/rclone ==>> Google Drive/rclone
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
-  tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync pi://media/hdd/rclone gdrive://rclone' ENTER
+  tmux send -t rclone 'rclone --config="/home/pi/.config/rclone.conf" sync pi://media/hdd/rclone gdrive://rclone' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: sync finished"' ENTER
 
 + f backup & t r
 3 sync gdrive://Photos ==>> pi://media/hdd/photos
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
-  tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync gdrive://Photos pi://media/hdd/photos' ENTER
+  tmux send -t rclone 'rclone --config="/home/pi/.config/rclone.conf" sync gdrive://Photos pi://media/hdd/photos' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
 
 + f backup & t r
 4 sync pi://media/hdd/photos ==>> pi://media/freebox/photos 
   tmux has-session -t rclone
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
-  tmux send -t rclone 'rclone --config="/home/pi/.rclone.conf" sync pi://media/hdd/photos pi://media/freebox/photos' ENTER
+  tmux send -t rclone 'rclone --config="/home/pi/.config/rclone.conf" sync pi://media/hdd/photos pi://media/freebox/photos' ENTER
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
 
 + f backup & t r
