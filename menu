@@ -36,13 +36,13 @@ B move to "Freebox Server" folder
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s freebox ; fi
   tmux send -t freebox 'sh /tmp/freebox.sh' ENTER
 
-+ f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
-J Convert TIFF to JPG
-  set %t
-  while [ -n "$1" ] ; do
-    convert -auto-level -quality 85 "$1" "`$1 | cut -d '.' -f1`.jpg"
-    shift
-  done
+#+ f *.tif | f *.tiff | f *.TIF | f *.TIFF & t t
+#J Convert TIFF to JPG
+#  set %t
+#  while [ -n "$1" ] ; do
+#    convert -auto-level -quality 85 "$1" "`$1 | cut -d '.' -f1`.jpg"
+#    shift
+#  done
 
 + f * & t t
 B upload to dropbox
