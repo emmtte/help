@@ -64,7 +64,7 @@ curl -o rclone.zip http://downloads.rclone.org/rclone-v1.12-linux-arm.zip
 unzip rclone.zip
 sudo cp rclone-v1.12-linux-arm/rclone /usr/bin/rclone
 rclone config
-rclone sync gdrive:/Photos_Old pi:/media/hdd/rclone
+mv .rclone.conf /home/pi/.config/rclone.conf
 ````
 ### Youtube-dl
 https://github.com/rg3/youtube-dl
