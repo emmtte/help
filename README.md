@@ -87,7 +87,7 @@ sudo service ssh restart
 ````
 ###Prerequisites
 ````
-sudo apt-get install tmux exif mencoder
+sudo apt-get install tmux exif mencoder imagemagick
 mkdir /home/pi/service/
 cd /home/pi/service/
 touch 3rd_party backup system tmux update
