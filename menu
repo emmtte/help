@@ -430,11 +430,12 @@ R Do list of error JPG exif with folder name
   EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
   printf "$(basename "$FILE"):" >> "/tmp/photos.txt" 
   DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ' '`
-  printf "$DAT==>$EXI" >> "/tmp/photos.txt"
     if [ -z "$EXI" ]; then
+      printf "$DAT==>$EXI" >> "/tmp/photos.txt"
       printf " NO  DA TE" >> "/tmp/photos.txt"
     fi
     if [ "$DAT" != "$EXI" ] ; then 
+      printf "$DAT==>$EXI" >> "/tmp/photos.txt"
       printf " NOT MATCH" >> "/tmp/photos.txt"
     fi
   printf "\n" >> "/tmp/photos.txt"
