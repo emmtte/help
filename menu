@@ -112,14 +112,21 @@ E download from google drive
   tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
 
 + f backup & t r
-5 shrink /media/hdd/photos==>> Google+ account
+5 *(O)* sync pi://media/hdd/photos ==>> gdrive://Photos
+  tmux has-session -t rclone
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s rclone ; fi
+  tmux send -t rclone 'rclone --config="/home/pi/.config/rclone.conf" sync pi://media/hdd/photos gdrive://Photos' ENTER
+  tmux send -t rclone 'pushbullet push all note "Rasperry Pi" "rclone: Photos sync finished"' ENTER
+
++ f backup & t r
+6 shrink /media/hdd/photos==>> Google+ account
   tmux has-session -t gplus
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gplus ; fi
   tmux send -t gplus 'picasawebsync.py -d /media/hdd/photos --shrink' ENTER
   tmux send -t gplus 'pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"' ENTER
 
 + f backup & t r
-6 backup Youtube ==>> /hdd/youtube
+7 backup Youtube ==>> /hdd/youtube
   cat > /tmp/youtube_task.sh << 'EOF'
   clear
   google youtube list > /tmp/youtube.txt
