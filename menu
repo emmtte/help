@@ -525,9 +525,16 @@ A attach freebox session
 #    # #    # #      #      #      #    # #    #
  ####   ####  ###### ###### ######  ####   ####
 
++ f *.jpg | f *.JPG & t t
+e Affiche l'EXIF de la photo
+  set %t
+  while [ -n "$1" ] ; do
+    exiv2 -M "add Exif.Photo.DateTimeOriginal %{YYYY:MM:DD} 00:00:00" $1
+    shift
+  done
+  
 + f *.jpg | f *.JPG & t r
 e Affiche l'EXIF de la photo
-  exiv2 -M "add Exif.Photo.DateTimeOriginal %{YYYY:MM:DD} 00:00:00" %f
   clear
   exiv2 %f
   printf 'Press [Enter] key to continue...'
