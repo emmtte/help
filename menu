@@ -434,8 +434,8 @@ R Do list of error JPG exif with folder name
   # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
   COUNTER=1
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
-  EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
-  DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ' '`
+  EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | cut -d ':' -f 1,2 | tr ':' ' '`
+  DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
     if [ -z "$EXI" ]; then
       printf "$(basename "$FILE"):" >> "/tmp/photos.txt" 
       printf "$DAT==>$EXI" >> "/tmp/photos.txt"
