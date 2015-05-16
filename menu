@@ -528,8 +528,7 @@ A attach freebox session
 + f *.jpg | f *.JPG & t r
 e Affiche l'EXIF de la photo
   clear
-  exiv2 %f
-  exiv2 -M add Exif.Photo.DateTimeOriginal %{Date} 00:00:00 %f
+  exiv2 -M add Exif.Photo.DateTimeOriginal %{Date [YYYY-MM-DD]} 00:00:00 %f
   exiv2 %f
   printf 'Press [Enter] key to continue...'
   read null
