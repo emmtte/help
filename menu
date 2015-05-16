@@ -527,10 +527,10 @@ A attach freebox session
 
 + f *.jpg | f *.JPG & t t
 e Ecrit l'EXIF des photos
-  
+  DAT=%{YYYY:MM:DD}
   set %t
   while [ -n "$1" ] ; do
-    exiv2 -M "add Exif.Photo.DateTimeOriginal %{YYYY:MM:DD} 00:00:00" $1
+    exiv2 -M "add Exif.Photo.DateTimeOriginal $DAT 00:00:00" $1
     shift
   done
   
