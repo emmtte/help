@@ -5,6 +5,14 @@
     "user" : "pi",
     "password" : "raspberry",
     "commands" : [ {
+        "name" : "motion start",
+        "sudo" : false,
+        "cmd" : "motion"
+    }, {
+       "name" : "motion stop",
+        "sudo" : true,
+        "cmd" : "killall motion"
+    }, {
         "name" : "transmission start",
         "sudo" : true,
         "cmd" : "service transmission-daemon start"
