@@ -438,6 +438,7 @@ R Do list of error JPG exif with folder name
   EXI=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   EXI1=`date -d "$EXIF +1 month" +"%Y %m"`
   DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
+  echo "EXIF : --$EXI-- EXI1 : --$EXI-- DATE : --$DAT--"
     if [ -z "$EXI" ]; then
       printf "$(basename "$FILE"):" >> "/tmp/photos.txt" 
       printf "$DAT==>$EXI" >> "/tmp/photos.txt"
