@@ -436,7 +436,7 @@ R Do list of error JPG exif with folder name
   find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
   EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
   EXI=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
-  EXI1=`date -d "$EXIF +1 month" +"%Y %m"`
+  EXI1=`date -d "$EXIF +1 month" +"%%Y %%m"`
   DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
   echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
     if [ -z "$EXI" ]; then
