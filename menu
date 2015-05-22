@@ -445,7 +445,7 @@ R Do list of error JPG exif with folder name
       printf " NO  DA TE" >> "/tmp/photos.txt"
       printf "\n" >> "/tmp/photos.txt"
     fi
-    if [[ "$DAT" != "$EXI" && "$DAT" != "$EXI1" ]]; then
+    if [[ "$DAT" != "$EXI" || "$DAT" != "$EXI1" ]]; then
       printf "$(basename "$FILE"):" >> "/tmp/photos.txt" 
       printf "$DAT==>$EXI" >> "/tmp/photos.txt"
       printf " NOT MATCH" >> "/tmp/photos.txt"
