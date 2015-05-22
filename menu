@@ -424,7 +424,6 @@ R Rename photos
   tmux has-session -t photos
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
   tmux send -t photos 'sh ~/rename_task.sh' ENTER
-  tmux send -t photos 'rm ~/rename_task.sh' ENTER
 
 + d * & t d
 R Do list of error JPG exif with folder name
@@ -452,11 +451,12 @@ R Do list of error JPG exif with folder name
       printf "\n" >> "/tmp/photos.txt"
     fi
   done
+  rm ~/checkjpg_task.sh
+  pushbullet push all note "Rasperry Pi" "Photos Control Done"
   EOF
   tmux has-session -t photos
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
   tmux send -t photos 'sh ~/checkjpg_task.sh' ENTER
-  #tmux send -t photos 'rm ~/checkjpg_task.sh' ENTER
   
 #    # #####  #####    ##   ##### ######
 #    # #    # #    #  #  #    #   #
