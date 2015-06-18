@@ -25,6 +25,20 @@ git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
 ````
+### Picasa Web Sync
+https://github.com/leocrawford/picasawebsync
+`````
+sudo apt-get install jhead
+sudo apt-get install python-imaging python-imaging-tk
+sudo apt-get install python-gdata
+sudo apt-get install python-pip
+sudo pip install --upgrade pip 
+sudo pip install --upgrade oauth2client
+git clone https://github.com/leocrawford/picasawebsync.git
+cd picasawebsync
+sudo python setup.py install
+picasawebsync.py -d /media/hdd/photos --shrink
+`````
 ### Picasa Web Uploader
 https://github.com/jackpal/picasawebuploader
 `````
@@ -36,17 +50,6 @@ sudo apt-get install python-pyexiv2
 curl -o picasawebuploader.py https://raw.githubusercontent.com/jackpal/picasawebuploader/master/main.py
 sudo chmod +x picasawebuploader.py 
 picasawebuploader.py --email @gmail.com --source /media/hdd/photos
-`````
-### Picasa Web Sync
-https://github.com/leocrawford/picasawebsync
-`````
-sudo apt-get install jhead
-sudo apt-get install python-imaging python-imaging-tk
-sudo apt-get install python-gdata
-git clone https://github.com/leocrawford/picasawebsync.git
-cd picasawebsync
-sudo python setup.py install
-picasawebsync.py -d /media/hdd/photos --shrink
 `````
 ### Pushbullet
 https://github.com/Red5d/pushbullet-bash
