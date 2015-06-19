@@ -37,6 +37,7 @@ sudo pip install --upgrade oauth2client
 git clone https://github.com/leocrawford/picasawebsync.git
 cd picasawebsync
 sudo python setup.py install
+sudo rm /home/pi/picasawebsync
 picasawebsync.py -d /media/hdd/photos --shrink
 `````
 ### Picasa Web Uploader
