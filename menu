@@ -289,7 +289,7 @@ p panasonic: sd copy
   cat >> /tmp/panasonic_task.sh << EOF
   clear
   sudo mkdir /media/panasonic
-  sudo mount /dev/sdc1 /media/panasonic
+  sudo mount LABEL=CANON_DC /media/panasonic
   mkdir /media/hdd/panasonic
   cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
   pushbullet push all note "photos and videos from panasonic are saved"
