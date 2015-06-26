@@ -270,7 +270,7 @@ m sst stop
 
 + f 3rd_party & t r
 g gopro: sd copy
-  cat >> ~/gopro_task.sh << EOF
+  cat >> /tmp/gopro_task.sh << EOF
   clear
   sudo mkdir /media/gopro
   sudo mount /dev/sdb1 /media/gopro
@@ -278,24 +278,26 @@ g gopro: sd copy
   cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
   cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
   pushbullet push all note "photos and videos from gopro are saved"
+  rm /tmp/gopro_task.sh
   EOF
   tmux has-session -t gopro
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
-  tmux send -t gopro 'sh ~/gopro_task.sh' ENTER
+  tmux send -t gopro 'sh /tmp/gopro_task.sh' ENTER
   
 + f 3rd_party & t r
 p panasonic: sd copy
-  cat >> ~/panasonic_task.sh << EOF
+  cat >> /tmp/panasonic_task.sh << EOF
   clear
   sudo mkdir /media/panasonic
   sudo mount /dev/sdb1 /media/panasonic
   mkdir /media/hdd/panasonic
   cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
   pushbullet push all note "photos and videos from panasonic are saved"
+  rm /tmp/panasonic_task.sh
   EOF
   tmux has-session -t gopro
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
-  tmux send -t gopro 'sh ~/panasonic_task.sh' ENTER  
+  tmux send -t gopro 'sh /tmp/panasonic_task.sh' ENTER  
   
 + f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t r
 g gopro: concat & upload
