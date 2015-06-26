@@ -368,17 +368,15 @@ s Autolevel photos
 + f *.jpg | f *.JPG & t t
 P gphotos2 to hdd
   clear
-  path=/media/hdd/photos
-  stamp=$(date +%%Y%%m%%d%%H%%M%%S)
-  mkdir -p "${path}/${stamp}"
-  cd "${path}/${stamp}"
-  gphoto2 --get-all-files --filename "%%Y%%m%%d%%H%%M%%S.%%C"
+  path=/media/hdd/panasonic
+  mkdir -p "${path}"
+  cd "${path}"
+  gphoto2 --get-all-files
     if [ $? != 0 ]; then
     echo "*** error executing gphoto2, aborting."
     popd &> /dev/null
     exit 1
     fi
-  google picasa create ${stamp} ${path}/${stamp}/*.JPG
 
 + d * & t d
 c change directory date of photos and delete empty directory
