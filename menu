@@ -283,6 +283,20 @@ g gopro: sd copy
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
   tmux send -t gopro 'sh ~/gopro_task.sh' ENTER
   
++ f 3rd_party & t r
+p panasonic: sd copy
+  cat >> ~/panasonic_task.sh << EOF
+  clear
+  sudo mkdir /media/panasonic
+  sudo mount /dev/sdb1 /media/panasonic
+  mkdir /media/hdd/panasonic
+  cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
+  pushbullet push all note "photos and videos from panasonic are saved"
+  EOF
+  tmux has-session -t gopro
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
+  tmux send -t gopro 'sh ~/panasonic_task.sh' ENTER  
+  
 + f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t r
 g gopro: concat & upload
   tmux has-session -t gopro
@@ -364,19 +378,6 @@ s Autolevel photos
     mogrify -auto-level $1
     shift
   done
-
-+ f *.jpg | f *.JPG & t t
-P gphotos2 to hdd
-  clear
-  path=/media/hdd/panasonic
-  mkdir -p "${path}"
-  cd "${path}"
-  gphoto2 --get-all-files
-    if [ $? != 0 ]; then
-    echo "*** error executing gphoto2, aborting."
-    popd &> /dev/null
-    exit 1
-    fi
 
 + d * & t d
 c change directory date of photos and delete empty directory
