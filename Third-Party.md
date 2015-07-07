@@ -38,8 +38,8 @@ git clone https://github.com/leocrawford/picasawebsync.git
 cd picasawebsync
 sudo python setup.py install
 sudo rm -r /home/pi/picasawebsync
-mv /home/pi/client_secrets.json /home/pi/client_secrets.json
-picasawebsync.py -d /media/hdd/photos --shrink
+sudo mv /home/pi/client_secrets.json /usr/local/bin/client_secrets.json
+picasawebsync.py -d /media/hdd/photos
 picasawebsync.py -d /media/hdd/photos --purge
 `````
 ### Picasa Web Uploader
