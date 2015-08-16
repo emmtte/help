@@ -8,6 +8,14 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/bin/dropbox_uploader
 dropbox_uploader
 ````
+### Drive
+https://github.com/odeke-em/drive
+````
+sudo apt-get install software-properties-common python-software-properties
+sudo add-apt-repository ppa:twodopeshaggy/drive
+sudo apt-get update
+sudo apt-get install drive
+````
 ### Flickr Smart Sync
 https://github.com/faisalraja/flickrsmartsync
 ````
