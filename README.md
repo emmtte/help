@@ -103,12 +103,14 @@ tmux switch -t session_name switches to an existing session named session_name
 tmux list-sessions lists existing tmux sessions
 tmux detach (ctrl b + d) detach the currently attached session
 ````
-### External Usb Drive
+### External Usb Drive and Freebox HDD
 ````
 sudo mkdir /media/hdd
 sudo e2label /dev/sda1 RaspberryPi
 sudo mount LABEL=RaspberryPi /media/hdd
+sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/ /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
 echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
+echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=mini4K,iocharset=utf8,uid=1000,sec=none,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
 sudo chown -R pi:pi /media/hdd
 ````
 ### minidlna
