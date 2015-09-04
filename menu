@@ -150,6 +150,11 @@ E download from google drive
  ####    #    ####    #   ###### #    #
 
 + f system & t r
+m [mount freebox hdd]
+  clear
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
+  
++ f system & t r
 i [dropbox info]
   clear && ~/dropbox_uploader.sh info
   printf 'Press [Enter] key to continue...'
