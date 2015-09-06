@@ -176,7 +176,7 @@ sudo service transmission-daemon restart
 ### btsync
 ````
 cd /tmp
-curl -o btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
+curl -k -o btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
 tar -xvf btsync.tar.gz
 sudo mv btsync /usr/bin
 sudo chmod 755 /usr/bin/btsync
