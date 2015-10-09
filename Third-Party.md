@@ -3,7 +3,7 @@ Third-Party Command Line Utilities
 ### Facebook Album-Grab
 https://github.com/adamelso/albumgrab
 ````
-sudo apt-get install php5
+sudo apt-get install php5 php5-curl
 curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 git clone https://github.com/adamelso/albumgrab
