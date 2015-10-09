@@ -8,6 +8,7 @@ curl -sS https://getcomposer.org/installer | php
 sudo mv composer.phar /usr/local/bin/composer
 git clone https://github.com/adamelso/albumgrab
 cd albumgrab
+composer install
 bin/albumgrab download --next="Suivant"
 ````
 ### Dropbox-Uploader
