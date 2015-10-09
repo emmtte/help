@@ -1,5 +1,15 @@
 Third-Party Command Line Utilities
 ==================================
+### Facebook Album-Grab
+https://github.com/adamelso/albumgrab
+````
+sudo apt-get install php5
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+git clone https://github.com/adamelso/albumgrab
+cd albumgrab
+bin/albumgrab download --next="Suivant"
+````
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
 ````
