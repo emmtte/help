@@ -1,7 +1,7 @@
 Third-Party Command Line Utilities
 ==================================
 ````
-curl -o facebook.py https://github.com/mattia-beta/Facebook-Albums-Downloader/blob/master/download_photos.py
+curl -o facebook.py https://raw.githubusercontent.com/mattia-beta/Facebook-Albums-Downloader/master/download_photos.py
 ````
 
 ### Facebook Album-Grab
