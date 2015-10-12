@@ -1,17 +1,5 @@
 Third-Party Command Line Utilities
 ==================================
-
-### Facebook Album-Grab
-https://github.com/adamelso/albumgrab
-````
-sudo apt-get install php5 php5-curl
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-git clone https://github.com/adamelso/albumgrab
-cd albumgrab
-composer install
-bin/albumgrab download --next="Suivant"
-````
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
 ````
@@ -23,10 +11,8 @@ dropbox_uploader
 ### Drive
 https://github.com/odeke-em/drive
 ````
-sudo apt-get install software-properties-common python-software-properties
-sudo add-apt-repository ppa:twodopeshaggy/drive
-sudo apt-get update
-sudo apt-get install drive
+curl http://dave.cheney.net/paste/go1.4.2.linux-arm~multiarch-armv6-1.tar.gz
+go get -u github.com/odeke-em/drive/cmd/drive
 ````
 ### Flickr Smart Sync
 https://github.com/faisalraja/flickrsmartsync
