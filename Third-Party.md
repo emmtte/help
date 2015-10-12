@@ -11,7 +11,9 @@ dropbox_uploader
 ### Drive
 https://github.com/odeke-em/drive
 ````
-curl http://dave.cheney.net/paste/go1.4.2.linux-arm~multiarch-armv6-1.tar.gz
+curl -o go.tar.gz http://dave.cheney.net/paste/go1.4.2.linux-arm~multiarch-armv6-1.tar.gz
+sudo tar -C /usr/local -xzf go.tar.gz
+export PATH=$PATH:/usr/local/go/bin
 go get -u github.com/odeke-em/drive/cmd/drive
 ````
 ### Flickr Smart Sync
