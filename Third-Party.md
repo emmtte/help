@@ -48,7 +48,7 @@ sudo apt-get install python-pip
 sudo pip install --upgrade pip 
 sudo pip install --upgrade oauth2client
 git clone https://github.com/leocrawford/picasawebsync.git
-mv /home/pi/client_secrets.json /home/pi/picasawebsync/client_secrets.json
+cp /home/pi/client_secrets.json /home/pi/picasawebsync/client_secrets.json
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos --purge
 `````
