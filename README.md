@@ -41,13 +41,8 @@ Match Address 192.168.0.0/24
 EOF
 sudo service ssh restart
 ````
-###Prerequisites
-````
-sudo apt-get install tmux exif mencoder imagemagick
-mkdir /home/pi/service/
-cd /home/pi/service/
-touch 3rd_party backup system tmux update
-````
+####Prerequisites
+
 ### Midnight commander
 https://www.midnight-commander.org/
 ````
@@ -64,6 +59,10 @@ echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
 ````
 ### Menu
 ````
+sudo apt-get install tmux exif mencoder imagemagick
+mkdir /home/pi/service/
+cd /home/pi/service/
+touch 3rd_party backup system tmux update
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
@@ -96,6 +95,7 @@ sudo service samba restart
 sudo smbpasswd -a pi
 ````
 ### tmux
+https://tmux.github.io/
 ````
 sudo apt-get -y install tmux
 tmux new -s session_name creates a new tmux session named session_name
@@ -106,10 +106,16 @@ tmux detach (ctrl b + d) detach the currently attached session
 ````
 ### External Usb Drive and Freebox HDD
 ````
-sudo mkdir /media/hdd
+sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 sudo e2label /dev/sda1 RaspberryPi
 sudo mount LABEL=RaspberryPi /media/hdd
+
+sudo mkdir /media/hdd
+sudo e2label /dev/sda1 RaspberryPi
+
+sudo mount LABEL=RaspberryPi /media/hdd
 sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/ /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
+
 echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
 echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=mini4K,iocharset=utf8,uid=1000,sec=none,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
 sudo chown -R pi:pi /media/hdd
@@ -231,12 +237,7 @@ sudo service cron restart
 sudo mkdir /media/gopro
 sudo mount /dev/sdb1 /media/gopro
 ````    
-### Format HDD
-````
-sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
-sudo e2label /dev/sda1 RaspberryPi
-sudo mount LABEL=RaspberryPi /media/hdd
-````
+
 ### Remove X Server
 ````
 sudo apt-get remove --auto-remove --purge libx11-.*
