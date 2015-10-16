@@ -143,7 +143,7 @@ mixer_type "software"
 chmod -R 777 /media/hdd/music/
 sudo service mpd restart
 ```
-### transmission
+### Transmission
 http://www.transmissionbt.com/
 ```
 sudo apt-get -y install transmission-daemon
@@ -173,7 +173,7 @@ EOF
 sudo service transmission-daemon reload
 sudo service transmission-daemon restart
 ```
-### btsync
+### Btsync
 ````
 cd /tmp
 curl -k -o btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
@@ -182,7 +182,7 @@ sudo mv btsync /usr/bin
 sudo chmod 755 /usr/bin/btsync
 sudo btsync
 ````
-### motion
+### Motion
 ````
 echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
 ````
@@ -211,9 +211,6 @@ target_dir /tmp/motion
 control_localhost off
 on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
 on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
-````
-###upload
-````
 ````
 ### cron
 ````
@@ -252,7 +249,6 @@ sudo apt-get remove --auto-remove --purge libx11-.*
 ### Squid
 http://www.squid-cache.org/
 ````
-
 ## disable ads ( http://pgl.yoyo.org/adservers/ )
 acl ads dstdom_regex "/etc/squid/ad_block.txt"
 http_access deny ads
@@ -260,7 +256,6 @@ deny_info TCP_RESET ads
 
 sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
 sudo squid -k reconfigure
-
 ````
 ### dash to bash and vice cersa
 ````
