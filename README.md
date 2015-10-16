@@ -112,6 +112,7 @@ echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,use
 sudo chown -R pi:pi /media/hdd
 ````
 ### minidlna
+http://minidlna.sourceforge.net/
 ```
 sudo apt-get -y install minidlna
 sudo mcedit /etc/minidlna.conf
@@ -130,6 +131,7 @@ sudo service minidlna start
 ?????? sudo chmod 777 -R /media/hdd/
 ```
 ### mpd
+http://www.musicpd.org/
 ```
 sudo apt-get install mpd
 sudo mcedit /etc/mpd.conf
@@ -172,6 +174,7 @@ sudo service transmission-daemon reload
 sudo service transmission-daemon restart
 ```
 ### Btsync
+https://www.getsync.com/intl/fr/
 ````
 cd /tmp
 curl -k -o btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
@@ -181,6 +184,7 @@ sudo chmod 755 /usr/bin/btsync
 sudo btsync
 ````
 ### Motion
+http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
 ````
 echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
 ````
