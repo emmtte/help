@@ -249,11 +249,18 @@ echo "alias smc='sudo mc'" >> ~/.bashrc
 ````
 sudo apt-get remove --auto-remove --purge libx11-.*
 ````
-### Fail 2 Ban
+### Squid
+http://www.squid-cache.org/
 ````
-sudo apt-get install fail2ban
-sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
-sudo service fail2ban restart
+
+## disable ads ( http://pgl.yoyo.org/adservers/ )
+acl ads dstdom_regex "/etc/squid/ad_block.txt"
+http_access deny ads
+deny_info TCP_RESET ads
+
+sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
+sudo squid -k reconfigure
+
 ````
 ### dash to bash and vice cersa
 ````
