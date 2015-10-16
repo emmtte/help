@@ -68,8 +68,6 @@ echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
 
-Tools
-=====
 ### samba
 ````
 sudo apt-get -y install samba samba-common-bin
