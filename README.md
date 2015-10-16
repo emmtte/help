@@ -236,9 +236,9 @@ sudo mount LABEL=RaspberryPi /media/hdd
 ````
 ### Disable ext4 journal
 ````
-sudo umount /dev/sda1
-tune4fs -O ^has_journal /dev/sda1
-e4fsck –f /dev/sda1
+sudo umount /dev/mmcblk0p1
+tune4fs -O ^has_journal /dev/mmcblk0p1
+e4fsck –f /dev/mmcblk0p1
 sudo reboot
 ````    
 ### Alias
