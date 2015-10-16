@@ -230,10 +230,11 @@ sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 sudo e2label /dev/sda1 RaspberryPi
 sudo mount LABEL=RaspberryPi /media/hdd
 ````
-### Disable ext4 journal (not tested)
+### Disable ext4 journal
 ````
-tune4fs -O ^has_journal /dev/sdaX
-e4fsck –f /dev/sdaX
+sudo umount /dev/sda1
+tune4fs -O ^has_journal /dev/sda1
+e4fsck –f /dev/sda1
 sudo reboot
 ````    
 ### Alias
