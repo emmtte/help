@@ -26,6 +26,7 @@ sudo apt-get -y upgrade
 sudo rpi-update
 ````
 ###Secure Shell
+http://www.openssh.com/
 ````
 mkdir ~/.ssh
 cd ~/.ssh
@@ -48,6 +49,7 @@ cd /home/pi/service/
 touch 3rd_party backup system tmux update
 ````
 ### Midnight commander
+https://www.midnight-commander.org/
 ````
 sudo apt-get remove mc
 sudo apt-get install libglib2.0-dev libslang2-dev
@@ -69,6 +71,7 @@ source ~/.profile
 ````
 
 ### samba
+https://www.samba.org/
 ````
 sudo apt-get -y install samba samba-common-bin
 cat << EOF | sudo tee -a /etc/samba/smb.conf
