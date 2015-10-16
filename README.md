@@ -237,17 +237,6 @@ sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 sudo e2label /dev/sda1 RaspberryPi
 sudo mount LABEL=RaspberryPi /media/hdd
 ````
-### Disable ext4 journal
-````
-sudo umount /dev/mmcblk0p1
-tune2fs -O ^has_journal /dev/mmcblk0p1
-e2fsck –f /dev/mmcblk0p1
-sudo reboot
-````    
-### Alias
-````
-echo "alias smc='sudo mc'" >> ~/.bashrc
-````
 ### Remove X Server
 ````
 sudo apt-get remove --auto-remove --purge libx11-.*
