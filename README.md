@@ -249,10 +249,16 @@ sudo apt-get remove --auto-remove --purge libx11-.*
 ### Squid
 http://www.squid-cache.org/
 ````
-## disable ads ( http://pgl.yoyo.org/adservers/ )
-acl ads dstdom_regex "/etc/squid/ad_block.txt"
-http_access deny ads
-deny_info TCP_RESET ads
+sudo apt-get install squid
+cd /etc/squid/
+sudo cp squid.conf squid.conf.origin
+sudo cat squid.conf.origin | egrep -v -e '^[[:blank:]]*#|^$' > squid.conf
+sudo mcedit squid.conf
+
+ ## disable ads ( http://pgl.yoyo.org/adservers/ )
+ acl ads dstdom_regex "/etc/squid/ad_block.txt"
+ http_access deny ads
+ deny_info TCP_RESET ads
 
 sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
 sudo squid -k reconfigure
