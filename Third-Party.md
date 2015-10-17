@@ -76,9 +76,12 @@ echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ### Rclone
 https://github.com/ncw/rclone
 ````
-curl -o rclone.zip http://downloads.rclone.org/rclone-v1.18-linux-arm.zip
+curl -o rclone.zip http://downloads.rclone.org/rclone-v1.23-linux-arm.zip
 unzip rclone.zip
-sudo cp rclone-v1.18-linux-arm/rclone /usr/bin/rclone
+sudo cp rclone-v1.23-linux-arm/rclone /usr/bin/rclone
+````
+First time
+````
 rclone config
 mv .rclone.conf /home/pi/.config/rclone.conf
 ````
