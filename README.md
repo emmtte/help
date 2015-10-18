@@ -20,6 +20,7 @@ sudo raspi-config
 ````
 ###Updating
 ````
+sudo apt-get remove --auto-remove --purge libx11-.*
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
@@ -41,8 +42,6 @@ Match Address 192.168.0.0/24
 EOF
 sudo service ssh restart
 ````
-####Prerequisites
-
 ### Midnight commander
 https://www.midnight-commander.org/
 ````
@@ -68,7 +67,6 @@ alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 ````
-
 ### samba
 https://www.samba.org/
 ````
@@ -108,17 +106,17 @@ tmux detach (ctrl b + d) detach the currently attached session
 ````
 sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 sudo e2label /dev/sda1 RaspberryPi
-sudo mount LABEL=RaspberryPi /media/hdd
-
 sudo mkdir /media/hdd
-sudo e2label /dev/sda1 RaspberryPi
-
 sudo mount LABEL=RaspberryPi /media/hdd
+
 sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/ /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
 
 echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
 echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=mini4K,iocharset=utf8,uid=1000,sec=none,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
 sudo chown -R pi:pi /media/hdd
+
+sudo mkdir /media/gopro
+sudo mount /dev/sdb1 /media/gopro
 ````
 ### minidlna
 http://minidlna.sourceforge.net/
@@ -232,16 +230,6 @@ echo "@reboot /home/pi/remote.sh >>/dev/null 2>&1"
 crontab /tmp/cron.tmp
 sudo service cron restart
 ````
-### GoPro
-````
-sudo mkdir /media/gopro
-sudo mount /dev/sdb1 /media/gopro
-````    
-
-### Remove X Server
-````
-sudo apt-get remove --auto-remove --purge libx11-.*
-````
 ### Squid
 http://www.squid-cache.org/
 ````
@@ -258,9 +246,4 @@ sudo mcedit squid.conf
 
 sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
 sudo squid -k reconfigure
-````
-### dash to bash and vice cersa
-````
-sudo ln -sf bash /bin/sh
-sudo ln -sf dash /bin/sh
 ````
