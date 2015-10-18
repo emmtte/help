@@ -3,6 +3,10 @@ Third-Party Command Line Utilities
 #### Castnow
 https://github.com/xat/castnow
 ````
+curl -o nodejs.tar.gz https://nodejs.org/download/release/v4.2.1/node-v4.2.1-linux-armv6l.tar.gz
+sudo tar -C /usr/local -xzvf nodejs.tar.gz
+
+
 wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
 sudo dpkg -i node_latest_armhf.deb
 sudo npm install castnow -g
