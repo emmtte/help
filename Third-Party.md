@@ -1,5 +1,12 @@
 Third-Party Command Line Utilities
 ==================================
+#### Castnow
+https://github.com/xat/castnow
+````
+wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
+sudo dpkg -i node_latest_armhf.deb
+sudo npm install castnow -g
+````
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
 ````
