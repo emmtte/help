@@ -4,13 +4,19 @@ Third-Party Command Line Utilities
 https://github.com/xat/castnow
 ````
 curl -o nodejs.tar.gz https://nodejs.org/download/release/v4.2.1/node-v4.2.1-linux-armv6l.tar.gz
-sudo tar -C /usr/local -xzvf nodejs.tar.gz
-
+sudo tar -C /usr/local -xzvf nodejs.tar.gz --strip=1
 
 wget http://node-arm.herokuapp.com/node_latest_armhf.deb 
 sudo dpkg -i node_latest_armhf.deb
 sudo npm install castnow -g
 ````
+### Nodejs
+https://github.com/nodesource/distributions#debinstall
+````
+sudo curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+sudo apt-get install -y nodejs
+````
+
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
 ````
