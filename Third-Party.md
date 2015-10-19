@@ -13,7 +13,7 @@ sudo npm install castnow -g
 ### Nodejs
 https://github.com/nodesource/distributions#debinstall
 ````
-sudo curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
+curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install -y nodejs
 ````
 
