@@ -96,6 +96,7 @@ sudo smbpasswd -a pi
 https://tmux.github.io/
 ````
 sudo apt-get -y install tmux
+echo 'set-option -g history-limit 2000' | sudo tee /home/pi/.tmux.conf
 tmux new -s session_name creates a new tmux session named session_name
 tmux attach -t session_name attaches to an existing tmux session named session_name
 tmux switch -t session_name switches to an existing session named session_name
