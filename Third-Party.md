@@ -85,6 +85,10 @@ picasawebuploader.py --email @gmail.com --source /media/hdd/photos
 https://github.com/jacobsalmela/pi-hole
 ````
 curl -s "https://raw.githubusercontent.com/jacobsalmela/pi-hole/master/automated%20install/basic-install.sh" | bash
+mcedit /etc/dnsmasq.conf
+> change 
+server=208.67.222.222
+server=208.67.220.220
 ````
 ### Pushbullet
 https://github.com/Red5d/pushbullet-bash
