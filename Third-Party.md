@@ -81,6 +81,11 @@ curl -o picasawebuploader.py https://raw.githubusercontent.com/jackpal/picasaweb
 sudo chmod +x picasawebuploader.py 
 picasawebuploader.py --email @gmail.com --source /media/hdd/photos
 `````
+#### Pi Hole
+https://github.com/jacobsalmela/pi-hole
+````
+curl -s "https://raw.githubusercontent.com/jacobsalmela/pi-hole/master/automated%20install/basic-install.sh" | bash
+````
 ### Pushbullet
 https://github.com/Red5d/pushbullet-bash
 ````
