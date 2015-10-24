@@ -16,7 +16,6 @@ https://github.com/nodesource/distributions#debinstall
 curl -sL https://deb.nodesource.com/setup_4.x | sudo bash -
 sudo apt-get install -y nodejs
 ````
-
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
 ````
@@ -85,7 +84,7 @@ picasawebuploader.py --email @gmail.com --source /media/hdd/photos
 https://github.com/jacobsalmela/pi-hole
 ````
 curl -s "https://raw.githubusercontent.com/jacobsalmela/pi-hole/master/automated%20install/basic-install.sh" | bash
-mcedit /etc/dnsmasq.conf
+sudo mcedit /etc/dnsmasq.conf
 > change 
 server=208.67.222.222
 server=208.67.220.220
