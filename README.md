@@ -47,9 +47,9 @@ https://www.midnight-commander.org/
 ````
 sudo apt-get remove mc
 sudo apt-get install libglib2.0-dev libslang2-dev
-wget http://ftp.midnight-commander.org/mc-4.8.13.tar.bz2
-bzip2 -cd mc-4.8.13.tar.bz2 | tar xvf -
-cd mc-4.8.13
+wget http://ftp.midnight-commander.org/mc-4.8.14.tar.bz2
+bzip2 -cd mc-4.8.14.tar.bz2 | tar xvf -
+cd mc-4.8.14
 ./configure
 make
 sudo make install
