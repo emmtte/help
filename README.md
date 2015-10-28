@@ -8,7 +8,7 @@ Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) reale
 
 ###First  start
 Download putty and write
-start /MAX putty -ssh pi@192.168.0.1
+`start /MAX putty -ssh pi@192.168.0.1`
 
 ###Configuration
 ````
