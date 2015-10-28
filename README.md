@@ -49,6 +49,7 @@ sudo service ssh restart
 ````
 ### Midnight commander
 https://www.midnight-commander.org/
+Ne pas faire trop long
 ````
 sudo apt-get remove mc
 sudo apt-get install libglib2.0-dev libslang2-dev
