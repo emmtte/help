@@ -5,6 +5,11 @@ Preparations
 ============
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
 Download last [Raspbian](http://downloads.raspberrypi.org/raspbian_latest) realease
+
+###First  start
+Download putty and write
+start /MAX putty -ssh pi@192.168.0.1
+
 ###Configuration
 ````
 sudo raspi-config
