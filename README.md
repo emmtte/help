@@ -234,9 +234,7 @@ http://www.squid-cache.org/
 sudo apt-get install squid
 cd /etc/squid/
 sudo cp squid.conf squid.conf.origin
-sudo cat squid.conf.origin | egrep -v -e '^[[:blank:]]*#|^$' > /tmp/squid.conf
-sudo mcedit /tmp/squid.conf
-sudo mv /tmp/squid.conf squid.conf.origin
+sudo mcedit squid.conf
 
  ## disable ads ( http://pgl.yoyo.org/adservers/ )
  acl ads dstdom_regex "/etc/squid/ad_block.txt"
