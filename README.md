@@ -232,8 +232,7 @@ sudo service cron restart
 http://www.squid-cache.org/
 ````
 sudo apt-get install squid
-cd /etc/squid/
-sudo cp squid.conf squid.conf.origin
+sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.origin
 sudo mcedit squid.conf
 
  ## disable ads ( http://pgl.yoyo.org/adservers/ )
