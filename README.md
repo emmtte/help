@@ -47,31 +47,20 @@ Match Address 192.168.0.0/24
 EOF
 sudo service ssh restart
 ````
-### Midnight commander
-https://www.midnight-commander.org/
-Ne pas faire trop long
-````
-sudo apt-get remove mc
-sudo apt-get install libglib2.0-dev libslang2-dev
-wget http://ftp.midnight-commander.org/mc-4.8.14.tar.bz2
-bzip2 -cd mc-4.8.14.tar.bz2 | tar xvf -
-cd mc-4.8.14
-./configure
-make
-sudo make install
-
-echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
-````
 ### Menu
 ````
-sudo apt-get install tmux exif mencoder imagemagick
+sudo apt-get install mc tmux exif mencoder imagemagick
 mkdir /home/pi/service/
 cd /home/pi/service/
 touch 3rd_party backup system tmux update
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
+
+
 alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
+echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
+
 ````
 ### samba
 https://www.samba.org/
