@@ -22,7 +22,9 @@ cat << ! >> ~/.bashrc
 export GOPATH=/usr/local/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
-source ~/.bashrc 
+source ~/.bashrc
+sudo mkdir /usr/local/go
+sudo chmod -R x+w /usr/local/go
 sudo go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ````
