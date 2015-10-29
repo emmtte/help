@@ -106,11 +106,19 @@ source /etc/profile.d/golang.sh
 curl -o rclone.zip http://downloads.rclone.org/rclone-v1.23-linux-arm.zip
 unzip rclone.zip
 sudo cp rclone-v1.23-linux-arm/rclone /usr/bin/rclone
-````
-First time
-````
 rclone config
 mv .rclone.conf /home/pi/.config/rclone.conf
+````
+### Sejda
+https://github.com/torakiki/sejda
+````
+sudo apt-get update && sudo apt-get install oracle-java7-jdk
+Sejda installation
+curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v1.0.0.M9/sejda-console-1.0.0.M9-bin.zip
+unzip sejda.zip
+mv sejda-console-1.0.0.M9 .sejda
+chmod +x .sejda/bin/sejda-console
+.sejda/bin/sejda-console
 ````
 ### Youtube-dl
 https://github.com/rg3/youtube-dl
