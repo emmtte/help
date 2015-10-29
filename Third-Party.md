@@ -115,9 +115,11 @@ https://github.com/torakiki/sejda
 sudo apt-get install oracle-java8-jdk
 curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v1.0.0.RELEASE/sejda-console-1.0.0.RELEASE-bin.zip
 unzip sejda.zip
-mv console-1.0.0.RELEASE .sejda
-chmod +x .sejda/bin/sejda-console
-.sejda/bin/sejda-console
+sudo mkdir /usr/local/sejda
+sudo chmod ugo+rwx /usr/local/sejda
+mv /home/pi/sejda-console-1.0.0.RELEASE /usr/local/sejda
+rm sejda.zip
+/usr/local/sejda/bin/sejda-console
 ````
 ### Youtube-dl
 https://github.com/rg3/youtube-dl
