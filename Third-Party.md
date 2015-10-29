@@ -44,7 +44,7 @@ sudo apt-get install python-dev python-setuptools
 git clone https://github.com/faisalraja/flickrsmartsync.git
 cd flickrsmartsync
 sudo python setup.py install
-sudo rm /home/pi/flickrsmartsync
+sudo rm -r /home/pi/flickrsmartsync
 flickrsmartsync --sync-path /media/hdd/photos
 ````
 ### Google CL
