@@ -45,7 +45,7 @@ https://raw.githubusercontent.com/trickortweak/flickr-uploader/master/uploadr.py
 sudo chmod +x /usr/bin/uploadr.py
 sudo curl -o /usr/bin//uploadr.ini \
 https://raw.githubusercontent.com/trickortweak/flickr-uploader/master/uploadr.ini
-mcedit /usr/bin/uploadr.ini
+sudo mcedit /usr/bin/uploadr.ini
 uploadr.py
 ````
 ### Google CL
