@@ -87,7 +87,7 @@ E download from google drive
 0 sync /media/hdd/photos ==>> new flickr uploader
   tmux has-session -t flickr
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s flickr ; fi
-  tmux send -t flickr 'uploadr.py' ENTER
+  tmux send -t flickr '/home/pi/flickr-uploader/uploadr.py' ENTER
   tmux send -t flickr 'pushbullet push all note "Rasperry Pi" "uploadr flickr: sync finished"' ENTER
 
 + f backup & t r
