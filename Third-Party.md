@@ -17,13 +17,11 @@ dropbox_uploader
 ### Drive
 https://github.com/odeke-em/drive
 ````
-curl -o go.tar.gz http://dave.cheney.net/paste/go1.4.2.linux-arm~multiarch-armv6-1.tar.gz
-sudo tar -C /usr/local -xzf go.tar.gz
-export PATH=$PATH:/usr/local/go/bin
+sudo apt-get install golang
 cat << ! >> ~/.bashrc
-> export GOPATH=\$HOME/gopath
-> export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
-> !
+export GOPATH=\$HOME/gopath
+export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
+!
 source ~/.bashrc 
 go get -u github.com/odeke-em/drive/cmd/drive
 ````
