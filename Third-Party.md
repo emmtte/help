@@ -24,7 +24,7 @@ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc
 sudo mkdir /usr/local/go
-sudo chmod -R x+w /usr/local/go
+sudo chmod -R +rwx /usr/local/go
 sudo go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ````
