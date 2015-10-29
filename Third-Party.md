@@ -101,6 +101,7 @@ echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ### Rclone
 https://github.com/ncw/rclone
 ````
+sudo apt-get install -y golang
 curl -o rclone.zip http://downloads.rclone.org/rclone-v1.23-linux-arm.zip
 unzip rclone.zip
 sudo cp rclone-v1.23-linux-arm/rclone /usr/bin/rclone
