@@ -92,10 +92,8 @@ echo "API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 https://github.com/ncw/rclone
 ````
 sudo apt-get install -y golang
-echo '# Setup for golang' |sudo tee /etc/profile.d/golang.sh
-echo 'PATH=$PATH:/usr/bin/go'|sudo tee -a /etc/profile.d/golang.sh
+echo 'PATH=$PATH:/usr/local/go/bin'|sudo tee -a /etc/profile.d/golang.sh
 source /etc/profile.d/golang.sh
-
 curl -o rclone.zip http://downloads.rclone.org/rclone-v1.23-linux-arm.zip
 unzip rclone.zip
 sudo cp rclone-v1.23-linux-arm/rclone /usr/bin/rclone
