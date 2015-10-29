@@ -37,6 +37,10 @@ sudo python setup.py install
 sudo rm -r /home/pi/flickrsmartsync
 flickrsmartsync --sync-path /media/hdd/photos
 ````
+### Flickr-Uploader
+https://github.com/trickortweak/flickr-uploader
+````
+````
 ### Google CL
 https://github.com/vinitkumar/googlecl
 ````
