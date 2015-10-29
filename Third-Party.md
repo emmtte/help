@@ -53,6 +53,11 @@ git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
 ````
+### Mercury
+https://github.com/Skarafaz/mercury
+````
+````
+
 ### Picasa Web Sync
 https://github.com/leocrawford/picasawebsync
 `````
