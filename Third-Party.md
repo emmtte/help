@@ -40,13 +40,10 @@ flickrsmartsync --sync-path /media/hdd/photos
 ### Flickr-Uploader
 https://github.com/trickortweak/flickr-uploader
 ````
-sudo curl -o /usr/bin/uploadr.py \
-https://raw.githubusercontent.com/trickortweak/flickr-uploader/master/uploadr.py
-sudo chmod +x /usr/bin/uploadr.py
-sudo curl -o /usr/bin//uploadr.ini \
-https://raw.githubusercontent.com/trickortweak/flickr-uploader/master/uploadr.ini
-sudo mcedit /usr/bin/uploadr.ini
-uploadr.py
+git clone https://github.com/trickortweak/flickr-uploader.git
+chmod +x ~/flickr-uploader/uploadr.py
+mcedit ~/flickr-uploader/uploadr.ini
+~/flickr-uploader/uploadr.py
 ````
 ### Google CL
 https://github.com/vinitkumar/googlecl
