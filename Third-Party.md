@@ -19,7 +19,7 @@ https://github.com/odeke-em/drive
 ````
 sudo apt-get install golang
 cat << ! >> ~/.bashrc
-export GOPATH=\$HOME/gopath
+export GOPATH=\$HOME/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc 
