@@ -24,6 +24,7 @@ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc 
 go get -u github.com/odeke-em/drive/cmd/drive
+drive init
 ````
 ### Flickr Smart Sync
 https://github.com/faisalraja/flickrsmartsync
