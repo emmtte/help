@@ -49,7 +49,7 @@ sudo service ssh restart
 ````
 ### Menu
 ````
-sudo apt-get install mc tmux exif mencoder imagemagick
+sudo apt-get install mc tmux exif mpv imagemagick
 mkdir /home/pi/service/
 cd /home/pi/service/
 touch 3rd_party backup system tmux update
