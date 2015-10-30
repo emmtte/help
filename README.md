@@ -40,6 +40,7 @@ ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
 mv id_rsa.pub authorized_keys
 sudo chmod 600 authorized_keys
 cat << EOF | sudo tee -a /etc/ssh/sshd_config
+PermitRootLogin no
 AuthorizedKeysFile /home/pi/.ssh/authorized_keys
 PasswordAuthentication no
 Match Address 192.168.0.0/24
