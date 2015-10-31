@@ -25,7 +25,6 @@ sudo raspi-config
 ````
 ###Updating
 ````
-sudo apt-get remove -y --auto-remove --purge libx11-.*
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
