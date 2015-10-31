@@ -1,6 +1,6 @@
 Raspberry-Service
 =================
-<p>To make George eat an apple, press <kbd>Shift</kbd>+<kbd>F3</kbd></p>
+
 Preparations
 ============
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
@@ -98,6 +98,7 @@ tmux attach -t session_name attaches to an existing tmux session named session_n
 tmux switch -t session_name switches to an existing session named session_name
 tmux list-sessions lists existing tmux sessions
 ````
+<p>detach the currently attached session <kbd>Ctrl</kbd><kbd>b</kbd>+<kbd></kbd></p>
 `ctrl b` + `d` detach the currently attached session
 
 `ctrl b` + `[` scroll inside tmux session
