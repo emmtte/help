@@ -98,9 +98,9 @@ tmux attach -t session_name attaches to an existing tmux session named session_n
 tmux switch -t session_name switches to an existing session named session_name
 tmux list-sessions lists existing tmux sessions
 ````
-<p>detach the currently attached session <kbd>Ctrl</kbd><kbd>b</kbd>+<kbd></kbd></p>
+<p>detach the currently attached session <kbd>Ctrl</kbd><kbd>b</kbd>+<kbd>d</kbd></p>
 `ctrl b` + `d` detach the currently attached session
-
+<p>scroll inside tmux session <kbd>Ctrl</kbd><kbd>b</kbd>+<kbd>[</kbd></p>
 `ctrl b` + `[` scroll inside tmux session
 ### External Usb Drive and Freebox HDD
 ````
