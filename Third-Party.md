@@ -186,6 +186,7 @@ cd youtube-upload-master
 sudo python setup.py install
 ````
 ````
+A revoir
 mv youtube.json /home/pi/.config/youtube.json
 youtube-upload --title="test" --category="Music" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/gopro/videos/youtube.avi"
 ````
