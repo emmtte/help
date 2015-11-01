@@ -53,6 +53,7 @@ mv ~/flickr-uploader/ ~/flickr-uploader#1/
 ### Google CL
 https://github.com/vinitkumar/googlecl
 ````
+cd bin
 git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
@@ -60,10 +61,11 @@ sudo python setup.py install
 ### Hangouts Bot
 https://github.com/hangoutsbot/hangoutsbot
 ````
+cd bin
 git clone https://github.com/xmikos/hangupsbot.git
 cd hangupsbot
 sudo python3 setup.py install
-python3 hangupsbot/hangupsbot.py
+python3 bin/hangupsbot/hangupsbot.py
 ````
 ### Mercury
 https://github.com/Skarafaz/mercury
