@@ -44,7 +44,11 @@ https://github.com/trickortweak/flickr-uploader
 git clone https://github.com/trickortweak/flickr-uploader.git
 chmod +x ~/flickr-uploader/uploadr.py
 mcedit ~/flickr-uploader/uploadr.ini
-~/flickr-uploader/uploadr.py
+ > FILES_DIR = "/media/hdd/photos"
+ > "api_key" : "********************************",
+ > "secret"  : "****************"
+mv ~/flickr-uploader/ ~/flickr-uploader#1/
+~/flickr-uploader#1/uploadr.py
 ````
 ### Google CL
 https://github.com/vinitkumar/googlecl
