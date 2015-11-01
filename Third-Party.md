@@ -179,7 +179,7 @@ sudo chmod a+rx /usr/local/bin/youtube-dl
 ### Youtube-Upload
 https://github.com/tokland/youtube-upload
 ````
-sudo easy_install --upgrade google-api-python-client
+sudo pip install --upgrade google-api-python-client progressbar
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
 cd youtube-upload-master
