@@ -140,10 +140,10 @@ server=208.67.220.220
 ### Pushbullet
 https://github.com/Red5d/pushbullet-bash
 ````
-sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/bin/pushbullet
-sudo chmod a+x /usr/bin/pushbullet
-sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh -o /usr/bin/JSON.sh
-sudo chmod a+x /usr/bin/JSON.sh
+sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/local/bin/pushbullet
+sudo chmod a+x /usr/local/bin/pushbullet
+sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh -o /usr/local/bin/JSON.sh
+sudo chmod a+x /usr/local/bin/JSON.sh
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
 ### Rclone
