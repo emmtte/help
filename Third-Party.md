@@ -5,6 +5,7 @@ https://github.com/xat/castnow
 ````
 sudo apt-get install -y nodejs npm
 sudo npm install castnow -g
+nodejs /usr/local/bin/castnow
 ````
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
