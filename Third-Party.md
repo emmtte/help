@@ -53,6 +53,14 @@ git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
 ````
+### Hangouts Bot
+https://github.com/hangoutsbot/hangoutsbot
+````
+git clone https://github.com/xmikos/hangupsbot.git
+cd hangupsbot
+sudo python3 setup.py install
+python3 hangupsbot/hangupsbot.py
+````
 ### Mercury
 https://github.com/Skarafaz/mercury
 ````
