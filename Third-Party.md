@@ -173,8 +173,8 @@ rm sejda.zip
 ### Youtube-dl
 https://github.com/rg3/youtube-dl
 ````
-sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/bin/youtube-dl
-sudo chmod a+x /usr/bin/youtube-dl
+sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
 ````
 ### Youtube-Upload
 https://github.com/tokland/youtube-upload
