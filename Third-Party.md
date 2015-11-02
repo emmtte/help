@@ -63,9 +63,14 @@ sudo python setup.py install
 https://github.com/hangoutsbot/hangoutsbot
 ````
 cd .bin
+git clone https://github.com/tdryer/hangups.git
+cd hangups
+sudo python3 setup.py install
+
 git clone https://github.com/hangoutsbot/hangoutsbot.git
 cd hangoutsbot
 sudo pip3 install -r requirements.txt
+
 python3 .bin/hangoutsbot/hangoutsbot.py
 ````
 ### Mercury
