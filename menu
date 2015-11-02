@@ -84,10 +84,16 @@ E download from google drive
 #####  #    #  ####  #    #  ####  #
 
 + f backup & t r
-0 sync /media/hdd/photos ==>> new flickr uploader
+0 sync /media/hdd/photos ==>> new flickr uploader#1
   tmux has-session -t flickr
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s flickr ; fi
-  tmux send -t flickr '/home/pi/flickr-uploader/uploadr.py' ENTER
+  tmux send -t flickr '/home/pi/.bin/flickr-uploader#1/uploadr.py' ENTER
+  tmux send -t flickr 'pushbullet push all note "Rasperry Pi" "uploadr flickr: sync finished"' ENTER
+
+0 sync /media/hdd/photos ==>> new flickr uploader#2
+  tmux has-session -t flickr
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s flickr ; fi
+  tmux send -t flickr '/home/pi/.bin/flickr-uploader#2/uploadr.py' ENTER
   tmux send -t flickr 'pushbullet push all note "Rasperry Pi" "uploadr flickr: sync finished"' ENTER
 
 + f backup & t r
