@@ -61,6 +61,11 @@ echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
 
+cat << EOF | sudo tee -a ~/.bash_profile
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+EOF
 ````
 ### samba
 https://www.samba.org/
