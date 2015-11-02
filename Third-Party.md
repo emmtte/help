@@ -10,9 +10,9 @@ nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
 ````
-sudo curl -o /usr/bin/dropbox_uploader \
+sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
-sudo chmod +x /usr/bin/dropbox_uploader
+sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader
 ````
 ### Drive
