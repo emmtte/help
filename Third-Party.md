@@ -20,12 +20,11 @@ https://github.com/odeke-em/drive
 ````
 sudo apt-get install golang
 cat << ! >> ~/.bashrc
-export GOPATH=/usr/local/bin/go
+export GOPATH=~/.bin/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc
-sudo mkdir /usr/local/bin/go
-sudo chmod +rwx /usr/local/bin/go
+sudo mkdir ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ````
