@@ -46,6 +46,12 @@ Match Address 192.168.0.0/24
     PasswordAuthentication yes
 EOF
 sudo service ssh restart
+
+cat << EOF | sudo tee -a ~/.bash_profile
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+EOF
 ````
 ### Menu
 ````
@@ -60,12 +66,6 @@ alias mc='mc /home/pi/service'
 echo "alias mc='mc /home/pi/service'" >> ~/.profile
 source ~/.profile
 echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
-
-cat << EOF | sudo tee -a ~/.bash_profile
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
-EOF
 ````
 ### samba
 https://www.samba.org/
