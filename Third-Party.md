@@ -26,7 +26,7 @@ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 source ~/.bashrc
 sudo mkdir /usr/local/bin/go
 sudo chmod +rwx /usr/local/bin/go
-sudo go get -u github.com/odeke-em/drive/cmd/drive
+go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ````
 ### Flickr Smart Sync
