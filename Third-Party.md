@@ -142,8 +142,6 @@ https://github.com/Red5d/pushbullet-bash
 ````
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/local/bin/pushbullet
 sudo chmod +x /usr/local/bin/pushbullet
-sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh -o /usr/local/bin/JSON.sh
-sudo chmod a+rx /usr/local/bin/JSON.sh
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
 ### Rclone
