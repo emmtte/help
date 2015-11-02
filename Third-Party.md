@@ -71,7 +71,7 @@ git clone https://github.com/hangoutsbot/hangoutsbot.git
 cd hangoutsbot
 sudo pip3 install -r requirements.txt
 
-python3 .bin/hangoutsbot/hangoutsbot.py
+python3 ~/.bin/hangoutsbot/hangupsbot/hangupsbot.py
 ````
 ### Mercury
 https://github.com/Skarafaz/mercury
