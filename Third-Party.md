@@ -62,11 +62,11 @@ sudo python setup.py install
 ### Hangouts Bot
 https://github.com/hangoutsbot/hangoutsbot
 ````
-cd bin
+cd .bin
 git clone https://github.com/xmikos/hangupsbot.git
 cd hangupsbot
 sudo python3 setup.py install
-python3 bin/hangupsbot/hangupsbot.py
+python3 .bin/hangupsbot/hangupsbot.py
 ````
 ### Mercury
 https://github.com/Skarafaz/mercury
@@ -151,7 +151,7 @@ echo 'PATH=$PATH:/usr/local/go/bin'|sudo tee -a /etc/profile.d/golang.sh
 source /etc/profile.d/golang.sh
 curl -o rclone.zip http://downloads.rclone.org/rclone-v1.23-linux-arm.zip
 unzip rclone.zip
-sudo cp rclone-v1.23-linux-arm/rclone /usr/bin/rclone
+sudo cp rclone-v1.23-linux-arm/rclone /usr/local/bin/rclone
 rclone config
 mv .rclone.conf /home/pi/.config/rclone.conf
 ````
