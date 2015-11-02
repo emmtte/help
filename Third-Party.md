@@ -63,7 +63,7 @@ sudo python setup.py install
 https://github.com/hangoutsbot/hangoutsbot
 ````
 cd .bin
-git clone https://github.com/xmikos/hangupsbot.git
+git clone https://github.com/hangoutsbot/hangoutsbot.git
 cd hangupsbot
 sudo python3 setup.py install
 python3 .bin/hangupsbot/hangupsbot.py
