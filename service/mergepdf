@@ -1,9 +1,9 @@
 #!/bin/sh
 #service
 clear
-source ~/.bashrc
+source /home/pi/.bashrc
 cd ./gdrive
 drive pull -quiet Pending
-if grep -qr Encrypt /home/pi/gdrive/Pending; then pushbullet push all note "gdrive" "ERROR CRYPTED FILE"; exit; fi
+if grep -r "Encrypt" /home/pi/gdrive/Pending; then pushbullet push all note "gdrive" "ERROR CRYPTED FILE"; exit; fi
 find /home/pi/gdrive -iname "*.pdf" -type f | sort | tr '\n' ',' > files.csv
 if [ -f files.csv ]; then /usr/local/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf; fi
