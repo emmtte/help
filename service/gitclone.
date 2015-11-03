@@ -1,2 +1,3 @@
-git pull -C /home/pi/gdrive/ServicePi
-/home/pi/gdrive/drive pull -quiet Pending
+git -C /home/pi/gdrive/ServicePi pull
+cd /home/pi/gdrive
+drive push -quiet ServicePi
