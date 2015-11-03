@@ -1,3 +1,4 @@
 curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
-unzip -ju service.zip -d /home/pi/service2 ServicePi-master/service/*
+unzip -jo service.zip -d /home/pi/service2 ServicePi-master/service/*
 rm service.zip
+chmod +x ~/service2/*
