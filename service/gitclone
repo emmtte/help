@@ -1,0 +1,3 @@
+cd /home/pi/gdrive
+git clone https://github.com/ManuCart/ServicePi.git
+drive pull -quiet Pending
