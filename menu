@@ -522,6 +522,10 @@ u update mc menu
   tmux attach-session -t gopro
 
 + f tmux & t r
+4 attach inotify session
+  tmux attach-session -t inotify
+  
++ f tmux & t r
 5 attach mpv session
   tmux attach-session -t mpv
 
