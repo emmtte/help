@@ -1,2 +1,2 @@
-/home/pi/gdrive/ServicePi/git pull
+git pull -C /home/pi/gdrive/ServicePi
 /home/pi/gdrive/drive pull -quiet Pending
