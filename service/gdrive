@@ -1,6 +1,5 @@
 #!/bin/sh
-#tmux
-
+#service
 clear
 source ~/.bashrc
 cd ./gdrive
