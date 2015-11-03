@@ -59,14 +59,18 @@ git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
 ````
-### Hangouts Bot
-https://github.com/hangoutsbot/hangoutsbot
+### Hangups
+https://github.com/tdryer/hangups
 ````
-cd .bin
 git clone https://github.com/tdryer/hangups.git
 cd hangups
 sudo python3 setup.py install
-
+rm hangups
+hangups
+````
+### Hangouts Bot
+https://github.com/hangoutsbot/hangoutsbot
+````
 git clone https://github.com/hangoutsbot/hangoutsbot.git
 cd hangoutsbot
 sudo pip3 install -r requirements.txt
