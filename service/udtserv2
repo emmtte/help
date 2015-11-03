@@ -1,3 +1,4 @@
+#!/bin/sh
 clear
 rm ~/service2/* 
 curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
