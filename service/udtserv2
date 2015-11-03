@@ -1,4 +1,4 @@
-rmdir ~/service2 
+rm -r ~/service2 
 curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
 unzip -jo service.zip -d /home/pi/service2 ServicePi-master/service/*
 rm service.zip
