@@ -1,0 +1,4 @@
+#!/bin/sh
+#flickr
+/home/pi/.bin/flickr-uploader#2/uploadr.py
+pushbullet push all note "flickr" "backup finished"
