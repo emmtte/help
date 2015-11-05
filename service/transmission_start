@@ -1,1 +1,1 @@
-sudo service transmission-daemon start
+sudo service transmission-daemon restart
