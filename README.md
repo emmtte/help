@@ -66,6 +66,11 @@ cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/
 > UserMenu = f2; ctrl-w
 
+mcedit ~/.tmux.conf
+> unbind C-b
+> set -g prefix C-w
+> bind C-w send-prefix
+
 ````
 ### samba
 https://www.samba.org/
