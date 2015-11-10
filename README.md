@@ -63,10 +63,9 @@ curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/m
 
 
 cp /etc/mc/mc.keymap ~/.config/mc/
-mcedit ~/.config/mc/
+mcedit ~/.config/mc/mc.keymap
 > UserMenu = f2; ctrl-w
-> HotList = ctrl-backslash; ctrl-b
-> Mark = insert; ctrl-t; esc
+> Mark = insert; ctrl-t; ctrl-b
 
 
 
