@@ -62,10 +62,10 @@ touch 3rd_party backup system tmux update
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 
 
-alias mc='mc /home/pi/service'
-echo "alias mc='mc /home/pi/service'" >> ~/.profile
-source ~/.profile
-echo "export EDITOR=/usr/local/bin/mcedit" >> ~/.profile
+cp /etc/mc/mc.keymap ~/.config/mc/
+mcedit ~/.config/mc/
+> UserMenu = f2; ctrl-w
+
 ````
 ### samba
 https://www.samba.org/
