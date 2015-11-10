@@ -65,6 +65,8 @@ curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/m
 cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/
 > UserMenu = f2; ctrl-w
+> HotList = ctrl-backslash; ctrl-b
+
 
 mcedit ~/.tmux.conf
 > unbind C-b
