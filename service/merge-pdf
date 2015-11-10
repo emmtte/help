@@ -1,5 +1,4 @@
 #!/bin/sh
-#service
 clear
 source /home/pi/.bashrc
 cd ./gdrive
