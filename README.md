@@ -66,6 +66,8 @@ cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/
 > UserMenu = f2; ctrl-w
 > HotList = ctrl-backslash; ctrl-b
+> Mark = insert; ctrl-t; esc
+
 
 
 mcedit ~/.tmux.conf
