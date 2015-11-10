@@ -5,6 +5,7 @@ curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
 unzip -jo service.zip -d /home/pi/service2 ServicePi-master/service/*
 rm service.zip
 chmod +x ~/service2/*
-zip -jr /home/pi/gdrive/service.zip /home/pi/service2
-cd /home/pi/gdrive
-drive push -quiet service.zip
+ln -s play-scores /media/hdd/Bibliothèques/Musiques/-Scores/
+#zip -jr /home/pi/gdrive/service.zip /home/pi/service2
+#cd /home/pi/gdrive
+#drive push -quiet service.zip
