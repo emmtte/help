@@ -62,6 +62,12 @@ touch 3rd_party backup system tmux update
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 
 
+mcedit .bash_profile
+> if [ -f ~/.bashrc ]; then
+>   . ~/.bashrc
+> fi
+> mc /home/pi/service2/
+
 cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/mc.keymap
 > UserMenu = f2; ctrl-w
