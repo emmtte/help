@@ -1,5 +1,6 @@
 #!/bin/sh
 clear
+curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 rm ~/service2/* 
 curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
 unzip -jo service.zip -d /home/pi/service2 ServicePi-master/service/*
