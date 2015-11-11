@@ -161,48 +161,6 @@ E download from google drive
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube_dl 'bash /tmp/youtube_task.sh' ENTER
   
- ####  #   #  ####  ##### ###### #    #
-#       # #  #        #   #      ##  ##
- ####    #    ####    #   #####  # ## #
-     #   #        #   #   #      #    #
-#    #   #   #    #   #   #      #    #
- ####    #    ####    #   ###### #    #
-
-+ f system & t r
-m [mount freebox hdd]
-  clear
-  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
-  
-+ f system & t r
-i [dropbox info]
-  clear && ~/dropbox_uploader.sh info
-  printf 'Press [Enter] key to continue...'
-  read null
-
-+ f system & t r
-u dropbox unlink
-  clear && ~/dropbox_uploader.sh unlink
-
-+ f system & t r
-c raspi-config
-  sudo raspi-config
-
-+ f system & t r
-a [update/upgrade]
-  clear
-  sudo apt-get -y autoremove
-  sudo apt-get -y update
-  sudo apt-get -y dist-upgrade
-  sudo apt-get -y upgrade
-  
-+ f system & t r
-h [shutdown]
-  clear && sudo halt
-
-+ f system & t r
-r [reboot]
-  clear && sudo reboot
-
  ####   ####  #    # ###### #  ####
 #    # #    # ##   # #      # #    #
 #      #    # # #  # #####  # #
