@@ -27,7 +27,7 @@ A move to "BitTorrentSync" folder
 
 + f * & t t
 B move to "Freebox Server" folder
-  if [ -f /tmp/freebox.sh ] ; then figlet "Buzzy"; exit ; fi
+  if [ -f /tmp/freebox.sh ] ; then figlet "Buzzy"; printf 'Press [Enter] key to continue...'; read null; exit; fi
   cat > /tmp/freebox.sh << 'EOF'
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
