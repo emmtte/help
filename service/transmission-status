@@ -1,0 +1,3 @@
+sudo service transmission-daemon status
+printf 'Press [Enter] key to continue...'
+read null
