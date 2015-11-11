@@ -5,7 +5,7 @@
 #    # # #    # #   ## # #    # #    #   #    #    # #    # #    # #    # #    # #   ## #    # #      #   #
 #    # # #####  #    # #  ####  #    #   #     ####   ####  #    # #    # #    # #    # #####  ###### #    #
 
-+ f *.mp3 | f *.MP3 | f *.mp4 | f *.MP4 | f *.avi | f *.AVI | f *.mkv | f *.MKV & t t
++ f *.mp3 | f *.MP3 | f *.mp4 | f *.MP4 | f *.avi | f *.AVI | f *.mkv | f *.MKV & t r
 c clear
   nodejs /usr/local/bin/castnow %f
 
