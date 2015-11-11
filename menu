@@ -5,6 +5,10 @@
 #    # # #    # #   ## # #    # #    #   #    #    # #    # #    # #    # #    # #   ## #    # #      #   #
 #    # # #####  #    # #  ####  #    #   #     ####   ####  #    # #    # #    # #    # #####  ###### #    #
 
++ f *.mp3 | f *.MP3 | f *.mp4 | f *.MP4 | f *.avi | f *.AVI | f *.mkv | f *.MKV & t t
+c clear
+  castnow %f
+
 + f *.pdf & t r
 p gdrive Unite
   tmux has-session -t unite
