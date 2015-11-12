@@ -80,9 +80,22 @@ mcedit ~/.config/mc/mc.keymap
 
 
 mcedit ~/.tmux.conf
-> unbind C-b
-> set -g prefix C-w
-> bind C-w send-prefix
+
+unbind C-b
+set -g prefix Tab
+bind Tab send-prefix
+
+bind-key C-b next-window
+bind-key C-w previous-window
+
+set -g base-index 1
+
+set -g mode-mouse on
+set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
+
+set-option -g status-right ''
 
 ````
 ### samba
