@@ -28,6 +28,6 @@ tmux select-pane -t 0
 tmux resize-pan -R 30
 
 tmux select-window -t pi:1
-tmux -2 attach -t pi
 
 fi
+tmux -2 attach -t pi
