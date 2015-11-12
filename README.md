@@ -64,9 +64,13 @@ curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/m
 
 mcedit .bash_profile
 > if [ -f ~/.bashrc ]; then
->   . ~/.bashrc
+>     . ~/.bashrc
 > fi
-> mc /home/pi/service2/
+> if [ -z "$TMUX" ]; then
+>     mc /home/pi/service2/
+> fi
+
+
 
 cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/mc.keymap
