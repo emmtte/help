@@ -67,7 +67,7 @@ mcedit .bash_profile
 >     . ~/.bashrc
 > fi
 > if [ -z "$TMUX" ]; then
->     mc /home/pi/service2/
+>     mc /home/pi/service/ /home/pi/service/gdrive
 > fi
 
 
