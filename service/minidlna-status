@@ -1,0 +1,3 @@
+sudo service minidlna status
+printf 'Press [Enter] key to continue...'
+read null
