@@ -68,7 +68,7 @@ sudo python3 setup.py install
 rm hangups
 hangups
 ```
-### Hangouts Bot
+### <s>Hangouts Bot</s>
 https://github.com/hangoutsbot/hangoutsbot
 ```shell
 git clone https://github.com/hangoutsbot/hangoutsbot.git
@@ -91,7 +91,7 @@ cp /home/pi/client_secrets.json /home/pi/picasawebsync/client_secrets.json
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos --purge
 ```
-### Picasa Web Uploader
+### <s>Picasa Web Uploader</s>
 https://github.com/jackpal/picasawebuploader
 ```shell
 sudo apt-get install python-pip
