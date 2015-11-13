@@ -254,15 +254,6 @@ control_localhost off
 on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
 on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
 ````
-### cron
-````
-apt-get install inotify-tools
-echo "*/5 * * * * /home/pi/now.sh >/dev/null 2>&1"
-echo "@reboot /home/pi/remote.sh >>/dev/null 2>&1"
-* * * * * root  /usr/bin/flock -xn /var/lock/script.lock -c '/bin/bash updb.sh'
-crontab /tmp/cron.tmp
-sudo service cron restart
-````
 ### Squid
 http://www.squid-cache.org/
 ````
