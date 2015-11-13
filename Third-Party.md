@@ -28,7 +28,7 @@ mkdir ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ```
-<s>### Flickr Smart Sync</s>
+### <s>Flickr Smart Sync</s>
 https://github.com/faisalraja/flickrsmartsync
 ```shell
 sudo apt-get install python-dev python-setuptools
