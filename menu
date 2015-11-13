@@ -11,12 +11,6 @@ c castnow
   echo "%d/%f"
   nodejs /usr/local/bin/castnow --tomp4 "%f"
 
-+ f *.pdf & t r
-p gdrive Unite
-  tmux has-session -t unite
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s unite ; fi
-  tmux send -t unite "./unite" ENTER
-
 + f * & t t
 A move to "BitTorrentSync" folder
   set %t
@@ -83,24 +77,6 @@ D upload to google drive
 E download from google drive
   drive pull %{Dropbox Filename}
   
-#####    ##    ####  #    # #    # #####
-#    #  #  #  #    # #   #  #    # #    #
-#####  #    # #      ####   #    # #    #
-#    # ###### #      #  #   #    # #####
-#    # #    # #    # #   #  #    # #
-#####  #    #  ####  #    #  ####  #
-
-+ f backup & t r
-0 sync /media/hdd/photos ==>> new flickr uploader#1
-  tmux send -t flickr '/home/pi/.bin/flickr-uploader#1/uploadr.py' ENTER
-  tmux send -t flickr 'pushbullet push all note "Rasperry Pi" "uploadr flickr: sync finished"' ENTER
-
-0 sync /media/hdd/photos ==>> new flickr uploader#2
-  tmux has-session -t flickr
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s flickr ; fi
-  tmux send -t flickr '/home/pi/.bin/flickr-uploader#2/uploadr.py' ENTER
-  tmux send -t flickr 'pushbullet push all note "Rasperry Pi" "uploadr flickr: sync finished"' ENTER
-
 + f backup & t r
 1 sync /media/hdd/photos ==>> flickr
   tmux has-session -t flickr
@@ -159,94 +135,6 @@ E download from google drive
   tmux has-session -t youtube_dl
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
   tmux send -t youtube_dl 'bash /tmp/youtube_task.sh' ENTER
-  
- ####   ####  #    # ###### #  ####
-#    # #    # ##   # #      # #    #
-#      #    # # #  # #####  # #
-#      #    # #  # # #      # #  ###
-#    # #    # #   ## #      # #    #
- ####   ####  #    # #      #  ####
-
-+ f system & t r
-i init youtube upload
-  google youtube post -u %{Enter your gmail address} 
-
-+ f system & t r
-p init pushbullet API
-  sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/bin/pushbullet
-  sudo chmod a+x /usr/bin/pushbullet
-  clear && echo "Please visit https://www.pushbullet.com/account and"
-  read -p "Enter Access Token: " API
-  echo "API_KEY=$API" > ~/.config/pushbullet
-  pushbullet push all note "Pushbullet tested :)"
-  
-+ f system & t r
-t init dropbox
-  sudo curl https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh -o /usr/bin/dropbox_uploader
-  sudo chmod a+x /usr/bin/dropbox_uploader
-  clear && dropbox_uploader init
-
-##### #    # # #####  #####     #####    ##   #####  ##### #   #
-  #   #    # # #    # #    #    #    #  #  #  #    #   #    # #
-  #   ###### # #    # #    #    #    # #    # #    #   #     #
-  #   #    # # #####  #    #    #####  ###### #####    #     #
-  #   #    # # #   #  #    #    #      #    # #   #    #     #
-  #   #    # # #    # #####     #      #    # #    #   #     #
-
-+ f 3rd_party  & t r
-b start btsync
-  clear && sudo btsync --webui.listen 0.0.0.0:8888
-
-+ f 3rd_party & t r
-k stop btsync
-  clear && sudo killall btsync
-  
-+ f 3rd_party & t r
-r minidlna reload
-  clear && sudo service minidlna force-reload
-
-+ f 3rd_party  & t r
-t minidlna status
-  clear && sudo service minidlna status
-  printf 'Press [Enter] key to continue...'
-  read null
-
-+ f 3rd_party  & t r
-b start motion
-  clear && motion
-
-+ f 3rd_party & t r
-k stop motion
-  clear && sudo killall motion
-
-+ f 3rd_party & t r
-s transmission start
-  clear && sudo service transmission-daemon start
-  
-+ f 3rd_party & t r
-t transmission status
-  clear && sudo service transmission-daemon status
-  printf 'Press [Enter] key to continue...'
-  read null
-
-+ f 3rd_party & t r
-p transmission stop
-  clear && sudo service transmission-daemon stop
-
-+ f 3rd_party & t r
-m sst start
-  clear && omxplayer http://hi1.streamingsoundtracks.com:8000
-  
-+ f 3rd_party & t r
-m sst stop
-  clear && killall omxplayer
-
- ####   ####  #####  #####   ####
-#    # #    # #    # #    # #    #
-#      #    # #    # #    # #    #
-#  ### #    # #####  #####  #    #
-#    # #    # #      #   #  #    #
- ####   ####  #      #    #  ####
 
 + f 3rd_party & t r
 g gopro: sd copy
@@ -346,13 +234,6 @@ c cut video [no screen]
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
   pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
 
- ####  #####  #    #  ####  #####  ####
-#    # #    # #    # #    #   #   #    #
-#      #    # ###### #    #   #   #    #
-#  ### #####  #    # #    #   #   #    #
-#    # #      #    # #    #   #   #    #
- ####  #      #    #  ####    #    ####
-
 + f *.jpg | f *.JPG & t t
 s Autolevel photos
   set %t
@@ -448,80 +329,6 @@ R Do list of error JPG exif with folder name
   tmux has-session -t photos
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
   tmux send -t photos 'sh ~/checkjpg_task.sh' ENTER
-  
-#    # #####  #####    ##   ##### ######
-#    # #    # #    #  #  #    #   #
-#    # #    # #    # #    #   #   #####
-#    # #####  #    # ######   #   #
-#    # #      #    # #    #   #   #
- ####  #      #####  #    #   #   ######
-
-+ f update & t r
-u update mc menu
-  clear && curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
-
-####### #     # #     # #     #
-   #    ##   ## #     #  #   #
-   #    # # # # #     #   # #
-   #    #  #  # #     #    #
-   #    #     # #     #   # #
-   #    #     # #     #  #   #
-   #    #     #  #####  #     #
-
-+ f tmux & t r
-1 attach dropbox session
-  tmux attach-session -t dropbox
-
-+ f tmux & t r
-2 attach flickr session
-  tmux attach-session -t flickr
-
-+ f tmux & t r
-3 attach gplus session
-  tmux attach-session -t gplus
-
-+ f tmux & t r
-4 attach gopro session
-  tmux attach-session -t gopro
-
-+ f tmux & t r
-4 attach inotify session
-  tmux attach-session -t inotify
-  
-+ f tmux & t r
-5 attach mpv session
-  tmux attach-session -t mpv
-
-+ f tmux & t r
-6 attach photos session
-  tmux attach-session -t photos
-
-+ f tmux & t r
-7 attach rclone session
-  tmux attach-session -t rclone
-
-+ f tmux & t r
-8 attach stopmotion session
-  tmux attach-session -t stopmotion
-
-+ f tmux & t r
-9 attach youtube session
-  tmux attach-session -t youtube
-
-+ f tmux & t r
-0 attach youtube_dl session
-  tmux attach-session -t youtube_dl
-  
-+ f tmux & t r
-A attach freebox session
-  tmux attach-session -t freebox
-
-#    #  ####  ###### #      ######  ####   ####
-#    # #      #      #      #      #      #
-#    #  ####  #####  #      #####   ####   ####
-#    #      # #      #      #           #      #
-#    # #    # #      #      #      #    # #    #
- ####   ####  ###### ###### ######  ####   ####
 
 + f *.jpg | f *.JPG & t t
 e Ecrit l'EXIF des photos
