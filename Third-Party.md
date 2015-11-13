@@ -2,22 +2,22 @@ Third-Party Command Line Tools
 ==============================
 ### Castnow
 https://github.com/xat/castnow
-````
+```shell
 sudo apt-get install -y nodejs npm
 sudo npm install castnow -g
 nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
-````
+```
 ### Dropbox-Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader
-````
+```shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
-````
+```
 ### Drive
 https://github.com/odeke-em/drive
-````
+```shell
 sudo apt-get install golang
 cat << ! >> ~/.bashrc
 export GOPATH=~/.bin/go
@@ -27,20 +27,20 @@ source ~/.bashrc
 mkdir ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
-````
+```
 ### Flickr Smart Sync
 https://github.com/faisalraja/flickrsmartsync
-````
+```shell
 sudo apt-get install python-dev python-setuptools
 git clone https://github.com/faisalraja/flickrsmartsync.git
 cd flickrsmartsync
 sudo python setup.py install
 sudo rm -r /home/pi/flickrsmartsync
 flickrsmartsync --sync-path /media/hdd/photos
-````
+```
 ### Flickr-Uploader
 https://github.com/trickortweak/flickr-uploader
-````
+```shell
 cd ~/.bin
 git clone https://github.com/trickortweak/flickr-uploader.git
 chmod +x flickr-uploader/uploadr.py
@@ -50,36 +50,36 @@ mcedit flickr-uploader/uploadr.ini
  > "secret"  : "****************"
 mv flickr-uploader/ flickr-uploader#1/
 flickr-uploader#1/uploadr.py
-````
+```
 ### Google CL
 https://github.com/vinitkumar/googlecl
-````
+```shell
 cd bin
 git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
-````
+```
 ### Hangups
 https://github.com/tdryer/hangups
-````
+```shell
 git clone https://github.com/tdryer/hangups.git
 cd hangups
 sudo python3 setup.py install
 rm hangups
 hangups
-````
+```
 ### Hangouts Bot
 https://github.com/hangoutsbot/hangoutsbot
-````
+```shell
 git clone https://github.com/hangoutsbot/hangoutsbot.git
 cd hangoutsbot
 sudo pip3 install -r requirements.txt
 
 python3 ~/.bin/hangoutsbot/hangupsbot/hangupsbot.py
-````
+```
 ### Picasa Web Sync
 https://github.com/leocrawford/picasawebsync
-`````
+```shell
 sudo apt-get install jhead
 sudo apt-get install python-imaging python-imaging-tk
 sudo apt-get install python-gdata
@@ -90,10 +90,10 @@ git clone https://github.com/leocrawford/picasawebsync.git
 cp /home/pi/client_secrets.json /home/pi/picasawebsync/client_secrets.json
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos --purge
-`````
+```
 ### Picasa Web Uploader
 https://github.com/jackpal/picasawebuploader
-`````
+```shell
 sudo apt-get install python-pip
 sudo apt-get install libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
 sudo pip install pil
@@ -102,30 +102,30 @@ sudo apt-get install python-pyexiv2
 curl -o picasawebuploader.py https://raw.githubusercontent.com/jackpal/picasawebuploader/master/main.py
 sudo chmod +x picasawebuploader.py 
 picasawebuploader.py --email @gmail.com --source /media/hdd/photos
-`````
+```
 ### Pi Hole
 https://github.com/jacobsalmela/pi-hole
-````
+```shell
 curl -s "https://raw.githubusercontent.com/jacobsalmela/pi-hole/master/automated%20install/basic-install.sh" | bash
 sudo mcedit /etc/dnsmasq.conf
 > change 
 server=208.67.222.222
 server=208.67.220.220
-````
+```
 ### Pushbullet
 https://github.com/Red5d/pushbullet-bash
 https://www.pushbullet.com/account
-````
+```shell
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/local/bin/pushbullet
 sudo chmod +x /usr/local/bin/pushbullet
-````
+```
 https://www.pushbullet.com/account
-````
+```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
-````
+```
 ### Rclone
 https://github.com/ncw/rclone
-````
+```shell
 sudo apt-get install -y golang
 echo 'PATH=$PATH:/usr/local/go/bin'|sudo tee -a /etc/profile.d/golang.sh
 source /etc/profile.d/golang.sh
@@ -134,10 +134,10 @@ unzip rclone.zip
 sudo cp rclone-v1.23-linux-arm/rclone /usr/local/bin/rclone
 rclone config
 mv .rclone.conf /home/pi/.config/rclone.conf
-````
+```
 ### Sejda
 https://github.com/torakiki/sejda
-````
+```shell
 sudo apt-get install oracle-java8-jdk
 curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v1.0.0.RELEASE/sejda-console-1.0.0.RELEASE-bin.zip
 unzip sejda.zip
@@ -146,24 +146,24 @@ sudo chmod ugo+rwx /usr/local/sejda
 mv /home/pi/sejda-console-1.0.0.RELEASE /usr/local/sejda
 rm sejda.zip
 /usr/local/sejda/bin/sejda-console
-````
+```
 ### Youtube-dl
 https://github.com/rg3/youtube-dl
-````
+```shell
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod +x /usr/local/bin/youtube-dl
-````
+```
 ### Youtube-Upload
 https://github.com/tokland/youtube-upload
-````
+```shell
 sudo pip install --upgrade google-api-python-client progressbar
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
 cd youtube-upload-master
 sudo python setup.py install
-````
-````
-A revoir
+```
+```shell
+#A revoir
 mv youtube.json /home/pi/.config/youtube.json
 youtube-upload --title="test" --category="Music" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/gopro/videos/youtube.avi"
-````
+```
