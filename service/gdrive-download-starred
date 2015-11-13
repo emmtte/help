@@ -1,2 +1,4 @@
+clear
+source /home/pi/.bashrc
 cd ~/gdrive
 gdrive drive pull --starred --all
