@@ -147,6 +147,10 @@ mv /home/pi/sejda-console-1.0.0.RELEASE /usr/local/sejda
 rm sejda.zip
 /usr/local/sejda/bin/sejda-console
 ```
+### Wego
+https://github.com/schachmat/wego
+````
+```
 ### Youtube-dl
 https://github.com/rg3/youtube-dl
 ```shell
