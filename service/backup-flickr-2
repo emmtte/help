@@ -1,4 +1,6 @@
 #!/bin/sh
 clear
-/home/pi/.bin/flickr-uploader#2/uploadr.py
-pushbullet push all note "flickr" "backup finished"
+tmux send -t flickr.2 '/home/pi/.bin/flickr-uploader#2/uploadr.py' ENTER
+tmux send -t flickr.2 'pushbullet push all note "Flickr#1" "backup finished"' ENTER
+tmux select-window -t pi:flickr
+tmux select-pane -t flickr.2
