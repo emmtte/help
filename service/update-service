@@ -9,6 +9,7 @@ chmod +x ~/service2/*
 ln -s /media/hdd/Bibliothèques/Musiques/-Scores/ ~/service2/play-scores
 ln -s /media/hdd/torrent/ ~/service2/torrents
 ln -s /media/freebox/ ~/service2/freebox
+ln -s ~/gdrive/ ~/service2/gdrive
 #zip -jr /home/pi/gdrive/service.zip /home/pi/service2
 #cd /home/pi/gdrive
 #drive push -quiet service.zip
