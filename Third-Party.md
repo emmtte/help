@@ -149,8 +149,13 @@ rm sejda.zip
 ```
 ### Wego
 https://github.com/schachmat/wego
-````
+```shell
+go get github.com/schachmat/wego
 ```
+https://developer.worldweatheronline.com/auth/register
+````
+mcedit ~/.wegorc
+````
 ### Youtube-dl
 https://github.com/rg3/youtube-dl
 ```shell
