@@ -151,6 +151,9 @@ https://www.pushbullet.com/account
 ````
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/local/bin/pushbullet
 sudo chmod +x /usr/local/bin/pushbullet
+````
+https://www.pushbullet.com/account
+````
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ````
 ### Rclone
