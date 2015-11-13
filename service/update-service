@@ -1,15 +1,12 @@
 #!/bin/sh
 clear
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
-rm ~/service2/* 
+rm ~/service/* 
 curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
-unzip -jo service.zip -d /home/pi/service2 ServicePi-master/service/*
+unzip -jo service.zip -d /home/pi/service ServicePi-master/service/*
 rm service.zip
-chmod +x ~/service2/*
-ln -s /media/hdd/Bibliothèques/Musiques/-Scores/ ~/service2/play-scores
-ln -s /media/hdd/torrent/ ~/service2/torrents
-ln -s /media/freebox/ ~/service2/freebox
-ln -s ~/gdrive/ ~/service2/gdrive
-#zip -jr /home/pi/gdrive/service.zip /home/pi/service2
-#cd /home/pi/gdrive
-#drive push -quiet service.zip
+chmod +x ~/service/*
+ln -s /media/hdd/Bibliothèques/Musiques/-Scores/ ~/service/play-scores
+ln -s /media/hdd/torrent/ ~/service/torrents
+ln -s /media/freebox/ ~/service/freebox
+ln -s ~/gdrive/ ~/service/gdrive
