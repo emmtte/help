@@ -24,15 +24,15 @@ sudo raspi-config
 > Reboot
 ````
 ###Updating
-````
+```shell
 sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
-````
+```
 ###Secure Shell
 http://www.openssh.com/
-````
+```shell
 mkdir ~/.ssh
 cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
@@ -52,7 +52,7 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 EOF
-````
+```
 ### Menu
 ````
 sudo apt-get install mc tmux exif mpv imagemagick
