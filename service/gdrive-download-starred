@@ -1,0 +1,2 @@
+cd ~/gdrive
+gdrive drive pull --starred --all
