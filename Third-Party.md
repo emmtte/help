@@ -77,39 +77,6 @@ sudo pip3 install -r requirements.txt
 
 python3 ~/.bin/hangoutsbot/hangupsbot/hangupsbot.py
 ````
-### Mercury
-https://github.com/Skarafaz/mercury
-````
-{
-    "name" : "Raspberry Pi",
-    "host" : "192.168.0.1",
-    "port" : 22,
-    "user" : "pi",
-    "password" : "raspberry",
-    "commands" : [ {
-        "name" : "motion start",
-        "sudo" : false,
-        "cmd" : "motion"
-    }, {
-       "name" : "motion stop",
-        "sudo" : true,
-        "cmd" : "killall motion"
-    }, {
-        "name" : "transmission start",
-        "sudo" : true,
-        "cmd" : "service transmission-daemon start"
-    }, {
-       "name" : "transmission stop",
-        "sudo" : true,
-        "cmd" : "service transmission-daemon stop"
-    }, {
-        "name" : "Rsync music",
-        "sudo" : true,
-        "cmd" : "rsync -a --delete --exclude '.@__qini' --chown=root:root --chmod=D775,F664 /mnt/nas/music/ /var/data/music/"
-    } ]
-}
-````
-
 ### Picasa Web Sync
 https://github.com/leocrawford/picasawebsync
 `````
