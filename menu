@@ -51,10 +51,10 @@ C download from dropbox
   dropbox_uploader download %{Dropbox Filename}
   
 + f * & t t
-A delete
+D Delete
   set %t
   while [ -n "$1" ] ; do
-    rm "$1"
+    rm -rf "$1"
     shift
   done
 
