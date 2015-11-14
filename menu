@@ -59,6 +59,22 @@ D Delete
   done
 
 + f * & t t
+C Copy
+  set %t
+  while [ -n "$1" ] ; do
+    cp -rf "$1"
+    shift
+  done
+
++ f * & t t
+M Move
+  set %t
+  while [ -n "$1" ] ; do
+    mv -rf "$1"
+    shift
+  done
+
++ f * & t t
 D upload to google drive
   echo "clear" > ~/google_drive.sh
   d=%d
