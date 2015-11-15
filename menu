@@ -62,7 +62,7 @@ D Delete
 C Copy
   set %t
   while [ -n "$1" ] ; do
-    cp -rf "$1"
+    cp -f "$1" "%D/$(basename "$1")"
     shift
   done
 
