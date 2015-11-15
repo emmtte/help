@@ -70,7 +70,7 @@ C Copy
 M Move
   set %t
   while [ -n "$1" ] ; do
-    mv -f "$1" "%D/basename("$1")"
+    mv -f "$1" "%D/$(basename "$1")"
     shift
   done
 
