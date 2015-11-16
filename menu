@@ -71,6 +71,7 @@ C Copy
  tmux send -t mc %f
  tmux send -t mc tab tab tab tab tab tab tab tab
  tmux -2 attach -t pi 
+
 + f * & t t
 M Move
   set %t
