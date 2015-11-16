@@ -1,0 +1,1 @@
+tmux send -t mc F5
