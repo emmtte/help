@@ -67,7 +67,7 @@ C Copy
   #done
   tmux send -t mc F5
   tmux send -t mc "%D"
-  tmux sent -t mc tab tab tab tab tab tab tab tab
+  tmux send -t mc tab tab tab tab tab tab tab tab
 
 + f * & t t
 M Move
