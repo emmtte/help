@@ -87,6 +87,7 @@ bind Tab send-prefix
 
 bind-key C-b next-window
 bind-key C-w previous-window
+bind-key Escape detach-client
 
 set -g base-index 1
 
