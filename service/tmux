@@ -3,8 +3,8 @@
 tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
 tmux -2 new-session -d -s pi
-tmux rename-window -t pi:1 w1
-tmux send -t "/usr/bin/mc ~/service/" ENTER F5 ENTER
+tmux rename-window -t pi:1 mc
+tmux send -t mc "/usr/bin/mc ~/service/" ENTER F5 ENTER
 
 tmux new-window -t pi -a -n cast
 tmux split-window -h
