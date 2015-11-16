@@ -60,11 +60,14 @@ D Delete
 
 + f * & t t
 C Copy
-  set %t
-  while [ -n "$1" ] ; do
-    cp -f "$1" "%D/$(basename "$1")"
-    shift
-  done
+  #set %t
+  #while [ -n "$1" ] ; do
+  #  cp -f "$1" "%D/$(basename "$1")"
+  #  shift
+  #done
+  tmux send -t mc F5
+  tmux send -t mc "%D"
+  tmux sent -t mc tab tab tab tab tab tab tab tab
 
 + f * & t t
 M Move
