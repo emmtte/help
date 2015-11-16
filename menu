@@ -68,7 +68,7 @@ C Copy
  tmux send -t mc F5
  tmux send -t mc %D
  tmux send -t mc tab tab tab tab tab tab tab tab
- tmux send -t mc %f
+ tmux send -t mc %d/%f
  tmux send -t mc tab tab tab tab tab tab tab tab
  tmux -2 attach -t pi 
 
