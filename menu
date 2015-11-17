@@ -11,6 +11,22 @@ A move to "BitTorrentSync" folder
     mv "$1" "/media/hdd/BitTorrentSync/$(basename "$1")"
     shift
   done
+  
++ f * & t t
+D Delete
+  set %t
+  while [ -n "$1" ] ; do
+    rm -rf "$1"
+    shift
+  done
+
++ f * & t t
+C Copy
+  #set %t
+  #while [ -n "$1" ] ; do
+  #  cp -f "$1" "%D/$(basename "$1")"
+  #  shift
+  #done
 
 + f * & t t
 B move to "Freebox Server" folder
@@ -20,8 +36,7 @@ B move to "Freebox Server" folder
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
   cd "%d"
   for f in %t; do
-    #rsync -aP --remove-sent-files "$f" /media/freebox
-    mv -v "$f" /media/freebox
+    rsync -aP --remove-sent-files "$f" /media/freebox
   done
   pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
   rm /tmp/freebox.sh
@@ -49,36 +64,6 @@ B upload to dropbox
 + f * & t r
 C download from dropbox
   dropbox_uploader download %{Dropbox Filename}
-  
-+ f * & t t
-D Delete
-  set %t
-  while [ -n "$1" ] ; do
-    rm -rf "$1"
-    shift
-  done
-
-+ f * & t t
-C Copy
-  #set %t
-  #while [ -n "$1" ] ; do
-  #  cp -f "$1" "%D/$(basename "$1")"
-  #  shift
-  #done
- tmux send -t mc F5
- tmux send -t mc %D
- tmux send -t mc tab tab tab tab tab tab tab tab
- tmux send -t mc %d/%f
- tmux send -t mc tab tab tab tab tab tab tab tab
- tmux -2 attach -t pi 
-
-+ f * & t t
-M Move
-  set %t
-  while [ -n "$1" ] ; do
-    mv -f "$1" "%D/$(basename "$1")"
-    shift
-  done
 
 + f * & t t
 D upload to google drive
