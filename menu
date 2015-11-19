@@ -72,7 +72,7 @@ D upload to google drive
   echo "cd ~/gdrive/" > ~/google_drive.sh
   set %t
   while [ -n "$1" ] ; do
-    echo "drive push \"$d/$1\" >> ~/google_drive.sh"
+    echo "drive push \"$d/$1\"" >> ~/google_drive.sh
     shift
   done
   echo "pushbullet push all note Raspberry_Pi FilesUploadedToGoogleDrive" >> ~/google_drive.sh
