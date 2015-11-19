@@ -5,6 +5,10 @@ c castnow
   nodejs /usr/local/bin/castnow --tomp4 "%f"
 
 + f * & t t
+A Encrypt
+  gpg2 --encrypt "%f"
+
++ f * & t t
 A move to "BitTorrentSync" folder
   set %t
   while [ -n "$1" ] ; do
