@@ -78,7 +78,7 @@ D upload to google drive
   echo "pushbullet push all note Raspberry_Pi FilesUploadedToGoogleDrive" >> ~/google_drive.sh
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t cloud.1 'sh ~/google_drive.sh' ENTER
-  tmux send -t cloud.1 'rm ~/google_drive.sh' ENTER
+  tmux send -t cloud.1 '#rm ~/google_drive.sh' ENTER
   tmux select-window -t pi:cloud
 
 + f * & t r
