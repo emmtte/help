@@ -68,13 +68,13 @@ C download from dropbox
 + f * & t t
 D upload to google drive
   echo "clear" > ~/google_drive.sh
+  d=%d
+  echo "cd ~/gdrive/" > ~/google_drive.sh
   set %t
   while [ -n "$1" ] ; do
-    echo "cp -rf \"$1\" ~/gdrive/"
+    echo "drive push \"$d/$1\" >> ~/google_drive.sh"
     shift
   done
-  echo "cd ~/gdrive" >> ~/google_drive.sh
-  echo "drive push" >> ~/google_drive.sh
   echo "pushbullet push all note Raspberry_Pi FilesUploadedToGoogleDrive" >> ~/google_drive.sh
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t cloud.1 'sh ~/google_drive.sh' ENTER
