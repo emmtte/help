@@ -69,7 +69,7 @@ C download from dropbox
 D upload to google drive
   echo "clear" > ~/google_drive.sh
   d=%d
-  echo "cd $d" >> ~/google_drive.sh
+  echo "cd ~/gdrive" >> ~/google_drive.sh
   set %t
   while [ -n "$1" ] ; do
     echo "drive push \"$1\"" >> ~/google_drive.sh
