@@ -1,2 +1,2 @@
 clear
-su reboot
+sudo reboot
