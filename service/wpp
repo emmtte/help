@@ -5,20 +5,20 @@
 #"4" "Openstack install" \
 #"5" "custom install" 3>&1 1>&2 2>&3)
 
-OPTIONS=$(whiptail --title "Selection" --menu "Choose" 15 60 4 \
+OPTIONS=$(whiptail --title "Selection" --menu "Choose" 15 30 10 \
 `grep --no-group-separator -A 1 '#' ~/texte.md | cut -d ' ' -f  2` 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 
 if [ $exitstatus = 0 ]; then
 	echo "Your selected option:" $OPTIONS
-	OPTIONS2=$(whiptail --title "Group" --menu "Choose" 15 60 4 \
+	OPTIONS2=$(whiptail --title "Group" --menu "Choose" 15 30 10 \
 	`sed -n "/$OPTIONS/,/##/p" ~/texte.md | grep -e "]" | awk -F'[\[)]' '{print $2}' | tr "](" " "` 3>&1 1>&2 2>&3)
 	
 	exitstatus=$?
 	
 	if [ $exitstatus = 0 ]; then
-	whiptail --textbox "you chose $OPTIONS2" 12 80
+	RESULT=$(whiptail --textbox "you chose $OPTIONS2" 15 30 3>&1 1>&2 2>&3)
 	fi
 	
 else
