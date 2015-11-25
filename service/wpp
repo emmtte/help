@@ -6,28 +6,15 @@
 #"5" "custom install" 3>&1 1>&2 2>&3)
 
 OPTIONS=$(whiptail --title "Selection" --menu "Choose" 15 60 4 \
-`grep '#' ~/texte.md | cut -d ' ' -f  2,3` 3>&1 1>&2 2>&3)
+`grep --no-group-separator -A 1 '#' ~/texte.md | cut -d ' ' -f  2` 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 
 if [ $exitstatus = 0 ]; then
 	echo "Your selected option:" $OPTIONS
+	
 else
 	echo "You chose cancel."
 fi
 
 
-
-
-
-case $OPTIONS in
-        "Add User")
-            echo "You chose Option 1"
-            ;;
-        "Modify User")
-            echo "You chose Option 2"
-            ;;
-        "List Users")
-            echo "You chose Option 3"
-            ;;
-esac
