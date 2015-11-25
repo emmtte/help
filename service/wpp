@@ -7,7 +7,6 @@ whiptail --title "Menu example" --menu "Choose an option" 20 78 16 \
 "Modify Group" "Modify a group and its list of members." \
 "List Groups" "List all groups on the system."
 
-read CHOICE
 case $CHOICE in
         1)
             echo "You chose Option 1"
