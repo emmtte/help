@@ -13,7 +13,7 @@ exitstatus=$?
 if [ $exitstatus = 0 ]; then
 	echo "Your selected option:" $OPTIONS
 	OPTIONS2=$(whiptail --title "Group" --menu "Choose" 15 60 4 \
-	`sed -n "/Cloud/,/##/p" ~/texte.md | grep -e "]" | awk -F'[\[)]' '{print $2}' | tr "](" " "` 3>&1 1>&2 2>&3)
+	`sed -n "/$OPTIONS/,/##/p" ~/texte.md | grep -e "]" | awk -F'[\[)]' '{print $2}' | tr "](" " "` 3>&1 1>&2 2>&3)
 	
 	#exitstatus=$?
 	
