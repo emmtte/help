@@ -5,7 +5,7 @@
 #"4" "Openstack install" \
 #"5" "custom install" 3>&1 1>&2 2>&3)
 
-OPTIONS=$(whiptail --title "Package Selection" --menu "Choose your package" 15 60 4 \
+OPTIONS=$(whiptail --title "Selection" --menu "Choose" 15 60 4 \
 `grep '#' ~/texte.md | cut -d ' ' -f  2` 3>&1 1>&2 2>&3)
 
 exitstatus=$?
