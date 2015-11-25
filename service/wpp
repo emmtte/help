@@ -1,9 +1,12 @@
+#OPTIONS=$(whiptail --title "Package Selection" --menu "Choose your package" 15 60 4 \
+#"1" "Minimal install" \
+#"2" "Server install" \
+#"3" "Web-server install" \
+#"4" "Openstack install" \
+#"5" "custom install" 3>&1 1>&2 2>&3)
+
 OPTIONS=$(whiptail --title "Package Selection" --menu "Choose your package" 15 60 4 \
-"1" "Minimal install" \
-"2" "Server install" \
-"3" "Web-server install" \
-"4" "Openstack install" \
-"5" "custom install" 3>&1 1>&2 2>&3)
+`grep '#' ~/texte.md | cut -d ' ' -f  2` 3>&1 1>&2 2>&3)
 
 exitstatus=$?
 
@@ -12,6 +15,10 @@ if [ $exitstatus = 0 ]; then
 else
 	echo "You chose cancel."
 fi
+
+
+
+
 
 case $OPTIONS in
         "Add User")
