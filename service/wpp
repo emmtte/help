@@ -1,10 +1,3 @@
-#OPTIONS=$(whiptail --title "Package Selection" --menu "Choose your package" 15 60 4 \
-#"1" "Minimal install" \
-#"2" "Server install" \
-#"3" "Web-server install" \
-#"4" "Openstack install" \
-#"5" "custom install" 3>&1 1>&2 2>&3)
-
 OPTIONS=$(whiptail --title "Selection" --menu "Choose" 25 35 15 \
 `grep --no-group-separator -A 1 '#' ~/texte.md | cut -d ' ' -f  2` 3>&1 1>&2 2>&3)
 
@@ -14,13 +7,15 @@ if [ $exitstatus = 0 ]; then
 	echo "Your selected option:" $OPTIONS
 	OPTIONS2=$(whiptail --title "Group" --menu "Choose" 25 35 15 \
 	`sed -n "/$OPTIONS/,/##/p" ~/texte.md | grep -e "]" | awk -F'[\[)]' '{print $2}' | tr "](" " "` 3>&1 1>&2 2>&3)
-	
+
 	exitstatus2=$?
-	
+
 	if [ $exitstatus2 = 0 ]; then
-	RESULT=$(whiptail --textbox "you chose $OPTIONS2" 15 30 3>&1 1>&2 2>&3)
+	u=`sed -n "/$OPTIONS/,/##/p" ~/texte.md | grep $OPTIONS2 | cut -d '|'  -f  3 `
+	p=`sed -n "/$OPTIONS/,/##/p" ~/texte.md | grep $OPTIONS2 | cut -d '|'  -f  4`
+	whiptail --title "$OPTIONS - $OPTIONS2" \
+	--msgbox "User: $u\nPassword : $p" 12 35
 	fi
-	
 else
 	echo "You chose cancel."
 fi
