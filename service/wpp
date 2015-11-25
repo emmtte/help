@@ -8,13 +8,13 @@ whiptail --title "Menu example" --menu "Choose an option" 20 78 16 \
 "List Groups" "List all groups on the system."
 
 case $CHOICE in
-        1)
+        "Add User")
             echo "You chose Option 1"
             ;;
-        2)
+        "Modify User")
             echo "You chose Option 2"
             ;;
-        3)
+        "List Users")
             echo "You chose Option 3"
             ;;
 esac
