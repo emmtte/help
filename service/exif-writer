@@ -1,7 +1,7 @@
 e write exif when missing in jpg files
   cat > ~/exif_task.sh << 'EOF'
   clear
-  find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do
+  find /media/hdd/photos -iname "*.jpg" -type f | sort | while read FILE ; do
     EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
     DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
     if [ -z "$EXI" ]; then
