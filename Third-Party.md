@@ -40,6 +40,7 @@ flickrsmartsync --sync-path /media/hdd/photos
 ```
 ### Flickr-Uploader
 https://github.com/trickortweak/flickr-uploader
+Attention remove elinks,lynx or w3m before installation
 ```shell
 cd ~/.bin
 git clone https://github.com/trickortweak/flickr-uploader.git
@@ -49,7 +50,8 @@ mcedit flickr-uploader/uploadr.ini
  > "api_key" : "********************************",
  > "secret"  : "****************"
 mv flickr-uploader/ flickr-uploader#1/
-flickr-uploader#1/uploadr.py
+cd ~
+~/.bin/flickr-uploader#1/uploadr.py
 ```
 ### Google CL
 https://github.com/vinitkumar/googlecl
