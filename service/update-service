@@ -1,10 +1,10 @@
 #!/bin/sh
 clear
+rm  ~/service.zip
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 rm ~/service/* 
 curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
 unzip -jo service.zip -d /home/pi/service ServicePi-master/service/*
-rm service.zip
 chmod +x ~/service/*
 ln -s /media/hdd/Bibliothèques/Musiques/-Scores/ ~/service/play-scores
 ln -s /media/hdd/torrent/ ~/service/torrents
