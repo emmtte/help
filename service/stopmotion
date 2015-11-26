@@ -1,0 +1,27 @@
+g GOPRO : Create Stopmotion [stopmotion]
+  cat > /tmp/stopmotion.sh << 'EOF'
+  clear
+  while true; do
+    read -p "Image Crop : Top, Center or Bottom ?" answer
+    case $answer in
+        [Tt]* ) CUT="2592x1456+0+0"  ;break;;
+        [Cc]* ) CUT="2592x1456+0+244";break;;
+        [Bb]* ) CUT="2592x1456+0+488";break;;
+        * ) echo "Please answer [T], [C] or [B]";;
+    esac
+  done
+  cd %d
+  mkdir CROP
+  for img in *.JPG; do
+  convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
+  done
+  ls -1 CROP/*-CROP.JPG >  files.lst
+  #mpv mf://@files.lst -mf w=2592:h=1456:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -nosound -o stopmotion.avi
+  mpv mf://@files.lst -mf type=jpg:fps=3 -ovc lavc -lavcopts vcodec=mjpeg -nosound -o stopmotion.avi
+  youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "stopmotion.avi"
+  pushbullet push all note "Raspberry Pi" "Stopmotion created"
+  EOF
+  tmux has-session -t stopmotion
+  if [ "$?" -eq 1 ] ; then tmux new-session -d -s stopmotion ; fi
+  tmux send -t stopmotion 'sh /tmp/stopmotion.sh' ENTER
+  tmux attach-session -t stopmotion
