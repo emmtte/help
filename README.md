@@ -112,14 +112,6 @@ force group = users
 create mask = 0660
 directory mask = 0771
 read only = no
-[PI]
-comment = Raspberry Pi Hard Drive
-path = /home/pi
-valid users = @users
-force group = users
-create mask = 0660
-directory mask = 0771
-read only = no
 EOF
 sudo service samba restart
 sudo service smbd restart
