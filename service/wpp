@@ -1,3 +1,4 @@
+clear
 OPTIONS=$(whiptail --title "Selection" --menu "Choose" 25 35 15 \
 `grep --no-group-separator -A 1 '#' ~/texte.md | cut -d ' ' -f  2` 3>&1 1>&2 2>&3)
 
