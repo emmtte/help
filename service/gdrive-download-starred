@@ -1,4 +1,3 @@
 clear
-#source /home/pi/.bashrc
 cd ~/gdrive
 drive pull --quiet --starred --all
