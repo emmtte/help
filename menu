@@ -124,65 +124,6 @@ E download from google drive
   tmux send -t gplus 'picasawebsync.py -d /media/hdd/photos --shrink' ENTER
   tmux send -t gplus 'pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"' ENTER
 
-+ f backup & t r
-7 backup Youtube ==>> /hdd/youtube
-  cat > /tmp/youtube_task.sh << 'EOF'
-  clear
-  google youtube list > /tmp/youtube.txt
-  while read ligne
-  do 
-    URL=`echo "$ligne" | cut -d ',' -f  2`
-    youtube-dl --max-quality FORMAT --output "/media/hdd/youtube/%(title)s.%(ext)s" "$URL"
-  done < /tmp/youtube.txt
-  rm /tmp/youtube.txt
-  rm /tmp/youtube_task.sh
-  EOF
-  tmux has-session -t youtube_dl
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube_dl ; fi
-  tmux send -t youtube_dl 'bash /tmp/youtube_task.sh' ENTER
-
-+ f 3rd_party & t r
-g gopro: sd copy
-  cat >> /tmp/gopro_task.sh << EOF
-  clear
-  sudo mkdir /media/gopro
-  sudo mount /dev/sdb1 /media/gopro
-  mkdir /media/hdd/gopro/photos /media/hdd/gopro/videos
-  cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
-  cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
-  pushbullet push all note "photos and videos from gopro are saved"
-  rm /tmp/gopro_task.sh
-  EOF
-  tmux has-session -t gopro
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
-  tmux send -t gopro 'sh /tmp/gopro_task.sh' ENTER
-  
-+ f 3rd_party & t r
-p panasonic: sd copy
-  cat >> /tmp/panasonic_task.sh << EOF
-  clear
-  sudo mkdir /media/panasonic
-  sudo mount LABEL=CANON_DC /media/panasonic
-  mkdir /media/hdd/panasonic
-  cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
-  pushbullet push all note "photos and videos from panasonic are saved"
-  rm /tmp/panasonic_task.sh
-  EOF
-  tmux has-session -t gopro
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
-  tmux send -t gopro 'sh /tmp/panasonic_task.sh' ENTER  
-  
-+ f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t r
-g gopro: concat & upload
-  tmux has-session -t gopro
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
-  clear
-  tmux send -t gopro 'clear' ENTER
-  tmux send -t gopro 'cd %d' ENTER
-  tmux send -t gopro 'mpv `ls %d/*.* | sort` -ovc copy -oac pcm -o %d/youtube.avi' ENTER
-  tmux send -t gopro 'youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "%d/youtube.avi"' ENTER
-  tmux send -t gopro 'pushbullet push all note "Concatenated & Uploaded to Youtube"' ENTER
-
 + f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t t
 y upload to youtube [youtube screen]
   cat > /tmp/youtube_task.sh << 'EOF'
@@ -200,35 +141,6 @@ y upload to youtube [youtube screen]
   tmux has-session -t youtube
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
   tmux send -t youtube 'sh /tmp/youtube_task.sh' ENTER
-
-+ f *.jpg | f *.JPG & t r
-g GOPRO : Create Stopmotion [stopmotion]
-  cat > /tmp/stopmotion.sh << 'EOF'
-  clear
-  while true; do
-    read -p "Image Crop : Top, Center or Bottom ?" answer
-    case $answer in
-        [Tt]* ) CUT="2592x1456+0+0"  ;break;;
-        [Cc]* ) CUT="2592x1456+0+244";break;;
-        [Bb]* ) CUT="2592x1456+0+488";break;;
-        * ) echo "Please answer [T], [C] or [B]";;
-    esac
-  done
-  cd %d
-  mkdir CROP
-  for img in *.JPG; do
-  convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
-  done
-  ls -1 CROP/*-CROP.JPG >  files.lst
-  #mpv mf://@files.lst -mf w=2592:h=1456:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -nosound -o stopmotion.avi
-  mpv mf://@files.lst -mf type=jpg:fps=3 -ovc lavc -lavcopts vcodec=mjpeg -nosound -o stopmotion.avi
-  youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "stopmotion.avi"
-  pushbullet push all note "Raspberry Pi" "Stopmotion created"
-  EOF
-  tmux has-session -t stopmotion
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s stopmotion ; fi
-  tmux send -t stopmotion 'sh /tmp/stopmotion.sh' ENTER
-  tmux attach-session -t stopmotion
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
 c cut video [no screen]
@@ -255,85 +167,6 @@ c change directory date of photos and delete empty directory
   if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
   touch -t "${DAT}0000.00" "$DIR"
   done
-
-+ d * & t d
-e write exif when missing in jpg files
-  cat > ~/exif_task.sh << 'EOF'
-  clear
-  find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do
-    EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
-    DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-    if [ -z "$EXI" ]; then
-      exiv2 -M "add Exif.Photo.DateTimeOriginal $DAT 00:00:00" "$FILE"
-    fi
-    printf "\r$(basename "$FILE")"
-  done
-  EOF
-  tmux has-session -t photos
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
-  tmux send -t photos 'sh ~/exif_task.sh' ENTER
-  tmux send -t photos 'rm ~/exif_task.sh' ENTER
-
-+ d * & t d
-R Rename photos
-  cat > ~/rename_task.sh << 'EOF'
-  if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
-  # Loop through files, renaming each to a YYYYMMDDHHMMSS-#####.JPG based name
-  COUNTER=1
-  find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do
-    EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4,5 | tr -d ':' | tr -d ' '`
-    NEWFILE="$EXIF-$(printf '%%05d' $COUNTER).JPG"
-    echo "`basename "$FILE"`=>$NEWFILE"
-    touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
-    mv -u "$FILE" "`dirname "$FILE"`/$NEWFILE"
-    COUNTER=$((COUNTER + 1))
-  done
-  # Loop again through files, renaming as "IMG_#####.JPG"
-  COUNTER=1
-  find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
-    NEWNAME="IMG_$(printf "%%05d" $COUNTER).JPG"
-    mv "$FILE" "`dirname "$FILE"`/$NEWNAME"
-    COUNTER=$((COUNTER + 1))
-  done
-  rm -f ~/rename_task.sh
-  pushbullet push all note "Rasperry Pi" "Photos Renamer Done"
-  EOF
-  tmux has-session -t photos
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
-  tmux send -t photos 'sh ~/rename_task.sh' ENTER
-
-+ d * & t d
-R Do list of error JPG exif with folder name
-  cat > ~/checkjpg_task.sh << 'EOF'
-  if [ ! -f /usr/bin/exiv2 ]; then echo "ERROR: Please install exiv2"; exit; fi
-  printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > "/tmp/photos.txt"
-  # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
-  COUNTER=1
-  find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
-  EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
-  EXI=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
-  EXI1=`date -d "$EXIF -1 month" +"%%Y %%m"`
-  DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
-  echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
-    if [ -z "$EXI" ]; then
-      printf "$(basename "$FILE"):" >> "/tmp/photos.txt" 
-      printf "$DAT==>$EXI" >> "/tmp/photos.txt"
-      printf " NO  DA TE" >> "/tmp/photos.txt"
-      printf "\n" >> "/tmp/photos.txt"
-    fi
-    if [[ "$DAT" != "$EXI" && "$DAT" != "$EXI1" ]]; then
-      printf "$(basename "$FILE"):" >> "/tmp/photos.txt" 
-      printf "$DAT==>$EXI" >> "/tmp/photos.txt"
-      printf " NOT MATCH" >> "/tmp/photos.txt"
-      printf "\n" >> "/tmp/photos.txt"
-    fi
-  done
-  rm ~/checkjpg_task.sh
-  pushbullet push all note "Rasperry Pi" "Photos Control Done"
-  EOF
-  tmux has-session -t photos
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
-  tmux send -t photos 'sh ~/checkjpg_task.sh' ENTER
 
 + f *.jpg | f *.JPG & t t
 e Ecrit l'EXIF des photos
