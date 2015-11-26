@@ -40,10 +40,10 @@ flickrsmartsync --sync-path /media/hdd/photos
 ```
 ### Flickr-Uploader
 https://github.com/trickortweak/flickr-uploader
-> Remove elinks lynx w3m before installation
 > Do first time without tmux script for token
 
 ```shell
+sudo apt-get remove elinks lynx w3m
 cd ~/.bin
 git clone https://github.com/trickortweak/flickr-uploader.git
 chmod +x flickr-uploader/uploadr.py
