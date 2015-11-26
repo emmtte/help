@@ -1,4 +1,5 @@
-#
+#!/bin/sh
+
   FILES = /media/hdd/photos
   cat > ~/rename_task.sh << 'EOF'
   if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
