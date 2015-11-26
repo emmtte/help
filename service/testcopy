@@ -1,3 +1,0 @@
-tmux send -t mc F5
-tmux send -t mc "%D"
-tmux sent -t mc tab tab tab tab tab tab tab tab
