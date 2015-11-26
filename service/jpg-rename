@@ -3,13 +3,8 @@
   cat > ~/rename_task.sh << 'EOF'
   if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
   
-  # Loop through directories, delete empty and change creating date
+  # Loop through directories, delete empty directories
   find $FILES -type d -empty -delete
-  find $FILES -type d | while read DIR ; do
-  DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
-  if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
-  touch -t "${DAT}0000.00" "$DIR"
-  done
   
   # Loop through files, renaming each to a YYYYMMDDHHMMSS-#####.JPG based name
   COUNTER=1
@@ -21,6 +16,7 @@
     mv -u "$FILE" "`dirname "$FILE"`/$NEWFILE"
     COUNTER=$((COUNTER + 1))
   done
+  
   # Loop again through files, renaming as "IMG_#####.JPG"
   COUNTER=1
   find $FILES -iname "*.jpg" -type f | sort | while read FILE ; do 
@@ -28,6 +24,14 @@
     mv "$FILE" "`dirname "$FILE"`/$NEWNAME"
     COUNTER=$((COUNTER + 1))
   done
+  
+   # Loop through directories and change creating date
+  find $FILES -type d | while read DIR ; do
+  DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
+  if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
+  touch -t "${DAT}0000.00" "$DIR"
+  done
+  
   rm -f ~/rename_task.sh
   pushbullet push all note "Rasperry Pi" "Photos Renamer Done"
   EOF
