@@ -40,7 +40,8 @@ flickrsmartsync --sync-path /media/hdd/photos
 ```
 ### Flickr-Uploader
 https://github.com/trickortweak/flickr-uploader
-Attention remove elinks,lynx or w3m before installation
+> Remove elinks lynx w3m before installation
+> Do first time without tmux script for token
 ```shell
 cd ~/.bin
 git clone https://github.com/trickortweak/flickr-uploader.git
