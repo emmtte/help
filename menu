@@ -88,13 +88,6 @@ D upload to google drive
 + f * & t r
 E download from google drive
   drive pull %{Dropbox Filename}
-  
-+ f backup & t r
-1 sync /media/hdd/photos ==>> flickr
-  tmux has-session -t flickr
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s flickr ; fi
-  tmux send -t flickr 'flickrsmartsync --sync-path /media/hdd/photos' ENTER
-  tmux send -t flickr 'pushbullet push all note "Rasperry Pi" "flickr: sync finished"' ENTER
 
 + f backup & t r
 2 sync /media/hdd/rclone ==>> Google Drive/rclone
