@@ -43,7 +43,7 @@ https://github.com/trickortweak/flickr-uploader
 > Do first time without tmux script for token
 
 ```shell
-sudo apt-get remove elinks lynx w3m
+sudo apt-get remove elinks links links2 lynx w3m
 cd ~/.bin
 git clone https://github.com/trickortweak/flickr-uploader.git
 chmod +x flickr-uploader/uploadr.py
