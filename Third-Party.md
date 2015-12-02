@@ -145,7 +145,7 @@ https://github.com/torakiki/sejda
 sudo apt-get install oracle-java8-jdk
 curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v1.0.0.RELEASE/sejda-console-1.0.0.RELEASE-bin.zip
 mkdir ~/.bin/sejda
-unzip -jo sejda.zip -d ~/.bin/sejda/*
+unzip -jo sejda.zip -d ~/.bin/sejda/
 rm sejda.zip
 chmod +x ~/.bin/sejda-console
 ```
