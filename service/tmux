@@ -3,12 +3,14 @@
 tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
 tmux -2 new-session -d -s pi
+
 tmux rename-window -t pi:1 file
+tmux split-window -v
+tmux select-pane -t 0
 
 tmux new-window -t pi -a -n cast
-tmux split-window -h
+tmux split-window -v
 tmux select-pane -t 0
-tmux resize-pan -R 30
 
 tmux new-window -t pi -a -n cloud
 tmux split-window -v
@@ -18,12 +20,11 @@ tmux new-window -t pi -a -n flickr
 tmux split-window -v
 tmux select-pane -t 0
 
-tmux new-window -t pi -a -n motion 'ls'
-tmux split-window -h
+tmux new-window -t pi -a -n motion
+tmux split-window -v
 tmux select-pane -t 0
-tmux resize-pan -R 30
 
 tmux select-window -t pi:1
-
 fi
+
 tmux -2 attach -t pi
