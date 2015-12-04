@@ -34,8 +34,8 @@ C Copy
 
 + f * & t t
 B move to "Freebox Server" folder
-  if [ -f /tmp/freebox.sh ] ; then figlet "Buzzy"; printf 'Press [Enter] key to continue...'; read null; exit; fi
-  cat > /tmp/freebox.sh << 'EOF'
+  if [ -f /tmp/.freebox.sh ] ; then whiptail --title "Move to Freebox" --msgbox "Buzy try Later" 12 35; exit; fi
+  cat > /tmp/.freebox.sh << 'EOF'
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
   cd "%d"
@@ -43,11 +43,11 @@ B move to "Freebox Server" folder
     rsync -aP --remove-sent-files "$f" /media/freebox
   done
   pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
-  rm /tmp/freebox.sh
+  rm /tmp/.freebox.sh
   EOF
   tmux has-session -t freebox
   if [ "$?" -eq 1 ] ; then tmux new-session -d -s freebox ; fi
-  tmux send -t freebox 'sh /tmp/freebox.sh' ENTER
+  tmux send -t freebox 'sh /tmp/.freebox.sh' ENTER
 
 + f * & t t
 B upload to dropbox
