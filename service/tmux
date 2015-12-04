@@ -3,7 +3,7 @@
 tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
 tmux -2 new-session -d -s pi
-tmux rename-window -t pi:1 mc
+tmux rename-window -t pi:1 file
 
 tmux new-window -t pi -a -n cast
 tmux split-window -h
