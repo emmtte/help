@@ -81,7 +81,7 @@ mcedit ~/.config/mc/mc.keymap
 UserMenu = f2; ctrl-w
 Mark = insert; ctrl-t; ctrl-b
 ````
-**````mcedit ~/.tmux.conf````**
+:memo:**````mcedit ~/.tmux.conf````**
 ````shell
 unbind C-b
 set -g prefix Tab
