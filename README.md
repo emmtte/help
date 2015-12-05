@@ -62,8 +62,7 @@ curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/m
 ````
 ````mcedit .bash_profile````
 
-:boom:
-
+:memo:
 ````shell
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
