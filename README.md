@@ -54,7 +54,7 @@ fi
 EOF
 ```
 ### Menu
-````
+````shell
 sudo apt-get install mc tmux exif mpv imagemagick
 mkdir /home/pi/service/
 cd /home/pi/service/
