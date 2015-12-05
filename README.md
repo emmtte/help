@@ -60,8 +60,8 @@ mkdir /home/pi/service/
 cd /home/pi/service/
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 ````
-# ````mcedit .bash_profile````
-````
+#### ````mcedit .bash_profile````
+````shell
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
@@ -69,14 +69,14 @@ if [ -z "$TMUX" ]; then
     mc /home/pi/service/ /home/pi/service/gdrive
 fi
 ````
-# ````cp /etc/mc/mc.keymap ~/.config/mc/````
-# ````mcedit ~/.config/mc/mc.keymap````
-````
+#### ````cp /etc/mc/mc.keymap ~/.config/mc/````
+#### ````mcedit ~/.config/mc/mc.keymap````
+````shell
 UserMenu = f2; ctrl-w
 Mark = insert; ctrl-t; ctrl-b
 ````
-# mcedit ~/.tmux.conf
-````
+#### ````mcedit ~/.tmux.conf````
+````shell
 unbind C-b
 set -g prefix Tab
 bind Tab send-prefix
