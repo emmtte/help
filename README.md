@@ -101,7 +101,7 @@ set-option -g status-right ''
 
 #### samba
 https://www.samba.org/
-````
+````shell
 sudo apt-get -y install samba samba-common-bin
 cat << EOF | sudo tee -a /etc/samba/smb.conf
 [HDD]
@@ -119,7 +119,7 @@ sudo smbpasswd -a pi
 ````
 
 ### External Usb Drive and Freebox HDD
-````
+````shell
 sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 sudo e2label /dev/sda1 RaspberryPi
 sudo mkdir /media/hdd
@@ -136,7 +136,7 @@ sudo mount /dev/sdb1 /media/gopro
 ````
 ### minidlna
 http://minidlna.sourceforge.net/
-```
+```shell
 sudo apt-get -y install minidlna
 sudo mcedit /etc/minidlna.conf
 ```
@@ -155,7 +155,7 @@ sudo service minidlna start
 ```
 ### mpd
 http://www.musicpd.org/
-```
+```shell
 sudo apt-get install mpd
 sudo mcedit /etc/mpd.conf
 
@@ -168,7 +168,7 @@ sudo service mpd restart
 ```
 ### Transmission
 http://www.transmissionbt.com/
-```
+```shell
 sudo apt-get -y install transmission-daemon
 mkdir /media/hdd/torrent
 sudo usermod -a -G debian-transmission pi
@@ -176,7 +176,7 @@ sudo chgrp debian-transmission /media/hdd/torrent
 sudo chmod 777 -R /media/hdd/torrent
 sudo service transmission-daemon reload
 ```
-```
+```shell
 sudo sed -ie '$d' /etc/transmission-daemon/settings.json
 cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
 ,
@@ -198,7 +198,7 @@ sudo service transmission-daemon restart
 ```
 ### Btsync
 https://www.getsync.com/intl/fr/
-````
+````shell
 cd /tmp
 curl -k -o btsync.tar.gz https://download-cdn.getsyncapp.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
 tar -xvf btsync.tar.gz
