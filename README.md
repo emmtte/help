@@ -58,29 +58,32 @@ EOF
 sudo apt-get install mc tmux exif mpv imagemagick
 mkdir /home/pi/service/
 cd /home/pi/service/
-touch 3rd_party backup system tmux update
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
+````
 
+> mcedit .bash_profile
 
-mcedit .bash_profile
-> if [ -f ~/.bashrc ]; then
->     . ~/.bashrc
-> fi
-> if [ -z "$TMUX" ]; then
->     mc /home/pi/service/ /home/pi/service/gdrive
-> fi
+````
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
+if [ -z "$TMUX" ]; then
+    mc /home/pi/service/ /home/pi/service/gdrive
+fi
+````
 
+> cp /etc/mc/mc.keymap ~/.config/mc/
 
+> mcedit ~/.config/mc/mc.keymap
 
-cp /etc/mc/mc.keymap ~/.config/mc/
-mcedit ~/.config/mc/mc.keymap
-> UserMenu = f2; ctrl-w
-> Mark = insert; ctrl-t; ctrl-b
+````
+UserMenu = f2; ctrl-w
+Mark = insert; ctrl-t; ctrl-b
+````
 
+> mcedit ~/.tmux.conf
 
-
-mcedit ~/.tmux.conf
-
+````
 unbind C-b
 set -g prefix Tab
 bind Tab send-prefix
@@ -97,8 +100,8 @@ set -g mouse-select-pane on
 set -g mouse-select-window on
 
 set-option -g status-right ''
-
 ````
+
 ### samba
 https://www.samba.org/
 ````
@@ -117,16 +120,6 @@ sudo service samba restart
 sudo service smbd restart
 sudo smbpasswd -a pi
 ````
-### tmux
-https://tmux.github.io/
-````
-sudo apt-get -y install tmux
-tmux new -s session_name creates a new tmux session named session_name
-tmux attach -t session_name attaches to an existing tmux session named session_name
-tmux switch -t session_name switches to an existing session named session_name
-tmux list-sessions lists existing tmux sessions
-````
-> detach the currently attached session <kbd>Tab</kbd><kbd>Esc</kbd>+<kbd>d</kbd>
 
 ### External Usb Drive and Freebox HDD
 ````
