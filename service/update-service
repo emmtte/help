@@ -10,4 +10,4 @@ ln -s /media/hdd/Bibliothèques/Musiques/-Scores/ ~/service/play-scores
 ln -s /media/hdd/torrent/ ~/service/torrents
 ln -s /media/freebox/ ~/service/freebox
 ln -s ~/gdrive/ ~/service/gdrive
-
+pushbullet delete all
