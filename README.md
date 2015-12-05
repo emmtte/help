@@ -61,7 +61,7 @@ cd /home/pi/service/
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 ````
 
-> mcedit .bash_profile
+> ````mcedit .bash_profile````
 
 ````
 if [ -f ~/.bashrc ]; then
@@ -72,9 +72,9 @@ if [ -z "$TMUX" ]; then
 fi
 ````
 
-> cp /etc/mc/mc.keymap ~/.config/mc/
+> ````cp /etc/mc/mc.keymap ~/.config/mc/````
 
-> mcedit ~/.config/mc/mc.keymap
+> ````mcedit ~/.config/mc/mc.keymap````
 
 ````
 UserMenu = f2; ctrl-w
