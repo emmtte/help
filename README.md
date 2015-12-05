@@ -69,8 +69,10 @@ if [ -z "$TMUX" ]; then
     mc /home/pi/service/ /home/pi/service/gdrive
 fi
 ````
-**````cp /etc/mc/mc.keymap ~/.config/mc/
-mcedit ~/.config/mc/mc.keymap````**
+**````
+cp /etc/mc/mc.keymap ~/.config/mc/
+mcedit ~/.config/mc/mc.keymap
+````**
 ````shell
 UserMenu = f2; ctrl-w
 Mark = insert; ctrl-t; ctrl-b
