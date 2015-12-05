@@ -60,9 +60,8 @@ mkdir /home/pi/service/
 cd /home/pi/service/
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 ````
-````mcedit .bash_profile````
 
-:memo:
+:memo: .bash_profile
 ````shell
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
@@ -71,12 +70,13 @@ if [ -z "$TMUX" ]; then
     mc /home/pi/service/ /home/pi/service/gdrive
 fi
 ````
-**
+
+
 ````
 cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/mc.keymap
 ````
-**
+:memo: ~/.config/mc/mc.keymap
 ````shell
 UserMenu = f2; ctrl-w
 Mark = insert; ctrl-t; ctrl-b
