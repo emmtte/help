@@ -61,6 +61,7 @@ cd /home/pi/service/
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
 ````
 **````mcedit .bash_profile````**
+:boom:
 ````shell
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
