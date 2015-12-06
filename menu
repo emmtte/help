@@ -45,6 +45,7 @@ B move to "Freebox Server" folder
   pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
   rm /tmp/.freebox.sh
   EOF
+  tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t bash.1 'sh /tmp/.freebox.sh' ENTER
   tmux select-window -t pi:bash
   tmux select-pane -t bash.1
@@ -62,6 +63,7 @@ B upload to dropbox
   pushbullet push all note "Raspberry Pi" "Files Uploaded to Dropbox"
   rm /tmp/.dropbox.sh
   EOF
+  tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t cloud.2 'sh /tmp/.dropbox.sh' ENTER
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.2
@@ -73,19 +75,22 @@ C download from dropbox
 
 + f * & t t
 D upload to google drive
-  echo "clear" > ~/google_drive.sh
-  d=%d
-  echo "cd ~/gdrive/" > ~/google_drive.sh
+  if [ -f /tmp/.gdrive.sh ] ; then whiptail --title "Upload to Google Drivex" --msgbox "Busy try Later..." 12 35; exit; fi
+  cat > /tmp/.gdrive.sh << 'EOF'
+  clear
+  cd ~/gdrive/
   set %t
-  while [ -n "$1" ] ; do
-    echo "drive push \"$d/$1\"" >> ~/google_drive.sh
-    shift
+  for f in %t; do
+    drive push "$f"
   done
-  echo "pushbullet push all note Raspberry_Pi FilesUploadedToGoogleDrive" >> ~/google_drive.sh
+  pushbullet push al note "Raspberry Pi" "Files Uploaded to Google Drive"
+  rm /tmp/.gdrive.sh
+  EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
-  tmux send -t cloud.1 'sh ~/google_drive.sh' ENTER
-  tmux send -t cloud.1 '#rm ~/google_drive.sh' ENTER
+  tmux send -t cloud.1 'sh /tmp/.gdrive.sh' ENTER
   tmux select-window -t pi:cloud
+  tmux select-pane -t cloud.1
+  tmux -2 attach -t pi
 
 + f * & t r
 E download from google drive
