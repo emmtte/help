@@ -52,19 +52,20 @@ B move to "Freebox Server" folder
 
 + f * & t t
 B upload to dropbox
-  echo "clear" > ~/dropbox.sh
-  d=%d
-  echo "cd $d" >> ~/dropbox.sh
-  set %t
-  while [ -n "$1" ] ; do
-    echo "dropbox_uploader upload \"$1\" \"$1\"" >> ~/dropbox.sh
-    shift
+  if [ -f /tmp/.dropbox.sh ] ; then whiptail --title "Upload to Dropbox" --msgbox "Busy try Later..." 12 35; exit; fi
+  cat > /tmp/.dropbox.sh << 'EOF'
+  clear
+  cd "$d"
+  for f in %t; do
+    dropbox_uploader upload "$f" "$f"
   done
-  echo "pushbullet push all note Raspberry_Pi FilesUploadedToDropbox" >> ~/dropbox.sh
-  tmux has-session -t dropbox
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s dropbox ; fi
-  tmux send -t dropbox 'sh ~/dropbox.sh' ENTER
-  tmux send -t dropbox 'rm ~/dropbox.sh' ENTER
+  pushbullet push all note "Raspberry Pi" "Files Uploaded to Dropbox"
+  rm /tmp/.dropbox.sh
+  EOF
+  tmux send -t cloud.2 'sh /tmp/.dropbox.sh' ENTER
+  tmux select-window -t pi:cloud
+  tmux select-pane -t cloud.2
+  tmux -2 attach -t pi
 
 + f * & t r
 C download from dropbox
