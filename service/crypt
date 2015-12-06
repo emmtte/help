@@ -1,0 +1,1 @@
+fusermount -u /home/pi/secure/
