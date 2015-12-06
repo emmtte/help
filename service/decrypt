@@ -1,2 +1,2 @@
-dropbox_uploader download key /tmp
+if [ ! -f /tmp/key ]; then dropbox_uploader download key /tmp; fi
 cat /tmp/key | encfs /media/hdd/.secure/ /home/pi/secure/
