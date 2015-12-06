@@ -45,9 +45,10 @@ B move to "Freebox Server" folder
   pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
   rm /tmp/.freebox.sh
   EOF
-  tmux has-session -t freebox
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s freebox ; fi
-  tmux send -t freebox 'sh /tmp/.freebox.sh' ENTER
+  tmux send -t bash.1 'sh /tmp/.freebox.sh' ENTER
+  tmux select-window -t pi:bash
+  tmux select-pane -t bash.1
+  tmux -2 attach -t pi
 
 + f * & t t
 B upload to dropbox
