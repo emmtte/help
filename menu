@@ -39,8 +39,8 @@ B move to "Freebox Server" folder
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
   cd "%d"
-  for f in %t; do
-    rsync -aP --remove-sent-files "$f" /media/freebox
+  for f in "%t"; do
+    rsync -aP --remove-sent-files $f /media/freebox
   done
   pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
   rm /tmp/.freebox.sh
@@ -57,8 +57,8 @@ B upload to dropbox
   cat > /tmp/.dropbox.sh << 'EOF'
   clear
   cd "$d"
-  for f in %t; do
-    dropbox_uploader upload "$f" "$f"
+  for f in "%t"; do
+    dropbox_uploader upload $f $f
   done
   pushbullet push all note "Raspberry Pi" "Files Uploaded to Dropbox"
   rm /tmp/.dropbox.sh
@@ -80,8 +80,8 @@ D upload to google drive
   clear
   cd ~/gdrive/
   set %t
-  for f in %t; do
-    drive push "$f"
+  for f in "%t"; do
+    drive push $f
   done
   pushbullet push al note "Raspberry Pi" "Files Uploaded to Google Drive"
   rm /tmp/.gdrive.sh
