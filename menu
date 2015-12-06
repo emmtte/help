@@ -34,7 +34,7 @@ C Copy
 
 + f * & t t
 B move to "Freebox Server" folder
-  if [ -f /tmp/.freebox.sh ] ; then whiptail --title "Move to Freebox" --msgbox "Busy try Later..." 12 35; goto tm; fi
+  if [ -f /tmp/.freebox.sh ] ; then whiptail --title "Move to Freebox" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.freebox.sh << 'EOF'
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
@@ -47,14 +47,13 @@ B move to "Freebox Server" folder
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t bash.1 'sh /tmp/.freebox.sh' ENTER
-  tm:
   tmux select-window -t pi:bash
   tmux select-pane -t bash.1
   tmux -2 attach -t pi
 
 + f * & t t
 B upload to dropbox
-  if [ -f /tmp/.dropbox.sh ] ; then whiptail --title "Upload to Dropbox" --msgbox "Busy try Later..." 12 35; goto tm; fi
+  if [ -f /tmp/.dropbox.sh ] ; then whiptail --title "Upload to Dropbox" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.dropbox.sh << 'EOF'
   clear
   cd "%d"
@@ -66,7 +65,6 @@ B upload to dropbox
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t cloud.2 'sh /tmp/.dropbox.sh' ENTER
-  tm:
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.2
   tmux -2 attach -t pi
@@ -77,7 +75,7 @@ C download from dropbox
 
 + f * & t t
 D upload to google drive
-  if [ -f /tmp/.gdrive.sh ] ; then whiptail --title "Upload to Google Drivex" --msgbox "Busy try Later..." 12 35; goto tm; fi
+  if [ -f /tmp/.gdrive.sh ] ; then whiptail --title "Upload to Google Drivex" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.gdrive.sh << 'EOF'
   clear
   cd "%d"
@@ -90,7 +88,6 @@ D upload to google drive
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t cloud.1 'sh /tmp/.gdrive.sh' ENTER
-  tm:
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.1
   tmux -2 attach -t pi
