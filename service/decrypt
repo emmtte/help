@@ -1,3 +1,2 @@
-cd /tmp/
-dropbox_uploader download key
+dropbox_uploader download key /tmp
 cat /tmp/key | encfs /media/hdd/.secure/ /home/pi/secure/
