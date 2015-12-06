@@ -1,1 +1,3 @@
-encfs /media/hdd/.secure/ /home/pi/secure/
+cd /tmp/
+dropbox_uploader download key
+cat /tmp/key | encfs /media/hdd/.secure/ /home/pi/secure/
