@@ -1,1 +1,1 @@
-fusermount -u /home/pi/secure/
+fusermount -uz /home/pi/secure/
