@@ -53,7 +53,7 @@ B move to "Freebox Server" folder
 
 + f * & t t
 B upload to dropbox
-  if [ -f /tmp/.dropbox.sh ] ; then whiptail --title "Upload to Dropbox" --msgbox "Busy try Later..." 12 35; exit; fi
+  if [ -f /tmp/.dropbox.sh ] ; then whiptail --title "Upload to Dropbox" --msgbox "Busy try Later..." 12 35; goto tm; fi
   cat > /tmp/.dropbox.sh << 'EOF'
   clear
   cd "%d"
@@ -65,6 +65,7 @@ B upload to dropbox
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
   tmux send -t cloud.2 'sh /tmp/.dropbox.sh' ENTER
+  tm:
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.2
   tmux -2 attach -t pi
