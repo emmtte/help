@@ -4,7 +4,7 @@ tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
 tmux -2 new-session -d -s pi
 
-tmux rename-window -t pi:1 file
+tmux rename-window -t pi:1 bash
 tmux split-window -v
 tmux select-pane -t 0
 
