@@ -147,7 +147,7 @@ curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v1.0.0.
 mkdir ~/.bin/sejda
 unzip -jo sejda.zip -d ~/.bin/sejda/
 rm sejda.zip
-chmod +x ~/.bin/sejda-console
+chmod +x ~/.bin/sejda/sejda-console
 ```
 ### Wego
 https://github.com/schachmat/wego
