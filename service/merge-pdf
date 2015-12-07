@@ -10,5 +10,5 @@ ls /home/pi/gdrive/Documents | head -1 > name.csv
 if [ -f files.csv ] ; then ~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf ; fi
 mv sejda_out.pdf "Documents/`cat name.csv`"
 drive push --quiet "Documents/`cat name.csv`"
-drive unstar "Documents/`cat name.csv`"
+drive unstar --quiet "Documents/`cat name.csv`"
 pushbullet push all note "Raspberry Pi" "Starred Files added to `cat name.csv`"
