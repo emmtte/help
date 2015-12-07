@@ -118,7 +118,6 @@ server=208.67.220.220
 ```
 ### Pushbullet
 https://github.com/Red5d/pushbullet-bash
-https://www.pushbullet.com/account
 ```shell
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/local/bin/pushbullet
 sudo chmod +x /usr/local/bin/pushbullet
