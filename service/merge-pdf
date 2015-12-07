@@ -4,6 +4,10 @@ rm -rf /home/pi/gdrive/*
 cd /home/pi/gdrive/
 drive pull --quiet --starred --all
 if grep -r "Encrypt" /home/pi/gdrive/Snoozed ; then pushbullet push all note "Merge PDF" "ERROR CRYPTED FILE"; exit; fi
-find /home/pi/gdrive/Snoozed -iname "*.pdf" -type f | sort | tr '\n' ',' > files.csv
-find /home/pi/gdrive/Documents -iname "*.pdf" -type f | tr '\n' ',' > name.txt >> files.csv
+find /home/pi/gdrive/Snoozed -type f | sort | tr '\n' ',' > files.csv
+find /home/pi/gdrive/Documents -type f | head -1  >> files.csv
+ls /home/pi/gdrive/Documents | head -1 > name.csv
 if [ -f files.csv ] ; then ~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf ; fi
+mv sejda_out.pdf "Documents/`cat name.csv`"
+drive push --quiet "Documents/`cat name.csv`"
+drive unstar "Documents/`cat name.csv`"
