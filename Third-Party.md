@@ -144,11 +144,11 @@ https://github.com/torakiki/sejda
 ```shell
 sudo apt-get install oracle-java8-jdk
 curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v1.0.0.RELEASE/sejda-console-1.0.0.RELEASE-bin.zip
-mkdir ~/.bin/sejda
 unzip sejda.zip
-mv sejda-console-1.0.0.RELEASE ~/.bin/sejda
+mkdir ~/.bin/sejda
+mv sejda-console-1.0.0.RELEASE/* ~/.bin/sejda
 rm sejda.zip
-chmod +x ~/.bin/sejda/sejda-console
+chmod +x ~/.bin/sejda/bin/sejda-console
 ```
 ### Wego
 https://github.com/schachmat/wego
