@@ -110,7 +110,7 @@ picasawebuploader.py --email @gmail.com --source /media/hdd/photos
 ### Pi Hole
 https://github.com/jacobsalmela/pi-hole
 ```shell
-curl -s "https://raw.githubusercontent.com/jacobsalmela/pi-hole/master/automated%20install/basic-install.sh" | bash
+curl -L install.pi-hole.net | bash
 sudo mcedit /etc/dnsmasq.conf
 > change 
 server=208.67.222.222
