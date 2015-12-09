@@ -120,6 +120,7 @@ server=208.67.220.220
 https://github.com/Red5d/pushbullet-bash
 ```shell
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/local/bin/pushbullet
+sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh -o /usr/local/bin/JSON.sh
 sudo chmod +x /usr/local/bin/pushbullet
 ```
 https://www.pushbullet.com/account
