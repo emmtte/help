@@ -81,8 +81,9 @@ D upload to google drive
   cd "%d"
   for f in %t; do
     cp "$f" ~/gdrive/
-    drive push "$f"
   done
+  cd ~/gdrive
+  drive push
   pushbullet push al note "Raspberry Pi" "Files Uploaded to Google Drive"
   rm /tmp/.gdrive.sh
   EOF
