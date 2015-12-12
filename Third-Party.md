@@ -81,6 +81,12 @@ sudo pip3 install -r requirements.txt
 
 python3 ~/.bin/hangoutsbot/hangupsbot/hangupsbot.py
 ```
+### Ifttt Maker Channel
+https://ifttt.com/maker
+````
+echo "{key}" > .maker_channel_key
+curl -X POST https://maker.ifttt.com/trigger/{event}/with/key/`cat ~/.maker_channey_key`
+````
 ### Picasa Web Sync
 https://github.com/leocrawford/picasawebsync
 ```shell
