@@ -85,7 +85,7 @@ python3 ~/.bin/hangoutsbot/hangupsbot/hangupsbot.py
 https://ifttt.com/maker
 ````
 echo "{key}" > ~/.maker_channel_key
-curl -X POST https://maker.ifttt.com/trigger/{event}/with/key/`cat ~/.maker_channey_key`
+curl -X POST https://maker.ifttt.com/trigger/{event}/with/key/`cat ~/.maker_channel_key`
 ````
 ### Picasa Web Sync
 https://github.com/leocrawford/picasawebsync
