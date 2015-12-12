@@ -86,7 +86,7 @@ https://ifttt.com/maker
 ````
 echo "{key}" > ~/.maker_channel_key
 curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
-curl -H "Content-Type: application/json" -X POST -d '{"value1":"1","value2":"2"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
+curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ````
 ### Picasa Web Sync
 https://github.com/leocrawford/picasawebsync
