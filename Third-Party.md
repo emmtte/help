@@ -55,7 +55,7 @@ mv flickr-uploader/ flickr-uploader#1/
 cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
 ```
-### Google CL
+### <s>Google CL</s>
 https://github.com/vinitkumar/googlecl
 ```shell
 cd bin
