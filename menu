@@ -78,12 +78,13 @@ D upload to google drive
   if [ -f /tmp/.gdrive.sh ] ; then whiptail --title "Upload to Google Drivex" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.gdrive.sh << 'EOF'
   clear
+  mkdir ~/gdrive/Upload
   cd "%d"
   for f in %t; do
-    cp "$f" ~/gdrive/
+    cp "$f" ~/gdrive/Upload
   done
   cd ~/gdrive
-  drive push
+  drive push --quiet Upload/*.*
   pushbullet push al note "Raspberry Pi" "Files Uploaded to Google Drive"
   rm /tmp/.gdrive.sh
   EOF
