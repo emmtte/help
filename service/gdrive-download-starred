@@ -1,3 +1,4 @@
 clear
+rm -rf /home/pi/*
 cd ~/gdrive
 drive pull --quiet --starred --all
