@@ -99,6 +99,20 @@ D upload to google drive
 E download from google drive
   drive pull %{Dropbox Filename}
 
++ f * & t r
+X Exec in tmus bash.1 session
+  tmux send -t bash.1 'sh %f' ENTER
+  tmux select-window -t pi:bash
+  tmux select-pane -t bash.1
+  tmux -2 attach -t pi
+  
++ f * & t r
+Y Exec in tmus bash.2 session
+  tmux send -t bash.2 'sh %f' ENTER
+  tmux select-window -t pi:bash
+  tmux select-pane -t bash.2
+  tmux -2 attach -t pi
+
 + f backup & t r
 6 shrink /media/hdd/photos==>> Google+ account
   tmux has-session -t gplus
