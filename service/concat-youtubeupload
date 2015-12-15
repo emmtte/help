@@ -1,8 +1,5 @@
-tmux has-session -t gopro
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
-  clear
-  tmux send -t gopro 'clear' ENTER
-  tmux send -t gopro 'cd %d' ENTER
-  tmux send -t gopro 'mpv `ls %d/*.* | sort` -ovc copy -oac pcm -o %d/youtube.avi' ENTER
-  tmux send -t gopro 'youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "%d/youtube.avi"' ENTER
-  tmux send -t gopro 'pushbullet push all note "Concatenated & Uploaded to Youtube"' ENTER
+#Copy files fro cancatenation to /media/hdd/youtube
+clear
+mpv `ls /media/hddyoutube/*.* | sort` -ovc copy -oac pcm -o /media/hdd/youtube/youtube.avi' ENTER
+youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/youtube/youtube.avi"
+pushbullet push all note "Concatenated & Uploaded to Youtube"
