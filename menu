@@ -100,19 +100,47 @@ E download from google drive
   drive pull %{Dropbox Filename}
 
 + f * & t r
-X Exec in tmus bash.1 session
-  tmux send -t bash.1 'sh %f' ENTER
-  tmux select-window -t pi:bash
-  tmux select-pane -t bash.1
+A Tmux Session A
+  tmux send -t AB.1 'sh %f' ENTER
+  tmux select-window -t pi:AB
+  tmux select-pane -t AB.1
   tmux -2 attach -t pi
   
 + f * & t r
-Y Exec in tmus bash.2 session
-  tmux send -t bash.2 'sh %f' ENTER
-  tmux select-window -t pi:bash
-  tmux select-pane -t bash.2
+B Tmux Session B
+  tmux send -t AB.2 'sh %f' ENTER
+  tmux select-window -t pi:AB
+  tmux select-pane -t AB.2
   tmux -2 attach -t pi
 
++ f * & t r
+C Tmux Session C
+  tmux send -t CD.1 'sh %f' ENTER
+  tmux select-window -t pi:CD
+  tmux select-pane -t CD.1
+  tmux -2 attach -t pi
+  
++ f * & t r
+D Tmux Session D
+  tmux send -t CD.2 'sh %f' ENTER
+  tmux select-window -t pi:CD
+  tmux select-pane -t CD.2
+  tmux -2 attach -t pi
+
++ f * & t r
+E Tmux Session E
+  tmux send -t EF.1 'sh %f' ENTER
+  tmux select-window -t pi:EF
+  tmux select-pane -t EF.1
+  tmux -2 attach -t pi
+  
++ f * & t r
+F Tmux Session F
+  tmux send -t EF.2 'sh %f' ENTER
+  tmux select-window -t pi:EF
+  tmux select-pane -t EF.2
+  tmux -2 attach -t pi
+  
 + f backup & t r
 6 shrink /media/hdd/photos==>> Google+ account
   tmux has-session -t gplus
