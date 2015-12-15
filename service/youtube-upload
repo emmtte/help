@@ -5,7 +5,7 @@ cd /media/hdd/youtube-upload/
 if [ ! -f youtube.avi ] ; then
 ls *.* | sort > youtube.txt
 ffmpeg -i youtube.txt -vcodec copy -acodec pcm youtube.avi
-#mpv `ls *.* | sort` -vo copy -ao pcm -o youtube.avi
+#mpv `ls *.* | sort` --ovc copy --oac pcm --o youtube.avi
 fi
 youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" youtube.avi
 pushbullet push all note "Concatenated & Uploaded to Youtube"
