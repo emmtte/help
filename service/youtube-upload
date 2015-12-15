@@ -1,8 +1,11 @@
 #Copy files for concatenation to /media/hdd/youtube-upload
 clear
 if [ ! -f /usr/bin/mpv ]; then echo "ERROR: Please install mpv"; exit; fi
-if [ ! -f /media/hdd/youtube-upload/youtube.avi ] ; then
-mpv `ls /media/hdd/youtube-upload/*.* | sort` -vo copy -ao pcm -o /media/hdd/youtube-upload/youtube.avi
+cd /media/hdd/youtube-upload/
+if [ ! -f youtube.avi ] ; then
+ls *.* | sort > youtube.txt
+ffmpeg -i youtube.txt -vcodec copy -acodec pcm youtube.avi
+#mpv `ls *.* | sort` -vo copy -ao pcm -o youtube.avi
 fi
-youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/youtube-upload/youtube.avi"
+youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" youtube.avi
 pushbullet push all note "Concatenated & Uploaded to Youtube"
