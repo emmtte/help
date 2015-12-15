@@ -4,11 +4,15 @@ tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
 tmux -2 new-session -d -s pi
 
-tmux rename-window -t pi:1 bash
+tmux rename-window -t pi:1 AB
 tmux split-window -v
 tmux select-pane -t 0
 
-tmux new-window -t pi -a -n cast
+tmux new-window -t pi -a -n CD
+tmux split-window -v
+tmux select-pane -t 0
+
+tmux new-window -t pi -a -n EF
 tmux split-window -v
 tmux select-pane -t 0
 
@@ -20,9 +24,7 @@ tmux new-window -t pi -a -n flickr
 tmux split-window -v
 tmux select-pane -t 0
 
-tmux new-window -t pi -a -n motion
-tmux split-window -v
-tmux select-pane -t 0
+
 
 tmux select-window -t pi:1
 fi
