@@ -137,13 +137,6 @@ F Tmux Session F
   tmux select-pane -t EF.2
   tmux -2 attach -t pi
   
-+ f backup & t r
-6 shrink /media/hdd/photos==>> Google+ account
-  tmux has-session -t gplus
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gplus ; fi
-  tmux send -t gplus 'picasawebsync.py -d /media/hdd/photos --shrink' ENTER
-  tmux send -t gplus 'pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"' ENTER
-
 + f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t t
 y upload to youtube [youtube screen]
   cat > /tmp/youtube_task.sh << 'EOF'
