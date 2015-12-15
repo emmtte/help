@@ -1,5 +1,5 @@
 #Copy files for concatenation to /media/hdd/youtube-upload
 clear
-mpv `ls /media/hdd/youtube-upload/*.* | sort` -ovc copy -oac pcm -o /media/hdd/youtube-upload/youtube.avi' ENTER
+mpv `ls /media/hdd/youtube-upload/*.* | sort` -ovc copy -oac pcm -o /media/hdd/youtube-upload/youtube.avi
 youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/youtube-upload/youtube.avi"
 pushbullet push all note "Concatenated & Uploaded to Youtube"
