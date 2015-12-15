@@ -1,4 +1,4 @@
-#Copy files fro cancatenation to /media/hdd/youtube
+#Copy files for concatenation to /media/hdd/youtube
 clear
 mpv `ls /media/hddyoutube/*.* | sort` -ovc copy -oac pcm -o /media/hdd/youtube/youtube.avi' ENTER
 youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/youtube/youtube.avi"
