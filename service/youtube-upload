@@ -1,5 +1,6 @@
 #Copy files for concatenation to /media/hdd/youtube-upload
 clear
+if [ ! -f /usr/bin/mpv ]; then echo "ERROR: Please install mpv"; exit; fi
 if [ ! -f /media/hdd/youtube-upload/youtube.avi ] ; then
 mpv `ls /media/hdd/youtube-upload/*.* | sort` -vo copy -ao pcm -o /media/hdd/youtube-upload/youtube.avi
 fi
