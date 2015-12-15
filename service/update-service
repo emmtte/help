@@ -8,6 +8,7 @@ unzip -jo service.zip -d /home/pi/service ServicePi-master/service/*
 chmod +x ~/service/*
 ln -s /media/hdd/Bibliothèques/Soundtracks/ ~/service/play-scores
 ln -s /media/hdd/torrent/ ~/service/torrents
+ln -s /media/hdd/ ~/service/hdd
 ln -s /media/freebox/ ~/service/freebox
 ln -s ~/gdrive/ ~/service/gdrive
 ln -s ~/secure/ ~/service/secure
