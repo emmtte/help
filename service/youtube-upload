@@ -5,9 +5,9 @@ cd /media/hdd/youtube-upload/
 if [ ! -f youtube.avi ] ; then
   #https://trac.ffmpeg.org/wiki/Concatenate
   find *.MP4 -type f | sort | while read FILE ; do
-    avconv -y -vn -i $FILE -c copy -bsf:v h264_mp4toannexb -f mpegts $FILE.ts
+    avconv -y -i $FILE -c copy -bsf:v h264_mp4toannexb -f mpegts $FILE.ts
   done
-  avconv -y -vn -i concat:"`ls *.MP4.ts | sort | tr '\n' '|'| head -c -1`" -c copy -bsf:a aac_adtstoasc youtube.avi
+  avconv -y -i concat:"`ls *.MP4.ts | sort | tr '\n' '|'| head -c -1`" -c copy -bsf:a aac_adtstoasc youtube.avi
 fi
 youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" youtube.avi
 pushbullet push all note "Concatenated & Uploaded to Youtube"
