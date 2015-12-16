@@ -181,6 +181,10 @@ unzip master.zip
 cd youtube-upload-master
 sudo python setup.py install
 ```
+
+```shell
+sudo cp client_secrets.json /usr/local/share/youtube_upload/client_secrets.json
+```
 ```shell
 #A revoir
 mv youtube.json /home/pi/.config/youtube.json
