@@ -181,7 +181,7 @@ unzip master.zip
 cd youtube-upload-master
 sudo python setup.py install
 ```
-
+https://developers.google.com/youtube/registering_an_application
 ```shell
 sudo cp client_secrets.json /usr/local/share/youtube_upload/client_secrets.json
 ```
