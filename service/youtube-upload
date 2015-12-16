@@ -1,5 +1,5 @@
 #Copy files for concatenation to /media/hdd/youtube-upload
-
+sudo apt-get install -y libav-tools
 clear
 cd /media/hdd/youtube-upload/
 if [ ! -f youtube.avi ] ; then
