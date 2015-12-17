@@ -183,11 +183,8 @@ sudo python setup.py install
 ```
 https://developers.google.com/youtube/registering_an_application
 ```shell
-dropbox_uploader download client_secret_youtube.json
+ client_secret_youtube.json
 sudo mv client_secret_youtube.json /usr/local/share/youtube_upload/client_secrets.json
-```
-```shell
-#A revoir
-mv youtube.json /home/pi/.config/youtube.json
-youtube-upload --title="test" --category="Music" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "/media/hdd/gopro/videos/youtube.avi"
+dropbox_uploader download SampleVideo.mp4
+youtube-upload --title="test" --category="Music" --privacy="private" --location="=" SampleVideo.mp4
 ```
