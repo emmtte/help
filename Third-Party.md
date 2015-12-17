@@ -170,7 +170,7 @@ mcedit ~/.wegorc
 https://github.com/rg3/youtube-dl
 ```shell
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
-sudo chmod +x /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
 ```
 ### Youtube-Upload
 https://github.com/tokland/youtube-upload
