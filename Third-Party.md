@@ -183,8 +183,8 @@ sudo python setup.py install
 ```
 https://developers.google.com/youtube/registering_an_application
 ```shell
-dropbox_uploader download client_secrets_youtube
-sudo cp client_secrets_youtube.json /usr/local/share/youtube_upload/client_secrets.json
+dropbox_uploader download client_secret_youtube.json
+sudo mv client_secret_youtube.json /usr/local/share/youtube_upload/client_secrets.json
 ```
 ```shell
 #A revoir
