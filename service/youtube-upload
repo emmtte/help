@@ -5,7 +5,7 @@ cd /media/hdd/youtube-upload/
 if [ ! -f youtube.avi ] ; then
   #https://trac.ffmpeg.org/wiki/Concatenate
   find *.MP4 -type f | sort | while read FILE ; do
-    avconv -i $FILE -bsf:v h264_mp4toannexb -f mpegts -strict experimental -y $FILE.ts
+    avconv -i $FILE -bsf:v h264_mp4toannexb -f mpegts -y $FILE.ts
   done
   avconv -y -i concat:"`ls *.MP4.ts | sort | tr '\n' '|'| head -c -1`" -c copy -bsf:a aac_adtstoasc -y youtube.avi
 fi
