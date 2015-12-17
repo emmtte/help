@@ -12,6 +12,7 @@
 #youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" youtube.avi
 #pushbullet push all note "Concatenated & Uploaded to Youtube"
 
+cd /media/hdd/youtube-upload/
 find *.MP4 -type f | sort | while read FILE ; do
 youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" --location="=" $FILE
 done
