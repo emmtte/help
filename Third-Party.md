@@ -186,5 +186,5 @@ https://developers.google.com/youtube/registering_an_application
 dropbox_uploader download client_secret_youtube.json
 sudo mv client_secret_youtube.json /usr/local/share/youtube_upload/client_secrets.json
 dropbox_uploader download SampleVideo.mp4
-youtube-upload --title="test" --category="Music" --privacy="private" --location="=" SampleVideo.mp4
+youtube-upload --title="test" --category="Music" --privacy="private" SampleVideo.mp4
 ```
