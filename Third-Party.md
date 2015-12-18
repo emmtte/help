@@ -171,6 +171,8 @@ https://github.com/rg3/youtube-dl
 ```shell
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
+echo "<Playlist_Link>" > .youtube-dl
+youtube-dl --max-quality FORMAT --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ```
 ### Youtube-Upload
 https://github.com/tokland/youtube-upload
