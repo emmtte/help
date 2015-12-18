@@ -20,7 +20,7 @@ D Delete
     shift
   done
 
-+ d *
+= d *
 C Copy
   echo %d
   echo %D
