@@ -22,6 +22,8 @@ D Delete
 
 + f * & t t
 C Copy
+  echo %d
+  echo %D
   #set %t
   #while [ -n "$1" ] ; do
   #  cp -f "$1" "%D/$(basename "$1")"
