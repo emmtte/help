@@ -103,6 +103,7 @@ E download from google drive
 
 + f * & t r
 A Tmux Session A
+  tmux send -t AB.1 'cd ~/service && clear' ENTER
   tmux send -t AB.1 'sh %f' ENTER
   tmux select-window -t pi:AB
   tmux select-pane -t AB.1
@@ -110,6 +111,7 @@ A Tmux Session A
   
 + f * & t r
 B Tmux Session B
+  tmux send -t AB.2 'cd ~/service && clear' ENTER
   tmux send -t AB.2 'sh %f' ENTER
   tmux select-window -t pi:AB
   tmux select-pane -t AB.2
@@ -117,6 +119,7 @@ B Tmux Session B
 
 + f * & t r
 C Tmux Session C
+  tmux send -t CD.1 'cd ~/service && clear' ENTER
   tmux send -t CD.1 'sh %f' ENTER
   tmux select-window -t pi:CD
   tmux select-pane -t CD.1
@@ -124,6 +127,7 @@ C Tmux Session C
   
 + f * & t r
 D Tmux Session D
+  tmux send -t CD.2 'cd ~/service && clear' ENTER
   tmux send -t CD.2 'sh %f' ENTER
   tmux select-window -t pi:CD
   tmux select-pane -t CD.2
@@ -131,6 +135,7 @@ D Tmux Session D
 
 + f * & t r
 E Tmux Session E
+  tmux send -t EF.1 'cd ~/service && clear' ENTER
   tmux send -t EF.1 'sh %f' ENTER
   tmux select-window -t pi:EF
   tmux select-pane -t EF.1
@@ -138,6 +143,7 @@ E Tmux Session E
   
 + f * & t r
 F Tmux Session F
+  tmux send -t EF.2 'cd ~/service && clear' ENTER
   tmux send -t EF.2 'sh %f' ENTER
   tmux select-window -t pi:EF
   tmux select-pane -t EF.2
