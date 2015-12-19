@@ -19,18 +19,18 @@ Third-Party Command Line Tools [up]
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
 
-[:arrow_up:](up) Castnow 
-------------------------
-https://github.com/xat/castnow
+Castnow 
+-------
+[:arrow_up:](up) https://github.com/xat/castnow
 ```shell
 sudo apt-get install -y nodejs npm
 sudo npm install castnow -g
 nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
 ```
 
-[:arrow_up:](up) Dropbox-Uploader 
----------------------------------
-https://github.com/andreafabrizi/Dropbox-Uploader
+Dropbox-Uploader 
+----------------
+[:arrow_up:](up) https://github.com/andreafabrizi/Dropbox-Uploader
 ```shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
@@ -38,9 +38,9 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
 
-[:arrow_up:](up) Drive 
-----------------------
-https://github.com/odeke-em/drive
+Drive 
+-----
+[:arrow_up:](up) https://github.com/odeke-em/drive
 ```shell
 sudo apt-get install golang
 cat << ! >> ~/.bashrc
