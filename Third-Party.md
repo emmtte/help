@@ -1,6 +1,6 @@
 Third-Party Command Line Tools
 ==============================
-#up
+[up]
   * [Castnow](#castnow)
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
