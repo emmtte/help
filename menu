@@ -22,13 +22,17 @@ D Delete
 
 = d *
 C Copy
-  echo %d
-  echo %D
-  #set %t
-  #while [ -n "$1" ] ; do
-  #  cp -f "$1" "%D/$(basename "$1")"
-  #  shift
-  #done
+  tmux send -t cloud.1 'rsync --info=progress2 %D %d' ENTER
+  tmux select-window -t pi:cloud
+  tmux select-pane -t cloud.1
+  tmux -2 attach -t pi
+
+= d *
+C Move
+  tmux send -t cloud.1 'rsync --remove-source-files --info=progress2 %D %d' ENTER
+  tmux select-window -t pi:cloud
+  tmux select-pane -t cloud.1
+  tmux -2 attach -t pi
 
 + f * & t t
 B move to "Freebox Server" folder
