@@ -1,5 +1,6 @@
 Third-Party Command Line Tools
 ==============================
+#up
   * [Castnow](#castnow)
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
@@ -19,7 +20,7 @@ Third-Party Command Line Tools
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
 
-Castnow
+Castnow [:arrow_up:](up)
 -------
 https://github.com/xat/castnow
 ```shell
@@ -28,7 +29,7 @@ sudo npm install castnow -g
 nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
 ```
 
-Dropbox-Uploader
+Dropbox-Uploader [:arrow_up:](up)
 ----------------
 https://github.com/andreafabrizi/Dropbox-Uploader
 ```shell
@@ -38,7 +39,7 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
 
-Drive
+Drive [:arrow_up:](up)
 -----
 https://github.com/odeke-em/drive
 ```shell
@@ -53,7 +54,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ```
 
-<s>Flickr Smart Sync</s>
+<s>Flickr Smart Sync</s> [:arrow_up:](up)
 ------------------------
 https://github.com/faisalraja/flickrsmartsync
 ```shell
