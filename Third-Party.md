@@ -19,14 +19,16 @@ Third-Party Command Line Tools
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
 
-### Castnow
+Castnow
+-------
 https://github.com/xat/castnow
 ```shell
 sudo apt-get install -y nodejs npm
 sudo npm install castnow -g
 nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
 ```
-### Dropbox-Uploader
+Dropbox-Uploader
+----------------
 https://github.com/andreafabrizi/Dropbox-Uploader
 ```shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
@@ -34,7 +36,8 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
-### Drive
+Drive
+-----
 https://github.com/odeke-em/drive
 ```shell
 sudo apt-get install golang
@@ -47,7 +50,8 @@ mkdir ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ```
-### <s>Flickr Smart Sync</s>
+<s>Flickr Smart Sync</s>
+------------------------
 https://github.com/faisalraja/flickrsmartsync
 ```shell
 sudo apt-get install python-dev python-setuptools
@@ -57,7 +61,8 @@ sudo python setup.py install
 sudo rm -r /home/pi/flickrsmartsync
 flickrsmartsync --sync-path /media/hdd/photos
 ```
-### Flickr-Uploader
+Flickr-Uploader
+---------------
 https://github.com/trickortweak/flickr-uploader
 > Do first time without tmux script for token
 
@@ -74,7 +79,8 @@ mv flickr-uploader/ flickr-uploader#1/
 cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
 ```
-### <s>Google CL</s>
+<s>Google CL</s>
+----------------
 https://github.com/vinitkumar/googlecl
 ```shell
 cd bin
