@@ -1,12 +1,7 @@
-cat >> /tmp/panasonic_task.sh << EOF
-  clear
-  sudo mkdir /media/panasonic
-  sudo mount LABEL=CANON_DC /media/panasonic
-  mkdir /media/hdd/panasonic
-  cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
-  pushbullet push all note "photos and videos from panasonic are saved"
-  rm /tmp/panasonic_task.sh
-  EOF
-  tmux has-session -t gopro
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s gopro ; fi
-  tmux send -t gopro 'sh /tmp/panasonic_task.sh' ENTER  
+#!/bin/sh
+clear
+sudo mkdir /media/panasonic
+sudo mount LABEL=CANON_DC /media/panasonic
+mkdir /media/hdd/panasonic
+cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
+pushbullet push all note "photos and videos from panasonic are saved"
