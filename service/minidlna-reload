@@ -1,1 +1,2 @@
+#!/bin/sh
 sudo service minidlna force-reload
