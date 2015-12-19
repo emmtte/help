@@ -21,7 +21,7 @@
 
 Castnow 
 -------
-[:arrow_up:](up){ float: right; } https://github.com/xat/castnow
+[:arrow_up:](up){float:right;} https://github.com/xat/castnow
 ```shell
 sudo apt-get install -y nodejs npm
 sudo npm install castnow -g
