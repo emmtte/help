@@ -157,6 +157,11 @@ mv sejda-console-1.0.0.RELEASE/* ~/.bin/sejda
 rm sejda.zip
 chmod +x ~/.bin/sejda/bin/sejda-console
 ```
+### Torrent
+https://github.com/maxogden/torrent
+```shell
+sudo npm install torrent -g
+```
 ### Wego
 https://github.com/schachmat/wego
 ```shell
