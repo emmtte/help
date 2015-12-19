@@ -27,6 +27,7 @@ sudo apt-get install -y nodejs npm
 sudo npm install castnow -g
 nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
 ```
+
 Dropbox-Uploader
 ----------------
 https://github.com/andreafabrizi/Dropbox-Uploader
@@ -36,6 +37,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
+
 Drive
 -----
 https://github.com/odeke-em/drive
@@ -50,6 +52,7 @@ mkdir ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ```
+
 <s>Flickr Smart Sync</s>
 ------------------------
 https://github.com/faisalraja/flickrsmartsync
@@ -61,6 +64,7 @@ sudo python setup.py install
 sudo rm -r /home/pi/flickrsmartsync
 flickrsmartsync --sync-path /media/hdd/photos
 ```
+
 Flickr-Uploader
 ---------------
 https://github.com/trickortweak/flickr-uploader
@@ -79,6 +83,7 @@ mv flickr-uploader/ flickr-uploader#1/
 cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
 ```
+
 <s>Google CL</s>
 ----------------
 https://github.com/vinitkumar/googlecl
@@ -88,7 +93,9 @@ git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
 ```
-### Hangups
+
+Hangups
+-------
 https://github.com/tdryer/hangups
 ```shell
 git clone https://github.com/tdryer/hangups.git
@@ -97,7 +104,9 @@ sudo python3 setup.py install
 rm hangups
 hangups
 ```
-### <s>Hangouts Bot</s>
+
+<s>Hangouts Bot</s>
+-------------------
 https://github.com/hangoutsbot/hangoutsbot
 ```shell
 git clone https://github.com/hangoutsbot/hangoutsbot.git
@@ -106,14 +115,18 @@ sudo pip3 install -r requirements.txt
 
 python3 ~/.bin/hangoutsbot/hangupsbot/hangupsbot.py
 ```
-### Ifttt Maker Channel
+
+Ifttt Maker Channel
+-------------------
 https://ifttt.com/maker
 ````
 echo "{key}" > ~/.maker_channel_key
 curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ````
-### Picasa Web Sync
+
+Picasa Web Sync
+---------------
 https://github.com/leocrawford/picasawebsync
 ```shell
 sudo apt-get install jhead
@@ -127,7 +140,9 @@ cp /home/pi/client_secrets.json /home/pi/picasawebsync/client_secrets.json
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos
 /home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos --purge
 ```
-### <s>Picasa Web Uploader</s>
+
+<s>Picasa Web Uploader</s>
+--------------------------
 https://github.com/jackpal/picasawebuploader
 ```shell
 sudo apt-get install python-pip
@@ -139,7 +154,9 @@ curl -o picasawebuploader.py https://raw.githubusercontent.com/jackpal/picasaweb
 sudo chmod +x picasawebuploader.py 
 picasawebuploader.py --email @gmail.com --source /media/hdd/photos
 ```
-### Pi Hole
+
+Pi Hole
+-------
 https://github.com/jacobsalmela/pi-hole
 ```shell
 curl -L install.pi-hole.net | bash
@@ -148,14 +165,18 @@ sudo mcedit /etc/dnsmasq.conf
 server=208.67.222.222
 server=208.67.220.220
 ```
-### Pushbullet
+
+Pushbullet
+----------
 https://github.com/Red5d/pushbullet-bash
 ```shell
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbullet -o /usr/local/bin/pushbullet
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh -o /usr/local/bin/JSON.sh
 sudo chmod +x /usr/local/bin/pushbullet /usr/local/bin/JSON.sh
 ```
+
 https://www.pushbullet.com/account
+----------------------------------
 ```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ```
@@ -171,7 +192,9 @@ sudo cp rclone-v1.23-linux-arm/rclone /usr/local/bin/rclone
 rclone config
 mv .rclone.conf /home/pi/.config/rclone.conf
 ```
-### Sejda
+
+Sejda
+-----
 https://github.com/torakiki/sejda
 ```shell
 sudo apt-get install oracle-java8-jdk
@@ -182,12 +205,16 @@ mv sejda-console-1.0.0.RELEASE/* ~/.bin/sejda
 rm sejda.zip
 chmod +x ~/.bin/sejda/bin/sejda-console
 ```
-### Torrent
+
+Torrent
+-------
 https://github.com/maxogden/torrent
 ```shell
 sudo npm install torrent -g
 ```
-### Wego
+
+Wego
+----
 https://github.com/schachmat/wego
 ```shell
 go get github.com/schachmat/wego
@@ -196,7 +223,9 @@ https://developer.worldweatheronline.com/auth/register
 ````
 mcedit ~/.wegorc
 ````
-### Youtube-dl
+
+Youtube-dl
+----------
 https://github.com/rg3/youtube-dl
 ```shell
 sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -204,7 +233,9 @@ sudo chmod a+rx /usr/local/bin/youtube-dl
 echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ```
-### Youtube-Upload
+
+Youtube-Upload
+--------------
 https://github.com/tokland/youtube-upload
 ```shell
 sudo pip install --upgrade google-api-python-client progressbar
