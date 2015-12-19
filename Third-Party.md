@@ -174,13 +174,13 @@ sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbul
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh -o /usr/local/bin/JSON.sh
 sudo chmod +x /usr/local/bin/pushbullet /usr/local/bin/JSON.sh
 ```
-
 https://www.pushbullet.com/account
-----------------------------------
 ```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ```
-### Rclone
+
+Rclone
+------
 https://github.com/ncw/rclone
 ```shell
 sudo apt-get install -y golang
