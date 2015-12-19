@@ -1,17 +1,17 @@
 Third-Party Command Line Tools
 ==============================
-  * [Castnow](#Castnow)
-  * [Dropbox-Uploader](#Dropbox-Uploader)
-  * [Drive](#Drive)
-  * [<s>Flickr Smart Sync</s>](#Flickr Smart Sync)
-  * [Flickr-Uploader](#Flickr-Uploader)
-  * [<s>Google CL</s>](#Google CL)
-  * [Hangups](#Hangups)
-  * [<s>Hangouts Bot</s>](#Hangouts Bot)
-  * [Ifttt Maker Channel](#Ifttt Maker Channel)
-  * [Picasa Web Sync](#Picasa Web Sync)
-  * [Picasa Web Uploader](#Picasa Web Uploader)
-  * [Pi Hole](#Pi Hole)
+  * [Castnow](#castnow)
+  * [Dropbox-Uploader](#dropbox-uploader)
+  * [Drive](#drive)
+  * [<s>Flickr Smart Sync</s>](#flickr smart sync)
+  * [Flickr-Uploader](#flickr-uploader)
+  * [<s>Google CL</s>](#google cl)
+  * [Hangups](#hangups)
+  * [<s>Hangouts Bot</s>](#hangouts bot)
+  * [Ifttt Maker Channel](#ifttt maker channel)
+  * [Picasa Web Sync](#picasa web sync)
+  * [Picasa Web Uploader](#picasa web uploader)
+  * [Pi Hole](#pi hole)
 
 ### Castnow
 https://github.com/xat/castnow
