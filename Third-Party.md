@@ -1,7 +1,7 @@
 Third-Party Command Line Tools
 ==============================
   * [Castnow](#castnow)
-  * [Dropbox-Uploader](#dropbox-uploader)
+  * [Dropbox-Uploader](#dropbox-uploader) :one:
   * [Drive](#drive)
   * [<s>Flickr Smart Sync</s>](#flickr-smart-sync) :no_entry:
   * [Flickr-Uploader](#flickr-uploader)
@@ -18,6 +18,10 @@ Third-Party Command Line Tools
   * [Torrent](#torrent)
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
+
+:one: Install first*
+:-1: Depraced
+:no_entry: Not usable
 
 Castnow 
 -------
