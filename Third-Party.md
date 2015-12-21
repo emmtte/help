@@ -166,6 +166,7 @@ sudo mcedit /etc/dnsmasq.conf
 > change 
 server=208.67.222.222
 server=208.67.220.220
+sudo reboot
 ```
 
 Pushbullet
