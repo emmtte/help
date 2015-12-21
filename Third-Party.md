@@ -1,27 +1,25 @@
 Third-Party Command Line Tools
 ==============================
-  * [Castnow](#castnow)
-  * [Dropbox-Uploader](#dropbox-uploader) :one:
-  * [Drive](#drive)
-  * [<s>Flickr Smart Sync</s>](#flickr-smart-sync) :no_entry:
-  * [Flickr-Uploader](#flickr-uploader)
-  * [<s>Google CL</s>](#google-cl) :no_entry:
-  * [Hangups](#hangups) :-1:
-  * [<s>Hangouts Bot</s>](#hangouts-bot) :no_entry:
-  * [Ifttt Maker Channel](#ifttt-maker-channel)
-  * [Picasa Web Sync](#picasa-web-sync) :-1:
-  * [Picasa Web Uploader](#picasa-web-uploader) :-1:
-  * [Pi Hole](#pi-hole)
-  * [Pushbullet](#pushbullet)
-  * [Rclone](#rclone) :-1:
-  * [Sejda](#sejda)
-  * [Torrent](#torrent)
-  * [Youtube-dl](#youtube-dl)
-  * [Youtube-Upload](#youtube-upload)
+  * :ok: [Castnow](#castnow)
+  * :one: [Dropbox-Uploader](#dropbox-uploader)
+  * :ok: [Drive](#drive)
+  * :no_entry: [<s>Flickr Smart Sync</s>](#flickr-smart-sync)
+  * :ok: [Flickr-Uploader](#flickr-uploader)
+  * :no_entry: [<s>Google CL</s>](#google-cl)
+  * :-1: [Hangups](#hangups)
+  * :no_entry: [<s>Hangouts Bot</s>](#hangouts-bot)
+  * :ok: [Ifttt Maker Channel](#ifttt-maker-channel)
+  * :-1: [Picasa Web Sync](#picasa-web-sync)
+  * :-1: [Picasa Web Uploader](#picasa-web-uploader)
+  * :ok: [Pi Hole](#pi-hole)
+  * :ok: [Pushbullet](#pushbullet)
+  * :-1: [Rclone](#rclone)
+  * :ok: [Sejda](#sejda)
+  * :ok: [Torrent](#torrent)
+  * :ok: [Youtube-dl](#youtube-dl)
+  * :ok: [Youtube-Upload](#youtube-upload)
 
-:one: Install first*
-:-1: Depraced
-:no_entry: Not usable
+:one: Install first :ok: To do :-1: Depraced :no_entry: Not usable
 
 Castnow 
 -------
