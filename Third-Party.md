@@ -53,7 +53,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 drive init ~/gdrive
 ```
 
-<s>Flickr Smart Sync</s> [:arrow_up:](up)
+<s>Flickr Smart Sync</s>
 ------------------------
 :link: https://github.com/faisalraja/flickrsmartsync
 ```shell
