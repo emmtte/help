@@ -3,17 +3,17 @@ Third-Party Command Line Tools
   * [Castnow](#castnow)
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
-  * [<s>Flickr Smart Sync</s>](#flickr-smart-sync)
+  * :no_entry:[<s>Flickr Smart Sync</s>](#flickr-smart-sync)
   * [Flickr-Uploader](#flickr-uploader)
-  * [<s>Google CL</s>](#google-cl)
-  * [Hangups](#hangups)
-  * [<s>Hangouts Bot</s>](#hangouts-bot)
+  * :no_entry:[<s>Google CL</s>](#google-cl)
+  * :-1:[Hangups](#hangups)
+  * :no_entry:[<s>Hangouts Bot</s>](#hangouts-bot)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
-  * [Picasa Web Sync](#picasa-web-sync)
-  * [Picasa Web Uploader](#picasa-web-uploader)
+  * :-1:[Picasa Web Sync](#picasa-web-sync)
+  * :-1:[Picasa Web Uploader](#picasa-web-uploader)
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
-  * [Rclone](#rclone)
+  * :-1:[Rclone](#rclone)
   * [Sejda](#sejda)
   * [Torrent](#torrent)
   * [Youtube-dl](#youtube-dl)
@@ -21,7 +21,7 @@ Third-Party Command Line Tools
 
 Castnow 
 -------
-[:link:] https://github.com/xat/castnow
+:link:https://github.com/xat/castnow
 ```shell
 sudo apt-get install -y nodejs npm
 sudo npm install castnow -g
@@ -30,7 +30,7 @@ nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio
 
 Dropbox-Uploader 
 ----------------
-[:link:] https://github.com/andreafabrizi/Dropbox-Uploader
+:link: https://github.com/andreafabrizi/Dropbox-Uploader
 ```shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
@@ -40,7 +40,7 @@ dropbox_uploader init
 
 Drive 
 -----
-[:link:] https://github.com/odeke-em/drive
+:link: https://github.com/odeke-em/drive
 ```shell
 sudo apt-get install golang
 cat << ! >> ~/.bashrc
