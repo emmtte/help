@@ -174,7 +174,7 @@ sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/pushbul
 sudo curl https://raw.githubusercontent.com/Red5d/pushbullet-bash/master/JSON.sh -o /usr/local/bin/JSON.sh
 sudo chmod +x /usr/local/bin/pushbullet /usr/local/bin/JSON.sh
 ```
-https://www.pushbullet.com/account
+:bangbang: https://www.pushbullet.com/account
 ```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ```
@@ -219,7 +219,7 @@ Wego
 ```shell
 go get github.com/schachmat/wego
 ```
-https://developer.worldweatheronline.com/auth/register
+:bangbang: https://developer.worldweatheronline.com/auth/register
 ````
 mcedit ~/.wegorc
 ````
@@ -244,7 +244,7 @@ unzip master.zip
 cd youtube-upload-master
 sudo python setup.py install
 ```
-https://developers.google.com/youtube/registering_an_application
+:bangbang: https://developers.google.com/youtube/registering_an_application
 ```shell
 dropbox_uploader download client_secret_youtube.json
 sudo mv client_secret_youtube.json /usr/local/share/youtube_upload/client_secrets.json
