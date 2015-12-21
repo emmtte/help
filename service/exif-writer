@@ -1,4 +1,3 @@
-cat > ~/exif_task.sh << 'EOF'
 clear
 find /media/hdd/photos -iname "*.jpg" -type f | sort | while read FILE ; do
   EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
@@ -8,8 +7,3 @@ find /media/hdd/photos -iname "*.jpg" -type f | sort | while read FILE ; do
   fi
   printf "\r$(basename "$FILE")"
 done
-EOF
-tmux has-session -t photos
-if [ "$?" -eq 1 ] ; then tmux new-session -d -s photos ; fi
-tmux send -t photos 'sh ~/exif_task.sh' ENTER
-tmux send -t photos 'rm ~/exif_task.sh' ENTER
