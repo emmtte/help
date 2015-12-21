@@ -1,0 +1,2 @@
+sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
+sudo squid -k reconfigure
