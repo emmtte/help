@@ -3,17 +3,17 @@ Third-Party Command Line Tools
   * [Castnow](#castnow)
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
-  * :no_entry:[<s>Flickr Smart Sync</s>](#flickr-smart-sync)
+  * [<s>Flickr Smart Sync</s>](#flickr-smart-sync) :no_entry:
   * [Flickr-Uploader](#flickr-uploader)
-  * :no_entry:[<s>Google CL</s>](#google-cl)
-  :-1:* [Hangups](#hangups)
-  * :no_entry:[<s>Hangouts Bot</s>](#hangouts-bot)
+  * [<s>Google CL</s>](#google-cl) :no_entry:
+  * [Hangups](#hangups) :-1:
+  * [<s>Hangouts Bot</s>](#hangouts-bot) :no_entry:
   * [Ifttt Maker Channel](#ifttt-maker-channel)
-  * :-1:[Picasa Web Sync](#picasa-web-sync)
-  * :-1:[Picasa Web Uploader](#picasa-web-uploader)
+  * [Picasa Web Sync](#picasa-web-sync) :-1:
+  * [Picasa Web Uploader](#picasa-web-uploader) :-1:
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
-  * :-1:[Rclone](#rclone)
+  * [Rclone](#rclone) :-1:
   * [Sejda](#sejda)
   * [Torrent](#torrent)
   * [Youtube-dl](#youtube-dl)
