@@ -1,7 +1,7 @@
 #!/bin/sh
 clear
 LOG=/media/hdd/photos/log.txt
-if [ ! -f /usr/bin/exiv2 ]; then echo "ERROR: Please install exiv2"; exit; fi
+if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > $LOG
 # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
 COUNTER=1
