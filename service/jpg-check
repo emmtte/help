@@ -2,7 +2,7 @@ if [ ! -f /usr/bin/exiv2 ]; then echo "ERROR: Please install exiv2"; exit; fi
 printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > "/tmp/photos.txt"
 # Loop through files, renaming each to a YYYY:MM:DD_HH:MM:SS_#####.JPG based name
 COUNTER=1
-find "%d" -iname "*.jpg" -type f | sort | while read FILE ; do 
+find /media/hdd/photos -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXI=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
 EXI1=`date -d "$EXIF -1 month" +"%%Y %%m"`
