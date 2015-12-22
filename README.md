@@ -13,7 +13,7 @@ Command Line Interface Tools
   * [Picasa Web Uploader](#picasa-web-uploader)
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
-  * [Rclone](#rclone)
+  * [<s>Rclone</s>](#rclone)
   * [Sejda](#sejda)
   * [Torrent](#torrent)
   * [Youtube-dl](#youtube-dl)
