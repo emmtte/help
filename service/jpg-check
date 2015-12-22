@@ -17,7 +17,7 @@ echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
     printf " NO  DA TE" >> $LOG
     printf "\n" >> $LOG
   fi
-  if [[ "$DAT" != "$EXI" && "$DAT" != "$EXI1" ]]; then
+  if [ "$DAT" != "$EXI" ] && [ "$DAT" != "$EXI1" ]; then
     printf "$(basename "$FILE"):" >> $LOG 
     printf "$DAT==>$EXI" >> $LOG
     printf " NOT MATCH" >> $LOG
