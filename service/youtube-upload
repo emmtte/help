@@ -13,7 +13,7 @@
 #pushbullet push all note "Concatenated & Uploaded to Youtube"
 
 cd /media/hdd/youtube-upload/
-find *.MP4 -type f | sort | while read FILE ; do
+find -iname "*.mp4" -type f  | sort | while read FILE ; do
 youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" $FILE
 done
 pushbullet push all note "Uploaded to Youtube"
