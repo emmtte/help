@@ -15,6 +15,7 @@ Command Line Interface Tools
   * [Pushbullet](#pushbullet)
   * [<s>Rclone</s>](#rclone)
   * [Sejda](#sejda)
+  * [Squid](#squid)
   * [Torrent](#torrent)
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
@@ -205,6 +206,23 @@ mkdir ~/.bin/sejda
 mv sejda-console-1.0.0.RELEASE/* ~/.bin/sejda
 rm sejda.zip
 chmod +x ~/.bin/sejda/bin/sejda-console
+```
+
+Squid
+-----
+:link: http://www.squid-cache.org/
+```shell
+sudo apt-get install squid
+sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.origin
+sudo mcedit squid.conf
+
+ ## disable ads ( http://pgl.yoyo.org/adservers/ )
+ acl ads dstdom_regex "/etc/squid/ad_block.txt"
+ http_access deny ads
+ deny_info TCP_RESET ads
+
+sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
+sudo squid -k reconfigure
 ```
 
 Torrent
