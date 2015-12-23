@@ -6,4 +6,5 @@ sudo mkdir /media/panasonic
 sudo mount $ID /media/panasonic
 mkdir /media/hdd/panasonic
 cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
+sudo umount /media/panasonic
 pushbullet push all note "photos and videos from panasonic are saved"
