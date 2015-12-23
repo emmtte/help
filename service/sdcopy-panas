@@ -1,6 +1,6 @@
 #!/bin/sh
 # ls -l /dev/disk/by-id 
-# echo "usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1" > ~/.panasonic
+# echo "/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1" > ~/.panasonic
 clear
 sudo mkdir /media/panasonic
 sudo mount `cat ~/.panasonic` /media/panasonic
