@@ -3,7 +3,7 @@ clear
 rm -r /home/pi/gdrive/*
 cd /home/pi/gdrive/
 drive pull --quiet /Photos
-find /home/pi/gdrive/photos -type d | while read DIR ; do 
+find /home/pi/gdrive/Photos -type d | while read DIR ; do 
 echo "$DIR"
 done
 pushbullet push all note "Raspberry Pi" "Starred Files added to `cat name.csv`"
