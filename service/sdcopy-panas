@@ -2,9 +2,16 @@
 # ls -l /dev/disk/by-id 
 ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
 clear
-sudo mkdir /media/panasonic
-sudo mount $ID /media/panasonic
-mkdir /media/hdd/panasonic
-cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
+sudo mkdir /media/tmp
+sudo mount $ID /media/tmp
+mkdir /media/hdd/tmp
+cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/tmp
 sudo umount /media/panasonic
+
+find /media/hdd/tmp -iname "*.jpg" -type f | while read FILE ; do 
+EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+YEAR=`echo "$EXIF" | cut -d '-' -f 1`
+if [ ! -d "/media/hdd/$YEAR/$EXIF" ]; then mkdir "/media/hdd/$YEAR/$EXIF"; fi
+mv -v /media/hdd/tmp/$FILE /media/hdd/photostest/$YEAR/$EXIF/$FILE
+done
 pushbullet push all note "photos and videos from panasonic are saved"
