@@ -17,4 +17,5 @@ if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
 if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
 mv -v $FILE $PHOTOS/$YEAR/$EXIF/$(basename $FILE)
 done
+rm -r $TMP
 pushbullet push all note "photos and videos from panasonic are saved"
