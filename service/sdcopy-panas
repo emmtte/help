@@ -15,6 +15,6 @@ EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' 
 YEAR=`echo "$EXIF" | cut -d '-' -f 1`
 if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
 if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
-mv -v $TMP/$FILE $PHOTOS/$YEAR/$EXIF/$FILE
+mv -v $FILE $PHOTOS/$YEAR/$EXIF/$(basename $FILE)
 done
 pushbullet push all note "photos and videos from panasonic are saved"
