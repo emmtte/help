@@ -1,9 +1,9 @@
 #!/bin/sh
 # ls -l /dev/disk/by-id 
-# echo "/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1" > ~/.panasonic
+ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
 clear
 sudo mkdir /media/panasonic
-sudo mount `cat ~/.panasonic` /media/panasonic
+sudo mount $ID /media/panasonic
 mkdir /media/hdd/panasonic
 cp -v /media/panasonic/DCIM/???_PANA/*.JPG /media/hdd/panasonic
 pushbullet push all note "photos and videos from panasonic are saved"
