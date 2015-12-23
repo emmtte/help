@@ -1,6 +1,6 @@
 #!/bin/sh
 clear
-rm -rf /home/pi/gdrive/*
+rm -r /home/pi/gdrive/*
 cd /home/pi/gdrive/
 drive pull --quiet /photos
 find /home/pi/gdrive/photos -type d | while read DIR ; do 
