@@ -2,7 +2,7 @@
 clear
 rm -r /home/pi/gdrive/*
 cd /home/pi/gdrive/
-drive pull --quiet /Photos
+drive pull --quiet Photos
 find /home/pi/gdrive/Photos -type d | while read DIR ; do 
 echo "$DIR"
 done
