@@ -1,7 +1,7 @@
 #!/bin/sh
 # ls -l /dev/disk/by-id 
 ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
-PHOTOS="/media/hdd/photot"
+PHOTOS="/media/hdd/photos"
 TMP="/media/hdd/tmp"
 clear
 sudo mkdir /media/panasonic
