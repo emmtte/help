@@ -7,3 +7,13 @@ find /home/pi/gdrive/Torrents/*.torrent -type f | while read FILE ; do
 transmission-remote --add "$FILE"
 done
 pushbullet push all note "Raspberry Pi" "All torrents added"
+
+LIST=`transmission-remote -l  | grep 100% | cut -d " " -f 3 | cut -d "*" -f 1`
+for ID in $LIST
+do
+  echo "Torrent #$ID is completed"
+  echo "Moving downloaded file(s) to $MOVEDIR"
+  #transmission-remote --torrent ID --move $MOVEDIR
+  echo "Removing torrent from list"
+  #transmission-remote --torrent ID --remove
+done
