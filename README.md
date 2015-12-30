@@ -16,7 +16,6 @@ Command Line Interface Tools
   * [<s>Rclone</s>](#rclone)
   * [Sejda](#sejda)
   * [Squid](#squid)
-  * [Torrent](#torrent)
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
 
@@ -223,13 +222,6 @@ sudo mcedit squid.conf
 
 sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
 sudo squid -k reconfigure
-```
-
-Torrent
--------
-:link: https://github.com/maxogden/torrent
-```shell
-sudo npm install torrent -g
 ```
 
 Wego
