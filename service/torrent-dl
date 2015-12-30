@@ -4,6 +4,6 @@ rm -rf /home/pi/gdrive/*
 cd /home/pi/gdrive/
 drive pull --quiet Torrents/
 find /home/pi/gdrive/Torrents/*.torrent -type f | while read FILE ; do
-transmission-cli "$FILE"
+transmission-remote --add "$FILE"
 done
 pushbullet push all note "Raspberry Pi" "All torrents added"
