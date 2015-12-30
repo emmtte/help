@@ -3,7 +3,7 @@ clear
 rm -rf /home/pi/gdrive/*
 cd /home/pi/gdrive/
 drive pull --quiet Torrents/
-find Torrents/*.torrent -type f | while read FILE ; do
+find /home/pi/gdrive/Torrents/*.torrent -type f | while read FILE ; do
 cd /media/hdd/torrent
 torrent "$FILE"
 done
