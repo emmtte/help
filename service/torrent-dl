@@ -5,6 +5,6 @@ cd /home/pi/gdrive/
 drive pull --quiet Torrents/
 find Torrents/*.torrent -type f | while read FILE ; do
 cd /media/hdd/torrent
-torrent $FILE
+torrent "$FILE"
 done
 pushbullet push all note "Raspberry Pi" "All torrents downloaded"
