@@ -14,7 +14,7 @@ for ID in $LIST
 do
   echo "Torrent #$ID is completed"
   echo "Moving downloaded file(s) to $MOVEDIR"
-  transmission-remote --torrent ID --move $MOVEDIR
+  transmission-remote --torrent $ID --move $MOVEDIR
   echo "Removing torrent from list"
-  transmission-remote --torrent ID --remove
+  transmission-remote --torrent $ID --remove
 done
