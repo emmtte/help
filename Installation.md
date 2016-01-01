@@ -209,19 +209,3 @@ sudo mv btsync /usr/bin
 sudo chmod 755 /usr/bin/btsync
 sudo btsync
 ````
-
-### Squid
-http://www.squid-cache.org/
-````
-sudo apt-get install squid
-sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.origin
-sudo mcedit squid.conf
-
- ## disable ads ( http://pgl.yoyo.org/adservers/ )
- acl ads dstdom_regex "/etc/squid/ad_block.txt"
- http_access deny ads
- deny_info TCP_RESET ads
-
-sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
-sudo squid -k reconfigure
-````
