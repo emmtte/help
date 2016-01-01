@@ -128,7 +128,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2",
 
 Motion
 ------
-http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
+:link: http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
 ```shell
 echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
 sudo modprobe bcm2835-v4l2
