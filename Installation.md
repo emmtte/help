@@ -209,37 +209,7 @@ sudo mv btsync /usr/bin
 sudo chmod 755 /usr/bin/btsync
 sudo btsync
 ````
-### Motion
-http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
-````
-echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
-````
-````
-sudo modprobe bcm2835-v4l2
-echo 'bcm2835-v4l2' | sudo tee -a /etc/modules
-sudo apt-get install motion
-sudo chmod 664 /etc/motion/motion.conf
-````
-````
-mkdir /tmp/motion
-````
-````
-echo 'start_motion_daemon=no' | sudo tee /etc/default/motion
-````
-````
-sudo mcedit /etc/motion/motion.conf
-````
-````
-process_id_file /var/run/motion.pid
-ffmpeg_cap_new off
-width 1280
-height 720
-webcam_localhost off
-target_dir /tmp/motion
-control_localhost off
-on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
-on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
-````
+
 ### Squid
 http://www.squid-cache.org/
 ````
