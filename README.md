@@ -9,6 +9,7 @@ Command Line Interface Tools
   * [Hangups](#hangups)
   * [<s>Hangouts Bot</s>](#hangouts-bot)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
+  * [Motion] (#motion)
   * [Picasa Web Sync](#picasa-web-sync)
   * [Picasa Web Uploader](#picasa-web-uploader)
   * [Pi Hole](#pi-hole)
@@ -123,6 +124,33 @@ Ifttt Maker Channel
 echo "{key}" > ~/.maker_channel_key
 curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
+````
+
+Motion
+------
+http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
+```shell
+echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
+sudo modprobe bcm2835-v4l2
+echo 'bcm2835-v4l2' | sudo tee -a /etc/modules
+sudo apt-get install motion
+sudo chmod 664 /etc/motion/motion.conf
+mkdir /tmp/motion
+echo 'start_motion_daemon=no' | sudo tee /etc/default/motion
+```
+```shell
+sudo mcedit /etc/motion/motion.conf
+```
+````
+process_id_file /var/run/motion.pid
+ffmpeg_cap_new off
+width 1280
+height 720
+webcam_localhost off
+target_dir /tmp/motion
+control_localhost off
+on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
+on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
 ````
 
 Picasa Web Sync
