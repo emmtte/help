@@ -1,3 +1,20 @@
+# request.xml
+#<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+#  <SOAP-ENV:Envelope
+#   SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+#   xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+#   xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+#   xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
+#   xmlns:xsd="http://www.w3.org/1999/XMLSchema">
+#    <SOAP-ENV:Body>
+#    <GetCurrentlyPlaying>
+#    </GetCurrentlyPlaying>
+#    </SOAP-ENV:Body>
+#  </SOAP-ENV:Envelope>
+
+
+
+
 curl -X POST -H "Content-Type: text/xml" \
     -d @request.xml \
     http://www.streamingsoundtracks.com/soap/FM24seven.php > test.xml
