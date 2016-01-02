@@ -1,0 +1,29 @@
+curl -X POST -H "Content-Type: text/xml" \
+    -d @request.xml \
+    http://www.streamingsoundtracks.com/soap/FM24seven.php > test.xml
+xmllint xmllint --xpath "//*[local-name()='Album']/text()" test.xml > result.txt
+echo  >> result.txt
+xmllint --xpath "//*[local-name()='Track']/text()" test.xml >> result.txt
+echo  >> result.txt
+xmllint --xpath "//*[local-name()='Artist']/text()" test.xml >> result.txt
+echo  >> result.txt
+PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" test.xml`
+PiTime=`date`
+TZ=":US/Eastern" date -d "$PlayStar"
+echo  >> result.txt
+SystemTime=`xmllint --xpath "//*[local-name()='SystemTime']/text()" test.xml`
+TZ=":US/Eastern" date -d "$SystemTime"
+#Length=`xmllint --xpath "//*[local-name()='Length']/text()" test.xml >> result.txt`
+#Length=`$Length | rev | cut -c 4- | rev`
+#length=`$(date -d @$Length +"%H:%M:%S")`
+#export ISODATE=$(date -d @$Length +"%Y-%m-%d %H:%M:%S")
+#echo $ISODATE
+date -d "$Systemtime + 2 minute"
+xmllint --xpath "//*[local-name()='CoverLink']/text()" test.xml >> result.txt
+echo  >> result.txt
+
+cat result.txt
+CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" test.xml`
+echo "-$CoverLink-"
+curl -o cover.jpg $CoverLink
+pushbullet push all link "$CoverLink"
