@@ -88,7 +88,7 @@ D upload to google drive
   done
   cd ~/gdrive
   drive push --quiet Upload/*.*
-  pushbullet push al note "Raspberry Pi" "Files Uploaded to Google Drive"
+  pushbullet push all note "Raspberry Pi" "Files Uploaded to Google Drive"
   rm /tmp/.gdrive.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/service/tmux ; fi
