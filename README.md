@@ -18,6 +18,7 @@ Command Line Interface Tools
   * [Samba](#samba)
   * [Sejda](#sejda)
   * [Squid](#squid)
+  * [Transmission](#transmission)
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
 
@@ -271,6 +272,38 @@ sudo mcedit squid.conf
 
 sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
 sudo squid -k reconfigure
+```
+
+Transmission
+------------
+:link: http://www.transmissionbt.com/
+```shell
+sudo apt-get -y install transmission-daemon
+mkdir /media/hdd/torrent
+sudo usermod -a -G debian-transmission pi
+sudo chgrp debian-transmission /media/hdd/torrent
+sudo chmod 777 -R /media/hdd/torrent
+sudo service transmission-daemon reload
+```
+```shell
+sudo sed -ie '$d' /etc/transmission-daemon/settings.json
+cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
+,
+"download-dir": "/media/hdd/torrent" ,
+"incomplete-dir": "/media/hdd/torrent" ,
+"rpc-authentication-required": false ,
+"rpc-whitelist": "127.0.0.1,192.168.0.*" ,
+"speed-limit-down": 500 ,
+"speed-limit-down-enable": true ,
+"speed-limit-up": 10 ,
+"speed-limit-up-enable": true ,
+"umask": 0
+}
+EOF
+```
+```
+sudo service transmission-daemon reload
+sudo service transmission-daemon restart
 ```
 
 Wego
