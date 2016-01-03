@@ -10,7 +10,7 @@ Command Line Interface Tools
   * [<s>Hangouts Bot</s>](#hangouts-bot)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
   * [Motion](#motion)
-  * [OpenSSH](#openssh)
+  * [OpenSSH](#open-ssh)
   * [Picasa Web Sync](#picasa-web-sync)
   * [Picasa Web Uploader](#picasa-web-uploader)
   * [Pi Hole](#pi-hole)
