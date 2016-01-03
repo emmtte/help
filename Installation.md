@@ -102,25 +102,6 @@ set -g mouse-select-window on
 set-option -g status-right ''
 ````
 
-#### samba
-https://www.samba.org/
-````shell
-sudo apt-get -y install samba samba-common-bin
-cat << EOF | sudo tee -a /etc/samba/smb.conf
-[HDD]
-comment = Raspberry Pi Hard Drive
-path = /media/hdd
-valid users = @users
-force group = users
-create mask = 0660
-directory mask = 0771
-read only = no
-EOF
-sudo service samba restart
-sudo service smbd restart
-sudo smbpasswd -a pi
-````
-
 ### External Usb Drive and Freebox HDD
 ````shell
 sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
