@@ -150,36 +150,7 @@ mixer_type "software"
 chmod -R 777 /media/hdd/music/
 sudo service mpd restart
 ```
-### Transmission
-http://www.transmissionbt.com/
-```shell
-sudo apt-get -y install transmission-daemon
-mkdir /media/hdd/torrent
-sudo usermod -a -G debian-transmission pi
-sudo chgrp debian-transmission /media/hdd/torrent
-sudo chmod 777 -R /media/hdd/torrent
-sudo service transmission-daemon reload
-```
-```shell
-sudo sed -ie '$d' /etc/transmission-daemon/settings.json
-cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
-,
-"download-dir": "/media/hdd/torrent" ,
-"incomplete-dir": "/media/hdd/torrent" ,
-"rpc-authentication-required": false ,
-"rpc-whitelist": "127.0.0.1,192.168.0.*" ,
-"speed-limit-down": 500 ,
-"speed-limit-down-enable": true ,
-"speed-limit-up": 10 ,
-"speed-limit-up-enable": true ,
-"umask": 0
-}
-EOF
-```
-```
-sudo service transmission-daemon reload
-sudo service transmission-daemon restart
-```
+
 ### Btsync
 https://www.getsync.com/intl/fr/
 ````shell
