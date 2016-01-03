@@ -9,7 +9,8 @@ Command Line Interface Tools
   * [Hangups](#hangups)
   * [<s>Hangouts Bot</s>](#hangouts-bot)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
-  * [Motion] (#motion)
+  * [Motion](#motion)
+  * [OpenSSH](#openssh)
   * [Picasa Web Sync](#picasa-web-sync)
   * [Picasa Web Uploader](#picasa-web-uploader)
   * [Pi Hole](#pi-hole)
@@ -154,6 +155,30 @@ control_localhost off
 on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
 on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
 ````
+Open SSH
+--------
+:link: http://www.openssh.com/
+```shell
+mkdir ~/.ssh
+cd ~/.ssh
+ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
+mv id_rsa.pub authorized_keys
+sudo chmod 600 authorized_keys
+cat << EOF | sudo tee -a /etc/ssh/sshd_config
+PermitRootLogin no
+AuthorizedKeysFile /home/pi/.ssh/authorized_keys
+PasswordAuthentication no
+Match Address 192.168.0.0/24
+    PasswordAuthentication yes
+EOF
+sudo service ssh restart
+
+cat << EOF | sudo tee -a ~/.bash_profile
+if [ -f ~/.bashrc ]; then
+  . ~/.bashrc
+fi
+EOF
+```
 
 Picasa Web Sync
 ---------------
