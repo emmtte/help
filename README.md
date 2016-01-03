@@ -15,6 +15,7 @@ Command Line Interface Tools
   * [Picasa Web Uploader](#picasa-web-uploader)
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
+  * [Raspbian](#raspbian)
   * [<s>Rclone</s>](#rclone)
   * [Samba](#samba)
   * [Sejda](#sejda)
@@ -233,6 +234,37 @@ sudo chmod +x /usr/local/bin/pushbullet /usr/local/bin/JSON.sh
 :bangbang: https://www.pushbullet.com/account
 ```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
+```
+
+Raspbian
+--------
+:link: https://www.raspberrypi.org/downloads/raspbian/
+Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
+Download Raspbian lite [Raspbian](https://downloads.raspberrypi.org/raspbian_lite_latest) realease
+
+##First  start
+Download putty and write
+`start /MAX putty -ssh pi@192.168.0.1`
+
+##Configuration
+````
+sudo raspi-config
+> Expand Filesystem
+> Internationalisation Options
+ - Change Locale add [*] fr_FR.UTF-8 UTF-8
+ - Default locale for the system environement : fr_FR.UTF-8
+ - Change Timezone with Geographic area : Europe and Time zone : Paris
+> Enable Camera
+> Overclock
+ - Medium
+> Reboot
+````
+##Updating
+```shell
+sudo apt-get autoremove
+sudo apt-get update
+sudo apt-get -y upgrade
+sudo rpi-update
 ```
 
 Rclone
