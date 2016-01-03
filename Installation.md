@@ -96,38 +96,6 @@ sudo chown -R pi:pi /media/hdd
 sudo mkdir /media/gopro
 sudo mount /dev/sdb1 /media/gopro
 ````
-### minidlna
-http://minidlna.sourceforge.net/
-```shell
-sudo apt-get -y install minidlna
-sudo mcedit /etc/minidlna.conf
-```
-```
-> media_dir=/media/hdd/dlna
-> root_container=B
-> friendly_name=RaspberryPi
-````
-````
-sudo service minidlna status
-sudo service minidlna force-reload
-sudo service minidlna start
-```
-```
-?????? sudo chmod 777 -R /media/hdd/
-```
-### mpd
-http://www.musicpd.org/
-```shell
-sudo apt-get install mpd
-sudo mcedit /etc/mpd.conf
-
-music_directory "/media/hdd/music"
-bind_to_address "any"
-audio_output { device "hw:1,0"    # optional. Keep 0,0 if using the Pi audio }
-mixer_type "software"
-chmod -R 777 /media/hdd/music/
-sudo service mpd restart
-```
 
 ### Btsync
 https://www.getsync.com/intl/fr/
