@@ -15,6 +15,7 @@ Command Line Interface Tools
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
   * [<s>Rclone</s>](#rclone)
+  * [Samba](#samba)
   * [Sejda](#sejda)
   * [Squid](#squid)
   * [Youtube-dl](#youtube-dl)
@@ -221,6 +222,26 @@ sudo cp rclone-v1.23-linux-arm/rclone /usr/local/bin/rclone
 rclone config
 mv .rclone.conf /home/pi/.config/rclone.conf
 ```
+
+Samba
+-----
+:link: https://www.samba.org/
+````shell
+sudo apt-get -y install samba samba-common-bin
+cat << EOF | sudo tee -a /etc/samba/smb.conf
+[HDD]
+comment = Raspberry Pi Hard Drive
+path = /media/hdd
+valid users = @users
+force group = users
+create mask = 0660
+directory mask = 0771
+read only = no
+EOF
+sudo service samba restart
+sudo service smbd restart
+sudo smbpasswd -a pi
+````
 
 Sejda
 -----
