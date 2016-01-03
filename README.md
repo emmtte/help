@@ -239,14 +239,15 @@ echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 Raspbian
 --------
 :link: https://www.raspberrypi.org/downloads/raspbian/
+
 Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download)
+
 Download Raspbian lite [Raspbian](https://downloads.raspberrypi.org/raspbian_lite_latest) realease
 
-##First  start
 Download putty and write
 `start /MAX putty -ssh pi@192.168.0.1`
 
-##Configuration
+Configuration
 ````
 sudo raspi-config
 > Expand Filesystem
@@ -259,7 +260,7 @@ sudo raspi-config
  - Medium
 > Reboot
 ````
-##Updating
+Updating
 ```shell
 sudo apt-get autoremove
 sudo apt-get update
