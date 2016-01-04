@@ -168,12 +168,14 @@ bind-key C-w previous-window
 bind-key Escape detach-client
 
 set -g base-index 1
+setw -g pane-base-index 1
 
 set -g mode-mouse on
 set -g mouse-resize-pane on
 set -g mouse-select-pane on
 set -g mouse-select-window on
 
+set-option -g status-left  ''
 set-option -g status-right ''
 ```
 
