@@ -12,45 +12,43 @@
 #    </SOAP-ENV:Body>
 #  </SOAP-ENV:Envelope>
 
-
-
+#sudo apt-get install recode
+clear
+while :
+do
 curl -X POST -H "Content-Type: text/xml" \
     -d @request.xml \
-    http://www.streamingsoundtracks.com/soap/FM24seven.php > test.xml
+    http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/dev/null > sst.xml
 
-xmllint --xpath "//*[local-name()='Album']/text()" test.xml > result.txt
-echo  >> result.txt
-xmllint --xpath "//*[local-name()='Track']/text()" test.xml >> result.txt
-echo  >> result.txt
-xmllint --xpath "//*[local-name()='Artist']/text()" test.xml >> result.txt
-echo  >> result.txt
-PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" test.xml`
-PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" test.xml`
-SystemTime=`xmllint --xpath "//*[local-name()='SystemTime']/text()" test.xml`
+echo -e "\033[01m `xmllint --xpath "//*[local-name()='Album']/text()" sst.xml | recode html..UTF-8`"
+echo -e "\033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" sst.xml | recode html..UTF-8`"
+echo -e "\033[37m `xmllint --xpath "//*[local-name()='Track']/text()" sst.xml | recode html..UTF-8`"
+track=`xmllint --xpath "//*[local-name()='Length']/text()" sst.xml`
+track=$((track / 1000))
+echo -en "\033[00m `date -u -d @${track} +"%M:%S"` - "
+
+PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" sst.xml`
+PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" sst.xml`
+SystemTime=`xmllint --xpath "//*[local-name()='SystemTime']/text()" sst.xml`
 PSTART=`date -d "$PlayStar" "+%s"`
-echo $PSTART
-PLENGT=`date -d "$PlayLength" "+%s"`
-echo $PLENGT
+PLENGT=$(($PlayLength / 1000))
 FIN=`date -d "$SystemTime" "+%s"`
-echo $FIN
-PW=$PSTART+$PLENGT
-echo $PW
-RESULT=$FIN-$PW
-echo "attendre $RESULT"
+PW=$((PSTART+PLENGT))
+secs=$((PW-FIN))
 
+while [ $secs -gt 0 ]; do
+   #echo -ne "$secs\033[0K\r"
+    result=`date -u -d @${secs} +"%M:%S"`
+    echo -en "$result"
+    sleep 1
+    echo -en "\033[5D"
+   : $((secs--))
+done
+echo -en "\033[1A\033[K"
+echo -en "\033[1A\033[K"
+echo -en "\033[1A\033[K"
 
-#Length=`xmllint --xpath "//*[local-name()='Length']/text()" test.xml >> result.txt`
-#Length=`$Length | rev | cut -c 4- | rev`
-#length=`$(date -d @$Length +"%H:%M:%S")`
-#export ISODATE=$(date -d @$Length +"%Y-%m-%d %H:%M:%S")
-#echo $ISODATE
+#xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml
+CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
 
-xmllint --xpath "//*[local-name()='CoverLink']/text()" test.xml >> result.txt
-echo  >> result.txt
-
-cat result.txt
-CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" test.xml`
-echo "-$CoverLink-"
-curl -o cover.jpg $CoverLink
-#pushbullet push all link "$CoverLink"
-read
+done
