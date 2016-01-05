@@ -1,6 +1,6 @@
 #!/bin/sh
 cd /media/hdd/youtube-upload/
 find -iname "*.mp4" -o -iname "*.mov" -type f  | sort | while read FILE ; do
-youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" $FILE
+youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" $(basename $FILE)
 done
 pushbullet push all note "Uploaded to Youtube"
