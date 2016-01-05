@@ -11,5 +11,4 @@ ln -s /media/hdd/torrent/ ~/service/torrents
 ln -s /media/hdd/ ~/service/hdd
 ln -s /media/freebox/ ~/service/freebox
 ln -s ~/gdrive/ ~/service/gdrive
-ln -s ~/secure/ ~/service/secure
 pushbullet delete all
