@@ -1,3 +1,6 @@
 #!/bin/sh
+# Control playlist channel id  
+# echo " " > ~/.youtube.dl
+# mcedit ~/.youtube.dl
 youtube-dl --ignore-errors --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 pushbullet push all note "youtube-dl" "Downloads finished"
