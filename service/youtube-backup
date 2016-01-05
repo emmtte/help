@@ -1,6 +1,5 @@
 #!/bin/sh
-# Before starting control playlist id channel with
-# echo " " > ~/.youtube.dl
-# mcedit ~/.youtube.dl
+# echo "<<id>>" > ~/.youtube.dl
+mkdir /media/hdd/youtube-dl
 youtube-dl --ignore-errors --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 pushbullet push all note "youtube-dl" "Downloads finished"
