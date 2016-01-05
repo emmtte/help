@@ -1,5 +1,5 @@
 #!/bin/sh
-# Control playlist channel id  
+# Before starting control playlist id channel with
 # echo " " > ~/.youtube.dl
 # mcedit ~/.youtube.dl
 youtube-dl --ignore-errors --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
