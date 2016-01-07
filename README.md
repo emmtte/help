@@ -196,7 +196,7 @@ echo 'start_motion_daemon=no' | sudo tee /etc/default/motion
 sudo mcedit /etc/motion/motion.conf
 ```
 ````
-process_id_file /var/run/motion.pid
+process_id_file /var/run/motion/motion.pid
 ffmpeg_cap_new off
 width 1280
 height 720
@@ -205,6 +205,10 @@ target_dir /tmp/motion
 control_localhost off
 on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
 on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
+````
+````
+sudo mkdir /var/run/motion
+sudo chmod 777 /var/run/motion
 ````
 Open SSH
 --------
