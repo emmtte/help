@@ -196,6 +196,7 @@ echo 'start_motion_daemon=no' | sudo tee /etc/default/motion
 sudo mcedit /etc/motion/motion.conf
 ```
 ````
+daemon off
 process_id_file /var/run/motion/motion.pid
 ffmpeg_cap_new off
 width 1280
