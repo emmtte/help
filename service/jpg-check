@@ -1,10 +1,14 @@
 #!/bin/sh
 clear
-LOG=/media/hdd/photos/log.txt
+LOG=/media/hdd/photos/photos.txt
+DIR=/media/hdd/photos
+cd /home/pi/gdrive/
+drive pull Photos
+
 if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > $LOG
 COUNTER=1
-find /media/hdd/photos -iname "*.jpg" -type f | sort | while read FILE ; do 
+find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXI=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
 EXI1=`date -d "$EXIF -1 month" +"%Y %m"`
@@ -23,4 +27,6 @@ echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
     printf "\n" >> $LOG
   fi
 done
+drive push photos.txt
+drive star photos.txt
 pushbullet push all note "Rasperry Pi" "Photos Control Done"
