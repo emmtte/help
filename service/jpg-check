@@ -1,7 +1,7 @@
 #!/bin/sh
 clear
-LOG=/media/hdd/photos/photos.txt
-DIR=/media/hdd/photos
+LOG=photos.txt
+DIR=/home/pi/gdrive/Photos
 cd /home/pi/gdrive/
 drive pull Photos
 
@@ -27,6 +27,6 @@ echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
     printf "\n" >> $LOG
   fi
 done
-drive push photos.txt
-drive star photos.txt
+drive push $LOG
+drive star $LOG
 pushbullet push all note "Rasperry Pi" "Photos Control Done"
