@@ -145,7 +145,7 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 if [ -z "$TMUX" ]; then
-    mc /home/pi/service/ /home/pi/service/gdrive
+    mc /home/pi/service/ /media/hdd/Drive/
 fi
 ```
 ```shell
