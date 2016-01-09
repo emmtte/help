@@ -9,6 +9,6 @@ chmod +x ~/service/*
 ln -s /media/hdd/Bibliothèques/Soundtracks/ ~/service/play-scores
 ln -s /media/hdd/torrent/ ~/service/torrents
 ln -s /media/hdd/ ~/service/hdd
-ln -s /media/freebox/ ~/service/freebox
+ln -s /media/hdd/Drive/ ~/service/drive
 ln -s ~/gdrive/ ~/service/gdrive
 pushbullet delete all
