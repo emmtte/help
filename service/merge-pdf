@@ -1,7 +1,7 @@
 #!/bin/sh
 clear
-rm -rf /home/pi/gdrive/*
-cd /home/pi/gdrive/
+rm -rf /media/hdd/Drive/*
+cd /media/hdd/Drive
 drive pull --quiet --starred --all
 if grep -r "Encrypt" /home/pi/gdrive/Snoozed ; then pushbullet push all note "Merge PDF" "ERROR CRYPTED FILE"; exit; fi
 find /home/pi/gdrive/Snoozed -type f | sort | tr '\n' ',' > files.csv
