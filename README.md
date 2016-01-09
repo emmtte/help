@@ -134,7 +134,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2",
 Midnight Commander
 ------------------
 ```shell
-sudo apt-get install mc tmux exif mpv imagemagick
+sudo apt-get install mc tmux exif imagemagick
 mkdir /home/pi/service/
 cd /home/pi/service/
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
