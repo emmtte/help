@@ -135,8 +135,8 @@ Midnight Commander
 ------------------
 ```shell
 sudo apt-get install mc tmux exif imagemagick
-mkdir /home/pi/service/
-cd /home/pi/service/
+mkdir /home/pi/scripts/
+cd /home/pi/scripts/
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/menu
 ```
 .bash_profile
@@ -145,7 +145,7 @@ if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
 if [ -z "$TMUX" ]; then
-    mc /home/pi/service/ /media/hdd/Drive/
+    mc /home/pi/scripts/ /media/hdd/Drive/
 fi
 ```
 ```shell
