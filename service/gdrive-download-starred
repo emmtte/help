@@ -1,4 +1,4 @@
 clear
-rm -rf /home/pi/gdrive/*
-cd ~/gdrive
+rm -rf /media/hdd/Drive/*
+cd /media/hdd/Drive
 drive pull --quiet --starred --all
