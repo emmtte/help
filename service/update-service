@@ -10,5 +10,5 @@ ln -s /media/hdd/Bibliothèques/Soundtracks/ ~/service/play-scores
 ln -s /media/hdd/torrent/ ~/service/torrents
 ln -s /media/hdd/ ~/service/hdd
 ln -s /media/hdd/Drive/ ~/service/drive
-ln -s ~/gdrive/ ~/service/gdrive
+ln -s /media/hdd/freebox/ ~/service/freebox
 pushbullet delete all
