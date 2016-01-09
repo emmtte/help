@@ -1,7 +1,7 @@
 #!/bin/sh
 clear
 rm  ~/scripts.zip
-curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
+curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/menu
 rm ~/scripts/* 
 curl -L -o scripts.zip https://github.com/ManuCart/ServicePi/archive/master.zip
 unzip -jo scripts.zip -d /home/pi/scripts ServicePi-master/scripts/*
