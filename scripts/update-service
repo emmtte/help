@@ -1,14 +1,14 @@
 #!/bin/sh
 clear
-rm  ~/service.zip
+rm  ~/scripts.zip
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
-rm ~/service/* 
-curl -L -o service.zip https://github.com/ManuCart/ServicePi/archive/master.zip
-unzip -jo service.zip -d /home/pi/service ServicePi-master/service/*
-chmod +x ~/service/*
-ln -s /media/hdd/Bibliothèques/Soundtracks/ ~/service/play-scores
-ln -s /media/hdd/torrent/ ~/service/torrents
-ln -s /media/hdd/ ~/service/hdd
-ln -s /media/hdd/Drive/ ~/service/drive
-ln -s /media/freebox/ ~/service/freebox
+rm ~/scripts/* 
+curl -L -o scripts.zip https://github.com/ManuCart/ServicePi/archive/master.zip
+unzip -jo scripts.zip -d /home/pi/scripts ServicePi-master/scripts/*
+chmod +x ~/scripts/*
+ln -s /media/hdd/Bibliothèques/Soundtracks/ ~/scripts/play-scores
+ln -s /media/hdd/torrent/ ~/scripts/torrents
+ln -s /media/hdd/ ~/scripts/hdd
+ln -s /media/hdd/Drive/ ~/scripts/drive
+ln -s /media/freebox/ ~/scripts/freebox
 pushbullet delete all
