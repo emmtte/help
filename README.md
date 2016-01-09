@@ -56,7 +56,7 @@ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 source ~/.bashrc
 mkdir ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
-drive init ~/gdrive
+drive init /media/hdd/gdrive
 ```
 
 <s>Flickr Smart Sync</s>
