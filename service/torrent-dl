@@ -1,8 +1,8 @@
 #!/bin/sh
 MOVEDIR=/media/hdd/reserve
 clear
-rm -rf /home/pi/gdrive/*
-cd /home/pi/gdrive/
+rm -rf /media/hdd/Drive/*
+cd /media/hdd/Drive
 drive pull --quiet Torrents/
 find /home/pi/gdrive/Torrents/*.torrent -type f | while read FILE ; do
 transmission-remote --add "$FILE"
