@@ -137,7 +137,7 @@ Midnight Commander
 sudo apt-get install mc tmux exif imagemagick
 mkdir /home/pi/service/
 cd /home/pi/service/
-curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/ServicePi/master/menu
+curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/menu
 ```
 .bash_profile
 ```shell
