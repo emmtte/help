@@ -13,16 +13,16 @@ printf "|===\n" > $LOG
 COUNTER=1
 find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
-EXI=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
-EXI1=`date -d "$EXIF -1 month" +"%Y %m"`
+EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
+EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
-  if [ -z "$EXI" ]; then
+  if [ -z "$EXIF1" ]; then
     NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
     exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
   fi
-  if [ "$DAT" != "$EXI" ] && [ "$DAT" != "$EXI1" ]; then
-    printf "|$(basename "$FILE")|$DAT|$EXI|ERROR\n" >> $LOG
+  if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
+    printf "|$(basename "$FILE")|$DAT|$EXIF1|ERROR\n" >> $LOG
     drive star "$FILE"
   fi
 done
