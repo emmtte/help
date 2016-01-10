@@ -4,8 +4,8 @@ LOG=photos.txt
 DIR=/media/hdd/Drive/Photos
 cd /media/hdd/Drive/
 rm photos.pdf $LOG
+drive trash photos.pdf
 drive pull --quiet Photos
-
 if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 printf "[align='center',width='80%',options='header']\n" > $LOG
 printf "|Image Name|Directory Date|EXIF Date|Error Type\n" > $LOG
@@ -20,6 +20,8 @@ echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
   if [ -z "$EXI" ]; then
     #printf "|$(basename "$FILE")|$DAT|$EXI|NO DATE\n" >> $LOG
     NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    echo "------------NEWDATE : $NEWDATE ---------------------"
+    echo "------------FILE : $FILE ---------------------"
     exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
   fi
   if [ "$DAT" != "$EXI" ] && [ "$DAT" != "$EXI1" ]; then
