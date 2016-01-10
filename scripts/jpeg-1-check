@@ -28,4 +28,6 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 echo "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT"
 done
 
-pushbullet push all note "Rasperry Pi" "Photos Control Done"
+drive push --quiet Photos
+
+pushbullet push all note "Rasperry Pi" "Please control the Starred Files in Drive and run next script"
