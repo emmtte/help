@@ -1,12 +1,14 @@
 #!/bin/sh
 clear
 LOG=photos.txt
-DIR=/home/pi/gdrive/Photos
-cd /home/pi/gdrive/
+DIR=/media/hdd/Drive/Photos
+cd /media/hdd/Drive/
 drive pull Photos
 
 if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
-printf "IMG_XXXXX.JPG:DIR  DA TE==>EXIF DA TE\n" > $LOG
+
+printf "|Image Name|Directory Date|EXIF Date|Error Type\n" > $LOG
+printf "|===\n"
 COUNTER=1
 find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
@@ -15,18 +17,20 @@ EXI1=`date -d "$EXIF -1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
   if [ -z "$EXI" ]; then
-    printf "$(basename "$FILE"):" >> $LOG
-    printf "$DAT==>$EXI" >> $LOG
-    printf " NO  DA TE" >> $LOG
+    printf "|$(basename "$FILE")" >> $LOG
+    printf "|$DAT|$EXI" >> $LOG
+    printf "|NO  DA TE" >> $LOG
     printf "\n" >> $LOG
   fi
   if [ "$DAT" != "$EXI" ] && [ "$DAT" != "$EXI1" ]; then
-    printf "$(basename "$FILE"):" >> $LOG 
-    printf "$DAT==>$EXI" >> $LOG
-    printf " NOT MATCH" >> $LOG
+    printf "|$(basename "$FILE")" >> $LOG 
+    printf "|$DAT|$EXI" >> $LOG
+    printf "|NOT MATCH" >> $LOG
     printf "\n" >> $LOG
   fi
 done
+printf "|===\n"
+assciidoctor-pdf $LOG
 drive push $LOG
 drive star $LOG
 pushbullet push all note "Rasperry Pi" "Photos Control Done"
