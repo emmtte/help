@@ -8,7 +8,7 @@ drive pull --quiet Photos
 if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 printf "[align="center",width="80%",options="header"]\n" > $LOG
 printf "|Image Name|Directory Date|EXIF Date|Error Type\n" > $LOG
-printf "|===\n"
+printf "|===\n" > $LOG
 COUNTER=1
 find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
