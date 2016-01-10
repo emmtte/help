@@ -1,5 +1,5 @@
 #!/bin/sh
 sudo mkdir /media/freebox
 sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
-rsync -a --delete --progress /media/hdd/photos/ /media/freebox/photos
+rsync --archive --delete --progress /media/hdd/photos/ /media/freebox/photos
 pushbullet push all note "Backup Photos" "Backup finished"
