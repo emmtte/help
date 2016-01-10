@@ -1,9 +1,0 @@
-clear
-find /media/hdd/photos -iname "*.jpg" -type f | sort | while read FILE ; do
-  EXI=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' ' '`
-  DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-  if [ -z "$EXI" ]; then
-    exiv2 -M "add Exif.Photo.DateTimeOriginal $DAT 00:00:00" "$FILE"
-  fi
-  printf "\r$(basename "$FILE")"
-done
