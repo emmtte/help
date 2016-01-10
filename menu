@@ -81,7 +81,7 @@ D upload to google drive
   cat > /tmp/.gdrive.sh << 'EOF'
   clear
   rm -rf /media/hdd/Drive/Upload/*
-  mkdir/media/hdd/Drive/Upload
+  mkdir /media/hdd/Drive/Upload
   cd "%d"
   for f in %t; do
     cp "$f" /media/hdd/Drive/Upload
