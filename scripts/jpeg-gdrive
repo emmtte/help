@@ -1,5 +1,5 @@
 #!/bin/sh
 clear
-rsync --ignore-existing --remove-source-files /media/hdd/Drive/photos/ /media/hdd/photos
+rsync av --ignore-existing --remove-source-files /media/hdd/Drive/photos/ /media/hdd/photos
 pushbullet push all note "Raspberry Pi" "Done"
 read null
