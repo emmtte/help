@@ -80,14 +80,14 @@ D upload to google drive
   if [ -f /tmp/.gdrive.sh ] ; then whiptail --title "Upload to Google Drivex" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.gdrive.sh << 'EOF'
   clear
-  rm -rf /home/pi/gdrive/*
-  mkdir ~/gdrive/Upload
+  rm -rf /media/hdd/Drive/Upload/*
+  mkdir/media/hdd/Drive/Upload
   cd "%d"
   for f in %t; do
-    cp "$f" ~/gdrive/Upload
+    cp "$f" /media/hdd/Drive/Upload
   done
-  cd ~/gdrive
-  drive push --quiet Upload/*.*
+  cd /media/hdd/Drive
+  drive push --quiet Upload/*
   pushbullet push all note "Raspberry Pi" "Files Uploaded to Google Drive"
   rm /tmp/.gdrive.sh
   EOF
@@ -96,10 +96,6 @@ D upload to google drive
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.1
   tmux -2 attach -t pi
-
-+ f * & t r
-E download from google drive
-  drive pull %{Dropbox Filename}
 
 + f * & t r
 A Tmux Session A
