@@ -10,9 +10,11 @@ echo "$FILE"
 NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
 exiv2 delete "$FILE"
 exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
+echo "eviv2 end formatting"
+drive push --quiet "$FILE"
 done
 
-drive push --quiet Photos
+
 
 #drive pull --quiet Photos
 #rsync -a --ignore-existing --remove-source-files --progress /media/hdd/Drive/photos/ /media/hdd/photos
