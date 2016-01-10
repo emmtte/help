@@ -22,7 +22,6 @@ EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
-    printf "|$(basename "$FILE")|$DAT|$EXIF1|ERROR\n" >> $LOG
     drive star "$FILE"
   fi
 
