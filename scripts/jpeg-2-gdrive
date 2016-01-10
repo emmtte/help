@@ -8,6 +8,7 @@ drive pull --quiet --starred --all
 find /media/hdd/Drive/Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
 echo "$FILE"
 NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+exiv2 rm "$FILE"
 exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
 done
 
