@@ -59,7 +59,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 drive init /media/hdd/gdrive
 ```
 
-<s>Flickr Smart Sync</s>
+*Flickr Smart Sync*
 ------------------------
 :link: https://github.com/faisalraja/flickrsmartsync
 ```shell
@@ -92,7 +92,7 @@ cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
 ```
 
-<s>Google CL</s>
+*Google CL*
 ----------------
 :link: https://github.com/vinitkumar/googlecl
 ```shell
