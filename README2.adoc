@@ -74,7 +74,9 @@ flickrsmartsync --sync-path /media/hdd/photos
 Flickr-Uploader
 ---------------
 :link: https://github.com/trickortweak/flickr-uploader
-> Do first time without tmux script for token
+
+[NOTE]
+Do first time without tmux script for token
 
 ```shell
 sudo apt-get remove elinks links links2 lynx w3m
