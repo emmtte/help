@@ -1,29 +1,5 @@
 #!/bin/sh
 clear
-#rm -r /media/hdd/Drive/*
-cd /media/hdd/Drive
-#drive pull --quiet Photos
-#find /home/pi/gdrive/Photos/* -type d | while read DIR ; do.
-#echo "$DIR"
-#done
-#pushbullet push all note "Raspberry Pi" "GDrive Photos Done"
-#
-drive list Photos > photos.txt.
-
-while read DIR ; do
-
-    echo
-    echo "$DIR" | cut -d '/' -f 3
-    echo "$DIR" | cut -c 2-
-
-    #drive list --match-mime jpg,JPG "$DIR" | while read FILE ; do
-    #echo "$FILE"
-    #done
-    drive list "`$DIR | cut -c 2-`"
-
-done < photos.txt
-
-
-
-
+rsync --ignore-existing --remove-source-files /media/hdd/Drive/photos /media/hdd/photos
+pushbullet push all note "Raspberry Pi" "Done"
 read null
