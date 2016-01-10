@@ -1,5 +1,7 @@
 #!/bin/sh
 clear
+rm -rf /media/hdd/Drive/*
+cd /media/hdd/Drive
 drive pull --quiet --starred --all
 #rsync -a --ignore-existing --remove-source-files --progress /media/hdd/Drive/photos/ /media/hdd/photos
 #pushbullet push all note "Raspberry Pi" "Done"
