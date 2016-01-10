@@ -18,14 +18,12 @@ EXI1=`date -d "$EXIF -1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 echo "EXIF : --$EXI-- EXI1 : --$EXI1-- DATE : --$DAT--"
   if [ -z "$EXI" ]; then
-    #printf "|$(basename "$FILE")|$DAT|$EXI|NO DATE\n" >> $LOG
     NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-    echo "------------NEWDATE : $NEWDATE ---------------------"
-    echo "------------FILE : $FILE ---------------------"
     exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
   fi
   if [ "$DAT" != "$EXI" ] && [ "$DAT" != "$EXI1" ]; then
     printf "|$(basename "$FILE")|$DAT|$EXI|ERROR\n" >> $LOG
+    drive star "$FILE"
   fi
 done
 printf "|===\n" >> $LOG
