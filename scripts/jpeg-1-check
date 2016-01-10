@@ -12,15 +12,13 @@ find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
 
-echo "EXIF : --$EXIF1-- EXI1 : --$EXIF2-- DATE : --$DAT--"
-  
   if [ -z "$EXIF1" ]; then
     NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
     exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
+    EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+    EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   fi
   
-EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
-EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
 EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 
@@ -28,6 +26,8 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
     printf "|$(basename "$FILE")|$DAT|$EXIF1|ERROR\n" >> $LOG
     drive star "$FILE"
   fi
+
+echo "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT"
 done
 
 pushbullet push all note "Rasperry Pi" "Photos Control Done"
