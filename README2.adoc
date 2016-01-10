@@ -59,7 +59,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 drive init /media/hdd/gdrive
 ```
 
-*Flickr Smart Sync*
+[line-through]*Flickr Smart Sync*
 ------------------------
 :link: https://github.com/faisalraja/flickrsmartsync
 ```shell
@@ -92,7 +92,7 @@ cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
 ```
 
-*Google CL*
+[line-through]*Google CL*
 ----------------
 :link: https://github.com/vinitkumar/googlecl
 ```shell
@@ -113,7 +113,7 @@ rm hangups
 hangups
 ```
 
-<s>Hangouts Bot</s>
+[line-through]*Hangouts Bot*
 -------------------
 :link: https://github.com/hangoutsbot/hangoutsbot
 ```shell
