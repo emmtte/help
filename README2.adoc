@@ -75,7 +75,7 @@ Flickr-Uploader
 ---------------
 :link: https://github.com/trickortweak/flickr-uploader
 
-[NOTE]
+NOTE:
 Do first time without tmux script for token
 
 ```shell
