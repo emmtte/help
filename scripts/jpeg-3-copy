@@ -1,0 +1,7 @@
+
+
+drive pull --quiet Photos
+rsync -a --ignore-existing --remove-source-files --progress /media/hdd/Drive/photos/ /media/hdd/photos
+
+drive trash Photos
+rm -rf /media/hdd/Drive/Photos
