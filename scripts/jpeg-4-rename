@@ -1,6 +1,6 @@
 #!/bin/sh
 
-  FILES = /media/hdd/photos
+  FILES=/media/hdd/photos
   
   if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
   
