@@ -11,4 +11,3 @@ ln -s /media/hdd/torrent/ ~/scripts/torrents
 ln -s /media/hdd/ ~/scripts/hdd
 ln -s /media/hdd/Drive/ ~/scripts/drive
 ln -s /media/freebox/ ~/scripts/freebox
-pushbullet delete all
