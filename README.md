@@ -204,8 +204,8 @@ height 720
 webcam_localhost off
 target_dir /tmp/motion
 control_localhost off
-on_event_start /usr/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
-on_picture_save /usr/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
+on_event_start /usr/local/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
+on_picture_save /usr/local/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
 ````
 ````
 sudo mkdir /var/run/motion
