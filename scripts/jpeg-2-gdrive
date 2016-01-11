@@ -13,6 +13,7 @@ NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f
 exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
 echo "eviv2 end formatting"
 drive push --quiet "$FILE"
+drive unstar "$FILE"
 done
 
 
