@@ -2,7 +2,7 @@
 clear
 
 DIR=/media/hdd/Drive/Photos
-
+rm -rf /media/hdd/Drive/Photos/*
 cd /media/hdd/Drive/
 drive pull --quiet Photos
 if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
