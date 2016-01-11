@@ -1,9 +1,3 @@
-+ f *.mp3 | f *.MP3 | f *.mp4 | f *.MP4 | f *.avi | f *.AVI | f *.mkv | f *.MKV & t r
-c castnow
-  clear
-  echo "%d/%f"
-  nodejs /usr/local/bin/castnow --tomp4 "%f"
-
 + f * & t t
 A move to "BitTorrentSync" folder
   set %t
@@ -100,7 +94,7 @@ D upload to google drive
 + f * & t r
 A Tmux Session A
   tmux send -t AB.1 'cd ~/scripts && clear' ENTER
-  tmux send -t AB.1 'sh %f' ENTER
+  tmux send -t AB.1 'bash %f' ENTER
   tmux select-window -t pi:AB
   tmux select-pane -t AB.1
   tmux -2 attach -t pi
@@ -108,7 +102,7 @@ A Tmux Session A
 + f * & t r
 B Tmux Session B
   tmux send -t AB.2 'cd ~/scripts && clear' ENTER
-  tmux send -t AB.2 'sh %f' ENTER
+  tmux send -t AB.2 'bash %f' ENTER
   tmux select-window -t pi:AB
   tmux select-pane -t AB.2
   tmux -2 attach -t pi
@@ -116,7 +110,7 @@ B Tmux Session B
 + f * & t r
 C Tmux Session C
   tmux send -t CD.1 'cd ~/scripts && clear' ENTER
-  tmux send -t CD.1 'sh %f' ENTER
+  tmux send -t CD.1 'bash %f' ENTER
   tmux select-window -t pi:CD
   tmux select-pane -t CD.1
   tmux -2 attach -t pi
@@ -124,7 +118,7 @@ C Tmux Session C
 + f * & t r
 D Tmux Session D
   tmux send -t CD.2 'cd ~/scripts && clear' ENTER
-  tmux send -t CD.2 'sh %f' ENTER
+  tmux send -t CD.2 'bash %f' ENTER
   tmux select-window -t pi:CD
   tmux select-pane -t CD.2
   tmux -2 attach -t pi
@@ -132,7 +126,7 @@ D Tmux Session D
 + f * & t r
 E Tmux Session E
   tmux send -t EF.1 'cd ~/scripts && clear' ENTER
-  tmux send -t EF.1 'sh %f' ENTER
+  tmux send -t EF.1 'bash %f' ENTER
   tmux select-window -t pi:EF
   tmux select-pane -t EF.1
   tmux -2 attach -t pi
@@ -140,28 +134,10 @@ E Tmux Session E
 + f * & t r
 F Tmux Session F
   tmux send -t EF.2 'cd ~/scripts && clear' ENTER
-  tmux send -t EF.2 'sh %f' ENTER
+  tmux send -t EF.2 'bash %f' ENTER
   tmux select-window -t pi:EF
   tmux select-pane -t EF.2
   tmux -2 attach -t pi
-  
-+ f *.avi | f *.AVI | f *.mov | f *.MOV | f *.mp4 | f *.MP4 & t t
-y upload to youtube [youtube screen]
-  cat > /tmp/youtube_task.sh << 'EOF'
-  mkdir /media/hdd/tmp
-  clear
-  cd "%d"
-  for f in %t; do
-    mv "$f" /media/hdd/tmp/video.avi
-    youtube-upload --title="$f" --category="Entertainment" --privacy="private" \
-    --location="=" --client-secrets="/home/pi/.config/youtube.json" /media/hdd/tmp/video.avi
-    mv /media/hdd/tmp/video.avi "$f"
-    pushbullet push all note "Raspberry Pi" "La vidéo $f est maintenant sur YouTube"
-  done
-  EOF
-  tmux has-session -t youtube
-  if [ "$?" -eq 1 ] ; then tmux new-session -d -s youtube ; fi
-  tmux send -t youtube 'sh /tmp/youtube_task.sh' ENTER
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI & tr
 c cut video [no screen]
@@ -179,15 +155,6 @@ s Autolevel photos
     mogrify -auto-level $1
     shift
   done
-
-+ f *.jpg | f *.JPG & t t
-e Ecrit l'EXIF des photos
-  DAT=%{YYYY:MM:DD}
-  set %t
-  while [ -n "$1" ] ; do
-    exiv2 -M "add Exif.Photo.DateTimeOriginal $DAT 00:00:00" $1
-    shift
-  done
   
 + f *.jpg | f *.JPG & t r
 e Affiche l'EXIF de la photo
@@ -201,13 +168,5 @@ p Transforme un fichier PDF sécurisé en normal
   set %t
   while [ -n "$1" ]; do
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.test.pdf" "$1"
-    shift
-  done
-
-+ f *.eps | f *.EPS | f *.ai | f *.AI & t t
-s Convertir Un fichier EPS,AI en SVG
-  set %t
-  while [ -n "$1" ]; do
-    pstoedit -f plot-svg $1 $1.svg
     shift
   done
