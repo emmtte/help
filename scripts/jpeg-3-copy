@@ -3,6 +3,6 @@ clear
 rm -rf /media/hdd/Drive/Photos/*
 cd /media/hdd/Drive
 drive pull --quiet Photos
-rsync -a --ignore-existing --remove-source-files --progress /media/hdd/Drive/photos/ /media/hdd/photos
+rsync -a --ignore-existing --remove-source-files --progress /media/hdd/Drive/Photos/ /media/hdd/photos
 drive push --quiet Photos
 pushbullet push all note "Raspberry Pi" "Done"
