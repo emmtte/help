@@ -20,7 +20,7 @@ EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
-    pushbullet push all note "Error" "$FILE"
+    pushbullet push all note "EXIF ERROR" "$FILE"
   fi
 
 echo "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT"
@@ -28,4 +28,4 @@ done
 
 
 
-pushbullet push all note "Rasperry Pi" "Please control the Starred Files in Drive and run next script"
+pushbullet push all note "Rasperry Pi" "HDD EXIF PHOTOS CHEKED"
