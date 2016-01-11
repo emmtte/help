@@ -8,10 +8,11 @@ drive pull --quiet --starred --all
 find /media/hdd/Drive/Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
 echo "$FILE"
 NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-# A voir si besoin
+# A faire si besoin
 # exiv2 delete "$FILE"
 exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
 echo "eviv2 end formatting"
 drive push --quiet "$FILE"
 drive unstar "$FILE"
 done
+pushbullet push all note "Raspberry Pi" "Done"
