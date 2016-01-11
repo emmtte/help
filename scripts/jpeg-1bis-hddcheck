@@ -26,6 +26,4 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 echo "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT"
 done
 
-
-
 pushbullet push all note "Rasperry Pi" "HDD EXIF PHOTOS CHEKED"
