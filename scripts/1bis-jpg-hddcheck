@@ -1,0 +1,31 @@
+#!/bin/sh
+clear
+
+DIR=/media/hdd/Photos
+
+if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
+
+find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
+EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
+
+  if [ -z "$EXIF1" ]; then
+    NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
+    EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+    EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
+  fi
+  
+EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
+DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
+
+  if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
+    pushbullet push all note "Error" "$FILE"
+  fi
+
+echo "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT"
+done
+
+
+
+pushbullet push all note "Rasperry Pi" "Please control the Starred Files in Drive and run next script"
