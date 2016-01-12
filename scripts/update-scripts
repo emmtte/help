@@ -1,5 +1,6 @@
 #!/bin/sh
 clear
+cd ~
 rm  ~/scripts.zip
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/menu
 rm ~/scripts/* 
