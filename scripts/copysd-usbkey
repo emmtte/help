@@ -1,0 +1,10 @@
+#!/bin/sh
+# ls -l /dev/disk/by-id 
+ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_08606E6D3FDEBF602707123F-0:0-part1"
+VIDEOS="/media/hdd/youtube-upload"
+clear
+sudo mkdir /media/usbkey
+sudo mount $ID /media/usbkey
+rsync --archive --progress /media/usbkey/ $VIDEOS
+sudo umount /media/usbkey
+pushbullet push all note "All videos from usbkey are copied"
