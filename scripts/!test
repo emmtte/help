@@ -25,7 +25,7 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
     drive star "$FILE"
   fi
 
-printf "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
+echo "EXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE  $DAT FILE : $(dirname "$FILE") TEST "
 done
 
 #drive push --quiet Photos
