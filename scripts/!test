@@ -28,6 +28,17 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 echo "EXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE  $DAT FILE : $(basename "$FILE") "
 done
 
+FILES=/media/hdd/photos
+find $FILES -type d | while read DIR ; do
+DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
+if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
+touch -t "${DAT}0000.00" "$DIR"
+done
+
+
+
+
+
 #drive push --quiet Photos
 
 pushbullet push all note "Rasperry Pi" "Please control the Starred Files in Drive and run next script"
