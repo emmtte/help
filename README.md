@@ -202,7 +202,7 @@ ffmpeg_output_movies off
 event_gap 5
 rotate 270
 width 1280
-height 720
+height 960
 webcam_localhost off
 target_dir /media/hdd/Drive/Upload/motion
 control_localhost off
