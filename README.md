@@ -199,6 +199,7 @@ sudo mcedit /etc/motion/motion.conf
 daemon off
 process_id_file /var/run/motion/motion.pid
 ffmpeg_cap_new off
+event_gap 5
 width 1280
 height 720
 webcam_localhost off
