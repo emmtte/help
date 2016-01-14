@@ -198,12 +198,13 @@ sudo mcedit /etc/motion/motion.conf
 ````
 daemon off
 process_id_file /var/run/motion/motion.pid
-ffmpeg_cap_new off
+ffmpeg_output_movies off
 event_gap 5
+rotate 270
 width 1280
 height 720
 webcam_localhost off
-target_dir /tmp/motion
+target_dir /media/hdd/Drive/Upload/motion
 control_localhost off
 on_event_start /usr/local/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
 on_picture_save /usr/local/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
