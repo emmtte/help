@@ -1,7 +1,7 @@
 #!/bin/sh
 MOVEDIR=/media/hdd/reserve
 clear
-rm -rf /media/hdd/Drive/*
+rm -rf /media/hdd/Drive/Torrents/*
 cd /media/hdd/Drive
 drive pull --quiet Torrents/
 find /home/pi/gdrive/Torrents/*.torrent -type f | while read FILE ; do
