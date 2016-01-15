@@ -13,8 +13,5 @@ if [ -f files.csv ] ; then ~/.bin/sejda/bin/sejda-console merge -l files.csv -o 
 mv sejda_out.pdf "Documents/$FILE"
 drive push --quiet "Documents/$FILE"
 drive unstar --quiet "Documents/$FILE"
-for f in `cat files.csv`
-do
-  echo $f
-done
-pushbullet push all note "Raspberry Pi" "Starred Files added to `cat name.csv`"
+dive trash --starred
+pushbullet push all note "Raspberry Pi" "Starred Files added to $FILE"
