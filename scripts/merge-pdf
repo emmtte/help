@@ -1,7 +1,8 @@
 #!/bin/sh
 clear
 GDRIVE=/media/hdd/Drive
-rm -rf $GDRIVE/*
+rm $GDRIVE/Snoozed/*
+rm $GDRIVE/Documents/*
 cd $GDRIVE
 drive pull --quiet --starred --all
 if grep -r "Encrypt" $GDRIVE/Snoozed ; then pushbullet push all note "Merge PDF" "ERROR CRYPTED FILE"; exit; fi
