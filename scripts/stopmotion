@@ -1,8 +1,12 @@
 clear
+#DMC TZ40
 #CUT="2592x1456+0+0" #Top
-CUT="2592x1456+0+244" #Center
+#CUT="2592x1456+0+244" #Center
 #CUT="2592x1456+0+488" #Bas
-
+#Sony
+#CUT="4000x1777+0+0" #Top
+CUT="4000x1777+0+612" #Center
+#CUT="4000x1777+0+1223" #Bas
 cd /media/hdd/stopmotion
 mkdir CROP
 for img in *.JPG; do
