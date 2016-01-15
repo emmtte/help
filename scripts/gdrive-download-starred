@@ -1,4 +1,4 @@
 clear
-rm -rf /media/hdd/Drive/*
+rm -rf /media/hdd/Drive/Download
 cd /media/hdd/Drive
-drive pull --quiet --starred --all
+drive pull --quiet Download
