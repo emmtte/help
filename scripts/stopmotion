@@ -1,14 +1,9 @@
 clear
-while true; do
-  read -p "Image Crop : Top, Center or Bottom ?" answer
-  case $answer in
-      [Tt]* ) CUT="2592x1456+0+0"  ;break;;
-      [Cc]* ) CUT="2592x1456+0+244";break;;
-      [Bb]* ) CUT="2592x1456+0+488";break;;
-      * ) echo "Please answer [T], [C] or [B]";;
-  esac
-done
-cd %d
+#CUT="2592x1456+0+0" #Top
+CUT="2592x1456+0+244" #Center
+#CUT="2592x1456+0+488" #Bas
+
+cd /media/hdd/stopmotion
 mkdir CROP
 for img in *.JPG; do
 convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
