@@ -1,13 +1,12 @@
 #!/bin/sh
 clear
 
-DIR=/media/hdd/Drive/Photos
 rm -rf /media/hdd/Drive/Photos/*
 cd /media/hdd/Drive/
 drive pull --quiet Photos
 if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 
-find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
+find /media/hdd/Drive/Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
 
