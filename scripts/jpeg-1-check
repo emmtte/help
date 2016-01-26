@@ -26,7 +26,7 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
     pushbullet push all note "EXIF ERROR" "$FILE"
   fi
 
-printf "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
+printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
 done
 
 drive push --quiet Photos
