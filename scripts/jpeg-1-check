@@ -1,7 +1,7 @@
 #!/bin/sh
 #Check exif photos in gdrive/photos/ directory
 clear
-if ! -f /usr/bin/exiv2 ; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
+if [ ! -f /usr/bin/exiv2 ] ; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 rm -rf /media/hdd/Drive/Photos/*
 cd /media/hdd/Drive/
 if ! drive pull --quiet Photos ; then pushbullet push all note "ERROR DRIVE" "ERROR PULL DRIVE"; exit; fi
