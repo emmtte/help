@@ -1,6 +1,6 @@
 #!/bin/sh
+#Check only starred photos
 clear
-
 rm -rf /media/hdd/Drive/Photos/*
 cd /media/hdd/Drive
 drive pull --quiet --starred --all
