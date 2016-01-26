@@ -22,6 +22,7 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
     drive star "$FILE"
+    pushbullet push all note "EXIF ERROR" "$FILE"
   fi
 
 printf "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
