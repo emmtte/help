@@ -1,5 +1,6 @@
 #!/bin/sh
 #Check only starred photos
+#Be carefoul this script delete entire exif file
 clear
 rm -rf /media/hdd/Drive/Photos/*
 cd /media/hdd/Drive
