@@ -3,7 +3,7 @@
 clear
 rm -rf /media/hdd/Drive/Photos/*
 cd /media/hdd/Drive
-if drive pull --quiet --starred --all ; then pushbullet push all note "ERROR DRIVE" "ERROR PULL DRIVE"; exit; fi
+if ! drive pull --quiet --starred --all ; then pushbullet push all note "ERROR DRIVE" "ERROR PULL DRIVE"; exit; fi
 find /media/hdd/Drive/Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
 echo "$FILE"
 NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
