@@ -23,7 +23,7 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
     pushbullet push all note "EXIF ERROR" "$FILE"
   fi
 
-echo "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT"
+printf "$FILE\nEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
 done
 
 pushbullet push all note "Rasperry Pi" "HDD EXIF PHOTOS CHEKED"
