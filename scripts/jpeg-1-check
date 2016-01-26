@@ -1,4 +1,5 @@
 #!/bin/sh
+#Check exif photos in gdrive/photos/ directory
 clear
 
 rm -rf /media/hdd/Drive/Photos/*
