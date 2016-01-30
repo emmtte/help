@@ -1,4 +1,5 @@
 #!/bin/sh
+#Warning Files name does not content comma
 clear
 GDRIVE=/media/hdd/Drive
 rm $GDRIVE/Snoozed/*
