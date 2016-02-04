@@ -1,0 +1,2 @@
+sudo apt-get install fslint
+/usr/share/fslint/fslint/fslint /media/hdd/photos
