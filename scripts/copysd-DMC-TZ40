@@ -7,6 +7,7 @@ clear
 sudo mkdir /media/panasonic
 sudo mount $ID /media/panasonic
 mkdir $TMP
+mkdir $PHOTOS
 cp -v /media/panasonic/DCIM/???_PANA/*.JPG $TMP
 sudo umount /media/panasonic
 
