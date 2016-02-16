@@ -1,7 +1,9 @@
 #!/bin/sh
 clear
+# ls -l /dev/disk/by-id 
+ID="/dev/disk/by-id/usb-GoPro_Storage_123456789ABC-0:0-part1"
 sudo mkdir /media/gopro
-sudo mount /dev/sdb1 /media/gopro
+sudo mount $ID /media/gopro
 mkdir /media/hdd/gopro/photos /media/hdd/gopro/videos
 cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
 cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
