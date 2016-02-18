@@ -42,9 +42,9 @@ B move to "Freebox Server" folder
   rm /tmp/.freebox.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/tmux ; fi
-  tmux send -t bash.1 'sh /tmp/.freebox.sh' ENTER
-  tmux select-window -t pi:bash
-  tmux select-pane -t bash.1
+  tmux send -t cloud.1 'sh /tmp/.freebox.sh' ENTER
+  tmux select-window -t pi:cloud
+  tmux select-pane -t cloud.1
   tmux -2 attach -t pi
 
 + f * & t t
