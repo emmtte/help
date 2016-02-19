@@ -1,4 +1,5 @@
 = d *
+C castnow 
   nodejs /usr/local/bin/castnow "%d"
 
 + f * & t t
