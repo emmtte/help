@@ -1,3 +1,6 @@
+= d *
+  nodejs /usr/local/bin/castnow "%d"
+
 + f * & t t
 A move to "BitTorrentSync" folder
   set %t
