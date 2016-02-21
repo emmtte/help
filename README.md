@@ -31,7 +31,7 @@ BtSync
 :link:https://www.getsync.com
 ```Shell
 wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
-sudo tar -xfv BitTorrent-Sync_arm.tar.gz  
+sudo tar -xvf BitTorrent-Sync_arm.tar.gz -C /usr/local/sbin btsync
 sudo btsync
 ```
 
