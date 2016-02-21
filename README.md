@@ -1,5 +1,6 @@
 Command Line Interface Tools
 ============================
+  * [BtSync](#btsync)
   * [Castnow](#castnow)
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
@@ -24,6 +25,15 @@ Command Line Interface Tools
   * [Transmission](#transmission)
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
+
+BtSync
+------
+:link:https://www.getsync.com
+```Shell
+wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
+sudo tar -xfv BitTorrent-Sync_arm.gz  
+sudo btsync
+```
 
 Castnow 
 -------
