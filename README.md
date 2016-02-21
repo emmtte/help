@@ -35,7 +35,7 @@ sudo tar -xfv BitTorrent-Sync_arm.gz
 sudo btsync
 ```
 
-Castnow 
+Castnow
 -------
 :link: https://github.com/xat/castnow
 ```shell
@@ -44,7 +44,7 @@ sudo npm install castnow -g
 nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
 ```
 
-Dropbox-Uploader 
+Dropbox-Uploader
 ----------------
 :link: https://github.com/andreafabrizi/Dropbox-Uploader
 ```shell
@@ -54,7 +54,7 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
 
-Drive 
+Drive
 -----
 :link: https://github.com/odeke-em/drive
 ```shell
