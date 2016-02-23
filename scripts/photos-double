@@ -1,2 +1,2 @@
 sudo apt-get install fslint
-/usr/share/fslint/fslint/fslint /media/hdd/photos
+/usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
