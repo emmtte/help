@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
 tmux -2 new-session -d -s pi
