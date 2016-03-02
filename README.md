@@ -162,7 +162,7 @@ fi
 cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/mc.keymap
 ````
-~/.config/mc/mc.keymap
+````mcedit ~/.config/mc/mc.keymap````
 ```shell
 UserMenu = f2; ctrl-w
 Mark = insert; ctrl-t; ctrl-b
