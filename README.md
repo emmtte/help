@@ -164,7 +164,7 @@ mcedit ~/.config/mc/mc.keymap
 ````
 ````mcedit ~/.config/mc/mc.keymap````
 ```shell
-UserMenu = f2; ctrl-w
+UserMenu = f2; ctrl-x
 Mark = insert; ctrl-t; ctrl-b
 ````
 **````mcedit ~/.tmux.conf````**
