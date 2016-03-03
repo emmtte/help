@@ -422,7 +422,9 @@ cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
 "speed-limit-down-enable": true ,
 "speed-limit-up": 10 ,
 "speed-limit-up-enable": true ,
-"umask": 0
+"umask": 0 ,
+"watch-dir-enabled": true ,
+"watch-dir": "/media/hdd/watch"
 }
 EOF
 ```
