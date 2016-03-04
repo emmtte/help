@@ -408,6 +408,7 @@ mkdir /media/hdd/torrent
 sudo usermod -a -G debian-transmission pi
 sudo chgrp debian-transmission /media/hdd/torrent
 sudo chmod 777 -R /media/hdd/torrent
+chmod 777 -R /media/hdd/watch
 sudo service transmission-daemon reload
 ```
 ```shell
