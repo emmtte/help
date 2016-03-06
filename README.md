@@ -144,8 +144,11 @@ curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2",
 
 Keeweb
 ------
-:
-https://raw.githubusercontent.com/antelle/keeweb/gh-pages/index.html
+:link:https://github.com/antelle/keeweb
+mkdir keepass
+cd keepass
+sudo curl -o index.html https://raw.githubusercontent.com/antelle/keeweb/gh-pages/index.html
+jekyll serve
 
 Midnight Commander
 ------------------
