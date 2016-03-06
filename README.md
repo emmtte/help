@@ -10,6 +10,7 @@ Command Line Interface Tools
   * [Hangups](#hangups)
   * [<s>Hangouts Bot</s>](#hangouts-bot)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
+  * [Keeweb](#keeweb)
   * [Midnight Commander](#midnight-commander)
   * [Motion](#motion)
   * [OpenSSH](#open-ssh)
@@ -140,6 +141,11 @@ echo "{key}" > ~/.maker_channel_key
 curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ````
+
+Keeweb
+------
+:
+https://raw.githubusercontent.com/antelle/keeweb/gh-pages/index.html
 
 Midnight Commander
 ------------------
