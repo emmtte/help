@@ -148,7 +148,8 @@ Keeweb
 ```shell
 mkdir keepass
 cd keepass
-sudo curl -o index.html https://raw.githubusercontent.com/antelle/keeweb/gh-pages/index.html
+curl -o index.html https://raw.githubusercontent.com/antelle/keeweb/gh-pages/index.html
+curl -o manifest.appcache https://raw.githubusercontent.com/antelle/keeweb/gh-pages/manifest.appcache
 jekyll serve
 ```
 
