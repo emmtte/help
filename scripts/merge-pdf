@@ -6,6 +6,7 @@ rm $GDRIVE/Snoozed/*
 rm $GDRIVE/Documents/*
 cd $GDRIVE
 drive pull --quiet --starred --all
+if [ `find $GDRIVE/Documents -type d -empty` ] ; then pushbullet push all note "Merge PDF" "ERROR NO DOCUMENTS"; exit ; fi
 if grep -r "Encrypt" $GDRIVE/Snoozed ; then pushbullet push all note "Merge PDF" "ERROR CRYPTED FILE"; exit; fi
 find $GDRIVE/Snoozed -type f | sort | tr '\n' ',' > files.csv
 find $GDRIVE/Documents -type f | head -1  >> files.csv
