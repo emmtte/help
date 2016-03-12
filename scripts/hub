@@ -1,0 +1,17 @@
+#!/bin/bash
+# Create .mqtt files with
+#/a/<API>/p/<PROJECT>/d/<UUID>/#
+norm_min=5000
+norm_max=30000
+
+mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "cat ~/.mqtt" -v | while read val; do
+	#ts=$(date +%s)
+	#if [[ $val -lt $norm_min || $val -gt $norm_max ]]
+	#	then
+			echo "ALERT: ${val}"; 
+	#		echo "${ts},${val}" >> ./alert.log 
+#			mosquitto_pub -t "alert/val" -m "{'ts':${ts}, 'd':'oorv','v':${val}}"
+#		else
+#			echo "OK: ${val}"
+#	fi
+done
