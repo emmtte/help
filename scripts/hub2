@@ -1,0 +1,10 @@
+#!/bin/bash
+# Create .mqtt files with
+#echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
+
+mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -v -R | while read val; do
+val=`echo "$val" | cut -d ' ' -f 1 | cut -d '/' -f 9`
+tmux new-window -t pi -a -n $val
+cd ~/scripts
+tmux send -t $val '$val' ENTER
+done
