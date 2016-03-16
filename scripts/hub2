@@ -2,7 +2,7 @@
 # Create .mqtt files with
 #echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
 
-mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | jq '.["value"]' -r | while read val; do
+( mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | jq '.["value"]' -r ) | while read val; do
 pushbullet push all note "Mosquitto" "$val"
 #tmux new-window -t pi -a -n $val
 cd ~/scripts
