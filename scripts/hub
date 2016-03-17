@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Create .mqtt files with
 #echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
 #tmux new-window -t pi -a -n flickr
