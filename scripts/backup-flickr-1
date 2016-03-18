@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 clear
 /home/pi/.bin/flickr-uploader#1/uploadr.py
 pushbullet push all note "Flickr#1" "backup finished"
