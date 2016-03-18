@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 clear
 tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
