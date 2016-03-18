@@ -2,12 +2,21 @@
 # Create .mqtt files with
 #echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
 
-mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read val; do
-a=`echo "$val" |  jq '.["value"]' -r`.
+mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read valeur ; do
+a=`echo "$valeur" |  jq '.["value"]' -r`
 
 echo "sdfssfsfsf------> $a"
-pushbullet push all note "Mosquitto" "hjd"
+
+curl https://api.pushbullet.com/v2/pushes -X POST -u `cat ~/.pushbullet`: --header "Content-Type: application/json" --data-binary "{\"type
+echo
+
+tmux has-session -t $a ; if [ "$?" -eq 1 ] ; then tmux -2 new-session -d -s $a ; fi
+
+if [ -f /tmp/$a.lock ]; then
+tmux send -t $a 'pushbullet push all note "$a" "$a script $a allready running"'
+else
+tmux send -t $a '~/scripts/$a' ENTER
+tmux send -t $a 'rm /tmp/$a.lock' ENTER
+fi
+
 done
-#tmux new-window -t pi -a -n $val
-#cd ~/scripts
-#tmux send -t $val '$val' ENTER
