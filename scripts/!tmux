@@ -16,16 +16,6 @@ tmux new-window -t pi -a -n EF
 tmux split-window -v
 tmux select-pane -t 0
 
-tmux new-window -t pi -a -n cloud
-tmux split-window -v
-tmux select-pane -t 0
-
-tmux new-window -t pi -a -n flickr
-tmux split-window -v
-tmux select-pane -t 0
-
-
-
 tmux select-window -t pi:1
 fi
 
