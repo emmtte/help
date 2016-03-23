@@ -1,5 +1,5 @@
 #sudo apt-get install recode
-cat <<EOF > request.xml
+cat <<EOF > /tmp/request.xml
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <SOAP-ENV:Envelope
  SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
@@ -18,7 +18,7 @@ clear
 while :
 do
 curl -X POST -H "Content-Type: text/xml" \
-    -d @request.xml \
+    -d @/tmp/request.xml \
     http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/dev/null > sst.xml
 album=`xmllint --xpath "//*[local-name()='Album']/text()" sst.xml | recode html..UTF-8`
 artist=`xmllint --xpath "//*[local-name()='Artist']/text()" sst.xml | recode html..UTF-8`
