@@ -8,7 +8,7 @@ a=`echo "$valeur" |  jq '.["value"]' -r`
 tmux has-session -t $a
 if [ "$?" -eq 1 ] ; then
 tmux set-environment -g a $a
-tmux -2 new-session -d -s $a
+TMUX= tmux -2 new-session -d -s $a
 fi
 
 if [ -f /tmp/$a.lock ]; then
