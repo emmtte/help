@@ -1,3 +1,2 @@
 #!/bin/sh
-clear
 sudo service transmission-daemon stop
