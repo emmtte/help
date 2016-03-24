@@ -7,7 +7,7 @@ cd $GDRIVE
 drive pull --quiet --starred --all
 if [ `find $GDRIVE/Documents -type d -empty` ] ; then pushbullet push all note "Compress PDF" "ERROR NO DOCUMENTS"; exit ; fi
 FILE=`ls $GDRIVE/Documents | head -1`
-~/.bin/sejda/bin/sejda-console compress Documents/$FILE --compressed sejda_out.pdf ; fi
+~/.bin/sejda/bin/sejda-console compress -f Documents/$FILE -o Documents/
 mv sejda_out.pdf "Documents/$FILE"
 drive push --quiet "Documents/$FILE"
 drive unstar --quiet "Documents/$FILE"
