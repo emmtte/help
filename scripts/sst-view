@@ -24,10 +24,13 @@ album=`xmllint --xpath "//*[local-name()='Album']/text()" sst.xml | recode html.
 artist=`xmllint --xpath "//*[local-name()='Artist']/text()" sst.xml | recode html..UTF-8`
 track=`xmllint --xpath "//*[local-name()='Track']/text()" sst.xml | recode html..UTF-8`
 cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
-echo $cover
-pushbullet push all note "$album" "$artist - $track"
-curl -o /tmp/cover.jpg $cover
-pushbullet push all file /tmp/cover.jpg "$artist - $track"
+t=`xmllint --xpath "//*[local-name()='Length']/text()" sst.xml`
+t=$((t / 1000))
+
+albumU=`echo $album | tr ' ' '_' | tr ',' '-'`
+curl --silent -o "$albumU.jpg" $cover
+pushbullet push all file $albumU.jpg "$artist - $track [`date -u -d @${t} +"%M:%S"`]"
+rm "$albumU.jpg"
 echo -e "\033[01m `xmllint --xpath "//*[local-name()='Album']/text()" sst.xml | recode html..UTF-8`"
 echo -e "\033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" sst.xml | recode html..UTF-8`"
 echo -e "\033[37m `xmllint --xpath "//*[local-name()='Track']/text()" sst.xml | recode html..UTF-8`"
