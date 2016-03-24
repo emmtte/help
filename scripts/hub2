@@ -7,14 +7,20 @@ a=`echo "$valeur" |  jq '.["value"]' -r`
 
 echo "sdfssfsfsf------> $a"
 
-curl https://api.pushbullet.com/v2/pushes -X POST -u `cat ~/.pushbullet`: --header "Content-Type: application/json" --data-binary "{\"type
+curl -u `cat ~/.pushbullet`: https://api.pushbullet.com/v2/pushes -d type=note -d title="Raspberry Pi" -d body='Raspberry Pi is up!'
 echo
 
-tmux has-session -t $a ; if [ "$?" -eq 1 ] ; then tmux -2 new-session -d -s $a ; fi
+tmux has-session -t $a
+if [ "$?" -eq 1 ] ; then
+tmux set-environment -g a $a
+tmux -2 new-session -d -s $a
+fi
 
 if [ -f /tmp/$a.lock ]; then
 tmux send -t $a 'pushbullet push all note "$a" "$a script $a allready running"'
 else
+echo "a====>>>>$a"
+tmux send -t $a 'touch /tmp/$a.lock' ENTER
 tmux send -t $a '~/scripts/$a' ENTER
 tmux send -t $a 'rm /tmp/$a.lock' ENTER
 fi
