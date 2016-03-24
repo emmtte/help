@@ -7,7 +7,7 @@ a=`echo "$valeur" |  jq '.["value"]' -r`
 
 echo "sdfssfsfsf------> $a"
 
-curl -u `cat ~/.pushbullet`: https://api.pushbullet.com/v2/pushes -d type=note -d title="Raspberry Pi" -d body='Raspberry Pi is up!'
+curl -u `cat ~/.pushbullet`: https://api.pushbullet.com/v2/pushes -d type=note -d title="Raspberry Pi" -d body='$a'
 echo
 
 tmux has-session -t $a
