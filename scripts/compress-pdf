@@ -1,0 +1,14 @@
+#!/bin/sh
+#Warning Files name does not content comma
+clear
+GDRIVE=/media/hdd/Drive
+rm $GDRIVE/Documents/*
+cd $GDRIVE
+drive pull --quiet --starred --all
+if [ `find $GDRIVE/Documents -type d -empty` ] ; then pushbullet push all note "Compress PDF" "ERROR NO DOCUMENTS"; exit ; fi
+FILE=`ls $GDRIVE/Documents | head -1`
+~/.bin/sejda/bin/sejda-console compress Documents/$FILE -o sejda_out.pdf ; fi
+mv sejda_out.pdf "Documents/$FILE"
+drive push --quiet "Documents/$FILE"
+drive unstar --quiet "Documents/$FILE"
+pushbullet push all note "Raspberry Pi" "File $FILE compressed"
