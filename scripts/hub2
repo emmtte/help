@@ -12,13 +12,13 @@ TMUX= tmux -2 new-session -d -s $a
 fi
 
 if [ -f /tmp/$a.lock ]; then
-tmux send -t $a 'pushbullet push all note "$a" "$a script $a allready running"'
+tmux send -t $a 'pushbullet push all note "$a" "$a script $a allready running"' ENTER
 else
-tmux send -t $a 'pushbullet push all note "$a" "$a script starting"'
-tmux send -t $a 'echo " :::"'
-tmux send -t $a 'echo " ::: $a"'
-tmux send -t $a 'echo " ::: `date`"'
-tmux send -t $a 'echo " :::"'
+tmux send -t $a 'pushbullet push all note "$a" "$a script starting"' ENTER
+tmux send -t $a 'echo " :::"' ENTER
+tmux send -t $a 'echo " ::: $a"' ENTER
+tmux send -t $a 'echo " ::: `date`"' ENTER
+tmux send -t $a 'echo " :::"' ENTER
 tmux send -t $a 'touch /tmp/$a.lock' ENTER
 tmux send -t $a '~/scripts/$a' ENTER
 tmux send -t $a 'rm /tmp/$a.lock' ENTER
