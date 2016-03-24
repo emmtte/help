@@ -1,14 +1,9 @@
 #!/bin/sh
 # Create .mqtt files with
-#echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
+# echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
 
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read valeur ; do
 a=`echo "$valeur" |  jq '.["value"]' -r`
-
-echo "sdfssfsfsf------> $a"
-
-curl -u `cat ~/.pushbullet`: https://api.pushbullet.com/v2/pushes -d type=note -d title="Raspberry Pi" -d body='$a'
-echo
 
 tmux has-session -t $a
 if [ "$?" -eq 1 ] ; then
@@ -19,7 +14,11 @@ fi
 if [ -f /tmp/$a.lock ]; then
 tmux send -t $a 'pushbullet push all note "$a" "$a script $a allready running"'
 else
-echo "a====>>>>$a"
+tmux send -t $a 'pushbullet push all note "$a" "$a script starting"'
+tmux send -t $a 'echo " :::"'
+tmux send -t $a 'echo " ::: $a"'
+tmux send -t $a 'echo " ::: `date`"'
+tmux send -t $a 'echo " :::"'
 tmux send -t $a 'touch /tmp/$a.lock' ENTER
 tmux send -t $a '~/scripts/$a' ENTER
 tmux send -t $a 'rm /tmp/$a.lock' ENTER
