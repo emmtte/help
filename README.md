@@ -291,7 +291,7 @@ Sejda
 -----
 :link: https://github.com/torakiki/sejda
 ```shell
-sudo apt-get install oracle-java8-jdk
+sudo apt-get -y install oracle-java8-jdk
 curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v1.0.0.RELEASE/sejda-console-1.0.0.RELEASE-bin.zip
 curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v2.0.0.M8/sejda-console-2.0.0.M8-bin.zip
 unzip sejda.zip
