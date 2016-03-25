@@ -5,7 +5,6 @@ Command Line Interface Tools
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
   * [Flickr-Uploader](#flickr-uploader)
-  * [<s>Google CL</s>](#google-cl)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
   * [Keeweb](#keeweb)
   * [Midnight Commander](#midnight-commander)
@@ -84,16 +83,6 @@ mcedit flickr-uploader/uploadr.ini
 mv flickr-uploader/ flickr-uploader#1/
 cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
-```
-
-<s>Google CL</s>
-----------------
-:link: https://github.com/vinitkumar/googlecl
-```shell
-cd bin
-git clone https://github.com/vinitkumar/googlecl.git
-cd googlecl
-sudo python setup.py install
 ```
 
 Ifttt Maker Channel
