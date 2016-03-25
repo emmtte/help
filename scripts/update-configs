@@ -4,4 +4,4 @@ GDRIVE=/media/hdd/Drive
 rm $GDRIVE/RaspberryPi/configs/*
 cd $GDRIVE
 drive pull --quiet --hidden "RaspberryPi/configs"
-cp -R $GDRIVE/RaspberryPi/configs/* /home/pi
+cp $GDRIVE/RaspberryPi/configs/* /home/pi
