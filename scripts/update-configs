@@ -3,5 +3,5 @@ clear
 GDRIVE=/media/hdd/Drive
 rm $GDRIVE/RaspberryPi/configs/*
 cd $GDRIVE
-drive pull "RaspberryPi/configs"
+drive pull --quiet "RaspberryPi/configs/"
 cp -R $GDRIVE/RaspberryPi/configs/* /home/pi
