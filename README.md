@@ -160,7 +160,7 @@ Motion
 echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
 sudo modprobe bcm2835-v4l2
 echo 'bcm2835-v4l2' | sudo tee -a /etc/modules
-sudo apt-get install motion
+sudo apt-get -y install motion
 sudo chmod 664 /etc/motion/motion.conf
 mkdir /tmp/motion
 echo 'start_motion_daemon=no' | sudo tee /etc/default/motion
