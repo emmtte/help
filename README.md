@@ -377,7 +377,6 @@ create mask = 0660
 directory mask = 0771
 read only = no
 EOF
-sudo service samba restart
 sudo service smbd restart
 sudo smbpasswd -a pi
 ````
