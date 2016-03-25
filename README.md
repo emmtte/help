@@ -157,7 +157,7 @@ jekyll serve
 Midnight Commander
 ------------------
 ```shell
-sudo apt-get install mc tmux exif imagemagick
+sudo apt-get install mc tmux
 mkdir /home/pi/scripts/
 cd /home/pi/scripts/
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/menu
