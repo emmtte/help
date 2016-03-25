@@ -353,17 +353,6 @@ sudo service transmission-daemon reload
 sudo service transmission-daemon restart
 ```
 
-Wego
-----
-:link: https://github.com/schachmat/wego
-```shell
-go get github.com/schachmat/wego
-```
-:bangbang: https://developer.worldweatheronline.com/auth/register
-````
-mcedit ~/.wegorc
-````
-
 Youtube-dl
 ----------
 :link: https://github.com/rg3/youtube-dl
