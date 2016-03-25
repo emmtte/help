@@ -59,7 +59,7 @@ Drive
 -----
 :link: https://github.com/odeke-em/drive
 ```shell
-sudo apt-get install golang
+sudo apt-get -y install golang
 cat << ! >> ~/.bashrc
 export GOPATH=~/.bin/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
