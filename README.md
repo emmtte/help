@@ -357,7 +357,7 @@ Youtube-dl
 ----------
 :link: https://github.com/rg3/youtube-dl
 ```shell
-sudo curl https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
 echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
