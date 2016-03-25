@@ -13,7 +13,6 @@ Command Line Interface Tools
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
   * [Raspbian](#raspbian)
-  * [<s>Rclone</s>](#rclone)
   * [Samba](#samba)
   * [Sejda](#sejda)
   * [Squid](#squid)
@@ -267,20 +266,6 @@ sudo apt-get autoremove
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
-```
-
-Rclone
-------
-:link: https://github.com/ncw/rclone
-```shell
-sudo apt-get install -y golang
-echo 'PATH=$PATH:/usr/local/go/bin'|sudo tee -a /etc/profile.d/golang.sh
-source /etc/profile.d/golang.sh
-curl -o rclone.zip http://downloads.rclone.org/rclone-v1.23-linux-arm.zip
-unzip rclone.zip
-sudo cp rclone-v1.23-linux-arm/rclone /usr/local/bin/rclone
-rclone config
-mv .rclone.conf /home/pi/.config/rclone.conf
 ```
 
 Samba
