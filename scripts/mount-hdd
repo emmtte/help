@@ -1,3 +1,4 @@
+#Attention lignes suivantes pour formatter
 #sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 #sudo e2label /dev/sda1 RaspberryPi
 sudo mkdir /media/hdd /media/freebox
