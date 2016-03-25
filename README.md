@@ -65,7 +65,7 @@ export GOPATH=~/.bin/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc
-mkdir ~/.bin/go
+mkdir ~/.bin ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init /media/hdd/gdrive
 ```
