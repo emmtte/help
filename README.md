@@ -4,11 +4,8 @@ Command Line Interface Tools
   * [Castnow](#castnow)
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
-  * [<s>Flickr Smart Sync</s>](#flickr-smart-sync)
   * [Flickr-Uploader](#flickr-uploader)
   * [<s>Google CL</s>](#google-cl)
-  * [Hangups](#hangups)
-  * [<s>Hangouts Bot</s>](#hangouts-bot)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
   * [Keeweb](#keeweb)
   * [Midnight Commander](#midnight-commander)
@@ -70,18 +67,6 @@ go get -u github.com/odeke-em/drive/cmd/drive
 drive init /media/hdd/gdrive
 ```
 
-<s>Flickr Smart Sync</s>
-------------------------
-:link: https://github.com/faisalraja/flickrsmartsync
-```shell
-sudo apt-get install python-dev python-setuptools
-git clone https://github.com/faisalraja/flickrsmartsync.git
-cd flickrsmartsync
-sudo python setup.py install
-sudo rm -r /home/pi/flickrsmartsync
-flickrsmartsync --sync-path /media/hdd/photos
-```
-
 Flickr-Uploader
 ---------------
 :link: https://github.com/trickortweak/flickr-uploader
@@ -109,28 +94,6 @@ cd bin
 git clone https://github.com/vinitkumar/googlecl.git
 cd googlecl
 sudo python setup.py install
-```
-
-Hangups
--------
-:link: https://github.com/tdryer/hangups
-```shell
-git clone https://github.com/tdryer/hangups.git
-cd hangups
-sudo python3 setup.py install
-rm hangups
-hangups
-```
-
-<s>Hangouts Bot</s>
--------------------
-:link: https://github.com/hangoutsbot/hangoutsbot
-```shell
-git clone https://github.com/hangoutsbot/hangoutsbot.git
-cd hangoutsbot
-sudo pip3 install -r requirements.txt
-
-python3 ~/.bin/hangoutsbot/hangupsbot/hangupsbot.py
 ```
 
 Ifttt Maker Channel
