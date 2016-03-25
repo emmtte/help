@@ -10,8 +10,6 @@ Command Line Interface Tools
   * [Midnight Commander](#midnight-commander)
   * [Motion](#motion)
   * [OpenSSH](#open-ssh)
-  * [Picasa Web Sync](#picasa-web-sync)
-  * [Picasa Web Uploader](#picasa-web-uploader)
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
   * [Raspbian](#raspbian)
@@ -212,36 +210,6 @@ if [ -f ~/.bashrc ]; then
   . ~/.bashrc
 fi
 EOF
-```
-
-Picasa Web Sync
----------------
-:link: https://github.com/leocrawford/picasawebsync
-```shell
-sudo apt-get install jhead
-sudo apt-get install python-imaging python-imaging-tk
-sudo apt-get install python-gdata
-sudo apt-get install python-pip
-sudo pip install --upgrade pip 
-sudo pip install --upgrade oauth2client
-git clone https://github.com/leocrawford/picasawebsync.git
-cp /home/pi/client_secrets.json /home/pi/picasawebsync/client_secrets.json
-/home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos
-/home/pi/picasawebsync/picasawebsync.py -d /media/hdd/photos --purge
-```
-
-<s>Picasa Web Uploader</s>
---------------------------
-:link: https://github.com/jackpal/picasawebuploader
-```shell
-sudo apt-get install python-pip
-sudo apt-get install libjpeg-dev libfreetype6 libfreetype6-dev zlib1g-dev
-sudo pip install pil
-sudo pip install gdata
-sudo apt-get install python-pyexiv2
-curl -o picasawebuploader.py https://raw.githubusercontent.com/jackpal/picasawebuploader/master/main.py
-sudo chmod +x picasawebuploader.py 
-picasawebuploader.py --email @gmail.com --source /media/hdd/photos
 ```
 
 Pi Hole
