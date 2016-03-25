@@ -158,9 +158,10 @@ Midnight Commander
 ------------------
 ```shell
 sudo apt-get -y install mc tmux
-mkdir /home/pi/scripts/
-cd /home/pi/scripts/
-curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/menu
+mkdir ~/scripts/
+cd ~/scripts/
+curl -o ~/scripts/update-scripts https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/scripts/update-scripts
+chmod +x ~/scripts/*
 ```
 .bash_profile
 ```shell
