@@ -60,7 +60,7 @@ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 source ~/.bashrc
 mkdir ~/.bin ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
-drive init /media/hdd/gdrive
+drive init /media/hdd/Drive
 ```
 
 Flickr-Uploader
