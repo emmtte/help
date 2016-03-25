@@ -1,6 +1,6 @@
 #sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
 #sudo e2label /dev/sda1 RaspberryPi
-sudo mkdir /media/hdd
+sudo mkdir /media/hdd /media/freebox
 sudo mount LABEL=RaspberryPi /media/hdd
 
 echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
