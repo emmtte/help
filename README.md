@@ -418,7 +418,7 @@ Transmission
 :link: http://www.transmissionbt.com/
 ```shell
 sudo apt-get -y install transmission-daemon
-mkdir /media/hdd/torrent
+mkdir /media/hdd/torrent /media/hdd/watch
 sudo usermod -a -G debian-transmission pi
 sudo chgrp debian-transmission /media/hdd/torrent
 sudo chmod 777 -R /media/hdd/torrent
