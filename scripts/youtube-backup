@@ -1,5 +1,5 @@
 #!/bin/sh
 # echo "<<id>>" > ~/.youtube.dl
 mkdir /media/hdd/youtube-dl
-youtube-dl --ignore-errors --format bestaudio+bestvideo --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
+youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 pushbullet push all note "youtube-dl" "Downloads finished"
