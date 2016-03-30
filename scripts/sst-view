@@ -27,10 +27,10 @@ cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
 t=`xmllint --xpath "//*[local-name()='Length']/text()" sst.xml`
 t=$((t / 1000))
 
-#albumU=`echo $album | tr ' ' '_' | tr ',' '-'`
+pb push "$album" "$artist - $track\n[`date -u -d @${t} +"%M:%S"`]"
 curl --silent -o cover.jpg $cover
-#pushbullet push all file $albumU.jpg "$artist - $track [`date -u -d @${t} +"%M:%S"`]"
-pb push "$album\n$artist - $track\n[`date -u -d @${t} +"%M:%S"`]" --file cover.jpg
+pb push --file cover.jpg
+
 rm cover.jpg
 echo -e "\033[01m `xmllint --xpath "//*[local-name()='Album']/text()" sst.xml | recode html..UTF-8`"
 echo -e "\033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" sst.xml | recode html..UTF-8`"
