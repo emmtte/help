@@ -27,7 +27,7 @@ cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
 t=`xmllint --xpath "//*[local-name()='Length']/text()" sst.xml`
 t=$((t / 1000))
 
-pb push "$album" "$artist - $track\n[`date -u -d @${t} +"%M:%S"`]"
+pb push "$album - $artist - $track [`date -u -d @${t} +"%M:%S"`]"
 curl --silent -o cover.jpg $cover
 pb push --file cover.jpg
 
