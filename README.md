@@ -223,6 +223,19 @@ server=208.67.220.220
 sudo reboot
 ```
 
+Pushbullet-cli
+--------------
+:link: https://github.com/r-darwish/pushbullet-cli
+```shell
+https://github.com/r-darwish/pushbullet-cli
+git clone https://github.com/r-darwish/pushbullet-cli.git
+cd pushbullet-cli
+sudo python setup.py install
+cd ..
+sudo rm -rf pushbullet-cli
+pb set-key
+```
+
 Pushbullet
 ----------
 :link: https://github.com/Red5d/pushbullet-bash
