@@ -30,7 +30,8 @@ t=$((t / 1000))
 pb push "$album - $artist - $track [`date -u -d @${t} +"%M:%S"`]"
 curl --silent -o cover.jpg $cover
 pb push --file cover.jpg
-
+pb push -c "sstc" "$album - $artist - $track [`date -u -d @${t} +"%M:%S"`]"
+pb push -c "sstc" --file cover.jpg
 rm cover.jpg
 echo -e "\033[01m `xmllint --xpath "//*[local-name()='Album']/text()" sst.xml | recode html..UTF-8`"
 echo -e "\033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" sst.xml | recode html..UTF-8`"
