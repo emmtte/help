@@ -1,0 +1,8 @@
+echo "<<id>>" > ~/.youtube.dl
+read -p "Go to 'https://www.dropbox.com/developers/apps' and paste your app key : " your_app_key 
+mkdir keeweb
+cd keeweb
+curl -o index.html https://raw.githubusercontent.com/antelle/keeweb/gh-pages/index.html
+curl -o manifest.appcache https://raw.githubusercontent.com/antelle/keeweb/gh-pages/manifest.appcache
+sed -i.bak s/qp7ctun6qt5n9d6/$your_app_key/g index.html
+dropbox_uploader upload index.html public/index.html
