@@ -93,15 +93,9 @@ curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2",
 
 Keeweb
 ------
-:link:https://github.com/antelle/keeweb
-```shell
-mkdir keepass
-cd keepass
-curl -o index.html https://raw.githubusercontent.com/antelle/keeweb/gh-pages/index.html
-curl -o manifest.appcache https://raw.githubusercontent.com/antelle/keeweb/gh-pages/manifest.appcache
-sed -i.bak s/qp7ctun6qt5n9d6/your_app_key/g index.html
-jekyll serve
-```
+:link: https://github.com/antelle/keeweb
+:information_source: https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
+
 
 Midnight Commander
 ------------------
