@@ -5,4 +5,4 @@ curl -o index.html https://raw.githubusercontent.com/antelle/keeweb/gh-pages/ind
 sed -i.bak s/qp7ctun6qt5n9d6/$your_app_key/g index.html
 dropbox_uploader upload index.html public/index.html
 echo "copy public link to your app OAuth 2 Redirect URIs before starting keeweb"
-read -p
+read
