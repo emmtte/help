@@ -1,0 +1,7 @@
+"proxy": "localhost",
+"proxy-auth-enabled": false,
+"proxy-auth-password": "",
+"proxy-auth-username": "",
+"proxy-enabled": true,
+"proxy-port": 8080,
+"proxy-type": 0,
