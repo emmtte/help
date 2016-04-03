@@ -17,5 +17,7 @@ cd /media/hdd/Drive
 drive pull --quiet RaspberryPi/bittoratio3.py
 mv RaspberryPi/bittoratio3.py ~/bittoratio3.py
 cd ~
+mcedit bittoratio3.py
+# change FACTOR & PORT
 python bittoratio3.py &&
 sudo service transmission-daemon restart
