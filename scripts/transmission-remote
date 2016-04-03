@@ -1,1 +1,3 @@
- transmission-remote -l
+clear
+transmission-remote -l
+read -p
