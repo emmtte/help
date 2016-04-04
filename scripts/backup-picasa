@@ -1,3 +1,3 @@
 #!/bin/sh
-picasawebsync.py -d /media/hdd/photos --shrink
+~/.bin/picasawebsync.py -d /media/hdd/photos --shrink
 pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"
