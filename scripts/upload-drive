@@ -1,3 +1,4 @@
 cd /media/hdd/Drive
+mkdir Upload
 drive push --quiet Upload/*
 pushbullet push all note "Raspberry Pi" "Files Uploaded to Google Drive"
