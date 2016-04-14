@@ -1,19 +1,21 @@
 clear
-#DMC TZ40
+
+#DMC TZ40 - GoPro
 #CUT="2592x1456+0+0" #Top
-#CUT="2592x1456+0+244" #Center
+CUT="2592x1456+0+244" #Center
 #CUT="2592x1456+0+488" #Bas
+
 #Sony
 #CUT="4000x1777+0+0" #Top
-CUT="4000x1777+0+612" #Center
+#CUT="4000x1777+0+612" #Center
 #CUT="4000x1777+0+1223" #Bas
+
 cd /media/hdd/stopmotion
 mkdir CROP
 for img in *.JPG; do
 convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
 done
 ls -1 CROP/*-CROP.JPG >  files.lst
-#mpv mf://@files.lst -mf w=2592:h=1456:fps=15:type=jpg -ovc lavc -lavcopts vcodec=mpeg4:mbd=2:trell -nosound -o stopmotion.avi
-mpv mf://@files.lst -mf type=jpg:fps=3 -ovc lavc -lavcopts vcodec=mjpeg -nosound -o stopmotion.avi
-youtube-upload --title="Video" --category="Entertainment" --privacy="private" --location="=" --client-secrets="/home/pi/.config/youtube.json" "stopmotion.avi"
+mpv mf://@files.lst -mf-type=jpg -mf-fps=4 -ovc=rawvideo -no-audio -o stopmotion.avi
+youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi
 pushbullet push all note "Raspberry Pi" "Stopmotion created"
