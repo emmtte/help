@@ -39,7 +39,7 @@ pb push -c "sstc" --file cover.jpg
 rm cover.jpg
 echo "<meta http-equiv='refresh' content='10'>"  > index.html
 echo "<h1>$album</h1>" >> index.html
-echo "<img src='cover.jpg'/>"
+echo "<img src='cover.jpg'/>" >> index.html
 echo "<h3>$artist</h3>" >> index.html
 echo "<h3>$track</h3>" >> index.html
 echo "<h3>`date -u -d @${t} +"%M:%S"`</h3>" >> index.html
