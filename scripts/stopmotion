@@ -1,9 +1,9 @@
 clear
 
 #DMC TZ40 - GoPro
-#CUT="2592x1472+0+0" #Top
-CUT="2592x1472+0+236" #Center
-#CUT="2592x1472+0+472" #Bas
+#CUT="2560x1440+16+0" #Top
+CUT="2560x1440+16+252" #Center
+#CUT="2560x1440+16+504" #Bas
 
 #Sony
 #CUT="4000x1777+0+0" #Top
