@@ -1,0 +1,56 @@
+#sudo apt-get install recode libxml2-utils
+cat <<EOF > /tmp/request.xml
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<SOAP-ENV:Envelope
+ SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/1999/XMLSchema">
+ <SOAP-ENV:Body>
+  <GetCurrentlyPlaying>
+  </GetCurrentlyPlaying>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+EOF
+
+clear
+while :
+do
+curl -X POST -H "Content-Type: text/xml" \
+    -d @/tmp/request.xml \
+    http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/dev/null > sst.xml
+
+album=`xmllint --xpath "//*[local-name()='Album']/text()" sst.xml | recode html..UTF-8`
+artist=`xmllint --xpath "//*[local-name()='Artist']/text()" sst.xml | recode html..UTF-8`
+track=`xmllint --xpath "//*[local-name()='Track']/text()" sst.xml | recode html..UTF-8`
+cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
+PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" sst.xml`
+PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" sst.xml`
+SystemTime=`xmllint --xpath "//*[local-name()='SystemTime']/text()" sst.xml`
+t=`xmllint --xpath "//*[local-name()='Length']/text()" sst.xml`
+t=$((t / 1000))
+
+#pb push "$album - $artist - $track [`date -u -d @${t} +"%M:%S"`]"
+#pb push -c "sstc" "$album - $artist - $track [`date -u -d @${t} +"%M:%S"`]"
+curl --silent -o cover.jpg $cover
+#pb push --file cover.jpg
+pb push -c "sstc" --file cover.jpg
+rm cover.jpg
+echo "<meta http-equiv='refresh' content='10'>"  > index.html
+echo "<h1>$album</h1>" >> index.html
+echo "<h3>$artist</h3>" >> index.html
+echo "<h3>$track</h3>" >> index.html
+echo "<h3>`date -u -d @${t} +"%M:%S"`</h3>" >> index.html
+
+PSTART=`date -d "$PlayStar" "+%s"`
+PLENGT=$(($PlayLength / 1000))
+FIN=`date -d "$SystemTime" "+%s"`
+PW=$((PSTART+PLENGT))
+secs=$((PW-FIN))
+
+
+#xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml
+CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
+
+done
