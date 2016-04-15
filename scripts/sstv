@@ -35,8 +35,8 @@ t=$((t / 1000))
 #pb push -c "sstc" "$album - $artist - $track [`date -u -d @${t} +"%M:%S"`]"
 curl --silent -o cover.jpg $cover
 #pb push --file cover.jpg
-pb push -c "sstc" --file cover.jpg
-rm cover.jpg
+#pb push -c "sstc" --file cover.jpg
+#rm cover.jpg
 echo "<meta http-equiv='refresh' content='10'>"  > index.html
 echo "<h1>$album</h1>" >> index.html
 echo "<img src='cover.jpg'/>" >> index.html
