@@ -7,8 +7,8 @@ clear
 
 #Sony 4000x3000 => 2160p:3840x2160
 #CUT="3840x2160+80+0" #Top
-CUT="3840x2160+80+420" #Center
-#CUT="3840x2160+80+840" #Bas
+#CUT="3840x2160+80+420" #Center
+CUT="3840x2160+80+840" #Bas
 
 cd /media/hdd/stopmotion
 mkdir CROP
