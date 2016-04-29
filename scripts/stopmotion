@@ -17,5 +17,5 @@ convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
 done
 ls -1 CROP/*-CROP.JPG >  files.lst
 mpv mf://@files.lst -mf-type=jpg -mf-fps=3 -ovc=rawvideo -no-audio -o stopmotion.avi
-youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi
+while ! youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi ; do :; done
 pushbullet push all note "Raspberry Pi" "Stopmotion created"
