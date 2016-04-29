@@ -51,8 +51,11 @@ dropbox_uploader init
 Drive
 -----
 :link: https://github.com/odeke-em/drive
+:link: https://golang.org/doc/install
 ```shell
-sudo apt-get -y install golang
+curl -L -o go1.6.2.linux-armv6l.tar.gz https://storage.googleapis.com/golang/go1.6.2.linux-armv6l.tar.gz
+sudo tar -C /usr/local -xzf go1.6.2.linux-armv6l.tar.gz
+export PATH=$PATH:/usr/local/go/bin
 cat << ! >> ~/.bashrc
 export GOPATH=~/.bin/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
