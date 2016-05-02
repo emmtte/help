@@ -5,6 +5,7 @@ Command Line Interface Tools
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
   * [Flickr-Uploader](#flickr-uploader)
+  * [Gmusic](#gmusic)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
   * [Keeweb](#keeweb)
   * [Midnight Commander](#midnight-commander)
@@ -83,6 +84,17 @@ mcedit flickr-uploader/uploadr.ini
 mv flickr-uploader/ flickr-uploader#1/
 cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
+```
+
+Gmusicapi-scripts
+-----------------
+:link:https://github.com/thebigmunch/gmusicapi-scripts
+```Shell
+apt-get install python3-pip
+sudo pip3 install --upgrade gmusicapi-scripts
+gmsync /media/hdd/music
+gmsync down "/media/hdd/listen/%album%/%title%"
+gmsync -c ~/.local/share/gmusicapi/oauth2.cred media/hdd/music
 ```
 
 Ifttt Maker Channel
