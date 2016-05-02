@@ -1,2 +1,4 @@
-gmsync up -c ~/.local/share/gmusicapi/oauth.cred --delete-on-success /media/hdd/music
+#!/bin/sh
+# --delete-on-success
+gmsync up -c ~/.local/share/gmusicapi/oauth.cred /media/hdd/music
 pushbullet push all note "Rasperry Pi" "Gmusic upload done"
