@@ -5,7 +5,7 @@ Command Line Interface Tools
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
   * [Flickr-Uploader](#flickr-uploader)
-  * [Gmusic](#gmusic)
+  * [Gmusic](#gmusicapi-scripts)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
   * [Keeweb](#keeweb)
   * [Midnight Commander](#midnight-commander)
