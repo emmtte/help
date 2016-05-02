@@ -94,7 +94,7 @@ apt-get install python3-pip
 sudo pip3 install --upgrade gmusicapi-scripts
 gmsync /media/hdd/music
 gmsync down "/media/hdd/listen/%album%/%title%"
-gmsync -c ~/.local/share/gmusicapi/oauth2.cred media/hdd/music
+gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
 
 Ifttt Maker Channel
