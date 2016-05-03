@@ -1,3 +1,3 @@
-sudo apt-get install fslint
+sudo apt-get -y install fslint
 /usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
 pushbullet push all note "Search double Photos" "Finish"
