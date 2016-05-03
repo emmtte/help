@@ -11,6 +11,7 @@ Command Line Interface Tools
   * [Midnight Commander](#midnight-commander)
   * [Motion](#motion)
   * [OpenSSH](#open-ssh)
+  * [Picasa Websync](#picasa-websync)
   * [Pi Hole](#pi-hole)
   * [Pushbullet](#pushbullet)
   * [Raspbian](#raspbian)
@@ -220,6 +221,20 @@ if [ -f ~/.bashrc ]; then
 fi
 EOF
 ```
+
+Picasa Websync
+--------------
+:link: https://github.com/leocrawford/picasawebsync
+```shell
+sodo apt-get install jhead
+sudo apt-get install python-imaging python-imaging-tk
+sudo apt-get install python-gdata
+sudo pip install --upgrade oauth2client
+curl -o ~/.bin/picasawebsync.py https://raw.githubusercontent.com/leocrawford/picasawebsync/master/picasawebsync.py
+chmod +x ~/.bin/picasawebsync.py
+cp client_secrets.json ~/.bin/picasawebsync.py
+```
+demarrer la premiere fois seul dans le repertoire d'installation
 
 Pi Hole
 -------
