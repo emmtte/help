@@ -53,7 +53,8 @@ dropbox_uploader init
 Drive
 -----
 :link: https://github.com/odeke-em/drive
-:link: https://golang.org/doc/install
+
+:link: https://golang.org/dl/
 ```shell
 curl -L -o go1.6.2.linux-armv6l.tar.gz https://storage.googleapis.com/golang/go1.6.2.linux-armv6l.tar.gz
 sudo tar -C /usr/local -xzf go1.6.2.linux-armv6l.tar.gz
