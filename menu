@@ -1,7 +1,7 @@
 = d *
 C castnow 
   echo %d/
-  nodejs /usr/local/bin/castnow %d/ --type "audio/wav"
+  castnow %d/ --type "audio/wav"
 
 + f * & t t
 A move to "BitTorrentSync" folder
