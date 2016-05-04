@@ -35,9 +35,12 @@ Castnow
 -------
 :link: https://github.com/xat/castnow
 ```shell
-sudo apt-get install -y nodejs npm
-sudo npm install castnow -g
-nodejs /usr/local/bin/castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
+wget https://nodejs.org/dist/v6.0.0/node-v6.0.0-linux-armv6l.tar.gz
+tar -xvf node-v6.0.0-linux-armv6l.tar.gz 
+cd node-v6.0.0-linux-armv6l
+sudo cp -R * /usr/local/
+npm install git+https://github.com/xat/castnow.git -g
+castnow http://hi5.streamingsoundtracks.com --type "audio/wav"
 ```
 
 Dropbox-Uploader
