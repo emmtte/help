@@ -3,5 +3,5 @@
 
 sudo mkdir /media/freebox
 sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
-rsync --archive --no-o --no-g --delete --progress /media/hdd/photos/ /media/freebox/Photos
+rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
 pushbullet push all note "Backup Photos" "Backup finished"
