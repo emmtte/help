@@ -1,4 +1,4 @@
 #!/bin/sh
-sudo mkdir /media/hdd/photos-2048
+mkdir /media/hdd/photos-2048
 rsync --archive --delete --info=progress2 /media/hdd/photos/ /media/hdd/photos-2048
 pushbullet push all note "Backup Photos 2048" "Backup finished"
