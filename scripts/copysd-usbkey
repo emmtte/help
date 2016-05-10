@@ -5,6 +5,6 @@ VIDEOS="/media/hdd/youtube-upload"
 clear
 sudo mkdir /media/usbkey
 sudo mount $ID /media/usbkey
-rsync --archive --progress /media/usbkey/ $VIDEOS
+rsync --archive --info=progress2 /media/usbkey/ $VIDEOS
 sudo umount /media/usbkey
 pushbullet push all note "All videos from usbkey are copied"
