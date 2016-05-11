@@ -6,5 +6,5 @@ FILES=/media/hdd/photos-2048
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
 echo "Traitement de $FILE"
 #mogrify -format jpg -verbose -auto-orient -resize 2048x2048 -quality 100% "$FILE"
-~/node_modules/.bin/sharp --max 2048 -o "$FILE.jpg" "$FILE"
+~/node_modules/.bin/sharp --verbose --max --width 2048 --height 2048 -o "$FILE.jpg" "$FILE"
 done
