@@ -2,7 +2,6 @@
 FILES=/media/hdd/photos-2048
 mkdir $FILES
 rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
-pushbullet push all note "Backup Photos 2048" "Backup finished"
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
 echo "Traitement de $FILE"
 #mogrify -format jpg -verbose -auto-orient -resize 2048x2048 -quality 100% "$FILE"
