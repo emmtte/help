@@ -1,0 +1,3 @@
+#!/bin/sh
+gmsync down /media/hdd/music
+pushbullet push all note "Rasperry Pi" "Gmusic download done"
