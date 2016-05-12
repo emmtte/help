@@ -1,7 +1,7 @@
 #!/bin/sh
 FILES=/media/hdd/photos-2048
-mkdir $FILES
-rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
+#mkdir $FILES
+#rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
 #mogrify -format jpg -verbose -auto-orient -resize 2048x2048 -quality 100% "$FILE"
 ~/node_modules/.bin/sharp --verbose --max --width 2048 --height 2048 --withoutEnlargement -o "$FILE" "$FILE"
