@@ -1,4 +1,3 @@
 #!/bin/sh
-# --delete-on-success
-gmsync /media/hdd/music
+gmsync --delete-on-success /media/hdd/music
 pushbullet push all note "Rasperry Pi" "Gmusic upload done"
