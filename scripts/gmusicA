@@ -1,3 +1,3 @@
 #!/bin/sh
-gmupload -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
+gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 pushbullet push all note "Rasperry Pi" "Gmusic upload done"
