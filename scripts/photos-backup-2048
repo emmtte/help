@@ -3,6 +3,7 @@ FILES=/media/hdd/photos-2048
 #mkdir $FILES
 #rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
+  echo "$FILE"
   c=`identify -format "%w %h" "$FILE"`
   set $c
   if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then 
