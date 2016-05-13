@@ -1,5 +1,5 @@
 #!/bin/sh
-FILES=/media/hdd/photos-2048
+FILES=/media/hdd/photos
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
 #mogrify -format jpg -verbose -auto-orient -resize 2048x2048 -quality 100% "$FILE"
 #sharp --verbose --max --width 2048 --height 2048 --withoutEnlargement -o "$FILE" "$FILE"
@@ -11,5 +11,6 @@ echo $1
 echo $2
 if [ $1 -le 2048 ]; then echo "w inf at 2048" ; fi
 if [ $2 -le 2048 ]; then echo "h inf at 2048" ; fi
+if [ $1 -gt 2048 -o $2 -gt 2048 ]; then echo "faire la modif" ; fi
 done
 #pushbullet push all note "Backup Photos 2048" "Resize Finished"
