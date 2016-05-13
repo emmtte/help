@@ -6,11 +6,6 @@ find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
 echo "$FILE"
 c=`identify -format "%w %h" "$FILE"`
 set $c
-echo $c
-echo $1
-echo $2
-if [ $1 -le 2048 ]; then echo "w inf at 2048" ; fi
-if [ $2 -le 2048 ]; then echo "h inf at 2048" ; fi
 if [ $1 -gt 2048 -o $2 -gt 2048 ]; then echo "faire la modif" ; fi
 done
 #pushbullet push all note "Backup Photos 2048" "Resize Finished"
