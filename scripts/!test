@@ -4,9 +4,9 @@ find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
 #mogrify -format jpg -verbose -auto-orient -resize 2048x2048 -quality 100% "$FILE"
 #sharp --verbose --max --width 2048 --height 2048 --withoutEnlargement -o "$FILE" "$FILE"
 echo "$FILE"
-if [ `identify -format "%w" "$FILE"` -le 2048 ]; then echo "w inf at 2048" ; fi
-if [ `identify -format "%h" "$FILE"` -le 2048 ]; then echo "h inf at 2048" ; fi
+c=`identify -format "%w %h" "$FILE"`
+set $c
+if [ $1 -le 2048 ]; then echo "w inf at 2048" ; fi
+if [ $2 -le 2048 ]; then echo "h inf at 2048" ; fi
 done
 #pushbullet push all note "Backup Photos 2048" "Resize Finished"
-
-
