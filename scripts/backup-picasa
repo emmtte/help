@@ -1,5 +1,5 @@
 #!/bin/sh
 #~/.bin/picasawebsync.py -d /media/hdd/photos --shrink -m syncUpload --allowDelete remote --override:SAME UPDATE_REMOTE_METADATA --noupdatealbummetadata --purge
-~/.bin/picasawebsync.py -d /media/hdd/photos -m syncUpload --allowDelete remote --override:SAME UPDATE_REMOTE_METADATA --noupdatealbummetadata --purge
+~/.bin/picasawebsync.py -d /media/hdd/photos-2048 -m syncUpload --allowDelete remote --purge
 
 pushbullet push all note "Rasperry Pi" "gplus: Photos sync to family account finished"
