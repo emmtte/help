@@ -35,9 +35,9 @@ Castnow
 -------
 :link: https://github.com/xat/castnow
 ```shell
-wget https://nodejs.org/dist/v6.0.0/node-v6.0.0-linux-armv6l.tar.gz
-tar -xvf node-v6.0.0-linux-armv6l.tar.gz 
-cd node-v6.0.0-linux-armv6l
+wget https://nodejs.org/dist/v6.2.0/node-v6.2.0-linux-armv6l.tar.gz
+tar -xvf node-v6.2.0-linux-armv6l.tar.gz 
+cd node-v6.2.0-linux-armv6l
 sudo cp -R * /usr/local/
 npm install git+https://github.com/xat/castnow.git -g
 castnow http://hi5.streamingsoundtracks.com --type "audio/wav"
