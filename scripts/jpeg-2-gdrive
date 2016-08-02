@@ -2,7 +2,7 @@
 #Check only starred photos
 #Be carefoul this script delete entire exif file
 clear
-rm -rf /media/hdd/Drive/Photos/*
+rm -rf /media/hdd/Drive/Google\ Photos/*
 cd /media/hdd/Drive
 if ! drive pull --quiet --starred --all ; then pushbullet push all note "ERROR DRIVE" "ERROR PULL DRIVE"; exit; fi
 find /media/hdd/Drive/Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
