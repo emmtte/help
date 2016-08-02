@@ -1,0 +1,4 @@
+clear
+rm -rf /media/hdd/Drive/*
+cd /media/hdd/Drive
+if ! drive pull "Google Photos" ; then pushbullet push all note "Merge PDF" "Error pull starred" ; exit; fi
