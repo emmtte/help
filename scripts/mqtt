@@ -1,7 +1,4 @@
 #!/bin/bash
-##########################
-# MQTT Shell Listen & Exec
-host=$2
 clean="output input cmds";p="backpipe";pid=$(cat pidfile)
 ctrl_c() {
   echo "Cleaning up..."
@@ -16,7 +13,7 @@ ctrl_c() {
 
 listen(){
 ([ ! -p "$p" ]) && mkfifo $p
-(mosquitto_sub -h $host -t input >$p 2>/dev/null) &
+(mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "/a/03f761ae-7314-4b2f-a2d5-37bbba6708c2/p/6883/d/6c8946b9-576d-4fbb-ae0e-4165394d78c5/#" >$
 echo "$!" > pidfile
 while read line <$p
 do
@@ -25,24 +22,12 @@ do
     (rm -f $p;rm $clean;kill $pid) 2>/dev/null
     break
   else
-    (bash cmds | tee out) && mosquitto_pub -h $host -t output -f out;>out
+    echo $line
   fi
 done
 }
 
-usage(){
-echo "    Mqtt-Exec Listener Via Bash"
-echo "  Usage: $0 <mqtt server>"
-echo "  Subscripe to topic \"output\", publish to topic \"input\""
-}
-
-case "$1" in
--h|--host)
 trap ctrl_c INT
 listen
-;;
-*)
-usage
-exit 1
 ;;
 esac
