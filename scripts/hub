@@ -1,7 +1,7 @@
 #!/bin/sh
 # Create .mqtt files with
 #echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
-#https://gist.github.com/ManuCart/e8d776f01d0ce2ee414bde38e1651c00
+# or copy from https://gist.github.com/ManuCart
 #tmux new-window -t pi -a -n flickr
 
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -v -R | while read val; do
