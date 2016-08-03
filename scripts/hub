@@ -17,5 +17,5 @@ val=`echo "$val" | cut -d ' ' -f 1 | cut -d '/' -f 9`
     cast)
 	echo "cast ALERT: ${val}"
 	;;
-    esac.
+    esac
 done
