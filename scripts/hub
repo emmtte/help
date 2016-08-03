@@ -8,8 +8,6 @@ mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read v
 echo $val
 a=`echo "$val" |  jq '.["state"]' -r`
 echo $a
-val=`echo "$val" | cut -d ' ' -f 1 | cut -d '/' -f 9`
-echo $val
     case $val in
     merge)
 	echo "==> merge"
