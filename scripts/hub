@@ -4,7 +4,7 @@
 # or copy from https://gist.github.com/ManuCart
 #tmux new-window -t pi -a -n flickr
 
-mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -v -R | while read val; do
+mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read val; do
 echo $val
 a=`echo "$val" |  jq '.["state"]' -r`
 echo $a
