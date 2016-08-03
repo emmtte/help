@@ -13,7 +13,7 @@ ctrl_c() {
 
 listen(){
 ([ ! -p "$p" ]) && mkfifo $p
-(mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "/a/03f761ae-7314-4b2f-a2d5-37bbba6708c2/p/6883/d/6c8946b9-576d-4fbb-ae0e-4165394d78c5/#" >$
+
 echo "$!" > pidfile
 while read line <$p
 do
