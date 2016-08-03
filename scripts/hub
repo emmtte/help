@@ -6,7 +6,7 @@
 
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -v -R | while read val; do
 echo $val
-a=`echo "$val" |  jq '.["value"]' -r`
+a=`echo "$val" |  jq '.["state"]' -r`
 echo $a
 val=`echo "$val" | cut -d ' ' -f 1 | cut -d '/' -f 9`
 echo $val
