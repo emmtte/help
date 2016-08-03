@@ -5,9 +5,11 @@
 #tmux new-window -t pi -a -n flickr
 
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -v -R | while read val; do
+echo $val
 a=`echo "$val" |  jq '.["value"]' -r`
 echo $a
 val=`echo "$val" | cut -d ' ' -f 1 | cut -d '/' -f 9`
+echo $val
     case $val in
     merge)
 	echo "==> merge"
