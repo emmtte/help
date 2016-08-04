@@ -1,18 +1,3 @@
 #!/bin/sh
-
-lockdir=/var/tmp/castnow-start
-pidfile=/var/tmp/castnow-start/pid
-
-if ( mkdir ${lockdir} ) 2> /dev/null; then
-        echo $$ > $pidfile
-        trap 'rm -rf "$lockdir"; exit $?' INT TERM EXIT
-        
-        castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
-        #castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
-        
-        rm -rf "$lockdir"
-        trap - INT TERM EXIT
-else
-        echo "Lock Exists: $lockdir owned by $(cat $pidfile)"
-        pushbullet push all note "castnow-start" "Lock Exists: $lockdir owned by $(cat $pidfile)"
-fi
+castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
+#castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
