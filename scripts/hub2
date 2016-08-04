@@ -12,7 +12,7 @@ TMUX= tmux -2 new-session -d -s $a
 fi
 
 if [ -f /tmp/$a.lock ]; then
-tmux send -t $a 'pushbullet push all note "$a" "$a script $a allready running"' ENTER
+pushbullet push all note "$a" "$a script $a allready running"
 else
 tmux send -t $a 'pushbullet push all note "$a" "$a script starting"' ENTER
 tmux send -t $a 'echo " :::"' ENTER
