@@ -8,7 +8,7 @@ a=`echo "$valeur" |  jq '.["value"]' -r`
 echo "--------receive $a"
 
 if [ ! -f ~/scripts/$a ] ; then
-  pushbullet push all note "$a not exist"
+  #pushbullet push all note "$a not exist"
   echo "$a not exist"
   else
 
@@ -19,7 +19,7 @@ if [ ! -f ~/scripts/$a ] ; then
     fi
 
     if [ -f /tmp/$a.lck ] ; then
-    pushbullet push all note "$a locked"
+    #pushbullet push all note "$a locked"
     echo "$a locked"
     else
     echo "$a running"
