@@ -8,6 +8,7 @@ a=`echo "$valeur" |  jq '.["value"]' -r`
 
 if [ ! -f ~/scripts/$a ] ; then
   pushbullet push all note "$a not exist"
+  echo "$a not exist"
   else
 
     tmux has-session -t $a
@@ -18,7 +19,9 @@ if [ ! -f ~/scripts/$a ] ; then
 
     if [ -f /tmp/$a.lck ] ; then
     pushbullet push all note "$a locked"
+    echo "$a locked"
     else
+    echo "$a running"
     tmux send -t $a 'pushbullet push all note "$a..."' ENTER
     tmux send -t $a 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
     tmux send -t $a '#tmux kill-session -t $a' ENTER
