@@ -11,8 +11,12 @@ tmux set-environment -g a $a
 TMUX= tmux -2 new-session -d -s $a
 fi
 
-tmux send -t $a 'pushbullet push all note "$a starting..." "$a script starting"' ENTER
-tmux send -t $a '~/scripts/$a' ENTER
+if -f /tmp/$a.lck then
+pushbullet push all note "$a locked"
+else
+tmux send -t $a 'pushbullet push all note "$a..."' ENTER
+tmux send -t $a 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
 tmux send -t $a '#tmux kill-session -t $a' ENTER
-
-done
+fi
+d
+one
