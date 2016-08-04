@@ -6,16 +6,16 @@
 
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read val; do
 echo $val
-a=`echo "$val" |  jq '.["state"]' -r`
+a=`echo "$val" |  jq '.["value"]' -r`
 echo $a
-    case $val in
+    case $a in
     merge)
 	echo "==> merge"
 	cd ~/scripts && clear
 	bash merge-pdf
 	;;
     cast)
-	echo "cast ALERT: ${val}"
+	echo "cast ALERT: ${a}"
 	;;
     esac
 done
