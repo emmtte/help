@@ -11,7 +11,7 @@ tmux set-environment -g a $a
 TMUX= tmux -2 new-session -d -s $a
 fi
 
-tmux send -t $a 'pushbullet push all note "$a" "$a script starting"' ENTER
+tmux send -t $a 'pushbullet push all note "$a starting..." "$a script starting"' ENTER
 tmux send -t $a '~/scripts/$a' ENTER
 tmux send -t $a '#tmux kill-session -t $a' ENTER
 
