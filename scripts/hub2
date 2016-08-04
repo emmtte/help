@@ -22,6 +22,7 @@ tmux send -t $a 'echo " :::"' ENTER
 tmux send -t $a 'touch /tmp/$a.lock' ENTER
 tmux send -t $a '~/scripts/$a' ENTER
 tmux send -t $a 'rm /tmp/$a.lock' ENTER
+tmux send -t $a '#tmux kill-session -t $a' ENTER
 fi
 
 done
