@@ -1,5 +1,5 @@
 #!/bin/sh
-clear
+
 lockdir=/var/tmp/castnow-start
 pidfile=/var/tmp/castnow-start/pid
 
