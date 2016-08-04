@@ -24,7 +24,7 @@ if [ ! -f ~/scripts/$a ] ; then
     else
     echo "$a running"
     tmux send -t $a 'pushbullet push all note "$a..."' ENTER
-    tmux send -t $a 'flock -xno /tmp/$a.lck -c ~/scripts/$a' ENTER
+    tmux send -t $a 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
     tmux send -t $a '#tmux kill-session -t $a' ENTER
     fi
 
