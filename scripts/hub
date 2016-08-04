@@ -5,6 +5,7 @@
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read valeur ; do
 a=`echo "$valeur" |  jq '.["value"]' -r`
 
+echo "--------receive $a"
 
 if [ ! -f ~/scripts/$a ] ; then
   pushbullet push all note "$a not exist"
