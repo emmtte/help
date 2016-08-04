@@ -9,7 +9,7 @@ echo "--------receive $a"
 
 if [ ! -f ~/scripts/$a ] ; then
   #pushbullet push all note "$a not exist"
-  echo "$a not exist"
+  echo "ERROR script $a not exist"
   else
 
     tmux has-session -t $a
@@ -19,6 +19,7 @@ if [ ! -f ~/scripts/$a ] ; then
     fi
 
     if [ -f /tmp/$a.lck ] ; then
+    if flock -n /tmp/$a true ; then 
     #pushbullet push all note "$a locked"
     echo "$a locked"
     else
