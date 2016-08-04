@@ -5,17 +5,24 @@
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read valeur ; do
 a=`echo "$valeur" |  jq '.["value"]' -r`
 
-tmux has-session -t $a
-if [ "$?" -eq 1 ] ; then
-tmux set-environment -g a $a
-TMUX= tmux -2 new-session -d -s $a
-fi
 
-if -f /tmp/$a.lck then
-pushbullet push all note "$a locked"
-else
-tmux send -t $a 'pushbullet push all note "$a..."' ENTER
-tmux send -t $a 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
-tmux send -t $a '#tmux kill-session -t $a' ENTER
+if [ ! -f ~/scripts/$a ]; then
+  pushbullet push all note "$a not exist"
+  else
+
+    tmux has-session -t $a
+    if [ "$?" -eq 1 ] ; then
+    tmux set-environment -g a $a
+    TMUX= tmux -2 new-session -d -s $a
+    fi
+
+    if -f /tmp/$a.lck then
+    pushbullet push all note "$a locked"
+    else
+    tmux send -t $a 'pushbullet push all note "$a..."' ENTER
+    tmux send -t $a 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
+    tmux send -t $a '#tmux kill-session -t $a' ENTER
+    fi
+
 fi
 done
