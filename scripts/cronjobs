@@ -1,4 +1,4 @@
-
+#!/bin/sh
 if ps -ef | grep -v grep | grep hub2 ; then
         exit 0
 else
