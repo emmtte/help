@@ -18,7 +18,6 @@ if [ ! -f ~/scripts/$a ] ; then
     TMUX= tmux -2 new-session -d -s $a
     fi
 
-    if [ -f /tmp/$a.lck ] ; then
     if flock -n /tmp/$a false ; then 
     #pushbullet push all note "$a locked"
     echo "$a locked"
