@@ -19,7 +19,7 @@ if [ ! -f ~/scripts/$a ] ; then
     fi
 
     if [ -f /tmp/$a.lck ] ; then
-    if flock -n /tmp/$a true ; then 
+    if flock -n /tmp/$a false ; then 
     #pushbullet push all note "$a locked"
     echo "$a locked"
     else
