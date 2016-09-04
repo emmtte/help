@@ -113,7 +113,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2",
 
 Keeweb
 ------
-:link: https://github.com/antelle/keeweb
+:link: https://github.com/keeweb/keeweb
 
 :information_source: https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
 
