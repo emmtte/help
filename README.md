@@ -95,7 +95,7 @@ Gmusicapi-scripts
 -----------------
 :link:https://github.com/thebigmunch/gmusicapi-scripts
 ```Shell
-sudo apt-get install python3-pip
+sudo easy_install3 -U pip
 sudo pip3 install --upgrade gmusicapi-scripts
 gmsync /media/hdd/music
 gmsync down "/media/hdd/listen/%album%/%title%"
