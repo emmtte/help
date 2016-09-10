@@ -10,6 +10,7 @@ Command Line Interface Tools
   * [Keeweb](#keeweb)
   * [Midnight Commander](#midnight-commander)
   * [Motion](#motion)
+  * [Mosquitto](#mosquitto)
   * [OpenSSH](#open-ssh)
   * [Picasa Websync](#picasa-websync)
   * [Pi Hole](#pi-hole)
@@ -201,6 +202,19 @@ on_picture_save /usr/local/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M
 sudo mkdir /var/run/motion
 sudo chmod 777 /var/run/motion
 ````
+Mosquitto
+---------
+````
+curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+sudo apt-key add mosquitto-repo.gpg.key
+rm mosquitto-repo.gpg.key
+cd /etc/apt/sources.list.d/
+sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
+sudo apt-get update
+````
+
+
+
 Open SSH
 --------
 :link: http://www.openssh.com/
