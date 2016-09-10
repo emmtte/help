@@ -202,8 +202,10 @@ on_picture_save /usr/local/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M
 sudo mkdir /var/run/motion
 sudo chmod 777 /var/run/motion
 ````
+
 Mosquitto
 ---------
+:link:https://mosquitto.org/
 ````
 curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 sudo apt-key add mosquitto-repo.gpg.key
@@ -212,8 +214,6 @@ cd /etc/apt/sources.list.d/
 sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
 sudo apt-get update
 ````
-
-
 
 Open SSH
 --------
