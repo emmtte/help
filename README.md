@@ -102,6 +102,11 @@ gmsync /media/hdd/music
 gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
+Home Assistant
+--------------
+```Shell
+sudo pip3 install --upgrade homeassistant
+```
 
 Ifttt Maker Channel
 -------------------
