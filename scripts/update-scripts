@@ -6,7 +6,7 @@ rm  ~/scripts.zip
 curl -o ~/.config/mc/menu https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/menu
 rm ~/scripts/* 
 curl -L -o scripts.zip https://github.com/ManuCart/raspberrypi/archive/master.zip
-unzip -jo scripts.zip -d /home/pi/scripts RaspberryPi-master/scripts/*
+unzip -jo scripts.zip -d ~/scripts RaspberryPi-master/scripts/*
 chmod +x ~/scripts/*
 ln -s /media/hdd/Bibliothèques/Soundtracks/ ~/scripts/play-scores
 ln -s /media/hdd/torrent/ ~/scripts/torrents
