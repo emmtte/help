@@ -1,9 +1,18 @@
 #!/bin/sh
-# Create .mqtt files with
-# echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
+#sudo mcedit /etc/mosquitto/conf.d/mqtt.conf
+#>connection cloudmqtt
+#>address <Instance Server>:<Instance Port>
+#>remote_username <Instance User>
+#>remote_password <Instance Password>
+#>clientid <A cloudmqtt user with read access>
+#>try_private false
+#>start_type automatic
+#>topic # in
+
+#sudo /etc/init.d/mosquitto restart
 
 mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | while read valeur ; do
-a=`echo "$valeur" |  jq '.["value"]' -r`
+a=`echo "$valeur"
 
 echo "--------receive $a"
 
