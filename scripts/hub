@@ -7,33 +7,32 @@
 #>clientid <A cloudmqtt user with read access>
 #>try_private false
 #>start_type automatic
-
+topic # in
 #sudo /etc/init.d/mosquitto restart
 
-mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | while read valeur ; do
-a=`echo "$valeur"
+mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | while read message ; do
 
-echo "--------receive $a"
+echo "--------receive $message"
 
-if [ ! -f ~/scripts/$a ] ; then
+if [ ! -f ~/scripts/$message ] ; then
   #pushbullet push all note "$a not exist"
-  echo "ERROR script $a not exist"
+  echo "ERROR script $message not exist"
   else
 
-    tmux has-session -t $a
+    tmux has-session -t $message
     if [ "$?" -eq 1 ] ; then
-    tmux set-environment -g a $a
-    TMUX= tmux -2 new-session -d -s $a
+    tmux set-environment -g a $message
+    TMUX= tmux -2 new-session -d -s $message
     fi
 
-    if flock -n /tmp/$a false ; then 
+    if flock -n /tmp/$message false ; then 
     #pushbullet push all note "$a locked"
-    echo "$a locked"
+    echo "$message locked"
     else
-    echo "$a running"
-    tmux send -t $a 'pushbullet push all note "$a..."' ENTER
-    tmux send -t $a 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
-    tmux send -t $a '#tmux kill-session -t $a' ENTER
+    echo "$message running"
+    tmux send -t $message 'pushbullet push all note "$a..."' ENTER
+    tmux send -t $message 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
+    tmux send -t $message '#tmux kill-session -t $a' ENTER
     fi
 
 fi
