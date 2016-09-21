@@ -7,7 +7,6 @@
 #>clientid <A cloudmqtt user with read access>
 #>try_private false
 #>start_type automatic
-#>topic # in
 
 #sudo /etc/init.d/mosquitto restart
 
