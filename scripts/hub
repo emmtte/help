@@ -2,7 +2,7 @@
 # Create .mqtt files with
 # echo '/a/<API_ID>/p/<PROJECT>/d/<UUID>/#' | tee ~/.mqtt
 
-mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | while read valeur ; do
+mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | while read valeur ; do
 a=`echo "$valeur" |  jq '.["value"]' -r`
 
 echo "--------receive $a"
