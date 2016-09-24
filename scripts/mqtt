@@ -11,7 +11,7 @@
 #sudo /etc/init.d/mosquitto restart
 echo "log script tag" > /tmp/mqtt.log
 mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | while read message ; do
-echo $message
+echo "$date - $message" >> /tmp/mqtt.log
 case $message in
   merge-pdf) /home/pi/scripts/solo -port=6001 /home/pi/scripts/$message;;
   castnow-start) /home/pi/scripts/solo -port=6002 /home/pi/scripts/$message;;
