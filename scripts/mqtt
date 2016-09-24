@@ -9,14 +9,13 @@
 #>start_type automatic
 #>topic # in
 #sudo /etc/init.d/mosquitto restart
-
+echo "log script tag" > /tmp/mqtt.log
 mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | while read message ; do
 
-echo "--------receive $message"
+echo "$message" >> /tmp/mqtt.log
 
 if [ ! -f ~/scripts/$message ] ; then
-  #pushbullet push all note "$a not exist"
-  echo "ERROR script $message not exist"
+  echo "ERROR script $message not exist" >> /tmp/mqtt/log
   else
 
     tmux has-session -t $message
@@ -27,9 +26,9 @@ if [ ! -f ~/scripts/$message ] ; then
 
     if flock -n /tmp/$message false ; then 
     #pushbullet push all note "$a locked"
-    echo "$message locked"
+    echo "$message locked" >> /tmp/mqtt/log
     else
-    echo "$message running"
+    echo "$message running" >> /tmp/mqtt/log
     tmux send -t $message 'pushbullet push all note "$a..."' ENTER
     tmux send -t $message 'flock -xn /tmp/$a.lck -c ~/scripts/$a' ENTER
     tmux send -t $message '#tmux kill-session -t $a' ENTER
