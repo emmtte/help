@@ -24,6 +24,7 @@ case $message in
     tmux send -t AB.1 '/home/pi/scripts/solo -port=6002 /home/pi/scripts/castnow-start' ENTER
     tmux select-window -t pi:AB
     tmux select-pane -t AB.1
+    wall "(((((((((((((((((((((((((("
     tmux attach -t pi;;
   
   
