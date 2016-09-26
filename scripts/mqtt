@@ -18,6 +18,7 @@ case $message in
     /home/pi/scripts/solo -port=6001 /home/pi/scripts/$message;;
   
   castnow-start)
+    wall "debut de srare now"
     tmux send -t AB.1 'cd ~/scripts && clear' ENTER
     tmux send -t AB.1 '/home/pi/scripts/solo -port=6002 /home/pi/scripts/castnow-start' ENTER
     tmux select-window -t pi:AB
