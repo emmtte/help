@@ -20,17 +20,25 @@ case $message in
   castnow-start)
     wall "debut de srare now"
     tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/!tmux ; fi
-    tmux send -t AB.1 'cd ~/scripts && clear' ENTER
-    tmux send -t AB.1 '/home/pi/scripts/solo -port=6002 /home/pi/scripts/castnow-start' ENTER
-    tmux select-window -t pi:AB
-    tmux select-pane -t AB.1
+    tmux send -t cast.1 'cd ~/scripts && clear' ENTER
+    tmux send -t cast.1 'castnow-start' ENTER
+    tmux select-window -t pi:cast
+    tmux select-pane -t cast.1
     wall "(((((((((((((((((((((((((("
     tmux attach -t pi;;
   
   
   
   castnow-stop)
-    /home/pi/scripts/solo -port=6003 /home/pi/scripts/$message;;
+    wall "debut de srare now"
+    tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/!tmux ; fi
+    tmux send -t cast.1 'cd ~/scripts && clear' ENTER
+    tmux send-keys -t cast.1 C-r
+    tmux send -t cast.1 'castnow-stop' ENTER
+    tmux select-window -t pi:cast
+    tmux select-pane -t cast.1
+    wall "(((((((((((((((((((((((((("
+    tmux attach -t pi;;
   
   *) ;;
 esac
