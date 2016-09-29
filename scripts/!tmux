@@ -31,4 +31,4 @@ tmux select-pane -t 0
 tmux select-window -t pi:1
 fi
 
-tmux -2 attach -t pi
+#tmux -2 attach -t pi
