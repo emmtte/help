@@ -14,10 +14,10 @@ mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | wh
 echo "$date - $message" >> /tmp/mqtt.log
 wall $message
 case $message in
-  merge-pdf)
+  m)
     /home/pi/scripts/solo -port=6001 /home/pi/scripts/$message;;
   
-  castnow-start)
+  p)
     wall "debut de srare now"
     tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/!tmux ; fi
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
@@ -29,7 +29,7 @@ case $message in
   
   
   
-  castnow-stop)
+  s)
     wall "debut de srare now"
     tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/!tmux ; fi
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
