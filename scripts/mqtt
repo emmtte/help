@@ -21,7 +21,7 @@ case $message in
     wall "debut de srare now"
     tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/!tmux ; fi
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
-    tmux send -t cast.1 'castnow-start' ENTER
+    tmux send -t cast.1 'bash castnow-start' ENTER
     tmux select-window -t pi:cast
     tmux select-pane -t cast.1
     wall "(((((((((((((((((((((((((("
@@ -34,7 +34,7 @@ case $message in
     tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/!tmux ; fi
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
     tmux send-keys -t cast.1 C-r
-    tmux send -t cast.1 'castnow-stop' ENTER
+    tmux send -t cast.1 'bash castnow-stop' ENTER
     tmux select-window -t pi:cast
     tmux select-pane -t cast.1
     wall "(((((((((((((((((((((((((("
