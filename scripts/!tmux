@@ -16,7 +16,15 @@ tmux new-window -t pi -a -n EF
 tmux split-window -v
 tmux select-pane -t 0
 
+tmux new-window -t pi -a -n cast
+tmux split-window -v
+tmux select-pane -t 0
+
 tmux new-window -t pi -a -n cloud
+tmux split-window -v
+tmux select-pane -t 0
+
+tmux new-window -t pi -a -n merge
 tmux split-window -v
 tmux select-pane -t 0
 
