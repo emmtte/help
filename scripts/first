@@ -1,4 +1,5 @@
 #!/bin/sh
 /bin/sleep 20
-/bin/sh /home/pi/scripts/!tmux
-/usr/bin/tmux send -t merge.2 'sh /home/pi/scripts/mqtt' ENTER
+#/bin/sh /home/pi/scripts/!tmux
+#/usr/bin/tmux send -t merge.2 'sh /home/pi/scripts/mqtt' ENTER
+ssh pi@127.0.0.1 -oStrictHostKeyChecking=no -i /home/pi/.ssh/id_rsa -t sh /home/pi/scripts/awin
