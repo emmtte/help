@@ -19,6 +19,7 @@ tmux split-window -v
 tmux new-window -t pi -a -n cast
 tmux split-window -v
 #tmux select-pane -t 0
+tmux send -t cast.2 'sleep 5' ENTER
 tmux send -t cast.2 'sh /home/pi/scripts/mqtt' ENTER
 
 tmux new-window -t pi -a -n cloud
