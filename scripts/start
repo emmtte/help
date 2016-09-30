@@ -1,2 +1,3 @@
-!tmux
-mqtt
+#!/bin/sh
+/home/pi/scripts/!tmux
+/home/pi/scripts/mqtt
