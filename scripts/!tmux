@@ -6,27 +6,29 @@ tmux -2 new-session -d -s pi
 
 tmux rename-window -t pi:1 AB
 tmux split-window -v
-tmux select-pane -t 0
+#tmux select-pane -t 0
 
 tmux new-window -t pi -a -n CD
 tmux split-window -v
-tmux select-pane -t 0
+#tmux select-pane -t 0
 
 tmux new-window -t pi -a -n EF
 tmux split-window -v
-tmux select-pane -t 0
+#tmux select-pane -t 0
 
 tmux new-window -t pi -a -n cast
 tmux split-window -v
-tmux select-pane -t 0
+#tmux select-pane -t 0
+tmux send -t cast.2 'sh /home/pi/scripts/mqtt' ENTER
 
 tmux new-window -t pi -a -n cloud
 tmux split-window -v
-tmux select-pane -t 0
+#tmux select-pane -t 0
 
 tmux new-window -t pi -a -n merge
 tmux split-window -v
-tmux select-pane -t 0
+#tmux select-pane -t 0
+
 
 tmux select-window -t pi:1
 fi
