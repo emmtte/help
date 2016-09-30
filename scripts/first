@@ -1,4 +1,4 @@
 #!/bin/sh
 /bin/sleep 20
-/home/pi/scripts/!tmux
+/bin/sh /home/pi/scripts/!tmux
 /usr/bin/tmux send -t merge.2 'sh /home/pi/scripts/mqtt' ENTER
