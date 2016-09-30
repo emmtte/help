@@ -9,7 +9,7 @@
 #>start_type automatic
 #>topic # in
 #sudo /etc/init.d/mosquitto restart
-echo "log script tag" > /tmp/mqtt.log
+
 mosquitto_sub -h m21.cloudmqtt.com -p 19083 -u pi -P raspberry -t script -R | while read message ; do
 echo "$date - $message" >> /tmp/mqtt.log
 wall $message
