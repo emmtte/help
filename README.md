@@ -7,7 +7,7 @@ Command Line Interface Tools
   + [Gmusic](#gmusicapi-scripts)
   + [Hue](#hue-cli)
   + [Ifttt](#ifttt)
-    - [Adafruit](#adafruit)
+    - [Adafruit Channel](#adafruit-channel)
     - [Maker Channel](#maker-channel)
   + [Keeweb](#keeweb)
   + [Midnight Commander](#midnight-commander)
@@ -109,11 +109,11 @@ hue lights 6 off
 hue lights 6 alert
 ```
 
-Iftt
-----
+Ifttt
+-----
 :link: https://ifttt.com
 
-Adafruit Channel
+### Adafruit Channel
 :link: https://ifttt.com/adafruit
 ````
 echo "{key}" > ~/.AIO_KEY
@@ -124,7 +124,7 @@ mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_
 mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value'
 ````
 
-Maker Channel
+### Maker Channel
 :link: https://ifttt.com/maker
 ````
 echo "{key}" > ~/.maker_channel_key
