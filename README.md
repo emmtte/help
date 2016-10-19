@@ -274,12 +274,6 @@ Match Address 192.168.0.0/24
     PasswordAuthentication yes
 EOF
 sudo service ssh restart
-
-cat << EOF | sudo tee -a ~/.bash_profile
-if [ -f ~/.bashrc ]; then
-  . ~/.bashrc
-fi
-EOF
 ```
 [:back:](#command-line-interface-tools)
 <br><br>
