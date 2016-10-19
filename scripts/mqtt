@@ -1,7 +1,8 @@
 #!/bin/sh
 #sudo mcedit /etc/mosquitto/conf.d/mqtt.conf
 
-mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value' | while read message ; do
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | while read message ; do
+message = $message | jq --raw-output 'select(.value != null).value'
 echo "$date - $message" >> /tmp/mqtt.log
 wall $message
 case $message in
