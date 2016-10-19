@@ -5,6 +5,7 @@ Command Line Interface Tools
   * [Drive](#drive)
   * [Flickr-Uploader](#flickr-uploader)
   * [Gmusic](#gmusicapi-scripts)
+  * [Hue](#hue-cli)
   * [Ifttt Maker Channel](#ifttt-maker-channel)
   * [Keeweb](#keeweb)
   * [Midnight Commander](#midnight-commander)
@@ -91,6 +92,19 @@ sudo pip3 install --upgrade gmusicapi-scripts
 gmsync /media/hdd/music
 gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
+```
+
+Hue-cli
+-------
+:link:https://github.com/bahamas10/hue-cli
+```Shell
+sudo npm install -g hue-cli
+hue search
+hue -H 192.168.0.10 register
+hue lights 6 on
+hue lights 6 ff0000
+hue lights 6 off
+hue lights 6 alert
 ```
 
 Ifttt Maker Channel
