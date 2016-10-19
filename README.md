@@ -27,7 +27,7 @@ Command Line Interface Tools
 
 <br><br>
 
-[:back:](#command-line-interface-tools){:style="float:right"}
+[:back:](#command-line-interface-tools){: style="float:right"}
 
 Castnow
 -------
