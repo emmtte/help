@@ -1,21 +1,12 @@
 #!/bin/sh
 #sudo mcedit /etc/mosquitto/conf.d/mqtt.conf
-#>connection cloudmqtt
-#>address <Instance Server>:<Instance Port>
-#>remote_username <Instance User>
-#>remote_password <Instance Password>
-#>clientid <A cloudmqtt user with read access>
-#>try_private false
-#>start_type automatic
-#>topic # in
-#sudo /etc/init.d/mosquitto restart
 
 mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value' | while read message ; do
 echo "$date - $message" >> /tmp/mqtt.log
 wall $message
 case $message in
   
-  p)
+  play)
     wall "debut de start now"
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
     tmux send -t cast.1 'bash castnow-start' ENTER
@@ -24,7 +15,7 @@ case $message in
     wall "(((((((((((((((((((((((((("
     tmux attach -t pi;;
   
-  s)
+  stop)
     wall "debut de start now"
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
     tmux send-keys -t cast.1 C-r
