@@ -26,7 +26,6 @@ Command Line Interface Tools
   + [Youtube-Upload](#youtube-upload)
 
 <br><br>
-<p style='text-align: right;'>[:back:](#command-line-interface-tools)</p>
 
 Castnow
 -------
@@ -39,7 +38,7 @@ sudo cp -R * /usr/local/
 npm install git+https://github.com/xat/castnow.git -g
 castnow http://hi5.streamingsoundtracks.com --type "audio/wav"
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Dropbox-Uploader
@@ -51,7 +50,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Drive
@@ -72,7 +71,7 @@ mkdir ~/.bin ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init /media/hdd/Drive
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Flickr-Uploader
@@ -93,7 +92,7 @@ mv flickr-uploader/ flickr-uploader#1/
 cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Gmusicapi-scripts
@@ -106,7 +105,7 @@ gmsync /media/hdd/music
 gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Hue-cli
@@ -121,7 +120,7 @@ hue lights 6 ff0000
 hue lights 6 off
 hue lights 6 alert
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Ifttt
@@ -146,7 +145,7 @@ echo "{key}" > ~/.maker_channel_key
 curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ````
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Keeweb
@@ -154,7 +153,7 @@ Keeweb
 :link: https://github.com/keeweb/keeweb
 
 :information_source: https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Midnight Commander
@@ -205,7 +204,7 @@ set -g mouse-select-window on
 set-option -g status-left  ''
 set-option -g status-right ''
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Motion
@@ -241,7 +240,7 @@ on_picture_save /usr/local/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M
 sudo mkdir /var/run/motion
 sudo chmod 777 /var/run/motion
 ````
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Mosquitto
@@ -255,7 +254,7 @@ cd /etc/apt/sources.list.d/
 sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
 sudo apt-get update
 ````
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Open SSH
@@ -282,7 +281,7 @@ if [ -f ~/.bashrc ]; then
 fi
 EOF
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Picasa Websync
@@ -298,7 +297,7 @@ chmod +x ~/.bin/picasawebsync.py
 cp client_secrets.json ~/.bin/picasawebsync.py
 ```
 demarrer la premiere fois seul dans le repertoire d'installation
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Pi Hole
@@ -311,7 +310,7 @@ sudo mcedit /etc/dnsmasq.d/02-wildcards.conf
 > address=/.blub.net/192.168.0.1
 sudo reboot
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Pushbullet-cli
@@ -326,7 +325,7 @@ cd ..
 sudo rm -rf pushbullet-cli
 pb set-key
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Pushbullet
@@ -341,7 +340,7 @@ sudo chmod +x /usr/local/bin/pushbullet /usr/local/bin/JSON.sh
 ```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Raspbian
@@ -375,7 +374,7 @@ sudo apt-get update
 sudo apt-get -y upgrade
 sudo rpi-update
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Samba
@@ -396,7 +395,7 @@ EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
 ````
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Sejda
@@ -412,7 +411,7 @@ mv sejda-console-1.0.0.RELEASE/* ~/.bin/sejda
 rm sejda.zip
 chmod +x ~/.bin/sejda/bin/sejda-console
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Squid
@@ -431,7 +430,7 @@ sudo mcedit squid.conf
 sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
 sudo squid -k reconfigure
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Transmission
@@ -468,7 +467,7 @@ EOF
 sudo service transmission-daemon reload
 sudo service transmission-daemon restart
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Youtube-dl
@@ -481,7 +480,7 @@ echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ```
-
+[:back:](#command-line-interface-tools)
 <br><br>
 
 Youtube-Upload
@@ -501,3 +500,4 @@ sudo mv client_secret_youtube.json /usr/local/share/youtube_upload/client_secret
 dropbox_uploader download SampleVideo.mp4
 youtube-upload --title="test" --category="Music" --privacy="private" SampleVideo.mp4
 ```
+[:back:](#command-line-interface-tools)
