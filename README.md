@@ -26,8 +26,7 @@ Command Line Interface Tools
   + [Youtube-Upload](#youtube-upload)
 
 <br><br>
-
-<right>[:back:](#command-line-interface-tools)</right>
+<p style='text-align: right;'>[:back:](#command-line-interface-tools)</p>
 
 Castnow
 -------
