@@ -1,6 +1,5 @@
 Command Line Interface Tools
 ============================
-  * [BtSync](#btsync)
   * [Castnow](#castnow)
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Drive](#drive)
@@ -22,15 +21,6 @@ Command Line Interface Tools
   * [Transmission](#transmission)
   * [Youtube-dl](#youtube-dl)
   * [Youtube-Upload](#youtube-upload)
-
-BtSync
-------
-:link:https://www.getsync.com
-```Shell
-wget https://download-cdn.getsync.com/stable/linux-arm/BitTorrent-Sync_arm.tar.gz
-sudo tar -xvf BitTorrent-Sync_arm.tar.gz -C /usr/local/sbin btsync
-sudo btsync
-```
 
 Castnow
 -------
@@ -101,11 +91,6 @@ sudo pip3 install --upgrade gmusicapi-scripts
 gmsync /media/hdd/music
 gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
-```
-Home Assistant
---------------
-```Shell
-sudo pip3 install --upgrade homeassistant
 ```
 
 Ifttt Maker Channel
