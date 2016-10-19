@@ -109,8 +109,22 @@ hue lights 6 off
 hue lights 6 alert
 ```
 
-Ifttt Maker Channel
--------------------
+Iftt
+----
+:link: https://ifttt.com
+
+Adafruit Channel
+:link: https://ifttt.com/adafruit
+````
+echo "{key}" > ~/.AIO_KEY
+mosquitto_pub -h io.adafruit.com -p 8883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home -m test
+mosquitto_pub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/f/rpi -m "test"
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq '.'
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output '.value'
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value'
+````
+
+Maker Channel
 :link: https://ifttt.com/maker
 ````
 echo "{key}" > ~/.maker_channel_key
