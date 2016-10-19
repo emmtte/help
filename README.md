@@ -25,6 +25,8 @@ Command Line Interface Tools
   + [Youtube-dl](#youtube-dl)
   + [Youtube-Upload](#youtube-upload)
 
+<br><br>
+
 Castnow
 -------
 :link: https://github.com/xat/castnow
@@ -91,6 +93,8 @@ cd ~
 ~/.bin/flickr-uploader#1/uploadr.py
 ```
 
+<br><br>
+
 Gmusicapi-scripts
 -----------------
 :link:https://github.com/thebigmunch/gmusicapi-scripts
@@ -102,6 +106,7 @@ gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
 
+<br><br>
 
 Hue-cli
 -------
@@ -116,6 +121,7 @@ hue lights 6 off
 hue lights 6 alert
 ```
 
+<br><br>
 
 Ifttt
 -----
@@ -140,6 +146,7 @@ curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ````
 
+<br><br>
 
 Keeweb
 ------
@@ -147,6 +154,7 @@ Keeweb
 
 :information_source: https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
 
+<br><br>
 
 Midnight Commander
 ------------------
@@ -197,6 +205,7 @@ set-option -g status-left  ''
 set-option -g status-right ''
 ```
 
+<br><br>
 
 Motion
 ------
@@ -232,6 +241,7 @@ sudo mkdir /var/run/motion
 sudo chmod 777 /var/run/motion
 ````
 
+<br><br>
 
 Mosquitto
 ---------
@@ -245,6 +255,7 @@ sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
 sudo apt-get update
 ````
 
+<br><br>
 
 Open SSH
 --------
@@ -271,6 +282,7 @@ fi
 EOF
 ```
 
+<br><br>
 
 Picasa Websync
 --------------
@@ -286,6 +298,7 @@ cp client_secrets.json ~/.bin/picasawebsync.py
 ```
 demarrer la premiere fois seul dans le repertoire d'installation
 
+<br><br>
 
 Pi Hole
 -------
@@ -298,6 +311,7 @@ sudo mcedit /etc/dnsmasq.d/02-wildcards.conf
 sudo reboot
 ```
 
+<br><br>
 
 Pushbullet-cli
 --------------
@@ -312,6 +326,7 @@ sudo rm -rf pushbullet-cli
 pb set-key
 ```
 
+<br><br>
 
 Pushbullet
 ----------
@@ -326,6 +341,7 @@ sudo chmod +x /usr/local/bin/pushbullet /usr/local/bin/JSON.sh
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ```
 
+<br><br>
 
 Raspbian
 --------
@@ -359,6 +375,7 @@ sudo apt-get -y upgrade
 sudo rpi-update
 ```
 
+<br><br>
 
 Samba
 -----
@@ -379,6 +396,7 @@ sudo service smbd restart
 sudo smbpasswd -a pi
 ````
 
+<br><br>
 
 Sejda
 -----
@@ -394,6 +412,7 @@ rm sejda.zip
 chmod +x ~/.bin/sejda/bin/sejda-console
 ```
 
+<br><br>
 
 Squid
 -----
@@ -412,6 +431,7 @@ sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.p
 sudo squid -k reconfigure
 ```
 
+<br><br>
 
 Transmission
 ------------
@@ -448,6 +468,7 @@ sudo service transmission-daemon reload
 sudo service transmission-daemon restart
 ```
 
+<br><br>
 
 Youtube-dl
 ----------
@@ -460,6 +481,7 @@ mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ```
 
+<br><br>
 
 Youtube-Upload
 --------------
