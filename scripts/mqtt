@@ -1,7 +1,9 @@
 #!/bin/sh
 #sudo mcedit /etc/mosquitto/conf.d/mqtt.conf
+# mosquitto_sub -v -t rpi_home/dashboard/feed/update
+# mosquitto_sub -v -t rpi_home/dashboard/stream/create
 
-mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t "rpi_home/#" -R | while read json ; do
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/dashboard/stream/create -R | while read json ; do
 echo "$json" > ~/mqtt.json
 message = cat ~/mqtt.json | jq --raw-output 'select(.value != null).value'
 wall $message
