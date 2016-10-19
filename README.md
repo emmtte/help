@@ -37,6 +37,7 @@ npm install git+https://github.com/xat/castnow.git -g
 castnow http://hi5.streamingsoundtracks.com --type "audio/wav"
 ```
 
+
 Dropbox-Uploader
 ----------------
 :link: https://github.com/andreafabrizi/Dropbox-Uploader
@@ -46,6 +47,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
+
 
 Drive
 -----
@@ -65,6 +67,7 @@ mkdir ~/.bin ~/.bin/go
 go get -u github.com/odeke-em/drive/cmd/drive
 drive init /media/hdd/Drive
 ```
+
 
 Flickr-Uploader
 ---------------
@@ -96,6 +99,7 @@ gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
 
+
 Hue-cli
 -------
 :link:https://github.com/bahamas10/hue-cli
@@ -108,6 +112,7 @@ hue lights 6 ff0000
 hue lights 6 off
 hue lights 6 alert
 ```
+
 
 Ifttt
 -----
@@ -131,6 +136,7 @@ echo "{key}" > ~/.maker_channel_key
 curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ````
+
 
 Keeweb
 ------
@@ -223,6 +229,7 @@ sudo mkdir /var/run/motion
 sudo chmod 777 /var/run/motion
 ````
 
+
 Mosquitto
 ---------
 :link:https://mosquitto.org/
@@ -234,6 +241,7 @@ cd /etc/apt/sources.list.d/
 sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
 sudo apt-get update
 ````
+
 
 Open SSH
 --------
@@ -260,6 +268,7 @@ fi
 EOF
 ```
 
+
 Picasa Websync
 --------------
 :link: https://github.com/leocrawford/picasawebsync
@@ -274,6 +283,7 @@ cp client_secrets.json ~/.bin/picasawebsync.py
 ```
 demarrer la premiere fois seul dans le repertoire d'installation
 
+
 Pi Hole
 -------
 :link: https://github.com/jacobsalmela/pi-hole
@@ -284,6 +294,7 @@ sudo mcedit /etc/dnsmasq.d/02-wildcards.conf
 > address=/.blub.net/192.168.0.1
 sudo reboot
 ```
+
 
 Pushbullet-cli
 --------------
@@ -298,6 +309,7 @@ sudo rm -rf pushbullet-cli
 pb set-key
 ```
 
+
 Pushbullet
 ----------
 :link: https://github.com/Red5d/pushbullet-bash
@@ -310,6 +322,7 @@ sudo chmod +x /usr/local/bin/pushbullet /usr/local/bin/JSON.sh
 ```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ```
+
 
 Raspbian
 --------
@@ -343,6 +356,7 @@ sudo apt-get -y upgrade
 sudo rpi-update
 ```
 
+
 Samba
 -----
 :link: https://www.samba.org/
@@ -362,6 +376,7 @@ sudo service smbd restart
 sudo smbpasswd -a pi
 ````
 
+
 Sejda
 -----
 :link: https://github.com/torakiki/sejda
@@ -375,6 +390,7 @@ mv sejda-console-1.0.0.RELEASE/* ~/.bin/sejda
 rm sejda.zip
 chmod +x ~/.bin/sejda/bin/sejda-console
 ```
+
 
 Squid
 -----
@@ -392,6 +408,7 @@ sudo mcedit squid.conf
 sudo wget -O /etc/squid/ad_block.txt 'http://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml'
 sudo squid -k reconfigure
 ```
+
 
 Transmission
 ------------
@@ -428,6 +445,7 @@ sudo service transmission-daemon reload
 sudo service transmission-daemon restart
 ```
 
+
 Youtube-dl
 ----------
 :link: https://github.com/rg3/youtube-dl
@@ -438,6 +456,7 @@ echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ```
+
 
 Youtube-Upload
 --------------
