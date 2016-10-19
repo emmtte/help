@@ -27,7 +27,9 @@ Command Line Interface Tools
 
 <br><br>
 
-[:back:](#command-line-interface-tools) Castnow
+[:back:](#command-line-interface-tools){:style="float:right"}
+
+Castnow
 -------
 :link: https://github.com/xat/castnow
 ```shell
