@@ -30,4 +30,4 @@ done
 
 if ! drive push --quiet Photos ; then pushbullet push all note "ERROR DRIVE" "ERROR PUSH DRIVE"; exit; fi
 
-pushbullet push all note "Rasperry Pi" "Please control the Starred Files in Drive and run next script"
+~/scripts/iftt-maker "Rasperry Pi" "Please control the Starred Files in Drive and run next script"
