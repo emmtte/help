@@ -161,6 +161,14 @@ s Autolevel photos
     shift
   done
   
++ f *.tiff | f *.TIFF & t t
+s Tiff to jpg with sharp
+  set %t
+  while [ -n "$1" ]; do
+    sharp --quality 100 -o $1 $1-sharp.jpg
+    shift
+  done
+
 + f *.jpg | f *.JPG & t r
 e Affiche l'EXIF de la photo
   clear
