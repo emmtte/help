@@ -7,4 +7,4 @@ sudo mkdir /media/usbkey
 sudo mount $ID /media/usbkey
 rsync --archive --info=progress2 /media/usbkey/ $VIDEOS
 sudo umount /media/usbkey
-pushbullet push all note "All videos from usbkey are copied"
+~/scripts/iftt-maker "All videos from usbkey are copied"
