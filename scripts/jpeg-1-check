@@ -1,12 +1,13 @@
 #!/bin/sh
-#Check exif photos in gdrive/photos/ directory
+#Check exif photos in Google Photos directory
 clear
-if [ ! -f /usr/bin/exiv2 ] ; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
-rm -rf /media/hdd/Drive/Photos/*
+if [ ! -f /usr/bin/exiv2 ] ; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
+rm -rf /media/hdd/Drive/Google\ Photos/*
 cd /media/hdd/Drive/
-if ! drive pull --quiet Photos ; then pushbullet push all note "ERROR DRIVE" "ERROR PULL DRIVE"; exit; fi
+if ! drive pull --quiet Google\ Photos ; then ~/scripts/iftt-maker "ERROR DRIVE" "ERROR PULL DRIVE"; exit; fi
 
-find /media/hdd/Drive/Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
+
+find /media/hdd/Drive/Google\ Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
 
@@ -28,6 +29,5 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
 done
 
-if ! drive push --quiet Photos ; then pushbullet push all note "ERROR DRIVE" "ERROR PUSH DRIVE"; exit; fi
-
+if ! drive push --quiet Google\ Photos ; then ~/scripts/iftt-maker "ERROR DRIVE" "ERROR PUSH DRIVE"; exit; fi
 ~/scripts/iftt-maker "Rasperry Pi" "Please control the Starred Files in Drive and run next script"
