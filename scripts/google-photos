@@ -2,4 +2,4 @@
 clear
 rm -rf /media/hdd/Drive/*
 cd /media/hdd/Drive
-if ! drive pull "Google Photos" ; then pushbullet push all note "Merge PDF" "Error pull starred" ; exit; fi
+if ! drive pull "Google Photos" ; then ~/scripts/iftt-maker "Google Photos" "Error importation" ; exit; fi
