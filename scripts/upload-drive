@@ -1,5 +1,5 @@
 cd /media/hdd/Drive
 mkdir Temp Temp/Upload_from_Pi Temp/Download_to_Pi
-drive push --quiet Temp/Upload_from_Pi
-drive pull --quiet Temp/Download_to_Pi
+drive push Temp/Upload_from_Pi
+drive pull Temp/Download_to_Pi
 pushbullet push all note "Raspberry Pi" "Files Uploaded to Google Drive"
