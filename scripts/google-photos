@@ -1,3 +1,4 @@
+#!/bin/sh
 clear
 rm -rf /media/hdd/Drive/*
 cd /media/hdd/Drive
