@@ -11,4 +11,4 @@ FILE=`ls $GDRIVE/Documents | head -1`
 mv sejda_out.pdf "Documents/$FILE"
 drive push --quiet "Documents/$FILE"
 drive unstar --quiet "Documents/$FILE"
-pushbullet push all note "Raspberry Pi" "File $FILE compressed"
+~/scripts/iftt-maker "Raspberry Pi" "File $FILE compressed"
