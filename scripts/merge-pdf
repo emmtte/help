@@ -16,4 +16,4 @@ mv sejda_out.pdf "Documents/$FILE"
 if ! drive push --quiet "Documents/$FILE" ; then pushbullet push all note "Merge PDF" "Error push document" ; exit; fi
 drive unstar --quiet "Documents/$FILE"
 drive trash --starred
-pushbullet push all note "Raspberry Pi" "Starred Files added to $FILE"
+~/scripts/iftt-maker "Raspberry Pi" "Starred Files added to $FILE"
