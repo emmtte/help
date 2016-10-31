@@ -7,4 +7,4 @@ while exist /media/hdd/youtube-dl/*.part
 do 
 youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 done
-pushbullet push all note "youtube-dl" "Downloads finished"
+~/scripts/iftt-maker "youtube-dl" "Downloads finished"
