@@ -1,4 +1,5 @@
 #!/bin/sh
+# npm install sharp
 FILES=/media/hdd/photos-2048
 #mkdir $FILES
 #rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
