@@ -12,4 +12,4 @@ find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
     #mogrify -format jpg -verbose -auto-orient -resize 2048x2048 -quality 100% "$FILE"
   fi
 done
-pushbullet push all note "Backup Photos 2048" "Resize Finished"
+~/scripts/iftt-maker "Backup Photos 2048" "Resize Finished"
