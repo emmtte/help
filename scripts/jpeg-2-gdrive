@@ -14,4 +14,4 @@ echo "eviv2 end formatting"
 drive push --quiet "$FILE"
 drive unstar "$FILE"
 done
-pushbullet push all note "Raspberry Pi" "Done"
+~/scripts/iftt-maker "Raspberry Pi" "Done"
