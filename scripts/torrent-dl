@@ -18,4 +18,4 @@ do
   transmission-remote --torrent $ID --remove
 done
 
-pushbullet push all note "Raspberry Pi" "All torrents added"
+~/scripts/iftt-maker "Raspberry Pi" "All torrents added"
