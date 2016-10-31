@@ -165,7 +165,7 @@ s Autolevel photos
 s Tiff to jpg with sharp
   set %t
   while [ -n "$1" ]; do
-    sharp --quality 100 -o $1 $1-sharp.jpg
+    sharp --quality 100 -o $1-sharp.jpg $1
     shift
   done
 
