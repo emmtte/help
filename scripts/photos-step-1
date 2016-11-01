@@ -3,11 +3,11 @@
 GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
 clear
 if [ ! -f /usr/bin/exiv2 ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR: Please install exiv2"; exit; fi
-rm -rf $GOOGLE_PHOTOS_DIR/*
+rm -rf "$GOOGLE_PHOTOS_DIR/*"
 cd /media/hdd/Drive/
 if ! drive pull --quiet "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PULL DRIVE"; exit; fi
 
-find $GOOGLE_PHOTOS_DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
+find "$GOOGLE_PHOTOS_DIR" -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
 
