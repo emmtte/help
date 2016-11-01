@@ -7,8 +7,8 @@ Command Line Interface Tools
     - [Photos Step #2](#maker-channel)
       - [ ] Verify starred files
       - [ ] Run script ```photos-step-2``` 
-  + [Photos Step #1](#dropbox-uploader)
-  + [Photos Step #1](#drive)
+    - [Photos Step #3](#dropbox-uploader)
+    - [Photos Step #4](#drive)
   + [Photos Step #1](#flickr-uploader)
   + [Photos Step #1](#gmusicapi-scripts)
   + [Hue](#hue-cli)
