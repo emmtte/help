@@ -1,12 +1,12 @@
 Google Photos Scripts
 =====================
   + [Photos Step #1](#adafruit-channel)
-    - [ ] Delete directories who no start with 'YYYY-MM-DD ...' 
-    - [ ] Run script ```photos-step-1```
+    - Delete directories who no start with 'YYYY-MM-DD ...' 
+    - Run script ```photos-step-1```
   + [Photos Step #2](#maker-channel)
-    - [ ] Verify if starred files are in the good directories
+    - Verify if starred files are in the good directories
     - Be carefoul this script delete entire exif file before rewriting good date
-    - [ ] Run script ```photos-step-2``` 
+    - Run script ```photos-step-2``` 
   + [Photos Step #3](#dropbox-uploader)
   + [Photos Step #4](#drive)
 
