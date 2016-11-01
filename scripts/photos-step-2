@@ -5,7 +5,7 @@ GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
 clear
 rm -rf "$GOOGLE_PHOTOS_DIR/"*
 cd /media/hdd/Drive
-if ! drive pull --quiet --starred --all ; then ~/scripts/iftt-maker "Raspberry Pi - Photos Step 2" "ERROR PULL DRIVE"; exit; fi
+if ! drive pull --yes --starred --all ; then ~/scripts/iftt-maker "Raspberry Pi - Photos Step 2" "ERROR PULL DRIVE"; exit; fi
 
 find "$GOOGLE_PHOTOS_DIR" -iname "*.jpg" -type f | sort | while read FILE ; do 
 echo "$FILE"
