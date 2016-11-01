@@ -7,7 +7,7 @@ clear
 if [ ! -f /usr/bin/exiv2 ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR: Please install exiv2"; exit; fi
 rm -rf "$GOOGLE_PHOTOS_DIR/"*
 cd /media/hdd/Drive/
-if ! drive pull --yes "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PULL DRIVE"; exit; fi
+if ! drive pull --no-prompt "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PULL DRIVE"; exit; fi
 
 #Backup
 mkdir /media/hdd/backup
@@ -38,5 +38,5 @@ printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE :
 done
 
 #Upload to Google Photos
-if ! drive push --yes "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PUSH DRIVE"; exit; fi
+if ! drive push --no-prompt "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PUSH DRIVE"; exit; fi
 ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "Please control the Starred Files in Drive and run next script"
