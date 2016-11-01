@@ -2,7 +2,7 @@ Command Line Interface Tools
 ============================
   + [Google Photos](#castnow)
     - [Photos Step #1](#adafruit-channel)
-      - [ ] Delete orphaned directories
+      - [ ] Delete directories who no start with 'YYYY-MM-DD ...' 
       - [ ] Run script ```photos-step-1```
     - [Photos Step #2](#maker-channel)
   + [Photos Step #1](#dropbox-uploader)
