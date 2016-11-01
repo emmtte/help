@@ -1,3 +1,0 @@
-#!/bin/sh
-gmupload --delete-on-success /media/hdd/music
-~/scripts/iftt-maker "Rasperry Pi" "Gmusic upload done"
