@@ -1,4 +1,4 @@
 #!/bin/sh
 curl -X POST -H "Content-Type: application/json" \
--d '{"value1":"'$1'","value2":"'$2'","value3":"'$3'"}' \
+-d '{"value1":'"$1"',"value2":'"$2"',"value3":'"$3"'}' \
 https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
