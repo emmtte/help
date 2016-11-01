@@ -1,3 +1,0 @@
-#!/bin/sh
-gmupload -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
-~/scripts/iftt-maker "Rasperry Pi" "Gmusic upload done"
