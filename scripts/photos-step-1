@@ -6,7 +6,6 @@ rm -rf /media/hdd/Drive/Google\ Photos/*
 cd /media/hdd/Drive/
 if ! drive pull --quiet Google\ Photos ; then ~/scripts/iftt-maker "ERROR DRIVE" "ERROR PULL DRIVE"; exit; fi
 
-
 find /media/hdd/Drive/Google\ Photos -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
@@ -23,7 +22,7 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
     drive star "$FILE"
-    pushbullet push all note "EXIF ERROR" "$FILE"
+    ~/scripts/iftt-maker "EXIF ERROR" "$FILE"
   fi
 
 printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
