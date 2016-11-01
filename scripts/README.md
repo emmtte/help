@@ -1,9 +1,9 @@
 Command Line Interface Tools
 ============================
-  + [Save from Google PhotosPhotos Step #1](#castnow)
+  + [Google Photos](#castnow)
     - [Photos Step #1](#adafruit-channel)
-      [] Delete orphaned directories
-      [] Run script ```Photos-Step-1```
+      -[] Delete orphaned directories
+      -[] Run script ```Photos-Step-1```
     - [Photos Step #2](#maker-channel)
   + [Photos Step #1](#dropbox-uploader)
   + [Photos Step #1](#drive)
