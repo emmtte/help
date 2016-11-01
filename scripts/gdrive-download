@@ -1,4 +1,0 @@
-clear
-rm -rf /media/hdd/Drive/Download
-cd /media/hdd/Drive
-drive pull --quiet Download
