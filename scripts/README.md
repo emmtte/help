@@ -1,8 +1,10 @@
 Command Line Interface Tools
 ============================
-  + [Photos Step #1](#castnow)
-    - [Adafruit Channel](#adafruit-channel)
-    - [Maker Channel](#maker-channel)
+  + [Save from Google PhotosPhotos Step #1](#castnow)
+    - [Photos Step #1](#adafruit-channel)
+      [] Delete orphaned directories
+      [] Run script ```Photos-Step-1```
+    - [Photos Step #2](#maker-channel)
   + [Photos Step #1](#dropbox-uploader)
   + [Photos Step #1](#drive)
   + [Photos Step #1](#flickr-uploader)
