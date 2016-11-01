@@ -5,7 +5,6 @@ Google Photos Scripts
     - Every photos without EXIF informations need to be in right directory
     - Delete directories who no start with 'YYYY-MM-DD xxxxx xxxxx...'
   + [Photos Step #1](#adafruit-channel)
-    - Delete directories who no start with 'YYYY-MM-DD xxxxx xxxxx...' 
     - Run script ```photos-step-1```
   + [Photos Step #2](#maker-channel)
     - Verify if starred files are in the good directories
