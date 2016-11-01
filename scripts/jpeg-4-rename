@@ -2,7 +2,7 @@
 
   FILES=/media/hdd/photos
   
-  if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
+  if [ ! -f /usr/bin/exiv2 ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
   
   # Loop through directories, delete empty directories
   find $FILES -type d -empty -delete
@@ -33,4 +33,4 @@
   touch -t "${DAT}0000.00" "$DIR"
   done
   
-  pushbullet push all note "Rasperry Pi" "Photos Renamer Done"
+  ~/scripts/iftt-maker "Rasperry Pi" "Photos Renamer Done"
