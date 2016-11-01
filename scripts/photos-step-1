@@ -31,7 +31,6 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
     drive star "$FILE"
-    ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "EXIF ERROR $FILE"
   fi
 
 printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
