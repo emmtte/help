@@ -3,7 +3,7 @@
 #Be carefoul this script delete entire exif file
 GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
 clear
-rm -rf "$GOOGLE_PHOTOS_DIR/*"
+rm -rf "$GOOGLE_PHOTOS_DIR/"*
 cd /media/hdd/Drive
 if ! drive pull --quiet --starred --all ; then ~/scripts/iftt-maker "Raspberry Pi - Photos Step 2" "ERROR PULL DRIVE"; exit; fi
 
