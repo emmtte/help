@@ -1,5 +1,6 @@
+#!/bin/sh
 cd /media/hdd/Drive
 mkdir Temp Temp/Upload_from_Pi Temp/Download_to_Pi
 drive push Temp/Upload_from_Pi
 drive pull Temp/Download_to_Pi
-~/scripts/iftt-maker "Raspberry Pi" "Files Uploaded to Google Drive"
+~/scripts/iftt-maker "Raspberry Pi - I/O Drive" "Files Finished to Downlod/Upload from/to Google Drive"
