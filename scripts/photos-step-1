@@ -1,12 +1,20 @@
 #!/bin/sh
-#Check exif photos in Google Photos directory
+
 GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
 clear
+
+#Copy from Google Photos
 if [ ! -f /usr/bin/exiv2 ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR: Please install exiv2"; exit; fi
 rm -rf "$GOOGLE_PHOTOS_DIR/*"
 cd /media/hdd/Drive/
 if ! drive pull --quiet "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PULL DRIVE"; exit; fi
 
+#Backup
+mkdir /media/hdd/backup
+rm -rf /media/hdd/backup/*
+rsync -a --progress "$GOOGLE_PHOTOS_DIR" "/media/hdd/backup"
+
+#
 find "$GOOGLE_PHOTOS_DIR" -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
 EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
@@ -29,5 +37,6 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
 done
 
+#Upload to Google Photos
 if ! drive push --quiet "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PUSH DRIVE"; exit; fi
 ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "Please control the Starred Files in Drive and run next script"
