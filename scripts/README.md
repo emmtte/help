@@ -22,3 +22,12 @@ Backup Photos
     - [Adafruit Channel](#adafruit-channel)
     - [Maker Channel](#maker-channel)
   + [Keeweb](#keeweb)
+
+Youtube
+=======
+    + [Youtube Upload](#flickr-uploader)
+        - Copy videos files to ```/media/hdd/youtube-upload```
+        - Run script youtube-upload
+    + [Youtube Download](#gmusicapi-scripts)
+        - Create ```~/.youtube.dl``` file with the id playlist
+        - Run script Backup
