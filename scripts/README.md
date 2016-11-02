@@ -28,5 +28,5 @@ Youtube
     - Copy videos files to ```/media/hdd/youtube-upload```
     - Run script [```youtube-upload```](youtube-upload)
    + [Youtube Download](youtube-backup)
-    - Create ```~/.youtube.dl``` file with the id playlist
+    - Create ```~/.youtube.dl``` file with the youtube id playlist
     - Run script [```youtube-backup```](youtube-upload)
