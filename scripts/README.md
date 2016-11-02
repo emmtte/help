@@ -26,9 +26,9 @@ Backup Photos
 Youtube
 =======
 
-   + [Youtube Upload](#flickr-uploader)
+   + [Youtube Upload](youtube-upload)
     - Copy videos files to ```/media/hdd/youtube-upload```
     - Run script youtube-upload
-   + [Youtube Download](#gmusicapi-scripts)
+   + [Youtube Download](youtube-backup)
     - Create ```~/.youtube.dl``` file with the id playlist
     - Run script Backup
