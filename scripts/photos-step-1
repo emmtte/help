@@ -5,7 +5,7 @@ clear
 
 #Copy from Google Photos
 if [ ! -f /usr/bin/exiv2 ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR: Please install exiv2"; exit; fi
-rm -rf "$GOOGLE_PHOTOS_DIR/"*
+#rm -rf "$GOOGLE_PHOTOS_DIR/"*
 cd /media/hdd/Drive/
 if ! drive pull --no-prompt "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PULL DRIVE"; exit; fi
 
