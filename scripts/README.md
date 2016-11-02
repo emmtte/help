@@ -1,5 +1,8 @@
-Google Photos Scripts
-=====================
+User script
+===========
+
+Google Photos
+-------------
 
   + [Photos Step #1](photos-step-1)
     - Delete ```/media/hdd/Drive/Google Photos``` directory
@@ -14,12 +17,12 @@ Google Photos Scripts
     - Run script [```photos-step-2```](photos-step-2)
 
 Backup Photos
-=============
+-------------
 
   
 
 Youtube
-=======
+-------
 
    + [Youtube Upload](youtube-upload)
     - Copy videos files to ```/media/hdd/youtube-upload```
