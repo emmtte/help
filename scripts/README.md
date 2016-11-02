@@ -1,5 +1,5 @@
-User script
-===========
+User Scripts
+============
 
 Google Photos
 -------------
