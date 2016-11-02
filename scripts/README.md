@@ -2,6 +2,7 @@ Google Photos Scripts
 =====================
 
   + [Photos Step #1](photos-step-1)
+    - Delete ```/media/hdd/Drive/Google Photos``` directory
     - Directory structures shall be : 'YYYY-MM-DD xxxxx xxxxx...'
     - Every photos without EXIF informations need to be in right directory
     - Delete directories who no start with 'YYYY-MM-DD xxxxx xxxxx...'
