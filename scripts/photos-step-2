@@ -13,8 +13,8 @@ NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f
 exiv2 delete "$FILE"
 exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
 echo "eviv2 end formatting"
-if ! drive push --no-prompt "$FILE" ; then ~/scripts/iftt-maker "Raspberry Pi - Photos Step 2" "ERROR PUSH DRIVE"; exit; fi
 drive unstar "$FILE"
 done
 
+if ! drive push --no-prompt "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 2" "ERROR PUSH DRIVE"; exit; fi
 ~/scripts/iftt-maker "Raspberry Pi - Photos Step 2" "Done"
