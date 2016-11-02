@@ -1,7 +1,7 @@
 Google Photos Scripts
 =====================
-### Prerequisites
-    - Directory structures : 'YYYY-MM-DD xxxxx xxxxx..."
+### Prerequisites for photos-step-1
+    - Directory structures : 'YYYY-MM-DD xxxxx xxxxx...'
     - Every photos without EXIF informations need to be in right directory
     - Delete directories who no start with 'YYYY-MM-DD xxxxx xxxxx...'
   + [Photos Step #1](#adafruit-channel)
