@@ -11,8 +11,8 @@ if ! drive pull --no-prompt "Google Photos" ; then ~/scripts/iftt-maker "Rasperr
 
 #Backup
 mkdir /media/hdd/backup
-rm -rf /media/hdd/backup/*
-rsync -a --progress "$GOOGLE_PHOTOS_DIR" "/media/hdd/backup"
+#rm -rf /media/hdd/backup/*
+rsync --archive --delete --info=progress2 "$GOOGLE_PHOTOS_DIR" "/media/hdd/backup"
 
 #
 find "$GOOGLE_PHOTOS_DIR" -iname "*.jpg" -type f | sort | while read FILE ; do 
