@@ -9,7 +9,7 @@ Google Photos Scripts
   + [Photos Step #2](photos-step-2)
     - Verify if starred files are in the good directories
     - Be carefoul this script delete entire exif file before rewriting good date
-    - Run script ```photos-step-2``` 
+    - Run script [```photos-step-2```](photos-step-2)
 
 Backup Photos
 =============
