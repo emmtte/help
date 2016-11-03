@@ -1,6 +1,7 @@
 #!/bin/sh
 
 GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
+BACKUP_DIR="/media/hdd/backup"
 clear
 
 #Copy from Google Photos
@@ -9,8 +10,8 @@ cd /media/hdd/Drive/
 if ! drive pull --no-prompt "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PULL DRIVE"; exit; fi
 
 #Backup
-mkdir /media/hdd/backup
-rsync --archive --delete --info=progress2 "$GOOGLE_PHOTOS_DIR" "/media/hdd/backup"
+mkdir "$BACKUP_DIR"
+rsync --archive --delete --info=progress2 "$GOOGLE_PHOTOS_DIR" "$BACKUP_DIR"
 
 #
 find "$GOOGLE_PHOTOS_DIR" -iname "*.jpg" -type f | sort | while read FILE ; do 
@@ -32,7 +33,7 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
     drive star "$FILE"
   fi
 
-printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
+printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2:$EXIF2 EXIF3:$EXIF3 DATE:$DAT\n"
 done
 
 #Upload to Google Photos
