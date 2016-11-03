@@ -165,15 +165,6 @@ cd ~/scripts/
 curl -o ~/scripts/update-scripts https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/scripts/update-scripts
 chmod +x ~/scripts/*
 ```
-.bash_profile
-```shell
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
-fi
-if [ -z "$TMUX" ]; then
-    mc /home/pi/scripts/ /media/hdd/Drive/
-fi
-```
 ```shell
 cp /etc/mc/mc.keymap ~/.config/mc/
 mcedit ~/.config/mc/mc.keymap
@@ -183,27 +174,6 @@ mcedit ~/.config/mc/mc.keymap
 UserMenu = f2; ctrl-x
 Mark = insert; ctrl-t; ctrl-b
 ````
-**````mcedit ~/.tmux.conf````**
-```shell
-unbind C-b
-set -g prefix Tab
-bind Tab send-prefix
-
-bind-key > next-window
-bind-key < previous-window
-bind-key Escape detach-client
-
-set -g base-index 1
-setw -g pane-base-index 1
-
-set -g mode-mouse on
-set -g mouse-resize-pane on
-set -g mouse-select-pane on
-set -g mouse-select-window on
-
-set-option -g status-left  ''
-set-option -g status-right ''
-```
 [:back:](#command-line-interface-tools)
 <br><br>
 
