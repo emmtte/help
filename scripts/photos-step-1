@@ -25,9 +25,10 @@ EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   fi
   
 EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
+EXIF3=`date -d "$EXIF +1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 
-  if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
+  if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ] && [ "$DAT" != "$EXIF3" ]; then
     drive star "$FILE"
   fi
 
