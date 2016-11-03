@@ -33,7 +33,7 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
     drive star "$FILE"
   fi
 
-printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2:$EXIF2 EXIF3:$EXIF3 DATE:$DAT\n"
+printf "\033[00m$FILE\n\033[01mEXIF:$EXIF EXIF1:$EXIF1 EXIF2:$EXIF2 EXIF3:$EXIF3 DATE:$DAT\n"
 done
 
 #Upload to Google Photos
