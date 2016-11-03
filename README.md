@@ -165,15 +165,6 @@ cd ~/scripts/
 curl -o ~/scripts/update-scripts https://raw.githubusercontent.com/ManuCart/RaspberryPi/master/scripts/update-scripts
 chmod +x ~/scripts/*
 ```
-```shell
-cp /etc/mc/mc.keymap ~/.config/mc/
-mcedit ~/.config/mc/mc.keymap
-````
-````mcedit ~/.config/mc/mc.keymap````
-```shell
-UserMenu = f2; ctrl-x
-Mark = insert; ctrl-t; ctrl-b
-````
 [:back:](#command-line-interface-tools)
 <br><br>
 
