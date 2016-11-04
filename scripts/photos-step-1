@@ -22,7 +22,6 @@ EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   if [ -z "$EXIF1" ]; then
     NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
     exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
-    sleep 1
     EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
     EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   fi
