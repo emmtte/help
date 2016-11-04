@@ -26,6 +26,13 @@ EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
     EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   fi
   
+  if [ -z "$EXIF1" ]; then
+    exiv2 delete "$FILE"
+    exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
+    EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+    EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
+  fi
+
 EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
 EXIF3=`date -d "$EXIF +1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
