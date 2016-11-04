@@ -2,7 +2,7 @@
 
 GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
 BACKUP_DIR="/media/hdd/backup"
-PHOTOS_DIR=/media/hdd/photos
+PHOTOS_DIR="/media/hdd/photos"
 clear
 
 #Copy from Google Photos
@@ -47,7 +47,7 @@ printf "\033[00m$FILE\n\033[01mEXIF:$EXIF EXIF1:$EXIF1 EXIF2:$EXIF2 EXIF3:$EXIF3
 done
 
 ### Copy to HDD photos
-rsync -a --ignore-existing --remove-source-files --progress "$GOOGLE_PHOTOS_DIR" "/media/hdd/photos"
+rsync -a --ignore-existing --remove-source-files --progress "$GOOGLE_PHOTOS_DIR" "$PHOTOS_DIR"
 if ! [ "$?" -eq "0" ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR RSYNC TO PHOTOS DIR"; exit; fi
 
 find "$GOOGLE_PHOTOS_DIR" -type d -empty -delete
@@ -56,7 +56,7 @@ drive push --no-prompt "Google Photos"
 ## Backup to freebox
 sudo mkdir /media/freebox
 sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
-rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
+rsync --archive --no-o --no-g --delete --info=progress2 "$PHOTOS_DIR" /media/freebox/photos
 if ! [ "$?" -eq "0" ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR RSYNC TO FREEBOX DIR"; exit; fi
   
 ## Rename Photos 
