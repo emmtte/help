@@ -13,7 +13,7 @@ if ! drive pull --no-prompt "Google Photos" ; then ~/scripts/iftt-maker "Rasperr
 #Backup
 mkdir "$BACKUP_DIR"
 rsync --archive --delete --info=progress2 "$GOOGLE_PHOTOS_DIR" "$BACKUP_DIR"
-
+if ! [ "$?" -eq "0" ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR RSYNC TO BACKUP DIR"; exit; fi
 #
 find "$GOOGLE_PHOTOS_DIR" -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
@@ -48,6 +48,8 @@ done
 
 ### Copy to HDD photos
 rsync -a --ignore-existing --remove-source-files --progress "$GOOGLE_PHOTOS_DIR" "/media/hdd/photos"
+if ! [ "$?" -eq "0" ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR RSYNC TO PHOTOS DIR"; exit; fi
+
 find "$GOOGLE_PHOTOS_DIR" -type d -empty -delete
 drive push --no-prompt "Google Photos"
 
@@ -55,7 +57,7 @@ drive push --no-prompt "Google Photos"
 sudo mkdir /media/freebox
 sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
 rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
-
+if ! [ "$?" -eq "0" ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR RSYNC TO FREEBOX DIR"; exit; fi
   
 ## Rename Photos 
   # Loop through directories, delete empty directories
