@@ -39,12 +39,16 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ] && [ "$DAT" != "$EXIF3" ]; then
    drive star $FILE
+   echo "$FILE" >> ~/errors.log
    ~/scripts/iftt-maker "Raspberry Pi - Google Photos" "Error, Please verify starred files"
   exit;   
   fi
 
 printf "\033[00m$FILE\n\033[01mEXIF:$EXIF EXIF1:$EXIF1 EXIF2:$EXIF2 EXIF3:$EXIF3 DATE:$DAT\n"
 done
+
+if [ -f ~/errors.log ]; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR DATES IN PHOTOS see starred photos or error.log"; exit; fi
+
 
 ### Copy to HDD photos
 rsync -a --ignore-existing --remove-source-files --progress "$GOOGLE_PHOTOS_DIR" "$PHOTOS_DIR"
