@@ -40,7 +40,6 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ] && [ "$DAT" != "$EXIF3" ]; then
    drive star $FILE
    echo "$FILE" >> ~/errors.log
-   ~/scripts/iftt-maker "Raspberry Pi - Google Photos" "Error, Please verify starred files"
   exit;   
   fi
 
