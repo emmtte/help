@@ -41,7 +41,6 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ] && [ "$DAT" != "$EXIF3" ]; then
    drive star "$FILE"
    echo "$FILE" >> ~/errors.log
-  exit;   
   fi
 
 printf "\033[00m$FILE\n\033[01mEXIF:$EXIF EXIF1:$EXIF1 EXIF2:$EXIF2 EXIF3:$EXIF3 DATE:$DAT\n"
