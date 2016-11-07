@@ -1,10 +1,6 @@
 #!/bin/sh
 GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
 clear
-rm -rf "$GOOGLE_PHOTOS_DIR/"*
-cd /media/hdd/Drive
-drive pull --no-prompt "Google Photos"
 rsync -a --ignore-existing --remove-source-files --progress "$GOOGLE_PHOTOS_DIR" "/media/hdd/photos"
 find "$GOOGLE_PHOTOS_DIR" -type d -empty -delete
-drive push --no-prompt "Google Photos"
 ~/scripts/iftt-maker "Raspberry Pi" "Done"
