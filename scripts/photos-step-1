@@ -49,12 +49,5 @@ done
 if [ -f ~/errors.log ]; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR DATES IN PHOTOS see starred photos or error.log"; exit; fi
 
 
-### Copy to HDD photos
-rsync -a --ignore-existing --remove-source-files --progress "$GOOGLE_PHOTOS_DIR" "$PHOTOS_DIR"
-if ! [ "$?" -eq "0" ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR RSYNC TO PHOTOS DIR"; exit; fi
-
-find "$GOOGLE_PHOTOS_DIR" -type d -empty -delete
-drive push --no-prompt "Google Photos"
-
 
 
