@@ -6,3 +6,5 @@ do
     exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$LINE"
 	echo "$LINE"
 done <"$FILE"
+
+~/scripts/iftt-maker "Rasperry Pi - Photos Step 2" "END"
