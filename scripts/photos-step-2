@@ -2,9 +2,10 @@ FILE=~/errors.log
 while IFS= read LINE
 do
     NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-    exiv2 delete "$LINE"
-    exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$LINE"
-	echo "$LINE"
+    #exiv2 delete "$LINE"
+    #exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$LINE"
+    echo "$LINE"
+    
 done <"$FILE"
 
 ~/scripts/iftt-maker "Rasperry Pi - Photos Step 2" "END"
