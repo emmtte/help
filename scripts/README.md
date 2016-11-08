@@ -15,6 +15,13 @@ Google Photos
     - Verify if starred files are in the good directories
     - Be carefoul this script delete entire exif file before rewriting good date
     - Run script [```photos-step-2```](photos-step-2)
+   + [Photos Step #3](photos-step-3)
+    - Run script [```photos-step-3```](photos-step-3)
+    - Verify if photos are in the good directories eg ```/media/hdd/photos/20XX/```
+   + [Photos Step #4](photos-step-4)
+    - This script rename every photos in ```/media/hdd/photos``` to "IMG_XXXXX.JPG"
+    - Run script [```photos-step-4```](photos-step-4)
+
 
 Backup Photos
 -------------
