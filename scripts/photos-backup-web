@@ -1,6 +1,6 @@
 #!/bin/sh
 # sudo npm install sharp-cli
-FILES=/media/hdd/photos-2048
+FILES=/media/hdd/photos-web
 #mkdir $FILES
 #rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
@@ -11,4 +11,4 @@ find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
     sharp --verbose --max --width 2048 --height 2048 --withoutEnlargement -o "$FILE" "$FILE"
   fi
 done
-~/scripts/iftt-maker "Backup Photos 2048" "Resize Finished"
+~/scripts/iftt-maker "Backup Photos Web" "Resize Finished"
