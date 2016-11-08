@@ -1,6 +1,8 @@
-if [ -z "$EXIF1" ]; then
-    exiv2 delete "$FILE"
-    exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
-    EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
-    EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
-  fi
+FILE=~/errors.log
+while IFS= read LINE
+do
+    NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    exiv2 delete "$LINE"
+    exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$LINE"
+	echo "$LINE"
+done <"$FILE"
