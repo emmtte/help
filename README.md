@@ -231,7 +231,7 @@ cat << EOF | sudo tee -a /etc/ssh/sshd_config
 PermitRootLogin no
 AuthorizedKeysFile /home/pi/.ssh/authorized_keys
 PasswordAuthentication no
-Match Address 192.168.0.0/24
+Match Address 127.0.0.1,192.168.0.0/24
     PasswordAuthentication yes
 EOF
 sudo service ssh restart
