@@ -29,6 +29,11 @@ Backup Photos
     - Run script [```photos-flickr1```](photos-flickr-1)
    + [Photos Google #4](photos-web)
     - Run script [```photos-web```](photos-web)
+   + [Photos Backup External Device #4](photos-backup-ext)
+    - On the box eject current device
+    - Power on usb device
+    - Run script [```photos-bzckup-ext```](photos-backup-ext)
+
 
 Youtube
 -------
