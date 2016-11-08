@@ -6,5 +6,5 @@ sudo mount LABEL=RaspberryPi /media/hdd
 sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
 
 echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
-echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=mini4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
+echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
 sudo chown -R pi:pi /media/hdd
