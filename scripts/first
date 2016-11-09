@@ -3,3 +3,4 @@
 #/bin/sh /home/pi/scripts/!tmux
 #/usr/bin/tmux send -t merge.2 'sh /home/pi/scripts/mqtt' ENTER
 /usr/bin/ssh pi@127.0.0.1 -oStrictHostKeyChecking=no -i /home/pi/.ssh/id_rsa -t sh /home/pi/scripts/_tmux
+#/usr/bin/ssh pi@127.0.0.1 -oStrictHostKeyChecking=no 
