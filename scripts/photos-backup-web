@@ -1,5 +1,5 @@
 #!/bin/sh
-# sudo npm install sharp-cli
+# sudo npm install sharp-cli -g
 FILES=/media/hdd/photos-web
 #mkdir $FILES
 #rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
