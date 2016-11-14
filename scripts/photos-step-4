@@ -1,7 +1,7 @@
 #!/bin/sh
 
   FILES=/media/hdd/photos
-  
+  #FILES=/media/hdd/photos-web
   if [ ! -f /usr/bin/exiv2 ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
   
   # Loop through directories, delete empty directories
@@ -21,7 +21,8 @@
   # Loop again through files, renaming as "IMG_#####.JPG"
   COUNTER=1
   find $FILES -iname "*.jpg" -type f | sort | while read FILE ; do 
-    NEWNAME="IMG_$(printf "%05d" $COUNTER).JPG"
+    NEWNAME="P0$(printf "%05d" $COUNTER).JPG"
+    #NEWNAME="W0$(printf "%05d" $COUNTER).JPG"
     mv "$FILE" "`dirname "$FILE"`/$NEWNAME"
     COUNTER=$((COUNTER + 1))
   done
