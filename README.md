@@ -249,7 +249,7 @@ sudo apt-get install python-gdata
 sudo pip install --upgrade oauth2client
 curl -o ~/.bin/picasawebsync.py https://raw.githubusercontent.com/leocrawford/picasawebsync/master/picasawebsync.py
 chmod +x ~/.bin/picasawebsync.py
-cp client_secrets.json ~/.bin/picasawebsync.py
+cp client_secrets.json ~/.bin/client_secrets.json
 ```
 demarrer la premiere fois seul dans le repertoire d'installation
 [:back:](#command-line-interface-tools)
