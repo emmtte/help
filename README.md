@@ -243,7 +243,7 @@ Picasa Websync
 --------------
 :link: https://github.com/leocrawford/picasawebsync
 ```shell
-sodo apt-get install jhead
+sudo apt-get install jhead
 sudo apt-get install python-imaging python-imaging-tk
 sudo apt-get install python-gdata
 sudo pip install --upgrade oauth2client
