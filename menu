@@ -2,14 +2,6 @@
 C castnow 
   echo %d/
   castnow %d/ --type "audio/wav"
-
-+ f * & t t
-A move to "BitTorrentSync" folder
-  set %t
-  while [ -n "$1" ] ; do
-    mv "$1" "/media/hdd/BitTorrentSync/$(basename "$1")"
-    shift
-  done
   
 + f * & t t
 D Delete
@@ -43,7 +35,7 @@ B move to "Freebox Server" folder
   for f in %t; do
     rsync -aP --remove-sent-files "$f" /media/freebox
   done
-  pushbullet push all note "Raspberry Pi" "Files moved to Freebox Server"
+  ~/scripts/iftt-maker "Raspberry Pi" "Files moved to Freebox Server"
   rm /tmp/.freebox.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/tmux ; fi
@@ -61,7 +53,7 @@ B upload to dropbox
   for f in %t; do
     dropbox_uploader upload "$f" "$f"
   done
-  pushbullet push all note "Raspberry Pi" "Files Uploaded to Dropbox"
+  ~/scripts/iftt-maker "Raspberry Pi" "Files Uploaded to Dropbox"
   rm /tmp/.dropbox.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/tmux ; fi
@@ -87,7 +79,7 @@ D upload to google drive
   done
   cd /media/hdd/Drive
   drive push --quiet Upload/*
-  pushbullet push all note "Raspberry Pi" "Files Uploaded to Google Drive"
+  ~/scripts/iftt-maker "Raspberry Pi" "Files Uploaded to Google Drive"
   rm /tmp/.gdrive.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/tmux ; fi
@@ -151,7 +143,7 @@ c cut video [no screen]
   read -e -p "Stop  : " -i "00:00:00" stop
   echo "Please Wait..."
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
-  pushbullet push all note "Rasperry Pi" "La vidéos %d.avi est coupée"
+  ~/scripts/iftt-maker "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 + f *.jpg | f *.JPG & t t
 s Autolevel photos
