@@ -1,2 +1,4 @@
+#!/bin/sh
+
 FILES=/media/hdd/photos
 echo `ls -d $FILES -R -v | tail -n 1`
