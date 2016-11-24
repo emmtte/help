@@ -3,7 +3,6 @@
 rm ~/errors.log
 GOOGLE_PHOTOS_DIR="/media/hdd/Drive/Google Photos"
 BACKUP_DIR="/media/hdd/backup"
-PHOTOS_DIR="/media/hdd/photos"
 clear
 
 #Copy from Google Photos
