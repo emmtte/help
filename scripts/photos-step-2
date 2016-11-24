@@ -1,7 +1,6 @@
-FILE=~/errors.log
-
 cd /media/hdd/Drive/
 
+FILE=~/errors.log
 while IFS= read LINE
 do
     NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
