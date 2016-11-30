@@ -3,7 +3,7 @@ clear
 
 DIR=/media/hdd/photos
 
-if [ ! -f /usr/bin/exiv2 ]; then pushbullet push all note "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
+if [ ! -f /usr/bin/exiv2 ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 
 find $DIR -iname "*.jpg" -type f | sort | while read FILE ; do 
 EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
@@ -20,10 +20,10 @@ EXIF2=`date -d "$EXIF -1 month" +"%Y %m"`
 DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
 
   if [ "$DAT" != "$EXIF1" ] && [ "$DAT" != "$EXIF2" ]; then
-    pushbullet push all note "EXIF ERROR" "$FILE"
+    ~/scripts/iftt-maker "EXIF ERROR" "$FILE"
   fi
 
 printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
 done
 
-pushbullet push all note "Rasperry Pi" "HDD EXIF PHOTOS CHEKED"
+~/scripts/iftt-maker "Rasperry Pi" "HDD EXIF PHOTOS CHEKED"
