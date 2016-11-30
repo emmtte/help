@@ -7,4 +7,4 @@ sudo mount $ID /media/gopro
 mkdir /media/hdd/gopro /media/hdd/gopro/photos /media/hdd/gopro/videos
 cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
 cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
-pushbullet push all note "photos and videos from gopro are saved"
+~/scripts/iftt-maker "photos and videos from gopro are saved"
