@@ -152,11 +152,12 @@ curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2",
 Iphone
 ------
 :link:https://github.com/libimobiledevice
+<br>
 :link:https://gist.github.com/kfatehi/8922430
 ````
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get -y install vim tmux git build-essential libxml2-dev python2.7 python2.7-dev fuse libtool autoconf libusb-1.0-0-dev libfuse-dev
+sudo apt-get -y install git build-essential libxml2-dev python2.7 python2.7-dev fuse libtool autoconf libusb-1.0-0-dev libfuse-dev
 
 mkdir iphone_libs && cd iphone_libs
 
