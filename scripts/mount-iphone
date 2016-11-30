@@ -1,4 +1,6 @@
+#!/bin/sh
 usbmuxd
 sudo mkdir /media/iphone
 sudo umount /media/iphone
+idevicepair pair
 sudo ifuse /media/iphone
