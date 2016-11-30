@@ -18,4 +18,4 @@ done
 ls -1 CROP/*-CROP.JPG >  files.lst
 mpv mf://@files.lst -mf-type=jpg -mf-fps=3 -ovc=rawvideo -no-audio -o stopmotion.avi
 while ! youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi ; do :; done
-pushbullet push all note "Raspberry Pi" "Stopmotion created"
+~/scripts/iftt-maker "Raspberry Pi" "Stopmotion created"
