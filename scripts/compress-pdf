@@ -5,7 +5,7 @@ GDRIVE=/media/hdd/Drive
 rm $GDRIVE/Documents/*
 cd $GDRIVE
 drive pull --quiet --starred --all
-if [ `find $GDRIVE/Documents -type d -empty` ] ; then pushbullet push all note "Compress PDF" "ERROR NO DOCUMENTS"; exit ; fi
+if [ `find $GDRIVE/Documents -type d -empty` ] ; then ~/scripts/iftt-maker "Compress PDF" "ERROR NO DOCUMENTS"; exit ; fi
 FILE=`ls $GDRIVE/Documents | head -1`
 ~/.bin/sejda/bin/sejda-console compress -f Documents/$FILE -o Documents/
 mv sejda_out.pdf "Documents/$FILE"
