@@ -1,7 +1,7 @@
 #!/bin/sh
 # sudo npm install sharp-cli -g
 FILES=/media/hdd/photos-web
-#mkdir $FILES
+mkdir $FILES
 #rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   echo "$FILE"
