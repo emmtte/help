@@ -158,7 +158,6 @@ Iphone
 sudo apt-get update
 sudo apt-get -y upgrade
 sudo apt-get -y install git build-essential libxml2-dev python2.7 python2.7-dev fuse libtool autoconf libusb-1.0-0-dev libfuse-dev
-
 mkdir iphone_libs && cd iphone_libs
 
 git clone https://github.com/libimobiledevice/libplist.git
