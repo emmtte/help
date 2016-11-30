@@ -1,0 +1,4 @@
+usbmuxd
+sudo mkdir /media/iphone
+sudo umount /media/iphone
+sudo ifuse /media/iphone
