@@ -22,13 +22,22 @@ case $message in
   stop)
     wall "debut de start now"
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
-    tmux send-keys -t cast.1 C-r
+    #tmux send-keys -t cast.1 C-r
     tmux send -t cast.1 'bash castnow-stop' ENTER
     tmux select-window -t pi:cast
     tmux select-pane -t cast.1
     wall "(((((((((((((((((((((((((("
     tmux attach -t pi;;
-  
+ 
+ merge)
+    wall "debut de merge now"
+    tmux send -t cloud.1 'cd ~/scripts && clear' ENTER
+    #tmux send-keys -t cloud.1 C-r
+    tmux send -t cloud.1 'bash merge-pdf' ENTER
+    tmux select-window -t pi:cloud
+    tmux select-pane -t cloud.1
+    wall "(((((((((((((((((((((((((("
+    tmux attach -t pi;;
   *) ;;
 esac
 done
