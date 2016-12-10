@@ -38,6 +38,8 @@ case $message in
     tmux select-pane -t cloud.1
     wall "(((((((((((((((((((((((((("
     tmux attach -t pi;;
-  *) ;;
+
+*) ;;
+
 esac
 done
