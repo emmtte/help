@@ -4,7 +4,7 @@ VIDEOS="/media/hdd/youtube-upload"
 clear
 sudo mkdir /media/iphone
 sudo umount /media/iphone
-echo "Please connect iphone and accept the connection"
+echo "Please connect iphone, accept the connection and enter password"
 read -e -p "Press any key to continue..." key
 idevicepair pair
 sudo ifuse /media/iphone
