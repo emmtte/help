@@ -7,6 +7,6 @@ echo "Please connect iphone and accept the connection"
 read -e -p "Press any key to continue..." key
 idevicepair pair
 sudo ifuse /media/iphone
-rsync --include '*/' --include '*.MOV' --exclude '*' --archive --info=progress2 /media/iphone/DCIM/100APPLE/ $VIDEOS
+sudo rsync --include '*/' --include '*.MOV' --exclude '*' --archive --info=progress2 /media/iphone/DCIM/100APPLE/ $VIDEOS
 sudo umount /media/iphone
 ~/scripts/iftt-maker "All videos from usbkey are copied"
