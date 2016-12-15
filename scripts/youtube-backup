@@ -1,5 +1,6 @@
 #!/bin/sh
 # echo "<<id>>" > ~/.youtube.dl
+# todo : compare backup videos to /media/videos and save it if size higher 
 sudo apt-get -y install libavcodec-extra libav-tools
 mkdir /media/hdd/youtube-dl
 youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
