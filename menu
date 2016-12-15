@@ -30,7 +30,7 @@ B move to "Freebox Server" folder
   if [ -f /tmp/.freebox.sh ] ; then whiptail --title "Move to Freebox" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.freebox.sh << 'EOF'
   clear
-  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=mini4K,uid=1000,gid=1000,rw,sec=ntlm
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   cd "%d"
   for f in %t; do
     rsync -aP --remove-sent-files "$f" "/media/freebox"
