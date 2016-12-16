@@ -168,6 +168,12 @@ e Affiche l'EXIF de la photo
   printf 'Press [Enter] key to continue...'
   read null
 
++ f *.jpg | f *.JPG & t r
+m Modifie la date EXIF de la photo
+  read -e -p "Date : " -i "00:00:00" CHANGE
+  exiv2 delete %f
+  exiv2 -M "add Exif.Photo.DateTimeOriginal $CHANGE 00:00:00" %f
+
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
   set %t
