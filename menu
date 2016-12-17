@@ -136,7 +136,7 @@ F Tmux Session F
   tmux select-pane -t EF.2
   tmux -2 attach -t pi
 
-+ f *.mov | f *.MOV | f *.avi | f *.AVI & tr
++ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & tr
 c cut video [no screen]
   clear
   read -e -p "Start : " -i "00:00:00" start
