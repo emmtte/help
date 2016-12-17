@@ -170,10 +170,10 @@ e Affiche l'EXIF de la photo
 
 + f *.jpg | f *.JPG & t r
 m Modifie la date EXIF de la photo
-  EXIF=`exiv2 "%t" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+  EXIF=`exiv2 -q "%f" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
   EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   read -e -p "Date : " -i "$EXIF1" CHANGE
-  exiv2 delete %f
+  #exiv2 delete %f
   echo `date -d $CHANGE +"%d:%m:%y"`
   #exiv2 -M "add Exif.Photo.DateTimeOriginal `date -d $CHANGE +"%d:%m:%y"` 00:00:00" %f
   
