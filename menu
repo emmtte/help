@@ -171,13 +171,17 @@ e Affiche l'EXIF de la photo
 
 + f *.jpg | f *.JPG & t r
 m Modifie la date EXIF de la photo
-  #! /usr/bin/bash
+  if [ -f /tmp/.photos.sh ] ; then whiptail --title "Photos" --msgbox "Busy try Later..." 12 35; exit; fi
+  cat > /tmp/.photos.sh << 'EOF'
   EXIF=`exiv2 -q "%f" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
   EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   read -e -p "Date : " -i "$EXIF1" CHANGE
   #exiv2 delete %f
   echo `date -d $CHANGE +"%d:%m:%y"`
   #exiv2 -M "add Exif.Photo.DateTimeOriginal `date -d $CHANGE +"%d:%m:%y"` 00:00:00" %f
+  rm /tmp/.photos.sh
+  EOF
+  
   
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
