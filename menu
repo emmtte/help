@@ -181,7 +181,7 @@ m Modifie la date EXIF de la photo
   #exiv2 -M "add Exif.Photo.DateTimeOriginal `date -d $CHANGE +"%d:%m:%y"` 00:00:00" %f
   rm /tmp/.photos.sh
   EOF
-  
+  bash /tmp/.photos.sh
   
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
