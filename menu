@@ -137,8 +137,8 @@ F Tmux Session F
   tmux -2 attach -t pi
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & tr
-c cut video [no screen]
 ! bash
+c cut video [no screen]
   clear
   read -e -p "Start : " -i "00:00:00" start
   read -e -p "Stop  : " -i "00:00:00" stop
@@ -170,8 +170,8 @@ e Affiche l'EXIF de la photo
   read null
 
 + f *.jpg | f *.JPG & t r
-m Modifie la date EXIF de la photo
 ! bash
+m Modifie la date EXIF de la photo
   EXIF=`exiv2 -q "%f" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
   EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   read -e -p "Date : " -i "$EXIF1" CHANGE
