@@ -1,3 +1,6 @@
+## Default SHELL execute
+## If not use exec bash
+
 = d *
 C castnow 
   echo %d/
@@ -139,6 +142,7 @@ F Tmux Session F
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & tr
 c cut video [no screen]
   clear
+  exec bash
   read -e -p "Start : " -i "00:00:00" start
   read -e -p "Stop  : " -i "00:00:00" stop
   echo "Please Wait..."
@@ -170,6 +174,7 @@ e Affiche l'EXIF de la photo
 
 + f *.jpg | f *.JPG & t r
 m Modifie la date EXIF de la photo
+  exec bash
   EXIF=`exiv2 -q "%f" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
   EXIF1=`echo "$EXIF" | cut -d '-' -f 1,2 | tr '-' ' '`
   read -e -p "Date : " -i "$EXIF1" CHANGE
