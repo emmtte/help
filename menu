@@ -175,7 +175,7 @@ m Modifie la date EXIF de la photo
   cat > /tmp/.photos.sh << 'EOF'
   clear
   EXIF=`exiv2 -q "%f" 2> null | grep "Image timestamp" | cut -d ' ' -f 4,5`
-  echo "%f"
+  printf "\033[00m%f\n\033[01m"
   read -e -p "Date : " -i "$EXIF" CHANGE
   exiv2 -q -M "add Exif.Photo.DateTimeOriginal $CHANGE" "%f"
   rm /tmp/.photos.sh
