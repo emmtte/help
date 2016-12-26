@@ -31,9 +31,9 @@ B move to "Freebox Server" folder
   cat > /tmp/.freebox.sh << 'EOF'
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
-  cd "%d/"
-  for f in "%t"; do
-    rsync -aP --remove-sent-files "$f" "/media/freebox"
+  cd %d
+  for f in %t; do
+    rsync -aP --remove-sent-files $f "/media/freebox"
   done
   ~/scripts/iftt-maker "Raspberry Pi" "Files moved to Freebox Server"
   rm /tmp/.freebox.sh
