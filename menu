@@ -31,8 +31,8 @@ B move to "Freebox Server" folder
   cat > /tmp/.freebox.sh << 'EOF'
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
-  cd "%d"
-  echo "%d"
+  cd "/%d"
+  echo "/%d"
   set %t
   while [ -n "$1" ]; do
     #rsync -aP --remove-sent-files "$1" "/media/freebox"
