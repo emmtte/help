@@ -32,6 +32,7 @@ B move to "Freebox Server" folder
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   cd %d
+  echo %d
   for f in %t; do
     #rsync -aP --remove-sent-files "$f" "/media/freebox"
     echo "$f"
