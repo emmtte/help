@@ -34,8 +34,8 @@ B move to "Freebox Server" folder
   cd %d/
   set %t
   while [ -n "$1" ]; do
-    rsync --archive --no-o --no-g --info=progress2 --remove-sent-files "$1" "/media/freebox"
-    echo ""
+    echo "Copy : $1"
+    rsync --archive --no-o --no-g --progress --remove-sent-files "$1" "/media/freebox"
     shift
   done
   ~/scripts/iftt-maker "Raspberry Pi" "Files moved to Freebox Server"
