@@ -30,7 +30,7 @@ Command Line Interface Tools
 
 [Castnow](https://github.com/xat/castnow)
 -------
-:link: https://github.com/xat/castnow
+
 ```shell
 wget https://nodejs.org/dist/v6.2.0/node-v6.2.0-linux-armv6l.tar.gz
 tar -xvf node-v6.2.0-linux-armv6l.tar.gz 
