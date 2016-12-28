@@ -39,6 +39,8 @@ sudo cp -R * /usr/local/
 npm install git+https://github.com/xat/castnow.git -g
 castnow http://hi5.streamingsoundtracks.com --type "audio/wav"
 ```
+[`castnow-start`](https://github.com/ManuCart/RaspberryPi/blob/master/scripts/castnow-start)
+[`castnow-stop`](https://github.com/ManuCart/RaspberryPi/blob/master/scripts/castnow-stop)
 [:back:](#command-line-interface-tools)
 <br><br>
 
