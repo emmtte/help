@@ -2,5 +2,5 @@
 /bin/sleep 10
 #/bin/sh /home/pi/scripts/!tmux
 #/usr/bin/tmux send -t merge.2 'sh /home/pi/scripts/mqtt' ENTER
-sshpass -p 'raspberry' ssh pi@127.0.0.1 -t '~/scripts/_tmux'
+/usr/bin/sshpass -p 'raspberry' /usr/bin/ssh pi@127.0.0.1 -t '~/scripts/_tmux'
 #/usr/bin/ssh pi@127.0.0.1 -oStrictHostKeyChecking=no 
