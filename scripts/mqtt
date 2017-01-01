@@ -8,7 +8,7 @@ echo "$json" > ~/mqtt.json
 message=`cat ~/mqtt.json | jq --raw-output 'select(.value != null).value'`
 feed=`cat ~/mqtt.json | jq --raw-output 'select(.value != null).feed_id'`
 echo $message
-echo $feed
+echo "$feed"
 
 case $message in
   play)
@@ -44,4 +44,4 @@ case $message in
 esac
 done
 
-if [ $feed == 635172 ]; then echo "ttttttttttt" ; fi
+if [ "$feed" == "635172" ]; then echo "ttttttttttt" ; fi
