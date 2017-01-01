@@ -286,9 +286,13 @@ sudo apt-get install jhead
 sudo apt-get install python-imaging python-imaging-tk
 sudo apt-get install python-gdata
 sudo pip install --upgrade oauth2client
+mkdir ~/.bin/picasa-websync#1 ~/.bin/picasa-websync#2
 curl -o ~/.bin/picasawebsync.py https://raw.githubusercontent.com/leocrawford/picasawebsync/master/picasawebsync.py
 chmod +x ~/.bin/picasawebsync.py
-cp client_secrets.json ~/.bin/client_secrets.json
+cp ~/.bin/picasawebsync.py ~/.bin/picasa-websync#1/client_secrets.json
+mv ~/.bin/picasawebsync.py ~/.bin/picasa-websync#2/client_secrets.json
+cp client_secrets.json ~/.bin/picasa-websync#1/client_secrets.json
+cp client_secrets.json ~/.bin/picasa-websync#2/client_secrets.json
 ```
 demarrer la premiere fois seul dans le repertoire d'installation
 [:back:](#command-line-interface-tools)
