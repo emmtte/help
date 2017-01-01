@@ -6,10 +6,11 @@
 mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/dashboard/stream/create -R | while read json ; do
 echo "$json" > ~/mqtt.json
 message=`cat ~/mqtt.json | jq --raw-output 'select(.value != null).value'`
-wall $message
+feed==`cat ~/mqtt.json | jq --raw-output 'select(.value != null).feed_id'`
+echo $message
+echo $feed
 
 case $message in
-  
   play)
     wall "debut de start now"
     tmux send -t cast.1 'cd ~/scripts && clear' ENTER
@@ -40,6 +41,14 @@ case $message in
     tmux attach -t pi;;
 
 *) ;;
-
 esac
+done
+
+case $feed
+  635172)
+    echo "---------------"
+    echo $message
+    echo "---------------"
+    ;;
+  esac
 done
