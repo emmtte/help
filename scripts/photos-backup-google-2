@@ -2,7 +2,8 @@
 if [ ! -f /usr/bin/jhead ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Google Backup" "ERROR: Please install jhead"; exit; fi
 mkdir /media/hdd/photos-web-lite
 cp -r /media/hdd/photos-web/19{00..97} /media/hdd/photos-web-lite
-~/.bin/picasa-websync#2
+cd ~/.bin/picasa-websync#2
+rm ~/.picasawebsync
 #~/.bin/picasa-websync#2/picasawebsync.py -d /media/hdd/photos-web-lite -m syncUpload --allowDelete remote --purge --noupdatealbummetadata --purge -c7
 ~/.bin/picasa-websync#2/picasawebsync.py -d /media/hdd/photos-web-lite -m syncUpload --allowDelete remote --purge -c3
 #~/.bin/picasa-websync#2/picasawebsync.py -d /media/hdd/photos-web-lite -m syncUpload --allowDelete remote --purge -c3 -n "['{0}', '{1}']"
