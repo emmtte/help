@@ -294,7 +294,6 @@ mv ~/.bin/picasawebsync.py ~/.bin/picasa-websync#2/client_secrets.json
 cp client_secrets.json ~/.bin/picasa-websync#1/client_secrets.json
 cp client_secrets.json ~/.bin/picasa-websync#2/client_secrets.json
 ```
-demarrer la premiere fois seul dans le repertoire d'installation
 [:back:](#command-line-interface-tools)
 <br><br>
 
