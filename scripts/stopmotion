@@ -5,10 +5,10 @@ clear
 # – 2160p (3840×2160) 4K
 # – 4320p (7680×4320) 8K
 
-#GoPro 1944x1592 => 1080p(1K):1920x1080
-#CUT="1920x1080+12+0" #Top
-CUT="1920x1080+12+256" #Center
-#CUT="1920x1080+12+512" #Bas
+#GoPro 2592x1944 => 1440p(2K):2560x1440
+#CUT="2560x1440+16+0" #Top
+CUT="2560x1440+16+252" #Center
+#CUT="2560x1440+16+504" #Bas
 
 #DMC TZ40 ????x???? => 1440p(2K):2560x1440
 #CUT="2560x1440+16+0" #Top
@@ -26,6 +26,6 @@ for img in *.JPG; do
 convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
 done
 ls -1 CROP/*-CROP.JPG >  files.lst
-mpv mf://@files.lst -mf-type=jpg -mf-fps=7 -ovc=rawvideo -no-audio -o stopmotion.avi
+mpv mf://@files.lst -mf-type=jpg -mf-fps=10 -ovc=rawvideo -no-audio -o stopmotion.avi
 while ! youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi ; do :; done
 ~/scripts/iftt-maker "Raspberry Pi" "Stopmotion created"
