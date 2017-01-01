@@ -44,11 +44,4 @@ case $message in
 esac
 done
 
-case $feed in
-  635172)
-    echo "---------------"
-    echo $message
-    echo "---------------"
-    ;;
-  esac
-done
+if [ $feed == 635172 ]; then echo "ttttttttttt" ; fi
