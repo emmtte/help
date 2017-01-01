@@ -45,7 +45,7 @@ esac
 done
 
 case $feed
-  635172)
+  =635172)
     echo "---------------"
     echo $message
     echo "---------------"
