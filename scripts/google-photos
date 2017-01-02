@@ -1,0 +1,6 @@
+# Loop through directories and change creating date
+  FILES=/media/hdd/photos
+  find $FILES -type d | while read DIR ; do
+  DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -c12-`
+  echo "$FILES --->>> /media/hdd/photos/
+  done
