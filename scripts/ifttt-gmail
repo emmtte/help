@@ -2,7 +2,7 @@ GDRIVE=/media/hdd/Drive
 FILE=/home/pi/IFTTT.csv
 
 cd $GDRIVE
-if ! drive pull --no-prompt drive pull --export csv --force --exports-dir ~/ --same-exports-dir IFTTT ; then 
+if ! drive pull --no-prompt --export csv --force --exports-dir ~/ --same-exports-dir IFTTT ; then 
     ~/scripts/iftt-maker "MQTT" "Error pull" ; exit
 fi
 
