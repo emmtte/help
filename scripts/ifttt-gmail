@@ -1,8 +1,8 @@
 GDRIVE=/media/hdd/Drive
-FILE=/home/pi/PDF_Automat.csv
+FILE=/home/pi/IFTTT.csv
+
 cd $GDRIVE
- 
-if ! drive pull --no-prompt --export csv --force PDF_Automat --export-dir /home/pi ; then ~/scripts/iftt-maker "MQTT" "Error pull" ; exit; fi
+if ! drive pull --no-prompt drive pull --export csv --force --exports-dir ~/ --same-exports-dir IFTTT ; then ~/scripts/iftt-maker "MQTT" "Error pull" ; exit; fi
 
 while IFS=; read email in out
 do
