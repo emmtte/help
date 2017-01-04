@@ -1,3 +1,6 @@
+#
+#Init
+
 GDRIVE=/media/hdd/Drive
 FILE=/home/pi/IFTTT.csv
 
@@ -6,7 +9,14 @@ if ! drive pull --no-prompt --export csv --force --exports-dir ~/ --same-exports
     ~/scripts/iftt-maker "MQTT" "Error pull" ; exit
 fi
 
+#Download
+dropbox_uploader download IFTTT /home/pi
+
+
 while IFS=, read email in out
 do
     echo "I got:|$email|$in|$out|"
+    find /home/pi/IFTTT -name "$in" | tr '\n' ',' > files.csv
+    echo
+
 done < "$FILE"
