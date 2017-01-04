@@ -1,0 +1,10 @@
+GDRIVE=/media/hdd/Drive
+FILE=/home/pi/PDF_Automat.csv
+cd $GDRIVE
+ 
+if ! drive pull --no-prompt --export csv --force PDF_Automat --export-dir /home/pi ; then ~/scripts/iftt-maker "MQTT" "Error pull" ; exit; fi
+
+while IFS=; read email in out
+do
+    echo "I got:|$email|$in|$out|"
+done < "$FILE"
