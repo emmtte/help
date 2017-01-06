@@ -16,7 +16,13 @@ dropbox_uploader download IFTTT /home/pi
 while IFS=, read email in out
 do
     echo "I got:|$email|$in|$out|"
+    rm files.csv
     find /home/pi/IFTTT -name "$in" | tr '\n' ',' > files.csv
-    echo
-
+    if [ -f files.csv ] ; then
+        echo "$out" >> files.csv
+        cat files.csv
+        if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Merge PDF" "Error pull starred" ; exit; fi
+        #~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf
+        #mv sejda_out.pdf "$out"
+     fi
 done < "$FILE"
