@@ -21,6 +21,7 @@ do
     if [ -f ~/files.csv ] ; then
         echo "$out" >> ~/files.csv
         cat ~/files.csv
+        cd $GDRIVE
         if ! drive pull --no-prompt "/Documents/$out" ; then ~/scripts/iftt-maker "Merge PDF" "Error pull starred" ; exit; fi
         #~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf
         #mv sejda_out.pdf "$out"
