@@ -22,7 +22,7 @@ do
         echo "/home/pi/IFTTT/$out" >> ~/files.csv
         cat ~/files.csv
         cd $GDRIVE
-        if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Merge PDF" "Error pull starred" ; exit; fi
+        if ! drive pull --no-prompt 'Documents/$out' ; then ~/scripts/iftt-maker "Merge PDF" "Error pull starred" ; exit; fi
         cp "/Documents/$out" "/home/pi/IFTTT/$out"
         #~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf
         #mv sejda_out.pdf "$out"
