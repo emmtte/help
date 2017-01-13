@@ -43,10 +43,10 @@ case $message in
     tmux attach -t pi;;
 
   dropbox)
-    tmux send -t cloud.2 'cd ~/scripts && clear' ENTER
-    tmux send -t cloud.2 'bash ifttt-gmail' ENTER
+    tmux send -t cloud.1 'cd ~/scripts && clear' ENTER
+    tmux send -t cloud.1 'bash ifttt-gmail' ENTER
     tmux select-window -t pi:cloud
-    tmux select-pane -t cloud.2;;
+    tmux select-pane -t cloud.1;;
   
 *) ;;
 esac
