@@ -42,6 +42,12 @@ case $message in
     wall "(((((((((((((((((((((((((("
     tmux attach -t pi;;
 
+  dropbox)
+    tmux send -t cloud.2 'cd ~/scripts && clear' ENTER
+    tmux send -t cloud.2 'bash ifttt-gmail' ENTER
+    tmux select-window -t pi:cloud
+    tmux select-pane -t cloud.2
+  
 *) ;;
 esac
 done
