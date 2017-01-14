@@ -25,7 +25,7 @@ do
         if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
         cp "Documents/$out" "/home/pi/IFTTT/$out"
         if grep -r "Encrypt" /home/pi/IFTTT ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
-        ~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf
+        ~/.bin/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
         mv "/home/pi/IFTTT/$out" "Documents/$out"
         if ! drive push --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error push ref doc" ; exit; fi
     fi
