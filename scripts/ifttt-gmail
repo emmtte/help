@@ -31,4 +31,4 @@ do
     fi
 done < "$FILE"
 
-#dropbox_uploader delete IFTTT/*.pdf
+dropbox_uploader delete IFTTT
