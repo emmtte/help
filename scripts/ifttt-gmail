@@ -10,7 +10,7 @@ if ! drive pull --no-prompt --export csv --force --exports-dir /tmp --same-expor
 fi
 tr -d '\r' < /tmp/IFTTT.csv > $FILE
 #Download
-dropbox_uploader download IFTTT/*.pdf /home/pi
+dropbox_uploader download IFTTT /home/pi
 
 
 while IFS=, read email in out
