@@ -10,7 +10,7 @@ if ! drive pull --no-prompt --export csv --force --exports-dir /tmp --same-expor
 fi
 tr -d '\r' < /tmp/IFTTT.csv > $FILE
 #Download
-dropbox_uploader download IFTTT /home/pi
+dropbox_uploader download IFTTT/*.pdf /home/pi
 
 
 while IFS=, read email in out
@@ -22,9 +22,13 @@ do
         echo "/home/pi/IFTTT/$out" >> ~/files.csv
         cat ~/files.csv
         cd $GDRIVE
-        if ! drive pull --no-prompt Documents/"$out" ; then ~/scripts/iftt-maker "Merge PDF" "Error pull starred" ; exit; fi
-        cp "$GDRIVE/Documents/$out" "/home/pi/IFTTT/$out"
+        if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
+        cp "Documents/$out" "/home/pi/IFTTT/$out"
+        if grep -r "Encrypt" /home/pi/IFTTT ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
         #~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf
-        #mv sejda_out.pdf "$out"
-     fi
+        #mv "/home/pi/IFTTT/$out" "Documents/$out"
+        #if ! drive push --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error push ref doc" ; exit; fi
+    fi
 done < "$FILE"
+
+#dropbox_uploader delete IFTTT/*.pdf
