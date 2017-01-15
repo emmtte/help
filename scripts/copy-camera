@@ -21,6 +21,6 @@ done
 rm -r $TMP
 
 cd /media/hdd/Drive
-drive push --quiet Camera/*
+drive push --no-prompt Camera
 
 ~/scripts/iftt-maker "photos and videos from panasonic are saved"
