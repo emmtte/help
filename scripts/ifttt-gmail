@@ -17,8 +17,9 @@ while IFS=, read email in out
 do
     echo "I got:|$email|$in|$out|"
     rm ~/files.csv
-    find /home/pi/IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
-    if [ -f ~/files.csv ] ; then
+    if [[ -n $(find /home/pi/IFTTT -name "$in") ]]
+        then
+        find /home/pi/IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
         echo "/home/pi/IFTTT/$out" >> ~/files.csv
         cat ~/files.csv
         cd $GDRIVE
