@@ -1,6 +1,6 @@
 #!/bin/sh
 cd /media/hdd/youtube-upload/
-find -iname "*.avi" -o -iname "*.mov" -o -iname "*.mp4" -o -iname "*.mts" -o -iname "*.webm" -type f  | sort | while read FILE ; do
+find -iname "*.avi" -o -iname "*.mkv" -iname "*.mov" -o -iname "*.mp4" -o -iname "*.mts" -o -iname "*.webm" -type f  | sort | while read FILE ; do
 while ! youtube-upload --title="$(basename "$FILE")" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
 done
 ~/scripts/iftt-maker "Raspberry Pi" "Uploaded to Youtube"
