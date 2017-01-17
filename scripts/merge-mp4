@@ -1,2 +1,3 @@
 find /media/hdd/merge -iname "*.jpg" -type f | sort | tr '\n' ' + ' > files.csv
 cat files.csv
+# mkvmerge -o /media/hdd/merge/merge.mkv `cat files.csv`
