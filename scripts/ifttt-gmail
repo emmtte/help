@@ -19,6 +19,7 @@ do
     rm ~/files.csv
     if [[ -n $(find /home/pi/IFTTT -name "$in") ]]
         then
+        echo "Find : $in do run merge"
         find /home/pi/IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
         echo "/home/pi/IFTTT/$out" >> ~/files.csv
         cat ~/files.csv
