@@ -1,4 +1,10 @@
 #
+echo ""
+echo " ###"
+echo " ###   `date`"
+echo " ###"
+
+
 #Init
 
 GDRIVE=/media/hdd/Drive
@@ -11,17 +17,13 @@ fi
 tr -d '\r' < /tmp/IFTTT.csv > $FILE
 #Download
 dropbox_uploader download IFTTT /home/pi
-echo ""
-echo " ###"
-echo " ###   `date`"
-echo " ###"
 
 while IFS=, read email in out
 do
-    echo "I got:|$email|$in|$out|"
-    rm ~/files.csv
+    echo "I got:|$email|$in|$out|"    
     if [[ -n $(find /home/pi/IFTTT -name "$in") ]]
         then
+        rm ~/files.csv
         echo " ### Find : $in do run merge"
         find /home/pi/IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
         echo " ### /home/pi/IFTTT/$out" >> ~/files.csv
