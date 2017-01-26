@@ -36,4 +36,6 @@ do
     fi
 done < "$FILE"
 
+rm $FILE
+rm ~/IFTTT/*
 dropbox_uploader delete IFTTT
