@@ -41,7 +41,7 @@ while IFS=, read email in out ; do
         ~/.bin/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
         mv sejda_out.pdf "Documents/$out"
         if ! drive push --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error push ref doc" ; exit; fi
-        while IFS=, f ; do
+        while IFS=, read f ; do
         echo "#### $f ### to delete"
         done < ~/files_rm.csv
     fi
