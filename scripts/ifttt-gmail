@@ -25,19 +25,19 @@ tr -d '\r' < /tmp/IFTTT.csv > $FILE
 
 while IFS=, read email in out ; do
     echo "I got:|$email|$in|$out|"    
-    if [[ -n $(find IFTTT -name "$in") ]]
+    if [[ -n $(find "Ifttt" -name "$in") ]]
         then
         rm ~/files.csv
         echo " ### Find : $in do run merge"
-        find IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
+        find "Ifttt" -name "$in" | tr '\n' ',' > ~/files.csv
         cp ~/files.csv ~/files_rm.csv
-        echo "IFTTT/$out" >> ~/files.csv
+        echo "Ifttt/$out" >> ~/files.csv
         echo " ### cat ~/files.csv"
         cat ~/files.csv
         echo " ###"
         if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
-        cp "Documents/$out" "IFTTT/$out"
-        if grep -r "Encrypt" IFTTT ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
+        cp "Documents/$out" "Ifttt/$out"
+        if grep -r "Encrypt" Ifttt ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
         ~/.bin/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
         mv sejda_out.pdf "Documents/$out"
         if ! drive push --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error push ref doc" ; exit; fi
