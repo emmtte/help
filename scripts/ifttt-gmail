@@ -26,8 +26,10 @@ do
         rm ~/files.csv
         echo " ### Find : $in do run merge"
         find /home/pi/IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
-        echo " ### /home/pi/IFTTT/$out" >> ~/files.csv
+        echo "/home/pi/IFTTT/$out" >> ~/files.csv
+        echo " ### cat ~/files.csv"
         cat ~/files.csv
+        echo " ###"
         cd $GDRIVE
         if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
         cp "Documents/$out" "/home/pi/IFTTT/$out"
