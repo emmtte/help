@@ -23,8 +23,7 @@ tr -d '\r' < /tmp/IFTTT.csv > $FILE
 
 #Download
 
-while IFS=, read email in out
-do
+while IFS=, read email in out ; do
     echo "I got:|$email|$in|$out|"    
     if [[ -n $(find IFTTT -name "$in") ]]
         then
@@ -42,12 +41,11 @@ do
         ~/.bin/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
         mv sejda_out.pdf "Documents/$out"
         if ! drive push --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error push ref doc" ; exit; fi
+        while IFS=, f ; do
+        echo "#### $f ### to delete"
+        done < ~/files_rm.csv
     fi
 done < "$FILE"
 
 rm $FILE
 rm IFTTT/*
-while IFS=, f
-do
-echo "#### $f ### to delete"
-done < ~/files_rm.csv
