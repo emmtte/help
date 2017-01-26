@@ -11,3 +11,4 @@ sudo ifuse /media/iphone
 sudo rsync --include '*/' --include '*.MOV' --exclude '*' --archive --info=progress2 /media/iphone/DCIM/100APPLE/ $VIDEOS
 sudo chown -R pi:pi $VIDEOS
 ~/scripts/iftt-maker "All videos from usbkey are copied"
+~/scripts/youtube-upload
