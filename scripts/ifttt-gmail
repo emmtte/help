@@ -31,6 +31,7 @@ do
         rm ~/files.csv
         echo " ### Find : $in do run merge"
         find IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
+        cp ~/files.csv ~/files_rm.csv
         echo "IFTTT/$out" >> ~/files.csv
         echo " ### cat ~/files.csv"
         cat ~/files.csv
@@ -46,7 +47,7 @@ done < "$FILE"
 
 rm $FILE
 rm IFTTT/*
-while IFS=, file
+while IFS=, f
 do
-echo "#### $file ### to delete"
-done < ~/files.csv
+echo "#### $f ### to delete"
+done < ~/files_rm.csv
