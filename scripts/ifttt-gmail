@@ -12,6 +12,9 @@ tr -d '\r' < /tmp/IFTTT.csv > $FILE
 #Download
 dropbox_uploader download IFTTT /home/pi
 
+echo " ###"
+echo " ###   `date`"
+echo " ###"
 
 while IFS=, read email in out
 do
@@ -19,9 +22,9 @@ do
     rm ~/files.csv
     if [[ -n $(find /home/pi/IFTTT -name "$in") ]]
         then
-        echo "Find : $in do run merge"
+        echo " ### Find : $in do run merge"
         find /home/pi/IFTTT -name "$in" | tr '\n' ',' > ~/files.csv
-        echo "/home/pi/IFTTT/$out" >> ~/files.csv
+        echo " ### /home/pi/IFTTT/$out" >> ~/files.csv
         cat ~/files.csv
         cd $GDRIVE
         if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
