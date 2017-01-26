@@ -7,8 +7,12 @@ mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_
 echo "$json" > ~/mqtt.json
 message=`cat ~/mqtt.json | jq --raw-output 'select(.value != null).value'`
 feed=`cat ~/mqtt.json | jq --raw-output 'select(.value != null).feed_id'`
-echo $message
-echo "$feed"
+echo " ###"
+echo " ###  Date : `date`"
+echo " ###  Feed : $feed"
+echo " ###  Message : $message"
+echo " ###"
+echo
 
 if [ $feed == 635172 ]; then echo "ttttttttttt" ; fi
 
