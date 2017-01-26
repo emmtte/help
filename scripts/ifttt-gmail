@@ -11,7 +11,7 @@ fi
 tr -d '\r' < /tmp/IFTTT.csv > $FILE
 #Download
 dropbox_uploader download IFTTT /home/pi
-
+echo ""
 echo " ###"
 echo " ###   `date`"
 echo " ###"
