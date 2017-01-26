@@ -1,4 +1,5 @@
 #
+## TODO Delete only files merged
 echo ""
 echo " ###"
 echo " ###   `date`"
