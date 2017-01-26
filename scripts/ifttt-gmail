@@ -5,19 +5,21 @@ echo " ###"
 echo " ###   `date`"
 echo " ###"
 
-
-#Init
-
 GDRIVE=/media/hdd/Drive
 FILE=/home/pi/IFTTT.csv
 
+#Init
 cd $GDRIVE
+if ! drive pull --no-prompt "Ifttt/" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
+
+if [ `find "Ifttt" -type d -empty` ] ; then echo " ### Empty directory ###; exit ; fi
+
 if ! drive pull --no-prompt --export csv --force --exports-dir /tmp --same-exports-dir IFTTT ; then 
     ~/scripts/iftt-maker "MQTT" "Error pull" ; exit
 fi
 tr -d '\r' < /tmp/IFTTT.csv > $FILE
 #Download
-dropbox_uploader download IFTTT /home/pi
+
 
 while IFS=, read email in out
 do
