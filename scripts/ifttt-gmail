@@ -13,7 +13,7 @@ cd $GDRIVE
 
 if ! drive pull --no-prompt "Ifttt/" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
 
-if [ `find "Ifttt" -type d -empty` ] ; then echo " ### Empty directory ###; exit ; fi
+#if [ `find "Ifttt" -type d -empty` ] ; then echo " ### Empty directory ###; exit ; fi
 
 if ! drive pull --no-prompt --export csv --force --exports-dir /tmp --same-exports-dir IFTTT ; then 
     ~/scripts/iftt-maker "MQTT" "Error pull" ; exit
