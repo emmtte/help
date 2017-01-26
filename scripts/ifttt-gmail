@@ -46,7 +46,7 @@ done < "$FILE"
 
 rm $FILE
 rm IFTTT/*
-while IFS=, file
-do
-echo "#### $file ### to delete
-done < ~/files.csv
+#while IFS=, file
+#do
+#echo "#### $file ### to delete
+#done < ~/files.csv
