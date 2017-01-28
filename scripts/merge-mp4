@@ -1,4 +1,6 @@
-find /media/hdd/youtube-dl -iname "*.mp4" -type f | sort | tr '\n' ' + ' > files.csv
-cat files.csv
-#mkvmerge -o /media/hdd/merge/merge.mkv `cat files.csv`
-#mencoder -oac pcm -ovc copy -o merged_file.mp4 `ls *.mp4`
+find /media/hdd/youtube-dl -name "* *" -type f | rename 's/ /_/g'
+find /media/hdd/youtube-dl -iname "*.mp4" -type f | sort | sed -z 's/\n/ + /g' > /tmp/files
+cat /tmp/files | rev | cut -c4- | rev > /tmp/files1
+echo
+cat /tmp/files1
+mkvmerge -o "/media/hdd/merge/merge.mkv" `cat /tmp/files1`
