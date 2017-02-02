@@ -4,4 +4,4 @@ sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o us
 mkdir /media/freebox/photos /media/freebox/videos
 rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
 rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
-~/scripts/iftt-maker "Backup Photos" "Backup finished"
+~/scripts/iftt-maker "Backup Photos & Videos" "Backup finished"
