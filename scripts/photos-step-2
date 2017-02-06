@@ -6,9 +6,9 @@ do
     NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
     exiv2 delete "$LINE"
     exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$LINE"
-    drive unstar "$LINE"
+    #drive unstar "$LINE"
     echo "$LINE"
 done <"$FILE"
 
-if ! drive push --no-prompt --ignore-conflict "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PUSH DRIVE"; exit; fi
+#if ! drive push --no-prompt --ignore-conflict "Google Photos" ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Step 1" "ERROR PUSH DRIVE"; exit; fi
 ~/scripts/iftt-maker "Rasperry Pi - Photos Step 2" "END"
