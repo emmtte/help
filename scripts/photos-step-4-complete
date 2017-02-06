@@ -18,10 +18,10 @@
     COUNTER=$((COUNTER + 1))
   done
   
-  # Loop again through files, renaming as "P1######.JPG"
+  # Loop again through files, renaming as "P2######.JPG"
   COUNTER=1
   find $FILES -iname "*.jpg" -type f | sort | while read FILE ; do 
-    NEWNAME="P1$(printf "%06d" $COUNTER).JPG"
+    NEWNAME="P2$(printf "%06d" $COUNTER).JPG"
     #NEWNAME="W1$(printf "%06d" $COUNTER).JPG"
     mv "$FILE" "`dirname "$FILE"`/$NEWNAME"
     COUNTER=$((COUNTER + 1))
