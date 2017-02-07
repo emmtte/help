@@ -16,11 +16,12 @@ cat <<EOF > /tmp/request.xml
 EOF
 
 
-clear
+
 
 while :
 do
 
+clear
 curl -X POST -H "Content-Type: text/xml" \
     -d @/tmp/request.xml \
     http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/dev/null > /tmp/sst.xml
@@ -31,7 +32,7 @@ cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
 t=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 t=$((t / 1000))
 
-bash ~/scripts/tg-msg "*$album*%0A_$artist_%0A$title%0A[`date -u -d @${t} +"%M:%S"`]" > /dev/null
+bash ~/scripts/tg-msg "*$album*%0A_$artist_%0A$title%0A[`date -u -d @${t} +"%M:%S"`]"
 bash ~/scripts/tg-pic "$cover" > /dev/null
 
 
@@ -62,8 +63,5 @@ done
 echo -en "\033[1A\033[K"
 echo -en "\033[1A\033[K"
 echo -en "\033[1A\033[K"
-
-#xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml
-CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
 
 done
