@@ -32,12 +32,12 @@ t=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 t=$((t / 1000))
 
 bash ~/scripts/tg-msg "*$album*%0A_$artist_%0A$title%0A[`date -u -d @${t} +"%M:%S"`]" > /dev/null
-bash ~/scripts/tg-pic "$cover"
+bash ~/scripts/tg-pic "$cover" > /dev/null
 
 
 echo -e "\033[01m $album"
 echo -e "\033[00m $artist"
-echo -e "\033[37m $track"
+echo -e "\033[37m $title"
 track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 track=$((track / 1000))
 echo -en "\033[00m `date -u -d @${track} +"%M:%S"` - "
