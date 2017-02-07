@@ -1,4 +1,7 @@
 #sudo apt-get install recode libxml2-utils
+
+echo " ### External bash file sst-view"
+
 cat <<EOF > /tmp/request.xml
 <?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <SOAP-ENV:Envelope
@@ -14,7 +17,6 @@ cat <<EOF > /tmp/request.xml
 </SOAP-ENV:Envelope>
 EOF
 
-clear
 
 rm /tmp/cover.jpg
 rm /tmp/sst.xml
@@ -34,12 +36,12 @@ t=$((t / 1000))
 echo "$album\n$artist\n$track\n[`date -u -d @${t} +"%M:%S"`]" > /tmp/sst.txt
 curl --silent -o /tmp/cover.jpg $cover
 
-echo -e "\033[01m `xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`"
-echo -e "\033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst.xml | recode html..UTF-8`"
-echo -e "\033[37m `xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`"
+echo -e " ### \033[01m `xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`"
+echo -e " ### \033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst.xml | recode html..UTF-8`"
+echo -e " ### \033[37m `xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`"
 track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 track=$((track / 1000))
-echo -en "\033[00m `date -u -d @${track} +"%M:%S"` - "
+echo -en " ### \033[00m `date -u -d @${track} +"%M:%S"` - "
 
 PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" /tmp/sst.xml`
 PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
@@ -50,8 +52,10 @@ FIN=`date -d "$SystemTime" "+%s"`
 PW=$((PSTART+PLENGT))
 secs=$((PW-FIN))
 
-echo "$secs" > /tmp/sst-time.txt
+echo " ### $secs" > /tmp/sst-time.txt
 
 
 #xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml
 CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
+
+echo " ### END ###"
