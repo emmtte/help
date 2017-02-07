@@ -33,7 +33,10 @@ cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
 t=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 t=$((t / 1000))
 
-echo "$album/n$artist/n$track/n[`date -u -d @${t} +"%M:%S"`]" > /tmp/sst.txt
+echo "*$album*" > /tmp/sst.txt
+echo "_$artist_" >> /tmp/sst.txt
+echo "$track" >> /tmp/sst.txt
+echo "[`date -u -d @${t} +"%M:%S"`]" >> /tmp/sst.txt
 curl --silent -o /tmp/cover.jpg $cover
 
 echo -e " ### \033[01m `xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`"
