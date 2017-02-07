@@ -21,28 +21,23 @@ clear
 while :
 do
 
-rm /tmp/cover.jpg
-rm /tmp/sst.xml
-rm /tmp/sst.txt
-rm /tmp/sst-time.txt
-
 curl -X POST -H "Content-Type: text/xml" \
     -d @/tmp/request.xml \
     http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/dev/null > /tmp/sst.xml
 album=`xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`
 artist=`xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst.xml | recode html..UTF-8`
-track=`xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`
+title=`xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`
 cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
 t=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 t=$((t / 1000))
 
-bash ~/scripts/tg-send "*$album*%0A_$artist_%0A$track%0A[`date -u -d @${t} +"%M:%S"`]" > /dev/null
+bash ~/scripts/tg-msg "*$album*%0A_$artist_%0A$title%0A[`date -u -d @${t} +"%M:%S"`]" > /dev/null
+bash ~/scripts/tg-pic "$cover"
 
-curl --silent -o /tmp/cover.jpg $cover
 
-echo -e " \033[01m `xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`"
-echo -e " \033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst.xml | recode html..UTF-8`"
-echo -e " \033[37m `xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`"
+echo -e "\033[01m $album"
+echo -e "\033[00m $artist"
+echo -e "\033[37m $track"
 track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 track=$((track / 1000))
 echo -en "\033[00m `date -u -d @${track} +"%M:%S"` - "
@@ -72,7 +67,7 @@ echo -en "\033[1A\033[K"
 echo -en "\033[1A\033[K"
 echo -en "\033[1A\033[K"
 
-#xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml
-CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
+#xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml
+CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
 
 done
