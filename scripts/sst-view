@@ -53,5 +53,5 @@ secs=$((PW-FIN))
 echo "$secs" > /tmp/sst-time.txt
 
 
-#xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml
-CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
+#xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml
+CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
