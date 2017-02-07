@@ -51,15 +51,11 @@ FIN=`date -d "$SystemTime" "+%s"`
 PW=$((PSTART+PLENGT))
 secs=$((PW-FIN))
 
-
-#xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml
-CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
-
 while [ $secs -gt 0 ]; do
    #echo -ne "$secs\033[0K\r"
     result=`date -u -d @${secs} +"%M:%S"`
     echo -en "$result"
-    sleep .9
+    sleep 1
     echo -en "\033[5D"
    : $((secs--))
 done
