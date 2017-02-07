@@ -32,7 +32,7 @@ cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
 t=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 t=$((t / 1000))
 
-bash ~/scripts/tg-msg "*$album*%0A_$artist_%0A$title%0A[`date -u -d @${t} +"%M:%S"`]"
+bash ~/scripts/tg-msg "*{$album}*%0A_{$artist}_%0A{$title}%0A[`date -u -d @${t} +"%M:%S"`]"
 bash ~/scripts/tg-pic "$cover" > /dev/null
 
 
