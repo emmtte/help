@@ -41,7 +41,7 @@ echo -e " ### \033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" /tmp
 echo -e " ### \033[37m `xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`"
 track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 track=$((track / 1000))
-echo -en " ### \033[00m `date -u -d @${track} +"%M:%S"` - "
+echo -e " ### \033[00m `date -u -d @${track} +"%M:%S"`"
 
 PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" /tmp/sst.xml`
 PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
