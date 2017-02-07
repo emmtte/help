@@ -22,6 +22,7 @@ Command Line Interface Tools
   + [Samba](#samba)
   + [Sejda](#sejda)
   + [Squid](#squid)
+  + [Telegram](#telegram)
   + [Transmission](#transmission)
   + [Youtube-dl](#youtube-dl)
   + [Youtube-Upload](#youtube-upload)
@@ -429,6 +430,31 @@ sudo squid -k reconfigure
 ```
 [:back:](#command-line-interface-tools)
 <br><br>
+
+Telegram
+--------
+:link: https://github.com/vysheng/tg
+```shell
+sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython-dev make 
+git clone --recursive https://github.com/vysheng/tg.git
+cd tg
+./configure
+make
+bin/telegram-cli -k tg-server.pub
+
+If error
+mcedit tgl/mtproto-utils.c
+comment lines 101, 108, 116 and 122 with assert (0) 
+make
+
+sudo cp ~/tg/bin/telegram-cli /usr/bin  
+sudo mkdir -p /etc/telegram-cli  
+sudo mv ~/tg/tg-server.pub /etc/telegram-cli/server.pub 
+
+bin/telegram-cli -W
+bin/telegram-cli -b bot -s t.lua
+bin/telegram-cli -k tg-server.pub
+```
 
 Transmission
 ------------
