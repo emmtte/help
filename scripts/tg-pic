@@ -13,13 +13,12 @@ echo $userChatId
 
 echo "$1"
 if [ -z "$1" ] ; then
-        echo "Please pipe a message to me!"
+        echo "Please give a picture link"
 else
         curl -s \
         -X POST \
-        https://api.telegram.org/bot$apiToken/sendMessage \
-        -d text="$1" \
+        https://api.telegram.org/bot$apiToken/sendPhoto \
+        -d photo="$1" \
         -d chat_id=$userChatId
-        -d parse_mode="Markdown"
 echo ""
 fi
