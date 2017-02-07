@@ -45,7 +45,7 @@ echo -e " \033[00m `xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst
 echo -e " \033[37m `xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`"
 track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
 track=$((track / 1000))
-echo -e " \033[00m `date -u -d @${track} +"%M:%S"`"
+echo -en "\033[00m `date -u -d @${track} +"%M:%S"` - "
 
 PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" /tmp/sst.xml`
 PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
@@ -55,8 +55,6 @@ PLENGT=$(($PlayLength / 1000))
 FIN=`date -d "$SystemTime" "+%s"`
 PW=$((PSTART+PLENGT))
 secs=$((PW-FIN))
-echo " ### $secs ###"
-echo "$secs" > /tmp/sst-time.txt
 
 
 #xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml
