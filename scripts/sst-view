@@ -51,8 +51,8 @@ PLENGT=$(($PlayLength / 1000))
 FIN=`date -d "$SystemTime" "+%s"`
 PW=$((PSTART+PLENGT))
 secs=$((PW-FIN))
-
-echo " ### $secs" > /tmp/sst-time.txt
+echo " ### $secs ###"
+echo "$secs" > /tmp/sst-time.txt
 
 
 #xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml
