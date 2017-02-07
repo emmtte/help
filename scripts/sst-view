@@ -15,12 +15,8 @@ cat <<EOF > /tmp/request.xml
 </SOAP-ENV:Envelope>
 EOF
 
-
-
-
 while :
 do
-
 clear
 curl -X POST -H "Content-Type: text/xml" \
     -d @/tmp/request.xml \
