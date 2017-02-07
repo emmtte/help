@@ -21,6 +21,7 @@ else
         https://api.telegram.org/bot$apiToken/sendMessage \
         -d text="$1" \
         -d chat_id=$userChatId
+        -d parse_mode="Markdown"
 echo ""
 fi
 
