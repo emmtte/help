@@ -1,3 +1,8 @@
++ f * & t t
+r       run
+        PARAM=%{parametes}
+        %f $PARAM
+
 = d *
 C castnow 
   echo %d/
