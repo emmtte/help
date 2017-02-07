@@ -73,3 +73,8 @@ done
 echo -en "\033[1A\033[K"
 echo -en "\033[1A\033[K"
 echo -en "\033[1A\033[K"
+
+#xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml
+CoverLink=`xmllint --xpath "//*[local-name()='CoverLink']/text()" sst.xml`
+
+done
