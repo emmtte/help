@@ -23,6 +23,7 @@ tmux split-window -v
 
 tmux new-window -t pi -a -n merge
 tmux split-window -v
+tmux send -t cast.2 'sleep 5' ENTER
 
 tmux select-window -t pi:1
 fi
