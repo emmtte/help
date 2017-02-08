@@ -2,16 +2,12 @@
 #
 #  This script sends whatever is piped to it as a message to the specified Telegram bot
 #
-source ~/.tg.conf
+source ~/config.ini
 
 # example:
 # apiToken=123456789:AbCdEfgijk1LmPQRSTu234v5Wx-yZA67BCD
 # userChatId=123456789
 
-echo $apiToken
-echo $userChatId
-
-echo "$1"
 if [ -z "$1" ] ; then
         echo "Please give a picture link"
 else
