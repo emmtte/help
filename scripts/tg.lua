@@ -3,7 +3,8 @@ function on_msg_receive (msg)
 if msg.out then
 send_msg (msg.from.print_name, "msg out", ok_cb, false)
 return
-
+end
+    
 if (msg.from.print_name == "John_Doe") then
 send_msg (msg.from.print_name, msg.from.print_name, ok_cb, false)
 end
