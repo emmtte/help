@@ -65,5 +65,5 @@ end
 function on_binlog_replay_end ()
     --started = 1
     --postpone (cron, false, 1.0)
-    send_msg(msg.from.print_name, "on binlog replay end", ok_cb, false)
+    --send_msg(msg.from.print_name, "on binlog replay end", ok_cb, false)
 end
