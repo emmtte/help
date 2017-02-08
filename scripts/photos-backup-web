@@ -4,7 +4,7 @@
 # export NODE_PATH=~/node_modules/
 FILES=/media/hdd/photos-web
 mkdir $FILES
-#rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
+rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   echo "$FILE"
   c=`identify -format "%w %h" "$FILE"`
