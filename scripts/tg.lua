@@ -20,7 +20,7 @@ send_msg (msg.from.print_name, 'Please click /stop_cover when it is finished', o
 end
 
 if (msg.text=='/stop_cover') then
-os.execute("tmux send-keys C-c -t cast.2")
+os.execute("tmux send-keys -t cast.2 C-c")
 send_msg (msg.from.print_name, 'Thanks for watching', ok_cb, false)
 end
     
