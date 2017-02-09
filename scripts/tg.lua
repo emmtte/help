@@ -1,8 +1,8 @@
 function on_msg_receive (msg)
 
 if msg.out then
-send_msg (msg.from.print_name, "msg out", ok_cb, false)
-return
+--send_msg (msg.from.print_name, "msg out", ok_cb, false)
+--return
 end
     
 if (msg.from.print_name == "John_Doe") then
@@ -24,8 +24,8 @@ os.execute("tmux send-keys -t cast.2 C-c")
 send_msg (msg.from.print_name, 'Thanks for watching', ok_cb, false)
 end
     
-if (msg.text=='/fd') then
-send_msg (msg.from.print_name, '-->>', ok_cb, false)
+if (msg.text=='/merge') then
+send_msg (msg.from.print_name, 'Not working', ok_cb, false)
 end
 
 if (msg.text=='/photo') then
@@ -45,7 +45,7 @@ if msg.unread == 0 then
 --return
 end
 
-send_msg(msg.from.print_name, "End for your text.", ok_cb, false)
+    --send_msg(msg.from.print_name, "End for your text.", ok_cb, false)
 end
 
 function on_our_id (id)
@@ -55,11 +55,11 @@ function on_secret_chat_created (user)
 end
 
 function on_user_update (user)
-send_msg(msg.from.print_name, "updated user", ok_cb, false)
+    --send_msg(msg.from.print_name, "updated user", ok_cb, false)
 end
 
 function on_chat_update (user)
-send_msg(msg.from.print_name, "updated chat", ok_cb, false)
+    --send_msg(msg.from.print_name, "updated chat", ok_cb, false)
 end
 
 function on_binlog_replay_end ()
