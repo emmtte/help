@@ -512,7 +512,7 @@ Youtube-Upload
 --------------
 :link: https://github.com/tokland/youtube-upload
 ```shell
-sudo pip install --upgrade google-api-python-client progressbar
+sudo pip install --upgrade google-api-python-client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
 cd youtube-upload-master
