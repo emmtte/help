@@ -12,7 +12,7 @@ find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   set $c
   if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then 
     sharp -i "$FILE" -o /media/hdd/tmp/ resize 2048 2048 --max --withoutEnlargement --withMetadata
-    mv /media/hdd/tmp/*.JPG "$FILE"
+    mv -f /media/hdd/tmp/*.JPG "$FILE"
   fi
 done
 ~/scripts/iftt-maker "Backup Photos Web" "Resize Finished"
