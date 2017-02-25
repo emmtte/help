@@ -9,7 +9,7 @@ rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   echo " ### $FILE"
   echo " >>> $(basename "$FILE")"
-  NEWFILE = "W`echo "$(basename "$FILE")" | cut -c 2-`"
+  NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
   echo " <<< $NEWFILE"
   c=`identify -format "%w %h" "$FILE"`
   set $c
