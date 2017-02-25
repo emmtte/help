@@ -9,12 +9,14 @@ rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   echo " ### $FILE"
   echo " >>> $(basename "$FILE")"
-  #echo "$(basename "$FILE")" | cut -c 2-
+  NEWFILE = "W`echo "$(basename "$FILE")" | cut -c 2-`"
+  echo " <<< $NEWFILE"
   c=`identify -format "%w %h" "$FILE"`
   set $c
   if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then 
     sharp -i "$FILE" -o /media/hdd/tmp/ resize 2048 2048 --max --withoutEnlargement --withMetadata
-    mv -f /media/hdd/tmp/*.JPG "$FILE"
+    rm "$FILE"
+    mv /media/hdd/tmp/*.JPG "$(dirname "$FILE")/$NEWFILE"
   fi
 done
 ~/scripts/iftt-maker "Backup Photos Web" "Resize Finished"
