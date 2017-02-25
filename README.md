@@ -440,7 +440,6 @@ git clone --recursive https://github.com/vysheng/tg.git
 cd tg
 ./configure
 make
-bin/telegram-cli -k tg-server.pub
 
 If error
 mcedit tgl/mtproto-utils.c
@@ -451,9 +450,7 @@ sudo cp ~/tg/bin/telegram-cli /usr/bin
 sudo mkdir -p /etc/telegram-cli  
 sudo mv ~/tg/tg-server.pub /etc/telegram-cli/server.pub 
 
-bin/telegram-cli -W
-bin/telegram-cli -b bot -s ~/scripts/tg.lua
-bin/telegram-cli -k tg-server.pub
+~/tg/bin/telegram-cli -b bot -s ~/scripts/tg.lua
 ```
 [:back:](#command-line-interface-tools)
 <br><br>
