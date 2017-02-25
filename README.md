@@ -290,8 +290,8 @@ sudo pip install --upgrade oauth2client
 mkdir ~/.bin/picasa-websync#1 ~/.bin/picasa-websync#2
 curl -o ~/.bin/picasawebsync.py https://raw.githubusercontent.com/leocrawford/picasawebsync/master/picasawebsync.py
 chmod +x ~/.bin/picasawebsync.py
-cp ~/.bin/picasawebsync.py ~/.bin/picasa-websync#1/client_secrets.json
-mv ~/.bin/picasawebsync.py ~/.bin/picasa-websync#2/client_secrets.json
+cp ~/.bin/picasawebsync.py ~/.bin/picasa-websync#1/picasawebsync.py
+mv ~/.bin/picasawebsync.py ~/.bin/picasa-websync#2/picasawebsync.py
 cp client_secrets.json ~/.bin/picasa-websync#1/client_secrets.json
 cp client_secrets.json ~/.bin/picasa-websync#2/client_secrets.json
 ```
