@@ -7,10 +7,9 @@ mkdir $FILES
 mkdir /media/hdd/tmp
 rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
-  echo " ### $FILE"
-  echo " <<< $(basename "$FILE")"
   NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
-  echo " >>> $NEWFILE"
+  echo " ### $FILE"
+  echo " ### $(basename "$FILE") >>> $NEWFILE"
   c=`identify -format "%w %h" "$FILE"`
   set $c
   if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then 
