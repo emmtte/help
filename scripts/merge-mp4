@@ -1,6 +1,9 @@
-find /media/hdd/youtube-dl -name "* *" -type f | rename 's/ /_/g'
-find /media/hdd/youtube-dl -iname "*.mp4" -type f | sort | sed -z 's/\n/ + /g' > /tmp/files
-cat /tmp/files | rev | cut -c4- | rev > /tmp/files1
-echo
-cat /tmp/files1
-mkvmerge -o "/media/hdd/merge/merge.mkv" `cat /tmp/files1`
+#find /media/hdd/youtube-dl -name "* *" -type f | rename 's/ /_/g'
+#find /media/hdd/youtube-dl -iname "*.mp4" -type f | sort | sed -z 's/\n/ + /g' > /tmp/files
+#cat /tmp/files | rev | cut -c4- | rev > /tmp/files1
+#echo
+#cat /tmp/files1
+#mkvmerge -o "/media/hdd/merge/merge.mkv" `cat /tmp/files1`
+
+find /media/hdd/mp4 -type f | sort | tr '\n' '+' > /tmp/files.csv
+cat /tmp/files.csv
