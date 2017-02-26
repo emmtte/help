@@ -5,8 +5,4 @@ echo
 cat /tmp/files.csv
 echo
 cat /tmp/files
-#mkvmerge -o "/media/hdd/mp4/out.mkv" `cat /tmp/files1`
-echo "####"
-find /media/hdd/mp4 -type f | sort | tr '\n' '+' > /tmp/files.csv
-#mkvmerge -o /media/hdd/mp4/out.mkv
-cat /tmp/files.csv
+mkvmerge -o "/media/hdd/mp4/out.mkv" `cat /tmp/files`
