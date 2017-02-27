@@ -27,6 +27,6 @@ DAT=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 
 printf "\033[00m$FILE\n\033[01mEXIF1 : EXIF : $EXIF $EXIF1 EXIF2 : $EXIF2 DATE : $DAT\n"
 done
 
-if [ -f ~/errors.log ]; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR DATES IN PHOTOS see starred photos or error.log"; exit; fi
-~/scripts/iftt-maker "Rasperry Pi - Photos Step 0" "END"
+if [ -f ~/errors.log ]; then ~/scripts/iftt-maker "Rasperry Pi - Photos" "ERROR DATES IN PHOTOS ~/error.log"; exit; fi
+~/scripts/iftt-maker "Raspberry Pi - Photos Pre-Run" "OK"
 
