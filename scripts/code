@@ -10,10 +10,9 @@ FILES=/media/hdd/photos
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
   echo " ### $FILE"
-
-set $(exiv2 -g Exif.Photo.Pixel -Pv "$FILE")
-echo " ### $(basename "$FILE") >>> $NEWFILE | $1 | $2 |"
-echo " ### $(basename "$FILE") >>> $NEWFILE | $W | $H |" >> ~/test.log
+read H W <<< $(exiv2 -g Exif.Photo.Pixel -Pv "$FILE")
+echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |"
+echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |" >> ~/test.log
 
   #if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then
   #  sharp -i "$FILE" -o /media/hdd/tmp/ resize 2048 2048 --max --withoutEnlargement --withMetadata
