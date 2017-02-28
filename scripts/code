@@ -1,0 +1,23 @@
+#!/bin/sh
+# sudo apt-get install imagemagick
+# sudo npm install sharp-cli -g
+# export NODE_PATH=~/node_modules/
+FILES=/media/hdd/photos-web
+mkdir $FILES
+mkdir /media/hdd/tmp
+rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
+find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
+  NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
+  echo " ### $FILE"
+  echo " ### $(basename "$FILE") >>> $NEWFILE"
+  r=`file "$FILE" | cut -d ',' -f  11 | cut -c2-`
+  W=$r |
+  #if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then 
+  #  sharp -i "$FILE" -o /media/hdd/tmp/ resize 2048 2048 --max --withoutEnlargement --withMetadata
+  #  rm "$FILE"
+  #  mv /media/hdd/tmp/*.JPG "$(dirname "$FILE")/$NEWFILE"
+  #else
+  #  mv "$FILE" "$(dirname "$FILE")/$NEWFILE"
+  #fi
+done
+~/scripts/iftt-maker "Backup Photos Web" "Resize Finished"
