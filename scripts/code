@@ -20,4 +20,4 @@ echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |"
   cp "$FILE" /media/hdd/sharp
   fi
 done
-#~/scripts/iftt-maker "Backup Photos Web" "Resize Finished"
+~/scripts/iftt-maker "Prep to sharp done" "Prep to sharp done"
