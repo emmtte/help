@@ -3,7 +3,7 @@
 # sudo npm install sharp-cli -g
 # export NODE_PATH=~/node_modules/
 rm ~/test.log
-FILES=/media/hdd/photos/1907
+FILES=/media/hdd/photos
 #mkdir $FILES
 #mkdir /media/hdd/tmp
 #rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
