@@ -10,7 +10,9 @@ FILES=/media/hdd/photos
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
   echo " ### $FILE"
-read H W <<< $(exiv2 -g Exif.Photo.Pixel -Pv "$FILE")
+#read H W <<< $(exiv2 -g Exif.Photo.Pixel -Pv "$FILE")
+read H x W <<< $(exiv2 "$FILE" | grep "Image size" | cut -d ":" -f 2)
+
 echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |"
 echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |" >> ~/test.log
 
