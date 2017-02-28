@@ -11,7 +11,10 @@ find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
   echo " ### $FILE"
   echo " ### $(basename "$FILE") >>> $NEWFILE"
   r=`file "$FILE" | cut -d ',' -f  11 | cut -c2-`
-  W=$r |
+  W=echo "$r" | cut -d "x", -f 1
+  H=echo "$r" | cut -d "x", -f 2
+  echo "Height : $H"
+  echo "Width : $W"
   #if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then 
   #  sharp -i "$FILE" -o /media/hdd/tmp/ resize 2048 2048 --max --withoutEnlargement --withMetadata
   #  rm "$FILE"
