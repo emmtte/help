@@ -8,20 +8,16 @@ FILES=/media/hdd/photos
 #mkdir /media/hdd/tmp
 #rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
 find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
-  NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
-  echo " ### $FILE"
+  #NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
+  #echo " ### $FILE"
 #read H W <<< $(exiv2 -g Exif.Photo.Pixel -Pv "$FILE")
 read H x W <<< $(exiv2 "$FILE" | grep "Image size" | cut -d ":" -f 2)
 
 echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |"
-echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |" >> ~/test.log
+#echo " ### $(basename "$FILE") >>> $NEWFILE | $H | $W |" >> ~/test.log
 
-  #if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then
-  #  sharp -i "$FILE" -o /media/hdd/tmp/ resize 2048 2048 --max --withoutEnlargement --withMetadata
-  #  rm "$FILE"
-  #  mv /media/hdd/tmp/*.JPG "$(dirname "$FILE")/$NEWFILE"
-  #else
-  #  mv "$FILE" "$(dirname "$FILE")/$NEWFILE"
-  #fi
+  if [ $H -gt 2048 -o $W -gt 2048 ] ; then
+  cp "$FILE" /media/hdd/sharp
+  fi
 done
 #~/scripts/iftt-maker "Backup Photos Web" "Resize Finished"
