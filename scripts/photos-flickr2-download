@@ -1,0 +1,7 @@
+#cd ~/.bin
+#git clone https://github.com/beaufour/flickr-download.git
+#~/.bin/flickr-download/flickr_download/flickr_download.py -t 
+#
+
+source ~/config.ini
+flickr_download -k $flickr_api_key -s $flickr_api_secret -u $flickr_user -l <user name>
