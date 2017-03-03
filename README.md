@@ -37,7 +37,7 @@ wget https://nodejs.org/dist/v6.2.0/node-v6.2.0-linux-armv6l.tar.gz
 tar -xvf node-v6.2.0-linux-armv6l.tar.gz 
 cd node-v6.2.0-linux-armv6l
 sudo cp -R * /usr/local/
-npm install git+https://github.com/xat/castnow.git -g
+sudo npm install castnow -g
 castnow http://hi5.streamingsoundtracks.com --type "audio/wav"
 ```
 [`castnow-start`](https://github.com/ManuCart/RaspberryPi/blob/master/scripts/castnow-start)
