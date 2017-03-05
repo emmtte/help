@@ -8,7 +8,6 @@ rm ~/scripts/*
 curl -L -o scripts.zip https://github.com/ManuCart/raspberrypi/archive/master.zip
 unzip -jo scripts.zip -d ~/scripts RaspberryPi-master/scripts/*
 chmod +x ~/scripts/*
-ln -s /media/hdd/Bibliothèques/Soundtracks/ ~/scripts/play-scores
 ln -s /media/hdd/torrent/ ~/scripts/torrents
 ln -s /media/hdd/ ~/scripts/hdd
 ln -s /media/hdd/Drive/ ~/scripts/drive
