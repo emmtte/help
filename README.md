@@ -302,7 +302,7 @@ Pi Hole
 -------
 :link: https://github.com/jacobsalmela/pi-hole
 ```shell
-curl -L install.pi-hole.net | bash
+curl -sSL https://install.pi-hole.net | bash
 sudo mcedit /etc/dnsmasq.d/02-wildcards.conf
 > address=/.blub.com/192.168.0.1
 > address=/.blub.net/192.168.0.1
