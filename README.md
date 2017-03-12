@@ -29,7 +29,7 @@ Command Line Interface Tools
 
 <br><br>
 
-[Castnow](https://github.com/xat/castnow)
+Castnow
 -------
 :link: https://github.com/xat/castnow
 ```shell
