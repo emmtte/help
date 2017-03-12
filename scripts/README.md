@@ -25,22 +25,22 @@ Google Photos
 
 Backup Photos
 -------------
-   + [Photos Flickr #1](photos-flickr-1)
-    - Run script [```photos-flickr1```](photos-flickr-1)
-   + [Photos Google #4](photos-web)
-    - Run script [```photos-web```](photos-web)
-   + [Photos Backup External Device #4](photos-backup-ext)
+   + **Photos Flickr #1**
+    - Run script [`photos-flickr1`](photos-flickr-1)
+   + **Photos Google #4**
+    - Run script [`photos-web`](photos-web)
+   + **Photos Backup External Device #4**
     - On the box eject current device
     - Power on usb device
-    - Run script [```photos-bzckup-ext```](photos-backup-ext)
+    - Run script [`photos-backup-ext`](photos-backup-ext)
 
 
 Youtube
 -------
 
-   + [Youtube Upload](youtube-upload)
+   + **Youtube Upload**
     - Copy videos files to ```/media/hdd/youtube-upload```
-    - Run script [```youtube-upload```](youtube-upload)
-   + [Youtube Download](youtube-backup)
-    - Create ```~/.youtube.dl``` file with the youtube id playlist
-    - Run script [```youtube-backup```](youtube-upload)
+    - Run script [`youtube-upload`](youtube-upload)
+   + **Youtube Download**
+    - Create `~/.youtube.dl` file with the youtube id playlist
+    - Run script [`youtube-backup`](youtube-upload)
