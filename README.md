@@ -32,11 +32,15 @@ Google Photos
 
 Backup Photos
 -------------
-   + **Photos Flickr #1**
-    - Run script [`photos-flickr1`](photos-flickr-1)
-   + **Photos Google #4**
-    - Run script [`photos-web`](photos-web)
-   + **Photos Backup External Device #4**
+   + **Photos Flickr**
+    - Delete Every photos on Flickr
+    - Remove flickr.db
+    - Run script [`photos-backup-flickr1`](photos-backup-flickr-1)
+    - Run script [`photos-bakup-flickr2`](photos-backup-flickr-2)
+   + **Google Photos**
+    - Run script [`photos-backup-web`](photos-backup-web)
+    - Run script [`crop`](crop) on external device
+   + **Photos Backup External Device**
     - On the box eject current device
     - Power on usb device
     - Run script [`photos-backup-ext`](photos-backup-ext)
