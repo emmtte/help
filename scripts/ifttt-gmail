@@ -30,7 +30,7 @@ while IFS=, read email in out ; do
         then
         rm ~/files.csv
         echo " ### Find : $in do run merge"
-        find "Snoozed" -name "$in" | tr '\n' ',' > ~/files.csv
+        find "Snoozed" -name "$in" | sort | rev | tr '\n' ',' > ~/files.csv
         cp ~/files.csv ~/files_rm.csv
         echo "Snoozed/$out" >> ~/files.csv
         ansi --bg-red --newline "cat ~/files.csv"
