@@ -15,10 +15,8 @@ if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then ~/scripts/iftt-maker "
 ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
 if [ `find "Snoozed" -type d -empty` ] ; then echo " ### Empty directory ### "; exit; fi
 
-ansi --bg-blue --newline "### Download ifttt.xls ###"
-#if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir ifttt.xls; then 
-if ! drive pull --no-prompt --export csv --explicitly-export ifttt.xls; then 
-    ~/scripts/iftt-maker "MQTT" "Error pull" ; exit
+ansi --bg-blue --newline "### Download ifttt ###"
+if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull for ifttt.xls" ; exit
     fi
 tr -d '\r' < /tmp/ifttt.csv > $FILE
 
