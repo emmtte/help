@@ -1,0 +1,16 @@
+FILES=/media/nfs
+
+find $FILES -iname "P*.JPG" -type f | sort | while read FILE ; do
+  NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
+  echo " ### $FILE"
+  echo " ### $(basename "$FILE") >>> $NEWFILE"
+  c=`identify -format "%w %h" "$FILE"`
+  set $c
+  if [ $1 -gt 2048 -o $2 -gt 2048 ] ; then.
+    sharp -i "$FILE" -o /tmp/ resize 2048 2048 --max --withoutEnlargement --withMetadata
+    mv /tmp/*.JPG "$(dirname "$FILE")/$NEWFILE"
+    rm "$FILE"
+  else
+    mv "$FILE" "$(dirname "$FILE")/$NEWFILE"
+  fi
+done
