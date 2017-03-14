@@ -6,7 +6,7 @@ FILES=/media/hdd/photos-web
 mkdir $FILES
 mkdir /media/hdd/tmp
 rsync --archive --delete --info=progress2 /media/hdd/photos/ $FILES
-
+sudo chmod -R 777 /media/hdd/photos-web
 #find $FILES -iname "*.JPG" -type f | sort | while read FILE ; do
 #  NEWFILE="W`echo "$(basename "$FILE")" | cut -c 2-`"
 #  echo " ### $FILE"
