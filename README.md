@@ -34,25 +34,25 @@ Backup Photos
 -------------
 
    + **Photos Flickr**
-    - Delete Every photos on Flickr
-    - Remove flickr.db
-    - Run script [`photos-backup-flickr1`](photos-backup-flickr-1)
-    - Run script [`photos-bakup-flickr2`](photos-backup-flickr-2)
+     - Delete Every photos on Flickr
+     - Remove flickr.db
+     - Run script [`photos-backup-flickr1`](photos-backup-flickr-1)
+     - Run script [`photos-bakup-flickr2`](photos-backup-flickr-2)
    + **Google Photos**
-    - Run script [`photos-backup-web`](photos-backup-web)
-    - Run script [`crop`](crop) on external device
+     - Run script [`photos-backup-web`](photos-backup-web)
+     - Run script [`crop`](crop) on external device
    + **Photos Backup External Device**
-    - On the box eject current device
-    - Power on usb device
-    - Run script [`photos-backup-ext`](photos-backup-ext)
+     - On the box eject current device
+     - Power on usb device
+     - Run script [`photos-backup-ext`](photos-backup-ext)
 
 
 Youtube
 -------
 
    + **Youtube Upload**
-    - Copy videos files to ```/media/hdd/youtube-upload```
-    - Run script [`youtube-upload`](youtube-upload)
+     - Copy videos files to ```/media/hdd/youtube-upload```
+     - Run script [`youtube-upload`](youtube-upload)
    + **Youtube Download**
-    - Create `~/.youtube.dl` file with the youtube id playlist
-    - Run script [`youtube-backup`](youtube-upload)
+     - Create `~/.youtube.dl` file with the youtube id playlist
+     - Run script [`youtube-backup`](youtube-upload)
