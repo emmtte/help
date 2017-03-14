@@ -1,5 +1,6 @@
 Command Line Interface Tools
 ============================
+  + [Ansi](#ansi)
   + [Castnow](#castnow)
   + [Dropbox-Uploader](#dropbox-uploader)
   + [Drive](#drive)
@@ -26,6 +27,18 @@ Command Line Interface Tools
   + [Transmission](#transmission)
   + [Youtube-dl](#youtube-dl)
   + [Youtube-Upload](#youtube-upload)
+
+<br><br>
+
+Ansi
+----
+:link: https://github.com/fidian/ansi
+```shell
+curl -OL git.io/ansi
+chmod 755 ansi
+sudo mv ansi /usr/local/bin/
+```
+[:back:](#command-line-interface-tools)
 
 <br><br>
 
