@@ -9,7 +9,7 @@ FILE=/home/pi/ifttt.csv
 cd $GDRIVE
 
 ansi --bg-blue --newline "### Download Snoozed Dir ###"
-rm Snoozed
+rm -rf Snoozed
 if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pul Snoozed folder"; exit; fi
 
 ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
