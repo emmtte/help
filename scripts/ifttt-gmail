@@ -10,7 +10,10 @@ cd $GDRIVE
 
 ansi --bg-blue --newline "### Download Snoozed Dir ###"
 rm Snoozed
-if ! drive pull --no-prompt "Snoozed/" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Please Clarify Snoozed Files" ; exit; fi
+if ! drive pull --no-prompt "Snoozed/"; then
+    data=`drive clashes --list Snoozed`
+    ~/scripts/iftt-maker "Auto Merge PDF" "$data" ; exit
+    fi
 
 ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
 if [ `find "Snoozed" -type d -empty` ] ; then echo " ### Empty directory ### "; exit; fi
