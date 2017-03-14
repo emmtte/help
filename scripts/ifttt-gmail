@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 ## TODO Delete only files merged
 
 ansi --bg-yellow-intense --newline " ### `date` ###"
@@ -16,8 +16,7 @@ ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
 if [ `find "Snoozed" -type d -empty` ] ; then echo " ### Empty directory ### "; exit; fi
 
 ansi --bg-blue --newline "### Download ifttt ###"
-if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull for ifttt.xls" ; exit
-    fi
+if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull for ifttt.xls" ; exit; fi
 tr -d '\r' < /tmp/ifttt.csv > $FILE
 
 
