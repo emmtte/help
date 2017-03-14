@@ -26,16 +26,16 @@ ansi --bg-blue --newline "### read ifttt.csv ###"
 
 while IFS=, read email in out ; do
     echo "I got:|$email|$in|$out|"    
-    if [[ -n $(find "Ifttt" -name "$in") ]]
+    if [[ -n $(find "Snoozed" -name "$in") ]]
         then
         rm ~/files.csv
         echo " ### Find : $in do run merge"
-        find "Ifttt" -name "$in" | tr '\n' ',' > ~/files.csv
-        #cp ~/files.csv ~/files_rm.csv
-        echo "Ifttt/$out" >> ~/files.csv
-        echo " ### cat ~/files.csv"
+        find "Snoozed" -name "$in" | tr '\n' ',' > ~/files.csv
+        cp ~/files.csv ~/files_rm.csv
+        echo "Snoozed/$out" >> ~/files.csv
+        ansi --bg-red --newline "cat ~/files.csv"
         cat ~/files.csv
-        echo " ###"
+        ansi --bg-red --newline "####END####"
         #if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
         #cp "Documents/$out" "Ifttt/$out"
         #if grep -r "Encrypt" Ifttt ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
