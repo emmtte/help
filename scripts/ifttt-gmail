@@ -1,8 +1,7 @@
 #!/bin/sh
 ## TODO Delete only files merged
-ansi --yellow-intense --newline " ###"
-ansi --yellow-intense --newline " ###   " --bold "`date`"
-ansi --yellow-intense --newline " ###"
+
+ansi --bg-yellow-intense --newline " ### `date` ###"
 GDRIVE=/media/hdd/Drive
 FILE=/home/pi/ifttt.csv
 
@@ -10,6 +9,7 @@ FILE=/home/pi/ifttt.csv
 cd $GDRIVE
 
 ansi --bg-blue --newline "### Download Snoozed Dir ###"
+rm Snoozed
 if ! drive pull --no-prompt "Snoozed/" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
 
 ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
