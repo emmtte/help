@@ -15,7 +15,7 @@ if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then ~/scripts/iftt-maker "
 ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
 if [ `find "Snoozed" -type d -empty` ] ; then echo " ### Empty directory ### "; exit; fi
 
-if grep -r "Encrypt" Snoozed ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
+if grep -r "Encrypt" Snoozed ; then bash ~/scripts/tg-msg "`grep -r "Encrypt" Snoozed`"; exit; fi
 
 ansi --bg-blue --newline "### Download ifttt ###"
 if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull for ifttt.xls" ; exit; fi
