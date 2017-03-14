@@ -15,6 +15,8 @@ if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then ~/scripts/iftt-maker "
 ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
 if [ `find "Snoozed" -type d -empty` ] ; then echo " ### Empty directory ### "; exit; fi
 
+if grep -r "Encrypt" Snoozed ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
+
 ansi --bg-blue --newline "### Download ifttt ###"
 if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull for ifttt.xls" ; exit; fi
 tr -d '\r' < /tmp/ifttt.csv > $FILE
@@ -35,9 +37,8 @@ while IFS=, read email in out ; do
         ansi --bg-red --newline "cat ~/files.csv"
         cat ~/files.csv
         ansi --bg-red --newline "####END####"
-        #if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
-        #cp "Documents/$out" "Ifttt/$out"
-        #if grep -r "Encrypt" Ifttt ; then ~/scripts/iftt-maker "Auto Merge PDF" "ERROR CRYPTED FILE"; exit; fi
+        if ! drive pull --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
+        mv "Documents/$out" "Snoozed/$out"
         #~/.bin/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
         #mv sejda_out.pdf "Documents/$out"
         #if ! drive push --no-prompt "Documents/$out" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error push ref doc" ; exit; fi
