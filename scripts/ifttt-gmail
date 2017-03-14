@@ -1,23 +1,21 @@
-#
+#!/bin/sh
 ## TODO Delete only files merged
-echo ""
-echo " ###"
-echo " ###   `date`"
-echo " ###"
-
+ansi --yellow-intense --newline " ###"
+ansi --yellow-intense --newline " ###   " --bold "`date`"
+ansi --yellow-intense --newline " ###"
 GDRIVE=/media/hdd/Drive
 FILE=/home/pi/ifttt.csv
 
 #Init
 cd $GDRIVE
 
-~/ansi --bg-blue --newline "### Download Snoozed Dir ###"
+ansi --bg-blue --newline "### Download Snoozed Dir ###"
 if ! drive pull --no-prompt "Snoozed/" ; then ~/scripts/iftt-maker "Auto Merge PDF" "Error pull ref doc" ; exit; fi
 
-~/ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
+ansi --bg-blue --newline "### Test if Snoozed Dir Empty###"
 if [ `find "Snoozed" -type d -empty` ] ; then echo " ### Empty directory ### "; exit; fi
 
-~/ansi --bg-blue --newline "### Download ifttt.xls ###"
+ansi --bg-blue --newline "### Download ifttt.xls ###"
 if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir ifttt.xls; then 
     ~/scripts/iftt-maker "MQTT" "Error pull" ; exit
     fi
@@ -25,7 +23,7 @@ tr -d '\r' < /tmp/ifttt.csv > $FILE
 
 
 #Download
-~/ansi --bg-blue --newline "### read ifttt.csv ###"
+ansi --bg-blue --newline "### read ifttt.csv ###"
 
 while IFS=, read email in out ; do
     echo "I got:|$email|$in|$out|"    
