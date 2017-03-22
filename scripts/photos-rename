@@ -1,8 +1,9 @@
 #!/bin/sh
-FILES="$1"
+FILES="$0"
 DBFILE="photos_names.db"
+[ $# -eq 0 ] && { echo "Usage: $0 photos_folder"; exit 1; }
 if [ ! -f /usr/bin/exiv2 ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
-if [ -z "$1" ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: No folder photos given"; exit; fi
+if [ -z "$0" ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: No folder photos given"; exit; fi
 if [ ! -f /home/pi/$DBFILE]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: No DB File"; exit; fi
 
 find $FILES -iname "*.jpg" -type f | while read FILE ; do
@@ -14,10 +15,3 @@ while grep -q "$NAME" $DBFILE; do NAME=`</dev/urandom tr -dc '0123456789ABCDEFGH
   exiv2 -M "set Exif.Photo.ImageUniqueID $NAME" "$FILE"
   mv "$FILE" "`dirname "$FILE"`/$NAME.JPG"
 done
-
-
-
-
-
-
-
