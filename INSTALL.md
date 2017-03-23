@@ -478,7 +478,8 @@ sudo usermod -a -G debian-transmission pi
 sudo chgrp debian-transmission /media/hdd/torrent
 sudo chmod 777 -R /media/hdd/torrent
 chmod 777 -R /media/hdd/watch
-sudo service transmission-daemon reload
+sudo mcedit /etc/default/transmission-daemon
+>>> ENABLE_DAEMON=0
 ```
 ```shell
 sudo sed -ie '$d' /etc/transmission-daemon/settings.json
