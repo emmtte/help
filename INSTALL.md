@@ -499,6 +499,8 @@ cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
 "watch-dir": "/tmp"
 }
 EOF
+
+sudo service transmission-daemon restart
 ```
 
 [:back:](#command-line-interface-tools)
