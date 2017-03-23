@@ -18,7 +18,7 @@ D Delete
 
 = d *
 C Copy
-  tmux send -t cloud.1 'rsync -a --info=progress2 %D/ %d' ENTER
+  tmux send -t cloud.1 'rsync -a --info=progress2 "%D/" "%d"' ENTER
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.1
   tmux -2 attach -t pi
