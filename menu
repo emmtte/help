@@ -1,6 +1,6 @@
 + f * & t t
 r       run
-        PARAM=%{parametes}
+        PARAM=%{parameters}
         %f $PARAM
 
 = d *
@@ -18,14 +18,14 @@ D Delete
 
 = d *
 C Copy
-  tmux send -t cloud.1 'rsync -a --info=progress2 "%D/" "%d"' ENTER
+  tmux send -t cloud.1 'rsync -a --progress --info=progress2 "%D/" "%d"' ENTER
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.1
   tmux -2 attach -t pi
 
 = d *
 C Move
-  tmux send -t cloud.1 'rsync -a --remove-source-files --info=progress2 %D/ %d' ENTER
+  tmux send -t cloud.1 'rsync -a --progress --remove-sent-files --info=progress2 "%D/" "%d"' ENTER
   tmux select-window -t pi:cloud
   tmux select-pane -t cloud.1
   tmux -2 attach -t pi
