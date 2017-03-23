@@ -1,17 +1,18 @@
 #!/bin/sh
-FILES="$0"
+PHOTOS_DIR="$0"
 DBFILE="photos_names.db"
 [ $# -eq 0 ] && { echo "Usage: $0 photos_folder"; exit 1; }
 if [ ! -f /usr/bin/exiv2 ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: Please install exiv2"; exit; fi
 if [ -z "$0" ]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: No folder photos given"; exit; fi
 if [ ! -f /home/pi/$DBFILE]; then ~/scripts/iftt-maker "Rasperry Pi" "ERROR: No DB File"; exit; fi
 
-find $FILES -iname "*.jpg" -type f | while read FILE ; do
-#NAME=`</dev/urandom tr -dc '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ' | head -c4`
-while grep -q "$NAME" $DBFILE; do NAME=`</dev/urandom tr -dc '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ' | head -c4`; done 
-  echo "$NAME" >> $DBFILE
-  exiv2 -M "set Exif.Image.SubfileType 1" "$FILE" #Full-resolution Image
-  #exiv2 -M "set Exif.Image.SubfileType 2" "$FILE" #Reduced-resolution image
-  exiv2 -M "set Exif.Photo.ImageUniqueID $NAME" "$FILE"
-  mv "$FILE" "`dirname "$FILE"`/$NAME.JPG"
+find $PHOTOS_DIR -iname "*.jpg" -type f | while read FILE ; do
+ID=`</dev/urandom tr -dc 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' | head -c5`
+while grep -q "$ID" $DBFILE; do NAME=`</dev/urandom tr -dc 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' | head -c5`; done 
+  echo "`basename "$FILE"`=>$ID.JPG"
+  echo "$ID" >> $DBFILE
+  #exiv2 -M "set Exif.Image.SubfileType 1" "$FILE" #Full-resolution Image
+  ##exiv2 -M "set Exif.Image.SubfileType 2" "$FILE" #Reduced-resolution image
+  #exiv2 -M "set Exif.Photo.ImageUniqueID $ID" "$FILE"
+  #mv "$FILE" "`dirname "$FILE"`/$ID.JPG"
 done
