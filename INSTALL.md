@@ -473,11 +473,10 @@ Transmission
 :link: http://www.transmissionbt.com/
 ```shell
 sudo apt-get -y install transmission-daemon
-mkdir /media/hdd/torrent /media/hdd/watch
+mkdir /media/hdd/torrents
 sudo usermod -a -G debian-transmission pi
-sudo chgrp debian-transmission /media/hdd/torrent
-sudo chmod 777 -R /media/hdd/torrent
-chmod 777 -R /media/hdd/watch
+sudo chgrp debian-transmission /media/hdd/torrents
+sudo chmod 777 -R /media/hdd/torrents
 sudo mcedit /etc/default/transmission-daemon
 >>> ENABLE_DAEMON=0
 ```
@@ -485,24 +484,23 @@ sudo mcedit /etc/default/transmission-daemon
 sudo sed -ie '$d' /etc/transmission-daemon/settings.json
 cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
 ,
-"download-dir": "/media/hdd/torrent" ,
-"incomplete-dir": "/media/hdd/torrent" ,
+"download-dir": "/media/hdd/torrents" ,
+"incomplete-dir": "/media/hdd/torrents" ,
 "rpc-authentication-required": false ,
 "rpc-whitelist": "127.0.0.1,192.168.0.*" ,
 "speed-limit-down": 500 ,
 "speed-limit-down-enable": true ,
 "speed-limit-up": 10 ,
 "speed-limit-up-enable": true ,
+"start-added-torrents": true,
+"trash-original-torrent-files": true,
 "umask": 0 ,
 "watch-dir-enabled": true ,
-"watch-dir": "/media/hdd/watch"
+"watch-dir": "/tmp"
 }
 EOF
 ```
-```
-sudo service transmission-daemon reload
-sudo service transmission-daemon restart
-```
+
 [:back:](#command-line-interface-tools)
 <br><br>
 
