@@ -4,30 +4,28 @@ tmux has-session -t pi
   if [ "$?" -eq 1 ] ; then
 tmux -2 new-session -d -s pi
 
-tmux rename-window -t pi:1 AB
-tmux split-window -v
+tmux rename-window -t pi:1 A
+tmux new-window -t pi -a -n B
+tmux new-window -t pi -a -n C
+tmux new-window -t pi -a -n D
+tmux new-window -t pi -a -n E
+tmux new-window -t pi -a -n F
 
-tmux new-window -t pi -a -n CD
-tmux split-window -v
+tmux new-window -t pi -a -n L
+tmux send -t L 'sleep 5' ENTER
+tmux send -t L '~/tg/bin/telegram-cli -b bot -s ~/scripts/tg.lua' ENTER
 
-tmux new-window -t pi -a -n EF
-tmux split-window -v
-tmux send -t EF.2 'sleep 5' ENTER
-tmux send -t EF.2 '~/tg/bin/telegram-cli -b bot -s ~/scripts/tg.lua' ENTER
-tmux send -t EF.1 'sleep 5' ENTER
-tmux send -t EF.1 '~/OctoPrint/venv/bin/octoprint' ENTER
+tmux new-window -t pi -a -n M
+tmux send -t M 'sleep 5' ENTER
+tmux send -t M 'bash ~/scripts/mqtt' ENTER
 
-tmux new-window -t pi -a -n cast
-tmux split-window -v
-tmux send -t cast.2 'sleep 5' ENTER
-tmux send -t cast.2 'bash ~/scripts/mqtt' ENTER
+tmux new-window -t pi -a -n O
+tmux send -t O 'sleep 5' ENTER
+tmux send -t O '~/OctoPrint/venv/bin/octoprint' ENTER
 
-tmux new-window -t pi -a -n cloud
-tmux split-window -v
-
-tmux new-window -t pi -a -n merge
-tmux split-window -v
-tmux send -t cast.2 'sleep 5' ENTER
+tmux new-window -t pi -a -n X
+tmux new-window -t pi -a -n Y
+tmux new-window -t pi -a -n Z
 
 tmux select-window -t pi:1
 fi
