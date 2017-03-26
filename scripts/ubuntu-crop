@@ -1,3 +1,4 @@
+#npm install sharp-cli
 FILES=/media/nfs
 
 find $FILES -iname "P*.JPG" -type f | sort | while read FILE ; do
