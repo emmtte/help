@@ -17,21 +17,19 @@ D Delete
   done
 
 = d *
-C Copy
-  tmux send -t cloud.1 'rsync -a --progress --info=progress2 "%D/" "%d"' ENTER
-  tmux select-window -t pi:cloud
-  tmux select-pane -t cloud.1
+C Copy [X]
+  tmux send -t X 'rsync -a --progress --info=progress2 "%D/" "%d"' ENTER
+  tmux select-window -t pi:X
   tmux -2 attach -t pi
 
 = d *
-C Move
-  tmux send -t cloud.1 'rsync -a --progress --remove-sent-files --info=progress2 "%D/" "%d"' ENTER
-  tmux select-window -t pi:cloud
-  tmux select-pane -t cloud.1
+C Move [X]
+  tmux send -t X 'rsync -a --progress --remove-sent-files --info=progress2 "%D/" "%d"' ENTER
+  tmux select-window -t pi:X
   tmux -2 attach -t pi
 
 + f * & t t
-B move to "Freebox Server" folder
+B move to "Freebox Server" [X]
   if [ -f /tmp/.freebox.sh ] ; then whiptail --title "Move to Freebox" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.freebox.sh << 'EOF'
   clear
@@ -47,13 +45,12 @@ B move to "Freebox Server" folder
   rm /tmp/.freebox.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/tmux ; fi
-  tmux send -t cloud.1 'sh /tmp/.freebox.sh' ENTER
-  tmux select-window -t pi:cloud
-  tmux select-pane -t cloud.1
+  tmux send -t X 'sh /tmp/.freebox.sh' ENTER
+  tmux select-window -t pi:X
   tmux -2 attach -t pi
 
 + f * & t t
-B upload to dropbox
+B upload to dropbox [Y]
   if [ -f /tmp/.dropbox.sh ] ; then whiptail --title "Upload to Dropbox" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.dropbox.sh << 'EOF'
   clear
@@ -65,9 +62,8 @@ B upload to dropbox
   rm /tmp/.dropbox.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/tmux ; fi
-  tmux send -t cloud.2 'sh /tmp/.dropbox.sh' ENTER
-  tmux select-window -t pi:cloud
-  tmux select-pane -t cloud.2
+  tmux send -t Y 'sh /tmp/.dropbox.sh' ENTER
+  tmux select-window -t pi:Y
   tmux -2 attach -t pi
 
 + f * & t r
@@ -75,7 +71,7 @@ C download from dropbox
   dropbox_uploader download %{Dropbox Filename}
 
 + f * & t t
-D upload to google drive
+D upload to google drive [Y]
   if [ -f /tmp/.gdrive.sh ] ; then whiptail --title "Upload to Google Drivex" --msgbox "Busy try Later..." 12 35; exit; fi
   cat > /tmp/.gdrive.sh << 'EOF'
   clear
@@ -91,9 +87,8 @@ D upload to google drive
   rm /tmp/.gdrive.sh
   EOF
   tmux has-session -t pi ; if [ "$?" -eq 1 ] ; then ~/scripts/tmux ; fi
-  tmux send -t cloud.1 'sh /tmp/.gdrive.sh' ENTER
-  tmux select-window -t pi:cloud
-  tmux select-pane -t cloud.1
+  tmux send -t Y 'sh /tmp/.gdrive.sh' ENTER
+  tmux select-window -t pi:Y
   tmux -2 attach -t pi
 
 + f * & t r
