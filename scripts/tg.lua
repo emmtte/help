@@ -33,8 +33,6 @@ end
 
 if (msg.text=='/t_search') then
          send_msg (msg.from.print_name, 'OK /t_search', ok_cb, false)
-end        
-            
 end
     
 if (msg.text=='/photo') then
