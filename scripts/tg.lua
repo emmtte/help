@@ -54,9 +54,6 @@ if msg.unread == 0 then
 --return
 end
 
-    --send_msg(msg.from.print_name, "End for your text.", ok_cb, false)
-end
-
 function on_our_id (id)
 end
 
