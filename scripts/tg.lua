@@ -28,7 +28,6 @@ if (msg.text=='/merge') then
         --send_msg (msg.from.print_name, ...', ok_cb, false)
         --os.execute("cd ~/t && bash t.sh")
         send_msg (msg.from.print_name, 'Menu\n /t_search\n /t_download\n /t_100\n', ok_cb, false)
-        menu=1
 end
 
 if (msg.text=='/t_search') then
@@ -50,6 +49,7 @@ end
 
 if msg.unread == 0 then
 --return
+end
 end
 
 function on_our_id (id)
