@@ -25,11 +25,18 @@ send_msg (msg.from.print_name, 'Thanks for watching', ok_cb, false)
 end
     
 if (msg.text=='/merge') then
-        send_msg (msg.from.print_name, ...', ok_cb, false)
-        os.execute("cd ~/t && bash t.sh")
-        send_msg (msg.from.print_name, 'Executed', ok_cb, false)
+        --send_msg (msg.from.print_name, ...', ok_cb, false)
+        --os.execute("cd ~/t && bash t.sh")
+        send_msg (msg.from.print_name, 'Menu\n /t_search\n /t_download\n /t_100\n', ok_cb, false)
+        menu=1
 end
 
+if ((msg.text=='/t_search')
+         send_msg (msg.from.print_name, 'OK /t_search', ok_cb, false)
+end        
+            
+end
+    
 if (msg.text=='/photo') then
 -- os.execute("tmux send -t cloud.2 'cd ~/scripts && clear && bash take-photo' ENTER")
 os.execute("cd ~/scripts && bash take-photo")
