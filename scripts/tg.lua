@@ -9,6 +9,11 @@ if (msg.from.print_name == "John_Doe") then
 send_msg (msg.from.print_name, msg.from.print_name, ok_cb, false)
 end
 
+if string.match(string.lower(msg.text), "temp") then
+            send_msg (msg.from.print_name, 'Sent text is ' .. msg.text, ok_cb, false)
+            --os.execute ("/home/pi/scripts/gest_multiword_message_test.sh "..msg.text)
+    end
+    
 if (msg.text=='/sst') then
 os.execute("tmux send -t X 'cd ~/scripts && clear && bash castnow-start' ENTER")
 send_msg (msg.from.print_name, 'Please wait a few seconds or click /cover to see what is playing', ok_cb, false)
