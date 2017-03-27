@@ -31,7 +31,7 @@ if (msg.text=='/merge') then
         menu=1
 end
 
-if ((msg.text=='/t_search')
+if (msg.text=='/t_search') then
          send_msg (msg.from.print_name, 'OK /t_search', ok_cb, false)
 end        
             
