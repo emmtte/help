@@ -10,22 +10,24 @@ send_msg (msg.from.print_name, msg.from.print_name, ok_cb, false)
 end
 
 if (msg.text=='/sst') then
-os.execute("tmux send -t cast.1 'cd ~/scripts && clear && bash castnow-start' ENTER")
+os.execute("tmux send -t X 'cd ~/scripts && clear && bash castnow-start' ENTER")
 send_msg (msg.from.print_name, 'Please wait a few seconds or click /cover to see what is playing', ok_cb, false)
 end
 
 if (msg.text=='/cover') then
-os.execute("tmux send -t cast.2 'cd ~/scripts && clear && bash sst-view' ENTER")
+os.execute("tmux send -t Y 'cd ~/scripts && clear && bash sst-view' ENTER")
 send_msg (msg.from.print_name, 'Please click /stop_cover when it is finished', ok_cb, false)
 end
 
 if (msg.text=='/stop_cover') then
-os.execute("tmux send-keys -t cast.2 C-c")
+os.execute("tmux send-keys -t Y C-c")
 send_msg (msg.from.print_name, 'Thanks for watching', ok_cb, false)
 end
     
 if (msg.text=='/merge') then
-send_msg (msg.from.print_name, 'Not working', ok_cb, false)
+        send_msg (msg.from.print_name, ...', ok_cb, false)
+        os.execute("cd ~/t && bash t.sh")
+        send_msg (msg.from.print_name, 'Executed', ok_cb, false)
 end
 
 if (msg.text=='/photo') then
