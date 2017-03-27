@@ -9,7 +9,7 @@ if (msg.from.print_name == "John_Doe") then
 send_msg (msg.from.print_name, msg.from.print_name, ok_cb, false)
 end
 
-if string.match(string.lower(msg.text), "temp") then
+if string.match(string.lower(msg.text), "/temp") then
             send_msg (msg.from.print_name, 'Sent text is ' .. msg.text, ok_cb, false)
             --os.execute ("/home/pi/scripts/gest_multiword_message_test.sh "..msg.text)
     end
@@ -38,7 +38,16 @@ end
 if (msg.text=='/t_search') then
          send_msg (msg.from.print_name, 'OK /t_search', ok_cb, false)
 end
-    
+
+
+if (msg.text=='/t_100') then
+        send_msg (msg.from.print_name, '...', ok_cb, false)
+        os.execute("cd ~/t && bash t.sh")
+        local file_path = '/home/pi/t/top100.txt'
+        send_text(msg.from.print_name, file_path, ok_cb, false)
+end
+
+
 if (msg.text=='/photo') then
 -- os.execute("tmux send -t cloud.2 'cd ~/scripts && clear && bash take-photo' ENTER")
 os.execute("cd ~/scripts && bash take-photo")
