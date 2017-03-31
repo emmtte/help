@@ -9,6 +9,11 @@ g git push
 h git pull
   git pull
 
++ f * | f *.*
+d Discard the local changes
+  git reset --hard
+  git pull
+  
 + f * & t t
 r       run
         PARAM=%{parameters}
