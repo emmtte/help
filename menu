@@ -1,11 +1,13 @@
-+ f * & t t
-g git add
++ f r
+g git push
+  git add %f
   PARAM=%{parameters}
   git commit -m "$PARAM"
   git push
 
-+ f *
++ f r
 h git pull
+  git pull
 
 + f * & t t
 r       run
