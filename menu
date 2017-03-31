@@ -5,7 +5,7 @@ g git add %f
   git push
 
 + f
-g       git pull
+g git pull
 
 + f * & t t
 r       run
