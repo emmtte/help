@@ -4,7 +4,7 @@ g git add
   git commit -m "$PARAM"
   git push
 
-+ f
++ f *
 h git pull
 
 + f * & t t
