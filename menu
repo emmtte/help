@@ -1,10 +1,13 @@
 + f * | f *.*
-g git push
+g git add
   git add %f
+
++ f * | f *.*
+g git push
   PARAM=%{parameters}
   git commit -m "$PARAM"
   git push
-
+  
 + f * | f *.*
 h git pull
   git pull
