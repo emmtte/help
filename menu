@@ -1,4 +1,3 @@
-= *
 t [TMUX]
   tmux -2 attach -t pi
 
@@ -233,5 +232,4 @@ p Transforme un fichier PDF sécurisé en normal
     shift
   done
 
-= f *
 Q [EXIT]
