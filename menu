@@ -1,4 +1,8 @@
 + f * | f *.*
+s mc
+  sudo killall mc && mc ~/t411
+
++ f * | f *.*
 g git add
   git add %f
 
@@ -37,13 +41,32 @@ D Delete
 
 = d *
 C Copy [X]
-  tmux send -t X 'rsync -a --progress --info=progress2 "%D/" "%d"' ENTER
+  tmux send -t X 'rsync -a --progress --info=progress2 "%t" "%T"' ENTER
   tmux select-window -t pi:X
   tmux -2 attach -t pi
 
 = d *
 C Move [X]
   tmux send -t X 'rsync -a --progress --remove-sent-files --info=progress2 "%D/" "%d"' ENTER
+  tmux select-window -t pi:X
+  tmux -2 attach -t pi
+
++ f * & t t
+B copy selected files to other panel [X]
+  if [ -f /tmp/.move.sh ] ; then whiptail --title "Move to %%D" --msgbox "Busy try Later..." 12 35; exit; fi
+  cat > /tmp/.move.sh << 'EOF'
+  clear
+  cd %d/
+  set %t
+  while [ -n "$1" ]; do
+    echo "Copy : $1"
+    rsync --archive --no-o --no-g --progress "$1" "%D"
+    shift
+  done
+  ~/scripts/iftt-maker "Raspberry Pi" "Files moved other panel"
+  rm /tmp/.move.sh
+  EOF
+  tmux send -t X 'sh /tmp/.move.sh' ENTER
   tmux select-window -t pi:X
   tmux -2 attach -t pi
 
@@ -205,3 +228,6 @@ p Transforme un fichier PDF sécurisé en normal
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.test.pdf" "$1"
     shift
   done
+
+= f *
+Q [EXIT]
