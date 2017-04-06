@@ -1,3 +1,7 @@
+= *
+t [TMUX]
+  tmux -2 attach -t pi
+
 + f * | f *.*
 s mc
   sudo killall mc && mc ~/t411
