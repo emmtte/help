@@ -59,7 +59,7 @@ B copy selected files to other panel [X]
   cd %d/
   set %t
   while [ -n "$1" ]; do
-    echo "Copy : $1"
+    echo "Copy : $1 to %D"
     rsync --archive --no-o --no-g --progress "$1" "%D"
     shift
   done
