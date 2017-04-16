@@ -280,6 +280,15 @@ cd ~/.ssh
 ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
 mv id_rsa.pub authorized_keys
 sudo chmod 600 authorized_keys
+```
+or
+```
+cd ~/.ssh
+dropbox_uploader download id_rsa.pub
+mv id_rsa.pub authorized_keys
+sudo chmod 600 authorized_keys
+```
+```
 cat << EOF | sudo tee -a /etc/ssh/sshd_config
 PermitRootLogin no
 AuthorizedKeysFile /home/pi/.ssh/authorized_keys
