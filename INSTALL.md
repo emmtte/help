@@ -362,6 +362,8 @@ Dowload and Install [Win32diskImager](http://sourceforge.net/projects/win32diski
 
 Download Raspbian lite [Raspbian](https://downloads.raspberrypi.org/raspbian_lite_latest) realease
 
+SSH disabled by default; can be enabled by creating a file with name "ssh" in boot partition
+
 Download putty and write
 `start /MAX putty -ssh pi@192.168.0.1`
 
