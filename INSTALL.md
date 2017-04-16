@@ -283,6 +283,7 @@ sudo chmod 600 authorized_keys
 ```
 or
 ```
+mkdir ~/.ssh
 cd ~/.ssh
 dropbox_uploader download id_rsa.pub
 mv id_rsa.pub authorized_keys
