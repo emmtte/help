@@ -1,4 +1,4 @@
-Deprecated, please use  + [mcui](https://github.com/ManuCart/mcui) instead
+Deprecated, please use [mcui](https://github.com/ManuCart/mcui) instead
 
 Command Line Interface Tools
 ============================
