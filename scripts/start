@@ -1,6 +1,0 @@
-#!/bin/sh
-# add to crontab
-# crontab -e
-# @reboot /home/pi/scripts/start
-/bin/sleep 10
-/usr/bin/sshpass -p 'raspberry' /usr/bin/ssh pi@127.0.0.1 -t '~/scripts/_tmux'
