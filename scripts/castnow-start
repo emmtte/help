@@ -1,3 +1,0 @@
-#!/bin/sh
-castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
-#castnow "http://hi.streamingsoundtracks.com" --type "audio/wav"
