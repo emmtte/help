@@ -1,9 +1,0 @@
-#!/bin/sh
-# External Disk Backup
-
-sudo mkdir /media/freebox
-sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
-mkdir /media/freebox/Photos /media/freebox/Videos
-rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
-rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
-~/scripts/iftt-maker "Backup Photos a Videos" "Backup finished"
