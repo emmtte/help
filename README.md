@@ -1,8 +1,6 @@
 Raspberry Pi Workshop
 =====================
 
-Command Line Interface Tools
-============================
   + [adafruit](#adafruit)
   + [Ifttt](#ifttt)
   + [Keeweb](#keeweb)
