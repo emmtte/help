@@ -1,8 +1,0 @@
-#!/bin/sh
-clear
-GDRIVE=/media/hdd/Drive
-rm $GDRIVE/RaspberryPi/configs/*
-cd $GDRIVE
-drive pull --quiet --hidden "RaspberryPi/configs"
-cp $GDRIVE/RaspberryPi/configs/* /home/pi
-sudo chmod 600 ~/.ssh/authorized_keys
