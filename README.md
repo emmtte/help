@@ -145,9 +145,8 @@ cargo run --bin      ?????????????
 <br><br>
 
 octoprint
-=========
+---------
 Installation
-------------
 https://github.com/foosel/OctoPrint/wiki/Setup-on-a-Raspberry-Pi-running-Raspbian
 ```
 cd ~
@@ -163,7 +162,6 @@ mkdir ~/.octoprint
 http://192.168.0.1:5000/
 
 Cura Engine
------------
 http://octoprint.org/files/octopi/cura_engine_14.12/
 ```
 sudo wget -O /usr/local/bin/cura_engine http://octoprint.org/files/octopi/cura_engine_14.12/cura_engine
@@ -171,7 +169,6 @@ sudo chmod +x /usr/local/bin/cura_engine
 ```
 
 Config Files
-------------
 http://ingegno.be/de-vertex-printer-en-cura/
 <br><br>
 
@@ -219,7 +216,7 @@ if [ `identify -format "%w" "$toto"` -le 2048 ]; then echo "VRAI" ; fi
 ```
 <br><br>
 
-time
+Time
 ----
 ```bash
 sudo /etc/init.d/ntp stop
@@ -228,7 +225,7 @@ sudo /etc/init.d/ntp start
 ```
 <br><br>
 
-tmux
+Tmux
 ----
 ```bash
 tmux send-keys -t A Escape Escape
@@ -305,7 +302,6 @@ Transmission
 ------------
 ```bash
 transmission-remote -l
-whiptail --title "Transmission" --msgbox "`transmission-remote -l`" 30 136
 transmission-remote -t ID --remove-and-delete
 transmission-remote -t ID --stop
 transmission-remote -t 3 --start
