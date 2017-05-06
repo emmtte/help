@@ -1,7 +1,0 @@
-#!/bin/sh
-sudo mkdir /media/freebox
-sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
-mkdir /media/freebox/photos /media/freebox/videos
-rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
-rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
-~/scripts/iftt-maker "Backup Photos & Videos" "Backup finished"
