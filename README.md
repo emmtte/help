@@ -1,16 +1,21 @@
 Raspberry Pi Workshop
 =====================
 
-  + [adafruit](#adafruit)
+  + [Adafruit](#adafruit)
+  + [Ascii colors](#ascii-colors)
+  + [Format drive](#format-drive)
+  + [Git](#git)
   + [Ifttt](#ifttt)
   + [Keeweb](#keeweb)
   + [Mosquitto](#mosquitto)
+  + [Ncurses](#ncurses)
   + [Pushbullet](#pushbullet)
   + [Telegram](#telegram)
 <br><br>
 
-adafruit
+Adafruit
 --------
+https://io.adafruit.com/rpi_home/feeds
 ```bash
 connection adafruit-light-sensor
 address io.adafruit.com:1883
@@ -24,13 +29,13 @@ start_type automatic
 ```
 <br><br>
 
-ascii colors
+Ascii colors
 ------------
 http://misc.flogisoft.com/bash/tip_colors_and_formatting
 <br><br>
 
-format
-------
+Format drive
+------------
 http://askubuntu.com/questions/22381/how-to-format-a-usb-flash-drive
 ```bash
 lsblk
@@ -43,7 +48,7 @@ sudo eject /dev/sdb
 ```
 <br><br>
 
-git
+Git
 ---
 ```bash
 mkdir mcui
@@ -79,8 +84,70 @@ ssh-add ~/.ssh/id_rsa
 ```
 <br><br>
 
-ncurses-rs
-----------
+
+Ifttt
+-----
+https://ifttt.com/adafruit
+```bash
+echo "{key}" > ~/.AIO_KEY
+mosquitto_pub -h io.adafruit.com -p 8883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home -m test
+mosquitto_pub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/f/rpi -m "test"
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq '.'
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output '.value'
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value'
+```
+<br><br>
+
+Keeweb
+------
+https://github.com/keeweb/keeweb
+https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
+<br><br>
+
+Mosquitto
+---------
+https://mosquitto.org/
+```bash
+curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+sudo apt-key add mosquitto-repo.gpg.key
+rm mosquitto-repo.gpg.key
+cd /etc/apt/sources.list.d/
+sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
+sudo apt-get update
+```
+<br><br>
+
+
+Mouse control
+-------------
+http://www.it1352.com/322101.html
+```bash
+echo -e "\e[?1000h" #start tracking mouse
+echo -e "\e[?1005h"
+echo -e "\e[?1000l" #stop tracking mouse
+showkey -a
+/usr/bin/mc -x #use mouse under tmux
+/usr/bin/mc -u #without subshell
+```
+<br><br>
+
+Mosquitto
+---------
+```bash
+sudo apt-get install mosquitto mosquitto-clients
+
+mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | jq '.["value"]' -r
+cat test.json | jq '.["value"]' -r
+
+sudo apt-get -y install python3
+pip3 install --upgrade --pre acdcli
+
+mosquitto_pub -h mqtt.dioty.co -p 8883 -u <your user-id> -P <your password> -t <topic> -m <message>
+mosquitto_sub -h mqtt.dioty.co -p 8883 -u "user@mail.com" -P "abcdefg" -t "user@mail.com/#" -v
+```
+<br><br>
+Ncurses
+-------
 https://github.com/jeaye/ncurses-rs
 ```bash
 ncurses
@@ -101,29 +168,6 @@ cargo build
 cargo run --bin      ?????????????
 ```
 <br><br>
-
-Mouse control
--------------
-http://www.it1352.com/322101.html
-```bash
-echo -e "\e[?1000h" #start tracking mouse
-echo -e "\e[?1005h"
-echo -e "\e[?1000l" #stop tracking mouse
-showkey -a
-/usr/bin/mc -x #use mouse under tmux
-/usr/bin/mc -u #without subshell
-```
-<br><br>
-
-time
-----
-```bash
-sudo /etc/init.d/ntp stop
-sudo ntpd -q -g
-sudo /etc/init.d/ntp start
-```
-<br><br>
-
 octoprint
 =========
 Installation
@@ -154,7 +198,6 @@ Config Files
 ------------
 http://ingegno.be/de-vertex-printer-en-cura/
 <br><br>
-
 pushbullet
 ----------
 ```bash
@@ -166,23 +209,10 @@ sudo rm -rf pushbullet-cli
 pb set-key
 ```
 <br><br>
-
-mosquitto
----------
-```bash
-sudo apt-get install mosquitto mosquitto-clients
-
-mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | jq '.["value"]' -r
-cat test.json | jq '.["value"]' -r
-
-sudo apt-get -y install python3
-pip3 install --upgrade --pre acdcli
-
-mosquitto_pub -h mqtt.dioty.co -p 8883 -u <your user-id> -P <your password> -t <topic> -m <message>
-mosquitto_sub -h mqtt.dioty.co -p 8883 -u "user@mail.com" -P "abcdefg" -t "user@mail.com/#" -v
-```
-<br><br>
-
+rust
+----
+http://f4b1.com/raspberry-pi/comment-installer-rust-sur-un-raspberry-pi-3
+http://doc.crates.io/guide.html
 sharp
 -----
 ```bash
@@ -193,11 +223,15 @@ if [ `identify -format "%w" "$toto"` -le 2048 ]; then echo "VRAI" ; fi
 ```
 <br><br>
 
-rust
-----
-http://f4b1.com/raspberry-pi/comment-installer-rust-sur-un-raspberry-pi-3
-http://doc.crates.io/guide.html
 
+time
+----
+```bash
+sudo /etc/init.d/ntp stop
+sudo ntpd -q -g
+sudo /etc/init.d/ntp start
+```
+<br><br>
 tmux
 ----
 ```bash
@@ -330,38 +364,6 @@ color12 or brightblue
 color13 or brightmagenta
 color14 or brightcyan
 color15 or white
-```
-<br><br>
-
-Ifttt
------
-https://ifttt.com/adafruit
-```bash
-echo "{key}" > ~/.AIO_KEY
-mosquitto_pub -h io.adafruit.com -p 8883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home -m test
-mosquitto_pub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/f/rpi -m "test"
-mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq '.'
-mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output '.value'
-mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value'
-```
-<br><br>
-
-Keeweb
-------
-https://github.com/keeweb/keeweb
-https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
-<br><br>
-
-Mosquitto
----------
-https://mosquitto.org/
-```bash
-curl -O http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
-sudo apt-key add mosquitto-repo.gpg.key
-rm mosquitto-repo.gpg.key
-cd /etc/apt/sources.list.d/
-sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
-sudo apt-get update
 ```
 <br><br>
 
