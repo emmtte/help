@@ -3,24 +3,17 @@ Raspberry Pi Workshop
 
 Command Line Interface Tools
 ============================
+  + [adafruit](#adafruit)
   + [Ifttt](#ifttt)
   + [Keeweb](#keeweb)
   + [Mosquitto](#mosquitto)
   + [Pushbullet](#pushbullet)
   + [Telegram](#telegram)
-
-
-
-
-
-
-
-
-
+<br><br>
 
 adafruit
 --------
-````
+```bash
 connection adafruit-light-sensor
 address io.adafruit.com:1883
 #bridge_atetempt_unsubscribe false
@@ -30,18 +23,17 @@ remote_username username
 remote_password CHANGE_TO_YOUR_AIO_KEY
 start_type automatic
 #topic /sensors/lightsensor  out 0 lightsensor
-````
+```
+<br><br>
 
 ascii colors
 ------------
-
 http://misc.flogisoft.com/bash/tip_colors_and_formatting
+<br><br>
 
 format
 ------
-
 http://askubuntu.com/questions/22381/how-to-format-a-usb-flash-drive
-
 ```bash
 lsblk
 sudo fdisk /dev/sdb
@@ -51,6 +43,7 @@ use keyboard to delete, new, primary, 1, write ==>> d ENTER,o ENTER,n ENTER, p E
 sudo mkfs.ntfs /dev/sdb1
 sudo eject /dev/sdb
 ```
+<br><br>
 
 git
 ---
@@ -86,6 +79,7 @@ ssh-keygen -t rsa -b 4096 -C "email@gmail.com"
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 ```
+<br><br>
 
 ncurses-rs
 ----------
@@ -108,82 +102,29 @@ git clone https://github.com/gyscos/Cursive.git
 cargo build
 cargo run --bin      ?????????????
 ```
-
-
-Midnight Commander
-------------------
-
-```bash
-eval `resize`
-VER=$(whiptail \
---title "Linux Distro version" \
---radiolist "What distro are you running?" \
-10 38 4 \
-"Mint" "Basic usage" ON \
-"Ubuntu" "Desktop usage" OFF \
-"Debian" "Desktop & Server" OFF \
-"CentOS" "Server usage" OFF \
-3>&1 1>&2 2>&3)
-
-exitstatus=$?
-
-if [ $exitstatus = 0 ]; then
-    echo "The chosen distro is:" $VER
-else
-    echo "You chose Cancel."
-fi
-
-msgs=( "Downloading" "Verifying" "Unpacking" "Almost Done" "Done" )
-for i in {1..5}; do
-  sleep 1
-  echo XXX
-  echo $(( i * 20 ))
-  echo ${msgs[i-1]}
-  echo XXX
-done | \
-NEWT_COLORS='
-  window=,red
-  border=white,red
-  textbox=white,red
-  button=black,white
-' \
-whiptail --gauge "Please wait while installing" 6 60 0
-
-
-NEWT_COLORS='
-  window=,red
-  border=white,red
-  textbox=white,red
-  button=black,white
-' \
-whiptail --msgbox "passwords don't match" 0 0
-
-whiptail --textbox /dev/stdin 30 80 <<< `scripts/update-scripts`
-```
+<br><br>
 
 Mouse control
 -------------
 http://www.it1352.com/322101.html
 ```bash
-
 echo -e "\e[?1000h" #start tracking mouse
-
 echo -e "\e[?1005h"
 echo -e "\e[?1000l" #stop tracking mouse
-
 showkey -a
-
 /usr/bin/mc -x #use mouse under tmux
 /usr/bin/mc -u #without subshell
 ```
+<br><br>
 
 time
 ----
-```
+```bash
 sudo /etc/init.d/ntp stop
 sudo ntpd -q -g
 sudo /etc/init.d/ntp start
 ```
+<br><br>
 
 octoprint
 =========
@@ -214,22 +155,23 @@ sudo chmod +x /usr/local/bin/cura_engine
 Config Files
 ------------
 http://ingegno.be/de-vertex-printer-en-cura/
-
+<br><br>
 
 pushbullet
 ----------
-````
+```bash
 git clone https://github.com/r-darwish/pushbullet-cli.git
 cd pushbullet-cli
 sudo python setup.py install
 cd ..
 sudo rm -rf pushbullet-cli
 pb set-key
-````
+```
+<br><br>
 
 mosquitto
 ---------
-````
+```bash
 sudo apt-get install mosquitto mosquitto-clients
 
 mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | jq '.["value"]' -r
@@ -240,21 +182,21 @@ pip3 install --upgrade --pre acdcli
 
 mosquitto_pub -h mqtt.dioty.co -p 8883 -u <your user-id> -P <your password> -t <topic> -m <message>
 mosquitto_sub -h mqtt.dioty.co -p 8883 -u "user@mail.com" -P "abcdefg" -t "user@mail.com/#" -v
-````
+```
+<br><br>
 
 sharp
 -----
-
-```
+```bash
 sudo npm install --unsafe-perm sharp -g sharp-cli
 
 identify -format "%wx%h"
 if [ `identify -format "%w" "$toto"` -le 2048 ]; then echo "VRAI" ; fi
 ```
+<br><br>
 
 rust
 ----
-
 http://f4b1.com/raspberry-pi/comment-installer-rust-sur-un-raspberry-pi-3
 http://doc.crates.io/guide.html
 
@@ -292,10 +234,11 @@ tmux switch-client -t bg
 tmux kill-session -t bg
 tmux kill-session
 ```
+<br><br>
+
 stream2chromecast
 -----------------
 https://github.com/Pat-Carter/stream2chromecast
-
 ```bash
 sudo apt-get install libav-tools
 cd ~/.bin
@@ -303,6 +246,8 @@ git clone https://github.com/Pat-Carter/stream2chromecast.git
 cd stream2chromecast
 stream2chromecast.py -playurl http://hi5.streamingsoundtracks.com
 ```
+<br><br>
+
 videos
 ------
 ```bash
@@ -310,9 +255,11 @@ mpv video.mp4 -of webm -ovc libvpx -ovcopts qmin=6,b=1000000k -oac libvorbis -oa
 mpv video.mp4 -of webm -ovc libvpx -ovcopts qmin=0,qmax=25,b=1000000k -oac libvorbis -oacopts qscale=3 -o out.webm
 mkvmerge -o out.mkv 1.mp4 + 2.mp4
 ```
+<br><br>
+
 tmux
 ----
-````
+```bash
 tab 
 s  list sessions
 $  name session
@@ -327,7 +274,9 @@ d  detach
 t  big clock
 ?  list shortcuts
 :  prompt
-````
+```
+<br><br>
+
 transission
 -----------
 ```bash
@@ -338,11 +287,12 @@ transmission-remote -t ID --stop
 transmission-remote -t 3 --start
 transmission-remote -a $FILE
 ```
+<br><br>
 
 whiptail
 --------
 colors
-````
+```bash
 root                  root fg, bg #image de fond
 border                border fg, bg # bordure
 window                window fg, bg # couleur interieur fenetre
@@ -382,7 +332,8 @@ color12 or brightblue
 color13 or brightmagenta
 color14 or brightcyan
 color15 or white
-````
+```
+<br><br>
 
 Ifttt
 -----
