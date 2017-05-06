@@ -1,4 +1,371 @@
-Deprecated, please use [mcui](https://github.com/ManuCart/mcui) instead
+Raspberry Pi Workshop
+=====================
+adafruit
+--------
+````
+connection adafruit-light-sensor
+address io.adafruit.com:1883
+#bridge_atetempt_unsubscribe false
+#cleansession false
+notifications true
+remote_username username
+remote_password CHANGE_TO_YOUR_AIO_KEY
+start_type automatic
+#topic /sensors/lightsensor  out 0 lightsensor
+````
+
+ascii colors
+------------
+
+http://misc.flogisoft.com/bash/tip_colors_and_formatting
+
+format
+------
+
+http://askubuntu.com/questions/22381/how-to-format-a-usb-flash-drive
+
+```bash
+lsblk
+sudo fdisk /dev/sdb
+```
+use keyboard to delete, new, primary, 1, write ==>> d ENTER,o ENTER,n ENTER, p ENTER, 1 ENTER, w ENTER
+```bash
+sudo mkfs.ntfs /dev/sdb1
+sudo eject /dev/sdb
+```
+
+git
+---
+```bash
+mkdir mcui
+cd mcui
+git init
+touch README.md
+git add README.md
+git config --global user.email "email@email.com"
+git config --global user.name "Manucart"
+git commit -m ""
+git remote add origin git@github.com:ManuCart/mcui.git
+git push origin master
+
+mkdir whypi
+cd whypi
+echo "# Whiptail" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:ManuCart/mcui.git
+
+git config --global push.default simple
+git add README.md
+git commit -m "first commit"
+git push
+
+git pull
+
+sudo apt-get install git
+ssh-keygen -t rsa -b 4096 -C "email@gmail.com"
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/id_rsa
+```
+
+ncurses-rs
+----------
+https://github.com/jeaye/ncurses-rs
+```bash
+ncurses
+
+sudo apt-get install libncurses5-dev libncursesw5-dev
+
+export RUSTUP_USE_HYPER=1
+curl https://sh.rustup.rs -sSf | sh
+
+git clone https://github.com/jeaye/ncurses-rs.git
+cd ncurses-rs
+
+source $HOME/.cargo/env
+cargo build
+
+git clone https://github.com/gyscos/Cursive.git
+cargo build
+cargo run --bin      ?????????????
+```
+
+
+Midnight Commander
+------------------
+
+```bash
+eval `resize`
+VER=$(whiptail \
+--title "Linux Distro version" \
+--radiolist "What distro are you running?" \
+10 38 4 \
+"Mint" "Basic usage" ON \
+"Ubuntu" "Desktop usage" OFF \
+"Debian" "Desktop & Server" OFF \
+"CentOS" "Server usage" OFF \
+3>&1 1>&2 2>&3)
+
+exitstatus=$?
+
+if [ $exitstatus = 0 ]; then
+    echo "The chosen distro is:" $VER
+else
+    echo "You chose Cancel."
+fi
+
+msgs=( "Downloading" "Verifying" "Unpacking" "Almost Done" "Done" )
+for i in {1..5}; do
+  sleep 1
+  echo XXX
+  echo $(( i * 20 ))
+  echo ${msgs[i-1]}
+  echo XXX
+done | \
+NEWT_COLORS='
+  window=,red
+  border=white,red
+  textbox=white,red
+  button=black,white
+' \
+whiptail --gauge "Please wait while installing" 6 60 0
+
+
+NEWT_COLORS='
+  window=,red
+  border=white,red
+  textbox=white,red
+  button=black,white
+' \
+whiptail --msgbox "passwords don't match" 0 0
+
+whiptail --textbox /dev/stdin 30 80 <<< `scripts/update-scripts`
+```
+
+Mouse control
+-------------
+http://www.it1352.com/322101.html
+```bash
+
+echo -e "\e[?1000h" #start tracking mouse
+
+echo -e "\e[?1005h"
+echo -e "\e[?1000l" #stop tracking mouse
+
+showkey -a
+
+/usr/bin/mc -x #use mouse under tmux
+/usr/bin/mc -u #without subshell
+```
+
+time
+----
+```
+sudo /etc/init.d/ntp stop
+sudo ntpd -q -g
+sudo /etc/init.d/ntp start
+```
+
+octoprint
+=========
+Installation
+------------
+https://github.com/foosel/OctoPrint/wiki/Setup-on-a-Raspberry-Pi-running-Raspbian
+```
+cd ~
+sudo apt-get install python-pip python-dev python-setuptools python-virtualenv git libyaml-dev build-essential
+git clone https://github.com/foosel/OctoPrint.git
+cd OctoPrint
+virtualenv venv
+./venv/bin/pip install pip --upgrade
+./venv/bin/python setup.py install
+mkdir ~/.octoprint
+~/OctoPrint/venv/bin/octoprint
+```
+http://192.168.0.1:5000/
+
+Cura Engine
+-----------
+http://octoprint.org/files/octopi/cura_engine_14.12/
+```
+sudo wget -O /usr/local/bin/cura_engine http://octoprint.org/files/octopi/cura_engine_14.12/cura_engine
+sudo chmod +x /usr/local/bin/cura_engine
+```
+
+Config Files
+------------
+http://ingegno.be/de-vertex-printer-en-cura/
+
+
+pushbullet
+----------
+````
+git clone https://github.com/r-darwish/pushbullet-cli.git
+cd pushbullet-cli
+sudo python setup.py install
+cd ..
+sudo rm -rf pushbullet-cli
+pb set-key
+````
+
+mosquitto
+---------
+````
+sudo apt-get install mosquitto mosquitto-clients
+
+mosquitto_sub -h mqtt.devicehub.net -p 1883 -t "`cat ~/.mqtt`" -R | jq '.["value"]' -r
+cat test.json | jq '.["value"]' -r
+
+sudo apt-get -y install python3
+pip3 install --upgrade --pre acdcli
+
+mosquitto_pub -h mqtt.dioty.co -p 8883 -u <your user-id> -P <your password> -t <topic> -m <message>
+mosquitto_sub -h mqtt.dioty.co -p 8883 -u "user@mail.com" -P "abcdefg" -t "user@mail.com/#" -v
+````
+
+sharp
+-----
+
+```
+sudo npm install --unsafe-perm sharp -g sharp-cli
+
+identify -format "%wx%h"
+if [ `identify -format "%w" "$toto"` -le 2048 ]; then echo "VRAI" ; fi
+```
+
+rust
+----
+
+http://f4b1.com/raspberry-pi/comment-installer-rust-sur-un-raspberry-pi-3
+http://doc.crates.io/guide.html
+
+tmux
+----
+```bash
+tmux send-keys -t A Escape Escape
+
+tmux new-window -t pi -a
+tmux kill-window -t Z
+
+tmux display-message 'END'
+set -g display-time 1000
+
+tmux last-window
+
+tmux list-windows | grep "bash*" | cut -d ':' -f  1
+
+tmux select-window -t 12
+tmux send-keys -t 12 "test"
+
+tmux display-message -p '#I'
+tmux display-message -p '#{window_index}'
+
+tmux set pane-border-format "Midnight Commander"
+
+tmux set-option display-time 10000
+tmux display-message -t "fin du truc"
+
+tmux rename-window "Title Text"
+
+
+tmux switch-client -t bg
+
+tmux kill-session -t bg
+tmux kill-session
+```
+stream2chromecast
+-----------------
+https://github.com/Pat-Carter/stream2chromecast
+
+```bash
+sudo apt-get install libav-tools
+cd ~/.bin
+git clone https://github.com/Pat-Carter/stream2chromecast.git
+cd stream2chromecast
+stream2chromecast.py -playurl http://hi5.streamingsoundtracks.com
+```
+videos
+------
+```bash
+mpv video.mp4 -of webm -ovc libvpx -ovcopts qmin=6,b=1000000k -oac libvorbis -oacopts qscale=3 -o out.webm
+mpv video.mp4 -of webm -ovc libvpx -ovcopts qmin=0,qmax=25,b=1000000k -oac libvorbis -oacopts qscale=3 -o out.webm
+mkvmerge -o out.mkv 1.mp4 + 2.mp4
+```
+tmux
+----
+````
+tab 
+s  list sessions
+$  name session
+c  create window
+w  list windows
+n  next window
+p  previous window
+f  find window
+,  name window
+&  kill window
+d  detach
+t  big clock
+?  list shortcuts
+:  prompt
+````
+transission
+-----------
+```bash
+transmission-remote -l
+whiptail --title "Transmission" --msgbox "`transmission-remote -l`" 30 136
+transmission-remote -t ID --remove-and-delete
+transmission-remote -t ID --stop
+transmission-remote -t 3 --start
+transmission-remote -a $FILE
+```
+
+whiptail
+--------
+colors
+````
+root                  root fg, bg #image de fond
+border                border fg, bg # bordure
+window                window fg, bg # couleur interieur fenetre
+shadow                shadow fg, bg # coleur ombre
+title                 title fg, bg # couleur titre
+button                button fg, bg # button avec le focus
+compactbutton         compact button fg, bg # button sans le focus
+actbutton             active button fg, bg
+checkbox              checkbox fg, bg
+actcheckbox           active checkbox fg, bg
+entry                 entry box fg, bg
+label                 label fg, bg
+listbox               listbox fg, bg
+actlistbox            active listbox fg, bg
+textbox               textbox fg, bg
+acttextbox            active textbox fg, bg
+helpline              help line
+roottext              root text
+emptyscale            scale full
+fullscale             scale empty
+disentry              disabled entry fg, bg
+actsellistbox         active & sel listbox
+sellistbox            selected listbox
+color0  or black
+color1  or red
+color2  or green
+color3  or brown
+color4  or blue
+color5  or magenta
+color6  or cyan
+color7  or lightgray
+color8  or gray
+color9  or brightred
+color10 or brightgreen
+color11 or yellow
+color12 or brightblue
+color13 or brightmagenta
+color14 or brightcyan
+color15 or white
+````
+
 
 Command Line Interface Tools
 ============================
