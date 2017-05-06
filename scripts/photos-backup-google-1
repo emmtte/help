@@ -1,8 +1,0 @@
-#!/bin/sh
-if [ ! -f /usr/bin/jhead ] ; then ~/scripts/iftt-maker "Rasperry Pi - Photos Google Backup" "ERROR: Please install jhead"; exit; fi
-cd ~/.bin/picasa-websync#1
-rm ~/.picasawebsync
-#~/.bin/picasa-websync#1/picasawebsync.py -d /media/hdd/photos-web -m syncUpload --allowDelete remote --purge --noupdatealbummetadata --purge -c7
-~/.bin/picasa-websync#1/picasawebsync.py -d /media/hdd/photos-web -m syncUpload --allowDelete remote --purge -c3
-#~/.bin/picasa-websync#1/picasawebsync.py -d /media/hdd/photos-web -m syncUpload --allowDelete remote --purge -c3 -n "['{0}', '{1}']"
-~/scripts/iftt-maker "Rasperry Pi" "gplus: Photos sync to family account finished"
