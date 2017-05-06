@@ -1,4 +1,0 @@
-#!/bin/sh
-clear
-/home/pi/.bin/flickr-uploader#1/uploadr.py
-~/scripts/iftt-maker "Flickr#1" "backup finished"
