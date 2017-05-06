@@ -11,7 +11,7 @@ Raspberry Pi Workshop
   + [Ncurses](#ncurses)
   + [Pushbullet](#pushbullet)
   + [Telegram](#telegram)
-<br><br>
+<br>
 
 Adafruit
 --------
@@ -27,12 +27,12 @@ remote_password CHANGE_TO_YOUR_AIO_KEY
 start_type automatic
 #topic /sensors/lightsensor  out 0 lightsensor
 ```
-<br><br>
+<br>
 
 Ascii colors
 ------------
 http://misc.flogisoft.com/bash/tip_colors_and_formatting
-<br><br>
+<br>
 
 Format drive
 ------------
@@ -46,7 +46,7 @@ use keyboard to delete, new, primary, 1, write ==>> d ENTER,o ENTER,n ENTER, p E
 sudo mkfs.ntfs /dev/sdb1
 sudo eject /dev/sdb
 ```
-<br><br>
+<br>
 
 Git
 ---
@@ -78,7 +78,7 @@ ssh-keygen -t rsa -b 4096 -C "email@gmail.com"
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/id_rsa
 ```
-<br><br>
+<br>
 
 Ifttt
 -----
@@ -91,13 +91,13 @@ mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_
 mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output '.value'
 mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value'
 ```
-<br><br>
+<br>
 
 Keeweb
 ------
 https://github.com/keeweb/keeweb
 https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
-<br><br>
+<br>
 
 Mouse control
 -------------
@@ -110,7 +110,7 @@ showkey -a
 /usr/bin/mc -x #use mouse under tmux
 /usr/bin/mc -u #without subshell
 ```
-<br><br>
+<br>
 
 Mosquitto
 ---------
@@ -124,7 +124,7 @@ pip3 install --upgrade --pre acdcli
 mosquitto_pub -h mqtt.dioty.co -p 8883 -u <your user-id> -P <your password> -t <topic> -m <message>
 mosquitto_sub -h mqtt.dioty.co -p 8883 -u "user@mail.com" -P "abcdefg" -t "user@mail.com/#" -v
 ```
-<br><br>
+<br>
 
 Ncurses
 -------
@@ -142,9 +142,9 @@ git clone https://github.com/gyscos/Cursive.git
 cargo build
 cargo run --bin      ?????????????
 ```
-<br><br>
+<br>
 
-octoprint
+Octoprint
 ---------
 Installation
 https://github.com/foosel/OctoPrint/wiki/Setup-on-a-Raspberry-Pi-running-Raspbian
@@ -170,7 +170,7 @@ sudo chmod +x /usr/local/bin/cura_engine
 
 Config Files
 http://ingegno.be/de-vertex-printer-en-cura/
-<br><br>
+<br>
 
 
 Pushbullet-cli
@@ -184,7 +184,7 @@ cd ..
 sudo rm -rf pushbullet-cli
 pb set-key
 ```
-<br><br>
+<br>
 
 Pushbullet-bash
 ---------------
@@ -198,14 +198,14 @@ https://www.pushbullet.com/account
 ```shell
 echo "PB_API_KEY=ABCDEFGHIJKLMNOPQRSTUVWXYZ" > ~/.config/pushbullet
 ```
-<br><br>
+<br>
 
 Rust
 ----
 http://f4b1.com/raspberry-pi/comment-installer-rust-sur-un-raspberry-pi-3
 http://doc.crates.io/guide.html
 
-<br><br>
+<br>
 
 Sharp
 -----
@@ -223,7 +223,7 @@ sudo /etc/init.d/ntp stop
 sudo ntpd -q -g
 sudo /etc/init.d/ntp start
 ```
-<br><br>
+<br>
 
 Tmux
 ----
@@ -261,7 +261,7 @@ t  big clock
 ?  list shortcuts
 :  prompt
 ```
-<br><br>
+<br>
 
 Stream2chromecast
 -----------------
@@ -296,7 +296,7 @@ sudo mv ~/tg/tg-server.pub /etc/telegram-cli/server.pub
 
 ~/tg/bin/telegram-cli -b bot -s ~/scripts/tg.lua
 ```
-<br><br>
+<br>
 
 Transmission
 ------------
@@ -307,7 +307,7 @@ transmission-remote -t ID --stop
 transmission-remote -t 3 --start
 transmission-remote -a $FILE
 ```
-<br><br>
+<br>
 
 Videos
 ------
@@ -316,7 +316,7 @@ mpv video.mp4 -of webm -ovc libvpx -ovcopts qmin=6,b=1000000k -oac libvorbis -oa
 mpv video.mp4 -of webm -ovc libvpx -ovcopts qmin=0,qmax=25,b=1000000k -oac libvorbis -oacopts qscale=3 -o out.webm
 mkvmerge -o out.mkv 1.mp4 + 2.mp4
 ```
-<br><br>
+<br>
 
 Whiptail
 --------
@@ -362,4 +362,4 @@ color13 or brightmagenta
 color14 or brightcyan
 color15 or white
 ```
-<br><br>
+<br>
