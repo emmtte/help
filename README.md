@@ -32,16 +32,27 @@ start_type automatic
 Ascii colors
 ------------
 http://misc.flogisoft.com/bash/tip_colors_and_formatting
+
 <br>
 
-Format drive
-------------
+Format usb drive
+----------------
 http://askubuntu.com/questions/22381/how-to-format-a-usb-flash-drive
 ```bash
 lsblk
 sudo fdisk /dev/sdb
 ```
-use keyboard to delete, new, primary, 1, write ==>> d ENTER,o ENTER,n ENTER, p ENTER, 1 ENTER, w ENTER
+* delete
+* new
+* primary
+* 1
+* write
+ + d ENTER
+ + o ENTER
+ + n ENTER,
+ + p ENTER
+ + 1 ENTER
+ + w ENTER
 ```bash
 sudo mkfs.ntfs /dev/sdb1
 sudo eject /dev/sdb
@@ -96,7 +107,7 @@ mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_
 Keeweb
 ------
 https://github.com/keeweb/keeweb
-https://github.com/ManuCart/RaspberryPi/blob/master/scripts/install-keeweb
+
 <br>
 
 Mouse control
@@ -146,7 +157,7 @@ cargo run --bin      ?????????????
 
 Octoprint
 ---------
-Installation
+Installation<br>
 https://github.com/foosel/OctoPrint/wiki/Setup-on-a-Raspberry-Pi-running-Raspbian
 ```
 cd ~
@@ -159,19 +170,16 @@ virtualenv venv
 mkdir ~/.octoprint
 ~/OctoPrint/venv/bin/octoprint
 ```
-http://192.168.0.1:5000/
-
-Cura Engine
+http://192.168.0.1:5000/<br>
+Cura Engine<br>
 http://octoprint.org/files/octopi/cura_engine_14.12/
 ```
 sudo wget -O /usr/local/bin/cura_engine http://octoprint.org/files/octopi/cura_engine_14.12/cura_engine
 sudo chmod +x /usr/local/bin/cura_engine
 ```
-
-Config Files
+Config Files<br>
 http://ingegno.be/de-vertex-printer-en-cura/
 <br>
-
 
 Pushbullet-cli
 --------------
@@ -214,7 +222,7 @@ sudo npm install --unsafe-perm sharp -g sharp-cli
 identify -format "%wx%h"
 if [ `identify -format "%w" "$toto"` -le 2048 ]; then echo "VRAI" ; fi
 ```
-<br><br>
+<br>
 
 Time
 ----
@@ -273,7 +281,7 @@ git clone https://github.com/Pat-Carter/stream2chromecast.git
 cd stream2chromecast
 stream2chromecast.py -playurl http://hi5.streamingsoundtracks.com
 ```
-<br><br>
+<br>
 
 Telegram
 --------
