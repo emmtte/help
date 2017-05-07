@@ -42,17 +42,17 @@ http://askubuntu.com/questions/22381/how-to-format-a-usb-flash-drive
 lsblk
 sudo fdisk /dev/sdb
 ```
-* delete
-* new
-* primary
-* 1
-* write
- + d ENTER
- + o ENTER
- + n ENTER,
- + p ENTER
- + 1 ENTER
- + w ENTER
++ delete
++ new
++ primary
++ 1
++ write
+ - d ENTER
+ - o ENTER
+ - n ENTER,
+ - p ENTER
+ - 1 ENTER
+ - w ENTER
 ```bash
 sudo mkfs.ntfs /dev/sdb1
 sudo eject /dev/sdb
@@ -171,12 +171,14 @@ mkdir ~/.octoprint
 ~/OctoPrint/venv/bin/octoprint
 ```
 http://192.168.0.1:5000/<br>
+
 Cura Engine<br>
 http://octoprint.org/files/octopi/cura_engine_14.12/
 ```
 sudo wget -O /usr/local/bin/cura_engine http://octoprint.org/files/octopi/cura_engine_14.12/cura_engine
 sudo chmod +x /usr/local/bin/cura_engine
 ```
+
 Config Files<br>
 http://ingegno.be/de-vertex-printer-en-cura/
 <br>
