@@ -47,12 +47,12 @@ sudo fdisk /dev/sdb
 + primary
 + 1
 + write
- - d ENTER
- - o ENTER
- - n ENTER,
- - p ENTER
- - 1 ENTER
- - w ENTER
+  - d ENTER
+  - o ENTER
+  - n ENTER,
+  - p ENTER
+  - 1 ENTER
+  - w ENTER
 ```bash
 sudo mkfs.ntfs /dev/sdb1
 sudo eject /dev/sdb
