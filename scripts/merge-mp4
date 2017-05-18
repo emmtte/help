@@ -1,8 +1,0 @@
-#find /media/hdd/mp4 -name "* *" -type f | rename 's/ /_/g'
-find /media/hdd/mp4 -iname "*.mp4" -type f | sort | sed -z 's/\n/ + /g' > /tmp/files.csv
-cat /tmp/files.csv | rev | cut -c4- | rev > /tmp/files
-echo
-cat /tmp/files.csv
-echo
-cat /tmp/files
-mkvmerge -o "/media/hdd/mp4/out.mkv" `cat /tmp/files`
