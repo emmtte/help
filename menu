@@ -18,7 +18,7 @@ s reboot
 
 + ! t t 
 c Cryptos portfolio
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Cryptos
 
 + ! t t
@@ -27,22 +27,22 @@ t stop transmission
 
 + ! t t
 v add/remove torrents
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Torrents
 
 =+ ! t t
 r Streaming Soundtracks
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Sst
 
 + ! t t
 r View SST
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  ViewSst
 
 + ! t t
 f Merge pdf files
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Merge
 
 + t t
@@ -105,32 +105,32 @@ d Delete
 
 + ! t t
 f backup photos & videos to freebox hdd
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  BackupFreebox
 
 + ! t t
 h backup photos & videos to freebox ext hdd
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  BackupExtBox
 
 + ! t t
 h restore photos & videos from freebox ext hdd
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  RestoreExtBox
 
 + ! t t
 1 backup photos to flickr #1
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  BackupFlickr1
 
 + ! t t
 2 backup photos to flickr #2
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  BackupFlickr2
 
 + ! t t
 y backup videos from youtube playlist to youtube-dl
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  BackupYoutube
 
 ### System
@@ -152,163 +152,163 @@ u update
 
 + ! t t
 k mount-key
- . ~/mcui/functions;;clear
+ . ~/rpi/functions;;clear
  MountKey
 
 + ! t t
 c mount-cardreader
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  MountCardReader
 
 + ! t t
 h mount-hdd
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  MountHdd
 
 + ! t t
 f mount-freebox
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  MountFreebox
 
 + ! t t
 i mount-iphone
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  MountIphone
 
 ### Move Files ###
 
 + t t
 c ez Copy
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  ezCopy %D %t
 
 + t t
 c ez Move
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  ezMove %D %t
 
 + d & t t
 g upload folders photos to gphotos
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gphotos %d %t
   
 + f & t t
 b upload to dropbox
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Dropbox %d %t
 
 + ! t t
 c download from dropbox
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Dropbox_download %d %{Dropbox Filename}
 
 + ! t t
 c download from google drive
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gdrive_download %{Google Drive Filename}
 
 + f & t t
 b move to "Freebox Server"
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  CopyFreebox %d %t
 
 + f * & t t
 d upload to Gdrive
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gdrive %d %t
 
 ### Imports ###
 
 + ! t t
 p import camera photos
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  import_camera_photos
 
 + ! t t
 v import camera videos
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  import_camera_videos
 
 + ! t t
 g import gopro
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  import_gopro
 
 + ! t t
 i import iphone videos
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  import_iphone
 
 + ! t t
 u import usbkey
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  import_usbkey
 
 ### Tools ###
 
 + ! t t 
 t Tidy GDrive Photos (1)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  TidyPhotos
 
 + d & t t
 t Test Exif Photos (2)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  TestExif %d %t
 
 + d & t t
 t Rename New Photos (3)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  RenamePhotosNew %d %t
 
 + ! t t
 h Backup to Free External HDD (4)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  BackupExtBox
 
 + d & t t
 r Rename Photos only [XXXX] dir (5)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  RenamePhotos %d %t
 
 + d & t t
 r Change Exif (Tests 5B)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Change_Exif %d %t
 
 + d & t t
 g Upload Photos to gPhotos #1 (6)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gphotos $user_1 $pwd_1 %d %t
 
 + d & t t
 g Upload Photos to gPhotos #2 (6)
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gphotos $user_2 $pwd_2 %d %t
 
 + f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
 y upload to youtube
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  YoutubeUpload %d %t
 
 + d & t t
 m upload to gmusic #1
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gmusic 1 %d %t
 
 + d & t t
 m upload to gmusic #2
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gmusic 2 %d %t
 
 + d & t t
 m upload to gmusic #3
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  Gmusic 3 %d %t
 
 + f *.mts | *.MTS | *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t t
 m merge mkv videos
- . ~/mcui/functions;clear
+ . ~/rpi/functions;clear
  MergeVideos %d %t
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t r
