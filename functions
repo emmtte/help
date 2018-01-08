@@ -409,13 +409,14 @@ done
 }
 
 TestExif() {
+#Need to select every year
 LOGFILE="/home/pi/exif.log"
-    
+
 ROOT="$1"; shift
 echo "$@"
 find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
 
-#printf "\e[94mYEAR:$1\e[0m\n\n"
+printf "\e[94mYEAR:$1\e[0m\n\n"
 
 #Find no JPEG Files
 find "$DIR" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do
