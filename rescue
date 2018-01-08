@@ -1,0 +1,53 @@
+#!/bin/bash
+
+#ƒ
+
+ln -sf ~/rpi/menu ~/.config/mc/menu
+ln -sf ~/rpi/.tmux.conf ~/.tmux.conf
+
+tmux has-session -t pi
+
+if [ "$?" -eq 1 ] ; then
+
+  tmux -u new-session -d -s pi
+
+  tmux rename-window -t pi:1 1
+  tmux set pane-border-format " Free "
+  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+
+  tmux new-window -n 2
+  tmux set pane-border-format " Free "
+  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+
+  tmux new-window -n 3
+  tmux set pane-border-format " Free "
+  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+
+  tmux new-window -n 4
+  tmux set pane-border-format " Free "
+  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+
+  tmux new-window -n 5
+  tmux set pane-border-format " Free "
+  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+
+  tmux new-window -n 6
+  tmux set pane-border-format " Free "
+  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+
+  TMUX= tmux -u new-session -d -s bg
+  tmux switch-client -t bg
+
+  tmux rename-window -t bg:1 Background
+  tmux set pane-border-format " Bash Background "
+
+  tmux new-window -n Octoprint
+  tmux set pane-border-format " Octoprint "
+  tmux send -t Octoprint 'sleep 5' ENTER
+  tmux send -t Octoprint '~/OctoPrint/venv/bin/octoprint' ENTER
+
+fi
+
+tmux select-window -t π
+tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
+tmux attach -t pi:1

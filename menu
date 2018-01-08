@@ -1,0 +1,370 @@
++ ! t t
+f switch to tmux background
+  tmux switch-client -t bg
+  tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
+  tmux send -t bg:1 'tmux switch-client -t pi'
+
++ ! t t
+x create tmux window
+ tmux new-window -n "●"
+ session=`tmux display-message -p '#I'`
+ tmux set pane-border-format " $session "
+ tmux send -t $session '. ~/mcui/functions' ENTER
+ tmux send -t $session '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/ && clear' ENTER
+
++ d ..
+s reboot
+ sudo reboot
+
++ ! t t 
+c Cryptos portfolio
+ . ~/mcui/functions;clear
+ Cryptos
+
++ ! t t
+t stop transmission
+  sudo service transmission-daemon stop
+
++ ! t t
+v add/remove torrents
+ . ~/mcui/functions;clear
+ Torrents
+
+=+ ! t t
+r Streaming Soundtracks
+ . ~/mcui/functions;clear
+ Sst
+
++ ! t t
+r View SST
+ . ~/mcui/functions;clear
+ ViewSst
+
++ ! t t
+f Merge pdf files
+ . ~/mcui/functions;clear
+ Merge
+
++ t t
+c castnow
+  echo %t
+  castnow %t
+
++ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.mp4 | f *.MP4 | f *.mts | f *.ts | f *.webm & t t
+w castnow
+
+x source ~/.tmux.conf
+  tmux source-file ~/.tmux.conf
+  tmux send -t B 'tmux send -t A F2' ENTER
+
++ ! t t
+f create new file
+  touch %{File name}
+
++ f & t t
+g git push
+  clear
+  for f in %t; do
+    git add "$f"
+  done
+  git commit -m "update"
+  git push
+
++ f & t t
+d git push force
+  for f in %t; do
+    git add "$f"
+  done
+  PARAM=%{parameters}
+  git commit -m "$PARAM"
+  git push origin master --force
+
++ ! t t
+h git pull
+  git pull
+
++ ! t t
+d git discard the local changes
+  git reset --hard
+  git pull
+
++ t t
+r run
+  PARAM=%{parameters}
+  %f $PARAM
+
++ f * & t t
+d Delete
+  set %t
+  while [ -n "$1" ] ; do
+    rm -rf "$1"
+    shift
+  done
+
+### Backups
+
++ ! t t
+f backup photos & videos to freebox hdd
+ . ~/mcui/functions;clear
+ BackupFreebox
+
++ ! t t
+h backup photos & videos to freebox ext hdd
+ . ~/mcui/functions;clear
+ BackupExtBox
+
++ ! t t
+h restore photos & videos from freebox ext hdd
+ . ~/mcui/functions;clear
+ RestoreExtBox
+
++ ! t t
+1 backup photos to flickr #1
+ . ~/mcui/functions;clear
+ BackupFlickr1
+
++ ! t t
+2 backup photos to flickr #2
+ . ~/mcui/functions;clear
+ BackupFlickr2
+
++ ! t t
+y backup videos from youtube playlist to youtube-dl
+ . ~/mcui/functions;clear
+ BackupYoutube
+
+### System
+
++ ! t t
+r reboot
+  sudo reboot
+
++ ! t t
+s shutdown
+  sudo halt
+
++ ! t t
+u update
+  sudo apt-get -y autoremove
+  sudo apt-get -y update
+  sudo apt-get -y dist-upgrade
+  sudo apt-get -y upgrade
+
++ ! t t
+k mount-key
+ . ~/mcui/functions;;clear
+ MountKey
+
++ ! t t
+c mount-cardreader
+ . ~/mcui/functions;clear
+ MountCardReader
+
++ ! t t
+h mount-hdd
+ . ~/mcui/functions;clear
+ MountHdd
+
++ ! t t
+f mount-freebox
+ . ~/mcui/functions;clear
+ MountFreebox
+
++ ! t t
+i mount-iphone
+ . ~/mcui/functions;clear
+ MountIphone
+
+### Move Files ###
+
++ t t
+c ez Copy
+ . ~/mcui/functions;clear
+ ezCopy %D %t
+
++ t t
+c ez Move
+ . ~/mcui/functions;clear
+ ezMove %D %t
+
++ d & t t
+g upload folders photos to gphotos
+ . ~/mcui/functions;clear
+ Gphotos %d %t
+  
++ f & t t
+b upload to dropbox
+ . ~/mcui/functions;clear
+ Dropbox %d %t
+
++ ! t t
+c download from dropbox
+ . ~/mcui/functions;clear
+ Dropbox_download %d %{Dropbox Filename}
+
++ ! t t
+c download from google drive
+ . ~/mcui/functions;clear
+ Gdrive_download %{Google Drive Filename}
+
++ f & t t
+b move to "Freebox Server"
+ . ~/mcui/functions;clear
+ CopyFreebox %d %t
+
++ f * & t t
+d upload to Gdrive
+ . ~/mcui/functions;clear
+ Gdrive %d %t
+
+### Imports ###
+
++ ! t t
+p import camera photos
+ . ~/mcui/functions;clear
+ import_camera_photos
+
++ ! t t
+v import camera videos
+ . ~/mcui/functions;clear
+ import_camera_videos
+
++ ! t t
+g import gopro
+ . ~/mcui/functions;clear
+ import_gopro
+
++ ! t t
+i import iphone videos
+ . ~/mcui/functions;clear
+ import_iphone
+
++ ! t t
+u import usbkey
+ . ~/mcui/functions;clear
+ import_usbkey
+
+### Tools ###
+
++ ! t t 
+t Tidy GDrive Photos (1)
+ . ~/mcui/functions;clear
+ TidyPhotos
+
++ d & t t
+t Test Exif Photos (2)
+ . ~/mcui/functions;clear
+ TestExif %d %t
+
++ d & t t
+t Rename New Photos (3)
+ . ~/mcui/functions;clear
+ RenamePhotosNew %d %t
+
++ ! t t
+h Backup to Free External HDD (4)
+ . ~/mcui/functions;clear
+ BackupExtBox
+
++ d & t t
+r Rename Photos only [XXXX] dir (5)
+ . ~/mcui/functions;clear
+ RenamePhotos %d %t
+
++ d & t t
+r Change Exif (Tests 5B)
+ . ~/mcui/functions;clear
+ Change_Exif %d %t
+
++ d & t t
+g Upload Photos to gPhotos #1 (6)
+ . ~/mcui/functions;clear
+ Gphotos $user_1 $pwd_1 %d %t
+
++ d & t t
+g Upload Photos to gPhotos #2 (6)
+ . ~/mcui/functions;clear
+ Gphotos $user_2 $pwd_2 %d %t
+
++ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
+y upload to youtube
+ . ~/mcui/functions;clear
+ YoutubeUpload %d %t
+
++ d & t t
+m upload to gmusic #1
+ . ~/mcui/functions;clear
+ Gmusic 1 %d %t
+
++ d & t t
+m upload to gmusic #2
+ . ~/mcui/functions;clear
+ Gmusic 2 %d %t
+
++ d & t t
+m upload to gmusic #3
+ . ~/mcui/functions;clear
+ Gmusic 3 %d %t
+
++ f *.mts | *.MTS | *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t t
+m merge mkv videos
+ . ~/mcui/functions;clear
+ MergeVideos %d %t
+
++ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t r
+c cut video [no screen]
+  #! /usr/bin/bash
+  clear
+  read -e -p "Start : " -i "00:00:00" start
+  read -e -p "Stop  : " -i "00:00:00" stop
+  echo "Please Wait..."
+  mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
+  iftt "Rasperry Pi" "La vidéos %d.avi est coupée"
+
++ f *.png | f *.PNG & t t
+s convert PNG to JPG
+  set %t
+  while [ -n "$1" ]; do
+    convert $1 $1.JPG
+    shift
+  done
+
++ f *.jpg | f *.JPG & t t
+s Autolevel photos
+  set %t
+  while [ -n "$1" ]; do
+    mogrify -auto-level $1
+    shift
+  done
+  
++ f *.tiff | f *.TIFF & t t
+s Tiff to jpg with sharp
+  set %t
+  while [ -n "$1" ]; do
+    sharp --quality 100 -o $1-sharp.jpg $1
+    shift
+  done
+
++ f *.jpg | f *.JPG & t r
+e Affiche l'EXIF de la photo
+  clear
+  exiv2 -pv %f
+  echo
+  X=`exiv2 -g PixelXDimension -Pv %f`
+  Y=`exiv2 -g PixelYDimension -Pv %f`
+  R="$((X * Y))"
+  echo $R
+  D=`exiv2 -g DateTimeOriginal -PEv %f | cut -d ' ' -f 2`
+  echo "$D"
+  printf 'Press [Enter] key to continue...'
+  read /tmp/null
+
++ f *.pdf | f *.PDF & t t
+p Transforme un fichier PDF sécurisé en normal
+  set %t
+  while [ -n "$1" ]; do
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.test.pdf" "$1"
+    shift
+  done
+
+e « exit menu »

@@ -1,0 +1,10 @@
+#!/bin/bash
+# exit tmux
+# crontab -e
+# >>> @reboot /home/pi/mcui/start
+
+# first time do /usr/bin/ssh pi@127.0.0.1
+# or use -oStrictHostKeyChecking=no
+
+/bin/sleep 10
+/usr/bin/sshpass -p 'raspberry' /usr/bin/ssh pi@127.0.0.1 -t '~/mcui/rescue'

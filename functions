@@ -1,0 +1,716 @@
+#!/bin/bash
+# To run under mc
+# sudo ln -sf bash /bin/sh
+
+# TODO
+# fdupes -Sr /media/hdd/Drive/Photos_bis /media/hdd/photos > ~/dupes.txt
+
+. ~/config.ini
+
+##########
+# Common #
+##########
+
+
+ifttt() {
+curl -X POST -H "Content-Type: application/json" \
+-d '{"value1":"'"$1"'","value2":"'"$2"'","value3":"'"$3"'"}' \
+https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/$Maker_Channel_Key
+}
+
+foo() {
+clear
+tmux set pane-active-border-bg red
+tmux set pane-active-border-fg brightyellow
+tmux set pane-border-format " $1 "
+}
+
+bar() {
+  tmux set pane-active-border-bg cyan
+  tmux set pane-active-border-fg brightwhite
+  tmux set pane-border-format "Free"
+  tmux set-option display-time 20000
+  tmux display-message "$1 Script Finished"
+  ifttt "Raspberry Pi" "$1 Script Finished"
+  echo
+  echo -e "\e[?1000h"
+  #read -n1 -s -r -p "Press any key to continue..." key && tmux kill-window
+}
+
+last() {
+  tmux last-window
+}
+
+Test_mouse() {
+echo -e "\e[?1015"
+echo -e "\e[?1000h"
+
+read -n4 -r -p "Press any key to continue..." -i "---1" KEYS
+echo "===${KEYS:3:3}==="
+#${EXIF:0:12}
+if [ "${KEYS:3:3}" = '1' ] || [ "$KEYS" = '' ] ; then
+  echo "bonne touche"
+else
+  echo "pas bonne touche"
+fi
+}
+
+border() {
+#ansi --newline --bg-cyan --white-intense "┌────────────────────────────┐"
+#ansi --newline --bg-cyan --white-intense "│ Test de boite avec bordure │"
+#ansi --newline --bg-cyan --white-intense "└─────────────────────┘"
+printf " ";
+}
+
+border2() {
+    local str="$*"      # Put all arguments into single string
+    local len=${#str}
+    local i
+    printf '\e[46m'
+    printf '┌'
+    #for (( i = 0; i < len + 2; ++i )); do
+    #    printf '─'
+    #done
+    printf "┐\n│ $str │\n└"
+    #for (( i = 0; i < len + 2; ++i )); do
+    #    printf '─'
+    #done
+    printf "┘\n"
+}
+
+
+#####    ##    ####  #    # #    # #####
+#    #  #  #  #    # #   #  #    # #    #
+#####  #    # #      ####   #    # #    #
+#    # ###### #      #  #   #    # #####
+#    # #    # #    # #   #  #    # #
+#####  #    #  ####  #    #  ####  #
+
+BackupFreebox() {
+  sudo mkdir /media/freebox
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  mkdir /media/freebox/photos /media/freebox/videos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
+  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
+}
+
+BackupExtBox() {
+  sudo mkdir /media/freebox
+  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  mkdir /media/freebox/Photos /media/freebox/Videos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
+  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+}
+
+RestoreExtBox() {
+  sudo mkdir /media/freebox
+  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  #mkdir /media/freebox/Photos /media/freebox/Videos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
+  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+}
+
+BackupFlickr1() {
+  /opt/flickr-uploader#1/uploadr.py
+}
+
+BackupFlickr2() {
+  /opt/flickr-uploader#2/uploadr.py
+}
+
+BackupYoutube() {
+  # echo "Playlist=<<id>>" >> ~/.config.ini
+  # todo : compare backup videos to /media/videos and save it if size higher.
+  sudo apt-get -y install libavcodec-extra libav-tools
+  mkdir /media/hdd/youtube-dl
+  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  while exist /media/hdd/youtube-dl/*.part
+  do
+  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  done
+}
+
+ # #    # #####   ####  #####  #####
+ # ##  ## #    # #    # #    #   #
+ # # ## # #    # #    # #    #   #
+ # #    # #####  #    # #####    #
+ # #    # #      #    # #   #    #
+ # #    # #       ####  #    #   #
+
+ # ls -l /dev/disk/by-id
+
+import_camera_photos() {
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  GDRIVE=/media/hdd/Drive; cd $GDRIVE
+  PHOTOS="$GDRIVE/Google Photos"
+  sudo mkdir /media/panasonic
+  sudo mount $ID /media/panasonic
+  cp -v /media/panasonic/DCIM/???_PANA/*.JPG "$PHOTOS"
+  sudo umount /media/panasonic
+  if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
+}
+
+import_camera_videos() {
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  VIDEOS="/media/hdd/youtube-upload"
+  mkdir $VIDEOS
+  sudo mkdir /media/panasonic
+  sudo mount $ID /media/panasonic
+  cp -v /media/panasonic/DCIM/???_PANA/*.MP4 $VIDEOS
+  sudo umount /media/panasonic
+
+
+}
+
+import_card_photos() {
+  GDRIVE=/media/hdd/Drive; cd $GDRIVE
+  PHOTOS="$GDRIVE/Google Photos"
+  sudo mkdir /media/cardreader
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  cp -v /media/cardreader/DCIM/???_PANA/*.JPG "$PHOTOS"
+  sudo umount /media/cardreader
+  if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
+}
+
+import_gopro() {
+  ID="/dev/disk/by-id/usb-GoPro_Storage_123456789ABC-0:0-part1"
+  sudo mkdir /media/gopro
+  sudo mount $ID /media/gopro
+  mkdir /media/hdd/gopro /media/hdd/gopro/photos /media/hdd/gopro/videos
+  cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
+  cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
+  iftt "photos and videos from gopro are saved"
+  rm /tmp/copy-gopro
+  sudo umount /media/gopro
+}
+
+import_iphone() {
+  usbmuxd
+  VIDEOS="/media/hdd/youtube-upload"
+  sudo mkdir /media/iphone
+  sudo umount /media/iphone
+  echo "Please connect iphone, accept the connection and enter password"
+  read -e -p "Press any key to continue..." key
+  idevicepair pair
+  sudo ifuse /media/iphone
+  sudo rsync --include '*/' --include '*.MOV' --exclude '*' --archive --info=progress2 /media/iphone/DCIM/100APPLE/ $VIDEOS
+  sudo chown -R pi:pi $VIDEOS
+  youtube_upload
+}
+
+import_usbkey() {
+  ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_08606E6D3FDEBF602707123F-0:0-part1"
+  VIDEOS="/media/hdd/youtube-upload"
+  sudo mkdir /media/usbkey
+  sudo mount $ID /media/usbkey
+  rsync --archive --info=progress2 /media/usbkey/ $VIDEOS
+  sudo umount /media/usbkey
+}
+
+
+  ####  #   #  ####  ##### ###### #    #
+ #       # #  #        #   #      ##  ##
+  ####    #    ####    #   #####  # ## #
+      #   #        #   #   #      #    #
+ #    #   #   #    #   #   #      #    #
+  ####    #    ####    #   ###### #    #
+
+SystemReboot() {
+  sudo reboot
+}
+
+SystemShutdown() {
+  sudo halt
+}
+
+SystemUpdate() {
+  sudo apt-get -y autoremove
+  sudo apt-get -y update
+  sudo apt-get -y dist-upgrade
+  sudo apt-get -y upgrade
+}
+
+MountCardReader() {
+  sudo mkdir /media/cardreader
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+}
+
+MountKey() {
+  sudo mkdir /media/usbkey
+  sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
+}
+
+MountHdd() {
+  sudo mkdir /media/hdd
+  sudo mount LABEL=RaspberryPi /media/hdd
+}
+
+MountFreebox() {
+  sudo mkdir /media/freebox
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+}
+
+MountIphone() {
+  usbmuxd
+  sudo mkdir /media/iphone
+  sudo umount /media/iphone
+  idevicepair pair
+  sudo ifuse /media/iphone
+}
+
+ #    # ##### # #      # ##### # ######  ####
+ #    #   #   # #      #   #   # #      #
+ #    #   #   # #      #   #   # #####   ####
+ #    #   #   # #      #   #   # #           #
+ #    #   #   # #      #   #   # #      #    #
+  ####    #   # ###### #   #   # ######  ####
+
+Sst() {
+  castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
+}
+
+Gphotos() {
+  foo "Google Photos Upload"
+  Username="$1"; shift
+  Password="$1"; shift
+  ROOT="$1"; shift
+    echo "$@"
+    find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+    Album=$(echo "$DIR" | cut -d ' ' -f 2-)
+    Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
+    echo "$Album ($Year)"
+    cd "$DIR"
+    if ! upload-gphotos `ls` -u "$Username" -p "$Password" -a "$Album ($Year)" ; then
+       echo "|$DIR|$Album ($Year)" >> ~/gphotos.log; else
+       ifttt "Google Photos : $Album ($Year)" "-";
+       fi
+    cd "$ROOT"
+  done
+
+ifttt "Google Photos Script Finished" "-"
+}
+
+Gmusic() {
+  n=$1; shift
+  cd "$1/"; shift
+  for d in "$@"; do
+    gmupload -c ~/.local/share/gmusicapi/oauth.$n "$d"
+  done
+}
+
+Gdrive() {
+  cd /media/hdd/Drive
+  #drive pull --no-prompt "Raspberry Pi/"
+  cd "$1/"; shift
+  for FILE in "$@"; do
+    cp "$FILE" "/media/hdd/Drive/Raspberry Pi/"
+  done
+  cd /media/hdd/Drive
+  if ! drive pull --no-prompt "Raspberry Pi/" ; then ifttt "ERROR Google push files" "ERROR PUSH DRIVE"; return; fi
+}
+
+Gdrive_download() {
+ cd "/media/hdd/Drive"
+ if ! drive pull --no-prompt "$1" ; then ifttt "ERROR Google pull files" "ERROR PULL DRIVE"; return; fi
+}
+
+Dropbox(){
+  cd "$1/"; shift
+  for FILE in "$@"; do
+    dropbox_uploader upload "$FILE" "$FILE"
+  done
+}
+
+Dropbox_download(){
+ cd "$1/"; shift
+ dropbox_uploader download "$1"
+}
+
+CopyFreebox(){
+ sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm  
+ cd "$1/"; shift
+ for FILE in "$@"; do
+   echo "Copy : $FILE"
+   rsync --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "/media/freebox"
+ done
+}
+
+ezCopy(){
+  DIR="$1"; shift
+  for FILE in "$@"; do
+    echo "Copy : $FILE to $DIR"
+    rsync --archive --no-o --no-g --info=progress2 "$FILE" "$DIR"
+  done
+}
+
+ezMove(){
+  DIR="$1"; shift
+  for FILE in "$@"; do
+    echo "Move : $FILE to $DIR"
+    rsync --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "$DIR"
+  done
+}
+
+YoutubeUpload() {
+  cd "$1/"; shift
+  for FILE in "$@"; do
+    while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
+  done
+}
+
+MergeVideos() {
+  sudo apt-get install mkvtoolnix
+  cd "$1/"; shift
+  FILES="$1"; shift 
+  for FILE in "$@"; do
+    FILES="$FILES + $FILE"
+  done
+  mkvmerge -o out.mkv $FILES
+}
+
+CopyTest() {
+  echo "$*"
+  echo "----------------"
+  for Folder in "$@"; do
+  echo "$Folder"
+  done
+}
+
+ #####  ####   ####  #       ####
+   #   #    # #    # #      #
+   #   #    # #    # #       ####
+   #   #    # #    # #           #
+   #   #    # #    # #      #    #
+   #    ####   ####  ######  ####
+
+TidyPhotos() {
+rm /tmp/exif.log
+GDRIVE=/media/hdd/Drive; cd $GDRIVE
+PHOTOS="$GDRIVE/Google Photos"
+#PHOTOS="/media/hdd/photos"
+if ! drive pull --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PULL DRIVE"; return; fi
+
+#Move only files under month directory (??) to ..
+find "$PHOTOS" -iname "??" -type d -print0 | xargs -0 -I{.} find {.} -iname "*.jpg" iname "*.jpeg" -type f | while read FILE ; do
+mv -v "$FILE" "$PHOTOS/$(basename "$FILE")"
+done;
+
+# Delele empty folders
+find "$PHOTOS" -type d -empty -delete
+
+# Move files from .. to YYYY/YYYY-MM-DD folder
+find "$PHOTOS" -maxdepth 1 -iname "*.jpg" -type f | while read FILE ; do
+EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+YEAR=`echo "$EXIF" | cut -d '-' -f 1`
+if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
+if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
+mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
+done
+}
+
+TestExif() {
+LOGFILE="/home/pi/exif.log"
+    
+ROOT="$1"; shift
+echo "$@"
+find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+
+#printf "\e[94mYEAR:$1\e[0m\n\n"
+
+#Find no JPEG Files
+find "$DIR" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do
+printf "\e[93m[NO JPEG] : $(basename "$FILE")\e[0m\n"
+echo "NO JPEG FOR $FILE" >> $LOGFILE
+done
+
+#Next control
+find "$DIR" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+  EXIF=`exiv2 -g DateTimeOriginal -PEv "$FILE"`
+  printf "$(basename "$FILE") : $EXIF\e[0m\n"
+
+# If not EXIF give one with folder name/date
+  if [ -z "$EXIF" ]; then
+    NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    #exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 04:00:00" "$FILE"
+    printf "\e[93m[EMPTY EXIF] : $(basename "$FILE")\e[0m\n"
+    echo "NO EXIF FOR $FILE" >> $LOGFILE
+  fi
+
+# Tests if jpg files are in the correct folder
+IMG_DATE=`echo "$EXIF" | cut -d ' ' -f 1 | tr ':' '-'`
+IMG_YYMM=`echo "$IMG_DATE" | cut -d '-' -f 1,2 | tr '-' ' '`
+IMG_YYMM_LAST=`date -d "$IMG_DATE -1 month" +"%Y %m"`
+IMG_YYMM_NEXT=`date -d "$IMG_DATE +1 month" +"%Y %m"`
+DIR_YYMM=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
+  if [ "$DIR_YYMM" != "$IMG_YYMM" ] && [ "$DIR_YYMM" != "$IMG_YYMM_LAST" ] && [ "$DIR_YYMM" != "$IMG_YYMM_NEXT" ]; then
+     printf "\e[93m[DIR FAIL] : $(basename "$FILE")\e[0m\n"
+     echo "NOT CORRECT $EXIF FOR $FILE" >> $LOGFILE
+     echo "/media/hdd/photos/$FILE" >> ~/exif-change.log
+  fi
+
+# Test if not multiple Exif.Photo.DateTimeOriginal
+  if [[ "$EXIF" == *$'\n'* ]] ; then
+    printf "\e[91m[EXIF FAIL] : $(basename "$FILE")\e[0m\n"
+    echo "EXIF FAIL : $EXIF - $FILE" >> $LOGFILE
+    #exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$FILE"
+  fi
+
+# Test if not TIME = 00:00
+IMG_TIME=`echo "$EXIF" | cut -d ' ' -f 2`
+  if [ "$IMG_TIME" == "00:00:00" ] ; then
+    printf "\e[93m[TIME FAIL] : $(basename "$FILE")\e[0m\n"
+    echo "TIME FAIL : $EXIF - $FILE" >> $LOGFILE
+    #exiv2 -a 4 adjust "$FILE"
+  fi
+
+# Test if photo not too big
+  IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
+  if [ $(( $X * $Y )) -gt 100000000 ] ; then 
+    printf "\e[91m[Pixel Dimension FAIL] $(basename "$FILE")\e[0m\n"
+    echo "PIX  FAIL : $FILE" >> $LOGFILE
+  fi
+
+printf "\e[96m$FILE\n\e[97m$EXIF :: [$IMG_YYMM_LAST]-[$IMG_YYMM]-[$IMG_YYMM_NEXT] :: $DIR_YYMM\e[0m\n"
+
+FILE_DATE=$(echo $EXIF | tr -d ":" | tr -d " ")
+#touch -t ${EXIF:0:10}.${EXIF:11:14} "$FILE"
+echo "FILE_DATE : $FILE_DATE"
+echo "----------------${FILE_DATE:0:10}.${FILE_DATE:10:14}-------------------"
+
+done
+done
+ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
+mcedit -x $LOGFILE
+}
+
+CorrectExifPhotos() {
+#Change Exif Date for all photos listed in /tmp/exif-change.log
+FILE=~/exif-change.log
+while IFS= read LINE
+do
+    NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    exiv2 delete "$LINE"
+    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE 04:00:00" "$LINE"
+    echo "$LINE"
+done <"$FILE"
+rm ~/exif-change.log
+}
+
+RenamePhotosNew() {
+#use this when adding new photos in YEAR directory
+#need to finished
+ROOT="$1"; shift
+echo "$@"
+
+
+#Delete Empty Directories
+#find "$1" -type d -empty -delete
+
+#Loop through files, renaming each to a YYYYMMDDHHMMSS-####.JPG based name
+
+
+find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+
+YEAR=$(echo "$DIR" | cut -d '/' -f 2 | cut -d '-' -f 1)
+echo "YEAR : $YEAR"
+LAST=`find "/media/hdd/photos/$YEAR" -iname "$YEAR.????.JPEG" -type f | sort | tail -n1`
+if [ -z "$LAST" ]; then printf "\e[91m[LAST NAME FAIL]\e[0m\n"; COUNTER=1; fi
+COUNTER=$(echo "$LAST" | rev | cut -d '.' -f 2 | rev )
+COUNTER=$(expr $COUNTER + 1)
+echo "COUNTER: $COUNTER"
+
+find "$DIR" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+
+  NEWFILE="$YEAR.$(printf '%04d' $COUNTER)"
+  echo "$(basename "$FILE")=>$NEWFILE.JPEG"
+  #exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
+  #mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
+  
+#seulement pour touch
+  EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE" | tr -d ':' | tr -d ' ')
+  echo "$EXIF"
+  #echo ${EXIF:0:8}
+  #touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
+
+  COUNTER=$((COUNTER + 1))
+done
+
+  
+  echo "$DIR -- $YEAR"
+  if [ ${#YEAR} == 4 ]; then YEAR=`echo "${YEAR}0101"` ; fi
+  #touch -t "${YEAR}0000.00" "$DIR"
+
+done
+}
+
+RenamePhotos() {
+cd "$1/"; shift
+for f in "$@"; do
+
+#Delete Empty Directories
+find "$1" -type d -empty -delete
+
+#Loop through files, renaming each to a YYYYMMDDHHMMSS-####.JPG based name
+echo "YEAR:$1"
+COUNTER=1
+find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+  EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4,5 | tr -d ':' | tr -d ' '`
+  NEWFILE="$EXIF-$(printf '%04d' $COUNTER)"
+  echo "$(basename "$FILE")=>$NEWFILE.JPG"
+  touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
+  mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
+  COUNTER=$((COUNTER + 1))
+done
+
+#Loop again through files, renaming as "YYYY-####.JPEG"
+echo "YEAR:$1"
+COUNTER=1
+find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
+  NEWFILE="$1.$(printf '%04d' $COUNTER)"
+  echo "$(basename "$FILE")=>$NEWFILE.JPEG"
+  exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
+  mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
+  COUNTER=$((COUNTER + 1))
+done
+
+#Loop through directories and change directory creating date
+find "$1" -type d | while read DIR ; do
+  DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
+  echo "$DIR -- $DAT"
+  if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
+  touch -t "${DAT}0000.00" "$DIR"
+done
+
+shift
+done
+}
+
+ViewExif() {
+# ony use with JPEG mc.ext
+exiv2 -g DateTimeOriginal -PEv "$1" > /tmp/exif.txt
+mcedit -x /tmp/exif.txt
+exiv2 -q -M "set Exif.Photo.DateTimeOriginal `head -n 1 /tmp/exif.txt`" "$1"
+}
+
+Merge() {
+## TODO Delete only files merged
+ansi --reset
+ansi --green-intense --newline "`date`"
+GDRIVE=/media/hdd/Drive
+FILE=/tmp/gdrive.csv
+
+#Init
+cd $GDRIVE
+
+ansi --yellow-intense "[info]"; ansi --newline " Download Snoozed Dir"
+rm -rf Snoozed Documents
+if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then iftt "Auto Merge PDF" "Error pull, please fix clashes in Snoozed folder"; return; fi
+
+ansi --yellow-intense "[info]"; ansi --newline " Test if Snoozed Dir Empty"
+if [ `find "Snoozed" -type d -empty` ] ; then ansi --red-intense [error]; ansi --newline " Empty Snoozed Dir"; return; fi
+
+ansi --yellow-intense "[info]"; ansi --newline " Test if Snoozed Dir Files Encrypts"
+if grep -r "Encrypt" Snoozed ; then ifttt "`grep -r "Encrypt" Snoozed`"; return; fi
+
+ansi --yellow-intense "[info]"; ansi --newline " Download Iftt csv file"
+if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then iftt "Auto Merge PDF" "Error pull for ifttt.xls" ; return; fi
+tr -d '\r' < /tmp/ifttt.csv > $FILE
+
+ansi --yellow-intense "[info]"; ansi --newline " Read Iftt csv file"
+
+while IFS=, read email in out ; do
+    ansi --yellow-intense "[info]"; ansi --newline " Search $in file..."
+    if [[ -n $(find "Snoozed" -name "$in") ]]
+        then
+        rm ~/files.csv
+        ansi --green-intense "[ ok ]"; ansi --newline " find $1"
+        find "Snoozed" -name "$in" | sort -r | tr '\n' ',' > ~/files.csv
+        cp ~/files.csv ~/files_rm.csv
+        echo "Snoozed/$out" >> ~/files.csv
+        ansi --bg-red --newline "cat ~/files.csv"
+        cat ~/files.csv
+        ansi --bg-red --newline "END"
+        if ! drive pull --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error pull ref doc" ; return; fi
+        mv "Documents/$out" "Snoozed/$out"
+        /opt/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
+        mv sejda_out.pdf "Documents/$out"
+        if ! drive push --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error push ref doc" ; return; fi
+        while IFS=, read f ; do
+        ansi --yellow-red "[----]"; ansi --newline " delete $f"
+        rm "$f"
+        done < ~/files_rm.csv
+    fi
+done < "$FILE"
+
+rm $FILE
+if ! drive pull --no-prompt "Snoozed/"; then iftt "Upload Snoozed" "Error"; return; fi
+}
+
+Torrents() {
+  clear
+  sudo service transmission-daemon restart
+  rm -rf /media/hdd/Drive/Torrents/*
+  cd /media/hdd/Drive
+  drive pull --quiet Torrents/
+  find /media/hdd/Drive/Torrents/*.torrent -type f | while read FILE ; do
+  transmission-remote --add "$FILE"
+  rm "$FILE"
+  done
+  drive push --quiet Torrents/
+
+  LIST=`transmission-remote -l  | grep 100% | cut -d " " -f 4 | cut -d "*" -f 1`
+  for ID in $LIST; do
+  echo "Torrent #$ID is completed"
+  #echo "Moving downloaded file(s) to $MOVEDIR"
+  #transmission-remote --torrent $ID --move $MOVEDIR
+  echo "Removing torrent from list"
+  transmission-remote --torrent $ID --remove
+  done
+}
+
+ViewSst() {
+#sudo apt-get install recode libxml2-utils
+foo "Streaming Soundtracks"
+cat << EOF > /tmp/request.xml
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<SOAP-ENV:Envelope
+ SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/1999/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/1999/XMLSchema">
+ <SOAP-ENV:Body>
+  <GetCurrentlyPlaying>
+  </GetCurrentlyPlaying>
+ </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+EOF
+clear
+while :
+do
+curl -X POST -H "Content-Type: text/xml" \
+    -d @/tmp/request.xml \
+    http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/tmp/null > /tmp/sst.xml
+album=`xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`
+artist=`xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst.xml | recode html..UTF-8`
+title=`xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`
+cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
+track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
+track=$((track / 1000))
+printf "\033[01m$album -\033[00m $artist -\033[34m $title -\033[00m [`date -u -d @${track} +"%M:%S"`]\n"
+PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" /tmp/sst.xml`
+PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
+SystemTime=`xmllint --xpath "//*[local-name()='SystemTime']/text()" /tmp/sst.xml`
+PSTART=`date -d "$PlayStar" "+%s"`
+PLENGT=$(($PlayLength / 1000))
+FIN=`date -d "$SystemTime" "+%s"`
+PW=$((PSTART+PLENGT))
+secs=$((PW-FIN))
+
+while [ $secs -gt 0 ]; do
+    sleep 1
+   secs=$((secs-1))
+done
+done
+bar "Streaming Soundtracks Finished"
+}
