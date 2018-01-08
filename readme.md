@@ -85,7 +85,7 @@ Installation
 
 ```bash
 sudo apt-get install git mc
-git clone git@github.com:ManuCart/mcui.git ~/mcui
+git clone git@github.com:ManuCart/Raspberry-Pi.git ~/rpi
 ```
 
 Optional
