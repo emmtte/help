@@ -485,7 +485,7 @@ mcedit -x $LOGFILE
 }
 
 CorrectExifPhotos() {
-#Change Exif Date for all photos listed in /tmp/exif-change.log
+#Change Exif Date for all photos listed in ~/exif-change.log
 FILE=~/exif-change.log
 while IFS= read LINE
 do
