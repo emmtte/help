@@ -7,15 +7,15 @@
     ┴  └┘ └─┴ └─┘ ├─┘ └─┘ ┴─┘ ┴  ┴  └─┤   ┴    ┴        ┴   ┴ ┴ └─┴ ┴ ┴ ┴ └─┤ ┴ ┴ └┘
                   ┴        ──────Menu─┘                     ──────Commander─┘
 ````
-
-Contents
-========
-
-  + [Introduction](#introduction)
-  + [Dependencies](#dependencies)
+Use Midnight Commander (mc) with tmux as text based User Interface (ui)
+for friendly way do some jobs and related stuff
+## Contents
+  + [Installation](#installation)
     - [tmux](#tmux)
     - [sshpass](#sshpass)
-  + [Installation](#installation)
+    - [git](#git)
+    - [Optional](#optional)
+    - [Usage](#usage)
   + [Tools](#cli-tools)
     - [Ansi](#ansi)
     - [Castnow](#castnow)
@@ -45,14 +45,7 @@ Contents
     - [python3](#python3)
   + [License](#license)
 
-<br><br>
-
-#### Introduction
-
-Use Midnight Commander (mc) with tmux as text based User Interface (ui)
-for friendly way do some jobs and related stuff
-
-#### Installation
+## Installation
 ### tmux
 
 ```bash
@@ -110,7 +103,7 @@ cd rpi
 .\rescue
 ```
 
-#### Tools
+## Tools
 ---
 ### Ansi
 
@@ -422,15 +415,13 @@ rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
 ```
 
-Annex
-=====
-
-Raspbian
---------
+---
+## Requirements
+### Raspbian
 
 https://www.raspberrypi.org/downloads/raspbian/
 
-Dowload and Install
+Download and Install
 
 http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download
 
@@ -443,8 +434,8 @@ Download putty and write
 ```bash
 start /MAX putty -ssh pi@192.168.0.1
 ```
-
-Configuration
+---
+### Configuration
 
 ```bash
 sudo raspi-config
@@ -465,8 +456,8 @@ sudo apt-get install mc tmux rsync exiv2
 sudo ln -sf bash /bin/sh
 ```
 
-Updating
---------
+---
+### Updating
 
 ```bash
 sudo apt-get autoremove
@@ -475,9 +466,8 @@ sudo apt-get -y upgrade
 sudo rpi-update
 ```
 
-Ssh
 ---
-
+### Ssh
 ```bash
 mkdir ~/.ssh
 cd ~/.ssh
@@ -494,9 +484,8 @@ EOF
 sudo service ssh restart
 ```
 
-Samba
------
-
+---
+### Samba
 ```bash
 sudo apt-get -y install samba samba-common-bin
 cat << EOF | sudo tee -a /etc/samba/smb.conf
@@ -513,7 +502,6 @@ sudo service smbd restart
 sudo smbpasswd -a pi
 ```
 
-#### Requirements
 ### Node.js
 https://nodejs.org
 
@@ -570,7 +558,7 @@ sudo pip3 install --upgrade pip3
 ```
 
 ---
-#### License
+## License
 
 MIT License
 
