@@ -60,22 +60,6 @@ sudo eject /dev/sdb
 ```
 <br>
 
-Git
----
-```bash
-sudo apt-get install git
-mkdir rpi
-cd rpi
-git init
-git remote add origin https://github.com/ManuCart/Raspberry-Pi.git
-git config --global user.email "email@email.com"
-git config --global user.name "Manucart"
-git branch --set-upstream-to master
-git pull
-
-```
-<br>
-
 Ifttt
 -----
 https://ifttt.com/adafruit
