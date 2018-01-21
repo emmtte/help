@@ -169,8 +169,9 @@ sudo pip3 install --upgrade pip3
 Cli Tools
 =========
 
-Ansi
-----
+---
+###Ansi
+
 
 https://github.com/fidian/ansi
 
@@ -179,8 +180,8 @@ sudo curl -L git.io/ansi -o /usr/local/bin/ansi
 sudo chmod +x /usr/local/bin/ansi
 ```
 
-Castnow
--------
+---
+###Castnow
 
 https://github.com/xat/castnow
 
@@ -189,8 +190,8 @@ https://github.com/xat/castnow
 sudo npm install castnow -g
 ```
 
-Dropbox-Uploader
-----------------
+---
+###Dropbox-Uploader
 
 https://github.com/andreafabrizi/Dropbox-Uploader
 
@@ -201,8 +202,8 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
 
-Drive
------
+---
+###Drive
 
 https://github.com/odeke-em/drive
 + Prerequisite [Go Lang](#go-lang)
@@ -215,8 +216,8 @@ sudo chown -R pi:pi /opt/gd
 drive init /opt/gd
 ```
 
-Flickr-Uploader
----------------
+---
+###Flickr-Uploader
 
 https://github.com/trickortweak/flickr-uploader
 
@@ -238,8 +239,8 @@ cd /opt
 /opt/flickr-uploader#1/uploadr.py
 ```
 
-Gmusicapi-scripts
------------------
+---
+###Gmusicapi-scripts
 
 https://github.com/thebigmunch/gmusicapi-scripts
 
@@ -252,8 +253,8 @@ gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
 
-Hue-cli
--------
+---
+###Hue-cli
 
 https://github.com/bahamas10/hue-cli
 
@@ -267,8 +268,8 @@ hue lights 6 off
 hue lights 6 alert
 ```
 
-Ifttt Maker Channel
--------------------
+---
+###Ifttt Maker Channel
 
 https://ifttt.com/maker
 
@@ -278,8 +279,8 @@ curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ```
 
-Iphone
-------
+---
+###Iphone
 
 https://github.com/libimobiledevice
 https://gist.github.com/kfatehi/8922430
@@ -313,8 +314,8 @@ echo /usr/local/lib | sudo tee /etc/ld.so.conf.d/libimobiledevice-libs.conf
 sudo ldconfig
 ```
 
-Motion
-------
+---
+###Motion
 
 http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
 
@@ -346,8 +347,8 @@ sudo mkdir /var/run/motion
 sudo chmod 777 /var/run/motion
 ```
 
-Pi Hole
--------
+---
+###Pi Hole
 
 https://github.com/jacobsalmela/pi-hole
 
@@ -356,8 +357,9 @@ curl -sSL https://install.pi-hole.net | bash
 sudo reboot
 ```
 
-Rsync
------
+---
+###Rsync
+
 Virtual Box Installation
 ```bash
 apt-get install sshfs gpm mc
@@ -375,8 +377,8 @@ rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Pri
 rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 ```
 
-Sejda
------
+---
+###Sejda
 
 https://github.com/torakiki/sejda
 
@@ -391,8 +393,8 @@ rm -rf sejda.zip sejda-console-3.0.18
 chmod +x /opt/sejda/bin/sejda-console
 ```
 
-Squid
------
+---
+###Squid
 
 http://www.squid-cache.org/
 
@@ -400,8 +402,8 @@ http://www.squid-cache.org/
 sudo apt-get install squid
 ```
 
-Transmission
-------------
+---
+###Transmission
 
 http://www.transmissionbt.com/
 
@@ -436,8 +438,8 @@ EOF
 sudo service transmission-daemon restart
 ```
 
-Upload-gphotos
---------------
+---
+###Upload-gphotos
 
 https://github.com/3846masa/upload-gphotos
 
@@ -446,8 +448,8 @@ sudo npm i -g npm
 sudo npm install -g upload-gphotos
 ```
 
-Youtube-dl
-----------
+---
+###Youtube-dl
 
 https://github.com/rg3/youtube-dl
 
@@ -459,8 +461,8 @@ mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ```
 
-Youtube-Upload
---------------
+---
+###Youtube-Upload
 
 https://github.com/tokland/youtube-upload
 
