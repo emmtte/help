@@ -16,12 +16,6 @@ Contents
     - [tmux](#tmux)
     - [sshpass](#sshpass)
   + [Installation](#installation)
-  + [Optional](#optional)
-  + [Prerequisites](#prerequisites)
-    - [node.js](#node-js)
-    - [go lang](#go-lang)
-    - [python](#python)
-    - [python3](#python3)
   + [Tools](#cli-tools)
     - [Ansi](#ansi)
     - [Castnow](#castnow)
@@ -41,24 +35,26 @@ Contents
     - [Youtube-dl](#youtube-dl)
     - [Upload-Gphoto](#upload-gphoto)
     - [Youtube-Upload](#youtube-upload)
-  + [Annex](#annex)
+  + [Requirements](#prerequisites)
     - [Raspbian Installation](#raspbian-installation)
     - [ssh configuration](#ssh-configuration)
     - [samba configuration](#samba-configuration)
+    - [node.js](#node-js)
+    - [go lang](#go-lang)
+    - [python](#python)
+    - [python3](#python3)
   + [License](#license)
 
 <br><br>
 
-Introduction
-============
+#### Introduction
 
 Use Midnight Commander (mc) with tmux as text based User Interface (ui)
 for friendly way do some jobs and related stuff
 
-Dependencies
-============
-tmux
-----
+#### Installation
+### tmux
+
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
@@ -73,14 +69,13 @@ rm tmux-2.3.tar.gz
 rm -rf tmux-2.3
 ```
 
-sshpass
--------
+---
+### sshpass
+
 ```bash
 sudo apt-get install sshpass
 ```
 
-Installation
-============
 ---
 ### Git
 Simple
@@ -100,87 +95,22 @@ git config --global user.name "Manucart"
 git branch --set-upstream-to master
 git pull
 ```
-
-Optional
-========
+---
+### Optional
 
 ```bash
 sudo cp /usr/share/mc/help/mc.hlp /usr/share/mc/help/mc.hlp.en
 sudo ln -sf /home/pi/mcp/help /usr/share/mc/help/mc.hlp
 ```
+---
+### Usage
 
-Usage
-=====
 ```bash
-cd mcui
+cd rpi
 .\rescue
 ```
 
-Prerequisite for Cli Apps
-=========================
-Node.js
--------
-
-https://nodejs.org
-
-```bash
-wget https://nodejs.org/dist/v8.3.0/node-v8.3.0-linux-armv6l.tar.gz
-sudo tar -xvf node-v8.3.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
-rm node-v8.3.0-linux-armv6l.tar.gz
-```
-
-Go Lang
--------
-
-https://golang.org/dl/
-arm
-```bash
-wget https://storage.googleapis.com/golang/go1.8.1.linux-armv6l.tar.gz
-sudo tar -xvf go1.8.1.linux-armv6l.tar.gz -C /usr/local
-rm go1.8.1.linux-armv6l.tar.gz
-sudo mkdir /opt/go
-sudo chown -R pi:pi /opt/go
-cat << '!' >> ~/.bashrc
-export GOROOT=/usr/local/go
-export GOPATH=/opt/go
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-!
-source ~/.bashrc
-```
-linux64
-```bash
-wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
-sudo tar -xvf go1.8.3.linux-amd64.tar.gz -C /usr/local
-rm go1.8.3.linux-amd64.tar.gz
-sudo mkdir /opt/go
-sudo chown -R <user>:<user> /opt/go
-cat << '!' >> ~/.bashrc
-export GOROOT=/usr/local/go
-export GOPATH=/opt/go
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-!
-source ~/.bashrc
-```
-
-Python
-------
-
-```bash
-sudo apt-get install python-pip python-dev
-sudo pip install --upgrade pip
-```
-
-Python3
--------
-
-```bash
-sudo apt-get -y install python3-pip
-sudo pip3 install --upgrade pip3
-```
-
-Cli Tools
-=========
-
+#### Tools
 ---
 ### Ansi
 
@@ -583,8 +513,64 @@ sudo service smbd restart
 sudo smbpasswd -a pi
 ```
 
-License
-=======
+#### Requirements
+### Node.js
+https://nodejs.org
+
+```bash
+wget https://nodejs.org/dist/v8.3.0/node-v8.3.0-linux-armv6l.tar.gz
+sudo tar -xvf node-v8.3.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
+rm node-v8.3.0-linux-armv6l.tar.gz
+```
+
+---
+### Go Lang
+https://golang.org/dl/
+arm
+```bash
+wget https://storage.googleapis.com/golang/go1.8.1.linux-armv6l.tar.gz
+sudo tar -xvf go1.8.1.linux-armv6l.tar.gz -C /usr/local
+rm go1.8.1.linux-armv6l.tar.gz
+sudo mkdir /opt/go
+sudo chown -R pi:pi /opt/go
+cat << '!' >> ~/.bashrc
+export GOROOT=/usr/local/go
+export GOPATH=/opt/go
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+!
+source ~/.bashrc
+```
+linux64
+```bash
+wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
+sudo tar -xvf go1.8.3.linux-amd64.tar.gz -C /usr/local
+rm go1.8.3.linux-amd64.tar.gz
+sudo mkdir /opt/go
+sudo chown -R <user>:<user> /opt/go
+cat << '!' >> ~/.bashrc
+export GOROOT=/usr/local/go
+export GOPATH=/opt/go
+export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+!
+source ~/.bashrc
+```
+
+---
+### Python
+```bash
+sudo apt-get install python-pip python-dev
+sudo pip install --upgrade pip
+```
+
+---
+### Python3
+```bash
+sudo apt-get -y install python3-pip
+sudo pip3 install --upgrade pip3
+```
+
+---
+#### License
 
 MIT License
 
