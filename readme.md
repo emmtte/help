@@ -36,6 +36,7 @@ Contents
     - [Iphone](#iphone)
     - [Motion](#motion)
     - [Pi Hole](#pi-hole)
+    - [Rsync](#rsync)
     - [Sejda](#sejda)
     - [Squid](#squid)
     - [Transmission](#transmission)
@@ -353,6 +354,25 @@ https://github.com/jacobsalmela/pi-hole
 ```bash
 curl -sSL https://install.pi-hole.net | bash
 sudo reboot
+```
+
+Rsync
+-----
+Virtual Box Installation
+```bash
+apt-get install sshfs gpm mc
+apt-get install gcc make perl linux-headers-$(uname -r)
+mkdir --p /media/cdrom
+mount -t auto /dev/cdrom /media/cdrom/
+cd /media/cdrom/
+sh VBoxLinuxAdditions.run
+mkdir /media/raspberry
+sshfs pi@192.168.0.1:/media/hdd /media/raspberry
+rsync /media/raspberry/photos /media/sf_win/Private/Drive/photos
+## Windows to Raspberry Pi
+rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos pi@192.168.0.1:/media/hdd/photos/
+## Raspberry Pi to Windows
+rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 ```
 
 Sejda
