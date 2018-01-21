@@ -257,32 +257,37 @@ t Test Exif Photos (2)
  TestExif %d %t
 
 + d & t t
-t Rename New Photos (3)
+t Correct Exif Photos (3)
+ . ~/rpi/functions;clear
+ CorrectExifPhotos
+
++ d & t t
+t Rename New Photos (4)
  . ~/rpi/functions;clear
  RenamePhotosNew %d %t
 
 + ! t t
-h Backup to Free External HDD (4)
+h Backup to Free External HDD (5)
  . ~/rpi/functions;clear
  BackupExtBox
 
 + d & t t
-r Rename Photos only [XXXX] dir (5)
+r Rename Photos only [XXXX] dir (6)
  . ~/rpi/functions;clear
  RenamePhotos %d %t
 
 + d & t t
-r Change Exif (Tests 5B)
+r Change Exif (Tests 6B)
  . ~/rpi/functions;clear
  Change_Exif %d %t
 
 + d & t t
-g Upload Photos to gPhotos #1 (6)
+g Upload Photos to gPhotos #1 (7)
  . ~/rpi/functions;clear
  Gphotos $user_1 $pwd_1 %d %t
 
 + d & t t
-g Upload Photos to gPhotos #2 (6)
+g Upload Photos to gPhotos #2 (8)
  . ~/rpi/functions;clear
  Gphotos $user_2 $pwd_2 %d %t
 
