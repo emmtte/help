@@ -70,8 +70,9 @@ git init
 git remote add origin https://github.com/ManuCart/Raspberry-Pi.git
 git config --global user.email "email@email.com"
 git config --global user.name "Manucart"
-git pull origin master
-git config --global push.default simple
+git branch --set-upstream-to master
+git pull
+
 ```
 <br>
 
