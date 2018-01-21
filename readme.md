@@ -17,14 +17,12 @@ Contents
     - [sshpass](#sshpass)
   + [Installation](#installation)
   + [Optional](#optional)
-  + [Usage](#usage)
-  + [Tools](#tools)
-  + [Prerequisites for cli tools](#prerequisites)
+  + [Prerequisites](#prerequisites)
     - [node.js](#node-js)
     - [go lang](#go-lang)
     - [python](#python)
     - [python3](#python3)
-  + [Cli tools](#cli-tools)
+  + [Tools](#cli-tools)
     - [Ansi](#ansi)
     - [Castnow](#castnow)
     - [Dropbox-Uploader](#dropbox-uploader)
@@ -47,7 +45,7 @@ Contents
     - [Raspbian Installation](#raspbian-installation)
     - [ssh configuration](#ssh-configuration)
     - [samba configuration](#samba-configuration)
-  + [MIT License](#license)
+  + [License](#license)
 
 <br><br>
 
