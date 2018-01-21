@@ -4,7 +4,6 @@ Raspberry Pi Workshop
   + [Adafruit](#adafruit)
   + [Ascii colors](#ascii-colors)
   + [Format drive](#format-drive)
-  + [Git](#git)
   + [Ifttt](#ifttt)
   + [Keeweb](#keeweb)
   + [Mosquitto](#mosquitto)
