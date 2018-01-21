@@ -170,7 +170,7 @@ Cli Tools
 =========
 
 ---
-###Ansi
+### Ansi
 
 
 https://github.com/fidian/ansi
@@ -181,7 +181,7 @@ sudo chmod +x /usr/local/bin/ansi
 ```
 
 ---
-###Castnow
+### Castnow
 
 https://github.com/xat/castnow
 
@@ -191,7 +191,7 @@ sudo npm install castnow -g
 ```
 
 ---
-###Dropbox-Uploader
+### Dropbox-Uploader
 
 https://github.com/andreafabrizi/Dropbox-Uploader
 
@@ -203,7 +203,7 @@ dropbox_uploader init
 ```
 
 ---
-###Drive
+### Drive
 
 https://github.com/odeke-em/drive
 + Prerequisite [Go Lang](#go-lang)
@@ -217,7 +217,7 @@ drive init /opt/gd
 ```
 
 ---
-###Flickr-Uploader
+### Flickr-Uploader
 
 https://github.com/trickortweak/flickr-uploader
 
@@ -240,7 +240,7 @@ cd /opt
 ```
 
 ---
-###Gmusicapi-scripts
+### Gmusicapi-scripts
 
 https://github.com/thebigmunch/gmusicapi-scripts
 
@@ -254,7 +254,7 @@ gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
 
 ---
-###Hue-cli
+### Hue-cli
 
 https://github.com/bahamas10/hue-cli
 
@@ -269,7 +269,7 @@ hue lights 6 alert
 ```
 
 ---
-###Ifttt Maker Channel
+### Ifttt Maker Channel
 
 https://ifttt.com/maker
 
@@ -280,7 +280,7 @@ curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2",
 ```
 
 ---
-###Iphone
+### Iphone
 
 https://github.com/libimobiledevice
 https://gist.github.com/kfatehi/8922430
@@ -315,7 +315,7 @@ sudo ldconfig
 ```
 
 ---
-###Motion
+### Motion
 
 http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
 
@@ -348,7 +348,7 @@ sudo chmod 777 /var/run/motion
 ```
 
 ---
-###Pi Hole
+### Pi Hole
 
 https://github.com/jacobsalmela/pi-hole
 
@@ -358,7 +358,7 @@ sudo reboot
 ```
 
 ---
-###Rsync
+### Rsync
 
 Virtual Box Installation
 ```bash
@@ -378,7 +378,7 @@ rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/m
 ```
 
 ---
-###Sejda
+### Sejda
 
 https://github.com/torakiki/sejda
 
@@ -394,7 +394,7 @@ chmod +x /opt/sejda/bin/sejda-console
 ```
 
 ---
-###Squid
+### Squid
 
 http://www.squid-cache.org/
 
@@ -403,7 +403,7 @@ sudo apt-get install squid
 ```
 
 ---
-###Transmission
+### Transmission
 
 http://www.transmissionbt.com/
 
@@ -439,7 +439,7 @@ sudo service transmission-daemon restart
 ```
 
 ---
-###Upload-gphotos
+### Upload-gphotos
 
 https://github.com/3846masa/upload-gphotos
 
@@ -449,7 +449,7 @@ sudo npm install -g upload-gphotos
 ```
 
 ---
-###Youtube-dl
+### Youtube-dl
 
 https://github.com/rg3/youtube-dl
 
@@ -462,7 +462,7 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
 ```
 
 ---
-###Youtube-Upload
+### Youtube-Upload
 
 https://github.com/tokland/youtube-upload
 
