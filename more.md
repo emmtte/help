@@ -62,24 +62,15 @@ sudo eject /dev/sdb
 Git
 ---
 ```bash
+sudo apt-get install git
 mkdir rpi
 cd rpi
 git init
 git remote add origin https://github.com/ManuCart/Raspberry-Pi.git
 git config --global user.email "email@email.com"
 git config --global user.name "Manucart"
-git commit -m ""
-git remote add origin git@github.com:ManuCart/mcui.git
-git push origin master
+git pull origin master
 git config --global push.default simple
-git add README.md
-git commit -m "first commit"
-git push
-git pull
-sudo apt-get install git
-ssh-keygen -t rsa -b 4096 -C "email@gmail.com"
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/id_rsa
 ```
 <br>
 
