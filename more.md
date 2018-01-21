@@ -62,23 +62,15 @@ sudo eject /dev/sdb
 Git
 ---
 ```bash
-mkdir mcui
-cd mcui
+mkdir rpi
+cd rpi
 git init
-touch README.md
-git add README.md
+git remote add origin https://github.com/ManuCart/Raspberry-Pi.git
 git config --global user.email "email@email.com"
 git config --global user.name "Manucart"
 git commit -m ""
 git remote add origin git@github.com:ManuCart/mcui.git
 git push origin master
-mkdir whypi
-cd whypi
-echo "# Whiptail" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin git@github.com:ManuCart/mcui.git
 git config --global push.default simple
 git add README.md
 git commit -m "first commit"
