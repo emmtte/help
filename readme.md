@@ -47,7 +47,6 @@ for friendly way do some jobs and related stuff
 
 ## Installation
 ### tmux
-
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
@@ -61,15 +60,11 @@ cd ..
 rm tmux-2.3.tar.gz
 rm -rf tmux-2.3
 ```
-
----
 ### sshpass
-
 ```bash
 sudo apt-get install sshpass
 ```
 
----
 ### Git
 Simple
 ```bash
@@ -88,26 +83,21 @@ git config --global user.name "Manucart"
 git branch --set-upstream-to master
 git pull
 ```
----
-### Optional
 
+### Optional
 ```bash
 sudo cp /usr/share/mc/help/mc.hlp /usr/share/mc/help/mc.hlp.en
 sudo ln -sf /home/pi/mcp/help /usr/share/mc/help/mc.hlp
 ```
----
-### Usage
 
+### Usage
 ```bash
 cd rpi
 .\rescue
 ```
 
 ## Tools
----
 ### Ansi
-
-
 https://github.com/fidian/ansi
 
 ```bash
@@ -115,9 +105,7 @@ sudo curl -L git.io/ansi -o /usr/local/bin/ansi
 sudo chmod +x /usr/local/bin/ansi
 ```
 
----
 ### Castnow
-
 https://github.com/xat/castnow
 
 + Prerequisite [Node.js](#node-js)
@@ -125,11 +113,8 @@ https://github.com/xat/castnow
 sudo npm install castnow -g
 ```
 
----
 ### Dropbox-Uploader
-
 https://github.com/andreafabrizi/Dropbox-Uploader
-
 ```bash
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
@@ -137,9 +122,7 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
 
----
 ### Drive
-
 https://github.com/odeke-em/drive
 + Prerequisite [Go Lang](#go-lang)
 ```bash
@@ -151,13 +134,9 @@ sudo chown -R pi:pi /opt/gd
 drive init /opt/gd
 ```
 
----
 ### Flickr-Uploader
-
 https://github.com/trickortweak/flickr-uploader
-
 > Do first time without tmux script for token
-
 ```bash
 sudo apt-get remove elinks links links2 lynx w3m
 sudo mkdir /opt
@@ -174,13 +153,9 @@ cd /opt
 /opt/flickr-uploader#1/uploadr.py
 ```
 
----
 ### Gmusicapi-scripts
-
 https://github.com/thebigmunch/gmusicapi-scripts
-
 + Prerequisite [Python3](#python3)
-
 ```bash
 sudo pip3 install gmusicapi-scripts
 gmsync /media/hdd/music
@@ -188,11 +163,8 @@ gmsync down "/media/hdd/listen/%album%/%title%"
 gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 ```
 
----
 ### Hue-cli
-
 https://github.com/bahamas10/hue-cli
-
 ```bash
 sudo npm install -g hue-cli
 hue search
@@ -203,23 +175,17 @@ hue lights 6 off
 hue lights 6 alert
 ```
 
----
 ### Ifttt Maker Channel
-
 https://ifttt.com/maker
-
 ```bash
 echo "{key}" > ~/.maker_channel_key
 curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}' https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 ```
 
----
 ### Iphone
-
 https://github.com/libimobiledevice
 https://gist.github.com/kfatehi/8922430
-
 ```bash
 sudo apt-get update
 sudo apt-get -y upgrade
@@ -249,11 +215,8 @@ echo /usr/local/lib | sudo tee /etc/ld.so.conf.d/libimobiledevice-libs.conf
 sudo ldconfig
 ```
 
----
 ### Motion
-
 http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
-
 ```bash
 echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
 sudo modprobe bcm2835-v4l2
@@ -282,19 +245,14 @@ sudo mkdir /var/run/motion
 sudo chmod 777 /var/run/motion
 ```
 
----
 ### Pi Hole
-
 https://github.com/jacobsalmela/pi-hole
-
 ```bash
 curl -sSL https://install.pi-hole.net | bash
 sudo reboot
 ```
 
----
 ### Rsync
-
 Virtual Box Installation
 ```bash
 apt-get install sshfs gpm mc
@@ -312,11 +270,8 @@ rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Pri
 rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 ```
 
----
 ### Sejda
-
 https://github.com/torakiki/sejda
-
 ```bash
 sudo apt-get -y install oracle-java8-jdk
 curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v3.0.18/sejda-console-3.0.18-bin.zip
@@ -328,20 +283,14 @@ rm -rf sejda.zip sejda-console-3.0.18
 chmod +x /opt/sejda/bin/sejda-console
 ```
 
----
 ### Squid
-
 http://www.squid-cache.org/
-
 ```bash
 sudo apt-get install squid
 ```
 
----
 ### Transmission
-
 http://www.transmissionbt.com/
-
 ```bash
 sudo apt-get -y install transmission-daemon
 mkdir /media/hdd/torrents
@@ -373,21 +322,15 @@ EOF
 sudo service transmission-daemon restart
 ```
 
----
 ### Upload-gphotos
-
 https://github.com/3846masa/upload-gphotos
-
 ```bash
 sudo npm i -g npm
 sudo npm install -g upload-gphotos
 ```
 
----
 ### Youtube-dl
-
 https://github.com/rg3/youtube-dl
-
 ```bash
 sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
@@ -396,11 +339,8 @@ mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ```
 
----
 ### Youtube-Upload
-
 https://github.com/tokland/youtube-upload
-
 ```bash
 sudo pip install --upgrade google-api-python-client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
@@ -415,26 +355,19 @@ rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
 ```
 
----
 ## Requirements
 ### Raspbian
-
 https://www.raspberrypi.org/downloads/raspbian/
-
 Download and Install
-
 http://sourceforge.net/projects/win32diskimager/files/Archive/win32diskimager-v0.9-binary.zip/download
-
 Download Raspbian lite
-
 https://downloads.raspberrypi.org/raspbian_lite_latest
-
 Download putty and write
 
 ```bash
 start /MAX putty -ssh pi@192.168.0.1
 ```
----
+
 ### Configuration
 
 ```bash
@@ -456,9 +389,7 @@ sudo apt-get install mc tmux rsync exiv2
 sudo ln -sf bash /bin/sh
 ```
 
----
 ### Updating
-
 ```bash
 sudo apt-get autoremove
 sudo apt-get update
@@ -466,7 +397,6 @@ sudo apt-get -y upgrade
 sudo rpi-update
 ```
 
----
 ### Ssh
 ```bash
 mkdir ~/.ssh
@@ -484,7 +414,6 @@ EOF
 sudo service ssh restart
 ```
 
----
 ### Samba
 ```bash
 sudo apt-get -y install samba samba-common-bin
@@ -511,7 +440,6 @@ sudo tar -xvf node-v8.3.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
 rm node-v8.3.0-linux-armv6l.tar.gz
 ```
 
----
 ### Go Lang
 https://golang.org/dl/
 arm
@@ -543,26 +471,23 @@ export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 source ~/.bashrc
 ```
 
----
 ### Python
 ```bash
 sudo apt-get install python-pip python-dev
 sudo pip install --upgrade pip
 ```
 
----
 ### Python3
 ```bash
 sudo apt-get -y install python3-pip
 sudo pip3 install --upgrade pip3
 ```
 
----
 ## License
 
 MIT License
 
-Copyright (c) 2014 Emmanuel CHARETTE
+Copyright (c) 2014-2018 Emmanuel CHARETTE
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
