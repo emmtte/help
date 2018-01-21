@@ -89,7 +89,7 @@ Simple
 ```bash
 sudo apt-get install git mc
 git clone git@github.com:ManuCart/Raspberry-Pi.git ~/rpi
-
+```
 With modifications
 ```bash
 sudo apt-get install git mc
@@ -101,10 +101,6 @@ git config --global user.email "email@email.com"
 git config --global user.name "Manucart"
 git branch --set-upstream-to master
 git pull
-```
-
-
-
 ```
 
 Optional
