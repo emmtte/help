@@ -16,11 +16,6 @@ x create tmux window
 s reboot
  sudo reboot
 
-+ ! t t 
-c Cryptos portfolio
- . ~/rpi/functions;clear
- Cryptos
-
 + ! t t
 t stop transmission
   sudo service transmission-daemon stop
@@ -334,7 +329,7 @@ s convert PNG to JPG
     shift
   done
 
-+ f *.jpg | f *.JPG & t t
++ f *.jpg | f *.JPG | f *.JPEG & t t
 s Autolevel photos
   set %t
   while [ -n "$1" ]; do
@@ -350,7 +345,7 @@ s Tiff to jpg with sharp
     shift
   done
 
-+ f *.jpg | f *.JPG & t r
++ f *.jpg | f *.JPG | f *.JPEG & t r
 e Affiche l'EXIF de la photo
   clear
   exiv2 -pv %f
@@ -362,7 +357,15 @@ e Affiche l'EXIF de la photo
   D=`exiv2 -g DateTimeOriginal -PEv %f | cut -d ' ' -f 2`
   echo "$D"
   printf 'Press [Enter] key to continue...'
-  read /tmp/null
+
++ f *.jpg | f *.JPG | f *.JPEG & t r
+d Delete EXIF from pics
+  set %t
+  while [ -n "$1" ]; do
+    exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$1"
+    shift
+  done
+  printf 'Press [Enter] key to continue...'
 
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
