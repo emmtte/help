@@ -47,19 +47,21 @@ for friendly way do some jobs and related stuff
 
 ## Installation
 ### tmux
+https://github.com/tmux/tmux
 ```bash
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install libevent-dev libncurses5-dev
-wget https://github.com/tmux/tmux/releases/download/2.3/tmux-2.3.tar.gz
-tar xvfz tmux-2.3.tar.gz
-cd tmux-2.3
+wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
+tar xvfz tmux-2.6.tar.gz
+cd tmux-2.6
 ./configure && make
 sudo mv ./tmux /usr/local/bin/tmux
 cd ..
 rm tmux-2.3.tar.gz
-rm -rf tmux-2.3
+rm -rf tmux-2.6
 ```
+
 ### sshpass
 ```bash
 sudo apt-get install sshpass
@@ -265,7 +267,7 @@ mkdir /media/raspberry
 sshfs pi@192.168.0.1:/media/hdd /media/raspberry
 rsync /media/raspberry/photos /media/sf_win/Private/Drive/photos
 ## Windows to Raspberry Pi
-rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos pi@192.168.0.1:/media/hdd/photos/
+rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
 ## Raspberry Pi to Windows
 rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 ```
