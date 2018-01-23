@@ -58,7 +58,7 @@ cd tmux-2.6
 ./configure && make
 sudo mv ./tmux /usr/local/bin/tmux
 cd ..
-rm tmux-2.3.tar.gz
+rm tmux-2.6.tar.gz
 rm -rf tmux-2.6
 ```
 
@@ -99,14 +99,6 @@ cd rpi
 ```
 
 ## Tools
-### Ansi
-https://github.com/fidian/ansi
-
-```bash
-sudo curl -L git.io/ansi -o /usr/local/bin/ansi
-sudo chmod +x /usr/local/bin/ansi
-```
-
 ### Castnow
 https://github.com/xat/castnow
 
@@ -289,6 +281,16 @@ chmod +x /opt/sejda/bin/sejda-console
 http://www.squid-cache.org/
 ```bash
 sudo apt-get install squid
+```
+
+### Stream2chromecast
+https://github.com/Pat-Carter/stream2chromecast
+```bash
+sudo apt-get install libav-tools
+cd ~/.bin
+git clone https://github.com/Pat-Carter/stream2chromecast.git
+cd stream2chromecast
+stream2chromecast.py -playurl http://hi5.streamingsoundtracks.com
 ```
 
 ### Transmission

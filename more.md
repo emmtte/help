@@ -57,7 +57,6 @@ sudo fdisk /dev/sdb
 sudo mkfs.ntfs /dev/sdb1
 sudo eject /dev/sdb
 ```
-<br>
 
 Ifttt
 -----
@@ -70,12 +69,6 @@ mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_
 mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output '.value'
 mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/# -R | jq --raw-output 'select(.value != null).value'
 ```
-<br>
-
-Keeweb
-------
-https://github.com/keeweb/keeweb
-
 <br>
 
 Mouse control
@@ -241,51 +234,8 @@ t  big clock
 ```
 <br>
 
-Stream2chromecast
------------------
-https://github.com/Pat-Carter/stream2chromecast
-```bash
-sudo apt-get install libav-tools
-cd ~/.bin
-git clone https://github.com/Pat-Carter/stream2chromecast.git
-cd stream2chromecast
-stream2chromecast.py -playurl http://hi5.streamingsoundtracks.com
-```
-<br>
 
-Telegram
---------
-https://github.com/vysheng/tg
-```bash
-sudo apt-get install libreadline-dev libconfig-dev libssl-dev lua5.2 liblua5.2-dev libevent-dev libjansson-dev libpython-dev make 
-git clone --recursive https://github.com/vysheng/tg.git
-cd tg
-./configure
-make
 
-If error
-mcedit tgl/mtproto-utils.c
-comment lines 101, 108, 116 and 122 with assert (0) 
-make
-
-sudo cp ~/tg/bin/telegram-cli /usr/bin  
-sudo mkdir -p /etc/telegram-cli  
-sudo mv ~/tg/tg-server.pub /etc/telegram-cli/server.pub 
-
-~/tg/bin/telegram-cli -b bot -s ~/scripts/tg.lua
-```
-<br>
-
-Transmission
-------------
-```bash
-transmission-remote -l
-transmission-remote -t ID --remove-and-delete
-transmission-remote -t ID --stop
-transmission-remote -t 3 --start
-transmission-remote -a $FILE
-```
-<br>
 
 Videos
 ------
@@ -296,48 +246,3 @@ mkvmerge -o out.mkv 1.mp4 + 2.mp4
 ```
 <br>
 
-Whiptail
---------
-colors
-```bash
-root                  root fg, bg #image de fond
-border                border fg, bg # bordure
-window                window fg, bg # couleur interieur fenetre
-shadow                shadow fg, bg # coleur ombre
-title                 title fg, bg # couleur titre
-button                button fg, bg # button avec le focus
-compactbutton         compact button fg, bg # button sans le focus
-actbutton             active button fg, bg
-checkbox              checkbox fg, bg
-actcheckbox           active checkbox fg, bg
-entry                 entry box fg, bg
-label                 label fg, bg
-listbox               listbox fg, bg
-actlistbox            active listbox fg, bg
-textbox               textbox fg, bg
-acttextbox            active textbox fg, bg
-helpline              help line
-roottext              root text
-emptyscale            scale full
-fullscale             scale empty
-disentry              disabled entry fg, bg
-actsellistbox         active & sel listbox
-sellistbox            selected listbox
-color0  or black
-color1  or red
-color2  or green
-color3  or brown
-color4  or blue
-color5  or magenta
-color6  or cyan
-color7  or lightgray
-color8  or gray
-color9  or brightred
-color10 or brightgreen
-color11 or yellow
-color12 or brightblue
-color13 or brightmagenta
-color14 or brightcyan
-color15 or white
-```
-<br>
