@@ -61,6 +61,18 @@ cd ..
 rm tmux-2.6.tar.gz
 rm -rf tmux-2.6
 ```
+### midnight commander
+https://github.com/MidnightCommander/mc
+```bash
+sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
+wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
+tar xvfz 4.8.20.tar.gz
+cd mc-4.8.20
+autoconf
+./configure
+make
+make install
+```
 
 ### sshpass
 ```bash
