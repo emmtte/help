@@ -226,7 +226,6 @@ t  big clock
 ?  list shortcuts
 :  prompt
 ```
-<br>
 
 
 
