@@ -92,9 +92,9 @@ mkdir rpi
 cd rpi
 git init
 git remote add origin https://github.com/ManuCart/Raspberry-Pi.git
-git config --global user.email "email@email.com"
-git config --global user.name "Manucart"
 git branch --set-upstream-to master
+ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
+# Copy contents github.pub to github.com
 git pull
 ```
 
