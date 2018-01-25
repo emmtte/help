@@ -96,6 +96,7 @@ ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
 # Copy contents github.pub to github.com
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/github
+ssh -vT git@github.com
 
 git remote add origin git@github.com:ManuCart/Raspberry-Pi.git
 git pull origin master
