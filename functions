@@ -595,49 +595,48 @@ exiv2 -q -M "set Exif.Photo.DateTimeOriginal `head -n 1 /tmp/exif.txt`" "$1"
 
 Merge() {
 ## TODO Delete only files merged
-ansi --reset
-ansi --green-intense --newline "`date`"
+tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo "`date`"
 GDRIVE=/media/hdd/Drive
 FILE=/tmp/gdrive.csv
 
 #Init
 cd $GDRIVE
 
-ansi --yellow-intense "[info]"; ansi --newline " Download Snoozed Dir"
+tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Snoozed Dir"
 rm -rf Snoozed Documents
 if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then iftt "Auto Merge PDF" "Error pull, please fix clashes in Snoozed folder"; return; fi
 
-ansi --yellow-intense "[info]"; ansi --newline " Test if Snoozed Dir Empty"
-if [ `find "Snoozed" -type d -empty` ] ; then ansi --red-intense [error]; ansi --newline " Empty Snoozed Dir"; return; fi
+tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Empty"
+if [ `find "Snoozed" -type d -empty` ] ; then tput setaf 2 ; echo -n "[info]" ; tput sgr0 ; echo "  Empty Snoozed Dir"; return; fi
 
-ansi --yellow-intense "[info]"; ansi --newline " Test if Snoozed Dir Files Encrypts"
+tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Files Encrypts"
 if grep -r "Encrypt" Snoozed ; then ifttt "`grep -r "Encrypt" Snoozed`"; return; fi
 
-ansi --yellow-intense "[info]"; ansi --newline " Download Iftt csv file"
+tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Iftt csv file"
 if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then iftt "Auto Merge PDF" "Error pull for ifttt.xls" ; return; fi
 tr -d '\r' < /tmp/ifttt.csv > $FILE
 
-ansi --yellow-intense "[info]"; ansi --newline " Read Iftt csv file"
+tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Read Iftt csv file"
 
 while IFS=, read email in out ; do
-    ansi --yellow-intense "[info]"; ansi --newline " Search $in file..."
+    tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Search $in file..."
     if [[ -n $(find "Snoozed" -name "$in") ]]
         then
         rm ~/files.csv
-        ansi --green-intense "[ ok ]"; ansi --newline " find $1"
+        tput setaf 2 ; echo -n "[ ok ]" ; tput sgr0 ; echo " find $1"
         find "Snoozed" -name "$in" | sort -r | tr '\n' ',' > ~/files.csv
         cp ~/files.csv ~/files_rm.csv
         echo "Snoozed/$out" >> ~/files.csv
-        ansi --bg-red --newline "cat ~/files.csv"
+        tput setaf 1 ; echo -n "[FAIL]" ; tput sgr0 ; echo "cat ~/files.csv"
         cat ~/files.csv
-        ansi --bg-red --newline "END"
+        tput setaf 1 ; echo -n "[info]" ; tput sgr0 ; echo " END"
         if ! drive pull --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error pull ref doc" ; return; fi
         mv "Documents/$out" "Snoozed/$out"
         /opt/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
         mv sejda_out.pdf "Documents/$out"
         if ! drive push --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error push ref doc" ; return; fi
         while IFS=, read f ; do
-        ansi --yellow-red "[----]"; ansi --newline " delete $f"
+        tput setaf 1 ; echo -n "[----]" ; tput sgr0 ; echo " delete $f"
         rm "$f"
         done < ~/files_rm.csv
     fi
