@@ -80,28 +80,16 @@ sudo apt-get install sshpass
 ```
 
 ### Git
-Simple
+
 ```bash
 sudo apt-get install git mc
 git clone git@github.com:ManuCart/Raspberry-Pi.git ~/rpi
-```
-With modifications
-```bash
-sudo apt-get install git mc
-mkdir rpi
 cd rpi
-git init
-
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
 # Copy contents github.pub to github.com
 eval $(ssh-agent -s)
 ssh-add ~/.ssh/github
 ssh -vT git@github.com
-
-git remote add origin git@github.com:ManuCart/Raspberry-Pi.git
-git pull origin master
-git branch --set-upstream-to=origin/master master
-git pull
 ```
 
 ### Optional
