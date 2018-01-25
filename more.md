@@ -29,12 +29,6 @@ start_type automatic
 ```
 <br>
 
-Ascii colors
-------------
-http://misc.flogisoft.com/bash/tip_colors_and_formatting
-
-<br>
-
 Format usb drive
 ----------------
 http://askubuntu.com/questions/22381/how-to-format-a-usb-flash-drive
