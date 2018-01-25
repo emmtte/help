@@ -91,7 +91,7 @@ sudo apt-get install git mc
 mkdir rpi
 cd rpi
 git init
-git remote add origin https://github.com/ManuCart/Raspberry-Pi.git
+git remote add origin git@github.com:ManuCart/Raspberry-Pi.git
 git branch --set-upstream-to master
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
 # Copy contents github.pub to github.com
