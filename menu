@@ -367,6 +367,12 @@ d Delete EXIF from pics
   done
   printf 'Press [Enter] key to continue...'
 
++ f *.jpg | f *.JPG | f *.JPEG & t t
+e Change Photo EXIF
+  clear
+  . ~/rpi/functions;clear
+  ViewExif %t
+
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
   set %t
