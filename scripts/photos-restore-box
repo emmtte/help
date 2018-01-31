@@ -1,5 +1,0 @@
-#!/bin/sh
-sudo mkdir /media/freebox
-sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
-rsync --archive --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
-~/scripts/iftt-maker "Restore Photos" "Restore finished"
