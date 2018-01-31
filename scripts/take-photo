@@ -1,2 +1,0 @@
-rm /media/hdd/photo.jpg
-raspistill -v -w 1280 -rot 270 -o /media/hdd/photo.jpg
