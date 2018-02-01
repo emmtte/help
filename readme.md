@@ -10,14 +10,6 @@
 Use Midnight Commander (mc) with tmux as text based User Interface (ui)
 for friendly way do some jobs and related stuff
 ## Installation
-    - [tmux](#tmux)
-    - [midnight commander](#midnight#commander)
-    - [sshpass](#sshpass)
-    - [git](#git)
-    - [Optional](#optional)
-    - [Usage](#usage)
-
-## Installation
 ### tmux
 https://github.com/tmux/tmux
 ```bash
@@ -76,25 +68,6 @@ cd rpi
 .\rescue
 ```
 
-## Tools
-    - [Castnow](#castnow)
-    - [Dropbox-Uploader](#dropbox-uploader)
-    - [Drive](#drive)
-    - [Flickr-Uploader](#flickr-uploader)
-    - [Gmusic](#gmusicapi-scripts)
-    - [Hue](#hue-cli)
-    - [Ifttt Maker Channel](#ifttt-maker-channel)
-    - [Iphone](#iphone)
-    - [Motion](#motion)
-    - [Pi Hole](#pi-hole)
-    - [Rsync](#rsync)
-    - [Sejda](#sejda)
-    - [Squid](#squid)
-    - [Transmission](#transmission)
-    - [Youtube-dl](#youtube-dl)
-    - [Upload-Gphoto](#upload-gphoto)
-    - [Youtube-Upload](#youtube-upload)
- 
 ## Tools
 ### Castnow
 https://github.com/xat/castnow
@@ -347,14 +320,6 @@ sudo rm -rf youtube-upload-master
 ```
 
 ## Requirements
-    - [Raspbian Installation](#raspbian)
-    - [Configuration](#configuration)
-    - [samba configuration](#samba-configuration)
-    - [node.js](#node-js)
-    - [go lang](#go-lang)
-    - [python](#python)
-    - [python3](#python3)
-
 ### Raspbian
 https://www.raspberrypi.org/downloads/raspbian/
 Download and Install
