@@ -9,42 +9,6 @@
 ````
 Use Midnight Commander (mc) with tmux as text based User Interface (ui)
 for friendly way do some jobs and related stuff
-## Contents
-  + [Installation](#installation)
-    - [tmux](#tmux)
-    - [sshpass](#sshpass)
-    - [git](#git)
-    - [Optional](#optional)
-    - [Usage](#usage)
-  + [Tools](#cli-tools)
-    - [Ansi](#ansi)
-    - [Castnow](#castnow)
-    - [Dropbox-Uploader](#dropbox-uploader)
-    - [Drive](#drive)
-    - [Flickr-Uploader](#flickr-uploader)
-    - [Gmusic](#gmusicapi-scripts)
-    - [Hue](#hue-cli)
-    - [Ifttt Maker Channel](#ifttt-maker-channel)
-    - [Iphone](#iphone)
-    - [Motion](#motion)
-    - [Pi Hole](#pi-hole)
-    - [Rsync](#rsync)
-    - [Sejda](#sejda)
-    - [Squid](#squid)
-    - [Transmission](#transmission)
-    - [Youtube-dl](#youtube-dl)
-    - [Upload-Gphoto](#upload-gphoto)
-    - [Youtube-Upload](#youtube-upload)
-  + [Requirements](#prerequisites)
-    - [Raspbian Installation](#raspbian-installation)
-    - [ssh configuration](#ssh-configuration)
-    - [samba configuration](#samba-configuration)
-    - [node.js](#node-js)
-    - [go lang](#go-lang)
-    - [python](#python)
-    - [python3](#python3)
-  + [License](#license)
-
 ## Installation
 ### tmux
 https://github.com/tmux/tmux
@@ -295,16 +259,6 @@ curl -H "Max-Downloads: 1" -H "Max-Days: 1" --upload-file ./IMG.OUT.JPG https://
 http://www.squid-cache.org/
 ```bash
 sudo apt-get install squid
-```
-
-### Stream2chromecast
-https://github.com/Pat-Carter/stream2chromecast
-```bash
-sudo apt-get install libav-tools
-cd ~/.bin
-git clone https://github.com/Pat-Carter/stream2chromecast.git
-cd stream2chromecast
-stream2chromecast.py -playurl http://hi5.streamingsoundtracks.com
 ```
 
 ### Transmission
