@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#ƒ
-
 ln -sf ~/rpi/menu ~/.config/mc/menu
 ln -sf ~/rpi/.tmux.conf ~/.tmux.conf
 
@@ -13,27 +11,27 @@ if [ "$?" -eq 1 ] ; then
 
   tmux rename-window -t pi:1 1
   tmux set pane-border-format " Free "
-  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
 
   tmux new-window -n 2
   tmux set pane-border-format " Free "
-  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
 
   tmux new-window -n 3
   tmux set pane-border-format " Free "
-  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
 
   tmux new-window -n 4
   tmux set pane-border-format " Free "
-  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
 
   tmux new-window -n 5
   tmux set pane-border-format " Free "
-  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
 
   tmux new-window -n 6
   tmux set pane-border-format " Free "
-  tmux send '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/' ENTER
+  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
 
   TMUX= tmux -u new-session -d -s bg
   tmux switch-client -t bg

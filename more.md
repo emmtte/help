@@ -100,6 +100,7 @@ ncurses
 sudo apt-get install libncurses5-dev libncursesw5-dev
 export RUSTUP_USE_HYPER=1
 curl https://sh.rustup.rs -sSf | sh
+rustup update
 git clone https://github.com/jeaye/ncurses-rs.git
 cd ncurses-rs
 source $HOME/.cargo/env
@@ -172,14 +173,6 @@ http://doc.crates.io/guide.html
 
 <br>
 
-Sharp
------
-```bash
-sudo npm install --unsafe-perm sharp -g sharp-cli
-identify -format "%wx%h"
-if [ `identify -format "%w" "$toto"` -le 2048 ]; then echo "VRAI" ; fi
-```
-<br>
 
 Time
 ----

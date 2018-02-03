@@ -283,6 +283,14 @@ rm -rf sejda.zip sejda-console-3.0.18
 chmod +x /opt/sejda/bin/sejda-console
 ```
 
+### Sharp
+```bash
+sudo npm install --unsafe-perm sharp -g sharp-cli
+curl https://transfer.sh/XXXXX/20##.####.JPEG -o IMG.JPG
+sharp -i IMG.JPG -o IMG.OUT.JPG resize 11900 8400 --withoutEnlargement
+curl -H "Max-Downloads: 1" -H "Max-Days: 1" --upload-file ./IMG.OUT.JPG https://transfer.sh/IMG.OUT.JPG && echo
+```
+
 ### Squid
 http://www.squid-cache.org/
 ```bash

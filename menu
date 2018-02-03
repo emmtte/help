@@ -1,62 +1,34 @@
-+ ! t t
-f switch to tmux background
-  tmux switch-client -t bg
-  tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
-  tmux send -t bg:1 'tmux switch-client -t pi'
+# To run under mc
+# sudo ln -sf bash /bin/sh
+#
+# figlet -f banner backup
 
-+ ! t t
-x create tmux window
- tmux new-window -n "●"
- session=`tmux display-message -p '#I'`
- tmux set pane-border-format " $session "
- tmux send -t $session '. ~/mcui/functions' ENTER
- tmux send -t $session '/usr/bin/mc -x /home/pi/mcui/ /media/hdd/ && clear' ENTER
 
-+ d ..
-s reboot
- sudo reboot
+c Create User Menu
+  touch "[.Backup.]" "[.Config.]" "[.Files..]" "[ Import ]" "Musics" "[ Github ]"
+  touch "[System]" "[Tools.]" "Videos" "[P2P]" "[Photos]"
 
-+ ! t t
-t stop transmission
-  sudo service transmission-daemon stop
+d Delete User Menu
+  rm "[ Backup ]" "[ Config ]" "[ Files  ]" "[ Import ]" "Musics" "[ Github ]"
+  rm "[ System ]" "[ Tools  ]" "Videos" "[Torrents]" "[ Photos ]"
 
-+ ! t t
-v add/remove torrents
- . ~/rpi/functions;clear
- Torrents
-
-=+ ! t t
-r Streaming Soundtracks
- . ~/rpi/functions;clear
- Sst
-
-+ ! t t
-r View SST
- . ~/rpi/functions;clear
- ViewSst
-
-+ ! t t
-f Merge pdf files
- . ~/rpi/functions;clear
- Merge
-
-+ t t
-c castnow
-  echo %t
-  castnow %t
-
-+ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.mp4 | f *.MP4 | f *.mts | f *.ts | f *.webm & t t
-w castnow
-
++ f !config
 x source ~/.tmux.conf
   tmux source-file ~/.tmux.conf
   tmux send -t B 'tmux send -t A F2' ENTER
 
-+ ! t t
++ f !config
 f create new file
   touch %{File name}
 
-+ f & t t
+  ####  # ##### #    # #    # #####
+ #    # #   #   #    # #    # #    #
+ #      #   #   ###### #    # #####
+ #  ### #   #   #    # #    # #    #
+ #    # #   #   #    # #    # #    #
+  ####  #   #   #    #  ####  #####
+
++ t t
 g git push
   clear
   for f in %t; do
@@ -65,7 +37,7 @@ g git push
   git commit -m "update"
   git push
 
-+ f & t t
++ F [_Github_] & t t
 d git push force
   for f in %t; do
     git add "$f"
@@ -74,252 +46,526 @@ d git push force
   git commit -m "$PARAM"
   git push origin master --force
 
-+ ! t t
++ f [_Github_]
 h git pull
   git pull
 
-+ ! t t
++ f [_Github_]
 d git discard the local changes
   git reset --hard
   git pull
 
-+ t t
-r run
-  PARAM=%{parameters}
-  %f $PARAM
 
-+ f * & t t
-d Delete
-  set %t
-  while [ -n "$1" ] ; do
-    rm -rf "$1"
-    shift
+ #####    ##    ####  #    # #    # #####
+ #    #  #  #  #    # #   #  #    # #    #
+ #####  #    # #      ####   #    # #    #
+ #    # ###### #      #  #   #    # #####
+ #    # #    # #    # #   #  #    # #
+ #####  #    #  ####  #    #  ####  #
+
++ f !backup
+f backup photos & videos to freebox hdd
+  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
+  mkdir /media/freebox/photos /media/freebox/videos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
+  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
+
++ f !backup
+h backup photos & videos to freebox ext hdd
+  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
+  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  mkdir /media/freebox/Photos /media/freebox/Videos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
+  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+
++ f !backup
+h restore photos & videos from freebox ext hdd
+  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
+  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  #mkdir /media/freebox/Photos /media/freebox/Videos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
+  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+
++ f !backup
+1 backup photos to flickr #1
+  /opt/flickr-uploader#1/uploadr.py
+
++ f !backup
+2 backup photos to flickr #2
+  /opt/flickr-uploader#2/uploadr.py
+
++ f !backup
+y backup videos from youtube playlist to youtube-dl
+  # echo "Playlist=<<id>>" >> ~/.config.ini
+  # todo : compare backup videos to /media/videos and save it if size higher.
+  . ~/config.ini;clear
+  sudo apt-get -y install libavcodec-extra libav-tools
+  if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
+  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp
+  while exist /media/hdd/youtube-dl/*.part
+  do
+  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp
   done
 
-### Backups
 
-+ ! t t
-f backup photos & videos to freebox hdd
- . ~/rpi/functions;clear
- BackupFreebox
+  ####  #   #  ####  ##### ###### #    #
+ #       # #  #        #   #      ##  ##
+  ####    #    ####    #   #####  # ## #
+      #   #        #   #   #      #    #
+ #    #   #   #    #   #   #      #    #
+  ####    #    ####    #   ###### #    #
 
-+ ! t t
-h backup photos & videos to freebox ext hdd
- . ~/rpi/functions;clear
- BackupExtBox
-
-+ ! t t
-h restore photos & videos from freebox ext hdd
- . ~/rpi/functions;clear
- RestoreExtBox
-
-+ ! t t
-1 backup photos to flickr #1
- . ~/rpi/functions;clear
- BackupFlickr1
-
-+ ! t t
-2 backup photos to flickr #2
- . ~/rpi/functions;clear
- BackupFlickr2
-
-+ ! t t
-y backup videos from youtube playlist to youtube-dl
- . ~/rpi/functions;clear
- BackupYoutube
-
-### System
-
-+ ! t t
-r reboot
++ f !system & t r
+• reboot
   sudo reboot
 
-+ ! t t
-s shutdown
++ f !system & t r
+• shutdown
   sudo halt
 
-+ ! t t
-u update
++ f !system & t r
+• update
   sudo apt-get -y autoremove
   sudo apt-get -y update
   sudo apt-get -y dist-upgrade
   sudo apt-get -y upgrade
 
-+ ! t t
-k mount-key
- . ~/rpi/functions;;clear
- MountKey
++ f !system & t r
+• mount-key
+  if [ ! -d /media/usbkey ] ; then sudo mkdir /media/usbkey ; fi
+  sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
-+ ! t t
-c mount-cardreader
- . ~/rpi/functions;clear
- MountCardReader
++ f !system & t r
+• mount-cardreader
+  if [ ! -d /media/cardreader ] ; then sudo mkdir /media/cardreader ; fi
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
 
-+ ! t t
-h mount-hdd
- . ~/rpi/functions;clear
- MountHdd
++ f !system & t r
+• mount-hdd
+  if [ ! -d /media/hdd ]; then sudo mkdir /media/hdd ; fi
+  sudo mount LABEL=RaspberryPi /media/hdd
 
-+ ! t t
-f mount-freebox
- . ~/rpi/functions;clear
- MountFreebox
++ f !system & t r
+• mount-freebox
+  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
 
-+ ! t t
-i mount-iphone
- . ~/rpi/functions;clear
- MountIphone
++ f !system & t r
+• mount-iphone
+  usbmuxd
+  if [ ! -d /media/usbkey ] ; then sudo mkdir /media/iphone ; fi
+  sudo umount /media/iphone
+  idevicepair pair
+  sudo ifuse /media/iphone
 
-### Move Files ###
+
+ ###### # #      ######  ####
+ #      # #      #      #
+ #####  # #      #####   ####
+ #      # #      #           #
+ #      # #      #      #    #
+ #      # ###### ######  ####
 
 + t t
 c ez Copy
- . ~/rpi/functions;clear
- ezCopy %D %t
+  clear ; DIR = %D ; set %t
+  for FILE in "$@"; do
+    echo "Copy : $FILE to $DIR"
+    rsync --archive --no-o --no-g --info=progress2 "$FILE" "$DIR"
+  done
 
 + t t
 c ez Move
- . ~/rpi/functions;clear
- ezMove %D %t
+  clear ; DIR = %D ; set %t
+  for FILE in "$@"; do
+    echo "Move : $FILE to $DIR"
+    rsync --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "$DIR"
+  done
+
++ f * & t t
+d Delete
+  clear ; set %t
+  while [ -n "$1" ] ; do
+    rm -rf "$1" ; shift
+  done
 
 + d & t t
 g upload folders photos to gphotos
- . ~/rpi/functions;clear
- Gphotos %d %t
-  
+  set %t
+  find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+  Album=$(echo "$DIR" | cut -d ' ' -f 2-)
+  Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
+  echo "$Album ($Year)"
+  cd "$DIR"
+  if ! upload-gphotos `ls` -u "$Username" -p "$Password" -a "$Album ($Year)" ; then
+   echo "|$DIR|$Album ($Year)" >> ~/gphotos.log; else
+   ifttt "Google Photos : $Album ($Year)" "-";
+  fi
+  cd %d
+  done
+  ifttt "Google Photos Script Finished" "-"
+
 + f & t t
 b upload to dropbox
- . ~/rpi/functions;clear
- Dropbox %d %t
+  cd %d ; set %t
+  for FILE in "$@"; do
+    dropbox_uploader upload "$FILE" "$FILE"
+  done
 
-+ ! t t
++ t t
 c download from dropbox
- . ~/rpi/functions;clear
- Dropbox_download %d %{Dropbox Filename}
+  param = %{Dropbox Filename}
+  cd %d
+  dropbox_uploader download "$param"
 
-+ ! t t
++ t t
 c download from google drive
- . ~/rpi/functions;clear
- Gdrive_download %{Google Drive Filename}
+  param = %{Google Drive Filename}
+  cd "/media/hdd/Drive"
+  if ! drive pull --no-prompt "$param" ; then ifttt "ERROR Google pull files" "ERROR PULL DRIVE"; return; fi
 
 + f & t t
 b move to "Freebox Server"
- . ~/rpi/functions;clear
- CopyFreebox %d %t
+ sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+ clear ; cd %d ; set %t
+ for FILE in "$@"; do
+   echo "Copy : $FILE"
+   rsync --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "/media/freebox"
+ done
 
 + f * & t t
 d upload to Gdrive
- . ~/rpi/functions;clear
- Gdrive %d %t
+  cd /media/hdd/Drive
+  #drive pull --no-prompt "Raspberry Pi/"
+  cd %d ; set %t
+  for FILE in "$@"; do
+    cp "$FILE" "/media/hdd/Drive/Raspberry Pi/"
+  done
+  cd /media/hdd/Drive
+  if ! drive pull --no-prompt "Raspberry Pi/" ; then ifttt "ERROR Google push files" "ERROR PUSH DRIVE"; return; fi
 
-### Imports ###
 
-+ ! t t
+ # #    # #####   ####  #####  #####
+ # ##  ## #    # #    # #    #   #
+ # # ## # #    # #    # #    #   #
+ # #    # #####  #    # #####    #
+ # #    # #      #    # #   #    #
+ # #    # #       ####  #    #   #
+
+ # ls -l /dev/disk/by-id
+
++ f !import
 p import camera photos
- . ~/rpi/functions;clear
- import_camera_photos
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  GDRIVE=/media/hdd/Drive; cd $GDRIVE
+  PHOTOS="$GDRIVE/Google Photos"
+  sudo mkdir /media/panasonic
+  sudo mount $ID /media/panasonic
+  cp -v /media/panasonic/DCIM/???_PANA/*.JPG "$PHOTOS"
+  sudo umount /media/panasonic
+  if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
 
-+ ! t t
+
 v import camera videos
- . ~/rpi/functions;clear
- import_camera_videos
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  VIDEOS="/media/hdd/youtube-upload"
+  mkdir $VIDEOS
+  sudo mkdir /media/panasonic
+  sudo mount $ID /media/panasonic
+  cp -v /media/panasonic/DCIM/???_PANA/*.MP4 $VIDEOS
+  sudo umount /media/panasonic
 
-+ ! t t
++ f !import
 g import gopro
- . ~/rpi/functions;clear
- import_gopro
+  ID="/dev/disk/by-id/usb-GoPro_Storage_123456789ABC-0:0-part1"
+  sudo mkdir /media/gopro
+  sudo mount $ID /media/gopro
+  mkdir /media/hdd/gopro /media/hdd/gopro/photos /media/hdd/gopro/videos
+  cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
+  cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
+  iftt "photos and videos from gopro are saved"
+  rm /tmp/copy-gopro
+  sudo umount /media/gopro
 
-+ ! t t
++ f !import
 i import iphone videos
- . ~/rpi/functions;clear
- import_iphone
+  usbmuxd
+  VIDEOS="/media/hdd/youtube-upload"
+  sudo mkdir /media/iphone
+  sudo umount /media/iphone
+  echo "Please connect iphone, accept the connection and enter password"
+  read -e -p "Press any key to continue..." key
+  idevicepair pair
+  sudo ifuse /media/iphone
+  sudo rsync --include '*/' --include '*.MOV' --exclude '*' --archive --info=progress2 /media/iphone/DCIM/100APPLE/ $VIDEOS
+  sudo chown -R pi:pi $VIDEOS
+  youtube_upload
 
-+ ! t t
++ f !import
 u import usbkey
- . ~/rpi/functions;clear
- import_usbkey
+  ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_08606E6D3FDEBF602707123F-0:0-part1"
+  VIDEOS="/media/hdd/youtube-upload"
+  sudo mkdir /media/usbkey
+  sudo mount $ID /media/usbkey
+  rsync --archive --info=progress2 /media/usbkey/ $VIDEOS
+  sudo umount /media/usbkey
 
-### Tools ###
++ f !import
+u import cardreader photos
+  GDRIVE=/media/hdd/Drive; cd $GDRIVE
+  PHOTOS="$GDRIVE/Google Photos"
+  sudo mkdir /media/cardreader
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  cp -v /media/cardreader/DCIM/???_PANA/*.JPG "$PHOTOS"
+  sudo umount /media/cardreader
+  if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
 
-+ ! t t 
-t Tidy GDrive Photos (1)
- . ~/rpi/functions;clear
- TidyPhotos
 
-+ d & t t
+ #    # #    #  ####  #  ####
+ ##  ## #    # #      # #    #
+ # ## # #    #  ####  # #
+ #    # #    #      # # #
+ #    # #    # #    # # #    #
+ #    #  ####   ####  #  ####
+
++ f Musics
+r ♫ Streaming Soundtracks
+  castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
+
++ F Musics & t t
+c ♫ castnow
+  echo %t
+  castnow %t
+
++ F Musics & t t
+a ♫ upload to gmusic account 1
+  clear ; cd %d ; set %t
+  for d in "$@"; do
+    gmupload -c ~/.local/share/gmusicapi/oauth.1 "$d"
+  done
+
++ F [_Musics_] & t t
+b ♫ upload to gmusic account 2
+  clear ; cd %d ; set %t
+  for d in "$@"; do
+    gmupload -c ~/.local/share/gmusicapi/oauth.2 "$d"
+  done
+
++ F [_Musics_] & t t
+c ♫ upload to gmusic account 3
+  clear ; cd %d ; set %t
+  for d in "$@"; do
+    gmupload -c ~/.local/share/gmusicapi/oauth.3 "$d"
+  done
+
+
+ #####  #    #  ####  #####  ####   ####
+ #    # #    # #    #   #   #    # #
+ #    # ###### #    #   #   #    #  ####
+ #####  #    # #    #   #   #    #      #
+ #      #    # #    #   #   #    # #    #
+ #      #    #  ####    #    ####   ####
+
+
++ f !photos
+P 𝓟 Take Raspberry Pi Photo
+  tput cup 0 0 ; clear
+  rm /media/hdd/photo.jpg
+  raspistill -v -w 1280 -rot 270 -o /media/hdd/photo.jpg
+  read -r
+
++ f !photos
+F 𝓟 Found double photos
+  sudo apt-get -y install fslint
+  /usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
+  fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
+  ~/scripts/iftt-maker "Search double Photos" "Finish"
+
++ T !photos & t r
+t 𝓟 Tidy GDrive Photos (1)
+  rm /tmp/exif.log
+  GDRIVE=/media/hdd/Drive; cd $GDRIVE
+  PHOTOS="$GDRIVE/Google Photos"
+  #PHOTOS="/media/hdd/photos"
+  if ! drive pull --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PULL DRIVE"; return; fi
+  #Move only files under month directory (??) to ..
+  find "$PHOTOS" -iname "??" -type d -print0 | xargs -0 -I{.} find {.} -iname "*.jpg" iname "*.jpeg" -type f | while read FILE ; do
+  mv -v "$FILE" "$PHOTOS/$(basename "$FILE")"
+  done;
+  # Delele empty folders
+  find "$PHOTOS" -type d -empty -delete
+  # Move files from .. to YYYY/YYYY-MM-DD folder
+  find "$PHOTOS" -maxdepth 1 -iname "*.jpg" -type f | while read FILE ; do
+  EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+  YEAR=`echo "$EXIF" | cut -d '-' -f 1`
+  if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
+  if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
+  mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
+  done
+
++ T !photos & t t
 t Test Exif Photos (2)
- . ~/rpi/functions;clear
- TestExif %d %t
+  #Need to select every year
+  LOGFILE="/home/pi/exif.log"
+  clear ; set %t
+  echo "$@"
+  find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+  printf "\e[94mYEAR:$1\e[0m\n\n"
+  #Find no JPEG Files
+  find "$DIR" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do
+  printf "\e[93m[NO JPEG] : $(basename "$FILE")\e[0m\n"
+  echo "NO JPEG FOR $FILE" >> $LOGFILE
+  done
+  #Next control
+  find "$DIR" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+  EXIF=`exiv2 -g DateTimeOriginal -PEv "$FILE"`
+  printf "$(basename "$FILE") : $EXIF\e[0m\n"
+  # If not EXIF give one with folder name/date
+  if [ -z "$EXIF" ]; then
+    NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    #exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 04:00:00" "$FILE"
+    printf "\e[93m[EMPTY EXIF] : $(basename "$FILE")\e[0m\n"
+    echo "NO EXIF FOR $FILE" >> $LOGFILE
+  fi
+  # Tests if jpg files are in the correct folder
+  IMG_DATE=`echo "$EXIF" | cut -d ' ' -f 1 | tr ':' '-'`
+  IMG_YYMM=`echo "$IMG_DATE" | cut -d '-' -f 1,2 | tr '-' ' '`
+  IMG_YYMM_LAST=`date -d "$IMG_DATE -1 month" +"%Y %m"`
+  IMG_YYMM_NEXT=`date -d "$IMG_DATE +1 month" +"%Y %m"`
+  DIR_YYMM=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
+  if [ "$DIR_YYMM" != "$IMG_YYMM" ] && [ "$DIR_YYMM" != "$IMG_YYMM_LAST" ] && [ "$DIR_YYMM" != "$IMG_YYMM_NEXT" ]; then
+     printf "\e[93m[DIR FAIL] : $(basename "$FILE")\e[0m\n"
+     echo "NOT CORRECT $EXIF FOR $FILE" >> $LOGFILE
+     echo "/media/hdd/photos/$FILE" >> ~/exif-change.log
+  fi
+  # Test if not multiple Exif.Photo.DateTimeOriginal
+  if [[ "$EXIF" == *$'\n'* ]] ; then
+    printf "\e[91m[EXIF FAIL] : $(basename "$FILE")\e[0m\n"
+    echo "EXIF FAIL : $EXIF - $FILE" >> $LOGFILE
+    #exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$FILE"
+  fi
+  # Test if not TIME = 00:00
+  IMG_TIME=`echo "$EXIF" | cut -d ' ' -f 2`
+  if [ "$IMG_TIME" == "00:00:00" ] ; then
+    printf "\e[93m[TIME FAIL] : $(basename "$FILE")\e[0m\n"
+    echo "TIME FAIL : $EXIF - $FILE" >> $LOGFILE
+    #exiv2 -a 4 adjust "$FILE"
+  fi
+  # Test if photo not too big
+  IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
+  if [ $(( $X * $Y )) -gt 100000000 ] ; then.
+    printf "\e[91m[Pixel Dimension FAIL] $(basename "$FILE")\e[0m\n"
+    echo "PIX  FAIL : $FILE" >> $LOGFILE
+  fi
+  printf "\e[96m$FILE\n\e[97m$EXIF :: [$IMG_YYMM_LAST]-[$IMG_YYMM]-[$IMG_YYMM_NEXT] :: $DIR_YYMM\e[0m\n"
+  FILE_DATE=$(echo $EXIF | tr -d ":" | tr -d " ")
+  #touch -t ${EXIF:0:10}.${EXIF:11:14} "$FILE"
+  echo "FILE_DATE : $FILE_DATE"
+  echo "----------------${FILE_DATE:0:10}.${FILE_DATE:10:14}-------------------"
+  done
+  done
+  ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
+  mcedit -x $LOGFILE
 
-+ d & t t
++ T !photos & t r
 t Correct Exif Photos (3)
- . ~/rpi/functions;clear
- CorrectExifPhotos
+  #Change Exif Date for all photos listed in ~/exif-change.log
+  FILE=~/exif-change.log
+  while IFS= read LINE
+   do
+    NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+    exiv2 delete "$LINE"
+    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE 04:00:00" "$LINE"
+    echo "$LINE"
+  done <"$FILE"
+  rm ~/exif-change.log
 
-+ d & t t
++ T !photos & t t
 t Rename New Photos (4)
- . ~/rpi/functions;clear
- RenamePhotosNew %d %t
+  #use this when adding new photos in YEAR directory
+  #need to finished
+  ROOT=%d ; set % t ; echo "$@"
+  #Delete Empty Directories
+  #find "$1" -type d -empty -delete
+  #Loop through files, renaming each to a YYYYMMDDHHMMSS-####.JPG based name
+  find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+  YEAR=$(echo "$DIR" | cut -d '/' -f 2 | cut -d '-' -f 1)
+  echo "YEAR : $YEAR"
+  LAST=`find "/media/hdd/photos/$YEAR" -iname "$YEAR.????.JPEG" -type f | sort | tail -n1`
+  if [ -z "$LAST" ]; then printf "\e[91m[LAST NAME FAIL]\e[0m\n"; COUNTER=1; fi
+  COUNTER=$(echo "$LAST" | rev | cut -d '.' -f 2 | rev )
+  COUNTER=$(expr $COUNTER + 1)
+  echo "COUNTER: $COUNTER"
+  find "$DIR" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+   NEWFILE="$YEAR.$(printf '%04d' $COUNTER)"
+   echo "$(basename "$FILE")=>$NEWFILE.JPEG"
+   #exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
+   #mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
+   #seulement pour touch
+   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE" | tr -d ':' | tr -d ' ')
+   echo "$EXIF"
+   #echo ${EXIF:0:8}
+   #touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
+   COUNTER=$((COUNTER + 1))
+  done
+  echo "$DIR -- $YEAR"
+  if [ ${#YEAR} == 4 ]; then YEAR=`echo "${YEAR}0101"` ; fi
+   #touch -t "${YEAR}0000.00" "$DIR"
+  done
 
-+ ! t t
-h Backup to Free External HDD (5)
- . ~/rpi/functions;clear
- BackupExtBox
-
-+ d & t t
++ T !photos & t t
 r Rename Photos only [XXXX] dir (6)
- . ~/rpi/functions;clear
- RenamePhotos %d %t
+  clear ; cd %d; set %t
+  for f in "$@"; do
+   #Delete Empty Directories
+   find "$1" -type d -empty -delete
+   #Loop through files, renaming each to a YYYYMMDDHHMMSS-####.JPG based name
+   echo "YEAR:$1"
+   COUNTER=1
+   find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+   EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4,5 | tr -d ':' | tr -d ' '`
+   NEWFILE="$EXIF-$(printf '%04d' $COUNTER)"
+   echo "$(basename "$FILE")=>$NEWFILE.JPG"
+   touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
+   mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
+   COUNTER=$((COUNTER + 1))
+   done
+   #Loop again through files, renaming as "YYYY-####.JPEG"
+   echo "YEAR:$1"
+   COUNTER=1
+   find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
+   NEWFILE="$1.$(printf '%04d' $COUNTER)"
+   echo "$(basename "$FILE")=>$NEWFILE.JPEG"
+   exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
+   mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
+   COUNTER=$((COUNTER + 1))
+   done
+   #Loop through directories and change directory creating date
+   find "$1" -type d | while read DIR ; do
+   DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
+   echo "$DIR -- $DAT"
+   if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
+   touch -t "${DAT}0000.00" "$DIR"
+   done
+  shift
+  done
 
-+ d & t t
+
++ T !photos & t t
 r Change Exif (Tests 6B)
  . ~/rpi/functions;clear
  Change_Exif %d %t
 
-+ d & t t
++ T !photos & t t
 g Upload Photos to gPhotos #1 (7)
  . ~/rpi/functions;clear
  Gphotos $user_1 $pwd_1 %d %t
 
-+ d & t t
++ T !photos & t t
 g Upload Photos to gPhotos #2 (8)
  . ~/rpi/functions;clear
  Gphotos $user_2 $pwd_2 %d %t
-
-+ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
-y upload to youtube
- . ~/rpi/functions;clear
- YoutubeUpload %d %t
-
-+ d & t t
-m upload to gmusic #1
- . ~/rpi/functions;clear
- Gmusic 1 %d %t
-
-+ d & t t
-m upload to gmusic #2
- . ~/rpi/functions;clear
- Gmusic 2 %d %t
-
-+ d & t t
-m upload to gmusic #3
- . ~/rpi/functions;clear
- Gmusic 3 %d %t
-
-+ f *.mts | *.MTS | *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t t
-m merge mkv videos
- . ~/rpi/functions;clear
- MergeVideos %d %t
-
-+ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t r
-c cut video [no screen]
-  #! /usr/bin/bash
-  clear
-  read -e -p "Start : " -i "00:00:00" start
-  read -e -p "Stop  : " -i "00:00:00" stop
-  echo "Please Wait..."
-  mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
-  iftt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 + f *.png | f *.PNG & t t
 s convert PNG to JPG
@@ -329,7 +575,7 @@ s convert PNG to JPG
     shift
   done
 
-+ f *.jpg | f *.JPG | f *.JPEG & t t
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 s Autolevel photos
   set %t
   while [ -n "$1" ]; do
@@ -345,8 +591,8 @@ s Tiff to jpg with sharp
     shift
   done
 
-+ f *.jpg | f *.JPG | f *.JPEG & t r
-e Affiche l'EXIF de la photo
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t r
+e Affiche EXIF de la photo
   clear
   exiv2 -pv %f
   echo
@@ -358,20 +604,129 @@ e Affiche l'EXIF de la photo
   echo "$D"
   printf 'Press [Enter] key to continue...'
 
-+ f *.jpg | f *.JPG | f *.JPEG & t r
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t r
 d Delete EXIF from pics
   set %t
   while [ -n "$1" ]; do
     exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$1"
     shift
   done
-  printf 'Press [Enter] key to continue...'
 
-+ f *.jpg | f *.JPG | f *.JPEG & t t
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 e Change Photo EXIF
+  clear ; set %t
+  exiv2 -g DateTimeOriginal -PEv "$1" > /tmp/exif.txt
+  mcedit -x /tmp/exif.txt
+  exiv2 -q -M "set Exif.Photo.DateTimeOriginal `head -n 1 /tmp/exif.txt`" "$1"
+  rm /tmp/exif.txt
+
+
+ #    # # #####  ######  ####   ####
+ #    # # #    # #      #    # #
+ #    # # #    # #####  #    #  ####
+ #    # # #    # #      #    #      #
+  #  #  # #    # #      #    # #    #
+   ##   # #####  ######  ####   ####
+
++ f Videos
+𝓥 download youtube url
+  clear ; cd /media/hdd/reserve
+  youtube-dl %{youtube url}
+
++ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
+𝓥 upload to youtube
+  clear ; cd %d ; set %t
+  for FILE in "$@"; do
+    while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
+  done
+
++ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t t
+𝓥 merge mkv videos
+  clear ; sudo apt-get install mkvtoolnix
+  cd %d ; set %t
+  FILES="$1"; shift
+  for FILE in "$@"; do
+    FILES="$FILES + $FILE"
+  done
+  mkvmerge -o out.mkv $FILES
+
++ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t r
+𝓥 cut video [no screen]
+  #! /usr/bin/bash
   clear
-  . ~/rpi/functions;clear
-  ViewExif %t
+  read -e -p "Start : " -i "00:00:00" start
+  read -e -p "Stop  : " -i "00:00:00" stop
+  echo "Please Wait..."
+  mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
+  iftt "Rasperry Pi" "La vidéos %d.avi est coupée"
+
+
+ ##### #    # #    # #    #
+   #   ##  ## #    #  #  #
+   #   # ## # #    #   ##
+   #   #    # #    #   ##
+   #   #    # #    #  #  #
+   #   #    #  ####  #    #
+
++ f tmux
+f switch to tmux background
+  tmux switch-client -t bg
+  tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
+  tmux send -t bg:1 'tmux switch-client -t pi'
+
++ f tmux
+x create tmux window
+  tmux new-window -n "●"
+  session=`tmux display-message -p '#I'`
+  tmux set pane-border-format " $session "
+  tmux send -t $session '. ~/mcui/functions' ENTER
+  tmux send -t $session '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/ && clear' ENTER
+
++ f tmux
+l tmux last window
+  tmux last-window
+
+
+ #####  ####  #####  #####  ###### #    # #####
+   #   #    # #    # #    # #      ##   #   #
+   #   #    # #    # #    # #####  # #  #   #
+   #   #    # #####  #####  #      #  # #   #
+   #   #    # #   #  #   #  #      #   ##   #
+   #    ####  #    # #    # ###### #    #   #
+
++ f !torrent
+t stop transmission
+  sudo service transmission-daemon stop
+
++ f !torrent
+v add/remove torrents
+  clear
+  sudo service transmission-daemon restart
+  rm -rf /media/hdd/Drive/Torrents/*
+  cd /media/hdd/Drive
+  drive pull --quiet Torrents/
+  find /media/hdd/Drive/Torrents/*.torrent -type f | while read FILE ; do
+  transmission-remote --add "$FILE"
+  rm "$FILE"
+  done
+  drive push --quiet Torrents/
+  ##
+  LIST=`transmission-remote -l  | grep 100% | cut -d " " -f 4 | cut -d "*" -f 1`
+  for ID in $LIST; do
+  echo "Torrent #$ID is completed"
+  #echo "Moving downloaded file(s) to $MOVEDIR"
+  #transmission-remote --torrent $ID --move $MOVEDIR
+  echo "Removing torrent from list"
+  transmission-remote --torrent $ID --remove
+  done
+
+
+ #####  #####  ######
+ #    # #    # #
+ #    # #    # #####
+ #####  #    # #
+ #      #    # #
+ #      #####  #
 
 + f *.pdf | f *.PDF & t t
 p Transforme un fichier PDF sécurisé en normal
@@ -381,4 +736,98 @@ p Transforme un fichier PDF sécurisé en normal
     shift
   done
 
-e « exit menu »
++ f *.pdf | f *.PDF
+f Merge pdf files
+  ## TODO Delete only files merged
+  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " `date`"
+  GDRIVE=/media/hdd/Drive
+  FILE=/tmp/gdrive.csv
+  ##Init
+  cd $GDRIVE
+  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Snoozed Dir"
+  rm -rf Snoozed Documents
+  if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then iftt "Auto Merge PDF" "Error pull, please fix clashes in Snoozed folder"; return; fi
+  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Empty"
+  if [ `find "Snoozed" -type d -empty` ] ; then tput setaf 2 ; echo -n "[info]" ; tput sgr0 ; echo "  Empty Snoozed Dir"; return; fi
+  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Files Encrypts"
+  if grep -r "Encrypt" Snoozed ; then ifttt "`grep -r "Encrypt" Snoozed`"; return; fi
+  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Iftt csv file"
+  if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then iftt "Auto Merge PDF" "Error pull for ifttt.xls" ; return; fi
+  tr -d '\r' < /tmp/ifttt.csv > $FILE
+  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Read Iftt csv file"
+  while IFS=, read email in out ; do
+    tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Search $in file..."
+    if [[ -n $(find "Snoozed" -name "$in") ]]
+        then
+        rm ~/files.csv
+        tput setaf 2 ; echo -n "[ ok ]" ; tput sgr0 ; echo " find $1"
+        find "Snoozed" -name "$in" | sort -r | tr '\n' ',' > ~/files.csv
+        cp ~/files.csv ~/files_rm.csv
+        echo "Snoozed/$out" >> ~/files.csv
+        tput setaf 1 ; echo -n "[FAIL]" ; tput sgr0 ; echo "cat ~/files.csv"
+        cat ~/files.csv
+        tput setaf 1 ; echo -n "[info]" ; tput sgr0 ; echo " END"
+        if ! drive pull --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error pull ref doc" ; return; fi
+        mv "Documents/$out" "Snoozed/$out"
+        /opt/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
+        mv sejda_out.pdf "Documents/$out"
+        if ! drive push --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error push ref doc" ; return; fi
+        while IFS=, read f ; do
+        tput setaf 1 ; echo -n "[----]" ; tput sgr0 ; echo " delete $f"
+        rm "$f"
+        done < ~/files_rm.csv
+    fi
+  done < "$FILE"
+  rm $FILE
+  if ! drive pull --no-prompt "Snoozed/"; then iftt "Upload Snoozed" "Error"; return; fi
+
+
+  ####   ####  #####  # #####  #####  ####
+ #      #    # #    # # #    #   #   #
+  ####  #      #    # # #    #   #    ####
+      # #      #####  # #####    #        #
+ #    # #    # #   #  # #        #   #    #
+  ####   ####  #    # # #        #    ####
+
++ ! t t
+r View SST
+  #sudo apt-get install recode libxml2-utils
+  #at << EOF > /tmp/request.xml
+  #echo " /
+  #<?xml version='1.0' encoding='UTF-8' standalone='no' ?> /
+  #<SOAP-ENV:Envelope /
+  #SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' /
+  #xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' /
+  #xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' /
+  #xmlns:xsi='http://www.w3.org/1999/XMLSchema-instance' /
+  #xmlns:xsd='http://www.w3.org/1999/XMLSchema'> /
+  #<SOAP-ENV:Body> /
+  #<GetCurrentlyPlaying> /
+  #</GetCurrentlyPlaying> /
+  #</SOAP-ENV:Body> /
+  #</SOAP-ENV:Envelope>" >> /tmp/request.xml
+  clear
+  while :
+  do
+  curl -X POST -H "Content-Type: text/xml" -d @/tmp/request.xml http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/tmp/null > /tmp/sst.xml
+  album=`xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`
+  artist=`xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst.xml | recode html..UTF-8`
+  title=`xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`
+  cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
+  track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
+  track=$((track / 1000))
+  printf "\033[01m$album -\033[00m $artist -\033[34m $title -\033[00m [`date -u -d @${track} +"%M:%S"`]\n"
+  PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" /tmp/sst.xml`
+  PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
+  SystemTime=`xmllint --xpath "//*[local-name()='SystemTime']/text()" /tmp/sst.xml`
+  PSTART=`date -d "$PlayStar" "+%s"`
+  PLENGT=$(($PlayLength / 1000))
+  FIN=`date -d "$SystemTime" "+%s"`
+  PW=$((PSTART+PLENGT))
+  secs=$((PW-FIN))
+  while [ $secs -gt 0 ]; do
+    sleep 1
+    secs=$((secs-1))
+  done
+  done
+
