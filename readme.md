@@ -98,6 +98,15 @@ sudo chown -R pi:pi /opt/gd
 drive init /opt/gd
 ```
 
+### Flickr-Download
+https://github.com/beaufour/flickr-download
+```bash
+sudo pip install flickr_api
+#cd ~/.bin
+git clone https://github.com/beaufour/flickr-download.git
+~/.bin/flickr-download/flickr_download/flickr_download.py -t 
+```
+
 ### Flickr-Uploader
 https://github.com/trickortweak/flickr-uploader
 > Do first time without tmux script for token
