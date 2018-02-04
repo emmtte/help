@@ -108,6 +108,11 @@ y backup videos from youtube playlist to youtube-dl
   youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp
   done
 
++ f !backup
+y restore photos from flickr
+  source ~/config.ini
+  ~/.bin/flickr-download/flickr_download/flick_download.py -k $flickr_api_key -s $flickr_api_secret -u $flickr_user -t -l
+
 
   ####  #   #  ####  ##### ###### #    #
  #       # #  #        #   #      ##  ##
@@ -321,6 +326,28 @@ u import cardreader photos
   sudo umount /media/cardreader
   if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
 
++ f !import
+u import camera photos to gdrive
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  PHOTOS="/media/hdd/Drive/Camera"
+  TMP="/media/hdd/tmp"
+  clear
+  sudo mkdir /media/panasonic
+  sudo mount $ID /media/panasonic
+  mkdir $TMP
+  mkdir $PHOTOS
+  cp -v /media/panasonic/DCIM/???_PANA/*.JPG $TMP
+  sudo umount /media/panasonic
+  find $TMP -iname "*.jpg" -type f | while read FILE ; do 
+  EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+  YEAR=`echo "$EXIF" | cut -d '-' -f 1`
+  if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
+  if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
+  mv -v $FILE $PHOTOS/$YEAR/$EXIF/$(basename $FILE)
+  done
+  rm -r $TMP
+  cd /media/hdd/Drive
+  drive push --no-prompt Camera
 
  #    # #    #  ####  #  ####
  ##  ## #    # #      # #    #
@@ -329,12 +356,13 @@ u import cardreader photos
  #    # #    # #    # # #    #
  #    #  ####   ####  #  ####
 
-+ f Musics
 r ♫ Streaming Soundtracks
+  clear
   castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
 
 + F Musics & t t
 c ♫ castnow
+  clear
   echo %t
   castnow %t
 
@@ -358,6 +386,12 @@ c ♫ upload to gmusic account 3
   for d in "$@"; do
     gmupload -c ~/.local/share/gmusicapi/oauth.3 "$d"
   done
+
++ F [_Musics_] & t t
+c ♫ download all music from gmusic
+  account=%{Give number accounts}
+  gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
+  iftt "Rasperry Pi" "Gmusic download done"
 
 
  #####  #    #  ####  #####  ####   ####
@@ -631,7 +665,8 @@ e Change Photo EXIF
 + f Videos
 𝓥 download youtube url
   clear ; cd /media/hdd/reserve
-  youtube-dl %{youtube url}
+  python ~/youtube-dl/youtube-dl %{youtube url}
+  #youtube-dl %{youtube url}
 
 + f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
 𝓥 upload to youtube
@@ -660,6 +695,35 @@ e Change Photo EXIF
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
   iftt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
++ f Videos
+𝓥 create stopmotion
+  clear
+  # - 720p (1280×720)
+  # – 1080p (1920×1080) full HD
+  # – 1440p (2560×1440) 2K
+  # – 2160p (3840×2160) 4K
+  # – 4320p (7680×4320) 8K
+  ###GoPro 2592x1944 => 1440p(2K):2560x1440
+  #CUT="2560x1440+16+0" #Top
+  CUT="2560x1440+16+252" #Center
+  #CUT="2560x1440+16+504" #Bas
+  ###DMC TZ40 ????x???? => 1440p(2K):2560x1440
+  #CUT="2560x1440+16+0" #Top
+  #CUT="2560x1440+16+252" #Center
+  #CUT="2560x1440+16+504" #Bas
+  ###Sony 4000x3000 => 2160p(4K):3840x2160
+  #CUT="3840x2160+80+0" #Top
+  #CUT="3840x2160+80+420" #Center
+  #CUT="3840x2160+80+840" #Bas
+  cd /media/hdd/stopmotion
+  mkdir CROP
+  for img in *.JPG; do
+  convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
+  done
+  ls -1 CROP/*-CROP.JPG >  files.lst
+  mpv mf://@files.lst -mf-type=jpg -mf-fps=10 -ovc=rawvideo -no-audio -o stopmotion.avi
+  while ! youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi ; do :; done
+  iftt "Raspberry Pi" "Stopmotion created"
 
  ##### #    # #    # #    #
    #   ##  ## #    #  #  #
@@ -736,8 +800,44 @@ p Transforme un fichier PDF sécurisé en normal
     shift
   done
 
++ f *.pdf | f *.PDF & t t
+p Compress PDF File
+  #Warning Files name does not content comma
+  clear
+  GDRIVE=/media/hdd/Drive
+  rm $GDRIVE/Documents/*
+  cd $GDRIVE
+  drive pull --quiet --starred --all
+  if [ `find $GDRIVE/Documents -type d -empty` ] ; then ~/scripts/iftt-maker "Compress PDF" "ERROR NO DOCUMENTS"; exit ; fi
+  FILE=`ls $GDRIVE/Documents | head -1`
+  ~/.bin/sejda/bin/sejda-console compress -f Documents/$FILE -o Documents/
+  mv sejda_out.pdf "Documents/$FILE"
+  drive push --quiet "Documents/$FILE"
+  drive unstar --quiet "Documents/$FILE"
+  iftt "Raspberry Pi" "File $FILE compressed"
+
 + f *.pdf | f *.PDF
-f Merge pdf files
+f Merge Starred Drive Pdf files
+  clear
+  GDRIVE=/media/hdd/Drive
+  rm $GDRIVE/Snoozed/*
+  rm $GDRIVE/Documents/*
+  cd $GDRIVE
+  if ! drive pull --no-prompt --starred --all ; then ~/scripts/iftt-maker "Merge PDF" "Error pull starred" ; exit; fi
+  if [ `find $GDRIVE/Documents -type d -empty` ] ; then ~/scripts/iftt-maker note "Merge PDF" "ERROR NO DOCUMENTS"; exit ; fi
+  if grep -r "Encrypt" $GDRIVE/Snoozed ; then ~/scripts/iftt-maker "Merge PDF" "ERROR CRYPTED FILE"; exit; fi
+  find $GDRIVE/Snoozed -type f | sort | tr '\n' ',' > files.csv
+  find $GDRIVE/Documents -type f | head -1  >> files.csv
+  FILE=`ls $GDRIVE/Documents | head -1`
+  if [ -f files.csv ] ; then ~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf ; fi
+  mv sejda_out.pdf "Documents/$FILE"
+  if ! drive push --no-prompt "Documents/$FILE" ; then ~/scripts/iftt-maker "Merge PDF" "Error push document" ; exit; fi
+  drive unstar --no-prompt "Documents/$FILE"
+  drive trash --starred
+  ~/scripts/iftt-maker "Raspberry Pi" "Starred Files added to $FILE"
+
++ f *.pdf | f *.PDF
+f Automatic Merge pdf files
   ## TODO Delete only files merged
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " `date`"
   GDRIVE=/media/hdd/Drive
