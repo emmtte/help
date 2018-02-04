@@ -2,7 +2,9 @@
 # sudo ln -sf bash /bin/sh
 #
 # figlet -f banner backup
-
+#
+#source ~/config.ini
+#curl -s -X POST https://api.telegram.org/bot$apiToken/sendMessage -d text="$1" -d chat_id=$userChatId -d parse_mode="Markdown"
 
 c Create User Menu
   touch "[.Backup.]" "[.Config.]" "[.Files..]" "[ Import ]" "Musics" "[ Github ]"
@@ -154,7 +156,7 @@ y restore photos from flickr
 + f !system & t r
 • mount-freebox
   if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
-  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
 
 + f !system & t r
 • mount-iphone
@@ -163,6 +165,19 @@ y restore photos from flickr
   sudo umount /media/iphone
   idevicepair pair
   sudo ifuse /media/iphone
+
++ f !system & t r
+• format hdd drive
+  #Attention lignes suivantes pour formatter
+  #sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
+  #sudo e2label /dev/sda1 RaspberryPi
+  #sudo chown -R pi:pi /media/hdd
+
++ f !system & t r
+• create fstab file
+  echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
+  echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
+  sudo chown -R pi:pi /media/hdd
 
 
  ###### # #      ######  ####
@@ -366,7 +381,7 @@ c ♫ castnow
   echo %t
   castnow %t
 
-+ F Musics & t t
++ t t
 a ♫ upload to gmusic account 1
   clear ; cd %d ; set %t
   for d in "$@"; do
@@ -407,6 +422,8 @@ P 𝓟 Take Raspberry Pi Photo
   tput cup 0 0 ; clear
   rm /media/hdd/photo.jpg
   raspistill -v -w 1280 -rot 270 -o /media/hdd/photo.jpg
+  source ~/config.ini
+  curl -s -X POST https://api.telegram.org/bot$apiToken/sendPhoto -d photo="/media/hdd/photo.jpg" -d chat_id=$userChatId
   read -r
 
 + f !photos
