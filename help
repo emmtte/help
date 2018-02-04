@@ -1,144 +1,0 @@
-[main]
- lqwqk     k           k     
- x x x .   x     .     x     
- x x x k lqu wqk k lqw tqk n 
- x x x x x x x x x x x x x x 
- v   v v mqv v v v mqu v v mj
-     qqqqqqCommanderqj 
-
-  Castnowcastnow
-  Dropbox UploaderDropbox-Uploader
-  Google DriveDrive
-  FlickrFlickr
-  GmusicGmusic
-  IphoneIphone
-  Google DriveDrive
-
-[Castnow]
-Castnow
-───────
-
-
-https://github.com/xat/castnow
-
-wget https://nodejs.org/dist/v6.2.0/node-v6.2.0-linux-armv6l.tar.gz
-tar -xvf node-v6.2.0-linux-armv6l.tar.gz 
-cd node-v6.2.0-linux-armv6l
-sudo cp -R * /usr/local/
-sudo npm install castnow -g
-castnow http://hi5.streamingsoundtracks.com --type "audio/wav"
-
-
-Contentsmain
-
-
-[Dropbox-Uploader]
-
-Dropbox-Uploader
-────────────────
-
-https://github.com/andreafabrizi/Dropbox-Uploader
-
-sudo curl -o /usr/local/bin/dropbox_uploader \\
-https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
-sudo chmod +x /usr/local/bin/dropbox_uploader
-dropbox_uploader init
-
-Contentsmain
-
-
-[Drive]
-Google Drive
-────────────
-
-https://github.com/odeke-em/drive
-https://golang.org/dl/
-
-curl -L -o go1.6.2.linux-armv6l.tar.gz https://storage.googleapis.com/golang/go1.6.2.linux-armv6l.tar.gz
-sudo tar -C /usr/local -xzf go1.6.2.linux-armv6l.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-cat << ! >> ~/.bashrc
-export GOPATH=~/.bin/go
-export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
-
-source ~/.bashrc
-mkdir ~/.bin ~/.bin/go
-go get -u github.com/odeke-em/drive/cmd/drive
-drive init /media/hdd/Drive
-
-Contentsmain
-
-[Flickr]
-Flickr Uploader
-───────────────
-
-https://github.com/trickortweak/flickr-uploader
-
-Do first time without tmux script for token
-
-sudo apt-get remove elinks links links2 lynx w3m
-cd ~/.bin
-git clone https://github.com/trickortweak/flickr-uploader.git
-chmod +x flickr-uploader/uploadr.py
-mcedit flickr-uploader/uploadr.ini
- > FILES_DIR = "/media/hdd/photos"
- > "api_key" : "********************************",
- > "secret"  : "****************"
-mv flickr-uploader/ flickr-uploader#1/
-cd ~
-~/.bin/flickr-uploader#1/uploadr.py
-
-Menumain
-
-[Gmusic]
-Gmusicapi-scripts
-─────────────────
-
-https://github.com/thebigmunch/gmusicapi-scripts
-
-sudo easy_install3 -U pip
-sudo pip3 install --upgrade gmusicapi-scripts
-gmsync /media/hdd/music
-gmsync down "/media/hdd/listen/%album%/%title%"
-gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
-
-Menumain
-
-
-[Iphone]
-Iphone
-──────
-
-https://github.com/libimobiledevice
-https://gist.github.com/kfatehi/8922430
-
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo apt-get -y install git build-essential libxml2-dev python2.7 python2.7-dev fuse libtool autoconf libusb-1.0-0-dev libfuse-dev
-mkdir iphone_libs && cd iphone_libs
-
-git clone https://github.com/libimobiledevice/libplist.git
-git clone https://github.com/libimobiledevice/libusbmuxd.git
-git clone https://github.com/libimobiledevice/usbmuxd.git
-git clone https://github.com/libimobiledevice/libimobiledevice.git
-git clone https://github.com/libimobiledevice/ifuse.git
-
-export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-echo "export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig" | sudo tee -a /etc/bash.bashrc
-
-cd libplist && ./autogen.sh && make && sudo make install && cd ..
-cd libusbmuxd && ./autogen.sh && make && sudo make install && cd ..
-cd libimobiledevice && ./autogen.sh && make && sudo make install && cd ..
-cd usbmuxd && ./autogen.sh && make && sudo make install && cd ..
-cd ifuse && ./autogen.sh && make && sudo make install && cd ..
-
-groupadd -g 140 usbmux &>/dev/null
-useradd -c 'usbmux user' -u 140 -g usbmux -d / -s /sbin/nologin usbmux &>/dev/null
-passwd -l usbmux &>/dev/null
-
-echo /usr/local/lib | sudo tee /etc/ld.so.conf.d/libimobiledevice-libs.conf
-sudo ldconfig
-
-Menumain
-
-
