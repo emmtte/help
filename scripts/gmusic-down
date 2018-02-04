@@ -1,3 +1,0 @@
-#!/bin/sh
-gmdownload "/media/hdd/music/%album%/%title%"
-~/scripts/iftt-maker "Rasperry Pi" "Gmusic download done"
