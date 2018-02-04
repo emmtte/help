@@ -23,6 +23,12 @@ x source ~/.tmux.conf
 f create new file
   touch %{File name}
 
++ f !config
+t set auto date & time
+  sudo /etc/init.d/ntp stop
+  sudo ntpd -q -g
+  sudo /etc/init.d/ntp start
+
   ####  # ##### #    # #    # #####
  #    # #   #   #    # #    # #    #
  #      #   #   ###### #    # #####
@@ -88,6 +94,14 @@ h restore photos & videos from freebox ext hdd
   #mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+
++ f !backup
+  w Backup Windows to Raspberry Pi
+  rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
+
++ f !backup
+  w Backup Raspberry Pi to Windows
+rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 
 + f !backup
 1 backup photos to flickr #1
