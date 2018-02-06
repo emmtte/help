@@ -80,7 +80,7 @@ Install git
   ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
   # Copy contents github.pub to github.com
   ssh-agent -s
-  ssh-add ~/.ssh/github
+  eval $(ssh-agent -s)
   ssh -vT git@github.com
 
 + f install
