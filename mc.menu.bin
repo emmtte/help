@@ -79,8 +79,8 @@ Install git
   cd rpi
   ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
   # Copy contents github.pub to github.com
-  ssh-agent -s
   eval $(ssh-agent -s)
+  ssh-add ~/.ssh/github
   ssh -vT git@github.com
 
 + f install
