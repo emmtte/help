@@ -10,7 +10,8 @@
 Use Midnight Commander (mc) user menu with tmux for friendly way do some jobs and related stuff
 
 ```bash
-sudo apt-get install mc sshpass tmux
+sudo apt-get install exiv2 mc rsync sshpass tmux
+sudo ln -sf bash /bin/sh
 git clone git@github.com:ManuCart/Raspberry-Pi.git ~/rpi
 cd rpi
 .\rescue
@@ -46,17 +47,6 @@ sudo raspi-config
   - Medium
 + Reboot
 
-```bash
-sudo apt-get install mc tmux rsync exiv2
-sudo ln -sf bash /bin/sh
-```
-
-### Updating
-```bash
-sudo apt-get autoremove
-sudo apt-get update
-sudo apt-get -y upgrade
-sudo rpi-update
 ```
 
 ### Ssh
@@ -91,58 +81,6 @@ read only = no
 EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
-```
-
-### Node.js
-https://nodejs.org
-
-```bash
-wget https://nodejs.org/dist/v8.3.0/node-v8.3.0-linux-armv6l.tar.gz
-sudo tar -xvf node-v8.3.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
-rm node-v8.3.0-linux-armv6l.tar.gz
-```
-
-### Go Lang
-https://golang.org/dl/
-arm
-```bash
-wget https://storage.googleapis.com/golang/go1.8.1.linux-armv6l.tar.gz
-sudo tar -xvf go1.8.1.linux-armv6l.tar.gz -C /usr/local
-rm go1.8.1.linux-armv6l.tar.gz
-sudo mkdir /opt/go
-sudo chown -R pi:pi /opt/go
-cat << '!' >> ~/.bashrc
-export GOROOT=/usr/local/go
-export GOPATH=/opt/go
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-!
-source ~/.bashrc
-```
-linux64
-```bash
-wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz
-sudo tar -xvf go1.8.3.linux-amd64.tar.gz -C /usr/local
-rm go1.8.3.linux-amd64.tar.gz
-sudo mkdir /opt/go
-sudo chown -R <user>:<user> /opt/go
-cat << '!' >> ~/.bashrc
-export GOROOT=/usr/local/go
-export GOPATH=/opt/go
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-!
-source ~/.bashrc
-```
-
-### Python
-```bash
-sudo apt-get install python-pip python-dev
-sudo pip install --upgrade pip
-```
-
-### Python3
-```bash
-sudo apt-get -y install python3-pip
-sudo pip3 install --upgrade pip3
 ```
 
 ## License
