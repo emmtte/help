@@ -9,5 +9,4 @@ cd rpi
 .\rescue
 ```
 
-MIT License
-Copyright (c) 2014-2018 Emmanuel CHARETTE
+MIT License - Copyright (c) 2014-2018 Emmanuel CHARETTE
