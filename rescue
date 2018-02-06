@@ -3,6 +3,11 @@
 ln -sf ~/rpi/menu ~/.config/mc/menu
 ln -sf ~/rpi/.tmux.conf ~/.tmux.conf
 
+if [ ! -d ~/mc.menu ] ; then mkdir ~/mc.menu ; fi
+cd ~/mc.menu
+touch "backup" "config" "files" "import" "music" "github"
+touch "system" "tools" "videos" "torrent" "photos" "install"
+
 tmux has-session -t pi
 
 if [ "$?" -eq 1 ] ; then
