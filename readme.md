@@ -7,63 +7,11 @@
     ┴  └┘ └─┴ └─┘ ├─┘ └─┘ ┴─┘ ┴  ┴  └─┤   ┴    ┴        ┴   ┴ ┴ └─┴ ┴ ┴ ┴ └─┤ ┴ ┴ └┘
                   ┴        ──────Menu─┘                     ──────Commander─┘
 ````
-Use Midnight Commander (mc) with tmux as text based User Interface (ui)
-for friendly way do some jobs and related stuff
-## Installation
-### tmux
-https://github.com/tmux/tmux
-```bash
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install libevent-dev libncurses5-dev
-wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
-tar xvfz tmux-2.6.tar.gz
-cd tmux-2.6
-./configure && make
-sudo mv ./tmux /usr/local/bin/tmux
-cd ..
-rm tmux-2.6.tar.gz
-rm -rf tmux-2.6
-```
-### midnight commander
-https://github.com/MidnightCommander/mc
-```bash
-sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
-wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
-tar xvfz 4.8.20.tar.gz
-cd mc-4.8.20
-autoconf
-./configure
-make
-make install
-```
-
-### sshpass
-```bash
-sudo apt-get install sshpass
-```
-
-### Git
+Use Midnight Commander (mc) user menu with tmux for friendly way do some jobs and related stuff
 
 ```bash
-sudo apt-get install git mc
+sudo apt-get install mc sshpass tmux
 git clone git@github.com:ManuCart/Raspberry-Pi.git ~/rpi
-cd rpi
-ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
-# Copy contents github.pub to github.com
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/github
-ssh -vT git@github.com
-```
-
-### Optional
-```bash
-sudo cp /usr/share/mc/help/mc.hlp /usr/share/mc/help/mc.hlp.en
-sudo ln -sf /home/pi/mcp/help /usr/share/mc/help/mc.hlp
-```
-
-### Usage
-```bash
 cd rpi
 .\rescue
 ```
