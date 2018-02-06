@@ -1,13 +1,5 @@
 
-````
-    ┌───┐             ┐                   ┌──┐          ┌─┬─┐     ┐           ┐
-    │   │             │                   │  │ .        │ │ │ .   │     .     │
-    ├──┬┘ ┌─┐ ┌─┐ ┌─┐ ├─┐ ┌─┐ ┌┐ ┌┐ ┐ ┌   ├──┘ ┐        │ │ │ ┐ ┌─┤ ┬─┐ ┐ ┌─┬ ├─┐ ┼
-    │  │  ┌─┤ └─┐ │ │ │ │ ├─┘ │  │  │ │   │    │   ──   │ │ │ │ │ │ │ │ │ │ │ │ │ │
-    ┴  └┘ └─┴ └─┘ ├─┘ └─┘ ┴─┘ ┴  ┴  └─┤   ┴    ┴        ┴   ┴ ┴ └─┴ ┴ ┴ ┴ └─┤ ┴ ┴ └┘
-                  ┴        ──────Menu─┘                     ──────Commander─┘
-````
-Use Midnight Commander (mc) user menu with tmux for friendly way do some jobs and related stuff
+User menu for Midnight Commander (mc) with tmux for friendly way do some jobs and related stuff
 
 ```bash
 sudo apt-get install exiv2 mc rsync sshpass tmux
