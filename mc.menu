@@ -22,16 +22,16 @@ d Create ~/mc.menu
 d Compil mc.menu
   cat ~/rpi/mc.menu ~/rpi/mc.menu.bin ~/rpi/mc.menu.ext ~/rpi/mc.menu.mnt ~/rpi/mc.menu.opt > ~/rpi/menu
 
-+ f !config
++ f config
 x source ~/.tmux.conf
   tmux source-file ~/.tmux.conf
   tmux send -t B 'tmux send -t A F2' ENTER
 
-+ f !config
++ f config
 f create new file
   touch %{File name}
 
-+ f !config
++ f config
 t set auto date & time
   sudo /etc/init.d/ntp stop
   sudo ntpd -q -g
@@ -53,7 +53,7 @@ g git push
   git commit -m "update"
   git push
 
-+ F [_Github_] & t t
++ F github & t t
 d git push force
   for f in %t; do
     git add "$f"
@@ -62,11 +62,11 @@ d git push force
   git commit -m "$PARAM"
   git push origin master --force
 
-+ f [_Github_]
++ f github
 h git pull
   git pull
 
-+ f [_Github_]
++ f github
 d git discard the local changes
   git reset --hard
   git pull
@@ -79,7 +79,20 @@ d git discard the local changes
  #    # #    # #    # #   #  #    # #
  #####  #    #  ####  #    #  ####  #
 
-+ f !backup
+
++ f backup
+u import cardreader videos & merge & upload to youtube
+  sudo mkdir /media/cardreader
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
+  sudo umount /media/cardreader
+  FILES=`find /media/hdd/youtube-upload/*.MP4 -type f -printf "%f + " | sort`
+  #echo $FILES
+  cd /media/hdd/youtube-upload
+  mkvmerge -o out.mkv $FILES
+  while ! youtube-upload --title="-" --category="Entertainment" --privacy="private" out.mkv ; do :; done
+
++ f backup
 f backup photos & videos to freebox hdd
   if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
@@ -87,7 +100,7 @@ f backup photos & videos to freebox hdd
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
 
-+ f !backup
++ f backup
 h backup photos & videos to freebox ext hdd
   if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
@@ -95,7 +108,7 @@ h backup photos & videos to freebox ext hdd
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
 
-+ f !backup
++ f backup
 h restore photos & videos from freebox ext hdd
   if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
@@ -103,23 +116,23 @@ h restore photos & videos from freebox ext hdd
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
 
-+ f !backup
++ f backup
   w Backup Windows to Raspberry Pi
   rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
 
-+ f !backup
++ f backup
   w Backup Raspberry Pi to Windows
-rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
+  rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 
-+ f !backup
++ f backup
 1 backup photos to flickr #1
   /opt/flickr-uploader#1/uploadr.py
 
-+ f !backup
++ f backup
 2 backup photos to flickr #2
   /opt/flickr-uploader#2/uploadr.py
 
-+ f !backup
++ f backup
 y backup videos from youtube playlist to youtube-dl
   # echo "Playlist=<<id>>" >> ~/.config.ini
   # todo : compare backup videos to /media/videos and save it if size higher.
@@ -134,7 +147,7 @@ y backup videos from youtube playlist to youtube-dl
   --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   done
 
-+ f !backup
++ f backup
 y restore photos from flickr
   source ~/config.ini
   ~/.bin/flickr-download/flickr_download/flick_download.py -k $flickr_api_key -s $flickr_api_secret -u $flickr_user -t -l
@@ -147,15 +160,15 @@ y restore photos from flickr
  #    #   #   #    #   #   #      #    #
   ####    #    ####    #   ###### #    #
 
-+ f !system & t r
++ f system & t r
 • reboot
   sudo reboot
 
-+ f !system & t r
++ f system & t r
 • shutdown
   sudo halt
 
-+ f !system & t r
++ f system & t r
 • update
   sudo apt-get -y autoremove
   sudo apt-get -y update
@@ -163,27 +176,27 @@ y restore photos from flickr
   sudo apt-get -y upgrade
   sudo rpi-update
 
-+ f !system & t r
++ f system & t r
 • mount-key
   if [ ! -d /media/usbkey ] ; then sudo mkdir /media/usbkey ; fi
   sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
-+ f !system & t r
++ f system & t r
 • mount-cardreader
   if [ ! -d /media/cardreader ] ; then sudo mkdir /media/cardreader ; fi
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
 
-+ f !system & t r
++ f system & t r
 • mount-hdd
   if [ ! -d /media/hdd ]; then sudo mkdir /media/hdd ; fi
   sudo mount LABEL=RaspberryPi /media/hdd
 
-+ f !system & t r
++ f system & t r
 • mount-freebox
   if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
 
-+ f !system & t r
++ f system & t r
 • mount-iphone
   usbmuxd
   if [ ! -d /media/usbkey ] ; then sudo mkdir /media/iphone ; fi
@@ -191,14 +204,14 @@ y restore photos from flickr
   idevicepair pair
   sudo ifuse /media/iphone
 
-+ f !system & t r
++ f system & t r
 • format hdd drive
   #Attention lignes suivantes pour formatter
   #sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
   #sudo e2label /dev/sda1 RaspberryPi
   #sudo chown -R pi:pi /media/hdd
 
-+ f !system & t r
++ f system & t r
 • create fstab file
   echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
   echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
@@ -300,7 +313,7 @@ d upload to Gdrive
 
  # ls -l /dev/disk/by-id
 
-+ f !import
++ f import
 p import camera photos
   ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
@@ -311,7 +324,7 @@ p import camera photos
   sudo umount /media/panasonic
   if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
 
-
++ f import
 v import camera videos
   ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
   VIDEOS="/media/hdd/youtube-upload"
@@ -321,7 +334,7 @@ v import camera videos
   cp -v /media/panasonic/DCIM/???_PANA/*.MP4 $VIDEOS
   sudo umount /media/panasonic
 
-+ f !import
++ f import
 g import gopro
   ID="/dev/disk/by-id/usb-GoPro_Storage_123456789ABC-0:0-part1"
   sudo mkdir /media/gopro
@@ -333,7 +346,7 @@ g import gopro
   rm /tmp/copy-gopro
   sudo umount /media/gopro
 
-+ f !import
++ f import
 i import iphone videos
   usbmuxd
   VIDEOS="/media/hdd/youtube-upload"
@@ -347,7 +360,7 @@ i import iphone videos
   sudo chown -R pi:pi $VIDEOS
   youtube_upload
 
-+ f !import
++ f import
 u import usbkey
   ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_08606E6D3FDEBF602707123F-0:0-part1"
   VIDEOS="/media/hdd/youtube-upload"
@@ -356,7 +369,7 @@ u import usbkey
   rsync --archive --info=progress2 /media/usbkey/ $VIDEOS
   sudo umount /media/usbkey
 
-+ f !import
++ f import
 u import cardreader photos
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
   PHOTOS="$GDRIVE/Google Photos"
@@ -366,7 +379,7 @@ u import cardreader photos
   sudo umount /media/cardreader
   if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
 
-+ f !import
++ f import
 u import camera photos to gdrive
   ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
   PHOTOS="/media/hdd/Drive/Camera"
@@ -396,38 +409,39 @@ u import camera photos to gdrive
  #    # #    # #    # # #    #
  #    #  ####   ####  #  ####
 
++ f music
 r ♫ Streaming Soundtracks
   clear
   castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
 
-+ F Musics & t t
++ F music & t t
 c ♫ castnow
   clear
   echo %t
   castnow %t
 
-+ t t
++ F music & t t
 a ♫ upload to gmusic account 1
   clear ; cd %d ; set %t
   for d in "$@"; do
     gmupload -c ~/.local/share/gmusicapi/oauth.1 "$d"
   done
 
-+ F [_Musics_] & t t
++ F music & t t
 b ♫ upload to gmusic account 2
   clear ; cd %d ; set %t
   for d in "$@"; do
     gmupload -c ~/.local/share/gmusicapi/oauth.2 "$d"
   done
 
-+ F [_Musics_] & t t
++ F music & t t
 c ♫ upload to gmusic account 3
   clear ; cd %d ; set %t
   for d in "$@"; do
     gmupload -c ~/.local/share/gmusicapi/oauth.3 "$d"
   done
 
-+ F [_Musics_] & t t
++ F musics & t t
 c ♫ download all music from gmusic
   account=%{Give number accounts}
   gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
@@ -442,7 +456,7 @@ c ♫ download all music from gmusic
  #      #    #  ####    #    ####   ####
 
 
-+ f !photos
++ f photos
 P 𝓟 Take Raspberry Pi Photo
   tput cup 0 0 ; clear
   rm /media/hdd/photo.jpg
@@ -451,14 +465,14 @@ P 𝓟 Take Raspberry Pi Photo
   curl -s -X POST https://api.telegram.org/bot$apiToken/sendPhoto -d photo="/media/hdd/photo.jpg" -d chat_id=$userChatId
   read -r
 
-+ f !photos
++ f photos
 F 𝓟 Found double photos
   sudo apt-get -y install fslint
   /usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
   fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
   ~/scripts/iftt-maker "Search double Photos" "Finish"
 
-+ T !photos & t r
++ T photos & t r
 t 𝓟 Tidy GDrive Photos (1)
   rm /tmp/exif.log
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
@@ -480,7 +494,7 @@ t 𝓟 Tidy GDrive Photos (1)
   mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
   done
 
-+ T !photos & t t
++ T photos & t t
 t Test Exif Photos (2)
   #Need to select every year
   LOGFILE="/home/pi/exif.log"
@@ -544,7 +558,7 @@ t Test Exif Photos (2)
   ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
   mcedit -x $LOGFILE
 
-+ T !photos & t r
++ T photos & t r
 t Correct Exif Photos (3)
   #Change Exif Date for all photos listed in ~/exif-change.log
   FILE=~/exif-change.log
@@ -557,7 +571,7 @@ t Correct Exif Photos (3)
   done <"$FILE"
   rm ~/exif-change.log
 
-+ T !photos & t t
++ T photos & t t
 t Rename New Photos (4)
   #use this when adding new photos in YEAR directory
   #need to finished
@@ -590,7 +604,7 @@ t Rename New Photos (4)
    #touch -t "${YEAR}0000.00" "$DIR"
   done
 
-+ T !photos & t t
++ T photos & t t
 r Rename Photos only [XXXX] dir (6)
   clear ; cd %d; set %t
   for f in "$@"; do
@@ -627,18 +641,17 @@ r Rename Photos only [XXXX] dir (6)
   shift
   done
 
-
-+ T !photos & t t
++ T photos & t t
 r Change Exif (Tests 6B)
  . ~/rpi/functions;clear
  Change_Exif %d %t
 
-+ T !photos & t t
++ T photos & t t
 g Upload Photos to gPhotos #1 (7)
  . ~/rpi/functions;clear
  Gphotos $user_1 $pwd_1 %d %t
 
-+ T !photos & t t
++ T photos & t t
 g Upload Photos to gPhotos #2 (8)
  . ~/rpi/functions;clear
  Gphotos $user_2 $pwd_2 %d %t
@@ -667,7 +680,7 @@ s Tiff to jpg with sharp
     shift
   done
 
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t r
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 e Affiche EXIF de la photo
   clear
   exiv2 -pv %f
@@ -680,7 +693,7 @@ e Affiche EXIF de la photo
   echo "$D"
   printf 'Press [Enter] key to continue...'
 
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t r
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 d Delete EXIF from pics
   set %t
   while [ -n "$1" ]; do
@@ -704,22 +717,22 @@ e Change Photo EXIF
   #  #  # #    # #      #    # #    #
    ##   # #####  ######  ####   ####
 
-+ f Videos
-𝓥 download youtube url
++ f videos
+d 𝚟𝚒𝚍𝚎𝚘 download youtube url
   clear ; cd /media/hdd/reserve
   url=%{Copy youtube url}
   python ~/youtube-dl/youtube-dl "$url"
   #youtube-dl "$url"
 
 + f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
-𝓥 upload to youtube
+u 𝚟𝚒𝚍𝚎𝚘 upload to youtube
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
   done
 
 + f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t t
-𝓥 merge mkv videos
+m 𝚟𝚒𝚍𝚎𝚘 merge mkv videos
   clear ; sudo apt-get install mkvtoolnix
   cd %d ; set %t
   FILES="$1"; shift
@@ -729,7 +742,7 @@ e Change Photo EXIF
   mkvmerge -o out.mkv $FILES
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t r
-𝓥 cut video [no screen]
+c 𝚟𝚒𝚍𝚎𝚘 cut video [no screen]
   #! /usr/bin/bash
   clear
   read -e -p "Start : " -i "00:00:00" start
@@ -738,8 +751,8 @@ e Change Photo EXIF
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
   iftt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
-+ f Videos
-𝓥 create stopmotion
++ f videos
+s 𝚟𝚒𝚍𝚎𝚘 create stopmotion
   clear
   # - 720p (1280×720)
   # – 1080p (1920×1080) full HD
@@ -801,11 +814,11 @@ l tmux last window
    #   #    # #   #  #   #  #      #   ##   #
    #    ####  #    # #    # ###### #    #   #
 
-+ f !torrent
++ f torrent
 t stop transmission
   sudo service transmission-daemon stop
 
-+ f !torrent
++ f torrent
 v add/remove torrents
   clear
   sudo service transmission-daemon restart
@@ -932,7 +945,7 @@ f Automatic Merge pdf files
  #    # #    # #   #  # #        #   #    #
   ####   ####  #    # # #        #    ####
 
-+ ! t t
++ f music
 r View SST
   #sudo apt-get install recode libxml2-utils
   #at << EOF > /tmp/request.xml
