@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ln -sf ~/rpi/menu ~/.config/mc/menu
+ln -sf ~/rpi/mc.menu ~/.config/mc/menu
 ln -sf ~/rpi/.tmux.conf ~/.tmux.conf
 
 if [ ! -d ~/mc.menu ] ; then mkdir ~/mc.menu ; fi
@@ -53,4 +53,4 @@ fi
 
 tmux select-window -t π
 tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
-tmux attach -t pi:1
+tmux attach -t pi:2
