@@ -9,4 +9,5 @@ cd rpi
 .\rescue
 ```
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) - Copyright (c) 2014-2018 Emmanuel CHARETTE
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+Copyright (c) 2014-2018 Emmanuel CHARETTE
