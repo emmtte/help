@@ -8,6 +8,6 @@ git clone git@github.com:ManuCart/Raspberry-Pi.git ~/rpi
 cd rpi
 .\rescue
 ```
-[![GitHub stars](https://img.shields.io/github/stars/Naereen/StrapDown.js.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Naereen/StrapDown.js/stargazers/)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 Copyright (c) 2014-2018 Emmanuel CHARETTE
