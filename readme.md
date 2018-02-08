@@ -1,3 +1,4 @@
+[![](https://img.shields.io/badge/rpi-raspberry_pi-c51a4a.svg?style=for-the-badge)](https://github.com/tmux/tmux)
 [![](https://img.shields.io/badge/mc-midnight_commander-blue.svg?style=for-the-badge)](https://github.com/MidnightCommander/mc)
 [![](https://img.shields.io/badge/tm-tmux-green.svg?style=for-the-badge)](https://github.com/tmux/tmux)
 
