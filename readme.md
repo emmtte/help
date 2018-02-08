@@ -1,3 +1,5 @@
+[https://img.shields.io/badge/mc-midnight_commander-blue.svg?style=for-the-badge](https://github.com/MidnightCommander/mc)
+[https://img.shields.io/badge/tm-tmux-green.svg?style=for-the-badge](https://github.com/tmux/tmux)
 
 User menu for Midnight Commander (mc) with tmux for friendly way do some jobs and related stuff
 
