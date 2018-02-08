@@ -11,5 +11,5 @@ cd rpi
 .\rescue
 ```
 
-[![](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![](https://img.shields.io/badge/(c)-2014--2018-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/badge/(c)_2014--2018-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
