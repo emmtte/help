@@ -1,5 +1,11 @@
 
-User menu for Midnight Commander (mc) with tmux for friendly way do some jobs and related stuff
+# PERSONAL USER MENU
+
+[![](https://img.shields.io/badge/rpi-raspberry_pi-c51a4a.svg?style=for-the-badge)](https://www.raspberrypi.org/downloads/raspbian/)
+[![](https://img.shields.io/badge/mc-midnight_commander-blue.svg?style=for-the-badge)](https://github.com/MidnightCommander/mc)
+[![](https://img.shields.io/badge/tm-tmux-green.svg?style=for-the-badge)](https://github.com/tmux/tmux)
+
+### Installation
 
 ```bash
 sudo apt-get install exiv2 mc rsync sshpass tmux
@@ -9,4 +15,5 @@ cd rpi
 .\rescue
 ```
 
-MIT License - Copyright (c) 2014-2018 Emmanuel CHARETTE
+[![](https://img.shields.io/badge/(c)_2014--2018-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
