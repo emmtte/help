@@ -6,10 +6,15 @@
 #source ~/config.ini
 #curl -s -X POST https://api.telegram.org/bot$apiToken/sendMessage -d text="$1" -d chat_id=$userChatId -d parse_mode="Markdown"
 
-+ ! f config
++ ! f backup | ! f system | ! f import | ! f music | ! f torrent | ! f photos | ! f install | ! f github
 c goto mc.menu
   N=`tmux display-message -p '#W'`
   tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/mc.menu ENTER' ENTER
+
+t test
+  clear
+  echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
+
 
 + f config
 d Create ~/mc.menu
@@ -19,8 +24,8 @@ d Create ~/mc.menu
   touch "system" "tools" "videos" "torrent" "photos" "install"
 
 + f config
-d Compil mc.menu
-  cat ~/rpi/mc.menu ~/rpi/mc.menu.bin ~/rpi/mc.menu.ext ~/rpi/mc.menu.mnt ~/rpi/mc.menu.opt > ~/.config/mc/menu
+c create media sub-folders
+  sudo mkdir /media/hdd /media/freebox /media/cardreader /media/usbkey /media/iphone /media/camera /media/gopro
 
 + f config
 x source ~/.tmux.conf
@@ -82,7 +87,6 @@ d git discard the local changes
 
 + f backup
 u import cardreader videos & merge & upload to youtube
-  sudo mkdir /media/cardreader
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
   cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
   sudo umount /media/cardreader
@@ -94,7 +98,6 @@ u import cardreader videos & merge & upload to youtube
 
 + f backup
 f backup photos & videos to freebox hdd
-  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
   mkdir /media/freebox/photos /media/freebox/videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
@@ -102,7 +105,6 @@ f backup photos & videos to freebox hdd
 
 + f backup
 h backup photos & videos to freebox ext hdd
-  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
@@ -110,7 +112,6 @@ h backup photos & videos to freebox ext hdd
 
 + f backup
 h restore photos & videos from freebox ext hdd
-  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   #mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
@@ -131,21 +132,6 @@ h restore photos & videos from freebox ext hdd
 + f backup
 2 backup photos to flickr #2
   /opt/flickr-uploader#2/uploadr.py
-
-+ f backup
-y backup videos from youtube playlist to youtube-dl
-  # echo "Playlist=<<id>>" >> ~/.config.ini
-  # todo : compare backup videos to /media/videos and save it if size higher.
-  . ~/config.ini;clear
-  sudo apt-get -y install libavcodec-extra libav-tools
-  if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
-  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
-  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
-  while exist /media/hdd/youtube-dl/*.part
-  do
-  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
-  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
-  done
 
 + f backup
 y restore photos from flickr
@@ -178,28 +164,23 @@ y restore photos from flickr
 
 + f system & t r
 • mount-key
-  if [ ! -d /media/usbkey ] ; then sudo mkdir /media/usbkey ; fi
   sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
 + f system & t r
 • mount-cardreader
-  if [ ! -d /media/cardreader ] ; then sudo mkdir /media/cardreader ; fi
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
 
 + f system & t r
 • mount-hdd
-  if [ ! -d /media/hdd ]; then sudo mkdir /media/hdd ; fi
   sudo mount LABEL=RaspberryPi /media/hdd
 
 + f system & t r
 • mount-freebox
-  if [ ! -d /media/freebox ] ; then sudo mkdir /media/freebox ; fi
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
 
 + f system & t r
 • mount-iphone
   usbmuxd
-  if [ ! -d /media/usbkey ] ; then sudo mkdir /media/iphone ; fi
   sudo umount /media/iphone
   idevicepair pair
   sudo ifuse /media/iphone
@@ -283,7 +264,7 @@ c download from google drive
   cd "/media/hdd/Drive"
   if ! drive pull --no-prompt "$param" ; then ifttt "ERROR Google pull files" "ERROR PULL DRIVE"; return; fi
 
-+ f & t t
++ f * & t t
 b move to "Freebox Server"
  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
  clear ; cd %d ; set %t
@@ -315,7 +296,7 @@ d upload to Gdrive
 
 + f import
 p import camera photos
-  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
   PHOTOS="$GDRIVE/Google Photos"
   sudo mkdir /media/panasonic
@@ -326,18 +307,16 @@ p import camera photos
 
 + f import
 v import camera videos
-  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
   VIDEOS="/media/hdd/youtube-upload"
   mkdir $VIDEOS
-  sudo mkdir /media/panasonic
-  sudo mount $ID /media/panasonic
-  cp -v /media/panasonic/DCIM/???_PANA/*.MP4 $VIDEOS
-  sudo umount /media/panasonic
+  sudo mount $ID /media/camera
+  cp -v /media/camera/DCIM/???_PANA/*.MP4 $VIDEOS
+  sudo umount /media/camera
 
 + f import
 g import gopro
-  ID="/dev/disk/by-id/usb-GoPro_Storage_123456789ABC-0:0-part1"
-  sudo mkdir /media/gopro
+  ID="/dev/disk/by-id/usb-GoPro_Storage_*-0:0-part1"
   sudo mount $ID /media/gopro
   mkdir /media/hdd/gopro /media/hdd/gopro/photos /media/hdd/gopro/videos
   cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
@@ -350,7 +329,6 @@ g import gopro
 i import iphone videos
   usbmuxd
   VIDEOS="/media/hdd/youtube-upload"
-  sudo mkdir /media/iphone
   sudo umount /media/iphone
   echo "Please connect iphone, accept the connection and enter password"
   read -e -p "Press any key to continue..." key
@@ -362,7 +340,7 @@ i import iphone videos
 
 + f import
 u import usbkey
-  ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_08606E6D3FDEBF602707123F-0:0-part1"
+  ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_*-0:0-part1"
   VIDEOS="/media/hdd/youtube-upload"
   sudo mkdir /media/usbkey
   sudo mount $ID /media/usbkey
@@ -381,7 +359,7 @@ u import cardreader photos
 
 + f import
 u import camera photos to gdrive
-  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_0000000000000000000F1104040931-0:0-part1"
+  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
   PHOTOS="/media/hdd/Drive/Camera"
   TMP="/media/hdd/tmp"
   clear
@@ -441,11 +419,16 @@ c ♫ upload to gmusic account 3
     gmupload -c ~/.local/share/gmusicapi/oauth.3 "$d"
   done
 
-+ F musics & t t
++ F music & t t
 c ♫ download all music from gmusic
   account=%{Give number accounts}
   gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
   iftt "Rasperry Pi" "Gmusic download done"
+
++ f *.wav & F music & t t & T t
+c ♫ wav to mp3
+  clear ; cd %d ; set %t
+  for d in "$@"; do lame -b 320 -q 0 -h "$1" "$1.mp3"; done
 
 
  #####  #    #  ####  #####  ####   ####
@@ -457,7 +440,7 @@ c ♫ download all music from gmusic
 
 
 + f photos
-P 𝓟 Take Raspberry Pi Photo
+P Take Raspberry Pi Photo
   tput cup 0 0 ; clear
   rm /media/hdd/photo.jpg
   raspistill -v -w 1280 -rot 270 -o /media/hdd/photo.jpg
@@ -466,13 +449,13 @@ P 𝓟 Take Raspberry Pi Photo
   read -r
 
 + f photos
-F 𝓟 Found double photos
+F Found double photos
   sudo apt-get -y install fslint
   /usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
   fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
   ~/scripts/iftt-maker "Search double Photos" "Finish"
 
-+ T photos & t r
++ t photos & T t
 t 𝓟 Tidy GDrive Photos (1)
   rm /tmp/exif.log
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
@@ -494,17 +477,18 @@ t 𝓟 Tidy GDrive Photos (1)
   mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
   done
 
-+ T photos & t t
++ t photos & T d
 t Test Exif Photos (2)
   #Need to select every year
+  tput cup 0 0 ; clear ; cd /media/hdd/photos/
   LOGFILE="/home/pi/exif.log"
-  clear ; set %t
+  clear ; set %T
   echo "$@"
   find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
-  printf "\e[94mYEAR:$1\e[0m\n\n"
+  tput setaf 6 ; echo -n "[$1] " ; tput sgr0
   #Find no JPEG Files
   find "$DIR" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do
-  printf "\e[93m[NO JPEG] : $(basename "$FILE")\e[0m\n"
+  echo "$(tput setaf 1)[NO JPEG   ]$(tput sgr 0) $(basename "$FILE")"
   echo "NO JPEG FOR $FILE" >> $LOGFILE
   done
   #Next control
@@ -515,47 +499,46 @@ t Test Exif Photos (2)
   if [ -z "$EXIF" ]; then
     NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
     #exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 04:00:00" "$FILE"
-    printf "\e[93m[EMPTY EXIF] : $(basename "$FILE")\e[0m\n"
+    echo "$(tput setaf 1)[EMPTY EXIF]$(tput sgr 0) $(basename "$FILE")"
     echo "NO EXIF FOR $FILE" >> $LOGFILE
   fi
   # Tests if jpg files are in the correct folder
   IMG_DATE=`echo "$EXIF" | cut -d ' ' -f 1 | tr ':' '-'`
   IMG_YYMM=`echo "$IMG_DATE" | cut -d '-' -f 1,2 | tr '-' ' '`
-  IMG_YYMM_LAST=`date -d "$IMG_DATE -1 month" +"%Y %m"`
-  IMG_YYMM_NEXT=`date -d "$IMG_DATE +1 month" +"%Y %m"`
+  IMG_YYMM_LAST=`date -d "$IMG_DATE -1 month" "+%%Y %%m"`
+  IMG_YYMM_NEXT=`date -d "$IMG_DATE +1 month" "+%%Y %%m"`
   DIR_YYMM=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
   if [ "$DIR_YYMM" != "$IMG_YYMM" ] && [ "$DIR_YYMM" != "$IMG_YYMM_LAST" ] && [ "$DIR_YYMM" != "$IMG_YYMM_NEXT" ]; then
-     printf "\e[93m[DIR FAIL] : $(basename "$FILE")\e[0m\n"
+     echo "$(tput setaf 1)[DIR FAIL  ]$(tput sgr 0) $(basename "$FILE")"
      echo "NOT CORRECT $EXIF FOR $FILE" >> $LOGFILE
      echo "/media/hdd/photos/$FILE" >> ~/exif-change.log
   fi
   # Test if not multiple Exif.Photo.DateTimeOriginal
   if [[ "$EXIF" == *$'\n'* ]] ; then
-    printf "\e[91m[EXIF FAIL] : $(basename "$FILE")\e[0m\n"
+    echo "$(tput setaf 1)[EXIF FAIL ]$(tput sgr 0) $(basename "$FILE")"
     echo "EXIF FAIL : $EXIF - $FILE" >> $LOGFILE
     #exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$FILE"
   fi
   # Test if not TIME = 00:00
   IMG_TIME=`echo "$EXIF" | cut -d ' ' -f 2`
   if [ "$IMG_TIME" == "00:00:00" ] ; then
-    printf "\e[93m[TIME FAIL] : $(basename "$FILE")\e[0m\n"
+    echo "$(tput setaf 1)[TIME FAIL ]$(tput sgr 0) $(basename "$FILE")"
     echo "TIME FAIL : $EXIF - $FILE" >> $LOGFILE
     #exiv2 -a 4 adjust "$FILE"
   fi
   # Test if photo not too big
   IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
-  if [ $(( $X * $Y )) -gt 100000000 ] ; then.
-    printf "\e[91m[Pixel Dimension FAIL] $(basename "$FILE")\e[0m\n"
+  if [ $(( $X * $Y )) -gt 100000000 ] ; then
+    echo "$(tput setaf 1)[PIXEL FAIL]$(tput sgr 0) $(basename "$FILE")"
     echo "PIX  FAIL : $FILE" >> $LOGFILE
   fi
-  printf "\e[96m$FILE\n\e[97m$EXIF :: [$IMG_YYMM_LAST]-[$IMG_YYMM]-[$IMG_YYMM_NEXT] :: $DIR_YYMM\e[0m\n"
+  echo "$(tput setaf 3) $FILE $(tput sgr 0)"
+  echo "$EXIF [$IMG_YYMM_LAST] [$IMG_YYMM] [$IMG_YYMM_NEXT] $DIR_YYMM"
   FILE_DATE=$(echo $EXIF | tr -d ":" | tr -d " ")
-  #touch -t ${EXIF:0:10}.${EXIF:11:14} "$FILE"
-  echo "FILE_DATE : $FILE_DATE"
-  echo "----------------${FILE_DATE:0:10}.${FILE_DATE:10:14}-------------------"
+  #touch -t ${EXIF:0:10}.${EXIF:10:14} "$FILE"
   done
   done
-  ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
+  #ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
   mcedit -x $LOGFILE
 
 + T photos & t r
@@ -718,19 +701,40 @@ e Change Photo EXIF
    ##   # #####  ######  ####   ####
 
 + f videos
-d 𝚟𝚒𝚍𝚎𝚘 download youtube url
-  clear ; cd /media/hdd/reserve
-  url=%{Copy youtube url}
-  python ~/youtube-dl/youtube-dl "$url"
-  #youtube-dl "$url"
+d tv-dl
+  mcedit -x /media/hdd/tmp/youtube.txt
+  clear ; cd /media/hdd/youtube-dl
+  while IFS=, read url out ; do
+    if [[ $url == h* ]]; then
+    python ~/youtube-dl/youtube-dl -o "$out" $url
+    fi
+  done < /media/hdd/tmp/youtube.txt
 
 + f videos
-d 𝚟𝚒𝚍𝚎𝚘 download multiple youtube url (see /media/hdd/tmp/youtube.txt)
-  clear ; cd /media/hdd/reserve
-  while IFS= read LINE
-   do
-    python ~/youtube-dl/youtube-dl "$LINE"
-  done < /media/hdd/tmp/youtube.txt
+y yt-dl
+  . ~/config.ini;clear
+  if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
+  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  while exist /media/hdd/youtube-dl/*.part
+  do
+  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  done
+
++ f *.m4a | f *.M4A & t t
+m conv m4a to aac
+  set %t
+  aac="$(basename "$1" | cut -d. -f1).aac"
+  echo $name
+  avconv -i "$1" -c copy -map 0:a:0 "$aac"
+
++ f *.mp4 | f *.MP4 & t t
+m 𝚟𝚒𝚍𝚎𝚘 mux mp4 and aac to mkv
+  set %t
+  aac="$(basename "$1" | cut -d. -f1).aac"
+  mkv="$(basename "$1" | cut -d. -f1).mkv"
+  MP4Box -add "$1" -add "$aac" "$mkv"
 
 + f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
 u 𝚟𝚒𝚍𝚎𝚘 upload to youtube
@@ -740,9 +744,8 @@ u 𝚟𝚒𝚍𝚎𝚘 upload to youtube
   done
 
 + f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t t
-m 𝚟𝚒𝚍𝚎𝚘 merge mkv videos
-  clear ; sudo apt-get install mkvtoolnix
-  cd %d ; set %t
+m merge mkv
+  clear ; cd %d ; set %t
   FILES="$1"; shift
   for FILE in "$@"; do
     FILES="$FILES + $FILE"
@@ -750,7 +753,7 @@ m 𝚟𝚒𝚍𝚎𝚘 merge mkv videos
   mkvmerge -o out.mkv $FILES
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t r
-c 𝚟𝚒𝚍𝚎𝚘 cut video [no screen]
+c cut video [no screen]
   #! /usr/bin/bash
   clear
   read -e -p "Start : " -i "00:00:00" start
@@ -768,12 +771,9 @@ s 𝚟𝚒𝚍𝚎𝚘 create stopmotion
   # – 2160p (3840×2160) 4K
   # – 4320p (7680×4320) 8K
   ###GoPro 2592x1944 => 1440p(2K):2560x1440
-  #CUT="2560x1440+16+0" #Top
-  CUT="2560x1440+16+252" #Center
-  #CUT="2560x1440+16+504" #Bas
   ###DMC TZ40 ????x???? => 1440p(2K):2560x1440
   #CUT="2560x1440+16+0" #Top
-  #CUT="2560x1440+16+252" #Center
+  CUT="2560x1440+16+252" #Center
   #CUT="2560x1440+16+504" #Bas
   ###Sony 4000x3000 => 2160p(4K):3840x2160
   #CUT="3840x2160+80+0" #Top
@@ -787,7 +787,7 @@ s 𝚟𝚒𝚍𝚎𝚘 create stopmotion
   ls -1 CROP/*-CROP.JPG >  files.lst
   mpv mf://@files.lst -mf-type=jpg -mf-fps=10 -ovc=rawvideo -no-audio -o stopmotion.avi
   while ! youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi ; do :; done
-  iftt "Raspberry Pi" "Stopmotion created"
+  ifttt "Raspberry Pi" "Stopmotion created"
 
  ##### #    # #    # #    #
    #   ##  ## #    #  #  #
@@ -1309,6 +1309,7 @@ Install vbox
 + f install
 Install youtube-dl
   # https://github.com/rg3/youtube-dl
+  sudo apt-get -y install libavcodec-extra libav-tools
   sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
   sudo chmod a+rx /usr/local/bin/youtube-dl
   echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
