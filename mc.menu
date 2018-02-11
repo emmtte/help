@@ -67,7 +67,7 @@ d git push force
   git commit -m "$PARAM"
   git push origin master --force
 
-+ f github
++ F github
 h git pull
   git pull
 
