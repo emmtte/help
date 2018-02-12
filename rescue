@@ -2,6 +2,7 @@
 
 ln -sf ~/rpi/mc.menu ~/.config/mc/menu
 ln -sf ~/rpi/tmux.conf ~/.tmux.conf
+ln -sf ~/rpi/bash_aliases ~/.bash_aliases
 
 if [ ! -d ~/mc.menu ] ; then mkdir ~/mc.menu ; fi
 cd ~/mc.menu

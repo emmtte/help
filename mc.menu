@@ -3,8 +3,6 @@
 #
 # figlet -f banner backup
 #
-#source ~/config.ini
-#curl -s -X POST https://api.telegram.org/bot$apiToken/sendMessage -d text="$1" -d chat_id=$userChatId -d parse_mode="Markdown"
 
 + ! f backup | ! f system | ! f import | ! f music | ! f torrent | ! f photos | ! f install | ! f github
 c goto mc.menu
@@ -87,14 +85,15 @@ d git discard the local changes
 
 + f backup
 u import cardreader videos & merge & upload to youtube
+  clear
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
   cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
   sudo umount /media/cardreader
-  FILES=`find /media/hdd/youtube-upload/*.MP4 -type f -printf "%f + " | sort`
-  #echo $FILES
   cd /media/hdd/youtube-upload
+  FILES=`find *.MP4 -type f -printf "%%f + " | sort`
   mkvmerge -o out.mkv $FILES
-  while ! youtube-upload --title="-" --category="Entertainment" --privacy="private" out.mkv ; do :; done
+  youtube-upload --title="-" --category="Entertainment" --privacy="private" out.mkv
+  ifttt "Backup done" "import cardreader videos & merge & upload to youtube"
 
 + f backup
 f backup photos & videos to freebox hdd
@@ -453,7 +452,7 @@ F Found double photos
   sudo apt-get -y install fslint
   /usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
   fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
-  ~/scripts/iftt-maker "Search double Photos" "Finish"
+  ifttt "Search double Photos" "Finish"
 
 + t photos & T t
 t 𝓟 Tidy GDrive Photos (1)
@@ -538,7 +537,7 @@ t Test Exif Photos (2)
   #touch -t ${EXIF:0:10}.${EXIF:10:14} "$FILE"
   done
   done
-  #ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
+  ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
   mcedit -x $LOGFILE
 
 + T photos & t r
@@ -760,7 +759,7 @@ c cut video [no screen]
   read -e -p "Stop  : " -i "00:00:00" stop
   echo "Please Wait..."
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
-  iftt "Rasperry Pi" "La vidéos %d.avi est coupée"
+  ifttt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 + f videos
 s 𝚟𝚒𝚍𝚎𝚘 create stopmotion
@@ -898,7 +897,7 @@ f Merge Starred Drive Pdf files
   if ! drive push --no-prompt "Documents/$FILE" ; then ~/scripts/iftt-maker "Merge PDF" "Error push document" ; exit; fi
   drive unstar --no-prompt "Documents/$FILE"
   drive trash --starred
-  ~/scripts/iftt-maker "Raspberry Pi" "Starred Files added to $FILE"
+  ifttt "Raspberry Pi" "Starred Files added to $FILE"
 
 + f *.pdf | f *.PDF
 f Automatic Merge pdf files
@@ -1144,14 +1143,6 @@ Install hue-cli
   sudo npm install -g hue-cli
   hue search
   hue -H 192.168.0.10 register
-
-+ f install
-Install ifttt maker channel
-  # https://ifttt.com/maker
-  # echo "{key}" > ~/.maker_channel_key
-  # curl -X POST https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
-  # curl -X POST -H "Content-Type: application/json" -d '{"value1":"1","value2":"2","value3":"3"}'
-  #https://maker.ifttt.com/trigger/Raspberry_Pi/with/key/`cat ~/.maker_channel_key`
 
 + f install
 Install iphone
