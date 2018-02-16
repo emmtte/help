@@ -1,3 +1,6 @@
+export VISUAL=/usr/bin/mcedit -x
+export EDITOR=/usr/bin/mcedit -x
+
 if [ -f ~/config.ini ] ; then . ~/config.ini ; fi
 
 function telegram {

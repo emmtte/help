@@ -145,54 +145,54 @@ y restore photos from flickr
  #    #   #   #    #   #   #      #    #
   ####    #    ####    #   ###### #    #
 
-+ f system & t r
-• reboot
++ f system & t t
+reboot
   sudo reboot
 
-+ f system & t r
-• shutdown
++ f system & t t
+shutdown
   sudo halt
 
-+ f system & t r
-• update
++ f system & t t
+update
   sudo apt-get -y autoremove
   sudo apt-get -y update
   sudo apt-get -y dist-upgrade
   sudo apt-get -y upgrade
   sudo rpi-update
 
-+ f system & t r
-• mount-key
++ f system & t t
+mount-key
   sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
-+ f system & t r
-• mount-cardreader
++ f system & t t
+mount-cardreader
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
 
-+ f system & t r
-• mount-hdd
++ f system & t t
+mount-hdd
   sudo mount LABEL=RaspberryPi /media/hdd
 
 + f system & t r
-• mount-freebox
+mount-freebox
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
 
-+ f system & t r
-• mount-iphone
++ f system & t t
+mount-iphone
   usbmuxd
   sudo umount /media/iphone
   idevicepair pair
   sudo ifuse /media/iphone
 
-+ f system & t r
-• format hdd drive
++ f system & t t
+format hdd drive
   #Attention lignes suivantes pour formatter
   #sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
   #sudo e2label /dev/sda1 RaspberryPi
   #sudo chown -R pi:pi /media/hdd
 
-+ f system & t r
-• create fstab file
++ f system & t t
+create fstab file
   echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
   echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
   sudo chown -R pi:pi /media/hdd
@@ -245,22 +245,34 @@ g upload folders photos to gphotos
   ifttt "Google Photos Script Finished" "-"
 
 + f & t t
+upload to transfer.sh
+  clear ; set %t
+  curl -H "Max-Downloads: 1" -H "Max-Days: 1" --progress-bar --upload-file "$1" "https://transfer.sh/$1" >> /tmp/transfer; cat /tmp/transfer; rm -f /tmp/transfer;
+  read -r
+
++ t r
+download from transfer.sh
+  cd %d ; url=%{transfer.sh url}
+  f=$(echo "$url" | rev | cut -d '/' -f 1 | rev)
+  curl --progress-bar -o $f $url
+
++ f & t t
 b upload to dropbox
-  cd %d ; set %t
+  clear ; cd %d ; set %t
   for FILE in "$@"; do
     dropbox_uploader upload "$FILE" "$FILE"
   done
 
-+ t t
++ t r
 c download from dropbox
   param = %{Dropbox Filename}
-  cd %d
+  clear ; cd %d
   dropbox_uploader download "$param"
 
-+ t t
++ t r
 c download from google drive
   param = %{Google Drive Filename}
-  cd "/media/hdd/Drive"
+  clear ; cd "/media/hdd/Drive"
   if ! drive pull --no-prompt "$param" ; then ifttt "ERROR Google pull files" "ERROR PULL DRIVE"; return; fi
 
 + f * & t t
@@ -276,7 +288,7 @@ b move to "Freebox Server"
 d upload to Gdrive
   cd /media/hdd/Drive
   #drive pull --no-prompt "Raspberry Pi/"
-  cd %d ; set %t
+  clear ; cd %d ; set %t
   for FILE in "$@"; do
     cp "$FILE" "/media/hdd/Drive/Raspberry Pi/"
   done
@@ -699,7 +711,7 @@ e Change Photo EXIF
   #  #  # #    # #      #    # #    #
    ##   # #####  ######  ####   ####
 
-+ f videos
++ f videos & t t
 d tv-dl
   mcedit -x /media/hdd/tmp/youtube.txt
   clear ; cd /media/hdd/youtube-dl
@@ -709,7 +721,7 @@ d tv-dl
     fi
   done < /media/hdd/tmp/youtube.txt
 
-+ f videos
++ f videos & t t
 y yt-dl
   . ~/config.ini;clear
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
@@ -721,28 +733,27 @@ y yt-dl
   --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   done
 
-+ f *.m4a | f *.M4A & t t
-m conv m4a to aac
++ f *.mp4 | f *.MP4 & F videos & t t & T t
+m conv mp4 to aac
   set %t
-  aac="$(basename "$1" | cut -d. -f1).aac"
-  echo $name
+  aac="$(basename "$1" | cut -d . -f1).aac"
   avconv -i "$1" -c copy -map 0:a:0 "$aac"
 
-+ f *.mp4 | f *.MP4 & t t
-m 𝚟𝚒𝚍𝚎𝚘 mux mp4 and aac to mkv
++ f *.mp4 | f *.MP4 & F videos & t t & T t
+m mux mp4 and aac to mkv
   set %t
   aac="$(basename "$1" | cut -d. -f1).aac"
   mkv="$(basename "$1" | cut -d. -f1).mkv"
   MP4Box -add "$1" -add "$aac" "$mkv"
 
-+ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & t t
-u 𝚟𝚒𝚍𝚎𝚘 upload to youtube
++ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & F videos & t t & T t
+u upload to youtube
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
   done
 
-+ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t t
++ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t & T t
 m merge mkv
   clear ; cd %d ; set %t
   FILES="$1"; shift
@@ -751,7 +762,7 @@ m merge mkv
   done
   mkvmerge -o out.mkv $FILES
 
-+ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & t r
++ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t & T t
 c cut video [no screen]
   #! /usr/bin/bash
   clear
@@ -761,8 +772,8 @@ c cut video [no screen]
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
   ifttt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
-+ f videos
-s 𝚟𝚒𝚍𝚎𝚘 create stopmotion
++ f videos & t t
+s create stopmotion
   clear
   # - 720p (1280×720)
   # – 1080p (1920×1080) full HD
@@ -821,11 +832,11 @@ l tmux last window
    #   #    # #   #  #   #  #      #   ##   #
    #    ####  #    # #    # ###### #    #   #
 
-+ f torrent
++ f torrent & t t
 t stop transmission
   sudo service transmission-daemon stop
 
-+ f torrent
++ f torrent & t t
 v add/remove torrents
   clear
   sudo service transmission-daemon restart
@@ -1003,14 +1014,14 @@ r View SST
  #      #    # #   ## #    # #    # #    # #    # #
  ###### #    # #    #  ####   ####  #    #  ####  ######
 
-+ f install
++ f install & t t
 Install node.js
   # https://nodejs.org
   wget https://nodejs.org/dist/v8.3.0/node-v8.3.0-linux-armv6l.tar.gz
   sudo tar -xvf node-v8.3.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
   rm node-v8.3.0-linux-armv6l.tar.gz
 
-+ f install
++ f install & t t
 Install go lang
   # https://golang.org/dl
   wget https://storage.googleapis.com/golang/go1.8.1.linux-armv6l.tar.gz
@@ -1024,12 +1035,12 @@ Install go lang
   export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
   source ~/.bashrc
 
-+ f install
++ f install & t t
 Install python
-  sudo apt-get install python-pip python-dev
+  sudo apt-get -y install python-pip python-dev
   sudo pip install --upgrade pip
 
-+ f install
++ f install & t t
 Install python3
   sudo apt-get -y install python3-pip
   sudo pip3 install --upgrade pip3
@@ -1042,8 +1053,8 @@ Install python3
  # #   ## #    #   #   #    # #      #
  # #    #  ####    #   #    # ###### ######
 
-+ f install
-Install tmux
++ f install & t t
+tmux
   # https://github.com/tmux/tmux
   sudo apt-get install libevent-dev libncurses5-dev
   wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
@@ -1055,8 +1066,8 @@ Install tmux
   rm tmux-2.6.tar.gz
   rm -rf tmux-2.6
 
-+ f install
-Install mc
++ f install & t t
+mc
   # https://github.com/MidnightCommander/mc
   sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
   wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
@@ -1067,8 +1078,8 @@ Install mc
   make
   make install
 
-+ f install
-Install git
++ f install & t t
+git
   # https://github.com/ManuCart/Raspberry-Pi
   sudo apt-get install git
   git clone git@github.com:ManuCart/Raspberry-Pi.git ~/rpi
@@ -1081,21 +1092,21 @@ Install git
   echo "Host github.com" >> ~/.ssh/config
   echo "IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
 
-+ f install
-Install castnow
++ f install & t t
+castnow
   # https://github.com/xat/castnow
   sudo npm install castnow -g
 
-+ f install
-Install Dropbox-Uploader
++ f install & t t
+Dropbox-Uploader
   # https://github.com/andreafabrizi/Dropbox-Uploader
   sudo curl -o /usr/local/bin/dropbox_uploader \
   https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
   sudo chmod +x /usr/local/bin/dropbox_uploader
   dropbox_uploader init
 
-+ f install
-Install drive
++ f install & t t
+drive
   # https://github.com/odeke-em/drive
   go get -u github.com/odeke-em/drive/cmd/drive
   mkdir /media/hdd/Drive
@@ -1104,16 +1115,16 @@ Install drive
   sudo chown -R pi:pi /opt/gd
   drive init /opt/gd
 
-+ f install
-Install flickr-download
++ f install & t t
+flickr-download
   #https://github.com/beaufour/flickr-download
   sudo pip install flickr_api
   cd ~/.bin
   git clone https://github.com/beaufour/flickr-download.git
   ~/.bin/flickr-download/flickr_download/flickr_download.py -t 
 
-+ f install
-Install flickr-uploader
++ f install & t t
+flickr-uploader
   # https://github.com/trickortweak/flickr-uploader
   sudo apt-get remove elinks links links2 lynx w3m
   sudo mkdir /opt
@@ -1129,23 +1140,23 @@ Install flickr-uploader
   cd /opt
   /opt/flickr-uploader#1/uploadr.py
 
-+ f install
-Install gmusicapi-scripts
++ f install & t t
+gmusicapi-scripts
   # https://github.com/thebigmunch/gmusicapi-scripts
   sudo pip3 install gmusicapi-scripts
   # gmsync /media/hdd/music
   # gmsync down "/media/hdd/listen/%album%/%title%"
   # gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 
-+ f install
-Install hue-cli
++ f install & t t
+hue-cli
   # https://github.com/bahamas10/hue-cli
   sudo npm install -g hue-cli
   hue search
   hue -H 192.168.0.10 register
 
-+ f install
-Install iphone
++ f install & t t
+iphone
   # https://github.com/libimobiledevice
   # https://gist.github.com/kfatehi/8922430
   sudo apt-get -y install git build-essential libxml2-dev python2.7 python2.7-dev fuse libtool autoconf libusb-1.0-0-dev libfuse-dev
@@ -1168,8 +1179,8 @@ Install iphone
   echo /usr/local/lib | sudo tee /etc/ld.so.conf.d/libimobiledevice-libs.conf
   sudo ldconfig
 
-+ f install
-Install motion
++ f install & t t
+motion
   # http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
   echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
   sudo modprobe bcm2835-v4l2
@@ -1194,8 +1205,15 @@ Install motion
   sudo mkdir /var/run/motion
   sudo chmod 777 /var/run/motion
 
-+ f install
-Install samba
+
++ f install & t t
+Pi Hole
+  clear
+  curl -sSL https://install.pi-hole.net | bash
+
++ f install & t t
+Samba
+  clear
   sudo apt-get -y install samba samba-common-bin
   cat << EOF | sudo tee -a /etc/samba/smb.conf
   [HDD]
@@ -1210,9 +1228,10 @@ Install samba
   sudo service smbd restart
   sudo smbpasswd -a pi
 
-+ f install
-Install sejda
++ f install & t t
+Sejda
   # https://github.com/torakiki/sejda
+  clear
   sudo apt-get -y install oracle-java8-jdk
   curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v3.0.18/sejda-console-3.0.18-bin.zip
   unzip sejda.zip
@@ -1222,21 +1241,23 @@ Install sejda
   rm -rf sejda.zip sejda-console-3.0.18
   chmod +x /opt/sejda/bin/sejda-console
 
-+ f install
-Install sharp-cli
++ f install & t t
+sharp-cli
   # https://github.com/vseventer/sharp-cli
+  clear
   sudo npm install --unsafe-perm sharp -g sharp-cli
   curl https://transfer.sh/XXXXX/20##.####.JPEG -o IMG.JPG
   sharp -i IMG.JPG -o IMG.OUT.JPG resize 11900 8400 --withoutEnlargement
   curl -H "Max-Downloads: 1" -H "Max-Days: 1" --upload-file ./IMG.OUT.JPG https://transfer.sh/IMG.OUT.JPG && echo
 
-+ f install
-Install squid
++ f install & t t
+squid
   # http://www.squid-cache.org/
+  clear
   sudo apt-get install squid
 
-+ f install
-Install ssh
++ f install & t t
+ssh
   mkdir ~/.ssh
   cd ~/.ssh
   ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
@@ -1251,8 +1272,8 @@ Install ssh
   EOF
   sudo service ssh restart
 
-+ f install
-Install transmission
++ f install & t t
+transmission
   # http://www.transmissionbt.com/
   sudo apt-get -y install transmission-daemon
   mkdir /media/hdd/torrents
@@ -1282,14 +1303,14 @@ Install transmission
   EOF
   sudo service transmission-daemon restart
 
-+ f install
-Install upload-gphotos
++ f install & t t
+upload-gphotos
   # https://github.com/3846masa/upload-gphotos
   sudo npm i -g npm
   sudo npm install -g upload-gphotos
 
-+ f install
-Install vbox
++ f install & t t
+virtual box
   apt-get install sshfs gpm mc
   apt-get install gcc make perl linux-headers-$(uname -r)
   mkdir --p /media/cdrom
@@ -1297,8 +1318,8 @@ Install vbox
   cd /media/cdrom/
   sh VBoxLinuxAdditions.run
 
-+ f install
-Install youtube-dl
++ f install & t t
+youtube-dl
   # https://github.com/rg3/youtube-dl
   sudo apt-get -y install libavcodec-extra libav-tools
   sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -1307,8 +1328,8 @@ Install youtube-dl
   mkdir /medi/hdd/youtube-dl
   youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 
-+ f install
-Install youtube-upload
++ f install & t t
+youtube-upload
   # https://github.com/tokland/youtube-upload
   sudo pip install --upgrade google-api-python-client progressbar2
   wget https://github.com/tokland/youtube-upload/archive/master.zip
