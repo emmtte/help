@@ -247,7 +247,7 @@ g upload folders photos to gphotos
 + f & t t
 upload to transfer.sh
   clear ; set %t
-  curl -H "Max-Downloads: 1" -H "Max-Days: 1" --progress-bar --upload-file "$1" "https://transfer.sh/$1" >> /tmp/transfer; cat /tmp/transfer; rm -f /tmp/transfer;
+  curl -H "Max-Downloads: 1" -H "Max-Days: 1" --progress-bar --upload-file "$1" "https://transfer.sh/$1" > /tmp/transfer; tail -1 /tmp/transfer
   read -r
 
 + t r
@@ -255,6 +255,13 @@ download from transfer.sh
   cd %d ; url=%{transfer.sh url}
   f=$(echo "$url" | rev | cut -d '/' -f 1 | rev)
   curl --progress-bar -o $f $url
+
++f & t t
+download only for google cloud shell
+  clear ; set %t
+  for FILE in "$@"; do
+    dl "$FILE"
+  done
 
 + f & t t
 b upload to dropbox
@@ -660,7 +667,7 @@ s convert PNG to JPG
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 s Autolevel photos
-  set %t
+  clear ; set %t
   while [ -n "$1" ]; do
     mogrify -auto-level $1
     shift
@@ -668,11 +675,16 @@ s Autolevel photos
   
 + f *.tiff | f *.TIFF & t t
 s Tiff to jpg with sharp
-  set %t
+  clear ; set %t
   while [ -n "$1" ]; do
     sharp --quality 100 -o $1-sharp.jpg $1
     shift
   done
+
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
+resize photo
+  clear ; set %t
+  sharp -i $1 -o $1-sharp.jpg resize 11900 8400 --withoutEnlargement
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 e Affiche EXIF de la photo
@@ -1244,17 +1256,12 @@ Sejda
 + f install & t t
 sharp-cli
   # https://github.com/vseventer/sharp-cli
-  clear
-  sudo npm install --unsafe-perm sharp -g sharp-cli
-  curl https://transfer.sh/XXXXX/20##.####.JPEG -o IMG.JPG
-  sharp -i IMG.JPG -o IMG.OUT.JPG resize 11900 8400 --withoutEnlargement
-  curl -H "Max-Downloads: 1" -H "Max-Days: 1" --upload-file ./IMG.OUT.JPG https://transfer.sh/IMG.OUT.JPG && echo
+  clear ; sudo npm install --unsafe-perm sharp -g sharp-cli
 
 + f install & t t
 squid
   # http://www.squid-cache.org/
-  clear
-  sudo apt-get install squid
+  clear ; sudo apt-get install squid
 
 + f install & t t
 ssh
