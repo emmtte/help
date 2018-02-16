@@ -5,37 +5,37 @@
 #
 
 + ! f backup | ! f system | ! f import | ! f music | ! f torrent | ! f photos | ! f install | ! f github
-c goto mc.menu
+goto mc.menu
   N=`tmux display-message -p '#W'`
   tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/mc.menu ENTER' ENTER
 
-t test
+test
   clear
   echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
 
 
 + f config
-d Create ~/mc.menu
+Create ~/mc.menu
   if [ ! -d ~/mc.menu ] ; then mkdir ~/mc.menu ; fi
   cd ~/mc.menu
   touch "backup" "config" "files" "import" "music" "github"
   touch "system" "tools" "videos" "torrent" "photos" "install"
 
 + f config
-c create media sub-folders
+create media sub-folders
   sudo mkdir /media/hdd /media/freebox /media/cardreader /media/usbkey /media/iphone /media/camera /media/gopro
 
 + f config
-x source ~/.tmux.conf
+source ~/.tmux.conf
   tmux source-file ~/.tmux.conf
   tmux send -t B 'tmux send -t A F2' ENTER
 
 + f config
-f create new file
+create new file
   touch %{File name}
 
 + f config
-t set auto date & time
+set auto date & time
   sudo /etc/init.d/ntp stop
   sudo ntpd -q -g
   sudo /etc/init.d/ntp start
@@ -48,7 +48,7 @@ t set auto date & time
   ####  #   #   #    #  ####  #####
 
 + t t
-g git push
+git push
   clear
   for f in %t; do
     git add "$f"
@@ -57,7 +57,7 @@ g git push
   git push
 
 + F github & t t
-d git push force
+git push force
   for f in %t; do
     git add "$f"
   done
@@ -66,11 +66,11 @@ d git push force
   git push origin master --force
 
 + F github
-h git pull
+git pull
   git pull
 
 + f github
-d git discard the local changes
+git discard the local changes
   git reset --hard
   git pull
 
@@ -84,7 +84,7 @@ d git discard the local changes
 
 
 + f backup
-u import cardreader videos & merge & upload to youtube
+import cardreader videos & merge & upload to youtube
   clear
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
   cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
@@ -96,44 +96,44 @@ u import cardreader videos & merge & upload to youtube
   ifttt "Backup done" "import cardreader videos & merge & upload to youtube"
 
 + f backup
-f backup photos & videos to freebox hdd
+backup photos & videos to freebox hdd
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
   mkdir /media/freebox/photos /media/freebox/videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
 
 + f backup
-h backup photos & videos to freebox ext hdd
+backup photos & videos to freebox ext hdd
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
 
 + f backup
-h restore photos & videos from freebox ext hdd
+restore photos & videos from freebox ext hdd
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   #mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
 
 + f backup
-  w Backup Windows to Raspberry Pi
+Backup Windows to Raspberry Pi
   rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
 
 + f backup
-  w Backup Raspberry Pi to Windows
+Backup Raspberry Pi to Windows
   rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 
 + f backup
-1 backup photos to flickr #1
+backup photos to flickr #1
   /opt/flickr-uploader#1/uploadr.py
 
 + f backup
-2 backup photos to flickr #2
+backup photos to flickr #2
   /opt/flickr-uploader#2/uploadr.py
 
 + f backup
-y restore photos from flickr
+restore photos from flickr
   source ~/config.ini
   ~/.bin/flickr-download/flickr_download/flick_download.py -k $flickr_api_key -s $flickr_api_secret -u $flickr_user -t -l
 
@@ -206,7 +206,7 @@ create fstab file
  #      # ###### ######  ####
 
 + t t
-c ez Copy
+ez Copy
   clear ; DIR=%D ; set %t
   for FILE in "$@"; do
     echo "Copy : $FILE to $DIR"
@@ -214,7 +214,7 @@ c ez Copy
   done
 
 + t t
-c ez Move
+ez Move
   clear ; DIR=%D ; set %t
   for FILE in "$@"; do
     echo "Move : $FILE to $DIR"
@@ -222,14 +222,14 @@ c ez Move
   done
 
 + f * & t t
-d Delete
+Delete
   clear ; set %t
   while [ -n "$1" ] ; do
     rm -rf "$1" ; shift
   done
 
 + d & t t
-g upload folders photos to gphotos
+upload folders photos to gphotos
   set %t
   find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
   Album=$(echo "$DIR" | cut -d ' ' -f 2-)
@@ -260,30 +260,30 @@ download from transfer.sh
 download only for google cloud shell
   clear ; set %t
   for FILE in "$@"; do
-    dl "$FILE"
+    cloudshell dl "$FILE"
   done
 
 + f & t t
-b upload to dropbox
+upload to dropbox
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     dropbox_uploader upload "$FILE" "$FILE"
   done
 
 + t r
-c download from dropbox
+download from dropbox
   param = %{Dropbox Filename}
   clear ; cd %d
   dropbox_uploader download "$param"
 
 + t r
-c download from google drive
+download from google drive
   param = %{Google Drive Filename}
   clear ; cd "/media/hdd/Drive"
   if ! drive pull --no-prompt "$param" ; then ifttt "ERROR Google pull files" "ERROR PULL DRIVE"; return; fi
 
 + f * & t t
-b move to "Freebox Server"
+move to "Freebox Server"
  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
  clear ; cd %d ; set %t
  for FILE in "$@"; do
@@ -292,7 +292,7 @@ b move to "Freebox Server"
  done
 
 + f * & t t
-d upload to Gdrive
+upload to Gdrive
   cd /media/hdd/Drive
   #drive pull --no-prompt "Raspberry Pi/"
   clear ; cd %d ; set %t
@@ -313,7 +313,7 @@ d upload to Gdrive
  # ls -l /dev/disk/by-id
 
 + f import
-p import camera photos
+import camera photos
   ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
   PHOTOS="$GDRIVE/Google Photos"
@@ -324,7 +324,7 @@ p import camera photos
   if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
 
 + f import
-v import camera videos
+import camera videos
   ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
   VIDEOS="/media/hdd/youtube-upload"
   mkdir $VIDEOS
@@ -333,7 +333,7 @@ v import camera videos
   sudo umount /media/camera
 
 + f import
-g import gopro
+import gopro
   ID="/dev/disk/by-id/usb-GoPro_Storage_*-0:0-part1"
   sudo mount $ID /media/gopro
   mkdir /media/hdd/gopro /media/hdd/gopro/photos /media/hdd/gopro/videos
@@ -344,7 +344,7 @@ g import gopro
   sudo umount /media/gopro
 
 + f import
-i import iphone videos
+import iphone videos
   usbmuxd
   VIDEOS="/media/hdd/youtube-upload"
   sudo umount /media/iphone
@@ -357,7 +357,7 @@ i import iphone videos
   youtube_upload
 
 + f import
-u import usbkey
+import usbkey
   ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_*-0:0-part1"
   VIDEOS="/media/hdd/youtube-upload"
   sudo mkdir /media/usbkey
@@ -366,7 +366,7 @@ u import usbkey
   sudo umount /media/usbkey
 
 + f import
-u import cardreader photos
+import cardreader photos
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
   PHOTOS="$GDRIVE/Google Photos"
   sudo mkdir /media/cardreader
@@ -376,7 +376,7 @@ u import cardreader photos
   if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
 
 + f import
-u import camera photos to gdrive
+import camera photos to gdrive
   ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
   PHOTOS="/media/hdd/Drive/Camera"
   TMP="/media/hdd/tmp"
@@ -406,45 +406,45 @@ u import camera photos to gdrive
  #    #  ####   ####  #  ####
 
 + f music
-r ♫ Streaming Soundtracks
+Streaming Soundtracks
   clear
   castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
 
 + F music & t t
-c ♫ castnow
+castnow
   clear
   echo %t
   castnow %t
 
 + F music & t t
-a ♫ upload to gmusic account 1
+upload to gmusic account 1
   clear ; cd %d ; set %t
   for d in "$@"; do
     gmupload -c ~/.local/share/gmusicapi/oauth.1 "$d"
   done
 
 + F music & t t
-b ♫ upload to gmusic account 2
+upload to gmusic account 2
   clear ; cd %d ; set %t
   for d in "$@"; do
     gmupload -c ~/.local/share/gmusicapi/oauth.2 "$d"
   done
 
 + F music & t t
-c ♫ upload to gmusic account 3
+upload to gmusic account 3
   clear ; cd %d ; set %t
   for d in "$@"; do
     gmupload -c ~/.local/share/gmusicapi/oauth.3 "$d"
   done
 
 + F music & t t
-c ♫ download all music from gmusic
+download all music from gmusic
   account=%{Give number accounts}
   gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
   iftt "Rasperry Pi" "Gmusic download done"
 
 + f *.wav & F music & t t & T t
-c ♫ wav to mp3
+wav to mp3
   clear ; cd %d ; set %t
   for d in "$@"; do lame -b 320 -q 0 -h "$1" "$1.mp3"; done
 
@@ -458,7 +458,7 @@ c ♫ wav to mp3
 
 
 + f photos
-P Take Raspberry Pi Photo
+Take Raspberry Pi Photo
   tput cup 0 0 ; clear
   rm /media/hdd/photo.jpg
   raspistill -v -w 1280 -rot 270 -o /media/hdd/photo.jpg
@@ -467,14 +467,14 @@ P Take Raspberry Pi Photo
   read -r
 
 + f photos
-F Found double photos
+Found double photos
   sudo apt-get -y install fslint
   /usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
   fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
   ifttt "Search double Photos" "Finish"
 
 + t photos & T t
-t 𝓟 Tidy GDrive Photos (1)
+Tidy GDrive Photos (1)
   rm /tmp/exif.log
   GDRIVE=/media/hdd/Drive; cd $GDRIVE
   PHOTOS="$GDRIVE/Google Photos"
@@ -496,7 +496,7 @@ t 𝓟 Tidy GDrive Photos (1)
   done
 
 + t photos & T d
-t Test Exif Photos (2)
+Test Exif Photos (2)
   #Need to select every year
   tput cup 0 0 ; clear ; cd /media/hdd/photos/
   LOGFILE="/home/pi/exif.log"
@@ -560,7 +560,7 @@ t Test Exif Photos (2)
   mcedit -x $LOGFILE
 
 + T photos & t r
-t Correct Exif Photos (3)
+Correct Exif Photos (3)
   #Change Exif Date for all photos listed in ~/exif-change.log
   FILE=~/exif-change.log
   while IFS= read LINE
@@ -573,7 +573,7 @@ t Correct Exif Photos (3)
   rm ~/exif-change.log
 
 + T photos & t t
-t Rename New Photos (4)
+Rename New Photos (4)
   #use this when adding new photos in YEAR directory
   #need to finished
   ROOT=%d ; set % t ; echo "$@"
@@ -606,7 +606,7 @@ t Rename New Photos (4)
   done
 
 + T photos & t t
-r Rename Photos only [XXXX] dir (6)
+Rename Photos only [XXXX] dir (6)
   clear ; cd %d; set %t
   for f in "$@"; do
    #Delete Empty Directories
@@ -643,22 +643,22 @@ r Rename Photos only [XXXX] dir (6)
   done
 
 + T photos & t t
-r Change Exif (Tests 6B)
+Change Exif (Tests 6B)
  . ~/rpi/functions;clear
  Change_Exif %d %t
 
 + T photos & t t
-g Upload Photos to gPhotos #1 (7)
+Upload Photos to gPhotos #1 (7)
  . ~/rpi/functions;clear
  Gphotos $user_1 $pwd_1 %d %t
 
 + T photos & t t
-g Upload Photos to gPhotos #2 (8)
+Upload Photos to gPhotos #2 (8)
  . ~/rpi/functions;clear
  Gphotos $user_2 $pwd_2 %d %t
 
 + f *.png | f *.PNG & t t
-s convert PNG to JPG
+convert PNG to JPG
   set %t
   while [ -n "$1" ]; do
     convert $1 $1.JPG
@@ -666,7 +666,7 @@ s convert PNG to JPG
   done
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-s Autolevel photos
+Autolevel photos
   clear ; set %t
   while [ -n "$1" ]; do
     mogrify -auto-level $1
@@ -674,7 +674,7 @@ s Autolevel photos
   done
   
 + f *.tiff | f *.TIFF & t t
-s Tiff to jpg with sharp
+Tiff to jpg with sharp
   clear ; set %t
   while [ -n "$1" ]; do
     sharp --quality 100 -o $1-sharp.jpg $1
@@ -683,11 +683,12 @@ s Tiff to jpg with sharp
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 resize photo
-  clear ; set %t
-  sharp -i $1 -o $1-sharp.jpg resize 11900 8400 --withoutEnlargement
+  # Change newX when newY = (newX * oldY) / oldX and (newX * newY) < 100000000
+  clear ; set %t ; resize=%{Enter resize newX newY }
+  sharp -i $1 -o $1-sharp.jpg resize $resize --withoutEnlargement
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-e Affiche EXIF de la photo
+Affiche EXIF de la photo
   clear
   exiv2 -pv %f
   echo
@@ -700,7 +701,7 @@ e Affiche EXIF de la photo
   printf 'Press [Enter] key to continue...'
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-d Delete EXIF from pics
+Delete EXIF from pics
   set %t
   while [ -n "$1" ]; do
     exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$1"
@@ -708,7 +709,7 @@ d Delete EXIF from pics
   done
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-e Change Photo EXIF
+Change Photo EXIF
   clear ; set %t
   exiv2 -g DateTimeOriginal -PEv "$1" > /tmp/exif.txt
   mcedit -x /tmp/exif.txt
@@ -724,7 +725,7 @@ e Change Photo EXIF
    ##   # #####  ######  ####   ####
 
 + f videos & t t
-d tv-dl
+tv-dl
   mcedit -x /media/hdd/tmp/youtube.txt
   clear ; cd /media/hdd/youtube-dl
   while IFS=, read url out ; do
@@ -734,7 +735,7 @@ d tv-dl
   done < /media/hdd/tmp/youtube.txt
 
 + f videos & t t
-y yt-dl
+yt-dl
   . ~/config.ini;clear
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
   youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
@@ -746,27 +747,27 @@ y yt-dl
   done
 
 + f *.mp4 | f *.MP4 & F videos & t t & T t
-m conv mp4 to aac
+conv mp4 to aac
   set %t
   aac="$(basename "$1" | cut -d . -f1).aac"
   avconv -i "$1" -c copy -map 0:a:0 "$aac"
 
 + f *.mp4 | f *.MP4 & F videos & t t & T t
-m mux mp4 and aac to mkv
+mux mp4 and aac to mkv
   set %t
   aac="$(basename "$1" | cut -d. -f1).aac"
   mkv="$(basename "$1" | cut -d. -f1).mkv"
   MP4Box -add "$1" -add "$aac" "$mkv"
 
 + f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & F videos & t t & T t
-u upload to youtube
+upload to youtube
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
   done
 
 + f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t & T t
-m merge mkv
+merge mkv
   clear ; cd %d ; set %t
   FILES="$1"; shift
   for FILE in "$@"; do
@@ -775,7 +776,7 @@ m merge mkv
   mkvmerge -o out.mkv $FILES
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t & T t
-c cut video [no screen]
+cut video [no screen]
   #! /usr/bin/bash
   clear
   read -e -p "Start : " -i "00:00:00" start
@@ -785,7 +786,7 @@ c cut video [no screen]
   ifttt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 + f videos & t t
-s create stopmotion
+create stopmotion
   clear
   # - 720p (1280×720)
   # – 1080p (1920×1080) full HD
@@ -819,13 +820,13 @@ s create stopmotion
    #   #    #  ####  #    #
 
 + f tmux
-f switch to tmux background
+switch to tmux background
   tmux switch-client -t bg
   tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
   tmux send -t bg:1 'tmux switch-client -t pi'
 
 + f tmux
-x create tmux window
+create tmux window
   tmux new-window -n "●"
   session=`tmux display-message -p '#I'`
   tmux set pane-border-format " $session "
@@ -833,7 +834,7 @@ x create tmux window
   tmux send -t $session '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/ && clear' ENTER
 
 + f tmux
-l tmux last window
+tmux last window
   tmux last-window
 
 
@@ -845,11 +846,11 @@ l tmux last window
    #    ####  #    # #    # ###### #    #   #
 
 + f torrent & t t
-t stop transmission
+stop transmission
   sudo service transmission-daemon stop
 
 + f torrent & t t
-v add/remove torrents
+add/remove torrents
   clear
   sudo service transmission-daemon restart
   rm -rf /media/hdd/Drive/Torrents/*
@@ -879,7 +880,7 @@ v add/remove torrents
  #      #####  #
 
 + f *.pdf | f *.PDF & t t
-p Transforme un fichier PDF sécurisé en normal
+Transforme un fichier PDF sécurisé en normal
   set %t
   while [ -n "$1" ]; do
     gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.test.pdf" "$1"
@@ -887,7 +888,7 @@ p Transforme un fichier PDF sécurisé en normal
   done
 
 + f *.pdf | f *.PDF & t t
-p Compress PDF File
+Compress PDF File
   #Warning Files name does not content comma
   clear
   GDRIVE=/media/hdd/Drive
@@ -903,7 +904,7 @@ p Compress PDF File
   iftt "Raspberry Pi" "File $FILE compressed"
 
 + f *.pdf | f *.PDF
-f Merge Starred Drive Pdf files
+Merge Starred Drive Pdf files
   clear
   GDRIVE=/media/hdd/Drive
   rm $GDRIVE/Snoozed/*
@@ -923,7 +924,7 @@ f Merge Starred Drive Pdf files
   ifttt "Raspberry Pi" "Starred Files added to $FILE"
 
 + f *.pdf | f *.PDF
-f Automatic Merge pdf files
+Automatic Merge pdf files
   ## TODO Delete only files merged
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " `date`"
   GDRIVE=/media/hdd/Drive
@@ -976,7 +977,7 @@ f Automatic Merge pdf files
   ####   ####  #    # # #        #    ####
 
 + f music
-r View SST
+View SST
   #sudo apt-get install recode libxml2-utils
   #at << EOF > /tmp/request.xml
   #echo " /
