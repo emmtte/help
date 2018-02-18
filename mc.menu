@@ -40,6 +40,11 @@ set auto date & time
   sudo ntpd -q -g
   sudo /etc/init.d/ntp start
 
++ f config
+exit tmux and ssh
+  tmux detach ; exit ; mc -x
+
+
   ####  # ##### #    # #    # #####
  #    # #   #   #    # #    # #    #
  #      #   #   ###### #    # #####
@@ -118,6 +123,7 @@ restore photos & videos from freebox ext hdd
 
 + f backup
 Backup Windows to Raspberry Pi
+  #sshfs pi@192.168.0.1:/media/hdd/photos /media/raspberry
   rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
 
 + f backup
@@ -672,7 +678,7 @@ Autolevel photos
     mogrify -auto-level $1
     shift
   done
-  
+
 + f *.tiff | f *.TIFF & t t
 Tiff to jpg with sharp
   clear ; set %t
@@ -735,15 +741,25 @@ tv-dl
   done < /media/hdd/tmp/youtube.txt
 
 + f videos & t t
+tv-dl-v2
+  mcedit -x /media/hdd/tmp/yt.txt
+  clear ; cd /media/hdd/youtube-dl
+  while IFS=, read url out arg ; do
+    if [[ $url == h* ]]; then
+    python ~/youtube-dl/youtube-dl $arg -o "$out" $url
+    fi
+  done < /media/hdd/tmp/yt.txt
+
++ f videos & t t
 yt-dl
   . ~/config.ini;clear
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
   youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
-  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   while exist /media/hdd/youtube-dl/*.part
   do
   youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
-  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   done
 
 + f *.mp4 | f *.MP4 & F videos & t t & T t
@@ -1108,7 +1124,7 @@ git
 + f install & t t
 castnow
   # https://github.com/xat/castnow
-  sudo npm install castnow -g
+  npm install castnow -g
 
 + f install & t t
 Dropbox-Uploader
@@ -1164,7 +1180,7 @@ gmusicapi-scripts
 + f install & t t
 hue-cli
   # https://github.com/bahamas10/hue-cli
-  sudo npm install -g hue-cli
+  npm install -g hue-cli
   hue search
   hue -H 192.168.0.10 register
 
@@ -1257,7 +1273,7 @@ Sejda
 + f install & t t
 sharp-cli
   # https://github.com/vseventer/sharp-cli
-  clear ; sudo npm install --unsafe-perm sharp -g sharp-cli
+  clear ; npm install --unsafe-perm sharp -g sharp-cli
 
 + f install & t t
 squid
@@ -1314,8 +1330,8 @@ transmission
 + f install & t t
 upload-gphotos
   # https://github.com/3846masa/upload-gphotos
-  sudo npm i -g npm
-  sudo npm install -g upload-gphotos
+  npm i -g npm
+  npm install -g upload-gphotos
 
 + f install & t t
 virtual box
