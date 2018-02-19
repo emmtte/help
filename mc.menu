@@ -42,7 +42,7 @@ set auto date & time
 
 + f config
 exit tmux and ssh
-  tmux detach ; exit ; mc -x
+  tmux detach
 
 
   ####  # ##### #    # #    # #####
@@ -691,7 +691,7 @@ Tiff to jpg with sharp
 resize photo
   # Change newX when newY = (newX * oldY) / oldX and (newX * newY) < 100000000
   clear ; set %t ; resize=%{Enter resize newX newY }
-  sharp -i $1 -o $1-sharp.jpg resize $resize --withoutEnlargement
+  ~/node_modules/.bin/sharp -i $1 -o $1-sharp.jpg resize $resize --withoutEnlargement
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
 Affiche EXIF de la photo
@@ -1044,15 +1044,17 @@ View SST
  ###### #    # #    #  ####   ####  #    #  ####  ######
 
 + f install & t t
-Install node.js
+node.js
   # https://nodejs.org
-  wget https://nodejs.org/dist/v8.3.0/node-v8.3.0-linux-armv6l.tar.gz
-  sudo tar -xvf node-v8.3.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
-  rm node-v8.3.0-linux-armv6l.tar.gz
+  clear
+  wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-armv6l.tar.gz
+  sudo tar -xvf node-v8.9.4-linux-armv6l.tar.gz --strip 1 -C /usr/local
+  rm node-v8.9.4-linux-armv6l.tar.gz
 
 + f install & t t
-Install go lang
+go lang
   # https://golang.org/dl
+  clear
   wget https://storage.googleapis.com/golang/go1.8.1.linux-armv6l.tar.gz
   sudo tar -xvf go1.8.1.linux-armv6l.tar.gz -C /usr/local
   rm go1.8.1.linux-armv6l.tar.gz
@@ -1065,12 +1067,14 @@ Install go lang
   source ~/.bashrc
 
 + f install & t t
-Install python
+python
+  clear
   sudo apt-get -y install python-pip python-dev
   sudo pip install --upgrade pip
 
 + f install & t t
-Install python3
+python3
+  clear
   sudo apt-get -y install python3-pip
   sudo pip3 install --upgrade pip3
 
@@ -1273,7 +1277,8 @@ Sejda
 + f install & t t
 sharp-cli
   # https://github.com/vseventer/sharp-cli
-  clear ; npm install --unsafe-perm sharp -g sharp-cli
+  clear ; cd ~ ; npm root ; npm bin
+  npm install sharp-cli
 
 + f install & t t
 squid
