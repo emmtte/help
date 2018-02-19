@@ -12,7 +12,7 @@ sudo apt-get install exiv2 mc rsync sshpass tmux
 sudo ln -sf bash /bin/sh
 git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
 cd rpi
-.\rescue
+sh rescue
 ```
 
 [![](https://img.shields.io/badge/(c)_2014--2018-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
