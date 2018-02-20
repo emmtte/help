@@ -11,11 +11,12 @@ goto mc.menu
 
 test
   clear
-  echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
-
+  #echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
+  ifttt "mc menu" "finish"
 
 + f config
 Create ~/mc.menu
+  clear
   if [ ! -d ~/mc.menu ] ; then mkdir ~/mc.menu ; fi
   cd ~/mc.menu
   touch "backup" "config" "files" "import" "music" "github"
@@ -23,19 +24,22 @@ Create ~/mc.menu
 
 + f config
 create media sub-folders
+  clear
   sudo mkdir /media/hdd /media/freebox /media/cardreader /media/usbkey /media/iphone /media/camera /media/gopro
 
 + f config
 source ~/.tmux.conf
+  clear
   tmux source-file ~/.tmux.conf
   tmux send -t B 'tmux send -t A F2' ENTER
 
 + f config
 create new file
-  touch %{File name}
+  clear ; touch %{File name}
 
 + f config
 set auto date & time
+  clear
   sudo /etc/init.d/ntp stop
   sudo ntpd -q -g
   sudo /etc/init.d/ntp start
@@ -63,6 +67,7 @@ git push
 
 + F github & t t
 git push force
+  clear
   for f in %t; do
     git add "$f"
   done
@@ -72,12 +77,11 @@ git push force
 
 + F github
 git pull
-  git pull
+  clear ; git pull
 
 + f github
 git discard the local changes
-  git reset --hard
-  git pull
+  clear ; git reset --hard ; git pull
 
 
  #####    ##    ####  #    # #    # #####
@@ -102,6 +106,7 @@ import cardreader videos & merge & upload to youtube
 
 + f backup
 backup photos & videos to freebox hdd
+  clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
   mkdir /media/freebox/photos /media/freebox/videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
@@ -109,6 +114,7 @@ backup photos & videos to freebox hdd
 
 + f backup
 backup photos & videos to freebox ext hdd
+  clear
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
@@ -116,6 +122,7 @@ backup photos & videos to freebox ext hdd
 
 + f backup
 restore photos & videos from freebox ext hdd
+  clear
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
   #mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
@@ -123,25 +130,27 @@ restore photos & videos from freebox ext hdd
 
 + f backup
 Backup Windows to Raspberry Pi
+  clear
   #sshfs pi@192.168.0.1:/media/hdd/photos /media/raspberry
   rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
 
 + f backup
 Backup Raspberry Pi to Windows
+  clear
   rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 
 + f backup
 backup photos to flickr #1
-  /opt/flickr-uploader#1/uploadr.py
+  clear ; /opt/flickr-uploader#1/uploadr.py
 
 + f backup
 backup photos to flickr #2
-  /opt/flickr-uploader#2/uploadr.py
+  clear ; /opt/flickr-uploader#2/uploadr.py
 
 + f backup
 restore photos from flickr
   source ~/config.ini
-  ~/.bin/flickr-download/flickr_download/flick_download.py -k $flickr_api_key -s $flickr_api_secret -u $flickr_user -t -l
+  clear ; ~/.bin/flickr-download/flickr_download/flick_download.py -k $flickr_api_key -s $flickr_api_secret -u $flickr_user -t -l
 
 
   ####  #   #  ####  ##### ###### #    #
@@ -161,6 +170,7 @@ shutdown
 
 + f system & t t
 update
+  clear
   sudo apt-get -y autoremove
   sudo apt-get -y update
   sudo apt-get -y dist-upgrade
@@ -169,23 +179,23 @@ update
 
 + f system & t t
 mount-key
-  sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
+  clear ; sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
 + f system & t t
 mount-cardreader
-  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  clear ; sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
 
 + f system & t t
 mount-hdd
-  sudo mount LABEL=RaspberryPi /media/hdd
+  clear ; sudo mount LABEL=RaspberryPi /media/hdd
 
 + f system & t r
 mount-freebox
-  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  clear ; sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
 
 + f system & t t
 mount-iphone
-  usbmuxd
+  clear ; usbmuxd
   sudo umount /media/iphone
   idevicepair pair
   sudo ifuse /media/iphone
@@ -199,6 +209,7 @@ format hdd drive
 
 + f system & t t
 create fstab file
+  clear
   echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
   echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
   sudo chown -R pi:pi /media/hdd
@@ -414,7 +425,7 @@ import camera photos to gdrive
 + f music
 Streaming Soundtracks
   clear
-  castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
+  ~/node_modules/.bin/castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
 
 + F music & t t
 castnow
@@ -502,7 +513,7 @@ Tidy GDrive Photos (1)
   done
 
 + t photos & T d
-Test Exif Photos (2)
+photos validation (T YYYY)
   #Need to select every year
   tput cup 0 0 ; clear ; cd /media/hdd/photos/
   LOGFILE="/home/pi/exif.log"
@@ -562,10 +573,12 @@ Test Exif Photos (2)
   #touch -t ${EXIF:0:10}.${EXIF:10:14} "$FILE"
   done
   done
+  #find /media/hdd/photos -type f -name "desktop.ini" -exec rm -f {} \;
+  #find /media/hdd/photos -type f -name "Thumbs.db" -exec rm -f {} \;
   ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
   mcedit -x $LOGFILE
 
-+ T photos & t r
++ t photos & t r
 Correct Exif Photos (3)
   #Change Exif Date for all photos listed in ~/exif-change.log
   FILE=~/exif-change.log
@@ -595,7 +608,7 @@ Rename New Photos (4)
   COUNTER=$(expr $COUNTER + 1)
   echo "COUNTER: $COUNTER"
   find "$DIR" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
-   NEWFILE="$YEAR.$(printf '%04d' $COUNTER)"
+   NEWFILE="$YEAR.$(printf '%%04d' $COUNTER)"
    echo "$(basename "$FILE")=>$NEWFILE.JPEG"
    #exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
    #mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
@@ -622,7 +635,7 @@ Rename Photos only [XXXX] dir (6)
    COUNTER=1
    find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
    EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4,5 | tr -d ':' | tr -d ' '`
-   NEWFILE="$EXIF-$(printf '%04d' $COUNTER)"
+   NEWFILE="A$EXIF-$(printf '%%04d' $COUNTER)"
    echo "$(basename "$FILE")=>$NEWFILE.JPG"
    touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
    mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
@@ -632,7 +645,7 @@ Rename Photos only [XXXX] dir (6)
    echo "YEAR:$1"
    COUNTER=1
    find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
-   NEWFILE="$1.$(printf '%04d' $COUNTER)"
+   NEWFILE="$1.$(printf '%%04d' $COUNTER)"
    echo "$(basename "$FILE")=>$NEWFILE.JPEG"
    exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
    mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
@@ -647,21 +660,6 @@ Rename Photos only [XXXX] dir (6)
    done
   shift
   done
-
-+ T photos & t t
-Change Exif (Tests 6B)
- . ~/rpi/functions;clear
- Change_Exif %d %t
-
-+ T photos & t t
-Upload Photos to gPhotos #1 (7)
- . ~/rpi/functions;clear
- Gphotos $user_1 $pwd_1 %d %t
-
-+ T photos & t t
-Upload Photos to gPhotos #2 (8)
- . ~/rpi/functions;clear
- Gphotos $user_2 $pwd_2 %d %t
 
 + f *.png | f *.PNG & t t
 convert PNG to JPG
@@ -683,7 +681,7 @@ Autolevel photos
 Tiff to jpg with sharp
   clear ; set %t
   while [ -n "$1" ]; do
-    sharp --quality 100 -o $1-sharp.jpg $1
+    ~/node_modules/.bin/sharp --quality 100 -o $1-sharp.jpg $1
     shift
   done
 
@@ -792,7 +790,7 @@ merge mkv
   mkvmerge -o out.mkv $FILES
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t & T t
-cut video [no screen]
+cut video
   #! /usr/bin/bash
   clear
   read -e -p "Start : " -i "00:00:00" start
@@ -886,6 +884,11 @@ add/remove torrents
   echo "Removing torrent from list"
   transmission-remote --torrent $ID --remove
   done
+
++ f torrent & t t
+list torrents
+  clear ; transmission-remote -l
+  read -r
 
 
  #####  #####  ######
@@ -1087,6 +1090,10 @@ python3
  # #    #  ####    #   #    # ###### ######
 
 + f install & t t
+prerequisites
+  sudo apt-get install gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux
+
++ f install & t t
 tmux
   # https://github.com/tmux/tmux
   sudo apt-get install libevent-dev libncurses5-dev
@@ -1128,11 +1135,13 @@ git
 + f install & t t
 castnow
   # https://github.com/xat/castnow
+  clear ; cd ~ ; npm root ; npm bin
   npm install castnow -g
 
 + f install & t t
 Dropbox-Uploader
   # https://github.com/andreafabrizi/Dropbox-Uploader
+  clear
   sudo curl -o /usr/local/bin/dropbox_uploader \
   https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
   sudo chmod +x /usr/local/bin/dropbox_uploader
@@ -1141,6 +1150,7 @@ Dropbox-Uploader
 + f install & t t
 drive
   # https://github.com/odeke-em/drive
+  clear
   go get -u github.com/odeke-em/drive/cmd/drive
   mkdir /media/hdd/Drive
   drive init /media/hdd/Drive
@@ -1151,6 +1161,7 @@ drive
 + f install & t t
 flickr-download
   #https://github.com/beaufour/flickr-download
+  clear
   sudo pip install flickr_api
   cd ~/.bin
   git clone https://github.com/beaufour/flickr-download.git
@@ -1159,6 +1170,7 @@ flickr-download
 + f install & t t
 flickr-uploader
   # https://github.com/trickortweak/flickr-uploader
+  clear
   sudo apt-get remove elinks links links2 lynx w3m
   sudo mkdir /opt
   sudo chown -R pi:pi /opt
@@ -1176,6 +1188,7 @@ flickr-uploader
 + f install & t t
 gmusicapi-scripts
   # https://github.com/thebigmunch/gmusicapi-scripts
+  clear
   sudo pip3 install gmusicapi-scripts
   # gmsync /media/hdd/music
   # gmsync down "/media/hdd/listen/%album%/%title%"
@@ -1184,6 +1197,7 @@ gmusicapi-scripts
 + f install & t t
 hue-cli
   # https://github.com/bahamas10/hue-cli
+  clear
   npm install -g hue-cli
   hue search
   hue -H 192.168.0.10 register
@@ -1192,6 +1206,7 @@ hue-cli
 iphone
   # https://github.com/libimobiledevice
   # https://gist.github.com/kfatehi/8922430
+  clear
   sudo apt-get -y install git build-essential libxml2-dev python2.7 python2.7-dev fuse libtool autoconf libusb-1.0-0-dev libfuse-dev
   mkdir iphone_libs && cd iphone_libs
   git clone https://github.com/libimobiledevice/libplist.git
@@ -1215,6 +1230,7 @@ iphone
 + f install & t t
 motion
   # http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
+  clear
   echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
   sudo modprobe bcm2835-v4l2
   echo 'bcm2835-v4l2' | sudo tee -a /etc/modules
