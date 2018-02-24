@@ -273,7 +273,7 @@ download from transfer.sh
   f=$(echo "$url" | rev | cut -d '/' -f 1 | rev)
   curl --progress-bar -o $f $url
 
-+f & t t
++ f & t t
 download only for google cloud shell
   clear ; set %t
   for FILE in "$@"; do

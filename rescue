@@ -45,11 +45,6 @@ if [ "$?" -eq 1 ] ; then
   tmux rename-window -t bg:1 Background
   tmux set pane-border-format " Bash Background "
 
-  tmux new-window -n Octoprint
-  tmux set pane-border-format " Octoprint "
-  tmux send -t Octoprint 'sleep 5' ENTER
-  tmux send -t Octoprint '~/OctoPrint/venv/bin/octoprint' ENTER
-
 fi
 
 tmux select-window -t π
