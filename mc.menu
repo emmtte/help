@@ -1096,7 +1096,12 @@ python3
 
 + f install & t t
 prerequisites
-  sudo apt-get install gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux
+  sudo apt-get install git gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux
+
++ f install & t t
+update rpi
+  rm -r ~/rpi
+  git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
 
 + f install & t t
 tmux
