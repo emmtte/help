@@ -425,7 +425,7 @@ import camera photos to gdrive
 + f music
 Streaming Soundtracks
   clear
-  ~/node_modules/.bin/castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
+  castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
 
 + F music & t t
 castnow
@@ -898,6 +898,11 @@ list torrents
  #      #    # #
  #      #####  #
 
++ f *.tiff | f *.TIFF | f *.jpg | f *.JPG & t t
+tiff to pdf
+  set %t
+  sh ~/djvu/djvu "$@"
+
 + f *.pdf | f *.PDF & t t
 Transforme un fichier PDF sécurisé en normal
   set %t
@@ -1135,8 +1140,8 @@ git
 + f install & t t
 castnow
   # https://github.com/xat/castnow
-  clear ; cd ~ ; npm root ; npm bin
-  npm install castnow -g
+  clear
+  sudo npm install castnow -g
 
 + f install & t t
 Dropbox-Uploader
