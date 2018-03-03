@@ -1369,12 +1369,15 @@ upload-gphotos
 
 + f install & t t
 virtual box
-  apt-get install sshfs gpm mc
-  apt-get install gcc make perl linux-headers-$(uname -r)
-  mkdir --p /media/cdrom
-  mount -t auto /dev/cdrom /media/cdrom/
+  echo "`whoami` ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/vbox
+  sudo apt-get -y install sshfs rsync mc
+  sudo apt-get -y install gcc make perl linux-headers-$(uname -r)
+  sudo mkdir -p /media/cdrom
+  sudo mount -t auto /dev/cdrom /media/cdrom/
   cd /media/cdrom/
-  sh VBoxLinuxAdditions.run
+  sudo sh VBoxLinuxAdditions.run
+  sudo adduser `whoami` vboxsf
+  sudo reboot
 
 + f install & t t
 youtube-dl
