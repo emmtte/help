@@ -8,7 +8,7 @@
 ### Installation
 
 ```bash
-sudo apt-get install exiv2 mc rsync sshpass tmux
+sudo apt-get install exiv2 git mc rsync sshpass tmux
 sudo ln -sf bash /bin/sh
 git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
 cd rpi
