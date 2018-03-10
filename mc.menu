@@ -1,8 +1,8 @@
-# To run under mc
-# sudo ln -sf bash /bin/sh
-#
-# figlet -f banner backup
-#
+ # To run under mc
+ # sudo ln -sf bash /bin/sh
+ #
+ # figlet -f banner backup
+ #
 
 + ! f backup | ! f system | ! f import | ! f music | ! f torrent | ! f photos | ! f install | ! f github
 goto mc.menu
@@ -170,7 +170,6 @@ shutdown
 
 + f system & t t
 update
-  clear
   sudo apt-get -y autoremove
   sudo apt-get -y update
   sudo apt-get -y dist-upgrade
@@ -330,26 +329,6 @@ upload to Gdrive
  # ls -l /dev/disk/by-id
 
 + f import
-import camera photos
-  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
-  GDRIVE=/media/hdd/Drive; cd $GDRIVE
-  PHOTOS="$GDRIVE/Google Photos"
-  sudo mkdir /media/panasonic
-  sudo mount $ID /media/panasonic
-  cp -v /media/panasonic/DCIM/???_PANA/*.JPG "$PHOTOS"
-  sudo umount /media/panasonic
-  if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
-
-+ f import
-import camera videos
-  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
-  VIDEOS="/media/hdd/youtube-upload"
-  mkdir $VIDEOS
-  sudo mount $ID /media/camera
-  cp -v /media/camera/DCIM/???_PANA/*.MP4 $VIDEOS
-  sudo umount /media/camera
-
-+ f import
 import gopro
   ID="/dev/disk/by-id/usb-GoPro_Storage_*-0:0-part1"
   sudo mount $ID /media/gopro
@@ -383,27 +362,13 @@ import usbkey
   sudo umount /media/usbkey
 
 + f import
-import cardreader photos
-  GDRIVE=/media/hdd/Drive; cd $GDRIVE
-  PHOTOS="$GDRIVE/Google Photos"
-  sudo mkdir /media/cardreader
-  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
-  cp -v /media/cardreader/DCIM/???_PANA/*.JPG "$PHOTOS"
-  sudo umount /media/cardreader
-  if ! drive push --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PUSH DRIVE"; return; fi
-
-+ f import
 import camera photos to gdrive
-  ID="/dev/disk/by-id/usb-MATSHITA_DMC-TZ40_*-0:0-part1"
-  PHOTOS="/media/hdd/Drive/Camera"
-  TMP="/media/hdd/tmp"
   clear
-  sudo mkdir /media/panasonic
-  sudo mount $ID /media/panasonic
-  mkdir $TMP
-  mkdir $PHOTOS
-  cp -v /media/panasonic/DCIM/???_PANA/*.JPG $TMP
-  sudo umount /media/panasonic
+  PHOTOS="/media/hdd/photos"
+  TMP="/media/hdd/tmp_photos" ; mkdir $TMP
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  cp -v /media/cardreader/DCIM/???_PANA/*.JPG $TMP
+  sudo umount /media/cardreader
   find $TMP -iname "*.jpg" -type f | while read FILE ; do 
   EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
   YEAR=`echo "$EXIF" | cut -d '-' -f 1`
@@ -411,9 +376,7 @@ import camera photos to gdrive
   if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
   mv -v $FILE $PHOTOS/$YEAR/$EXIF/$(basename $FILE)
   done
-  rm -r $TMP
-  cd /media/hdd/Drive
-  drive push --no-prompt Camera
+
 
  #    # #    #  ####  #  ####
  ##  ## #    # #      # #    #
@@ -1369,6 +1332,7 @@ upload-gphotos
 
 + f install & t t
 virtual box
+  echo %{Password for sudo} | sudo -S echo
   echo "`whoami` ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/vbox
   sudo apt-get -y install sshfs rsync mc
   sudo apt-get -y install gcc make perl linux-headers-$(uname -r)

@@ -1,3 +1,5 @@
+PS1="\$(clear)\$(tput setaf 6)\$(date +%D) \$(date +%T)\$(tput sgr0) > "
+
 export VISUAL="/usr/bin/mcedit -x"
 export EDITOR="/usr/bin/mcedit -x"
 
@@ -10,6 +12,7 @@ curl -s -X POST https://api.telegram.org/bot$apiToken/sendMessage -d text="$1" -
 function ifttt {
 curl -X POST -H "Content-Type: application/json" -d '{"value1":"'"$1"'","value2":"'"$2"'","value3":"'"$3"'"}' \
 https://maker.ifttt.com/trigger/rpi/with/key/$ifttt_key
+echo
 }
 
 function bullet {

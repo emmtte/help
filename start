@@ -3,8 +3,5 @@
 # crontab -e
 # >>> @reboot /home/pi/rpi/start
 
-# first time do /usr/bin/ssh pi@127.0.0.1
-# or use -oStrictHostKeyChecking=no
-
 /bin/sleep 10
-/usr/bin/sshpass -p 'raspberry' /usr/bin/ssh pi@127.0.0.1 -t '~/rpi/rescue'
+/usr/bin/sshpass -p 'raspberry' /usr/bin/ssh -o StrictHostKeyChecking=no pi@127.0.0.1 -t '~/rpi/rescue'

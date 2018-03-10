@@ -1,13 +1,17 @@
 #!/bin/bash
 
+mkdir -p ~/.config/mc
 ln -sf ~/rpi/mc.menu ~/.config/mc/menu
+ln -sf ~/rpi/bashrc ~/.config/mc/bashrc
 ln -sf ~/rpi/tmux.conf ~/.tmux.conf
-ln -sf ~/rpi/bash_aliases ~/.bash_aliases
 
-if [ ! -d ~/mc.menu ] ; then mkdir ~/mc.menu ; fi
+if [ ! -d ~/mc.menu ] ; then 
+mkdir ~/mc.menu
 cd ~/mc.menu
 touch "backup" "config" "files" "import" "music" "github"
 touch "system" "tools" "videos" "torrent" "photos" "install"
+fi
+
 
 tmux has-session -t pi
 
