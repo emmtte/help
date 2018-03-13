@@ -10,8 +10,8 @@ goto mc.menu
   tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/mc.menu ENTER' ENTER
 
 test
-  clear
   #echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
+  . ~/.local/share/mc/bashrc
   ifttt "mc menu" "finish"
 
 + f config
@@ -160,15 +160,15 @@ restore photos from flickr
  #    #   #   #    #   #   #      #    #
   ####    #    ####    #   ###### #    #
 
-+ f system & t t
++ f system
 reboot
   sudo reboot
 
-+ f system & t t
++ f system
 shutdown
   sudo halt
 
-+ f system & t t
++ f system
 update
   sudo apt-get -y autoremove
   sudo apt-get -y update
@@ -176,37 +176,37 @@ update
   sudo apt-get -y upgrade
   sudo rpi-update
 
-+ f system & t t
++ f system
 mount-key
   clear ; sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
-+ f system & t t
++ f system
 mount-cardreader
   clear ; sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
 
-+ f system & t t
++ f system
 mount-hdd
   clear ; sudo mount LABEL=RaspberryPi /media/hdd
 
-+ f system & t r
++ f system
 mount-freebox
-  clear ; sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  clear ; sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm,vers=1.0
 
-+ f system & t t
++ f system
 mount-iphone
   clear ; usbmuxd
   sudo umount /media/iphone
   idevicepair pair
   sudo ifuse /media/iphone
 
-+ f system & t t
++ f system
 format hdd drive
   #Attention lignes suivantes pour formatter
   #sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
   #sudo e2label /dev/sda1 RaspberryPi
   #sudo chown -R pi:pi /media/hdd
 
-+ f system & t t
++ f system
 create fstab file
   clear
   echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
@@ -423,7 +423,7 @@ download all music from gmusic
   gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
   iftt "Rasperry Pi" "Gmusic download done"
 
-+ f *.wav & F music & t t & T t
++ f *.wav & F music & t t
 wav to mp3
   clear ; cd %d ; set %t
   for d in "$@"; do lame -b 320 -q 0 -h "$1" "$1.mp3"; done
@@ -475,12 +475,12 @@ Tidy GDrive Photos (1)
   mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
   done
 
-+ t photos & T d
-photos validation (T YYYY)
++ F photos & t d
+photos validation (t YYYY)
   #Need to select every year
   tput cup 0 0 ; clear ; cd /media/hdd/photos/
   LOGFILE="/home/pi/exif.log"
-  clear ; set %T
+  clear ; set %t
   echo "$@"
   find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
   tput setaf 6 ; echo -n "[$1] " ; tput sgr0
@@ -541,7 +541,7 @@ photos validation (T YYYY)
   ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
   mcedit -x $LOGFILE
 
-+ t photos & t r
++ f photos
 Correct Exif Photos (3)
   #Change Exif Date for all photos listed in ~/exif-change.log
   FILE=~/exif-change.log
@@ -554,7 +554,7 @@ Correct Exif Photos (3)
   done <"$FILE"
   rm ~/exif-change.log
 
-+ T photos & t t
++ F photos & t t
 Rename New Photos (4)
   #use this when adding new photos in YEAR directory
   #need to finished
@@ -587,7 +587,7 @@ Rename New Photos (4)
    #touch -t "${YEAR}0000.00" "$DIR"
   done
 
-+ T photos & t t
++ F photos & t t
 Rename Photos only [XXXX] dir (6)
   clear ; cd %d; set %t
   for f in "$@"; do
@@ -691,7 +691,7 @@ Change Photo EXIF
   #  #  # #    # #      #    # #    #
    ##   # #####  ######  ####   ####
 
-+ f videos & t t
++ f videos
 tv-dl
   mcedit -x /media/hdd/tmp/youtube.txt
   clear ; cd /media/hdd/youtube-dl
@@ -701,7 +701,7 @@ tv-dl
     fi
   done < /media/hdd/tmp/youtube.txt
 
-+ f videos & t t
++ f videos
 tv-dl-v2
   mcedit -x /media/hdd/tmp/yt.txt
   clear ; cd /media/hdd/youtube-dl
@@ -711,7 +711,7 @@ tv-dl-v2
     fi
   done < /media/hdd/tmp/yt.txt
 
-+ f videos & t t
++ f videos
 yt-dl
   . ~/config.ini;clear
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
@@ -723,27 +723,27 @@ yt-dl
   --merge-output-format mp4 --output "/media/hdd/youtube-dl/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   done
 
-+ f *.mp4 | f *.MP4 & F videos & t t & T t
++ f *.mp4 | f *.MP4 & F videos & t t
 conv mp4 to aac
   set %t
   aac="$(basename "$1" | cut -d . -f1).aac"
   avconv -i "$1" -c copy -map 0:a:0 "$aac"
 
-+ f *.mp4 | f *.MP4 & F videos & t t & T t
++ f *.mp4 | f *.MP4 & F videos & t t
 mux mp4 and aac to mkv
   set %t
   aac="$(basename "$1" | cut -d. -f1).aac"
   mkv="$(basename "$1" | cut -d. -f1).mkv"
   MP4Box -add "$1" -add "$aac" "$mkv"
 
-+ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & F videos & t t & T t
++ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & F videos & t t
 upload to youtube
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
   done
 
-+ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t & T t
++ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t
 merge mkv
   clear ; cd %d ; set %t
   FILES="$1"; shift
@@ -752,7 +752,7 @@ merge mkv
   done
   mkvmerge -o out.mkv $FILES
 
-+ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t & T t
++ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t
 cut video
   #! /usr/bin/bash
   clear
@@ -762,7 +762,7 @@ cut video
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
   ifttt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
-+ f videos & t t
++ f videos
 create stopmotion
   clear
   # - 720p (1280×720)
@@ -822,11 +822,11 @@ tmux last window
    #   #    # #   #  #   #  #      #   ##   #
    #    ####  #    # #    # ###### #    #   #
 
-+ f torrent & t t
++ f torrent
 stop transmission
   sudo service transmission-daemon stop
 
-+ f torrent & t t
++ f torrent
 add/remove torrents
   clear
   sudo service transmission-daemon restart
@@ -848,7 +848,7 @@ add/remove torrents
   transmission-remote --torrent $ID --remove
   done
 
-+ f torrent & t t
++ f torrent
 list torrents
   clear ; transmission-remote -l
   read -r
@@ -1013,7 +1013,7 @@ View SST
  #      #    # #   ## #    # #    # #    # #    # #
  ###### #    # #    #  ####   ####  #    #  ####  ######
 
-+ f install & t t
++ f install
 node.js
   # https://nodejs.org
   clear
@@ -1021,7 +1021,7 @@ node.js
   sudo tar -xvf node-v8.9.4-linux-armv6l.tar.gz --strip 1 -C /usr/local
   rm node-v8.9.4-linux-armv6l.tar.gz
 
-+ f install & t t
++ f install
 go lang
   # https://golang.org/dl
   clear
@@ -1036,13 +1036,13 @@ go lang
   export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
   source ~/.bashrc
 
-+ f install & t t
++ f install
 python
   clear
   sudo apt-get -y install python-pip python-dev
   sudo pip install --upgrade pip
 
-+ f install & t t
++ f install
 python3
   clear
   sudo apt-get -y install python3-pip
@@ -1056,17 +1056,17 @@ python3
  # #   ## #    #   #   #    # #      #
  # #    #  ####    #   #    # ###### ######
 
-+ f install & t t
++ f install
 prerequisites
   clear
   sudo apt-get install git gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux
 
-+ f install & t t
++ f install
 update rpi
   clear ; rm -r ~/rpi
   git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
 
-+ f install & t t
++ f install
 tmux
   # https://github.com/tmux/tmux
   clear
@@ -1080,7 +1080,7 @@ tmux
   rm tmux-2.6.tar.gz
   rm -rf tmux-2.6
 
-+ f install & t t
++ f install
 mc
   # https://github.com/MidnightCommander/mc
   clear
@@ -1093,7 +1093,7 @@ mc
   make
   make install
 
-+ f install & t t
++ f install
 git
   # https://github.com/ManuCart/Raspberry-Pi
   clear
@@ -1108,13 +1108,13 @@ git
   echo "Host github.com" >> ~/.ssh/config
   echo "IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
 
-+ f install & t t
++ f install
 castnow
   # https://github.com/xat/castnow
   clear
   sudo npm install castnow -g
 
-+ f install & t t
++ f install
 Dropbox-Uploader
   # https://github.com/andreafabrizi/Dropbox-Uploader
   clear
@@ -1123,7 +1123,7 @@ Dropbox-Uploader
   sudo chmod +x /usr/local/bin/dropbox_uploader
   dropbox_uploader init
 
-+ f install & t t
++ f install
 drive
   # https://github.com/odeke-em/drive
   clear
@@ -1134,7 +1134,7 @@ drive
   sudo chown -R pi:pi /opt/gd
   drive init /opt/gd
 
-+ f install & t t
++ f install
 flickr-download
   #https://github.com/beaufour/flickr-download
   clear
@@ -1143,7 +1143,7 @@ flickr-download
   git clone https://github.com/beaufour/flickr-download.git
   ~/.bin/flickr-download/flickr_download/flickr_download.py -t 
 
-+ f install & t t
++ f install
 flickr-uploader
   # https://github.com/trickortweak/flickr-uploader
   clear
@@ -1161,7 +1161,7 @@ flickr-uploader
   cd /opt
   /opt/flickr-uploader#1/uploadr.py
 
-+ f install & t t
++ f install
 gmusicapi-scripts
   # https://github.com/thebigmunch/gmusicapi-scripts
   clear
@@ -1170,7 +1170,7 @@ gmusicapi-scripts
   # gmsync down "/media/hdd/listen/%album%/%title%"
   # gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 
-+ f install & t t
++ f install
 hue-cli
   # https://github.com/bahamas10/hue-cli
   clear
@@ -1178,7 +1178,7 @@ hue-cli
   hue search
   hue -H 192.168.0.10 register
 
-+ f install & t t
++ f install
 iphone
   # https://github.com/libimobiledevice
   # https://gist.github.com/kfatehi/8922430
@@ -1203,7 +1203,7 @@ iphone
   echo /usr/local/lib | sudo tee /etc/ld.so.conf.d/libimobiledevice-libs.conf
   sudo ldconfig
 
-+ f install & t t
++ f install
 motion
   # http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
   clear
@@ -1231,12 +1231,12 @@ motion
   sudo chmod 777 /var/run/motion
 
 
-+ f install & t t
++ f install
 Pi Hole
   clear
   curl -sSL https://install.pi-hole.net | bash
 
-+ f install & t t
++ f install
 Samba
   clear
   sudo apt-get -y install samba samba-common-bin
@@ -1253,7 +1253,7 @@ Samba
   sudo service smbd restart
   sudo smbpasswd -a pi
 
-+ f install & t t
++ f install
 Sejda
   # https://github.com/torakiki/sejda
   clear
@@ -1266,18 +1266,18 @@ Sejda
   rm -rf sejda.zip sejda-console-3.0.18
   chmod +x /opt/sejda/bin/sejda-console
 
-+ f install & t t
++ f install
 sharp-cli
   # https://github.com/vseventer/sharp-cli
   clear ; cd ~ ; npm root ; npm bin
   npm install sharp-cli
 
-+ f install & t t
++ f install
 squid
   # http://www.squid-cache.org/
   clear ; sudo apt-get install squid
 
-+ f install & t t
++ f install
 ssh
   mkdir ~/.ssh
   cd ~/.ssh
@@ -1293,7 +1293,7 @@ ssh
   EOF
   sudo service ssh restart
 
-+ f install & t t
++ f install
 transmission
   # http://www.transmissionbt.com/
   sudo apt-get -y install transmission-daemon
@@ -1324,13 +1324,13 @@ transmission
   EOF
   sudo service transmission-daemon restart
 
-+ f install & t t
++ f install
 upload-gphotos
   # https://github.com/3846masa/upload-gphotos
   npm i -g npm
   npm install -g upload-gphotos
 
-+ f install & t t
++ f install
 virtual box
   echo %{Password for sudo} | sudo -S echo
   echo "`whoami` ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/vbox
@@ -1343,7 +1343,7 @@ virtual box
   sudo adduser `whoami` vboxsf
   sudo reboot
 
-+ f install & t t
++ f install
 youtube-dl
   # https://github.com/rg3/youtube-dl
   sudo apt-get -y install libavcodec-extra libav-tools
@@ -1353,7 +1353,7 @@ youtube-dl
   mkdir /medi/hdd/youtube-dl
   youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 
-+ f install & t t
++ f install
 youtube-upload
   # https://github.com/tokland/youtube-upload
   sudo pip install --upgrade google-api-python-client progressbar2
