@@ -12,6 +12,7 @@ goto mc.menu
 test
   #echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
   . ~/.local/share/mc/bashrc
+  echo $SHELL
   ifttt "mc menu" "finish"
 
 + f config
@@ -92,17 +93,6 @@ git discard the local changes
  #####  #    #  ####  #    #  ####  #
 
 
-+ f backup
-import cardreader videos & merge & upload to youtube
-  clear
-  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
-  cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
-  sudo umount /media/cardreader
-  cd /media/hdd/youtube-upload
-  FILES=`find *.MP4 -type f -printf "%%f + " | sort`
-  mkvmerge -o out.mkv $FILES
-  youtube-upload --title="-" --category="Entertainment" --privacy="private" out.mkv
-  ifttt "Backup done" "import cardreader videos & merge & upload to youtube"
 
 + f backup
 backup photos & videos to freebox hdd
@@ -131,13 +121,12 @@ restore photos & videos from freebox ext hdd
 + f backup
 Backup Windows to Raspberry Pi
   clear
-  #sshfs pi@192.168.0.1:/media/hdd/photos /media/raspberry
-  rsync --archive --no-o --no-g --delete --info=progress2 -e ssh /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
+  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
 
 + f backup
 Backup Raspberry Pi to Windows
   clear
-  rsync --archive --no-o --no-g --delete --info=progress2 -e ssh pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
+  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
 
 + f backup
 backup photos to flickr #1
@@ -177,8 +166,8 @@ update
   sudo rpi-update
 
 + f system
-mount-key
-  clear ; sudo mount `ls /dev/disk/by-id/usb*-part1` /media/usbkey
+mount ntfs usbkey 
+  clear ; sudo mount -t ntfs-3g `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
 + f system
 mount-cardreader
@@ -237,14 +226,14 @@ ez Move
     rsync --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "$DIR"
   done
 
-+ f * & t t
++ F files * & t t
 Delete
   clear ; set %t
   while [ -n "$1" ] ; do
     rm -rf "$1" ; shift
   done
 
-+ d & t t
++ F files & d & t t
 upload folders photos to gphotos
   set %t
   find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
@@ -260,45 +249,45 @@ upload folders photos to gphotos
   done
   ifttt "Google Photos Script Finished" "-"
 
-+ f & t t
++ F files & t t
 upload to transfer.sh
   clear ; set %t
   curl -H "Max-Downloads: 1" -H "Max-Days: 1" --progress-bar --upload-file "$1" "https://transfer.sh/$1" > /tmp/transfer; tail -1 /tmp/transfer
   read -r
 
-+ t r
++ f files
 download from transfer.sh
   cd %d ; url=%{transfer.sh url}
   f=$(echo "$url" | rev | cut -d '/' -f 1 | rev)
   curl --progress-bar -o $f $url
 
-+ f & t t
++ F files & t t
 download only for google cloud shell
   clear ; set %t
   for FILE in "$@"; do
     cloudshell dl "$FILE"
   done
 
-+ f & t t
++ F files & t t
 upload to dropbox
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     dropbox_uploader upload "$FILE" "$FILE"
   done
 
-+ t r
++ f files
 download from dropbox
   param = %{Dropbox Filename}
   clear ; cd %d
   dropbox_uploader download "$param"
 
-+ t r
++ f files
 download from google drive
   param = %{Google Drive Filename}
   clear ; cd "/media/hdd/Drive"
   if ! drive pull --no-prompt "$param" ; then ifttt "ERROR Google pull files" "ERROR PULL DRIVE"; return; fi
 
-+ f * & t t
++ F files & t t
 move to "Freebox Server"
  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
  clear ; cd %d ; set %t
@@ -307,7 +296,7 @@ move to "Freebox Server"
    rsync --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "/media/freebox"
  done
 
-+ f * & t t
++ F files & t t
 upload to Gdrive
   cd /media/hdd/Drive
   #drive pull --no-prompt "Raspberry Pi/"
@@ -327,6 +316,18 @@ upload to Gdrive
  # #    # #       ####  #    #   #
 
  # ls -l /dev/disk/by-id
+
++ f import
+import cardreader videos & merge & upload to youtube
+  clear
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
+  sudo umount /media/cardreader
+  cd /media/hdd/youtube-upload
+  FILES=`find *.MP4 -type f -printf "%%f + " | sort`
+  mkvmerge -o out.mkv $FILES
+  youtube-upload --title="-" --category="Entertainment" --privacy="private" out.mkv
+  ifttt "Backup done" "import cardreader videos & merge & upload to youtube"
 
 + f import
 import gopro
@@ -861,7 +862,7 @@ list torrents
  #      #    # #
  #      #####  #
 
-+ f *.tiff | f *.TIFF | f *.jpg | f *.JPG & t t
++ f *.tif | f *.TIF | f *.jpg | f *.JPG & t t
 tiff to pdf
   sh ~/djvu/djvu %d %t
 
@@ -1059,7 +1060,7 @@ python3
 + f install
 prerequisites
   clear
-  sudo apt-get install git gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux
+  sudo apt-get install git gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g
 
 + f install
 update rpi
