@@ -234,20 +234,21 @@ Delete
   done
 
 + F files & d & t t
-upload folders photos to gphotos
+google_photos2
+  . ~/config.ini ; clear
   set %t
   find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
   Album=$(echo "$DIR" | cut -d ' ' -f 2-)
   Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
-  echo "$Album ($Year)"
+  echo ; echo "$Album ($Year)"
   cd "$DIR"
-  if ! upload-gphotos `ls` -u "$Username" -p "$Password" -a "$Album ($Year)" ; then
-   echo "|$DIR|$Album ($Year)" >> ~/gphotos.log; else
-   ifttt "Google Photos : $Album ($Year)" "-";
+  if ! upload-gphotos `ls` -u "$user_3" -p "$pwd_3" -a "$Album ($Year)" < /dev/null ; then
+   echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
   fi
   cd %d
   done
-  ifttt "Google Photos Script Finished" "-"
+  ifttt "Google Photos Script Finished" "$@"
+  mcedit -x ~/gphotos.log
 
 + F files & t t
 upload to transfer.sh
@@ -703,17 +704,7 @@ tv-dl
   done < /media/hdd/tmp/youtube.txt
 
 + f videos
-tv-dl-v2
-  mcedit -x /media/hdd/tmp/yt.txt
-  clear ; cd /media/hdd/youtube-dl
-  while IFS=, read url out arg ; do
-    if [[ $url == h* ]]; then
-    python ~/youtube-dl/youtube-dl $arg -o "$out" $url
-    fi
-  done < /media/hdd/tmp/yt.txt
-
-+ f videos
-yt-dl
+yt-dl-playlist
   . ~/config.ini;clear
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
   youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
@@ -851,9 +842,11 @@ add/remove torrents
 
 + f torrent
 list torrents
+  while [ true ] ; do
   clear ; transmission-remote -l
-  read -r
-
+  read -t 5 -n 1
+  if [ $? = 0 ] ; then exit ; fi
+  done
 
  #####  #####  ######
  #    # #    # #
