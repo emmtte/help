@@ -38,6 +38,15 @@ if [ "$?" -eq 1 ] ; then
   tmux new-window -n 6
   tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
 
+  tmux new-window -n 7
+  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
+
+  tmux new-window -n 8
+  tmux send '/usr/bin/mc -x /media/hdd/Drive/Snoozed /media/hdd/Drive/Documents' ENTER
+
+  tmux new-window -n 9
+  tmux send '/usr/bin/mc -x /media/hdd/Drive/Snoozed /media/hdd/Drive/Documents' ENTER
+
   TMUX= tmux -u new-session -d -s bg
   tmux switch-client -t bg
 

@@ -5,15 +5,24 @@
  #
 
 + ! f backup | ! f system | ! f import | ! f music | ! f torrent | ! f photos | ! f install | ! f github
-goto mc.menu
+[[  menu  ]]
   N=`tmux display-message -p '#W'`
   tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/mc.menu ENTER' ENTER
 
-test
+[[  test  ]]
   #echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
-  . ~/.local/share/mc/bashrc
-  echo $SHELL
-  ifttt "mc menu" "finish"
+  #. ~/.local/share/mc/bashrc
+  #echo $SHELL
+  #ifttt "mc menu" "finish"
+  exit && mc /home/pi/djvu
+
+
+  ####   ####  #    # ###### #  ####
+ #    # #    # ##   # #      # #    #
+ #      #    # # #  # #####  # #
+ #      #    # #  # # #      # #  ###
+ #    # #    # #   ## #      # #    #
+  ####   ####  #    # #      #  ####
 
 + f config
 Create ~/mc.menu
@@ -320,14 +329,17 @@ upload to Gdrive
 
 + f import
 import cardreader videos & merge & upload to youtube
-  clear
+  clear ; source ~/config.ini
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
   cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
   sudo umount /media/cardreader
+  ifttt "Import SD card done" "You can remove SD card reader"
   cd /media/hdd/youtube-upload
   FILES=`find *.MP4 -type f -printf "%%f + " | sort`
   mkvmerge -o out.mkv $FILES
-  youtube-upload --title="-" --category="Entertainment" --privacy="private" out.mkv
+  youtube-upload --title="-" --category="Entertainment" --privacy="private" \
+  --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
+  --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-2.json" out.mkv
   ifttt "Backup done" "import cardreader videos & merge & upload to youtube"
 
 + f import
@@ -428,7 +440,21 @@ download all music from gmusic
 + f *.wav & F music & t t
 wav to mp3
   clear ; cd %d ; set %t
-  for d in "$@"; do lame -b 320 -q 0 -h "$1" "$1.mp3"; done
+  for d in "$@"; do lame --preset extreme -q 0 -h "$1" "$1.mp3"; done
+
++ f *.flac & F music & t t
+flac to mp3
+  clear ; cd %d ; set %t
+  for f in "$@"; do
+    album="$(metaflac --show-tag=album "$f" | sed 's/[^=]*=//')"
+    artist="$(metaflac --show-tag=artist "$f" | sed 's/[^=]*=//')"
+    date="$(metaflac --show-tag=date "$f" | sed 's/[^=]*=//')"
+    title="$(metaflac --show-tag=title "$f" | sed 's/[^=]*=//')"
+    year="$(metaflac --show-tag=date "$f" | sed 's/[^=]*=//')"
+    genre="$(metaflac --show-tag=genre "$f" | sed 's/[^=]*=//')"
+    tracknumber="$(metaflac --show-tag=tracknumber "$f" | sed 's/[^=]*=//')"
+    flac --decode --stdout "$f" | lame --preset extreme --add-id3v2 --tt "$title" --ta "$artist" --tl "$album" --ty "$year" --tn "$tracknumber" --tg "$genre" - "${f%.flac}.mp3"
+  done
 
 
  #####  #    #  ####  #####  ####   ####
@@ -732,7 +758,12 @@ mux mp4 and aac to mkv
 upload to youtube
   clear ; cd %d ; set %t
   for FILE in "$@"; do
-    while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" "$FILE" ; do :; done
+    #while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
+    youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
+    --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
+    --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-2.json" \
+    "$FILE"
+    #"$FILE" ; do :; done
   done
 
 + f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t
@@ -743,6 +774,24 @@ merge mkv
     FILES="$FILES + $FILE"
   done
   mkvmerge -o out.mkv $FILES
+
++ f *.mp4 | f *.MP4 & F videos & t t
+merge mp4
+  clear ; cd %d ; set %t
+  #FILES="-cat $1" ; shift
+  FILES="-force-cat -add $1" ; shift
+  for FILE in "$@"; do
+    FILES="$FILES -cat $FILE"
+  done
+  echo "$FILES"
+  MP4Box $FILES -new merged.mp4
+
++ f *.mp4 | f *.MP4 & F videos & t t
+rotate 90 mp4
+  clear ; cd %d ; set %t
+  for FILE in "$@"; do
+    avconv -i "$FILE" -vf transpose=1 -strict experimental "Rotate-$FILE"
+  done
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t
 cut video
@@ -842,9 +891,10 @@ add/remove torrents
 
 + f torrent
 list torrents
+  clear
   while [ true ] ; do
-  clear ; transmission-remote -l
-  read -t 5 -n 1
+  transmission-remote -l ; tput cup 0 0
+  read -t 10 -n 1
   if [ $? = 0 ] ; then exit ; fi
   done
 
@@ -860,52 +910,42 @@ tiff to pdf
   sh ~/djvu/djvu %d %t
 
 + f *.pdf | f *.PDF & t t
-Transforme un fichier PDF sécurisé en normal
+Uncrypt PDF
   set %t
   while [ -n "$1" ]; do
-    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.test.pdf" "$1"
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1.uncrypted.pdf" "$1"
     shift
   done
 
++ f *.pdf | f *.PDF | F *.pdf | F *.PDF
+A Drive pull Documents and Snoozed
+  clear ; source ~/config.ini
+  GDRIVE=/media/hdd/Drive ; cd $GDRIVE
+  if ! drive pull --no-prompt $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then ifttt "Merge PDF" "ERROR PULL GDRIVE" ; exit; fi
+
 + f *.pdf | f *.PDF & t t
-Compress PDF File
-  #Warning Files name does not content comma
-  clear
-  GDRIVE=/media/hdd/Drive
-  rm $GDRIVE/Documents/*
-  cd $GDRIVE
-  drive pull --quiet --starred --all
-  if [ `find $GDRIVE/Documents -type d -empty` ] ; then ~/scripts/iftt-maker "Compress PDF" "ERROR NO DOCUMENTS"; exit ; fi
-  FILE=`ls $GDRIVE/Documents | head -1`
-  ~/.bin/sejda/bin/sejda-console compress -f Documents/$FILE -o Documents/
-  mv sejda_out.pdf "Documents/$FILE"
-  drive push --quiet "Documents/$FILE"
-  drive unstar --quiet "Documents/$FILE"
-  iftt "Raspberry Pi" "File $FILE compressed"
+B Merge PDF
+  #Don't use pdftk files genarated are too big
+  clear ; source ~/config.ini ; array=()
+  set %T ; for FILE in "$@"; do 
+    if grep -r "Encrypt" "%D/$FILE" ; then echo "ERROR : $FILE CRYPTED" ; ifttt "ERROR PDF" "CRYPTED $FILE"; exit; fi 
+    array+=("%D/$FILE") ; done
+  set %t ; for FILE in "$@"; do 
+    if grep -r "Encrypt" "%d/$FILE" ; then echo "ERROR : $FILE CRYPTED" ; ifttt "ERROR PDF" "CRYPTED $FILE"; exit; fi
+    array+=("%d/$FILE") ; done
+  /opt/sejda/bin/sejda-console merge -f "${array[@]}" -o "$(dirname "${array[-1]}")/!$(basename "${array[-1]}")"
+  rm "${array[@]}"
 
-+ f *.pdf | f *.PDF
-Merge Starred Drive Pdf files
-  clear
-  GDRIVE=/media/hdd/Drive
-  rm $GDRIVE/Snoozed/*
-  rm $GDRIVE/Documents/*
-  cd $GDRIVE
-  if ! drive pull --no-prompt --starred --all ; then ~/scripts/iftt-maker "Merge PDF" "Error pull starred" ; exit; fi
-  if [ `find $GDRIVE/Documents -type d -empty` ] ; then ~/scripts/iftt-maker note "Merge PDF" "ERROR NO DOCUMENTS"; exit ; fi
-  if grep -r "Encrypt" $GDRIVE/Snoozed ; then ~/scripts/iftt-maker "Merge PDF" "ERROR CRYPTED FILE"; exit; fi
-  find $GDRIVE/Snoozed -type f | sort | tr '\n' ',' > files.csv
-  find $GDRIVE/Documents -type f | head -1  >> files.csv
-  FILE=`ls $GDRIVE/Documents | head -1`
-  if [ -f files.csv ] ; then ~/.bin/sejda/bin/sejda-console merge -l files.csv -o sejda_out.pdf ; fi
-  mv sejda_out.pdf "Documents/$FILE"
-  if ! drive push --no-prompt "Documents/$FILE" ; then ~/scripts/iftt-maker "Merge PDF" "Error push document" ; exit; fi
-  drive unstar --no-prompt "Documents/$FILE"
-  drive trash --starred
-  ifttt "Raspberry Pi" "Starred Files added to $FILE"
++ f *.pdf | f *.PDF | F *.pdf | F *.PDF
+C Drive push Documents and Snoozed
+  clear ; source ~/config.ini
+  GDRIVE=/media/hdd/Drive ; cd $GDRIVE
+  if ! drive push --no-prompt $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then iftt "Merge PDF" "ERROR PUSH GDRIVE" ; exit; fi
 
-+ f *.pdf | f *.PDF
++ f tools
 Automatic Merge pdf files
   ## TODO Delete only files merged
+  clear ; source ~/config.ini
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " `date`"
   GDRIVE=/media/hdd/Drive
   FILE=/tmp/gdrive.csv
@@ -913,13 +953,13 @@ Automatic Merge pdf files
   cd $GDRIVE
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Snoozed Dir"
   rm -rf Snoozed Documents
-  if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then iftt "Auto Merge PDF" "Error pull, please fix clashes in Snoozed folder"; return; fi
+  if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then ifttt "Auto Merge PDF" "Error pull, please fix clashes in Snoozed folder"; return; fi
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Empty"
   if [ `find "Snoozed" -type d -empty` ] ; then tput setaf 2 ; echo -n "[info]" ; tput sgr0 ; echo "  Empty Snoozed Dir"; return; fi
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Files Encrypts"
   if grep -r "Encrypt" Snoozed ; then ifttt "`grep -r "Encrypt" Snoozed`"; return; fi
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Iftt csv file"
-  if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then iftt "Auto Merge PDF" "Error pull for ifttt.xls" ; return; fi
+  if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force ifttt; then ifttt "Auto Merge PDF" "Error pull for ifttt.xls" ; return; fi
   tr -d '\r' < /tmp/ifttt.csv > $FILE
   tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Read Iftt csv file"
   while IFS=, read email in out ; do
@@ -934,19 +974,19 @@ Automatic Merge pdf files
         tput setaf 1 ; echo -n "[FAIL]" ; tput sgr0 ; echo "cat ~/files.csv"
         cat ~/files.csv
         tput setaf 1 ; echo -n "[info]" ; tput sgr0 ; echo " END"
-        if ! drive pull --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error pull ref doc" ; return; fi
-        mv "Documents/$out" "Snoozed/$out"
-        /opt/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
-        mv sejda_out.pdf "Documents/$out"
-        if ! drive push --no-prompt "Documents/$out" ; then iftt "Auto Merge PDF" "Error push ref doc" ; return; fi
+        if ! drive pull --no-prompt "Documents/$out" ; then ifttt "Auto Merge PDF" "Error pull ref doc" ; return; fi
+        #mv "Documents/$out" "Snoozed/$out"
+        #/opt/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
+        #mv sejda_out.pdf "Documents/$out"
+        #if ! drive push --no-prompt "Documents/$out" ; then ifttt "Auto Merge PDF" "Error push ref doc" ; return; fi
         while IFS=, read f ; do
         tput setaf 1 ; echo -n "[----]" ; tput sgr0 ; echo " delete $f"
-        rm "$f"
+        #rm "$f"
         done < ~/files_rm.csv
     fi
   done < "$FILE"
   rm $FILE
-  if ! drive pull --no-prompt "Snoozed/"; then iftt "Upload Snoozed" "Error"; return; fi
+  #if ! drive pull --no-prompt "Snoozed/"; then ifttt "Upload Snoozed" "Error"; return; fi
 
 
   ####   ####  #####  # #####  #####  ####
@@ -1053,7 +1093,7 @@ python3
 + f install
 prerequisites
   clear
-  sudo apt-get install git gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g
+  sudo apt-get install git gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g ghostscript
 
 + f install
 update rpi
@@ -1160,9 +1200,6 @@ gmusicapi-scripts
   # https://github.com/thebigmunch/gmusicapi-scripts
   clear
   sudo pip3 install gmusicapi-scripts
-  # gmsync /media/hdd/music
-  # gmsync down "/media/hdd/listen/%album%/%title%"
-  # gmsync -c ~/.local/share/gmusicapi/oauth.2.cred /media/hdd/music
 
 + f install
 hue-cli
