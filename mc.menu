@@ -251,7 +251,8 @@ google_photos2
   Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
   echo ; echo "$Album ($Year)"
   cd "$DIR"
-  if ! upload-gphotos `ls` -u "$user_3" -p "$pwd_3" -a "$Album ($Year)" < /dev/null ; then
+  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
+  #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" < /dev/null ; then
    echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
   fi
   cd %d
@@ -330,17 +331,20 @@ upload to Gdrive
 + f import
 import cardreader videos & merge & upload to youtube
   clear ; source ~/config.ini
+  rm /media/hdd/youtube-upload/*
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
   cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
   sudo umount /media/cardreader
-  ifttt "Import SD card done" "You can remove SD card reader"
+  ifttt "Import done" "You can remove SD card reader"
   cd /media/hdd/youtube-upload
   FILES=`find *.MP4 -type f -printf "%%f + " | sort`
   mkvmerge -o out.mkv $FILES
   youtube-upload --title="-" --category="Entertainment" --privacy="private" \
   --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
   --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-2.json" out.mkv
-  ifttt "Backup done" "import cardreader videos & merge & upload to youtube"
+  ifttt "Backup done" "Merge & uploaded to youtube"
+  sleep 20m
+  ifttt "Youtube done" "Can watch to youtube"
 
 + f import
 import gopro
@@ -725,7 +729,8 @@ tv-dl
   clear ; cd /media/hdd/youtube-dl
   while IFS=, read url out ; do
     if [[ $url == h* ]]; then
-    python ~/youtube-dl/youtube-dl -o "$out" $url
+    python ~/youtube-dl/youtube-dl --fixup warn -o "$out" $url
+    #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
     fi
   done < /media/hdd/tmp/youtube.txt
 
@@ -904,6 +909,22 @@ list torrents
  #####  #    # #
  #      #    # #
  #      #####  #
+
++ f *.tif | f *.TIF
+convert tif to jpeg
+  set %t
+  while [ -n "$1" ]; do
+    ~/node_modules/.bin/sharp -i "$1" -o "$1.jpg" -q 100
+    shift
+  done
+
++ f *.tif | f *.TIF
+convert tif to lzw
+  set %t
+  while [ -n "$1" ]; do
+    convert -verbose -compress lzw "$1" "lzw_$1"
+    shift
+  done
 
 + f *.tif | f *.TIF | f *.jpg | f *.JPG & t t
 tiff to pdf
@@ -1289,7 +1310,7 @@ Sejda
   # https://github.com/torakiki/sejda
   clear
   sudo apt-get -y install oracle-java8-jdk
-  curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v3.0.18/sejda-console-3.0.18-bin.zip
+  curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v3.2.49/sejda-console-3.2.49-bin.zip
   unzip sejda.zip
   sudo mkdir /opt/sejda
   sudo chown -R pi:pi /opt/sejda
@@ -1300,7 +1321,7 @@ Sejda
 + f install
 sharp-cli
   # https://github.com/vseventer/sharp-cli
-  clear ; cd ~ ; npm root ; npm bin
+  clear ; cd ~
   npm install sharp-cli
 
 + f install

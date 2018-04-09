@@ -47,14 +47,14 @@ if [ "$?" -eq 1 ] ; then
   tmux new-window -n 9
   tmux send '/usr/bin/mc -x /media/hdd/Drive/Snoozed /media/hdd/Drive/Documents' ENTER
 
-  TMUX= tmux -u new-session -d -s bg
+  tmux -u new-session -d -s bg
   tmux switch-client -t bg
 
-  tmux rename-window -t bg:1 Background
-  tmux set pane-border-format " Bash Background "
+  #tmux rename-window -t bg:1 Background
+  #tmux set pane-border-format " Bash Background "
 
 fi
 
-tmux select-window -t π
+tmux select-window -t 1
 tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
-tmux attach -t pi:2
+tmux attach -t pi:1
