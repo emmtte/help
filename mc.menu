@@ -251,8 +251,8 @@ google_photos2
   Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
   echo ; echo "$Album ($Year)"
   cd "$DIR"
-  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
-  #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" < /dev/null ; then
+  #if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
+  if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
    echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
   fi
   cd %d
@@ -353,7 +353,7 @@ import gopro
   mkdir /media/hdd/gopro /media/hdd/gopro/photos /media/hdd/gopro/videos
   cp -v /media/gopro/DCIM/???GOPRO/*.JPG /media/hdd/gopro/photos
   cp -v /media/gopro/DCIM/???GOPRO/*.MP4 /media/hdd/gopro/videos
-  iftt "photos and videos from gopro are saved"
+  ifttt "photos and videos from gopro are saved"
   rm /tmp/copy-gopro
   sudo umount /media/gopro
 
@@ -439,7 +439,7 @@ upload to gmusic account 3
 download all music from gmusic
   account=%{Give number accounts}
   gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
-  iftt "Rasperry Pi" "Gmusic download done"
+  ifttt "Rasperry Pi" "Gmusic download done"
 
 + f *.wav & F music & t t
 wav to mp3
@@ -472,11 +472,12 @@ flac to mp3
 + f photos
 Take Raspberry Pi Photo
   tput cup 0 0 ; clear
-  rm /media/hdd/photo.jpg
   raspistill -v -w 1280 -rot 270 -o /media/hdd/photo.jpg
   source ~/config.ini
-  curl -s -X POST https://api.telegram.org/bot$apiToken/sendPhoto -d photo="/media/hdd/photo.jpg" -d chat_id=$userChatId
-  read -r
+  #curl -s -X POST https://api.telegram.org/bot$apiToken/sendPhoto -d photo="/media/hdd/photo.jpg" -d chat_id=$userChatId
+  #curl -s -X POST https://api.telegram.org/bot$apiToken/sendPhoto -d photo="/media/hdd/photo.jpg" -d chat_id=@MyChannel
+  dropbox_uploader upload /media/hdd/photo.jpg /Camera/$(date +"%%d%%m%%y-%%H%%m").jpg
+  rm /media/hdd/photo.jpg
 
 + f photos
 Found double photos
@@ -729,7 +730,8 @@ tv-dl
   clear ; cd /media/hdd/youtube-dl
   while IFS=, read url out ; do
     if [[ $url == h* ]]; then
-    python ~/youtube-dl/youtube-dl --fixup warn -o "$out" $url
+    if [[ $out == "" ]]; then python ~/youtube-dl/youtube-dl --fixup warn $url; else
+    python ~/youtube-dl/youtube-dl --fixup warn -o "$out" $url; fi
     #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
     fi
   done < /media/hdd/tmp/youtube.txt
@@ -738,13 +740,8 @@ tv-dl
 yt-dl-playlist
   . ~/config.ini;clear
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
-  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+  python ~/youtube-dl/youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
   --merge-output-format mp4 --output "/media/hdd/youtube-dl/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
-  while exist /media/hdd/youtube-dl/*.part
-  do
-  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
-  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
-  done
 
 + f *.mp4 | f *.MP4 & F videos & t t
 conv mp4 to aac
@@ -759,19 +756,19 @@ mux mp4 and aac to mkv
   mkv="$(basename "$1" | cut -d. -f1).mkv"
   MP4Box -add "$1" -add "$aac" "$mkv"
 
-+ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm & F videos & t t
++ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm | f *.wmv & F videos & t t
 upload to youtube
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     #while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
     youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
     --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
-    --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-2.json" \
+    --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-1.json" \
     "$FILE"
     #"$FILE" ; do :; done
   done
 
-+ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t
++ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 | f *.webm & F videos & t t
 merge mkv
   clear ; cd %d ; set %t
   FILES="$1"; shift
@@ -899,6 +896,7 @@ list torrents
   clear
   while [ true ] ; do
   transmission-remote -l ; tput cup 0 0
+  #if transmission-remote -l | grep % | cut -d " " -f 4 | cut -d "*" -f 1 < /dev/null ; then echo "OK" ;fi
   read -t 10 -n 1
   if [ $? = 0 ] ; then exit ; fi
   done
@@ -909,6 +907,14 @@ list torrents
  #####  #    # #
  #      #    # #
  #      #####  #
+
++ f *.jpg | f *.JPG
+drive push rpi
+  drive push --no-prompt
+
++ f *.jpg | f *.JPG
+drive pull rpi
+  drive pull --no-prompt
 
 + f *.tif | f *.TIF
 convert tif to jpeg
@@ -927,7 +933,7 @@ convert tif to lzw
   done
 
 + f *.tif | f *.TIF | f *.jpg | f *.JPG & t t
-tiff to pdf
+jpg or tif to djv to pdf
   sh ~/djvu/djvu %d %t
 
 + f *.pdf | f *.PDF & t t
@@ -942,7 +948,7 @@ Uncrypt PDF
 A Drive pull Documents and Snoozed
   clear ; source ~/config.ini
   GDRIVE=/media/hdd/Drive ; cd $GDRIVE
-  if ! drive pull --no-prompt $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then ifttt "Merge PDF" "ERROR PULL GDRIVE" ; exit; fi
+  if ! drive pull --no-prompt -fix-clashes $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then ifttt "Merge PDF" "ERROR PULL GDRIVE" ; exit; fi
 
 + f *.pdf | f *.PDF & t t
 B Merge PDF
@@ -1020,7 +1026,7 @@ Automatic Merge pdf files
 + f music
 View SST
   #sudo apt-get install recode libxml2-utils
-  #at << EOF > /tmp/request.xml
+  #cat << EOF > /tmp/request.xml
   #echo " /
   #<?xml version='1.0' encoding='UTF-8' standalone='no' ?> /
   #<SOAP-ENV:Envelope /
