@@ -380,20 +380,25 @@ import usbkey
   sudo umount /media/usbkey
 
 + f import
-import camera photos to gdrive
+import camera photos
   clear
-  PHOTOS="/media/hdd/photos"
-  TMP="/media/hdd/tmp_photos" ; mkdir $TMP
+  PHOTOS="/media/hdd/photos" ; COUNTER=0
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
-  cp -v /media/cardreader/DCIM/???_PANA/*.JPG $TMP
-  sudo umount /media/cardreader
-  find $TMP -iname "*.jpg" -type f | while read FILE ; do 
+  find /media/cardreader/DCIM/???_PANA -iname "*.JPG" -type f | sort | while read FILE ; do
   EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
   YEAR=`echo "$EXIF" | cut -d '-' -f 1`
-  if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
-  if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
-  mv -v $FILE $PHOTOS/$YEAR/$EXIF/$(basename $FILE)
+  if [ $COUNTER == 0 ] ; then LAST=`find "/media/hdd/photos/$YEAR" -iname "$YEAR.????.JPEG" -type f | sort | tail -n1`;
+    COUNTER=$(echo "$LAST" | rev | cut -d '.' -f 2 | rev ) ; COUNTER=$(expr $COUNTER + 0) ; echo $COUNTER ; fi
+  if [ -z "$LAST" ] ; then COUNTER=0 ; fi
+  COUNTER=$(($COUNTER + 1));
+  if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR" ; touch -t "${YEAR}01010000.00" "$PHOTOS/$YEAR" ; fi
+  if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF" ; touch -t "$(echo $EXIF | tr -d -)0000.00" "$PHOTOS/$YEAR/$EXIF" ; fi
+  echo "COUNTER: $COUNTER"
+  NEWFILE="$YEAR.$(printf '%%04d' $COUNTER).JPEG"
+  echo "$FILE -> $PHOTOS/$YEAR/$EXIF/$NEWFILE"
+  #cp -v $FILE $PHOTOS/$YEAR/$EXIF/$NEWFILE
   done
+  sudo umount /media/cardreader
 
 
  #    # #    #  ####  #  ####
