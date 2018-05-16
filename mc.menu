@@ -732,7 +732,7 @@ Change Photo EXIF
 + f videos
 tv-dl
   mcedit -x /media/hdd/tmp/youtube.txt
-  clear ; cd /media/hdd/youtube-dl
+  clear ; source ~/config.ini; cd /media/hdd/youtube-dl
   while IFS=, read url out ; do
     if [[ $url == h* ]]; then
     if [[ $out == "" ]]; then python ~/youtube-dl/youtube-dl --fixup warn $url; else
@@ -740,13 +740,15 @@ tv-dl
     #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
     fi
   done < /media/hdd/tmp/youtube.txt
+  ifttt "Youtube-dl" "tv-dl done"
 
 + f videos
 yt-dl-playlist
-  . ~/config.ini;clear
+  clear ; source ~/config.ini
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
   python ~/youtube-dl/youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
   --merge-output-format mp4 --output "/media/hdd/youtube-dl/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  ifttt "Youtube-dl" "dl playlist done"
 
 + f *.mp4 | f *.MP4 & F videos & t t
 conv mp4 to aac
@@ -763,7 +765,7 @@ mux mp4 and aac to mkv
 
 + f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm | f *.wmv & F videos & t t
 upload to youtube
-  clear ; cd %d ; set %t
+  clear ; source ~/config.ini ; cd %d ; set %t
   for FILE in "$@"; do
     #while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
     youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
@@ -772,6 +774,7 @@ upload to youtube
     "$FILE"
     #"$FILE" ; do :; done
   done
+  ifttt "Youtube Upload" "done"
 
 + f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 | f *.webm & F videos & t t
 merge mkv
@@ -812,7 +815,7 @@ cut video
 
 + f videos
 create stopmotion
-  clear
+  clear ; source ~/config.ini
   # - 720p (1280×720)
   # – 1080p (1920×1080) full HD
   # – 1440p (2560×1440) 2K
@@ -830,11 +833,15 @@ create stopmotion
   cd /media/hdd/stopmotion
   mkdir CROP
   for img in *.JPG; do
+  echo "Convert $img"
   convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
   done
   ls -1 CROP/*-CROP.JPG >  files.lst
-  mpv mf://@files.lst -mf-type=jpg -mf-fps=10 -ovc=rawvideo -no-audio -o stopmotion.avi
-  while ! youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi ; do :; done
+  mpv mf://@files.lst -mf-type=jpg -mf-fps=7.5 -ovc=rawvideo -no-audio -o stopmotion.avi
+  youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" \
+  --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
+  --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-1.json" \
+  stopmotion.avi
   ifttt "Raspberry Pi" "Stopmotion created"
 
  ##### #    # #    # #    #
