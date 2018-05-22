@@ -211,6 +211,15 @@ create fstab file
   echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
   sudo chown -R pi:pi /media/hdd
 
++ f system
+create new raspbian image
+  #Use lsblk to check /dev/sdb
+  curl --progress-bar -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  #curl --progress-bar -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+  #unzip -p raspbian_*.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
+  unzip -p raspbian_*.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
+  sudo mount /dev/sdb /media/cardreader
+  touch /media/cardreader/ssh
 
  ###### # #      ######  ####
  #      # #      #      #
@@ -244,6 +253,7 @@ Delete
 
 + F files & d & t t
 google_photos2
+  #Note : you need to create at least an album before starting upload, this script is in incapacity to create the first one.
   . ~/config.ini ; clear
   set %t
   find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
@@ -251,8 +261,8 @@ google_photos2
   Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
   echo ; echo "$Album ($Year)"
   cd "$DIR"
-  #if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
-  if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
+  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
+  #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
    echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
   fi
   cd %d
@@ -380,22 +390,43 @@ import usbkey
   sudo umount /media/usbkey
 
 + f import
-import camera photos
+import Dropbox photos - Camera Uploads
   clear
-  PHOTOS="/media/hdd/photos" ; COUNTER=0
+  PHOTOS="/media/hdd/photos/TMP"
+  rm -rf "$PHOTOS/Camera Uploads"
+  dropbox_uploader download "Camera Uploads" $PHOTOS
+  find "$PHOTOS/Camera Uploads" -iname "*.JPG" -type f | while read FILE ; do
+  EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+  DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
+  TIME=$(echo $EXIF | cut -d ' ' -f 2)
+  mv -v "$FILE" "$PHOTOS/${DATE}T${TIME}Z.JPG"
+  done
+  rm -rf "$PHOTOS/Camera Uploads"
+
++ f import
+import SD Cards photos
+  clear
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
-  find /media/cardreader/DCIM/???_PANA -iname "*.JPG" -type f | sort | while read FILE ; do
-  EXIF=`exiv2 "$FILE" 2> null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
-  YEAR=`echo "$EXIF" | cut -d '-' -f 1`
-  if [ $COUNTER == 0 ] ; then LAST=`find "/media/hdd/photos/$YEAR" -iname "$YEAR.????.JPEG" -type f | sort | tail -n1`;
-    COUNTER=$(echo "$LAST" | rev | cut -d '.' -f 2 | rev ) ; COUNTER=$(expr $COUNTER + 0) ; echo $COUNTER ; fi
-  if [ -z "$LAST" ] ; then COUNTER=0 ; fi
-  COUNTER=$(($COUNTER + 1));
-  if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR" ; touch -t "${YEAR}01010000.00" "$PHOTOS/$YEAR" ; fi
-  if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF" ; touch -t "$(echo $EXIF | tr -d -)0000.00" "$PHOTOS/$YEAR/$EXIF" ; fi
-  echo "COUNTER: $COUNTER"
-  NEWFILE="$YEAR.$(printf '%%04d' $COUNTER).JPEG"
-  echo "$FILE -> $PHOTOS/$YEAR/$EXIF/$NEWFILE"
+  find /media/cardreader/DCIM/???_PANA -iname "*.JPG" -type f | while read FILE ; do
+  EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+  DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
+  TIME=$(echo $EXIF | cut -d ' ' -f 2)
+  mv -v "$FILE" "$PHOTOS/${DATE}T${TIME}Z.JPG"
+  done
+  sudo umount /media/cardreader
+
++ f import
+rename photos
+  #YEAR=`echo "$EXIF" | cut -d '-' -f 1`
+  #if [ $COUNTER == 0 ] ; then LAST=`find "/media/hdd/photos/$YEAR" -iname "$YEAR.????.JPEG" -type f | sort | tail -n1`;
+  #  COUNTER=$(echo "$LAST" | rev | cut -d '.' -f 2 | rev ) ; COUNTER=$(expr $COUNTER + 0) ; echo $COUNTER ; fi
+  #if [ -z "$LAST" ] ; then COUNTER=0 ; fi
+  #COUNTER=$(($COUNTER + 1));
+  #if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR" ; touch -t "${YEAR}01010000.00" "$PHOTOS/$YEAR" ; fi
+  #if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF" ; touch -t "$(echo $EXIF | tr -d -)0000.00" "$PHOTOS/$YEAR/$EXIF" ; fi
+  #echo "COUNTER: $COUNTER"
+  #NEWFILE="$YEAR.$(printf '%%04d' $COUNTER).JPEG"
+  #echo "$FILE -> $PHOTOS/$YEAR/$EXIF/$NEWFILE"
   #cp -v $FILE $PHOTOS/$YEAR/$EXIF/$NEWFILE
   done
   sudo umount /media/cardreader
