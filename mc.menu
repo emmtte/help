@@ -214,8 +214,9 @@ create fstab file
 + f system
 create new raspbian image
   #Use lsblk to check /dev/sdb
-  curl --progress-bar -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-  #curl --progress-bar -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+  rm /media/hdd/raspbian.zip
+  #curl --progress-bar -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
   #unzip -p raspbian_*.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
   unzip -p raspbian_*.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
   sudo mount /dev/sdb /media/cardreader
@@ -399,8 +400,12 @@ import Dropbox photos - Camera Uploads
   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
   DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
   TIME=$(echo $EXIF | cut -d ' ' -f 2)
-  mv -v "$FILE" "$PHOTOS/${DATE}T${TIME}Z.JPG"
+  while [ -f $FILE ] ; do
+    echo "ERROR FILE EXIST $FILE"
+    OLDDATE=${DATE}T${TIME}Z
+    NEWNAME=$(date '+%Y:%m:%dT%TZ' --date="${OLDDATE} + 1 seconds")
   done
+  mv -v "$FILE" "$PHOTOS/${DATE}T${TIME}Z.JPG"
   rm -rf "$PHOTOS/Camera Uploads"
 
 + f import
@@ -547,6 +552,7 @@ Tidy GDrive Photos (1)
 + F photos & t d
 photos validation (t YYYY)
   #Need to select every year
+  # date '+%Y:%m:%dT%TZ' --date="2012-06-13T09:16:18Z + 62 seconds"
   tput cup 0 0 ; clear ; cd /media/hdd/photos/
   LOGFILE="/home/pi/exif.log"
   clear ; set %t
@@ -1121,9 +1127,9 @@ View SST
 node.js
   # https://nodejs.org
   clear
-  wget https://nodejs.org/dist/v8.9.4/node-v8.9.4-linux-armv6l.tar.gz
-  sudo tar -xvf node-v8.9.4-linux-armv6l.tar.gz --strip 1 -C /usr/local
-  rm node-v8.9.4-linux-armv6l.tar.gz
+  wget https://nodejs.org/dist/v9.9.0/node-v9.9.0-linux-armv6l.tar.gz
+  sudo tar -xvf node-v9.9.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
+  rm node-v9.9.0-linux-armv6l.tar.gz
 
 + f install
 go lang
