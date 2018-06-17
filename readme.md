@@ -15,5 +15,14 @@ cd rpi
 sh rescue
 ```
 
+### Configuration
+
+```bash
+Options ─> Configuration
+┌ Other options ──────────┐ 
+│ [x] Use internal edit   │
+│ [x] Use internal view   │          
+```
+
 [![](https://img.shields.io/badge/(c)_2014--2018-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
