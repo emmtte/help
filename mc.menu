@@ -213,14 +213,17 @@ create fstab file
 
 + f system
 create new raspbian image
+  . ~/config.ini ; clear
   #Use lsblk to check /dev/sdb
   rm /media/hdd/raspbian.zip
   #curl --progress-bar -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
   curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
-  #unzip -p raspbian_*.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
-  unzip -p raspbian_*.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
-  sudo mount /dev/sdb /media/cardreader
-  touch /media/cardreader/ssh
+  #unzip -p raspbian.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
+  unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
+  sudo mount /dev/sdb1 /media/cardreader
+  sudo touch /media/cardreader/ssh
+  sudo umount /media/cardreader
+  ifttt "New Raspbian Image Created"
 
  ###### # #      ######  ####
  #      # #      #      #

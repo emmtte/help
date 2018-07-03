@@ -1,7 +1,4 @@
-PS1="\$(tput setaf 3)\$(date +%D) \$(date +%T)\$(tput sgr0) > "
-
-export VISUAL="/usr/bin/mcedit -x"
-export EDITOR="/usr/bin/mcedit -x"
+#PS1="\$(tput setaf 3)\$(date +%D) \$(date +%T)\$(tput sgr0) > "
 
 if [ -f ~/config.ini ] ; then . ~/config.ini ; fi
 

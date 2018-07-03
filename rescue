@@ -22,30 +22,57 @@ if [ "$?" -eq 1 ] ; then
 
   tmux rename-window -t pi:1 1
   tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
+  
+  tmux new-window -n ADA
+  tmux send 'node bot~2-8.js ADABTC 1.0075' ENTER
+  
+#  tmux new-window -n BCN
+#  tmux send 'node bot~2-8.js BCNBTC 1.013'
+
+  tmux new-window -n BNB
+  tmux send 'node bot~2-8.js BNBBTC 1.0075' ENTER
+
+  tmux new-window -n EOS
+  tmux send 'node bot~2-8.js EOSBTC 1.0075' ENTER
+ 
+#  tmux new-window -n ETH
+#  tmux send 'node bot~2-8.js ETHBTC 1.0075' ENTER
+
+#  tmux new-window -n ICX
+#  tmux send 'node bot~2-8.js ICXBTC 1.0075' ENTER
+
+  tmux new-window -n IOTA
+  tmux send 'node bot~2-8.js IOTABTC 1.0075' ENTER
+
+#  tmux new-window -n LUN
+#  tmux send 'node bot~2-8.js LUNBTC 1.0075' ENTER
+
+  tmux new-window -n NEO
+  tmux send 'node bot~2-8.js NEOBTC 1.0075' ENTER
+
+  tmux new-window -n ONT
+  tmux send 'node bot~2-8.js ONTBTC 1.0075' ENTER
+
+  tmux new-window -n TRX
+  tmux send 'node bot~2-8.js TRXBTC 1.01' ENTER
+
+  tmux new-window -n VEN
+  tmux send 'node bot~2-8.js VENBTC 1.0075' ENTER
+
+  tmux new-window -n XLM
+  tmux send 'node bot~2-8.js XLMBTC 1.0075' ENTER
+
+  tmux new-window -n XRP
+  tmux send 'node bot~2-8.js XRPBTC 1.0075' ENTER
+
+  tmux new-window -n ZIL
+  tmux send 'node bot~2-8.js ZILBTC 1.01' ENTER
+
+  tmux new-window -n server
+  tmux send 'node bot/server.js' ENTER
 
   tmux new-window -n 2
   tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
-
-  tmux new-window -n 3
-  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
-
-  tmux new-window -n 4
-  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
-
-  tmux new-window -n 5
-  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
-
-  tmux new-window -n 6
-  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
-
-  tmux new-window -n 7
-  tmux send '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/' ENTER
-
-  tmux new-window -n 8
-  tmux send '/usr/bin/mc -x /media/hdd/Drive/Snoozed /media/hdd/Drive/Documents' ENTER
-
-  tmux new-window -n 9
-  tmux send '/usr/bin/mc -x /media/hdd/Drive/Snoozed /media/hdd/Drive/Documents' ENTER
 
   tmux -u new-session -d -s bg
   tmux switch-client -t bg
