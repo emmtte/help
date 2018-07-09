@@ -216,8 +216,8 @@ create new raspbian image
   . ~/config.ini ; clear
   #Use lsblk to check /dev/sdb
   rm /media/hdd/raspbian.zip
-  #curl --progress-bar -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
   #unzip -p raspbian.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
   unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
   sudo mount /dev/sdb1 /media/cardreader
@@ -960,6 +960,10 @@ list torrents
  #      #    # #
  #      #####  #
 
+
+
+
+
 + f *.jpg | f *.JPG
 drive push rpi
   drive push --no-prompt
@@ -976,17 +980,6 @@ convert tif to jpeg
     shift
   done
 
-+ f *.tif | f *.TIF
-convert tif to lzw
-  set %t
-  while [ -n "$1" ]; do
-    convert -verbose -compress lzw "$1" "lzw_$1"
-    shift
-  done
-
-+ f *.tif | f *.TIF | f *.jpg | f *.JPG & t t
-jpg or tif to djv to pdf
-  sh ~/djvu/djvu %d %t
 
 + f *.pdf | f *.PDF & t t
 Uncrypt PDF
@@ -1020,6 +1013,16 @@ C Drive push Documents and Snoozed
   clear ; source ~/config.ini
   GDRIVE=/media/hdd/Drive ; cd $GDRIVE
   if ! drive push --no-prompt $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then iftt "Merge PDF" "ERROR PUSH GDRIVE" ; exit; fi
+
++ f tools
+Import usb key JPG 92pc scanned Files to /media/hdd/djvu
+  echo "Please Use SH Flash Disk"
+  sudo mount `ls /dev/disk/by-id/usb-Generic_Flash_Disk_*-part1` /media/usbkey
+  cp -v /media/usbkey/*.jpg /media/hdd/djvu
+  sudo umount /media/usbkey
+  echo "You can remove SD card reader"
+  cd /media/hdd/djvu
+  if ! drive push --no-prompt "/media/hdd/djvu/" ; then ifttt "ERROR Google push files" "ERROR PUSH DRIVE"; return; fi
 
 + f tools
 Automatic Merge pdf files
