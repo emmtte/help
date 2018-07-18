@@ -674,24 +674,22 @@ Rename Photos only [XXXX] dir (6)
    #Loop through files, renaming each to a YYYYMMDDHHMMSS-####.JPG based name
    echo "YEAR:$1"
    COUNTER=1
-   find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
-   EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4,5 | tr -d ':' | tr -d ' '`
-   NEWFILE="A$EXIF-$(printf '%%04d' $COUNTER)"
+   find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
+   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+   DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
+   TIME=$(echo $EXIF | cut -d ' ' -f 2)
+   echo "$EXIF --- $FILE"
+   NEWFILE=${DATE}_${TIME}
+   echo "FILE :  $(dirname "$FILE")/$NEWFILE.JPG"
+   while [ -f '$(dirname "$FILE")/$NEWFILE.JPG' ] ; do
+    echo "ERROR FILE EXIST $FILE"
+    OLDDATE=${DATE}_${TIME}
+    NEWFILE=$(date '+%Y:%m:%dT%TZ' --date="${OLDDATE} + 1 seconds")
+   done
    echo "$(basename "$FILE")=>$NEWFILE.JPG"
    touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
-   mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
-   COUNTER=$((COUNTER + 1))
-   done
-   #Loop again through files, renaming as "YYYY-####.JPEG"
-   echo "YEAR:$1"
-   COUNTER=1
-   find "$1" -iname "*.jpg" -type f | sort | while read FILE ; do
-   NEWFILE="$1.$(printf '%%04d' $COUNTER)"
-   echo "$(basename "$FILE")=>$NEWFILE.JPEG"
-   exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
-   mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
-   COUNTER=$((COUNTER + 1))
-   done
+   mv -v "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
+  done
    #Loop through directories and change directory creating date
    find "$1" -type d | while read DIR ; do
    DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
