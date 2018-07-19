@@ -792,7 +792,7 @@ yt-dl-playlist
 conv mp4 to aac
   set %t
   aac="$(basename "$1" | cut -d . -f1).aac"
-  avconv -i "$1" -c copy -map 0:a:0 "$aac"
+  avconv -loglevel panic -i "$1" -c copy -map 0:a:0 "$aac"
 
 + f *.mp4 | f *.MP4 & F videos & t t
 mux mp4 and aac to mkv
@@ -908,6 +908,29 @@ tmux last window
   tmux last-window
 
 
+ #####  ####   ####  #       ####
+   #   #    # #    # #      #
+   #   #    # #    # #       ####
+   #   #    # #    # #           #
+   #   #    # #    # #      #    #
+   #    ####   ####  ######  ####
+
++ f tools
+Display Temperatures
+  clear
+  while [ true ] ; do
+  Temp0=$(cat /sys/class/thermal/thermal_zone0/temp)
+  Temp1=$(($Temp0/1000))
+  Temp2=$(($Temp0/100))
+  TempM=$(($Temp2 % $Temp1))
+  tput cup 0 0
+  echo CPU temp"="$Temp1"."$TempM"'C"
+  echo GPU $(sudo /opt/vc/bin/vcgencmd measure_temp)
+  read -t 3 -n 1
+  if [ $? = 0 ] ; then exit ; fi
+  done
+
+
  #####  ####  #####  #####  ###### #    # #####
    #   #    # #    # #    # #      ##   #   #
    #   #    # #    # #    # #####  # #  #   #
@@ -951,16 +974,13 @@ list torrents
   if [ $? = 0 ] ; then exit ; fi
   done
 
+
  #####  #####  ######
  #    # #    # #
  #    # #    # #####
  #####  #    # #
  #      #    # #
  #      #####  #
-
-
-
-
 
 + f *.jpg | f *.JPG
 drive push rpi
@@ -977,7 +997,6 @@ convert tif to jpeg
     ~/node_modules/.bin/sharp -i "$1" -o "$1.jpg" -q 100
     shift
   done
-
 
 + f *.pdf | f *.PDF & t t
 Uncrypt PDF
