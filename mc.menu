@@ -671,7 +671,7 @@ Rename New Photos (4)
   done
 
 + F photos & t t
-Rename Photos only [XXXX] dir (6)
+!!!!!! Rename Photos only [XXXX] dir (6)
   clear ; cd %d; set %t
   for f in "$@"; do
    #Delete Empty Directories
@@ -681,27 +681,27 @@ Rename Photos only [XXXX] dir (6)
    COUNTER=1
    find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+   echo $EXIF
    DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
    TIME=$(echo $EXIF | cut -d ' ' -f 2)
    echo "$EXIF --- $FILE"
-   NEWFILE=${DATE}_${TIME}
    echo "FILE :  $(dirname "$FILE")/$NEWFILE.JPG"
-   while [ -f '$(dirname "$FILE")/$NEWFILE.JPG' ] ; do
-    echo "ERROR FILE EXIST $FILE"
-    OLDDATE=${DATE}_${TIME}
-    NEWFILE=$(date '+%Y:%m:%dT%TZ' --date="${OLDDATE} + 1 seconds")
+   echo
+   NEWFILE=${DATE}T${TIME}
+   while [ -f "$(dirname "$FILE")/$NEWFILE.JPG" ] ; do
+    NEWFILE=$(date '+%%Y-%%m-%%dT%%T' --date="${NEWFILE} + 1 seconds")
    done
    echo "$(basename "$FILE")=>$NEWFILE.JPG"
-   touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
+   #touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
    mv -v "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
   done
    #Loop through directories and change directory creating date
-   find "$1" -type d | while read DIR ; do
-   DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
-   echo "$DIR -- $DAT"
-   if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
-   touch -t "${DAT}0000.00" "$DIR"
-   done
+   #find "$1" -type d | while read DIR ; do
+   #DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
+   #echo "$DIR -- $DAT"
+   #if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
+   #touch -t "${DAT}0000.00" "$DIR"
+   #done
   shift
   done
 
