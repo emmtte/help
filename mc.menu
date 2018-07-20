@@ -66,6 +66,11 @@ exit tmux and ssh
  #    # #   #   #    # #    # #    #
   ####  #   #   #    #  ####  #####
 
++ F github
+clone rpi
+  rm -rf ~/rpi
+  git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
+
 + t t
 git push
   clear
