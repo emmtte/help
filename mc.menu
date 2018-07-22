@@ -455,7 +455,8 @@ rename photos
 + f music
 Streaming Soundtracks
   clear
-  castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
+  #castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
+  wget -O - "http://hi5.streamingsoundtracks.com" | castnow --quiet -
 
 + F music & t t
 castnow
@@ -1442,18 +1443,20 @@ transmission
   sudo sed -ie '$d' /etc/transmission-daemon/settings.json
   cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
   ,
-  "download-dir": "/media/hdd/torrents" ,
-  "incomplete-dir": "/media/hdd/torrents" ,
-  "rpc-authentication-required": false ,
-  "rpc-whitelist": "127.0.0.1,192.168.0.*" ,
-  "speed-limit-down": 500 ,
-  "speed-limit-down-enable": true ,
-  "speed-limit-up": 10 ,
-  "speed-limit-up-enable": true ,
+  "download-dir": "/media/hdd/torrents",
+  "incomplete-dir": "/media/hdd/torrents",
+  "rpc-authentication-required": false,
+  "rpc-whitelist": "127.0.0.1,192.168.0.*",
+  "speed-limit-down": 1000,
+  "speed-limit-down-enable": true,
+  "speed-limit-down-enabled": true,
+  "speed-limit-up": 10,
+  "speed-limit-up-enable": true,
+  "speed-limit-up-enabled": true,
   "start-added-torrents": true,
   "trash-original-torrent-files": true,
-  "umask": 0 ,
-  "watch-dir-enabled": true ,
+  "umask": 0,
+  "watch-dir-enabled": true,
   "watch-dir": "/tmp"
   }
   EOF
