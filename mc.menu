@@ -58,6 +58,27 @@ set auto date & time
 exit tmux and ssh
   tmux detach
 
++ f config
+create new user
+  sudo adduser bot
+  sudo adduser bot sudo
+  sudo adduser bot adm
+  sudo visudo
+  #pi   ALL=(ALL) ALL
+  #bot  ALL=(ALL) NOPASSWD: ALL
+  sudo reboot
+  sudo apt-get update
+  sudo deluser pi sudo
+  sudo deluser pi adm
+  sudo deluser -remove-home pi
+
++ f config
+start tmux after logon
+  cat << EOF | tee -a ~/.profile
+  if [ -z "$TMUX" ]; then
+  /bin/sh ~/rpi/rescue
+  fi
+  EOF
 
   ####  # ##### #    # #    # #####
  #    # #   #   #    # #    # #    #
@@ -319,7 +340,7 @@ download from google drive
 
 + F files & t t
 move to "Freebox Server"
- sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+ sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm,vers=1.0
  clear ; cd %d ; set %t
  for FILE in "$@"; do
    echo "Copy : $FILE"
@@ -888,6 +909,15 @@ create stopmotion
   stopmotion.avi
   ifttt "Raspberry Pi" "Stopmotion created"
 
++ f videos
+download youtube playlist and merge with external music
+  youtube-dl -k https://www.youtube.com/playlist?list=1234567890
+  #Be careful first add next cat
+  FILES="-force-cat -add 1.mp4 -cat 2.mp4 -cat 3.mp4 (...)"
+  MP4Box $FILES -new merged.mp4
+  mkvmerge -o output-with-sound.mkv -A input-video.mkv soundfile.mp3
+
+
  ##### #    # #    # #    #
    #   ##  ## #    #  #  #
    #   # ## # #    #   ##
@@ -925,13 +955,17 @@ tmux last window
 Display Temperatures
   clear
   while [ true ] ; do
-  Temp0=$(cat /sys/class/thermal/thermal_zone0/temp)
-  Temp1=$(($Temp0/1000))
-  Temp2=$(($Temp0/100))
-  TempM=$(($Temp2 % $Temp1))
+  cpu0=`cat /sys/class/thermal/thermal_zone0/temp`
+  cpu1=$(($cpu0/1000))
+  cpu2=$(($cpu0/100))
+  cpu=$(($cpu2 % $cpu1))
+  gpu=`/opt/vc/bin/vcgencmd measure_temp | cut -d '=' -f 2`
   tput cup 0 0
-  echo CPU temp"="$Temp1"."$TempM"'C"
-  echo GPU $(sudo /opt/vc/bin/vcgencmd measure_temp)
+  echo "$(date) @ $(hostname)"
+  echo "───────────────────────────────────────────"
+  echo "CPU : $cpu1.$cpu'C"
+  echo "GPU : $gpu"
+  cat /proc/meminfo | grep Mem
   read -t 3 -n 1
   if [ $? = 0 ] ; then exit ; fi
   done
@@ -1461,6 +1495,9 @@ transmission
   }
   EOF
   sudo service transmission-daemon restart
+  sudo update-rc.d -f transmission remove
+  sudo update-rc.d transmission-daemon defaults
+  sudo update-rc.d transmission-daemon remove
 
 + f install
 upload-gphotos
