@@ -74,7 +74,7 @@ create new user
 
 + f config
 start tmux after logon
-  cat << EOF | tee -a ~/.profile
+  cat << 'EOF' | tee -a ~/.profile
   if [ -z "$TMUX" ]; then
   /bin/sh ~/rpi/rescue
   fi
@@ -87,7 +87,7 @@ start tmux after logon
  #    # #   #   #    # #    # #    #
   ####  #   #   #    #  ####  #####
 
-+ F github
++ f github
 clone rpi
   rm -rf ~/rpi
   git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
@@ -579,23 +579,22 @@ Tidy GDrive Photos (1)
   mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
   done
 
-+ F photos & t d
-photos validation (t YYYY)
++ f photos & T t
+photos validation (T YYYY)
   #Need to select every year
-  # date '+%Y:%m:%dT%TZ' --date="2012-06-13T09:16:18Z + 62 seconds"
-  tput cup 0 0 ; clear ; cd /media/hdd/photos/
+  tput cup 0 0 ; clear
   LOGFILE="/home/pi/exif.log"
-  clear ; set %t
+  clear ; cd %D; set %T
   echo "$@"
-  find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+  for f in "$@"; do
   tput setaf 6 ; echo -n "[$1] " ; tput sgr0
   #Find no JPEG Files
-  find "$DIR" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do
+  find "$1" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do
   echo "$(tput setaf 1)[NO JPEG   ]$(tput sgr 0) $(basename "$FILE")"
   echo "NO JPEG FOR $FILE" >> $LOGFILE
   done
   #Next control
-  find "$DIR" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+  find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
   EXIF=`exiv2 -g DateTimeOriginal -PEv "$FILE"`
   printf "$(basename "$FILE") : $EXIF\e[0m\n"
   # If not EXIF give one with folder name/date
@@ -640,6 +639,7 @@ photos validation (t YYYY)
   FILE_DATE=$(echo $EXIF | tr -d ":" | tr -d " ")
   #touch -t ${EXIF:0:10}.${EXIF:10:14} "$FILE"
   done
+  shift
   done
   #find /media/hdd/photos -type f -name "desktop.ini" -exec rm -f {} \;
   #find /media/hdd/photos -type f -name "Thumbs.db" -exec rm -f {} \;
@@ -659,71 +659,40 @@ Correct Exif Photos (3)
   done <"$FILE"
   rm ~/exif-change.log
 
-+ F photos & t t
-Rename New Photos (4)
-  #use this when adding new photos in YEAR directory
-  #need to finished
-  ROOT=%d ; set % t ; echo "$@"
-  #Delete Empty Directories
-  #find "$1" -type d -empty -delete
-  #Loop through files, renaming each to a YYYYMMDDHHMMSS-####.JPG based name
-  find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
-  YEAR=$(echo "$DIR" | cut -d '/' -f 2 | cut -d '-' -f 1)
-  echo "YEAR : $YEAR"
-  LAST=`find "/media/hdd/photos/$YEAR" -iname "$YEAR.????.JPEG" -type f | sort | tail -n1`
-  if [ -z "$LAST" ]; then printf "\e[91m[LAST NAME FAIL]\e[0m\n"; COUNTER=1; fi
-  COUNTER=$(echo "$LAST" | rev | cut -d '.' -f 2 | rev )
-  COUNTER=$(expr $COUNTER + 1)
-  echo "COUNTER: $COUNTER"
-  find "$DIR" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
-   NEWFILE="$YEAR.$(printf '%%04d' $COUNTER)"
-   echo "$(basename "$FILE")=>$NEWFILE.JPEG"
-   #exiv2 -M "set Exif.Photo.ImageUniqueID $NEWFILE" "$FILE"
-   #mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPEG"
-   #seulement pour touch
-   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE" | tr -d ':' | tr -d ' ')
-   echo "$EXIF"
-   #echo ${EXIF:0:8}
-   #touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
-   COUNTER=$((COUNTER + 1))
-  done
-  echo "$DIR -- $YEAR"
-  if [ ${#YEAR} == 4 ]; then YEAR=`echo "${YEAR}0101"` ; fi
-   #touch -t "${YEAR}0000.00" "$DIR"
-  done
 
-+ F photos & t t
-!!!!!! Rename Photos only [XXXX] dir (6)
-  clear ; cd %d; set %t
++ f photos & T t
+Rename Photos (T [????]) dir (6)
+  clear ; cd %D; set %T
   for f in "$@"; do
    #Delete Empty Directories
    find "$1" -type d -empty -delete
-   #Loop through files, renaming each to a YYYYMMDDHHMMSS-####.JPG based name
    echo "YEAR:$1"
-   COUNTER=1
    find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-   echo $EXIF
    DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
    TIME=$(echo $EXIF | cut -d ' ' -f 2)
-   echo "$EXIF --- $FILE"
-   echo "FILE :  $(dirname "$FILE")/$NEWFILE.JPG"
-   echo
    NEWFILE=${DATE}T${TIME}
-   while [ -f "$(dirname "$FILE")/$NEWFILE.JPG" ] ; do
-    NEWFILE=$(date '+%%Y-%%m-%%dT%%T' --date="${NEWFILE} + 1 seconds")
-   done
-   echo "$(basename "$FILE")=>$NEWFILE.JPG"
-   #touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE"
-   mv -v "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
+   echo "$(basename "$FILE") <<-->> $NEWFILE"
+   if [ $(basename "$FILE" | cut -d . -f1) != $NEWFILE ] ; then
+    while [ -f "$(dirname "$FILE")/$NEWFILE.JPG" ] ; do
+     NEWFILE=$(date '+%%Y-%%m-%%dT%%T' --date="${NEWFILE} + 1 seconds")
+    done
+    echo "$(basename "$FILE")=>$NEWFILE.JPG"
+    NEWDATE="$(echo $NEWFILE | tr '-' ':' | tr 'T' ' ')"
+    EXIF="$(echo $NEWDATE | tr -d ':' | tr -d ' ')"
+    echo "$NEWDATE ---- $EXIF"
+    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
+    touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
+    mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
+   fi 
   done
    #Loop through directories and change directory creating date
-   #find "$1" -type d | while read DIR ; do
-   #DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
-   #echo "$DIR -- $DAT"
-   #if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
-   #touch -t "${DAT}0000.00" "$DIR"
-   #done
+   find "$1" -type d | while read DIR ; do
+   DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
+   echo "$DIR -- $DAT"
+   if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
+   touch -t "${DAT}0000.00" "$DIR"
+   done
   shift
   done
 
@@ -740,14 +709,6 @@ Autolevel photos
   clear ; set %t
   while [ -n "$1" ]; do
     mogrify -auto-level $1
-    shift
-  done
-
-+ f *.tiff | f *.TIFF & t t
-Tiff to jpg with sharp
-  clear ; set %t
-  while [ -n "$1" ]; do
-    ~/node_modules/.bin/sharp --quality 100 -o $1-sharp.jpg $1
     shift
   done
 
@@ -1481,10 +1442,10 @@ transmission
   "incomplete-dir": "/media/hdd/torrents",
   "rpc-authentication-required": false,
   "rpc-whitelist": "127.0.0.1,192.168.0.*",
-  "speed-limit-down": 1000,
+  "speed-limit-down": 500,
   "speed-limit-down-enable": true,
   "speed-limit-down-enabled": true,
-  "speed-limit-up": 10,
+  "speed-limit-up": 5,
   "speed-limit-up-enable": true,
   "speed-limit-up-enabled": true,
   "start-added-torrents": true,
