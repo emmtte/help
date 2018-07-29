@@ -623,10 +623,10 @@ photos validation (T YYYY)
   fi
   # Test if not TIME = 00:00
   IMG_TIME=`echo "$EXIF" | cut -d ' ' -f 2`
-  if [ "$IMG_TIME" == "00:00:00" ] ; then
+  if [ "$IMG_TIME" == "04:00:00" ] ; then
     echo "$(tput setaf 1)[TIME FAIL ]$(tput sgr 0) $(basename "$FILE")"
     echo "TIME FAIL : $EXIF - $FILE" >> $LOGFILE
-    #exiv2 -a 4 adjust "$FILE"
+    exiv2 -a -4 adjust "$FILE"
   fi
   # Test if photo not too big
   IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
@@ -671,21 +671,27 @@ Rename Photos (T [????]) dir (6)
    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
    DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
    TIME=$(echo $EXIF | cut -d ' ' -f 2)
-   NEWFILE=${DATE}T${TIME}
-   echo "$(basename "$FILE") <<-->> $NEWFILE"
+   NEWFILE=${DATE}_${TIME}
+   echo "$(basename "$FILE") <<-->> $NEWFILE.JPG"
    if [ $(basename "$FILE" | cut -d . -f1) != $NEWFILE ] ; then
-    while [ -f "$(dirname "$FILE")/$NEWFILE.JPG" ] ; do
-     NEWFILE=$(date '+%%Y-%%m-%%dT%%T' --date="${NEWFILE} + 1 seconds")
+    FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
+    while [[ $FOUND -gt 0 ]]; do
+     echo "Warning: $NEWFILE.JPG found $FOUND time(s)!"
+     DATE=$(echo $NEWFILE | tr '_' ' ')
+     SECS=$(date +%%s -d "$DATE")
+     SECS=$(( $SECS + 1 ))
+     NEWFILE=$(date +%%Y-%%m-%%d_%%T -d @$SECS)
+     FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
     done
     echo "$(basename "$FILE")=>$NEWFILE.JPG"
-    NEWDATE="$(echo $NEWFILE | tr '-' ':' | tr 'T' ' ')"
+    NEWDATE="$(echo $NEWFILE | tr '-' ':' | tr '_' ' ')"
     EXIF="$(echo $NEWDATE | tr -d ':' | tr -d ' ')"
     echo "$NEWDATE ---- $EXIF"
     exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
     touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
     mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
-   fi 
-  done
+   fi
+   done
    #Loop through directories and change directory creating date
    find "$1" -type d | while read DIR ; do
    DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
