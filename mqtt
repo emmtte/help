@@ -1,0 +1,29 @@
+#!/bin/sh
+#sudo mcedit /etc/mosquitto/conf.d/mqtt.conf
+# mosquitto_sub -v -t rpi_home/dashboard/feed/update
+# mosquitto_sub -v -t rpi_home/dashboard/stream/create
+mosquitto_sub -h io.adafruit.com -p 1883 -u rpi_home -P `cat ~/.AIO_KEY` -t rpi_home/dashboard/stream/create -R | while read json ; do
+echo "$json" > ~/mqtt.json
+message=`cat ~/mqtt.json | jq --raw-output 'select(.value != null).value'`
+   feed=`cat ~/mqtt.json | jq --raw-output 'select(.value != null).feed_id'`
+echo " ###"
+echo " ###  Date : `date`"
+echo " ###  Feed : $feed"
+echo " ###  Message : $message"
+echo " ###"
+echo
+
+if [ $feed == 635172 ]; then echo "feed ok" ; fi
+
+awk /^$message/,/^$/ ~/rpi/mc.menu | awk 'NR>1' > run.sh
+tmux new-window -n "$message"
+tmux send-keys -t pi:$message "echo hello" ENTER
+#tmux send -t cast.1 'cd ~/scripts && clear' ENTER
+#tmux send -t cast.1 'bash castnow-start' ENTER
+tmux select-window -t pi:$message
+#tmux select-pane -t cast.1
+#tmux attach -t pi;;
+#awk /^ssh/,/^$/ mc.menu
+#awk /^ssh/,/^$/ mc.menu | awk 'NR>1' > run.sh
+
+done

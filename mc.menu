@@ -132,7 +132,7 @@ git discard the local changes
 + f backup
 backup photos & videos to freebox hdd
   clear
-  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl,vers=1.0
   mkdir /media/freebox/photos /media/freebox/videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
@@ -140,7 +140,7 @@ backup photos & videos to freebox hdd
 + f backup
 backup photos & videos to freebox ext hdd
   clear
-  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm,vers=1.0
   mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
@@ -148,7 +148,7 @@ backup photos & videos to freebox ext hdd
 + f backup
 restore photos & videos from freebox ext hdd
   clear
-  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm
+  sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm,vers=1.0
   #mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
@@ -600,7 +600,7 @@ photos validation (T YYYY)
   # If not EXIF give one with folder name/date
   if [ -z "$EXIF" ]; then
     NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-    #exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 04:00:00" "$FILE"
+    #exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
     echo "$(tput setaf 1)[EMPTY EXIF]$(tput sgr 0) $(basename "$FILE")"
     echo "NO EXIF FOR $FILE" >> $LOGFILE
   fi
@@ -654,7 +654,7 @@ Correct Exif Photos (3)
    do
     NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
     exiv2 delete "$LINE"
-    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE 04:00:00" "$LINE"
+    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$LINE"
     echo "$LINE"
   done <"$FILE"
   rm ~/exif-change.log
