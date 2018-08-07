@@ -38,6 +38,9 @@ if [ "$?" -eq 1 ] ; then
   tmux new-window -n bot
   tmux send 'cd ~/bot && node bot.js' ENTER
 
+  tmux new-window -n mqtt
+  tmux send 'cd ~/rpi && sh mqtt' ENTER
+
   tmux -u new-session -d -s bg
   tmux switch-client -t bg
 

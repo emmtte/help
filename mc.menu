@@ -242,8 +242,8 @@ create new raspbian image
   . ~/config.ini ; clear
   #Use lsblk to check /dev/sdb
   rm /media/hdd/raspbian.zip
-  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
   #unzip -p raspbian.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
   unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
   sudo mount /dev/sdb1 /media/cardreader
@@ -474,10 +474,14 @@ rename photos
  #    #  ####   ####  #  ####
 
 + f music
-Streaming Soundtracks
+sst
   clear
   #castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
   wget -O - "http://hi5.streamingsoundtracks.com" | castnow --quiet -
+
++ f music
+sst stop
+  tmux send-keys -t pi:sst C-c
 
 + F music & t t
 castnow
@@ -768,7 +772,7 @@ tv-dl
   while IFS=, read url out ; do
     if [[ $url == h* ]]; then
     if [[ $out == "" ]]; then python ~/youtube-dl/youtube-dl --fixup warn $url; else
-    python ~/youtube-dl/youtube-dl --fixup warn -o "$out" $url; fi
+    python ~/youtube-dl/youtube-dl --limit-rate 200K --fixup warn -o "$out" $url; fi
     #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
     fi
   done < /media/hdd/tmp/youtube.txt
