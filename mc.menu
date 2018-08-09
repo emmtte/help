@@ -625,7 +625,7 @@ photos validation (T YYYY)
     echo "EXIF FAIL : $EXIF - $FILE" >> $LOGFILE
     #exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$FILE"
   fi
-  # Test if not TIME = 00:00
+  # Test if not TIME = 04:00
   IMG_TIME=`echo "$EXIF" | cut -d ' ' -f 2`
   if [ "$IMG_TIME" == "04:00:00" ] ; then
     echo "$(tput setaf 1)[TIME FAIL ]$(tput sgr 0) $(basename "$FILE")"
