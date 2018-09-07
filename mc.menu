@@ -369,7 +369,7 @@ upload to Gdrive
  # ls -l /dev/disk/by-id
 
 + f import
-import cardreader videos & merge & upload to youtube
+import videos & merge & upload to youtube
   clear ; source ~/config.ini
   rm /media/hdd/youtube-upload/*
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
@@ -420,51 +420,76 @@ import usbkey
   sudo umount /media/usbkey
 
 + f import
-import Dropbox photos - Camera Uploads
+import All Photos
   clear
-  PHOTOS="/media/hdd/photos/TMP"
+  LOGFILE="/home/pi/log.txt"
+  PHOTOS="/media/hdd/photos/TEMP"
+  ## SD Card
+  DEVICE="/dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1"
+  sudo mount `ls $DEVICE` /media/cardreader
+  if [ -d /media/cardreader/DCIM ]; then
+  find /media/cardreader/DCIM/???_PANA -iname "*.JPG" -type f | while read FILE ; do
+  cp -v "$FILE" "$PHOTOS/$(basename "$FILE")"
+  done
+  sudo umount /media/cardreader
+  fi
+  ## Dropbox
   rm -rf "$PHOTOS/Camera Uploads"
   dropbox_uploader download "Camera Uploads" $PHOTOS
-  find "$PHOTOS/Camera Uploads" -iname "*.JPG" -type f | while read FILE ; do
+  mv "$PHOTOS/Camera Uploads" $PHOTOS/Camera
+  mv $PHOTOS/Camera/*.jpg $PHOTOS
+  rm -rf $PHOTOS/Camera
+  #
+  find "$PHOTOS" -iname "*.JPG" -type f | while read FILE ; do
   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+  if [ ! -z "$EXIF" ]; then
   DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
   TIME=$(echo $EXIF | cut -d ' ' -f 2)
-  while [ -f $FILE ] ; do
-    echo "ERROR FILE EXIST $FILE"
-    OLDDATE=${DATE}T${TIME}Z
-    NEWNAME=$(date '+%Y:%m:%dT%TZ' --date="${OLDDATE} + 1 seconds")
+  NEWFILE=${DATE}_${TIME}
+  F=$(basename "$FILE")
+  echo "TEST FILE = "$F" !!== NEWFILE =  $NEWFILE.JPG"
+  echo "test ${F%%.*} with $NEWFILE"
+  if [ "${F%%.*}" != "$NEWFILE" ] ; then
+  FOUND=$(find $PHOTOS -name "$NEWFILE.JPG" -type f | wc -l)
+    while [[ $FOUND -gt 0 ]]; do
+     echo "Warning: $NEWFILE.JPG found $FOUND time(s)!"
+     DATE=$(echo $NEWFILE | tr '_' ' ')
+     SECS=$(date +%%s -d "$DATE")
+     SECS=$(( $SECS + 1 ))
+     NEWFILE=$(date +%%Y-%%m-%%d_%%T -d @$SECS)
+     FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
+    done
+    echo "move $(basename "$FILE") ==>> $NEWFILE.JPG"
+    NEWDATE="$(echo $NEWFILE | tr '-' ':' | tr '_' ' ')"
+    TCH="$(echo $NEWDATE | tr -d ':' | tr -d ' ')"
+    echo "$NEWDATE ---- $TCH ---- ${TCH:0:12}.${TCH:12:14}"
+    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
+    EXIF_CONTROL=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+    if [ "$NEWDATE" != "$EXIF_CONTROL" ] ; then
+    echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> $LOGFILE
+    fi
+    touch -t "${TCH:0:12}.${TCH:12:14}" "$FILE"
+    #[[SS]AA]MMJJhhmm[.ss]]
+    mv -n "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
+   fi
+  #
+  if [ ! -d "$PHOTOS/$DATE" ] ; then 
+    mkdir "$PHOTOS/$DATE";
+    echo "create dir $PHOTOS/$DATE"
+    #touch -t "$(echo ${DATE} | tr -d -)0000.00" "$PHOTOS/$DATE"
+    echo "touch"
+  fi
+  mv -n "$FILE" "$PHOTOS/$DATE/$NEWFILE.JPG"
+  fi
+  #rm -rf "$PHOTOS/Camera Uploads"
+  echo
   done
-  mv -v "$FILE" "$PHOTOS/${DATE}T${TIME}Z.JPG"
-  rm -rf "$PHOTOS/Camera Uploads"
-
-+ f import
-import SD Cards photos
-  clear
-  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
-  find /media/cardreader/DCIM/???_PANA -iname "*.JPG" -type f | while read FILE ; do
-  EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-  DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
-  TIME=$(echo $EXIF | cut -d ' ' -f 2)
-  mv -v "$FILE" "$PHOTOS/${DATE}T${TIME}Z.JPG"
-  done
+  if [ -f $DEVICE ] ; then
   sudo umount /media/cardreader
-
-+ f import
-rename photos
-  #YEAR=`echo "$EXIF" | cut -d '-' -f 1`
-  #if [ $COUNTER == 0 ] ; then LAST=`find "/media/hdd/photos/$YEAR" -iname "$YEAR.????.JPEG" -type f | sort | tail -n1`;
-  #  COUNTER=$(echo "$LAST" | rev | cut -d '.' -f 2 | rev ) ; COUNTER=$(expr $COUNTER + 0) ; echo $COUNTER ; fi
-  #if [ -z "$LAST" ] ; then COUNTER=0 ; fi
-  #COUNTER=$(($COUNTER + 1));
-  #if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR" ; touch -t "${YEAR}01010000.00" "$PHOTOS/$YEAR" ; fi
-  #if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF" ; touch -t "$(echo $EXIF | tr -d -)0000.00" "$PHOTOS/$YEAR/$EXIF" ; fi
-  #echo "COUNTER: $COUNTER"
-  #NEWFILE="$YEAR.$(printf '%%04d' $COUNTER).JPEG"
-  #echo "$FILE -> $PHOTOS/$YEAR/$EXIF/$NEWFILE"
-  #cp -v $FILE $PHOTOS/$YEAR/$EXIF/$NEWFILE
-  done
-  sudo umount /media/cardreader
-
+  fi
+  cd $PHOTOS
+  #python -m SimpleHTTPServer 8080
+  read -r
 
  #    # #    #  ####  #  ####
  ##  ## #    # #      # #    #
@@ -521,6 +546,12 @@ wav to mp3
   clear ; cd %d ; set %t
   for d in "$@"; do lame --preset extreme -q 0 -h "$1" "$1.mp3"; done
 
++ f *.mp3 & F music & t t
+concat mp3
+  #sudo apt-get install mp3wrap
+  clear ; cd %d ; set %t
+  mp3wrap output.mp3 $@;
+
 + f *.flac & F music & t t
 flac to mp3
   clear ; cd %d ; set %t
@@ -542,7 +573,6 @@ flac to mp3
  #####  #    # #    #   #   #    #      #
  #      #    # #    #   #   #    # #    #
  #      #    #  ####    #    ####   ####
-
 
 + f photos
 Take Raspberry Pi Photo
@@ -592,21 +622,16 @@ photos validation (T YYYY)
   echo "$@"
   for f in "$@"; do
   tput setaf 6 ; echo -n "[$1] " ; tput sgr0
-  #Find no JPEG Files
-  find "$1" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do
-  echo "$(tput setaf 1)[NO JPEG   ]$(tput sgr 0) $(basename "$FILE")"
-  echo "NO JPEG FOR $FILE" >> $LOGFILE
-  done
-  #Next control
+  #Delete no JPEG Files
+  find "$1" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do rm $FILE ; done
+  #Next
   find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
-  EXIF=`exiv2 -g DateTimeOriginal -PEv "$FILE"`
+  EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
   printf "$(basename "$FILE") : $EXIF\e[0m\n"
   # If not EXIF give one with folder name/date
   if [ -z "$EXIF" ]; then
-    NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-    #exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
-    echo "$(tput setaf 1)[EMPTY EXIF]$(tput sgr 0) $(basename "$FILE")"
-    echo "NO EXIF FOR $FILE" >> $LOGFILE
+   NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
+   exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
   fi
   # Tests if jpg files are in the correct folder
   IMG_DATE=`echo "$EXIF" | cut -d ' ' -f 1 | tr ':' '-'`
@@ -618,19 +643,6 @@ photos validation (T YYYY)
      echo "$(tput setaf 1)[DIR FAIL  ]$(tput sgr 0) $(basename "$FILE")"
      echo "NOT CORRECT $EXIF FOR $FILE" >> $LOGFILE
      echo "/media/hdd/photos/$FILE" >> ~/exif-change.log
-  fi
-  # Test if not multiple Exif.Photo.DateTimeOriginal
-  if [[ "$EXIF" == *$'\n'* ]] ; then
-    echo "$(tput setaf 1)[EXIF FAIL ]$(tput sgr 0) $(basename "$FILE")"
-    echo "EXIF FAIL : $EXIF - $FILE" >> $LOGFILE
-    #exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$FILE"
-  fi
-  # Test if not TIME = 04:00
-  IMG_TIME=`echo "$EXIF" | cut -d ' ' -f 2`
-  if [ "$IMG_TIME" == "04:00:00" ] ; then
-    echo "$(tput setaf 1)[TIME FAIL ]$(tput sgr 0) $(basename "$FILE")"
-    echo "TIME FAIL : $EXIF - $FILE" >> $LOGFILE
-    exiv2 -a -4 adjust "$FILE"
   fi
   # Test if photo not too big
   IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
@@ -663,9 +675,10 @@ Correct Exif Photos (3)
   done <"$FILE"
   rm ~/exif-change.log
 
-
 + f photos & T t
 Rename Photos (T [????]) dir (6)
+  tput cup 0 0
+  LOGFILE="/home/pi/exif.log"
   clear ; cd %D; set %T
   for f in "$@"; do
    #Delete Empty Directories
@@ -692,6 +705,10 @@ Rename Photos (T [????]) dir (6)
     EXIF="$(echo $NEWDATE | tr -d ':' | tr -d ' ')"
     echo "$NEWDATE ---- $EXIF"
     exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
+    EXIF_CONTROL=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+    if [ $NEWDATE != $EXIF_CONTROL ] ; then
+    echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> $LOGFILE
+    fi
     touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
     mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
    fi
@@ -757,6 +774,11 @@ Change Photo EXIF
   exiv2 -q -M "set Exif.Photo.DateTimeOriginal `head -n 1 /tmp/exif.txt`" "$1"
   rm /tmp/exif.txt
 
++ f photos
+Photos server on 192.168.0.1:8080
+  cd /media/hdd/photos
+  python -m SimpleHTTPServer 8080
+
 
  #    # # #####  ######  ####   ####
  #    # # #    # #      #    # #
@@ -783,7 +805,7 @@ yt-dl-playlist
   clear ; source ~/config.ini
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
   python ~/youtube-dl/youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
-  --merge-output-format mp4 --output "/media/hdd/youtube-dl/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  --merge-output-format mp4 --output "/media/hdd/youtube/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   ifttt "Youtube-dl" "dl playlist done"
 
 + f *.mp4 | f *.MP4 & F videos & t t
@@ -831,6 +853,15 @@ merge mp4
   done
   echo "$FILES"
   MP4Box $FILES -new merged.mp4
+
++ f *.mp4 | f *.MP4 & F videos & t t
+extract mp4 video without sound
+  clear ; cd %d ; set %t
+  #Never tested
+  for FILE in "$@"; do
+    mkvextract tracks out.mkv 0:$1.mp4
+    shift
+  done
 
 + f *.mp4 | f *.MP4 & F videos & t t
 rotate 90 mp4
