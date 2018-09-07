@@ -9,6 +9,10 @@
   N=`tmux display-message -p '#W'`
   tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/mc.menu ENTER' ENTER
 
+[[  edit  ]]
+  N=`tmux display-message -p '#W'`
+  tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/rpi ENTER m F4' ENTER
+
 [[  test  ]]
   #echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
   #. ~/.local/share/mc/bashrc
