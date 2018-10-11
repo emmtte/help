@@ -246,8 +246,8 @@ create new raspbian image
   . ~/config.ini ; clear
   #Use lsblk to check /dev/sdb
   rm /media/hdd/raspbian.zip
-  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
   #unzip -p raspbian.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
   unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
   sudo mount /dev/sdb1 /media/cardreader
@@ -385,7 +385,7 @@ import videos & merge & upload to youtube
   mkvmerge -o out.mkv $FILES
   youtube-upload --title="-" --category="Entertainment" --privacy="private" \
   --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
-  --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-2.json" out.mkv
+  --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-1.json" out.mkv
   ifttt "Backup done" "Merge & uploaded to youtube"
   sleep 20m
   ifttt "Youtube done" "Can watch to youtube"
@@ -474,13 +474,13 @@ import All Photos
     fi
     touch -t "${TCH:0:12}.${TCH:12:14}" "$FILE"
     #[[SS]AA]MMJJhhmm[.ss]]
-    mv -n "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
-   fi
+    #mv -n "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
+  fi
   #
   if [ ! -d "$PHOTOS/$DATE" ] ; then 
     mkdir "$PHOTOS/$DATE";
     echo "create dir $PHOTOS/$DATE"
-    #touch -t "$(echo ${DATE} | tr -d -)0000.00" "$PHOTOS/$DATE"
+    touch -t "$(echo ${DATE} | tr -d -)0000.00" "$PHOTOS/$DATE"
     echo "touch"
   fi
   mv -n "$FILE" "$PHOTOS/$DATE/$NEWFILE.JPG"
