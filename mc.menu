@@ -448,7 +448,7 @@ import All Photos
   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
   if [ ! -z "$EXIF" ]; then
   DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
-  TIME=$(echo $EXIF | cut -d ' ' -f 2)
+  TIME=$(echo $EXIF | cut -d ' ' -f 2 | tr ':' '-')
   NEWFILE=${DATE}_${TIME}
   F=$(basename "$FILE")
   echo "TEST FILE = "$F" !!== NEWFILE =  $NEWFILE.JPG"
@@ -460,7 +460,7 @@ import All Photos
      DATE=$(echo $NEWFILE | tr '_' ' ')
      SECS=$(date +%%s -d "$DATE")
      SECS=$(( $SECS + 1 ))
-     NEWFILE=$(date +%%Y-%%m-%%d_%%T -d @$SECS)
+     NEWFILE=$(date +%%Y-%%m-%%d_%%H-%%M-%%S -d @$SECS)
      FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
     done
     echo "move $(basename "$FILE") ==>> $NEWFILE.JPG"
@@ -690,30 +690,32 @@ Rename Photos (T [????]) dir (6)
    echo "YEAR:$1"
    find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-   DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
-   TIME=$(echo $EXIF | cut -d ' ' -f 2)
-   NEWFILE=${DATE}_${TIME}
+   echo $EXIF
+   DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr -d ':')
+   TIME=$(echo $EXIF | cut -d ' ' -f 2 | tr -d ':')
+   NEWFILE=${DATE}T${TIME}
    echo "$(basename "$FILE") <<-->> $NEWFILE.JPG"
    if [ $(basename "$FILE" | cut -d . -f1) != $NEWFILE ] ; then
     FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
     while [[ $FOUND -gt 0 ]]; do
      echo "Warning: $NEWFILE.JPG found $FOUND time(s)!"
-     DATE=$(echo $NEWFILE | tr '_' ' ')
+     DATE="${NEWFILE:0:4}-${NEWFILE:4:2}-${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
      SECS=$(date +%%s -d "$DATE")
      SECS=$(( $SECS + 1 ))
-     NEWFILE=$(date +%%Y-%%m-%%d_%%T -d @$SECS)
+     NEWFILE=$(date +%%Y%%m%%dT%%H%%M%%S -d @$SECS)
      FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
     done
     echo "$(basename "$FILE")=>$NEWFILE.JPG"
-    NEWDATE="$(echo $NEWFILE | tr '-' ':' | tr '_' ' ')"
-    EXIF="$(echo $NEWDATE | tr -d ':' | tr -d ' ')"
-    echo "$NEWDATE ---- $EXIF"
+    NEWDATE="${NEWFILE:0:4}:${NEWFILE:4:2}:${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
+    echo "-------$NEWDATE------"
     exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
-    EXIF_CONTROL=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-    if [ $NEWDATE != $EXIF_CONTROL ] ; then
+    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
+    echo "-------$NEWDATE------$EXIF"
+    if [ $NEWDATE != $EXIF ] ; then
     echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> $LOGFILE
     fi
-    touch -t ${EXIF:0:12}.${EXIF:12:13} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
+    TCH="$(echo $EXIF | tr -d ':' | tr -d ' ')"
+    touch -t ${TCH:0:12}.${TCH:12:2} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
     mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
    fi
    done
@@ -726,6 +728,7 @@ Rename Photos (T [????]) dir (6)
    done
   shift
   done
+  read -r
 
 + f *.png | f *.PNG & t t
 convert PNG to JPG
