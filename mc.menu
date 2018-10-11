@@ -146,7 +146,7 @@ backup photos & videos to freebox ext hdd
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Backup  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm,vers=1.0
   mkdir /media/freebox/Photos /media/freebox/Videos
-  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/Photos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
 
 + f backup
@@ -156,6 +156,15 @@ restore photos & videos from freebox ext hdd
   #mkdir /media/freebox/Photos /media/freebox/Videos
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+
++ f backup
+restore photos & videos from freebox hdd
+  clear
+  sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl,vers=1.0
+  #mkdir /media/freebox/Photos /media/freebox/Videos
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
+  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+
 
 + f backup
 Backup Windows to Raspberry Pi
@@ -707,11 +716,9 @@ Rename Photos (T [????]) dir (6)
     done
     echo "$(basename "$FILE")=>$NEWFILE.JPG"
     NEWDATE="${NEWFILE:0:4}:${NEWFILE:4:2}:${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
-    echo "-------$NEWDATE------"
     exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
     EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-    echo "-------$NEWDATE------$EXIF"
-    if [ $NEWDATE != $EXIF ] ; then
+    if [ "$NEWDATE" != "$EXIF" ] ; then
     echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> $LOGFILE
     fi
     TCH="$(echo $EXIF | tr -d ':' | tr -d ' ')"
@@ -728,7 +735,7 @@ Rename Photos (T [????]) dir (6)
    done
   shift
   done
-  read -r
+  #read -r
 
 + f *.png | f *.PNG & t t
 convert PNG to JPG
