@@ -295,7 +295,7 @@ Delete
   done
 
 + F files & d & t t
-google_photos2
+Upload Google Photos
   #Note : you need to create at least an album before starting upload, this script is in incapacity to create the first one.
   . ~/config.ini ; clear
   set %t
@@ -304,8 +304,10 @@ google_photos2
   Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
   echo ; echo "$Album ($Year)"
   cd "$DIR"
-  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
   #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
+  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
+  #if ! upload-gphotos `ls` -u "$user_3" -p "$pwd_3" -a "$Album ($Year)" < /dev/null ; then
+  #if ! upload-gphotos `ls` -u "$user_4" -p "$pwd_4" -a "$Album ($Year)" < /dev/null ; then
    echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
   fi
   cd %d
@@ -456,9 +458,9 @@ import All Photos
   find "$PHOTOS" -iname "*.JPG" -type f | while read FILE ; do
   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
   if [ ! -z "$EXIF" ]; then
-  DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr ':' '-')
-  TIME=$(echo $EXIF | cut -d ' ' -f 2 | tr ':' '-')
-  NEWFILE=${DATE}_${TIME}
+  DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr -d ':')
+  TIME=$(echo $EXIF | cut -d ' ' -f 2 | tr -d ':')
+  NEWFILE=${DATE}T${TIME}
   F=$(basename "$FILE")
   echo "TEST FILE = "$F" !!== NEWFILE =  $NEWFILE.JPG"
   echo "test ${F%%.*} with $NEWFILE"
@@ -466,10 +468,10 @@ import All Photos
   FOUND=$(find $PHOTOS -name "$NEWFILE.JPG" -type f | wc -l)
     while [[ $FOUND -gt 0 ]]; do
      echo "Warning: $NEWFILE.JPG found $FOUND time(s)!"
-     DATE=$(echo $NEWFILE | tr '_' ' ')
+     DATE="${NEWFILE:0:4}-${NEWFILE:4:2}-${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
      SECS=$(date +%%s -d "$DATE")
      SECS=$(( $SECS + 1 ))
-     NEWFILE=$(date +%%Y-%%m-%%d_%%H-%%M-%%S -d @$SECS)
+     NEWFILE=$(date +%%Y%%m%%dT%%H%%M%%S -d @$SECS)
      FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
     done
     echo "move $(basename "$FILE") ==>> $NEWFILE.JPG"
@@ -566,7 +568,8 @@ concat mp3
   mp3wrap output.mp3 $@;
 
 + f *.flac & F music & t t
-flac to mp3
+flac t
+o mp3
   clear ; cd %d ; set %t
   for f in "$@"; do
     album="$(metaflac --show-tag=album "$f" | sed 's/[^=]*=//')"
@@ -1206,17 +1209,18 @@ View SST
 node.js
   # https://nodejs.org
   clear
-  wget https://nodejs.org/dist/v9.9.0/node-v9.9.0-linux-armv6l.tar.gz
-  sudo tar -xvf node-v9.9.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
-  rm node-v9.9.0-linux-armv6l.tar.gz
+  sudo apt-get -y install build-essential
+  wget https://nodejs.org/dist/v10.12.0/node-v10.12.0-linux-armv6l.tar.gz
+  sudo tar -xvf node-v10.12.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
+  rm node-v10.12.0-linux-armv6l.tar.gz
 
 + f install
 go lang
   # https://golang.org/dl
   clear
-  wget https://storage.googleapis.com/golang/go1.8.1.linux-armv6l.tar.gz
-  sudo tar -xvf go1.8.1.linux-armv6l.tar.gz -C /usr/local
-  rm go1.8.1.linux-armv6l.tar.gz
+  wget https://dl.google.com/go/go1.11.1.linux-armv6l.tar.gz
+  sudo tar -xvf go1.11.1.linux-armv6l.tar.gz -C /usr/local
+  rm go1.11.1.linux-armv6l.tar.gz
   sudo mkdir /opt/go
   sudo chown -R pi:pi /opt/go
   cat << '!' >> ~/.bashrc
@@ -1334,21 +1338,19 @@ flickr-download
 
 + f install
 flickr-uploader
-  # https://github.com/trickortweak/flickr-uploader
+  # https://github.com/oPromessa/flickr-uploader
   clear
   sudo apt-get remove elinks links links2 lynx w3m
-  sudo mkdir /opt
-  sudo chown -R pi:pi /opt
-  cd /opt
-  git clone https://github.com/trickortweak/flickr-uploader.git
-  chmod +x flickr-uploader/uploadr.py
-  mcedit -x flickr-uploader/uploadr.ini
+  sudo pip install --upgrade pip
+  pip install flickr-uploader --prefix=~/flickr
+  cp ~/flickr/etc/uploadr.ini ~/flickr/bin/uploadr.ini
+  mcedit -x ~/flickr/bin/uploadr.ini
   > FILES_DIR = "/media/hdd/photos"
   > "api_key" : "********************************",
   > "secret"  : "****************"
-  mv flickr-uploader/ flickr-uploader#1/
-  cd /opt
-  /opt/flickr-uploader#1/uploadr.py
+  export PYTHONPATH=~/flickr/lib/python2.7/site-packages
+  python ~/flickr/bin/uploadr.py -a
+  
 
 + f install
 gmusicapi-scripts
