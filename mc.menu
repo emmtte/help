@@ -178,11 +178,15 @@ Backup Raspberry Pi to Windows
 
 + f backup
 backup photos to flickr #1
-  clear ; /opt/flickr-uploader#1/uploadr.py
+  clear
+  export PYTHONPATH=~/flickr/lib/python2.7/site-packages
+  python ~/flickr/bin/uploadr.py
 
 + f backup
 backup photos to flickr #2
-  clear ; /opt/flickr-uploader#2/uploadr.py
+  clear
+  export PYTHONPATH=~/flickr/lib/python2.7/site-packages
+  python ~/flickr/bin/uploadr.py
 
 + f backup
 restore photos from flickr
