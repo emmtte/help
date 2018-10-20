@@ -696,7 +696,7 @@ Correct Exif Photos (3)
   rm ~/exif-change.log
 
 + f photos & T t
-Rename Photos (T [????]) dir (6)
+Rename Photos (please toggle [????] dir) (6)
   tput cup 0 0
   LOGFILE="/home/pi/exif.log"
   clear ; cd %D; set %T
@@ -705,6 +705,9 @@ Rename Photos (T [????]) dir (6)
    find "$1" -type d -empty -delete
    echo "YEAR:$1"
    find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
+   #Add things to do for each file
+   exiv2 -M "del Exif.Image.DateTime" "$FILE"
+   exiv2 -M "del Exif.Photo.ImageUniqueID" "$FILE"
    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
    echo $EXIF
    DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr -d ':')
@@ -780,10 +783,18 @@ Affiche EXIF de la photo
   printf 'Press [Enter] key to continue...'
 
 + f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-Delete EXIF from pics
+Delete DateTimeOriginal EXIF from pics
   set %t
   while [ -n "$1" ]; do
     exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$1"
+    shift
+  done
+
++ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
+Delete DateTime EXIF from pics
+  set %t
+  while [ -n "$1" ]; do
+    exiv2 -q -M "del Exif.Image.DateTime" "$1"
     shift
   done
 
