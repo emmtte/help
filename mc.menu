@@ -165,7 +165,12 @@ restore photos & videos from freebox hdd
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
 
-
+#sudo mkdir /media/cdrom
+#sudo mount /dev/cdrom /media/cdrom
+#cd /media/cdrom
+#sudo apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r)
+#sudo su
+#./VBoxLinuxAdditions.run
 + f backup
 Backup Windows to Raspberry Pi
   clear
@@ -308,8 +313,8 @@ Upload Google Photos
   Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
   echo ; echo "$Album ($Year)"
   cd "$DIR"
-  #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
-  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
+  if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
+  #if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
   #if ! upload-gphotos `ls` -u "$user_3" -p "$pwd_3" -a "$Album ($Year)" < /dev/null ; then
   #if ! upload-gphotos `ls` -u "$user_4" -p "$pwd_4" -a "$Album ($Year)" < /dev/null ; then
    echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
@@ -572,8 +577,7 @@ concat mp3
   mp3wrap output.mp3 $@;
 
 + f *.flac & F music & t t
-flac t
-o mp3
+flac to mp3
   clear ; cd %d ; set %t
   for f in "$@"; do
     album="$(metaflac --show-tag=album "$f" | sed 's/[^=]*=//')"
