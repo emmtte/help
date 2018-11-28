@@ -174,12 +174,12 @@ restore photos & videos from freebox hdd
 + f backup
 Backup Windows to Raspberry Pi
   clear
-  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" /media/sf_win/Private/Drive/photos/ pi@192.168.0.1:/media/hdd/photos
+  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" /media/sf_win/private/photos/ pi@192.168.0.1:/media/hdd/photos
 
 + f backup
 Backup Raspberry Pi to Windows
   clear
-  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/Private/Drive/photos
+  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/private/photos
 
 + f backup
 backup photos to flickr #1
@@ -313,8 +313,8 @@ Upload Google Photos
   Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
   echo ; echo "$Album ($Year)"
   cd "$DIR"
-  if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
-  #if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
+  #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
+  if ! sudo upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
   #if ! upload-gphotos `ls` -u "$user_3" -p "$pwd_3" -a "$Album ($Year)" < /dev/null ; then
   #if ! upload-gphotos `ls` -u "$user_4" -p "$pwd_4" -a "$Album ($Year)" < /dev/null ; then
    echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
@@ -407,7 +407,7 @@ import videos & merge & upload to youtube
   --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
   --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-1.json" out.mkv
   ifttt "Backup done" "Merge & uploaded to youtube"
-  sleep 20m
+  sleep 30m
   ifttt "Youtube done" "Can watch to youtube"
 
 + f import
@@ -750,6 +750,22 @@ Rename Photos (please toggle [????] dir) (6)
   shift
   done
   #read -r
+
++ f photos
+Add Exif Description (please toggle [????] dir) (7)
+  clear ; cd %D; set %T
+  for f in "$@"; do
+  echo "$1"
+   find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
+   #find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
+  Album=$(echo $(dirname "$FILE") | cut -d ' ' -f 2-)
+  Year=$(echo $(dirname "$FILE") | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
+  echo "$Album ($Year)"
+  exiv2 -M "set Exif.Image.ImageDescription $Album ($Year)" "$FILE"
+   #echo "$(dirname "$FILE")"
+   done
+  shift
+  done
 
 + f *.png | f *.PNG & t t
 convert PNG to JPG
@@ -1237,9 +1253,9 @@ node.js
 go lang
   # https://golang.org/dl
   clear
-  wget https://dl.google.com/go/go1.11.1.linux-armv6l.tar.gz
-  sudo tar -xvf go1.11.1.linux-armv6l.tar.gz -C /usr/local
-  rm go1.11.1.linux-armv6l.tar.gz
+  wget https://dl.google.com/go/go1.11.2.linux-armv6l.tar.gz
+  sudo tar -xvf go1.11.2.linux-armv6l.tar.gz -C /usr/local
+  rm go1.11.2.linux-armv6l.tar.gz
   sudo mkdir /opt/go
   sudo chown -R pi:pi /opt/go
   cat << '!' >> ~/.bashrc
