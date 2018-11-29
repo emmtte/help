@@ -1258,10 +1258,11 @@ go lang
   rm go1.11.2.linux-armv6l.tar.gz
   sudo mkdir /opt/go
   sudo chown -R pi:pi /opt/go
-  cat << '!' >> ~/.bashrc
+  cat << 'EOF' >> ~/.bashrc
   export GOROOT=/usr/local/go
   export GOPATH=/opt/go
   export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+  EOF
   source ~/.bashrc
 
 + f install
