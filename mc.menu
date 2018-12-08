@@ -852,6 +852,17 @@ tv-dl
   done < /media/hdd/tmp/youtube.txt
   ifttt "Youtube-dl" "tv-dl done"
 
+tv-dl v2
+  mcedit -x /media/hdd/tmp/youtube.txt
+  clear ; source ~/config.ini; cd /media/hdd/youtube-dl
+  while IFS=, read url out ; do
+    if [[ $url == h* ]]; then
+    if [[ $out == "" ]]; then while ! youtube-dl -c --fixup warn --socket-timeout 5 $url; do sleep 10; done; else
+    while ! youtube-dl -c --fixup warn --socket-timeout 5 -o "$out" $url; do sleep 10; done
+    fi
+  done < /media/hdd/tmp/youtube.txt
+  ifttt "Youtube-dl" "tv-dl done"
+
 + f videos
 yt-dl-playlist
   clear ; source ~/config.ini
@@ -1257,7 +1268,7 @@ go lang
   sudo tar -xvf go1.11.2.linux-armv6l.tar.gz -C /usr/local
   rm go1.11.2.linux-armv6l.tar.gz
   sudo mkdir /opt/go
-  sudo chown -R pi:pi /opt/go
+  sudo chown -R $USER:$USER /opt/go
   cat << 'EOF' >> ~/.bashrc
   export GOROOT=/usr/local/go
   export GOPATH=/opt/go
