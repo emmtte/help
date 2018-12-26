@@ -165,12 +165,11 @@ restore photos & videos from freebox hdd
   rsync --archive --no-o --no-g --delete --info=progress2 /media/freebox/photos/ /media/hdd/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
 
-#sudo mkdir /media/cdrom
-#sudo mount /dev/cdrom /media/cdrom
-#cd /media/cdrom
-#sudo apt-get install -y dkms build-essential linux-headers-generic linux-headers-$(uname -r)
-#sudo su
-#./VBoxLinuxAdditions.run
++ f backup
+Backup Raspberry Pi to Rpi3Dev
+  clear
+  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ dev@192.168.0.200:/media/hdd/photos
+
 + f backup
 Backup Windows to Raspberry Pi
   clear
@@ -181,22 +180,6 @@ Backup Raspberry Pi to Windows
   clear
   rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/private/photos
 
-+ f backup
-backup photos to flickr #1
-  clear
-  export PYTHONPATH=~/flickr/lib/python2.7/site-packages
-  python ~/flickr/bin/uploadr.py
-
-+ f backup
-backup photos to flickr #2
-  clear
-  export PYTHONPATH=~/flickr/lib/python2.7/site-packages
-  python ~/flickr/bin/uploadr.py
-
-+ f backup
-restore photos from flickr
-  source ~/config.ini
-  clear ; ~/.bin/flickr-download/flickr_download/flick_download.py -k $flickr_api_key -s $flickr_api_secret -u $flickr_user -t -l
 
 
   ####  #   #  ####  ##### ###### #    #
@@ -560,6 +543,13 @@ upload to gmusic account 3
   done
 
 + F music & t t
+upload to gmusic account 4
+  clear ; cd %d ; set %t
+  for d in "$@"; do
+    gmupload -c ~/.local/share/gmusicapi/oauth.4 "$d"
+  done
+
++ F music & t t
 download all music from gmusic
   account=%{Give number accounts}
   gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
@@ -839,6 +829,15 @@ Photos server on 192.168.0.1:8080
   #  #  # #    # #      #    # #    #
    ##   # #####  ######  ####   ####
 
++ f *.mp4 | f *.MP4 & F videos & t t
+upload to vlc
+  clear ; cd %d ; set %t
+  for FILE in "$@"; do
+   echo "Upload to VLC : $FILE"
+   curl -# -F file=@"$FILE" http://192.168.0.15/upload.json
+   echo
+  done
+
 + f videos
 tv-dl
   mcedit -x /media/hdd/tmp/youtube.txt
@@ -846,7 +845,7 @@ tv-dl
   while IFS=, read url out ; do
     if [[ $url == h* ]]; then
     if [[ $out == "" ]]; then python ~/youtube-dl/youtube-dl --fixup warn $url; else
-    python ~/youtube-dl/youtube-dl --limit-rate 200K --fixup warn -o "$out" $url; fi
+    python ~/youtube-dl/youtube-dl --fixup warn -o "$out" $url; fi
     #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
     fi
   done < /media/hdd/tmp/youtube.txt
@@ -1375,31 +1374,6 @@ drive
   drive init /opt/gd
 
 + f install
-flickr-download
-  #https://github.com/beaufour/flickr-download
-  clear
-  sudo pip install flickr_api
-  cd ~/.bin
-  git clone https://github.com/beaufour/flickr-download.git
-  ~/.bin/flickr-download/flickr_download/flickr_download.py -t 
-
-+ f install
-flickr-uploader
-  # https://github.com/oPromessa/flickr-uploader
-  clear
-  sudo apt-get remove elinks links links2 lynx w3m
-  sudo pip install --upgrade pip
-  pip install flickr-uploader --prefix=~/flickr
-  cp ~/flickr/etc/uploadr.ini ~/flickr/bin/uploadr.ini
-  mcedit -x ~/flickr/bin/uploadr.ini
-  > FILES_DIR = "/media/hdd/photos"
-  > "api_key" : "********************************",
-  > "secret"  : "****************"
-  export PYTHONPATH=~/flickr/lib/python2.7/site-packages
-  python ~/flickr/bin/uploadr.py -a
-  
-
-+ f install
 gmusicapi-scripts
   # https://github.com/thebigmunch/gmusicapi-scripts
   clear
@@ -1587,7 +1561,7 @@ virtual box
 youtube-dl
   # https://github.com/rg3/youtube-dl
   sudo apt-get -y install libavcodec-extra libav-tools
-  sudo curl -L https://yt-dl.org/latest/youtube-dl -o /usr/local/bin/youtube-dl
+  sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
   sudo chmod a+rx /usr/local/bin/youtube-dl
   echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
   mkdir /medi/hdd/youtube-dl
