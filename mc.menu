@@ -829,12 +829,12 @@ Photos server on 192.168.0.1:8080
   #  #  # #    # #      #    # #    #
    ##   # #####  ######  ####   ####
 
-+ f *.mp4 | f *.MP4 & F videos & t t
++ f *.avi | f *.AVI | f *.mkv | f *.MKV | f *.mp4 | f *.MP4 & F videos & t t
 upload to vlc
   clear ; cd %d ; set %t
   for FILE in "$@"; do
    echo "Upload to VLC : $FILE"
-   curl -# -F file=@"$FILE" http://192.168.0.15/upload.json
+   curl -# -F file=@"$FILE" http://192.168.0.17/upload.json
    echo
   done
 
