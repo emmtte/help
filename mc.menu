@@ -508,7 +508,6 @@ import All Photos
 + f music
 sst
   clear
-  #castnow "http://hi5.streamingsoundtracks.com" --type "audio/wav"
   wget -O - "http://hi5.streamingsoundtracks.com" | castnow --quiet -
 
 + f music
@@ -522,38 +521,17 @@ castnow
   castnow %t
 
 + F music & t t
-upload to gmusic account 1
+upload to gmusic
+  account=%{account number}
   clear ; cd %d ; set %t
-  for d in "$@"; do
-    gmupload -c ~/.local/share/gmusicapi/oauth.1 "$d"
-  done
+  for d in "$@"; do gms upload -u $account "$d"; done
+  ifttt "Rasperry Pi" "gmusic upload done"
 
 + F music & t t
-upload to gmusic account 2
-  clear ; cd %d ; set %t
-  for d in "$@"; do
-    gmupload -c ~/.local/share/gmusicapi/oauth.2 "$d"
-  done
-
-+ F music & t t
-upload to gmusic account 3
-  clear ; cd %d ; set %t
-  for d in "$@"; do
-    gmupload -c ~/.local/share/gmusicapi/oauth.3 "$d"
-  done
-
-+ F music & t t
-upload to gmusic account 4
-  clear ; cd %d ; set %t
-  for d in "$@"; do
-    gmupload -c ~/.local/share/gmusicapi/oauth.4 "$d"
-  done
-
-+ F music & t t
-download all music from gmusic
-  account=%{Give number accounts}
-  gmdownload -c ~/.local/share/gmusicapi/oauth.$account "/media/hdd/music/%album%/%title%"
-  ifttt "Rasperry Pi" "Gmusic download done"
+download from gmusic
+  account=%{Give account number}
+  gms download -u $account "/media/hdd/music/%album%/%title%"
+  ifttt "Rasperry Pi" "gmusic download done"
 
 + f *.wav & F music & t t
 wav to mp3
@@ -1282,10 +1260,31 @@ python
   sudo pip install --upgrade pip
 
 + f install
-python3
+python 3.7.2
   clear
-  sudo apt-get -y install python3-pip
-  sudo pip3 install --upgrade pip3
+  sudo apt-get update
+  sudo apt-get -y install build-essential tk-dev 
+  sudo apt-get -y install libncurses5-dev libncursesw5-dev libreadline6-dev
+  sudo apt-get -y install libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+  sudo apt-get -y install libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+  sudo apt-get -y install libffi-dev
+  wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
+  tar xf Python-3.7.2.tar.xz
+  cd Python-3.7.2
+  ./configure
+  make -j4
+  sudo make install
+  sudo make altinstall
+  python3.7 -V
+  sudo rm -r Python-3.7.2
+  rm Python-3.7.2.tar.xz
+  sudo apt-get --purge remove build-essential tk-dev
+  sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
+  sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+  sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+  sudo apt-get --purge remove libffi-dev
+  sudo apt-get autoremove
+  sudo apt-get clean
 
 
  # #    #  ####  #####   ##   #      #
@@ -1374,10 +1373,11 @@ drive
   drive init /opt/gd
 
 + f install
-gmusicapi-scripts
-  # https://github.com/thebigmunch/gmusicapi-scripts
+google-music-scripts
+  # https://github.com/thebigmunch/google-music-scripts
   clear
-  sudo pip3 install gmusicapi-scripts
+  sudo apt-get install libav-tools #avconv
+  sudo pip3.7 install google-music-scripts
 
 + f install
 hue-cli
