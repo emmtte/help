@@ -823,7 +823,7 @@ tv-dl
   while IFS=, read url out ; do
     if [[ $url == h* ]]; then
     if [[ $out == "" ]]; then python ~/youtube-dl/youtube-dl --fixup warn $url; else
-    python ~/youtube-dl/youtube-dl --fixup warn -o "$out" $url; fi
+    youtube-dl --fixup warn -o "$out" $url; fi
     #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
     fi
   done < /media/hdd/tmp/youtube.txt
@@ -844,7 +844,7 @@ tv-dl v2
 yt-dl-playlist
   clear ; source ~/config.ini
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
-  python ~/youtube-dl/youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
   --merge-output-format mp4 --output "/media/hdd/youtube/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   ifttt "Youtube-dl" "dl playlist done"
 
@@ -1278,13 +1278,13 @@ python 3.7.2
   python3.7 -V
   sudo rm -r Python-3.7.2
   rm Python-3.7.2.tar.xz
-  sudo apt-get --purge remove build-essential tk-dev
-  sudo apt-get --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
-  sudo apt-get --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
-  sudo apt-get --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
-  sudo apt-get --purge remove libffi-dev
-  sudo apt-get autoremove
-  sudo apt-get clean
+  sudo apt-get -y --purge remove build-essential tk-dev
+  sudo apt-get -y --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
+  sudo apt-get -y --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
+  sudo apt-get -y --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
+  sudo apt-get -y --purge remove libffi-dev
+  sudo apt-get -y autoremove
+  sudo apt-get -y clean
 
 
  # #    #  ####  #####   ##   #      #
