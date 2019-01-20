@@ -812,7 +812,7 @@ upload to vlc
   clear ; cd %d ; set %t
   for FILE in "$@"; do
    echo "Upload to VLC : $FILE"
-   curl -# -F file=@"$FILE" http://192.168.0.17/upload.json
+   curl -# -F file=@"$FILE" http://192.168.0.20/upload.json
    echo
   done
 
@@ -822,7 +822,7 @@ tv-dl
   clear ; source ~/config.ini; cd /media/hdd/youtube-dl
   while IFS=, read url out ; do
     if [[ $url == h* ]]; then
-    if [[ $out == "" ]]; then python ~/youtube-dl/youtube-dl --fixup warn $url; else
+    if [[ $out == "" ]]; then youtube-dl --fixup warn $url; else
     youtube-dl --fixup warn -o "$out" $url; fi
     #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
     fi
@@ -1453,11 +1453,8 @@ Samba
   [HDD]
   comment = Raspberry Pi Hard Drive
   path = /media/hdd
-  valid users = @users
-  force group = users
-  create mask = 0660
-  directory mask = 0771
   read only = no
+  browsable = yes
   EOF
   sudo service smbd restart
   sudo smbpasswd -a pi
