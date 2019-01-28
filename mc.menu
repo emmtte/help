@@ -812,7 +812,7 @@ upload to vlc
   clear ; cd %d ; set %t
   for FILE in "$@"; do
    echo "Upload to VLC : $FILE"
-   curl -# -F file=@"$FILE" http://192.168.0.20/upload.json
+   curl -# -F file=@"$FILE" http://192.168.0.11/upload.json
    echo
   done
 
@@ -1241,9 +1241,10 @@ node.js
 go lang
   # https://golang.org/dl
   clear
-  wget https://dl.google.com/go/go1.11.2.linux-armv6l.tar.gz
-  sudo tar -xvf go1.11.2.linux-armv6l.tar.gz -C /usr/local
-  rm go1.11.2.linux-armv6l.tar.gz
+  VERSION=1.11.4
+  wget https://dl.google.com/go/go$VERSION.linux-armv6l.tar.gz
+  sudo tar -xvf go$VERSION.linux-armv6l.tar.gz -C /usr/local
+  rm go$VERSION.linux-armv6l.tar.gz
   sudo mkdir /opt/go
   sudo chown -R $USER:$USER /opt/go
   cat << 'EOF' >> ~/.bashrc
@@ -1366,11 +1367,8 @@ drive
   # https://github.com/odeke-em/drive
   clear
   go get -u github.com/odeke-em/drive/cmd/drive
-  mkdir /media/hdd/Drive
-  drive init /media/hdd/Drive
-  sudo mkdir /opt/gd
-  sudo chown -R pi:pi /opt/gd
-  drive init /opt/gd
+  mkdir /media/hdd/drive
+  drive init /media/hdd/drive
 
 + f install
 google-music-scripts
