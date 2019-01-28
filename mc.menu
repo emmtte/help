@@ -1347,7 +1347,7 @@ git
   git remote set-url origin git@github.com:ManuCart/Raspberry-Pi.git
   git config --global user.name "ManuCart"
   git config --global user.email "John.Smith@example.com"
-  echo -e "Host github.com\rIdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
+  echo -e "Host github.com \n IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
 
 + f install
 castnow
