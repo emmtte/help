@@ -1344,6 +1344,9 @@ git
   eval $(ssh-agent -s)
   ssh-add ~/.ssh/github
   ssh -vT git@github.com
+  git remote set-url origin git@github.com:ManuCart/Raspberry-Pi.git
+  git config --global user.name "ManuCart"
+  git config --global user.email "John.Smith@example.com"
   echo "Host github.com" >> ~/.ssh/config
   echo "IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
 
