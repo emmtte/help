@@ -215,7 +215,7 @@ mount-cardreader
 
 + f system
 mount-hdd
-  clear ; sudo mount LABEL=RaspberryPi /media/hdd
+  clear ; sudo mount /dev/sda1 /media/hdd
 
 + f system
 mount-freebox
@@ -245,13 +245,14 @@ create fstab file
 + f system
 create new raspbian image
   . ~/config.ini ; clear
-  #Use lsblk to check /dev/sdb
+  #Use lsblk to check /dev/sdc
   rm /media/hdd/raspbian.zip
-  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
   #unzip -p raspbian.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
-  unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdb bs=4M conv=fsync
-  sudo mount /dev/sdb1 /media/cardreader
+  unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdc bs=4M conv=fsync
+  sudo mkdir /media/cardreader
+  sudo mount /dev/sdc1 /media/cardreader
   sudo touch /media/cardreader/ssh
   sudo umount /media/cardreader
   ifttt "New Raspbian Image Created"
@@ -606,10 +607,9 @@ Tidy GDrive Photos (1)
   done
 
 + f photos & T t
-photos validation (T YYYY)
+(1) Photos Validation [T YYYY]
   #Need to select every year
   tput cup 0 0 ; clear
-  LOGFILE="/home/pi/exif.log"
   clear ; cd %D; set %T
   echo "$@"
   for f in "$@"; do
@@ -633,14 +633,13 @@ photos validation (T YYYY)
   DIR_YYMM=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
   if [ "$DIR_YYMM" != "$IMG_YYMM" ] && [ "$DIR_YYMM" != "$IMG_YYMM_LAST" ] && [ "$DIR_YYMM" != "$IMG_YYMM_NEXT" ]; then
      echo "$(tput setaf 1)[DIR FAIL  ]$(tput sgr 0) $(basename "$FILE")"
-     echo "NOT CORRECT $EXIF FOR $FILE" >> $LOGFILE
-     echo "/media/hdd/photos/$FILE" >> ~/exif-change.log
+     echo "NOT CORRECT $EXIF FOR $FILE" >> ~/exif.log
   fi
   # Test if photo not too big
   IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
   if [ $(( $X * $Y )) -gt 100000000 ] ; then
     echo "$(tput setaf 1)[PIXEL FAIL]$(tput sgr 0) $(basename "$FILE")"
-    echo "PIX  FAIL : $FILE" >> $LOGFILE
+    echo "PIX  FAIL : $FILE" >> ~/exif.log
   fi
   echo "$(tput setaf 3) $FILE $(tput sgr 0)"
   echo "$EXIF [$IMG_YYMM_LAST] [$IMG_YYMM] [$IMG_YYMM_NEXT] $DIR_YYMM"
@@ -651,32 +650,21 @@ photos validation (T YYYY)
   done
   #find /media/hdd/photos -type f -name "desktop.ini" -exec rm -f {} \;
   #find /media/hdd/photos -type f -name "Thumbs.db" -exec rm -f {} \;
-  ifttt "Raspberry Pi" "Script Finished - See $LOGFILE for errors"
-  mcedit -x $LOGFILE
-
-+ f photos
-Correct Exif Photos (3)
-  #Change Exif Date for all photos listed in ~/exif-change.log
-  FILE=~/exif-change.log
-  while IFS= read LINE
-   do
-    NEWDATE=`echo "$(dirname "$LINE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-    exiv2 delete "$LINE"
-    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$LINE"
-    echo "$LINE"
-  done <"$FILE"
-  rm ~/exif-change.log
+  ifttt "Raspberry Pi" "Script Finished - See ~/exif.log for errors"
+  mcedit ~/exif.log -x
 
 + f photos & T t
-Rename Photos (please toggle [????] dir) (6)
+(2) Photos Rename [T ????]
   tput cup 0 0
-  LOGFILE="/home/pi/exif.log"
   clear ; cd %D; set %T
   for f in "$@"; do
    #Delete Empty Directories
    find "$1" -type d -empty -delete
    echo "YEAR:$1"
    find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
+   echo "$FILE"
+   FILE="$FILE" | tr ' ' '_'
+   echo "$FILE"
    #Add things to do for each file
    exiv2 -M "del Exif.Image.DateTime" "$FILE"
    exiv2 -M "del Exif.Photo.ImageUniqueID" "$FILE"
@@ -701,7 +689,7 @@ Rename Photos (please toggle [????] dir) (6)
     exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
     EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
     if [ "$NEWDATE" != "$EXIF" ] ; then
-    echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> $LOGFILE
+    echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> ~/exif.log
     fi
     TCH="$(echo $EXIF | tr -d ':' | tr -d ' ')"
     touch -t ${TCH:0:12}.${TCH:12:2} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
