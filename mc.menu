@@ -3,6 +3,14 @@
  #
  # figlet -f banner backup
  #
+ # black     0
+ # red       1
+ # green     2
+ # yellow    3
+ # blue      4
+ # magenta   5
+ # cyan      6
+ # white     7
 
 + ! f backup | ! f system | ! f import | ! f music | ! f torrent | ! f photos | ! f install | ! f github
 [[  menu  ]]
@@ -247,8 +255,8 @@ create new raspbian image
   . ~/config.ini ; clear
   #Use lsblk to check /dev/sdc
   rm /media/hdd/raspbian.zip
-  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
   #unzip -p raspbian.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
   unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdc bs=4M conv=fsync
   sudo mkdir /media/cardreader
@@ -287,7 +295,7 @@ Delete
     rm -rf "$1" ; shift
   done
 
-+ F files & d & t t
++ T photos & d & t t
 Upload Google Photos
   #Note : you need to create at least an album before starting upload, this script is in incapacity to create the first one.
   . ~/config.ini ; clear
@@ -298,7 +306,7 @@ Upload Google Photos
   echo ; echo "$Album ($Year)"
   cd "$DIR"
   #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
-  if ! sudo upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
+  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
   #if ! upload-gphotos `ls` -u "$user_3" -p "$pwd_3" -a "$Album ($Year)" < /dev/null ; then
   #if ! upload-gphotos `ls` -u "$user_4" -p "$pwd_4" -a "$Album ($Year)" < /dev/null ; then
    echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
@@ -584,42 +592,42 @@ Found double photos
   fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
   ifttt "Search double Photos" "Finish"
 
-+ t photos & T t
-Tidy GDrive Photos (1)
++ T photos
+(1) Pull Photos from Gdrive
   rm /tmp/exif.log
-  GDRIVE=/media/hdd/Drive; cd $GDRIVE
+  GDRIVE=/media/hdd/drive; cd $GDRIVE
   PHOTOS="$GDRIVE/Google Photos"
   #PHOTOS="/media/hdd/photos"
   if ! drive pull --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PULL DRIVE"; return; fi
-  #Move only files under month directory (??) to ..
-  find "$PHOTOS" -iname "??" -type d -print0 | xargs -0 -I{.} find {.} -iname "*.jpg" iname "*.jpeg" -type f | while read FILE ; do
-  mv -v "$FILE" "$PHOTOS/$(basename "$FILE")"
-  done;
-  # Delele empty folders
-  find "$PHOTOS" -type d -empty -delete
-  # Move files from .. to YYYY/YYYY-MM-DD folder
-  find "$PHOTOS" -maxdepth 1 -iname "*.jpg" -type f | while read FILE ; do
-  EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
-  YEAR=`echo "$EXIF" | cut -d '-' -f 1`
-  if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
-  if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
-  mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
-  done
+  ##Move only files under month directory (??) to ..
+  #find "$PHOTOS" -iname "??" -type d -print0 | xargs -0 -I{.} find {.} -iname "*.jpg" iname "*.jpeg" -type f | while read FILE ; do
+  #mv -v "$FILE" "$PHOTOS/$(basename "$FILE")"
+  #done;
+  ## Delele empty folders
+  #find "$PHOTOS" -type d -empty -delete
+  ## Move files from .. to YYYY/YYYY-MM-DD folder
+  #find "$PHOTOS" -maxdepth 1 -iname "*.jpg" -type f | while read FILE ; do
+  #EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
+  #YEAR=`echo "$EXIF" | cut -d '-' -f 1`
+  #if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
+  #if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
+  #mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
+  #done
 
-+ f photos & T t
-(1) Photos Validation [T YYYY]
++ T photos & d & t t
+(2) Photos Validation [t YYYY]
   #Need to select every year
   tput cup 0 0 ; clear
-  clear ; cd %D; set %T
-  echo "$@"
+  clear ; cd %d; set %t
+  echo "$@" >> ~/exif.log
   for f in "$@"; do
-  tput setaf 6 ; echo -n "[$1] " ; tput sgr0
+  echo "$(tput setaf 6)[$1]" >> ~/exif.log
   #Delete no JPEG Files
-  find "$1" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do rm $FILE ; done
+  find "$1" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do rm "$FILE" ; done
   #Next
   find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-  printf "$(basename "$FILE") : $EXIF\e[0m\n"
+  echo "$(basename "$FILE") : $EXIF"
   # If not EXIF give one with folder name/date
   if [ -z "$EXIF" ]; then
    NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
@@ -632,16 +640,16 @@ Tidy GDrive Photos (1)
   IMG_YYMM_NEXT=`date -d "$IMG_DATE +1 month" "+%%Y %%m"`
   DIR_YYMM=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
   if [ "$DIR_YYMM" != "$IMG_YYMM" ] && [ "$DIR_YYMM" != "$IMG_YYMM_LAST" ] && [ "$DIR_YYMM" != "$IMG_YYMM_NEXT" ]; then
-     echo "$(tput setaf 1)[DIR FAIL  ]$(tput sgr 0) $(basename "$FILE")"
-     echo "NOT CORRECT $EXIF FOR $FILE" >> ~/exif.log
+     echo "$(tput setaf 7)$FILE" >> ~/exif.log
+     echo "$(tput setaf 1)[DIR FAIL  ] $(basename "$FILE")" >> ~/exif.log
   fi
   # Test if photo not too big
   IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
   if [ $(( $X * $Y )) -gt 100000000 ] ; then
-    echo "$(tput setaf 1)[PIXEL FAIL]$(tput sgr 0) $(basename "$FILE")"
-    echo "PIX  FAIL : $FILE" >> ~/exif.log
+    echo "$(tput setaf 7)$FILE" >> ~/exif.log
+    echo "$(tput setaf 1)[PIXEL FAIL] $(basename "$FILE")" >> ~/exif.log
   fi
-  echo "$(tput setaf 3) $FILE $(tput sgr 0)"
+  echo "$(tput setaf 7)$FILE"
   echo "$EXIF [$IMG_YYMM_LAST] [$IMG_YYMM] [$IMG_YYMM_NEXT] $DIR_YYMM"
   FILE_DATE=$(echo $EXIF | tr -d ":" | tr -d " ")
   #touch -t ${EXIF:0:10}.${EXIF:10:14} "$FILE"
@@ -651,12 +659,12 @@ Tidy GDrive Photos (1)
   #find /media/hdd/photos -type f -name "desktop.ini" -exec rm -f {} \;
   #find /media/hdd/photos -type f -name "Thumbs.db" -exec rm -f {} \;
   ifttt "Raspberry Pi" "Script Finished - See ~/exif.log for errors"
-  mcedit ~/exif.log -x
+  /usr/bin/less -R ~/exif.log
 
-+ f photos & T t
-(2) Photos Rename [T ????]
++ T photos & d & t t
+(3) Photos Rename [t ????]
   tput cup 0 0
-  clear ; cd %D; set %T
+  clear ; cd %d; set %t
   for f in "$@"; do
    #Delete Empty Directories
    find "$1" -type d -empty -delete
@@ -673,23 +681,24 @@ Tidy GDrive Photos (1)
    DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr -d ':')
    TIME=$(echo $EXIF | cut -d ' ' -f 2 | tr -d ':')
    NEWFILE=${DATE}T${TIME}
-   echo "$(basename "$FILE") <<-->> $NEWFILE.JPG"
-   if [ $(basename "$FILE" | cut -d . -f1) != $NEWFILE ] ; then
+   OLDFILE=$(echo $(basename "$FILE") | cut -d . -f1)
+   echo "$(tput setaf 7)$OLDFILE <=> $NEWFILE"
+   if [ "$OLDFILE" != "$NEWFILE" ] ; then
     FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
     while [[ $FOUND -gt 0 ]]; do
-     echo "Warning: $NEWFILE.JPG found $FOUND time(s)!"
+     echo "$(tput setaf 1)$NEWFILE.JPG found $FOUND time(s)!"
      DATE="${NEWFILE:0:4}-${NEWFILE:4:2}-${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
      SECS=$(date +%%s -d "$DATE")
      SECS=$(( $SECS + 1 ))
      NEWFILE=$(date +%%Y%%m%%dT%%H%%M%%S -d @$SECS)
      FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
     done
-    echo "$(basename "$FILE")=>$NEWFILE.JPG"
+    echo "$(tput setaf 2)$OLDFILE => $NEWFILE"
     NEWDATE="${NEWFILE:0:4}:${NEWFILE:4:2}:${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
     exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
     EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
     if [ "$NEWDATE" != "$EXIF" ] ; then
-    echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> ~/exif.log
+    echo "$(tput setaf 1)EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> ~/exif.log
     fi
     TCH="$(echo $EXIF | tr -d ':' | tr -d ' ')"
     touch -t ${TCH:0:12}.${TCH:12:2} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
@@ -795,12 +804,21 @@ Photos server on 192.168.0.1:8080
   #  #  # #    # #      #    # #    #
    ##   # #####  ######  ####   ####
 
-+ f *.avi | f *.AVI | f *.mkv | f *.MKV | f *.mp4 | f *.MP4 & F videos & t t
-upload to vlc
++ F videos & f *.avi | f *.AVI | f *.mkv | f *.MKV | f *.mp4 | f *.MP4 & t t
+vlc upload (iphone)
   clear ; cd %d ; set %t
   for FILE in "$@"; do
    echo "Upload to VLC : $FILE"
-   curl -# -F file=@"$FILE" http://192.168.0.11/upload.json
+   curl -# -F file=@"$FILE" http://192.168.0.50/upload.json
+   echo
+  done
+
++ F videos & f *.avi | f *.AVI | f *.mkv | f *.MKV | f *.mp4 | f *.MP4 & t t
+vlc upload (ipad)
+  clear ; cd %d ; set %t
+  for FILE in "$@"; do
+   echo "Upload to VLC : $FILE"
+   curl -# -F file=@"$FILE" http://192.168.0.51/upload.json
    echo
   done
 
