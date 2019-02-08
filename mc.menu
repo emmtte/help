@@ -592,7 +592,7 @@ Found double photos
   fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
   ifttt "Search double Photos" "Finish"
 
-+ T photos
++ t photos
 (1) Pull Photos from Gdrive
   rm /tmp/exif.log
   GDRIVE=/media/hdd/drive; cd $GDRIVE
@@ -615,65 +615,50 @@ Found double photos
   #done
 
 + T photos & d & t t
-(2) Photos Validation [t YYYY]
+Photos Validation & Rename [t YYYY]
   #Need to select every year
   tput cup 0 0 ; clear
   clear ; cd %d; set %t
-  echo "$@" >> ~/exif.log
   for f in "$@"; do
   echo "$(tput setaf 6)[$1]" >> ~/exif.log
   #Delete no JPEG Files
   find "$1" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do rm "$FILE" ; done
+  #Delete Empty Directories
+  find "$1" -type d -empty -delete
   #Next
   find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-  echo "$(basename "$FILE") : $EXIF"
   # If not EXIF give one with folder name/date
   if [ -z "$EXIF" ]; then
    NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-   exiv2 -M "add Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
+   exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
   fi
-  # Tests if jpg files are in the correct folder
+  # Tests if jpg files are in the correct folder and ask for modify
   IMG_DATE=`echo "$EXIF" | cut -d ' ' -f 1 | tr ':' '-'`
   IMG_YYMM=`echo "$IMG_DATE" | cut -d '-' -f 1,2 | tr '-' ' '`
   IMG_YYMM_LAST=`date -d "$IMG_DATE -1 month" "+%%Y %%m"`
   IMG_YYMM_NEXT=`date -d "$IMG_DATE +1 month" "+%%Y %%m"`
   DIR_YYMM=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
+  echo "$(tput setaf 2)$FILE $(tput setaf 7)$EXIF $IMG_YYMM <=> $DIR_YYMM"
   if [ "$DIR_YYMM" != "$IMG_YYMM" ] && [ "$DIR_YYMM" != "$IMG_YYMM_LAST" ] && [ "$DIR_YYMM" != "$IMG_YYMM_NEXT" ]; then
-     echo "$(tput setaf 7)$FILE" >> ~/exif.log
-     echo "$(tput setaf 1)[DIR FAIL  ] $(basename "$FILE")" >> ~/exif.log
+     NEWEXIF="`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2,3 | tr '-' ':'` 00:00:00"
+     echo "$(tput setaf 1)EXIF ERROR : $(tput setaf 7)$FILE"
+     read -e -p "$(tput setaf 2)EXIF : $(tput setaf 7)" -i "$NEWEXIF" READNEWEXIF </dev/tty
+     exiv2 -q -M "set Exif.Photo.DateTimeOriginal $NEWEXIF" "$FILE"
   fi
   # Test if photo not too big
   IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
   if [ $(( $X * $Y )) -gt 100000000 ] ; then
-    echo "$(tput setaf 7)$FILE" >> ~/exif.log
-    echo "$(tput setaf 1)[PIXEL FAIL] $(basename "$FILE")" >> ~/exif.log
+    echo "$(tput setaf 1)PIXEL ERROR : $(tput setaf 7)$FILE"
+    break
   fi
-  echo "$(tput setaf 7)$FILE"
-  echo "$EXIF [$IMG_YYMM_LAST] [$IMG_YYMM] [$IMG_YYMM_NEXT] $DIR_YYMM"
-  FILE_DATE=$(echo $EXIF | tr -d ":" | tr -d " ")
-  #touch -t ${EXIF:0:10}.${EXIF:10:14} "$FILE"
   done
   shift
   done
-  #find /media/hdd/photos -type f -name "desktop.ini" -exec rm -f {} \;
-  #find /media/hdd/photos -type f -name "Thumbs.db" -exec rm -f {} \;
-  ifttt "Raspberry Pi" "Script Finished - See ~/exif.log for errors"
-  /usr/bin/less -R ~/exif.log
-
-+ T photos & d & t t
-(3) Photos Rename [t ????]
-  tput cup 0 0
-  clear ; cd %d; set %t
+  #Rename jpg files as YYmmddTHHMMSS.JPG
   for f in "$@"; do
-   #Delete Empty Directories
-   find "$1" -type d -empty -delete
-   echo "YEAR:$1"
+   echo "$(tput setaf 6)[$1]"
    find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
-   echo "$FILE"
-   FILE="$FILE" | tr ' ' '_'
-   echo "$FILE"
-   #Add things to do for each file
    exiv2 -M "del Exif.Image.DateTime" "$FILE"
    exiv2 -M "del Exif.Photo.ImageUniqueID" "$FILE"
    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
@@ -714,7 +699,6 @@ Found double photos
    done
   shift
   done
-  #read -r
 
 + f photos
 Add Exif Description (please toggle [????] dir) (7)
@@ -918,7 +902,6 @@ rotate 90 mp4
 
 + f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t
 cut video
-  #! /usr/bin/bash
   clear
   read -e -p "Start : " -i "00:00:00" start
   read -e -p "Stop  : " -i "00:00:00" stop
