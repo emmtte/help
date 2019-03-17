@@ -146,7 +146,7 @@ backup photos & videos to freebox hdd
   clear
   sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntl,vers=1.0
   mkdir /media/freebox/photos /media/freebox/videos
-  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ /media/freebox/photos
+  rsync --archive --no-o --no-g --delete --info=progress2 "/media/hdd/photos/Google Photos" /media/freebox/photos
   #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
 
 + f backup
@@ -223,7 +223,7 @@ mount-cardreader
 
 + f system
 mount-hdd
-  clear ; sudo mount /dev/sda1 /media/hdd
+  clear ; sudo mount /dev/sdb1 /media/hdd
 
 + f system
 mount-freebox
@@ -395,9 +395,7 @@ import videos & merge & upload to youtube
   cd /media/hdd/youtube-upload
   FILES=`find *.MP4 -type f -printf "%%f + " | sort`
   mkvmerge -o out.mkv $FILES
-  youtube-upload --title="-" --category="Entertainment" --privacy="private" \
-  --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
-  --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-1.json" out.mkv
+  youtube-upload --title="-" --privacy="private" out.mkv
   ifttt "Backup done" "Merge & uploaded to youtube"
   sleep 30m
   ifttt "Youtube done" "Can watch to youtube"
@@ -578,11 +576,11 @@ flac to mp3
 + f photos
 Take Raspberry Pi Photo
   tput cup 0 0 ; clear
-  raspistill -v -w 1280 -rot 270 -o /media/hdd/photo.jpg
+  raspistill -v -rot 180 -o /media/hdd/photo.jpg
   source ~/config.ini
   #curl -s -X POST https://api.telegram.org/bot$apiToken/sendPhoto -d photo="/media/hdd/photo.jpg" -d chat_id=$userChatId
   #curl -s -X POST https://api.telegram.org/bot$apiToken/sendPhoto -d photo="/media/hdd/photo.jpg" -d chat_id=@MyChannel
-  dropbox_uploader upload /media/hdd/photo.jpg /Camera/$(date +"%%d%%m%%y-%%H%%m").jpg
+  dropbox_uploader upload /media/hdd/photo.jpg /Camera/$(date +"%%Y%%m%%dT%%H%%M%%S").JPG
   rm /media/hdd/photo.jpg
 
 + f photos
@@ -930,14 +928,12 @@ create stopmotion
   mkdir CROP
   for img in *.JPG; do
   echo "Convert $img"
-  convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
+  #convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
+  #convert -rotate "90" "$img" "CROP/$img-CROP.JPG"
   done
   ls -1 CROP/*-CROP.JPG >  files.lst
   mpv mf://@files.lst -mf-type=jpg -mf-fps=7.5 -ovc=rawvideo -no-audio -o stopmotion.avi
-  youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" \
-  --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
-  --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-1.json" \
-  stopmotion.avi
+  youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi
   ifttt "Raspberry Pi" "Stopmotion created"
 
 + f videos
@@ -1008,6 +1004,20 @@ Display Temperatures
    #   #    # #####  #####  #      #  # #   #
    #   #    # #   #  #   #  #      #   ##   #
    #    ####  #    # #    # ###### #    #   #
+
++ f torrent
+download with aria2c
+  rm -rf /media/hdd/drive/Torrents/*
+  echo ' ' > ~/aria2-torrents
+  cd /media/hdd/drive
+  drive pull --quiet Torrents/
+  find /media/hdd/drive/Torrents/*.torrent -type f | while read FILE ; do
+  echo "$FILE" >> ~/aria2-torrents
+  rm "$FILE"
+  done
+  drive push --quiet Torrents/
+  aria2c --max-overall-upload-limit=200K --max-overall-download-limit=2M --input-file=~/aria2-torrents
+  done
 
 + f torrent
 stop transmission
@@ -1287,7 +1297,7 @@ python 3.7.2
 + f install
 prerequisites
   clear
-  sudo apt-get install git gpac avconv mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g ghostscript
+  sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g ghostscript
 
 + f install
 update rpi
@@ -1556,14 +1566,16 @@ youtube-dl
 + f install
 youtube-upload
   # https://github.com/tokland/youtube-upload
-  sudo pip install --upgrade google-api-python-client progressbar2
+  # Warning https://github.com/tokland/youtube-upload/pull/264
+  sudo pip install --upgrade google-api-python-client oauth2client progressbar2
   wget https://github.com/tokland/youtube-upload/archive/master.zip
   unzip master.zip
   cd youtube-upload-master
   sudo python setup.py install
-  rm ~/.youtube-upload-credentials.json
-  dropbox_uploader download samplevideo.mp4
-  youtube-upload --title="test" --category="Music" --privacy="private" samplevideo.mp4
+  dropbox_uploader download /opt/key/youtube-upload-client-secret.json
+  mv youtube-upload-client-secret.json .client_secrets.json
+  dropbox_uploader download /opt/key/samplevideo.mp4
+  youtube-upload --title="test" --privacy="private" samplevideo.mp4
   cd ..
   rm samplevideo.mp4 master.zip
   sudo rm -rf youtube-upload-master
