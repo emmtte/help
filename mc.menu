@@ -1008,16 +1008,13 @@ Display Temperatures
 + f torrent
 download with aria2c
   rm -rf /media/hdd/drive/Torrents/*
-  echo ' ' > ~/aria2-torrents
+  rm  ~/aria2-torrents
   cd /media/hdd/drive
   drive pull --quiet Torrents/
   find /media/hdd/drive/Torrents/*.torrent -type f | while read FILE ; do
   echo "$FILE" >> ~/aria2-torrents
-  rm "$FILE"
   done
-  drive push --quiet Torrents/
-  aria2c --max-overall-upload-limit=200K --max-overall-download-limit=2M --input-file=~/aria2-torrents
-  done
+  aria2c --max-overall-upload-limit=200K --max-overall-download-limit=2M --dir=/media/hdd --input-file=/home/dev/aria2-torrents seed-time=0
 
 + f torrent
 stop transmission
