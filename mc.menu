@@ -515,7 +515,7 @@ import All Photos
 + f music
 sst
   clear
-  wget -O - "http://hi5.streamingsoundtracks.com" | castnow --quiet -
+  wget -O - "http://hi5.streamingsoundtracks.com" | castnow --address 192.168.0.16 --quiet -
 
 + f music
 sst stop
