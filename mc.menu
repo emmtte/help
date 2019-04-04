@@ -1305,15 +1305,23 @@ update rpi
 tmux
   # https://github.com/tmux/tmux
   clear
-  sudo apt-get install libevent-dev libncurses5-dev
-  wget https://github.com/tmux/tmux/releases/download/2.6/tmux-2.6.tar.gz
-  tar xvfz tmux-2.6.tar.gz
-  cd tmux-2.6
+  sudo apt-get install -y libevent-dev libncurses5-dev
+  wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
+  tar xvfz tmux-2.8.tar.gz
+  cd tmux-2.8
   ./configure && make
   sudo mv ./tmux /usr/local/bin/tmux
   cd ..
-  rm tmux-2.6.tar.gz
-  rm -rf tmux-2.6
+  rm tmux-2.8.tar.gz
+  rm -rf tmux-2.8
+
+nvim
+  # https://github.com/neovim/neovim
+  sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
+  git clone https://github.com/neovim/neovim.git
+  cd neovim
+  make CMAKE_BUILD_TYPE=RelWithDebInfo
+  sudo make install
 
 + f install
 mc
