@@ -1,17 +1,3 @@
- # To run under mc
- # sudo ln -sf bash /bin/sh
- #
- # figlet -f banner backup
- #
- # black     0
- # red       1
- # green     2
- # yellow    3
- # blue      4
- # magenta   5
- # cyan      6
- # white     7
-
 + ! f backup | ! f system | ! f import | ! f music | ! f torrent | ! f photos | ! f install | ! f github
 [[  menu  ]]
   N=`tmux display-message -p '#W'`
@@ -41,8 +27,8 @@ Create ~/mc.menu
   clear
   if [ ! -d ~/mc.menu ] ; then mkdir ~/mc.menu ; fi
   cd ~/mc.menu
-  touch "backup" "config" "files" "import" "music" "github"
-  touch "system" "tools" "videos" "torrent" "photos" "install"
+  touch "backup" "config" "files" "import" "music" "github" "system"
+  touch "tools" "tmux" "videos" "torrent" "photos" "install"
 
 + f config
 create media sub-folders
@@ -540,18 +526,18 @@ download from gmusic
   gms download -u $account "/media/hdd/music/%album%/%title%"
   ifttt "Rasperry Pi" "gmusic download done"
 
-+ f *.wav & F music & t t
++ f\.wav & F music & t t
 wav to mp3
   clear ; cd %d ; set %t
   for d in "$@"; do lame --preset extreme -q 0 -h "$1" "$1.mp3"; done
 
-+ f *.mp3 & F music & t t
++ f\.mp3 & F music & t t
 concat mp3
   #sudo apt-get install mp3wrap
   clear ; cd %d ; set %t
   mp3wrap output.mp3 $@;
 
-+ f *.flac & F music & t t
++ f\.flac & t t
 flac to mp3
   clear ; cd %d ; set %t
   for f in "$@"; do
@@ -757,7 +743,7 @@ Delete DateTimeOriginal EXIF from pics
     shift
   done
 
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
++ f *.jpg | f *.JPG | f *.jpeg | f *.JPEG & t t
 Delete DateTime EXIF from pics
   set %t
   while [ -n "$1" ]; do
@@ -786,7 +772,7 @@ Photos server on 192.168.0.1:8080
   #  #  # #    # #      #    # #    #
    ##   # #####  ######  ####   ####
 
-+ F videos & f *.avi | f *.AVI | f *.mkv | f *.MKV | f *.mp4 | f *.MP4 & t t
++ F videos & f\.avi | f\.AVI | f\.mkv | f\.MKV | f\.mp4 | f\.MP4 & t t
 vlc upload (iphone)
   clear ; cd %d ; set %t
   for FILE in "$@"; do
@@ -795,7 +781,7 @@ vlc upload (iphone)
    echo
   done
 
-+ F videos & f *.avi | f *.AVI | f *.mkv | f *.MKV | f *.mp4 | f *.MP4 & t t
++ F videos & f\.avi | f\.AVI | f\.mkv | f\.MKV | f\.mp4 | f\.MP4 & t t
 vlc upload (ipad)
   clear ; cd %d ; set %t
   for FILE in "$@"; do
@@ -817,6 +803,7 @@ tv-dl
   done < /media/hdd/tmp/youtube.txt
   ifttt "Youtube-dl" "tv-dl done"
 
++ f videos
 tv-dl v2
   mcedit -x /media/hdd/tmp/youtube.txt
   clear ; source ~/config.ini; cd /media/hdd/youtube-dl
@@ -1084,29 +1071,30 @@ Uncrypt PDF
     shift
   done
 
-+ f *.pdf | f *.PDF | F *.pdf | F *.PDF
++ f \.pdf | f \.PDF | F \.pdf | F \.PDF
 A Drive pull Documents and Snoozed
   clear ; source ~/config.ini
-  GDRIVE=/media/hdd/Drive ; cd $GDRIVE
+  GDRIVE=/media/hdd/drive ; cd $GDRIVE
   if ! drive pull --no-prompt -fix-clashes $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then ifttt "Merge PDF" "ERROR PULL GDRIVE" ; exit; fi
 
-+ f *.pdf | f *.PDF & t t
++ f \.pdf | f \.PDF & t t
 B Merge PDF
-  #Don't use pdftk files genarated are too big
+  # Don't use pdftk files genarated are too big
+  # T source files t destination Files
   clear ; source ~/config.ini ; array=()
-  set %T ; for FILE in "$@"; do 
-    if grep -r "Encrypt" "%D/$FILE" ; then echo "ERROR : $FILE CRYPTED" ; ifttt "ERROR PDF" "CRYPTED $FILE"; exit; fi 
+  set %T ; for FILE in "$@"; do
+    if grep -r "Encrypt" "%D/$FILE" ; then echo "ERROR : $FILE CRYPTED" ; ifttt "ERROR PDF" "CRYPTED $FILE"; exit; fi
     array+=("%D/$FILE") ; done
-  set %t ; for FILE in "$@"; do 
+  set %t ; for FILE in "$@"; do
     if grep -r "Encrypt" "%d/$FILE" ; then echo "ERROR : $FILE CRYPTED" ; ifttt "ERROR PDF" "CRYPTED $FILE"; exit; fi
     array+=("%d/$FILE") ; done
   /opt/sejda/bin/sejda-console merge -f "${array[@]}" -o "$(dirname "${array[-1]}")/!$(basename "${array[-1]}")"
   rm "${array[@]}"
 
-+ f *.pdf | f *.PDF | F *.pdf | F *.PDF
++ f \.pdf | f \.PDF | F \.pdf | F \.PDF
 C Drive push Documents and Snoozed
   clear ; source ~/config.ini
-  GDRIVE=/media/hdd/Drive ; cd $GDRIVE
+  GDRIVE=/media/hdd/drive ; cd $GDRIVE
   if ! drive push --no-prompt $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then iftt "Merge PDF" "ERROR PUSH GDRIVE" ; exit; fi
 
 + f tools
@@ -1305,16 +1293,20 @@ update rpi
 tmux
   # https://github.com/tmux/tmux
   clear
+  tmux -V
+  tmux kill-server
   sudo apt-get install -y libevent-dev libncurses5-dev
   wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
   tar xvfz tmux-2.8.tar.gz
   cd tmux-2.8
   ./configure && make
-  sudo mv ./tmux /usr/local/bin/tmux
+  sudo cp ./tmux /usr/bin/tmux
+  tmux -V
   cd ..
   rm tmux-2.8.tar.gz
   rm -rf tmux-2.8
 
++ f install
 nvim
   # https://github.com/neovim/neovim
   sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
@@ -1468,12 +1460,12 @@ Sejda
   # https://github.com/torakiki/sejda
   clear
   sudo apt-get -y install oracle-java8-jdk
-  curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v3.2.49/sejda-console-3.2.49-bin.zip
+  curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v3.2.72/sejda-console-3.2.72-bin.zip
   unzip sejda.zip
   sudo mkdir /opt/sejda
-  sudo chown -R pi:pi /opt/sejda
-  mv sejda-console-3.0.18/* /opt/sejda/
-  rm -rf sejda.zip sejda-console-3.0.18
+  sudo chown -R $USER:$USER /opt/sejda
+  mv sejda-console-3.2.72/* /opt/sejda/
+  rm -rf sejda.zip sejda-console-3.0.72
   chmod +x /opt/sejda/bin/sejda-console
 
 + f install
