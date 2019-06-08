@@ -399,19 +399,6 @@ import gopro
   sudo umount /media/gopro
 
 + f import
-import iphone videos
-  usbmuxd
-  VIDEOS="/media/hdd/youtube-upload"
-  sudo umount /media/iphone
-  echo "Please connect iphone, accept the connection and enter password"
-  read -e -p "Press any key to continue..." key
-  idevicepair pair
-  sudo ifuse /media/iphone
-  sudo rsync --include '*/' --include '*.MOV' --exclude '*' --archive --info=progress2 /media/iphone/DCIM/100APPLE/ $VIDEOS
-  sudo chown -R pi:pi $VIDEOS
-  youtube_upload
-
-+ f import
 import usbkey
   ID="/dev/disk/by-id/usb-Kingston_DataTraveler_3.0_*-0:0-part1"
   VIDEOS="/media/hdd/youtube-upload"
@@ -572,9 +559,9 @@ Take Raspberry Pi Photo
 
 + f photos
 Found double photos
-  sudo apt-get -y install fslint
-  /usr/share/fslint/fslint/fslint /media/hdd/photos > photos_double.txt
-  fdupes -Sr /media/hdd/photos > ~/photos_double2.txt
+  sudo apt-get -y install fslint fdupes
+  /usr/share/fslint/fslint/fslint "/media/hdd/drive/Google Photos" > photos_double.txt
+  fdupes -Sr "/media/hdd/drive/Google Photos" > ~/photos_double2.txt
   ifttt "Search double Photos" "Finish"
 
 + t photos
@@ -685,22 +672,6 @@ Photos Validation & Rename [t YYYY]
   shift
   done
 
-+ f photos
-Add Exif Description (please toggle [????] dir) (7)
-  clear ; cd %D; set %T
-  for f in "$@"; do
-  echo "$1"
-   find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
-   #find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
-  Album=$(echo $(dirname "$FILE") | cut -d ' ' -f 2-)
-  Year=$(echo $(dirname "$FILE") | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
-  echo "$Album ($Year)"
-  exiv2 -M "set Exif.Image.ImageDescription $Album ($Year)" "$FILE"
-   #echo "$(dirname "$FILE")"
-   done
-  shift
-  done
-
 + f *.png | f *.PNG & t t
 convert PNG to JPG
   set %t
@@ -799,19 +770,6 @@ tv-dl
     if [[ $url == h* ]]; then
     if [[ $out == "" ]]; then youtube-dl --fixup warn $url; else
     youtube-dl --fixup warn -o "$out" $url; fi
-    #--fixup warn --download-archive ~/.mydownloads --hls-prefer-native
-    fi
-  done < /media/hdd/tmp/youtube.txt
-  ifttt "Youtube-dl" "tv-dl done"
-
-+ f videos
-tv-dl v2
-  mcedit -x /media/hdd/tmp/youtube.txt
-  clear ; source ~/config.ini; cd /media/hdd/youtube-dl
-  while IFS=, read url out ; do
-    if [[ $url == h* ]]; then
-    if [[ $out == "" ]]; then while ! youtube-dl -c --fixup warn --socket-timeout 5 $url; do sleep 10; done; else
-    while ! youtube-dl -c --fixup warn --socket-timeout 5 -o "$out" $url; do sleep 10; done
     fi
   done < /media/hdd/tmp/youtube.txt
   ifttt "Youtube-dl" "tv-dl done"
@@ -999,43 +957,7 @@ download with aria2c
   find /media/hdd/drive/Torrents/*.torrent -type f | while read FILE ; do
   echo "$FILE" >> ~/aria2-torrents
   done
-  aria2c --max-overall-upload-limit=200K --dir=/media/hdd --input-file=/home/dev/aria2-torrents
-
-+ f torrent
-stop transmission
-  sudo service transmission-daemon stop
-
-+ f torrent
-add/remove torrents
-  clear
-  sudo service transmission-daemon restart
-  rm -rf /media/hdd/Drive/Torrents/*
-  cd /media/hdd/Drive
-  drive pull --quiet Torrents/
-  find /media/hdd/Drive/Torrents/*.torrent -type f | while read FILE ; do
-  transmission-remote --add "$FILE"
-  rm "$FILE"
-  done
-  drive push --quiet Torrents/
-  ##
-  LIST=`transmission-remote -l  | grep 100% | cut -d " " -f 4 | cut -d "*" -f 1`
-  for ID in $LIST; do
-  echo "Torrent #$ID is completed"
-  #echo "Moving downloaded file(s) to $MOVEDIR"
-  #transmission-remote --torrent $ID --move $MOVEDIR
-  echo "Removing torrent from list"
-  transmission-remote --torrent $ID --remove
-  done
-
-+ f torrent
-list torrents
-  clear
-  while [ true ] ; do
-  transmission-remote -l ; tput cup 0 0
-  #if transmission-remote -l | grep % | cut -d " " -f 4 | cut -d "*" -f 1 < /dev/null ; then echo "OK" ;fi
-  read -t 10 -n 1
-  if [ $? = 0 ] ; then exit ; fi
-  done
+  aria2c --max-overall-upload-limit=200K --max-concurrent-downloads=25 --dir=/media/hdd --input-file=/home/dev/aria2-torrents
 
 
  #####  #####  ######
@@ -1382,31 +1304,6 @@ hue-cli
   hue -H 192.168.0.10 register
 
 + f install
-iphone
-  # https://github.com/libimobiledevice
-  # https://gist.github.com/kfatehi/8922430
-  clear
-  sudo apt-get -y install git build-essential libxml2-dev python2.7 python2.7-dev fuse libtool autoconf libusb-1.0-0-dev libfuse-dev
-  mkdir iphone_libs && cd iphone_libs
-  git clone https://github.com/libimobiledevice/libplist.git
-  git clone https://github.com/libimobiledevice/libusbmuxd.git
-  git clone https://github.com/libimobiledevice/usbmuxd.git
-  git clone https://github.com/libimobiledevice/libimobiledevice.git
-  git clone https://github.com/libimobiledevice/ifuse.git
-  export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
-  echo "export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig" | sudo tee -a /etc/bash.bashrc
-  cd libplist && ./autogen.sh && make && sudo make install && cd ..
-  cd libusbmuxd && ./autogen.sh && make && sudo make install && cd ..
-  cd libimobiledevice && ./autogen.sh && make && sudo make install && cd ..
-  cd usbmuxd && ./autogen.sh && make && sudo make install && cd ..
-  cd ifuse && ./autogen.sh && make && sudo make install && cd ..
-  groupadd -g 140 usbmux &>/dev/null
-  useradd -c 'usbmux user' -u 140 -g usbmux -d / -s /sbin/nologin usbmux &>/dev/null
-  passwd -l usbmux &>/dev/null
-  echo /usr/local/lib | sudo tee /etc/ld.so.conf.d/libimobiledevice-libs.conf
-  sudo ldconfig
-
-+ f install
 motion
   # http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
   clear
@@ -1432,7 +1329,6 @@ motion
   > on_picture_save /usr/local/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
   sudo mkdir /var/run/motion
   sudo chmod 777 /var/run/motion
-
 
 + f install
 Pi Hole
@@ -1492,42 +1388,6 @@ ssh
   PasswordAuthentication yes
   EOF
   sudo service ssh restart
-
-+ f install
-transmission
-  # http://www.transmissionbt.com/
-  sudo apt-get -y install transmission-daemon
-  mkdir /media/hdd/torrents
-  sudo usermod -a -G debian-transmission pi
-  sudo chgrp debian-transmission /media/hdd/torrents
-  sudo chmod 777 -R /media/hdd/torrents
-  sudo mcedit /etc/default/transmission-daemon
-   >>> ENABLE_DAEMON=0
-  sudo service transmission-daemon stop
-  sudo sed -ie '$d' /etc/transmission-daemon/settings.json
-  cat << EOF | sudo tee -a /etc/transmission-daemon/settings.json
-  ,
-  "download-dir": "/media/hdd/torrents",
-  "incomplete-dir": "/media/hdd/torrents",
-  "rpc-authentication-required": false,
-  "rpc-whitelist": "127.0.0.1,192.168.0.*",
-  "speed-limit-down": 500,
-  "speed-limit-down-enable": true,
-  "speed-limit-down-enabled": true,
-  "speed-limit-up": 5,
-  "speed-limit-up-enable": true,
-  "speed-limit-up-enabled": true,
-  "start-added-torrents": true,
-  "trash-original-torrent-files": true,
-  "umask": 0,
-  "watch-dir-enabled": true,
-  "watch-dir": "/tmp"
-  }
-  EOF
-  sudo service transmission-daemon restart
-  sudo update-rc.d -f transmission remove
-  sudo update-rc.d transmission-daemon defaults
-  sudo update-rc.d transmission-daemon remove
 
 + f install
 upload-gphotos
