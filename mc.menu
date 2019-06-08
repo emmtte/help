@@ -232,8 +232,8 @@ format hdd drive
 + f system
 create fstab file
   clear
-  echo 'LABEL="RaspberryPi" /media/hdd ext4 noatime 0 2' | sudo tee -a /etc/fstab
-  echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777 0 0' | sudo tee -a /etc/fstab
+  echo 'LABEL="RaspberryPi" /media/hdd ext4 nofail,noatime 0 2' | sudo tee -a /etc/fstab
+  echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777,vers=1.0 0 0' | sudo tee -a /etc/fstab
   sudo chown -R pi:pi /media/hdd
 
 + f system
@@ -241,12 +241,13 @@ create new raspbian image
   . ~/config.ini ; clear
   #Use lsblk to check /dev/sdc
   rm /media/hdd/raspbian.zip
-  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_full_latest
   #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
-  #unzip -p raspbian.zip | sudo dd of=/dev/sdb bs=4M status=progress conv=fsync
-  unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sdc bs=4M conv=fsync
+  #unzip -p raspbian.zip | sudo dd of=/dev/sda bs=4M status=progress conv=fsync
+  unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sda bs=4M conv=fsync
   sudo mkdir /media/cardreader
-  sudo mount /dev/sdc1 /media/cardreader
+  sudo mount /dev/sda1 /media/cardreader
   sudo touch /media/cardreader/ssh
   sudo umount /media/cardreader
   ifttt "New Raspbian Image Created"
@@ -819,7 +820,7 @@ tv-dl v2
 yt-dl-playlist
   clear ; source ~/config.ini
   if [ ! -d /media/hdd/youtube-dl ] ; then mkdir /media/hdd/youtube-dl ; fi
-  youtube-dl --limit-rate 200K --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+  youtube-dl --ignore-errors --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
   --merge-output-format mp4 --output "/media/hdd/youtube/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
   ifttt "Youtube-dl" "dl playlist done"
 
@@ -829,27 +830,24 @@ conv mp4 to aac
   aac="$(basename "$1" | cut -d . -f1).aac"
   avconv -loglevel panic -i "$1" -c copy -map 0:a:0 "$aac"
 
-+ f *.mp4 | f *.MP4 & F videos & t t
++ f \.mp4 | f \.MP4 & F videos & t t
 mux mp4 and aac to mkv
   set %t
   aac="$(basename "$1" | cut -d. -f1).aac"
   mkv="$(basename "$1" | cut -d. -f1).mkv"
   MP4Box -add "$1" -add "$aac" "$mkv"
 
-+ f *.avi | f *.AVI | f *.mkv | f *.mov | f *.MOV | f *.mp4 | f *.MP4 | f *.mts | f *.webm | f *.wmv & F videos & t t
++ f \.avi | f \.AVI | f \.mkv | f \.mov | f \.MOV | f \.mp4 | f \.MP4 | f \.mts | f \.webm | f \.wmv & F videos & t t
 upload to youtube
   clear ; source ~/config.ini ; cd %d ; set %t
   for FILE in "$@"; do
     #while ! youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
-    youtube-upload --title="$FILE" --category="Entertainment" --privacy="private" \
-    --client-secrets="/home/pi/.youtube-upload/youtube-upload-client-secret.json" \
-    --credentials-file="/home/pi/.youtube-upload/youtube-upload-credentials-1.json" \
-    "$FILE"
+    youtube-upload --title="-" --privacy="private" "$FILE"
     #"$FILE" ; do :; done
   done
   ifttt "Youtube Upload" "done"
 
-+ f *.mts | f *.MTS | f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 | f *.webm & F videos & t t
++ f \.mts | f \.MTS | f \.mov | f \.MOV | f \.avi | f \.AVI | f \.mp4 | f \.MP4 | f \.webm & F videos & t t
 merge mkv
   clear ; cd %d ; set %t
   FILES="$1"; shift
@@ -858,7 +856,7 @@ merge mkv
   done
   mkvmerge -o out.mkv $FILES
 
-+ f *.mp4 | f *.MP4 & F videos & t t
++ f \.mp4 | f \.MP4 & F videos & t t
 merge mp4
   clear ; cd %d ; set %t
   #FILES="-cat $1" ; shift
@@ -869,7 +867,7 @@ merge mp4
   echo "$FILES"
   MP4Box $FILES -new merged.mp4
 
-+ f *.mp4 | f *.MP4 & F videos & t t
++ f \.mp4 | f \.MP4 & F videos & t t
 extract mp4 video without sound
   clear ; cd %d ; set %t
   #Never tested
@@ -878,14 +876,14 @@ extract mp4 video without sound
     shift
   done
 
-+ f *.mp4 | f *.MP4 & F videos & t t
++ f \.mp4 | f \.MP4 & F videos & t t
 rotate 90 mp4
   clear ; cd %d ; set %t
   for FILE in "$@"; do
     avconv -i "$FILE" -vf transpose=1 -strict experimental "Rotate-$FILE"
   done
 
-+ f *.mov | f *.MOV | f *.avi | f *.AVI | f *.mp4 | f *.MP4 & F videos & t t
++ f \.mov | f \.MOV | f \.avi | f \.AVI | f \.mp4 | f \.MP4 & F videos & t t
 cut video
   clear
   read -e -p "Start : " -i "00:00:00" start
@@ -1001,7 +999,7 @@ download with aria2c
   find /media/hdd/drive/Torrents/*.torrent -type f | while read FILE ; do
   echo "$FILE" >> ~/aria2-torrents
   done
-  aria2c --max-overall-upload-limit=200K --max-overall-download-limit=2M --dir=/media/hdd --input-file=/home/dev/aria2-torrents seed-time=0
+  aria2c --max-overall-upload-limit=200K --dir=/media/hdd --input-file=/home/dev/aria2-torrents
 
 + f torrent
 stop transmission
@@ -1343,7 +1341,7 @@ git
   git remote set-url origin git@github.com:ManuCart/Raspberry-Pi.git
   git config --global user.name "ManuCart"
   git config --global user.email "John.Smith@example.com"
-  echo -e "Host github.com \n IdentityFile ~/.ssh/github_rsa" >> ~/.ssh/config
+  echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 
 + f install
 castnow
@@ -1373,7 +1371,7 @@ google-music-scripts
   # https://github.com/thebigmunch/google-music-scripts
   clear
   sudo apt-get install libav-tools #avconv
-  sudo pip3.7 install google-music-scripts
+  sudo pip3.7 install -U google-music-scripts
 
 + f install
 hue-cli
