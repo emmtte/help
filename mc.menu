@@ -282,27 +282,6 @@ Delete
     rm -rf "$1" ; shift
   done
 
-+ T photos & d & t t
-Upload Google Photos
-  #Note : you need to create at least an album before starting upload, this script is in incapacity to create the first one.
-  . ~/config.ini ; clear
-  set %t
-  find "$@" -maxdepth 1 -iname "????-??-?? *" -type d | sort | while read DIR ; do
-  Album=$(echo "$DIR" | cut -d ' ' -f 2-)
-  Year=$(echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d '-' -f  1)
-  echo ; echo "$Album ($Year)"
-  cd "$DIR"
-  #if ! upload-gphotos `ls` -u "$user_1" -p "$pwd_1" -a "$Album ($Year)" < /dev/null ; then
-  if ! upload-gphotos `ls` -u "$user_2" -p "$pwd_2" -a "$Album ($Year)" < /dev/null ; then
-  #if ! upload-gphotos `ls` -u "$user_3" -p "$pwd_3" -a "$Album ($Year)" < /dev/null ; then
-  #if ! upload-gphotos `ls` -u "$user_4" -p "$pwd_4" -a "$Album ($Year)" < /dev/null ; then
-   echo "$DIR *** $Album ($Year)" >> ~/gphotos.log
-  fi
-  cd %d
-  done
-  ifttt "Google Photos Script Finished" "$@"
-  mcedit -x ~/gphotos.log
-
 + F files & t t
 upload to transfer.sh
   clear ; set %t
@@ -848,7 +827,6 @@ cut video
   read -e -p "Stop  : " -i "00:00:00" stop
   echo "Please Wait..."
   mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
-  ifttt "Rasperry Pi" "La vidéos %d.avi est coupée"
 
 + f videos
 create stopmotion
