@@ -440,7 +440,7 @@ import All Photos
     mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
   fi
   #
-  if [ ! -d "$PHOTOS/$DATE" ] ; then 
+  if [ ! -d "$PHOTOS/$DATE" ] ; then
     mkdir "$PHOTOS/$DATE";
     echo "create dir $PHOTOS/$DATE"
     touch -t "$(echo ${DATE} | tr -d -)0000.00" "$PHOTOS/$DATE"
