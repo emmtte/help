@@ -241,8 +241,8 @@ create new raspbian image
   . ~/config.ini ; clear
   #Use lsblk to check /dev/sdc
   rm /media/hdd/raspbian.zip
-  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_full_latest
+  curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+  #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_full_latest
   #curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
   #unzip -p raspbian.zip | sudo dd of=/dev/sda bs=4M status=progress conv=fsync
   unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sda bs=4M conv=fsync
