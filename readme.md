@@ -16,13 +16,22 @@ cd rpi
 sh rescue
 ```
 
+
+## .profile
+```bash
+if [ -z "$TMUX" ]; then
+/bin/sh ~/rpi/rescue
+fi
+```
+
+
 ### Configuration
 
 ```bash
 Options ─> Configuration
-┌ Other options ──────────┐ 
+┌ Other options ──────────┐
 │ [x] Use internal edit   │
-│ [x] Use internal view   │          
+│ [x] Use internal view   │
 ```
 
 [![](https://img.shields.io/badge/(c)_2014--2018-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
