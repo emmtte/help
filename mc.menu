@@ -200,7 +200,7 @@ update
   sudo rpi-update
 
 + f system
-mount ntfs usbkey 
+mount ntfs usbkey
   clear ; sudo mount -t ntfs-3g `ls /dev/disk/by-id/usb*-part1` /media/usbkey
 
 + f system
@@ -214,13 +214,6 @@ mount-hdd
 + f system
 mount-freebox
   clear ; sudo mount -t cifs //mafreebox.freebox.fr/Server\ Freebox/  /media/freebox -o user=freebox,password=Freebox4K,uid=1000,gid=1000,rw,sec=ntlm,vers=1.0
-
-+ f system
-mount-iphone
-  clear ; usbmuxd
-  sudo umount /media/iphone
-  idevicepair pair
-  sudo ifuse /media/iphone
 
 + f system
 format hdd drive
@@ -251,6 +244,8 @@ create new raspbian image
   sudo touch /media/cardreader/ssh
   sudo umount /media/cardreader
   ifttt "New Raspbian Image Created"
+
+
 
  ###### # #      ######  ####
  #      # #      #      #
@@ -386,77 +381,6 @@ import usbkey
   rsync --archive --info=progress2 /media/usbkey/ $VIDEOS
   sudo umount /media/usbkey
 
-+ f import
-import All Photos
-  clear
-  LOGFILE="/home/pi/log.txt"
-  PHOTOS="/media/hdd/photos/TEMP"
-  ## SD Card
-  DEVICE="/dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1"
-  sudo mount `ls $DEVICE` /media/cardreader
-  if [ -d /media/cardreader/DCIM ]; then
-  find /media/cardreader/DCIM/???_PANA -iname "*.JPG" -type f | while read FILE ; do
-  cp -v "$FILE" "$PHOTOS/$(basename "$FILE")"
-  done
-  sudo umount /media/cardreader
-  fi
-  ## Dropbox
-  rm -rf "$PHOTOS/Camera Uploads"
-  dropbox_uploader download "Camera Uploads" $PHOTOS
-  mv "$PHOTOS/Camera Uploads" $PHOTOS/Camera
-  mv $PHOTOS/Camera/*.jpg $PHOTOS
-  rm -rf $PHOTOS/Camera
-  #
-  find "$PHOTOS" -iname "*.JPG" -type f | while read FILE ; do
-  #Add things to do for each file
-   exiv2 -M "del Exif.Image.DateTime" "$FILE"
-   exiv2 -M "del Exif.Photo.ImageUniqueID" "$FILE"
-  EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-  echo "EXIF : $EXIF"
-  if [ ! -z "$EXIF" ]; then
-  DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr -d ':')
-  TIME=$(echo $EXIF | cut -d ' ' -f 2 | tr -d ':')
-  NEWFILE=${DATE}T${TIME}
-  echo "$(basename "$FILE") <<-->> $NEWFILE.JPG"
-  if [ $(basename "$FILE" | cut -d . -f1) != $NEWFILE ] ; then
-  FOUND=$(find $PHOTOS -name "$NEWFILE.JPG" -type f | wc -l)
-    while [[ $FOUND -gt 0 ]]; do
-     echo "Warning: $NEWFILE.JPG found $FOUND time(s)!"
-     DATE="${NEWFILE:0:4}-${NEWFILE:4:2}-${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
-     SECS=$(date +%%s -d "$DATE")
-     SECS=$(( $SECS + 1 ))
-     NEWFILE=$(date +%%Y%%m%%dT%%H%%M%%S -d @$SECS)
-     FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
-    done
-    echo "$(basename "$FILE")=>$NEWFILE.JPG"
-    NEWDATE="${NEWFILE:0:4}:${NEWFILE:4:2}:${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
-    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
-    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-    if [ "$NEWDATE" != "$EXIF" ] ; then
-    echo "EXIF FAIL TO WRITE: $NEWDATE $EXIF $FILE" >> $LOGFILE
-    fi
-    TCH="$(echo $EXIF | tr -d ':' | tr -d ' ')"
-    touch -t ${TCH:0:12}.${TCH:12:2} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
-    mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
-  fi
-  #
-  if [ ! -d "$PHOTOS/$DATE" ] ; then
-    mkdir "$PHOTOS/$DATE";
-    echo "create dir $PHOTOS/$DATE"
-    touch -t "$(echo ${DATE} | tr -d -)0000.00" "$PHOTOS/$DATE"
-    echo "touch"
-  fi
-  mv -n "$FILE" "$PHOTOS/$DATE/$NEWFILE.JPG"
-  fi
-  #rm -rf "$PHOTOS/Camera Uploads"
-  echo
-  done
-  if [ -f $DEVICE ] ; then
-  sudo umount /media/cardreader
-  fi
-  cd $PHOTOS
-  #python -m SimpleHTTPServer 8080
-  read -r
 
  #    # #    #  ####  #  ####
  ##  ## #    # #      # #    #
@@ -542,114 +466,6 @@ Found double photos
   /usr/share/fslint/fslint/fslint "/media/hdd/drive/Google Photos" > photos_double.txt
   fdupes -Sr "/media/hdd/drive/Google Photos" > ~/photos_double2.txt
   ifttt "Search double Photos" "Finish"
-
-+ t photos
-(1) Pull Photos from Gdrive
-  rm /tmp/exif.log
-  GDRIVE=/media/hdd/drive; cd $GDRIVE
-  PHOTOS="$GDRIVE/Google Photos"
-  #PHOTOS="/media/hdd/photos"
-  if ! drive pull --no-prompt "Google Photos" ; then ifttt "Rasperry Pi - Import Google Photos" "ERROR PULL DRIVE"; return; fi
-  ##Move only files under month directory (??) to ..
-  #find "$PHOTOS" -iname "??" -type d -print0 | xargs -0 -I{.} find {.} -iname "*.jpg" iname "*.jpeg" -type f | while read FILE ; do
-  #mv -v "$FILE" "$PHOTOS/$(basename "$FILE")"
-  #done;
-  ## Delele empty folders
-  #find "$PHOTOS" -type d -empty -delete
-  ## Move files from .. to YYYY/YYYY-MM-DD folder
-  #find "$PHOTOS" -maxdepth 1 -iname "*.jpg" -type f | while read FILE ; do
-  #EXIF=`exiv2 "$FILE" 2> /tmp/null | grep "Image timestamp" | cut -d ' ' -f 4 | tr ':' '-'`
-  #YEAR=`echo "$EXIF" | cut -d '-' -f 1`
-  #if [ ! -d "$PHOTOS/$YEAR" ]; then mkdir "$PHOTOS/$YEAR"; fi
-  #if [ ! -d "$PHOTOS/$YEAR/$EXIF" ]; then mkdir "$PHOTOS/$YEAR/$EXIF"; fi
-  #mv -v "$FILE" "$PHOTOS/$YEAR/$EXIF/$(basename "$FILE")"
-  #done
-
-+ T photos & d & t t
-Photos Validation & Rename [t YYYY]
-  #Need to select every year
-  tput cup 0 0 ; clear
-  clear ; cd %d; set %t
-  for f in "$@"; do
-  echo "$(tput setaf 6)[$1]" >> ~/exif.log
-  #Delete no JPEG Files
-  find "$1" ! -iname "*.jpg" ! -iname "*.jpeg" -type f | while read FILE ; do rm "$FILE" ; done
-  #Delete Empty Directories
-  find "$1" -type d -empty -delete
-  #Next
-  find "$1" -iname "*.jpg" -o -iname "*.jpeg" -type f | sort | while read FILE ; do
-  EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-  # If not EXIF give one with folder name/date
-  if [ -z "$EXIF" ]; then
-   NEWDATE=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr '-' ':'`
-   exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE 00:00:00" "$FILE"
-  fi
-  # Tests if jpg files are in the correct folder and ask for modify
-  IMG_DATE=`echo "$EXIF" | cut -d ' ' -f 1 | tr ':' '-'`
-  IMG_YYMM=`echo "$IMG_DATE" | cut -d '-' -f 1,2 | tr '-' ' '`
-  IMG_YYMM_LAST=`date -d "$IMG_DATE -1 month" "+%%Y %%m"`
-  IMG_YYMM_NEXT=`date -d "$IMG_DATE +1 month" "+%%Y %%m"`
-  DIR_YYMM=`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2 | tr '-' ' '`
-  echo "$(tput setaf 2)$FILE $(tput setaf 7)$EXIF $IMG_YYMM <=> $DIR_YYMM"
-  if [ "$DIR_YYMM" != "$IMG_YYMM" ] && [ "$DIR_YYMM" != "$IMG_YYMM_LAST" ] && [ "$DIR_YYMM" != "$IMG_YYMM_NEXT" ]; then
-     NEWEXIF="`echo "$(dirname "$FILE")" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | cut -d '-' -f 1,2,3 | tr '-' ':'` 00:00:00"
-     echo "$(tput setaf 1)EXIF ERROR : $(tput setaf 7)$FILE"
-     read -e -p "$(tput setaf 2)EXIF : $(tput setaf 7)" -i "$NEWEXIF" READNEWEXIF </dev/tty
-     exiv2 -q -M "set Exif.Photo.DateTimeOriginal $NEWEXIF" "$FILE"
-  fi
-  # Test if photo not too big
-  IFS=- read X Y <<< $(identify -format "%w-%h" "$FILE")
-  if [ $(( $X * $Y )) -gt 100000000 ] ; then
-    echo "$(tput setaf 1)PIXEL ERROR : $(tput setaf 7)$FILE"
-    break
-  fi
-  done
-  shift
-  done
-  #Rename jpg files as YYmmddTHHMMSS.JPG
-  for f in "$@"; do
-   echo "$(tput setaf 6)[$1]"
-   find "$1" -iname "*.JPG" -o -iname "*.JPEG" -type f | sort | while read FILE ; do
-   exiv2 -M "del Exif.Image.DateTime" "$FILE"
-   exiv2 -M "del Exif.Photo.ImageUniqueID" "$FILE"
-   EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-   echo $EXIF
-   DATE=$(echo $EXIF | cut -d ' ' -f 1 | tr -d ':')
-   TIME=$(echo $EXIF | cut -d ' ' -f 2 | tr -d ':')
-   NEWFILE=${DATE}T${TIME}
-   OLDFILE=$(echo $(basename "$FILE") | cut -d . -f1)
-   echo "$(tput setaf 7)$OLDFILE <=> $NEWFILE"
-   if [ "$OLDFILE" != "$NEWFILE" ] ; then
-    FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
-    while [[ $FOUND -gt 0 ]]; do
-     echo "$(tput setaf 1)$NEWFILE.JPG found $FOUND time(s)!"
-     DATE="${NEWFILE:0:4}-${NEWFILE:4:2}-${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
-     SECS=$(date +%%s -d "$DATE")
-     SECS=$(( $SECS + 1 ))
-     NEWFILE=$(date +%%Y%%m%%dT%%H%%M%%S -d @$SECS)
-     FOUND=$(find $1 -name "$NEWFILE.JPG" -type f | wc -l)
-    done
-    echo "$(tput setaf 2)$OLDFILE => $NEWFILE"
-    NEWDATE="${NEWFILE:0:4}:${NEWFILE:4:2}:${NEWFILE:6:2} ${NEWFILE:9:2}:${NEWFILE:11:2}:${NEWFILE:13:2}"
-    exiv2 -M "set Exif.Photo.DateTimeOriginal $NEWDATE" "$FILE"
-    EXIF=$(exiv2 -g DateTimeOriginal -PEv "$FILE")
-    if [ "$NEWDATE" != "$EXIF" ] ; then
-    echo "$(tput setaf 1)EXIF FAIL TO WRITE: $NEWDATE $EXIF_CONTROL $FILE" >> ~/exif.log
-    fi
-    TCH="$(echo $EXIF | tr -d ':' | tr -d ' ')"
-    touch -t ${TCH:0:12}.${TCH:12:2} "$FILE" #[[SS]AA]MMJJhhmm[.ss]]
-    mv "$FILE" "$(dirname "$FILE")/$NEWFILE.JPG"
-   fi
-   done
-   #Loop through directories and change directory creating date
-   find "$1" -type d | while read DIR ; do
-   DAT=`echo "$DIR" | rev | cut -d '/' -f 1 | rev | cut -d ' ' -f  1 | tr -d '-'`
-   echo "$DIR -- $DAT"
-   if [ ${#DAT} == 4 ]; then DAT=`echo "${DAT}0101"` ; fi
-   touch -t "${DAT}0000.00" "$DIR"
-   done
-  shift
-  done
 
 + f *.png | f *.PNG & t t
 convert PNG to JPG
@@ -1114,10 +930,11 @@ View SST
 node.js
   # https://nodejs.org
   clear
+  VERSION=10.16.0
   sudo apt-get -y install build-essential
-  wget https://nodejs.org/dist/v10.12.0/node-v10.12.0-linux-armv6l.tar.gz
-  sudo tar -xvf node-v10.12.0-linux-armv6l.tar.gz --strip 1 -C /usr/local
-  rm node-v10.12.0-linux-armv6l.tar.gz
+  wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
+  sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
+  rm node.tar.gz
 
 + f install
 go lang
