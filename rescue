@@ -22,10 +22,10 @@ if [ "$?" -eq 1 ] ; then
 
   tmux rename-window -t pi:1 1
   tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
-  
+
   tmux new-window -n 2
   tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
-  
+
   tmux new-window -n 3
   tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
 
@@ -39,10 +39,7 @@ if [ "$?" -eq 1 ] ; then
   tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
 
   tmux new-window -n INFOS
-  tmux send 'cd ~/bot7 && node bot7 infos' ENTER
-
-  tmux new-window -n BNB
-  tmux send 'cd ~/bot7 && node bot7 bot7'
+  tmux send 'cd ~/inf && node inf' ENTER
 
   tmux -u new-session -d -s bg
   tmux switch-client -t bg
