@@ -348,13 +348,13 @@ upload to Gdrive
 + f import
 import videos & merge & upload to youtube
   clear ; source ~/config.ini
-  rm /media/hdd/youtube-upload/*
+  #rm /media/hdd/youtube-upload/*
   sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
   cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
   sudo umount /media/cardreader
   ifttt "Import done" "You can remove SD card reader"
   cd /media/hdd/youtube-upload
-  FILES=`find *.MP4 -type f -printf "%%f + " | sort`
+  FILES=`find *.* type f -printf "%%f + " | sort`
   mkvmerge -o out.mkv $FILES
   youtube-upload --title="-" --privacy="private" out.mkv
   ifttt "Backup done" "Merge & uploaded to youtube"
@@ -544,7 +544,7 @@ vlc upload (iphone)
   clear ; cd %d ; set %t
   for FILE in "$@"; do
    echo "Upload to VLC : $FILE"
-   curl -# -F file=@"$FILE" http://192.168.0.50/upload.json
+   curl -# -F file=@"$FILE" http://192.168.0.21/upload.json
    echo
   done
 
@@ -636,13 +636,13 @@ rotate 90 mp4
     avconv -i "$FILE" -vf transpose=1 -strict experimental "Rotate-$FILE"
   done
 
-+ f \.mov | f \.MOV | f \.avi | f \.AVI | f \.mp4 | f \.MP4 & F videos & t t
++ f \.mov | f \.MOV | f \.avi | f \.AVI | f \.mp4 | f \.MP4 | f \.mkv | f \.MKV & F videos & t t
 cut video
   clear
   read -e -p "Start : " -i "00:00:00" start
   read -e -p "Stop  : " -i "00:00:00" stop
   echo "Please Wait..."
-  mpv -ss $start -endpos $stop -really-quiet -ovc copy -oac pcm %f -o %b-CUT.%x
+  mpv -ss $start -endpos $stop -ovc copy -oac pcm %f -o %b-CUT.%x
 
 + f videos
 create stopmotion
@@ -654,21 +654,22 @@ create stopmotion
   # – 4320p (7680×4320) 8K
   ###GoPro 2592x1944 => 1440p(2K):2560x1440
   ###DMC TZ40 ????x???? => 1440p(2K):2560x1440
-  #CUT="2560x1440+16+0" #Top
-  CUT="2560x1440+16+252" #Center
+  CUT="2560x1440+16+0" #Top
+  #CUT="2560x1440+16+252" #Center
   #CUT="2560x1440+16+504" #Bas
   ###Sony 4000x3000 => 2160p(4K):3840x2160
   #CUT="3840x2160+80+0" #Top
   #CUT="3840x2160+80+420" #Center
   #CUT="3840x2160+80+840" #Bas
-  cd /media/hdd/stopmotion
+  cd /media/hdd/DCIM
   mkdir CROP
   for img in *.JPG; do
   echo "Convert $img"
   #convert "$img" -crop $CUT "CROP/$img-CROP.JPG"
   #convert -rotate "90" "$img" "CROP/$img-CROP.JPG"
   done
-  ls -1 CROP/*-CROP.JPG >  files.lst
+  #ls -1 CROP/*-CROP.JPG >  files.lst
+  ls -1 *.JPG >  files.lst
   mpv mf://@files.lst -mf-type=jpg -mf-fps=7.5 -ovc=rawvideo -no-audio -o stopmotion.avi
   youtube-upload --title="Stopmotion" --category="Entertainment" --privacy="private" stopmotion.avi
   ifttt "Raspberry Pi" "Stopmotion created"
