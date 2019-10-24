@@ -3,17 +3,6 @@
   N=`tmux display-message -p '#W'`
   tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/mc.menu ENTER' ENTER
 
-[[  edit  ]]
-  N=`tmux display-message -p '#W'`
-  tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/rpi ENTER m F4' ENTER
-
-[[  test  ]]
-  #echo -e "\e[?1000h";read -r -N 1;echo -e "\e[?1000l"
-  #. ~/.local/share/mc/bashrc
-  #echo $SHELL
-  #ifttt "mc menu" "finish"
-  exit && mc /home/pi/djvu
-
 
   ####   ####  #    # ###### #  ####
  #    # #    # ##   # #      # #    #
@@ -525,11 +514,6 @@ Change Photo EXIF
   mcedit -x /tmp/exif.txt
   exiv2 -q -M "set Exif.Photo.DateTimeOriginal `head -n 1 /tmp/exif.txt`" "$1"
   rm /tmp/exif.txt
-
-+ f photos
-Photos server on 192.168.0.1:8080
-  cd /media/hdd/photos
-  python -m SimpleHTTPServer 8080
 
 
  #    # # #####  ######  ####   ####
