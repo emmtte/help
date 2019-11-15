@@ -3,14 +3,6 @@
   N=`tmux display-message -p '#W'`
   tmux send -t bg:1 'tmux send -t pi:'+$N+' M-c ~/mc.menu ENTER' ENTER
 
-
-  ####   ####  #    # ###### #  ####
- #    # #    # ##   # #      # #    #
- #      #    # # #  # #####  # #
- #      #    # #  # # #      # #  ###
- #    # #    # #   ## #      # #    #
-  ####   ####  #    # #      #  ####
-
 + f config
 Create ~/mc.menu
   clear
@@ -22,17 +14,13 @@ Create ~/mc.menu
 + f config
 create media sub-folders
   clear
-  sudo mkdir /media/hdd /media/freebox /media/cardreader /media/usbkey /media/iphone /media/camera /media/gopro
+  sudo mkdir /media/hdd /media/freebox /media/cardreader /media/usbkey /media/camera /media/gopro
 
 + f config
 source ~/.tmux.conf
   clear
   tmux source-file ~/.tmux.conf
   tmux send -t B 'tmux send -t A F2' ENTER
-
-+ f config
-create new file
-  clear ; touch %{File name}
 
 + f config
 set auto date & time
@@ -67,13 +55,6 @@ start tmux after logon
   fi
   EOF
 
-  ####  # ##### #    # #    # #####
- #    # #   #   #    # #    # #    #
- #      #   #   ###### #    # #####
- #  ### #   #   #    # #    # #    #
- #    # #   #   #    # #    # #    #
-  ####  #   #   #    #  ####  #####
-
 + f github
 clone rpi
   rm -rf ~/rpi
@@ -105,16 +86,6 @@ git pull
 + f github
 git discard the local changes
   clear ; git reset --hard ; git pull
-
-
- #####    ##    ####  #    # #    # #####
- #    #  #  #  #    # #   #  #    # #    #
- #####  #    # #      ####   #    # #    #
- #    # ###### #      #  #   #    # #####
- #    # #    # #    # #   #  #    # #
- #####  #    #  ####  #    #  ####  #
-
-
 
 + f backup
 backup photos & videos to freebox hdd
@@ -152,33 +123,6 @@ restore photos & videos from freebox hdd
 Backup Raspberry Pi to Rpi3Dev
   clear
   rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ dev@192.168.0.200:/media/hdd/photos
-
-+ f backup
-Backup Windows to Raspberry Pi
-  clear
-  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" /media/sf_win/private/photos/ pi@192.168.0.1:/media/hdd/photos
-
-+ f backup
-Backup Raspberry Pi to Windows
-  clear
-  rsync --archive --no-o --no-g --delete --info=progress2 --rsh="sshpass -p raspberry ssh -o StrictHostKeyChecking=no" pi@192.168.0.1:/media/hdd/photos/ /media/sf_win/private/photos
-
-
-
-  ####  #   #  ####  ##### ###### #    #
- #       # #  #        #   #      ##  ##
-  ####    #    ####    #   #####  # ## #
-      #   #        #   #   #      #    #
- #    #   #   #    #   #   #      #    #
-  ####    #    ####    #   ###### #    #
-
-+ f system
-reboot
-  sudo reboot
-
-+ f system
-shutdown
-  sudo halt
 
 + f system
 update
@@ -234,15 +178,6 @@ create new raspbian image
   sudo umount /media/cardreader
   ifttt "New Raspbian Image Created"
 
-
-
- ###### # #      ######  ####
- #      # #      #      #
- #####  # #      #####   ####
- #      # #      #           #
- #      # #      #      #    #
- #      # ###### ######  ####
-
 + t t
 ez Copy
   clear ; DIR=%D ; set %t
@@ -264,25 +199,6 @@ Delete
   clear ; set %t
   while [ -n "$1" ] ; do
     rm -rf "$1" ; shift
-  done
-
-+ F files & t t
-upload to transfer.sh
-  clear ; set %t
-  curl -H "Max-Downloads: 1" -H "Max-Days: 1" --progress-bar --upload-file "$1" "https://transfer.sh/$1" > /tmp/transfer; tail -1 /tmp/transfer
-  read -r
-
-+ f files
-download from transfer.sh
-  cd %d ; url=%{transfer.sh url}
-  f=$(echo "$url" | rev | cut -d '/' -f 1 | rev)
-  curl --progress-bar -o $f $url
-
-+ F files & t t
-download only for google cloud shell
-  clear ; set %t
-  for FILE in "$@"; do
-    cloudshell dl "$FILE"
   done
 
 + F files & t t
@@ -324,16 +240,6 @@ upload to Gdrive
   cd /media/hdd/Drive
   if ! drive pull --no-prompt "Raspberry Pi/" ; then ifttt "ERROR Google push files" "ERROR PUSH DRIVE"; return; fi
 
-
- # #    # #####   ####  #####  #####
- # ##  ## #    # #    # #    #   #
- # # ## # #    # #    # #    #   #
- # #    # #####  #    # #####    #
- # #    # #      #    # #   #    #
- # #    # #       ####  #    #   #
-
- # ls -l /dev/disk/by-id
-
 + f import
 import videos & merge & upload to youtube
   clear ; source ~/config.ini
@@ -369,29 +275,6 @@ import usbkey
   sudo mount $ID /media/usbkey
   rsync --archive --info=progress2 /media/usbkey/ $VIDEOS
   sudo umount /media/usbkey
-
-
- #    # #    #  ####  #  ####
- ##  ## #    # #      # #    #
- # ## # #    #  ####  # #
- #    # #    #      # # #
- #    # #    # #    # # #    #
- #    #  ####   ####  #  ####
-
-+ f music
-sst
-  clear
-  wget -O - "http://hi5.streamingsoundtracks.com" | castnow --address 192.168.0.16 --quiet -
-
-+ f music
-sst stop
-  tmux send-keys -t pi:sst C-c
-
-+ F music & t t
-castnow
-  clear
-  echo %t
-  castnow %t
 
 + F music & t t
 upload to gmusic
@@ -431,14 +314,6 @@ flac to mp3
     flac --decode --stdout "$f" | lame --preset extreme --add-id3v2 --tt "$title" --ta "$artist" --tl "$album" --ty "$year" --tn "$tracknumber" --tg "$genre" - "${f%.flac}.mp3"
   done
 
-
- #####  #    #  ####  #####  ####   ####
- #    # #    # #    #   #   #    # #
- #    # ###### #    #   #   #    #  ####
- #####  #    # #    #   #   #    #      #
- #      #    # #    #   #   #    # #    #
- #      #    #  ####    #    ####   ####
-
 + f photos
 Take Raspberry Pi Photo
   tput cup 0 0 ; clear
@@ -455,73 +330,6 @@ Found double photos
   /usr/share/fslint/fslint/fslint "/media/hdd/drive/Google Photos" > photos_double.txt
   fdupes -Sr "/media/hdd/drive/Google Photos" > ~/photos_double2.txt
   ifttt "Search double Photos" "Finish"
-
-+ f *.png | f *.PNG & t t
-convert PNG to JPG
-  set %t
-  while [ -n "$1" ]; do
-    convert $1 $1.JPG
-    shift
-  done
-
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-Autolevel photos
-  clear ; set %t
-  while [ -n "$1" ]; do
-    mogrify -auto-level $1
-    shift
-  done
-
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-resize photo
-  # Change newX when newY = (newX * oldY) / oldX and (newX * newY) < 100000000
-  clear ; set %t ; resize=%{Enter resize newX newY }
-  ~/node_modules/.bin/sharp -i $1 -o $1-sharp.jpg resize $resize --withoutEnlargement
-
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-Affiche EXIF de la photo
-  clear
-  exiv2 -pv %f
-  echo
-  X=`exiv2 -g PixelXDimension -Pv %f`
-  Y=`exiv2 -g PixelYDimension -Pv %f`
-  R="$((X * Y))"
-  echo $R
-  D=`exiv2 -g DateTimeOriginal -PEv %f | cut -d ' ' -f 2`
-  echo "$D"
-  printf 'Press [Enter] key to continue...'
-
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-Delete DateTimeOriginal EXIF from pics
-  set %t
-  while [ -n "$1" ]; do
-    exiv2 -q -M "del Exif.Photo.DateTimeOriginal" "$1"
-    shift
-  done
-
-+ f *.jpg | f *.JPG | f *.jpeg | f *.JPEG & t t
-Delete DateTime EXIF from pics
-  set %t
-  while [ -n "$1" ]; do
-    exiv2 -q -M "del Exif.Image.DateTime" "$1"
-    shift
-  done
-
-+ f *.jpg | f *.JPG | f * .jpeg | f *.JPEG & t t
-Change Photo EXIF
-  clear ; set %t
-  exiv2 -g DateTimeOriginal -PEv "$1" > /tmp/exif.txt
-  mcedit -x /tmp/exif.txt
-  exiv2 -q -M "set Exif.Photo.DateTimeOriginal `head -n 1 /tmp/exif.txt`" "$1"
-  rm /tmp/exif.txt
-
-
- #    # # #####  ######  ####   ####
- #    # # #    # #      #    # #
- #    # # #    # #####  #    #  ####
- #    # # #    # #      #    #      #
-  #  #  # #    # #      #    # #    #
-   ##   # #####  ######  ####   ####
 
 + F videos & f\.avi | f\.AVI | f\.mkv | f\.MKV | f\.mp4 | f\.MP4 & t t
 vlc upload (iphone)
@@ -666,14 +474,6 @@ download youtube playlist and merge with external music
   MP4Box $FILES -new merged.mp4
   mkvmerge -o output-with-sound.mkv -A input-video.mkv soundfile.mp3
 
-
- ##### #    # #    # #    #
-   #   ##  ## #    #  #  #
-   #   # ## # #    #   ##
-   #   #    # #    #   ##
-   #   #    # #    #  #  #
-   #   #    #  ####  #    #
-
 + f tmux
 switch to tmux background
   tmux switch-client -t bg
@@ -688,45 +488,6 @@ create tmux window
   tmux send -t $session '. ~/mcui/functions' ENTER
   tmux send -t $session '/usr/bin/mc -x /home/pi/rpi/ /media/hdd/ && clear' ENTER
 
-+ f tmux
-tmux last window
-  tmux last-window
-
-
- #####  ####   ####  #       ####
-   #   #    # #    # #      #
-   #   #    # #    # #       ####
-   #   #    # #    # #           #
-   #   #    # #    # #      #    #
-   #    ####   ####  ######  ####
-
-+ f tools
-Display Temperatures
-  clear
-  while [ true ] ; do
-  cpu0=`cat /sys/class/thermal/thermal_zone0/temp`
-  cpu1=$(($cpu0/1000))
-  cpu2=$(($cpu0/100))
-  cpu=$(($cpu2 % $cpu1))
-  gpu=`/opt/vc/bin/vcgencmd measure_temp | cut -d '=' -f 2`
-  tput cup 0 0
-  echo "$(date) @ $(hostname)"
-  echo "───────────────────────────────────────────"
-  echo "CPU : $cpu1.$cpu'C"
-  echo "GPU : $gpu"
-  cat /proc/meminfo | grep Mem
-  read -t 3 -n 1
-  if [ $? = 0 ] ; then exit ; fi
-  done
-
-
- #####  ####  #####  #####  ###### #    # #####
-   #   #    # #    # #    # #      ##   #   #
-   #   #    # #    # #    # #####  # #  #   #
-   #   #    # #####  #####  #      #  # #   #
-   #   #    # #   #  #   #  #      #   ##   #
-   #    ####  #    # #    # ###### #    #   #
-
 + f torrent
 download with aria2c
   rm -rf /media/hdd/drive/Torrents/*
@@ -738,14 +499,6 @@ download with aria2c
   done
   aria2c --max-overall-upload-limit=200K --max-concurrent-downloads=25 --dir=/media/hdd --input-file=/home/dev/aria2-torrents
 
-
- #####  #####  ######
- #    # #    # #
- #    # #    # #####
- #####  #    # #
- #      #    # #
- #      #####  #
-
 + f *.jpg | f *.JPG
 drive push rpi
   drive push --no-prompt
@@ -753,14 +506,6 @@ drive push rpi
 + f *.jpg | f *.JPG
 drive pull rpi
   drive pull --no-prompt
-
-+ f *.tif | f *.TIF
-convert tif to jpeg
-  set %t
-  while [ -n "$1" ]; do
-    ~/node_modules/.bin/sharp -i "$1" -o "$1.jpg" -q 100
-    shift
-  done
 
 + f *.pdf | f *.PDF & t t
 Uncrypt PDF
@@ -852,65 +597,6 @@ Automatic Merge pdf files
   rm $FILE
   #if ! drive pull --no-prompt "Snoozed/"; then ifttt "Upload Snoozed" "Error"; return; fi
 
-
-  ####   ####  #####  # #####  #####  ####
- #      #    # #    # # #    #   #   #
-  ####  #      #    # # #    #   #    ####
-      # #      #####  # #####    #        #
- #    # #    # #   #  # #        #   #    #
-  ####   ####  #    # # #        #    ####
-
-+ f music
-View SST
-  #sudo apt-get install recode libxml2-utils
-  #cat << EOF > /tmp/request.xml
-  #echo " /
-  #<?xml version='1.0' encoding='UTF-8' standalone='no' ?> /
-  #<SOAP-ENV:Envelope /
-  #SOAP-ENV:encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' /
-  #xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' /
-  #xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' /
-  #xmlns:xsi='http://www.w3.org/1999/XMLSchema-instance' /
-  #xmlns:xsd='http://www.w3.org/1999/XMLSchema'> /
-  #<SOAP-ENV:Body> /
-  #<GetCurrentlyPlaying> /
-  #</GetCurrentlyPlaying> /
-  #</SOAP-ENV:Body> /
-  #</SOAP-ENV:Envelope>" >> /tmp/request.xml
-  clear
-  while :
-  do
-  curl -X POST -H "Content-Type: text/xml" -d @/tmp/request.xml http://www.streamingsoundtracks.com/soap/FM24seven.php 2>/tmp/null > /tmp/sst.xml
-  album=`xmllint --xpath "//*[local-name()='Album']/text()" /tmp/sst.xml | recode html..UTF-8`
-  artist=`xmllint --xpath "//*[local-name()='Artist']/text()" /tmp/sst.xml | recode html..UTF-8`
-  title=`xmllint --xpath "//*[local-name()='Track']/text()" /tmp/sst.xml | recode html..UTF-8`
-  cover=`xmllint --xpath "//*[local-name()='CoverLink']/text()" /tmp/sst.xml`
-  track=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
-  track=$((track / 1000))
-  printf "\033[01m$album -\033[00m $artist -\033[34m $title -\033[00m [`date -u -d @${track} +"%M:%S"`]\n"
-  PlayStar=`xmllint --xpath "//*[local-name()='PlayStart']/text()" /tmp/sst.xml`
-  PlayLength=`xmllint --xpath "//*[local-name()='Length']/text()" /tmp/sst.xml`
-  SystemTime=`xmllint --xpath "//*[local-name()='SystemTime']/text()" /tmp/sst.xml`
-  PSTART=`date -d "$PlayStar" "+%s"`
-  PLENGT=$(($PlayLength / 1000))
-  FIN=`date -d "$SystemTime" "+%s"`
-  PW=$((PSTART+PLENGT))
-  secs=$((PW-FIN))
-  while [ $secs -gt 0 ]; do
-    sleep 1
-    secs=$((secs-1))
-  done
-  done
-
-
-
- #        ##   #    #  ####  #    #   ##    ####  ######
- #       #  #  ##   # #    # #    #  #  #  #    # #
- #      #    # # #  # #      #    # #    # #      #####
- #      ###### #  # # #  ### #    # ###### #  ### #
- #      #    # #   ## #    # #    # #    # #    # #
- ###### #    # #    #  ####   ####  #    #  ####  ######
-
 + f install
 node.js
   # https://nodejs.org
@@ -920,64 +606,6 @@ node.js
   wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
   sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
   rm node.tar.gz
-
-+ f install
-go lang
-  # https://golang.org/dl
-  clear
-  VERSION=1.11.4
-  wget https://dl.google.com/go/go$VERSION.linux-armv6l.tar.gz
-  sudo tar -xvf go$VERSION.linux-armv6l.tar.gz -C /usr/local
-  rm go$VERSION.linux-armv6l.tar.gz
-  sudo mkdir /opt/go
-  sudo chown -R $USER:$USER /opt/go
-  cat << 'EOF' >> ~/.bashrc
-  export GOROOT=/usr/local/go
-  export GOPATH=/opt/go
-  export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-  EOF
-  source ~/.bashrc
-
-+ f install
-python
-  clear
-  sudo apt-get -y install python-pip python-dev
-  sudo pip install --upgrade pip
-
-+ f install
-python 3.7.2
-  clear
-  sudo apt-get update
-  sudo apt-get -y install build-essential tk-dev 
-  sudo apt-get -y install libncurses5-dev libncursesw5-dev libreadline6-dev
-  sudo apt-get -y install libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
-  sudo apt-get -y install libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
-  sudo apt-get -y install libffi-dev
-  wget https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
-  tar xf Python-3.7.2.tar.xz
-  cd Python-3.7.2
-  ./configure
-  make -j4
-  sudo make install
-  sudo make altinstall
-  python3.7 -V
-  sudo rm -r Python-3.7.2
-  rm Python-3.7.2.tar.xz
-  sudo apt-get -y --purge remove build-essential tk-dev
-  sudo apt-get -y --purge remove libncurses5-dev libncursesw5-dev libreadline6-dev
-  sudo apt-get -y --purge remove libdb5.3-dev libgdbm-dev libsqlite3-dev libssl-dev
-  sudo apt-get -y --purge remove libbz2-dev libexpat1-dev liblzma-dev zlib1g-dev
-  sudo apt-get -y --purge remove libffi-dev
-  sudo apt-get -y autoremove
-  sudo apt-get -y clean
-
-
- # #    #  ####  #####   ##   #      #
- # ##   # #        #    #  #  #      #
- # # #  #  ####    #   #    # #      #
- # #  # #      #   #   ###### #      #
- # #   ## #    #   #   #    # #      #
- # #    #  ####    #   #    # ###### ######
 
 + f install
 prerequisites
@@ -1046,12 +674,6 @@ git
   echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 
 + f install
-castnow
-  # https://github.com/xat/castnow
-  clear
-  sudo npm install castnow -g
-
-+ f install
 Dropbox-Uploader
   # https://github.com/andreafabrizi/Dropbox-Uploader
   clear
@@ -1074,41 +696,6 @@ google-music-scripts
   clear
   sudo apt-get install libav-tools #avconv
   sudo pip3.7 install -U google-music-scripts
-
-+ f install
-hue-cli
-  # https://github.com/bahamas10/hue-cli
-  clear
-  npm install -g hue-cli
-  hue search
-  hue -H 192.168.0.10 register
-
-+ f install
-motion
-  # http://www.lavrsen.dk/foswiki/bin/view/Motion/WebHome
-  clear
-  echo 'disable_camera_led=1' | sudo tee -a /boot/config.txt
-  sudo modprobe bcm2835-v4l2
-  echo 'bcm2835-v4l2' | sudo tee -a /etc/modules
-  sudo apt-get -y install motion
-  sudo chmod 664 /etc/motion/motion.conf
-  mkdir /tmp/motion
-  echo 'start_motion_daemon=no' | sudo tee /etc/default/motion
-  sudo mcedit /etc/motion/motion.conf
-  > daemon off
-  > process_id_file /var/run/motion/motion.pid
-  > ffmpeg_output_movies off
-  > rotate 270
-  > width 1280
-  > height 960
-  > threshold 3000
-  > webcam_localhost off
-  > target_dir /media/hdd/motion
-  > control_localhost off
-  > on_event_start /usr/local/bin/pushbullet push all note "%d/%m/%Y %H:%M:%S motion detected"
-  > on_picture_save /usr/local/bin/dropbox_uploader upload %f /motion/%d-%m-%Y/%H-%M-%S.jpg
-  sudo mkdir /var/run/motion
-  sudo chmod 777 /var/run/motion
 
 + f install
 Pi Hole
@@ -1143,17 +730,6 @@ Sejda
   chmod +x /opt/sejda/bin/sejda-console
 
 + f install
-sharp-cli
-  # https://github.com/vseventer/sharp-cli
-  clear ; cd ~
-  npm install sharp-cli
-
-+ f install
-squid
-  # http://www.squid-cache.org/
-  clear ; sudo apt-get install squid
-
-+ f install
 ssh
   mkdir ~/.ssh
   cd ~/.ssh
@@ -1168,25 +744,6 @@ ssh
   PasswordAuthentication yes
   EOF
   sudo service ssh restart
-
-+ f install
-upload-gphotos
-  # https://github.com/3846masa/upload-gphotos
-  npm i -g npm
-  npm install -g upload-gphotos
-
-+ f install
-virtual box
-  echo %{Password for sudo} | sudo -S echo
-  echo "`whoami` ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/vbox
-  sudo apt-get -y install sshfs rsync mc
-  sudo apt-get -y install gcc make perl linux-headers-$(uname -r)
-  sudo mkdir -p /media/cdrom
-  sudo mount -t auto /dev/cdrom /media/cdrom/
-  cd /media/cdrom/
-  sudo sh VBoxLinuxAdditions.run
-  sudo adduser `whoami` vboxsf
-  sudo reboot
 
 + f install
 youtube-dl
