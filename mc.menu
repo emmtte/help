@@ -731,19 +731,22 @@ Sejda
 
 + f install
 ssh
-  mkdir ~/.ssh
-  cd ~/.ssh
-  ssh-keygen -t rsa -b 4096 -N '' -C pi@raspberry
-  mv id_rsa.pub authorized_keys
-  sudo chmod 600 authorized_keys
+  ssh-keygen
+  mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+  sudo chmod 644 ~/.ssh/authorized_keys
+  sudo chown $USER:$USER ~/.ssh/authorized_keys
   cat << EOF | sudo tee -a /etc/ssh/sshd_config
+  #AuthorizedKeysFile /home/$USER/.ssh/authorized_keys
+  UsePAM yes
   PermitRootLogin no
-  AuthorizedKeysFile /home/pi/.ssh/authorized_keys
   PasswordAuthentication no
-  Match Address 127.0.0.1,192.168.0.0/24
-  PasswordAuthentication yes
+  ChallengeResponseAuthentication no
   EOF
   sudo service ssh restart
+#With PuttyGen.exe
+#Conversions => Import Key (id_rsa)
+#Save Private Key and Yes to save without a passphrase.
+#Choose a location and a name for the new .ppk key
 
 + f install
 youtube-dl
