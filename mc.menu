@@ -1,10 +1,11 @@
 set auto date & time
-  clear
+  tput reset
   sudo /etc/init.d/ntp stop
   sudo ntpd -q -g
   sudo /etc/init.d/ntp start
 
 update
+  tput reset
   sudo apt-get -y autoremove
   sudo apt-get -y update
   sudo apt-get -y dist-upgrade
@@ -32,6 +33,7 @@ create new user
   sudo deluser -remove-home pi
 
 Copy SD card Photos & upload to Google Drive
+  tput reset
   cd /media/hdd/drive
   drive pull --no-prompt --fix-clashes
   drive clashes --fix
@@ -40,14 +42,16 @@ Copy SD card Photos & upload to Google Drive
   sudo umount /media/cardreader
   drive push --no-prompt
  
-start tmux after logon
+config: start tmux after logon
+  tput reset
   cat << 'EOF' | tee -a ~/.profile
   if [ -z "$TMUX" ]; then
   /bin/sh ~/rpi/rescue
   fi
   EOF
 
-clone rpi
+config: clone rpi mc.menu
+  tput reset
   rm -rf ~/rpi
   git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
 
@@ -489,15 +493,6 @@ C Drive push Documents and Snoozed
   GDRIVE=/media/hdd/drive ; cd $GDRIVE
   if ! drive push --no-prompt $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then iftt "Merge PDF" "ERROR PUSH GDRIVE" ; exit; fi
 
-Import usb key JPG 92pc scanned Files to /media/hdd/djvu
-  echo "Please Use SH Flash Disk"
-  sudo mount `ls /dev/disk/by-id/usb-Generic_Flash_Disk_*-part1` /media/usbkey
-  cp -v /media/usbkey/*.jpg /media/hdd/djvu
-  sudo umount /media/usbkey
-  echo "You can remove SD card reader"
-  cd /media/hdd/djvu
-  if ! drive push --no-prompt "/media/hdd/djvu/" ; then tm "ERROR Google push files" "ERROR PUSH DRIVE"; return; fi
-
 Automatic Merge pdf files
   ## TODO Delete only files merged
   tput reset ; source ~/config.ini
@@ -543,7 +538,7 @@ Automatic Merge pdf files
   rm $FILE
   #if ! drive pull --no-prompt "Snoozed/"; then tm "Upload Snoozed" "Error"; return; fi
 
-install node.js
+install: node.js
   # https://nodejs.org
   tput reset
   VERSION=10.16.0
@@ -552,16 +547,11 @@ install node.js
   sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
   rm node.tar.gz
 
-install prerequisites
+install: prerequisites
   clear
   sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g ghostscript
 
-update rpi
-  tput reset
-  rm -r ~/rpi
-  git clone https://github.com/ManuCart/Raspberry-Pi.git ~/rpi
-
-install tmux
+install: tmux
   # https://github.com/tmux/tmux
   tput reset
   tmux -V
@@ -577,7 +567,7 @@ install tmux
   rm tmux-2.8.tar.gz
   rm -rf tmux-2.8
 
-install nvim
+install: nvim
   # https://github.com/neovim/neovim
   sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
   git clone https://github.com/neovim/neovim.git
@@ -585,7 +575,7 @@ install nvim
   make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
 
-install mc
+install: mc
   # https://github.com/MidnightCommander/mc
   tput reset
   sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
@@ -597,7 +587,7 @@ install mc
   make
   make install
 
-install git
+install: git
   # https://github.com/ManuCart/Raspberry-Pi
   tput reset
   sudo apt-get install git
@@ -613,7 +603,7 @@ install git
   git config --global user.email "John.Smith@example.com"
   echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 
-install Dropbox-Uploader
+install: Dropbox-Uploader
   # https://github.com/andreafabrizi/Dropbox-Uploader
   tput reset
   sudo curl -o /usr/local/bin/dropbox_uploader \
@@ -621,24 +611,24 @@ install Dropbox-Uploader
   sudo chmod +x /usr/local/bin/dropbox_uploader
   dropbox_uploader init
 
-install drive
+install: drive
   # https://github.com/odeke-em/drive
   tput reset
   go get -u github.com/odeke-em/drive/cmd/drive
   mkdir /media/hdd/drive
   drive init /media/hdd/drive
 
-install google-music-scripts
+install: google-music-scripts
   # https://github.com/thebigmunch/google-music-scripts
   tput reset
   sudo apt-get install libav-tools #avconv
   sudo pip3.7 install -U google-music-scripts
 
-install Pi Hole
+install: Pi Hole
   tput reset
   curl -sSL https://install.pi-hole.net | bash
 
-install Samba
+install: Samba
   tput reset  
   sudo apt-get -y install samba samba-common-bin
   cat << EOF | sudo tee -a /etc/samba/smb.conf
@@ -651,7 +641,7 @@ install Samba
   sudo service smbd restart
   sudo smbpasswd -a pi
 
-install Sejda
+install: Sejda
   # https://github.com/torakiki/sejda
   tput reset
   sudo apt-get -y install oracle-java8-jdk
@@ -663,7 +653,7 @@ install Sejda
   rm -rf sejda.zip sejda-console-3.0.72
   chmod +x /opt/sejda/bin/sejda-console
 
-install ssh
+install: ssh
   ssh-keygen
   mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
   sudo chmod 644 ~/.ssh/authorized_keys
@@ -681,7 +671,7 @@ install ssh
 #Save Private Key and Yes to save without a passphrase.
 #Choose a location and a name for the new .ppk key
 
-install youtube-dl
+install: youtube-dl
   # https://github.com/rg3/youtube-dl
   sudo apt-get -y install libavcodec-extra libav-tools
   sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -690,7 +680,7 @@ install youtube-dl
   mkdir /medi/hdd/youtube-dl
   youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 
-install youtube-upload
+install: youtube-upload
   # https://github.com/tokland/youtube-upload
   # Warning https://github.com/tokland/youtube-upload/pull/264
   sudo pip install --upgrade google-api-python-client oauth2client progressbar2
