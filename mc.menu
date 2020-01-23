@@ -83,18 +83,20 @@ git discard the local changes
   tput reset ; git reset --hard ; git pull
 
 backup photos & videos to freebox hdd
-  tput reset
+  tput reset ; source ~/config.ini
   sudo mount -t cifs //mafreebox.freebox.fr/Freebox/  /media/freebox -o user=freebox,password=Freebox4K,cache=none,uid=1001,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=1.0
   mkdir /media/freebox/photos /media/freebox/videos
-  rsync --archive --no-o --no-g --delete --info=progress2 "/media/hdd/drive/Photos" /media/freebox/photos
-  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/freebox/photos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
+  tm "Photos & Videos Backup done"
 
 backup photos & videos to freebox ext hdd
-  tput reset
+  tput reset ; source ~/config.ini
   sudo mount -t cifs //mafreebox.freebox.fr/Backup/  /media/freebox -o user=freebox,password=Freebox4K,cache=none,uid=1001,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=1.0
-  mkdir /media/freebox/Photos /media/freebox/Videos
-  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/freebox/photos
-  #rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/Videos
+  mkdir /media/freebox/photos /media/freebox/videos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/freebox/photos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
+  tm "Photos & Videos Backup done"
 
 Backup Raspberry Pi to Rpi3Dev
   tput reset
@@ -120,7 +122,7 @@ format hdd drive
   #sudo chown -R pi:pi /media/hdd
 
 create fstab file
-  clear
+  tput reset
   echo 'LABEL="RaspberryPi" /media/hdd ext4 nofail,noatime 0 2' | sudo tee -a /etc/fstab
   echo '//mafreebox.freebox.fr/Server\ Freebox/ /media/freebox cifs _netdev,rw,user=freebox,password=Freebox4K,iocharset=utf8,uid=1000,sec=ntlm,file_mode=0777,dir_mode=0777,vers=1.0 0 0' | sudo tee -a /etc/fstab
   sudo chown -R pi:pi /media/hdd
@@ -240,7 +242,7 @@ import usbkey
 + t t
 Upload to Google Music
   account=%{account number}
-  clear ; cd %d ; set %t
+  tput reset ; cd %d ; set %t
   for d in "$@"; do gms upload -u $account "$d"; done
   tm "Rasperry Pi gmusic upload done"
 
@@ -295,7 +297,7 @@ vlc upload (iphone)
   tput reset ; cd %d ; set %t
   for FILE in "$@"; do
    echo "Upload to VLC : $FILE"
-   curl -# -F file=@"$FILE" http://192.168.0.21/upload.json
+   curl -# -F file=@"$FILE" http://192.168.0.151/upload.json
    echo
   done
 
@@ -304,7 +306,7 @@ vlc upload (ipad)
   tput reset ; cd %d ; set %t
   for FILE in "$@"; do
    echo "Upload to VLC : $FILE"
-   curl -# -F file=@"$FILE" http://192.168.0.51/upload.json
+   curl -# -F file=@"$FILE" http://192.168.0.150/upload.json
    echo
   done
 
@@ -449,7 +451,8 @@ download with aria2c
   find /media/hdd/drive/Torrents/*.torrent -type f | while read FILE ; do
   echo "$FILE" >> ~/aria2-torrents
   done
-  aria2c --max-overall-download 4M --max-overall-upload-limit=200K --max-concurrent-downloads=25 --dir=/media/hdd --input-file=/home/dev/aria2-torrents
+  #aria2c --max-overall-download 4M --max-overall-upload-limit=200K --max-concurrent-downloads=25 --dir=/media/hdd --input-file=/home/dev/aria2-torrents
+  aria2c --max-overall-upload-limit=200K --max-concurrent-downloads=25 --dir=/media/hdd --input-file=/home/dev/aria2-torrents
 
 + f *.jpg | f *.JPG
 drive push rpi
@@ -477,7 +480,7 @@ A Drive pull Documents and Snoozed
 B Merge PDF
   # Don't use pdftk files genarated are too big
   # T source files t destination Files
-  clear ; source ~/config.ini ; array=()
+  tput reset ; source ~/config.ini ; array=()
   set %T ; for FILE in "$@"; do
     if grep -r "Encrypt" "%D/$FILE" ; then echo "ERROR : $FILE CRYPTED" ; tm "ERROR PDF CRYPTED $FILE"; exit; fi
     array+=("%D/$FILE") ; done
@@ -548,7 +551,7 @@ install: node.js
   rm node.tar.gz
 
 install: prerequisites
-  clear
+  tput reset
   sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g ghostscript
 
 install: tmux
