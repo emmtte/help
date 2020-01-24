@@ -82,25 +82,13 @@ git pull
 git discard the local changes
   tput reset ; git reset --hard ; git pull
 
-backup photos & videos to freebox hdd
+backup photos & videos to backup hdd
   tput reset ; source ~/config.ini
-  sudo mount -t cifs //mafreebox.freebox.fr/Freebox/  /media/freebox -o user=freebox,password=Freebox4K,cache=none,uid=1001,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=1.0
-  mkdir /media/freebox/photos /media/freebox/videos
-  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/freebox/photos
-  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
+  sudo mount -t ntfs-3g /dev/sdb1 /media/backup
+  mkdir /media/backup/photos /media/backup/videos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/backup/photos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/backup/videos
   tm "Photos & Videos Backup done"
-
-backup photos & videos to freebox ext hdd
-  tput reset ; source ~/config.ini
-  sudo mount -t cifs //mafreebox.freebox.fr/Backup/  /media/freebox -o user=freebox,password=Freebox4K,cache=none,uid=1001,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=1.0
-  mkdir /media/freebox/photos /media/freebox/videos
-  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/freebox/photos
-  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/freebox/videos
-  tm "Photos & Videos Backup done"
-
-Backup Raspberry Pi to Rpi3Dev
-  tput reset
-  rsync --archive --no-o --no-g --delete --info=progress2 /media/hdd/photos/ dev@192.168.0.200:/media/hdd/photos
 
 mount ntfs usbkey
   tput reset ; sudo mount -t ntfs-3g `ls /dev/disk/by-id/usb*-part1` /media/usbkey
