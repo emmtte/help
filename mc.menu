@@ -84,10 +84,11 @@ git discard the local changes
 
 backup photos & videos to backup hdd
   tput reset ; source ~/config.ini
-  sudo mount -t ntfs-3g /dev/sdb1 /media/backup
+  sudo mount -t ntfs-3g -L backup /media/backup
   mkdir /media/backup/photos /media/backup/videos
   rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/backup/photos
-  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/videos/ /media/backup/videos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/youtube/ /media/backup/videos
+  sudo umount /media/backup
   tm "Photos & Videos Backup done"
 
 mount ntfs usbkey
