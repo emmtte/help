@@ -32,16 +32,6 @@ create new user
   sudo deluser pi adm
   sudo deluser -remove-home pi
 
-Copy SD card Photos & upload to Google Drive
-  tput reset
-  cd /media/hdd/drive
-  drive pull --no-prompt --fix-clashes
-  drive clashes --fix
-  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
-  cp -v /media/cardreader/DCIM/???_PANA/*.JPG /media/hdd/drive/Photos/TEMP
-  sudo umount /media/cardreader
-  drive push --no-prompt
- 
 config: start tmux after logon
   tput reset
   cat << 'EOF' | tee -a ~/.profile
@@ -82,6 +72,18 @@ git pull
 git discard the local changes
   tput reset ; git reset --hard ; git pull
 
+copy SD card photos & upload to Google Drive
+  tput reset ; source ~/config.ini
+  cd /media/hdd/drive
+  drive pull --no-prompt --fix-clashes
+  drive clashes --fix
+  if [ ! -d /media/cardreader ] ; then mkdir /media/cardreader ; fi
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  cp -v /media/cardreader/DCIM/???_PANA/*.JPG /media/hdd/drive/Photos/TEMP
+  sudo umount /media/cardreader
+  drive push --no-prompt
+  tm "SD card photos uploaded to Google Drive"
+ 
 backup photos & videos to backup hdd
   tput reset ; source ~/config.ini
   sudo mount -t ntfs-3g -L backup /media/backup
@@ -529,6 +531,13 @@ Automatic Merge pdf files
   done < "$FILE"
   rm $FILE
   #if ! drive pull --no-prompt "Snoozed/"; then tm "Upload Snoozed Error"; return; fi
+
+disable bt and wifi
+  tput reset
+  echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
+  echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
+  sudo systemctl disable hciuart
+  sudo reboot
 
 install: node.js
   # https://nodejs.org
