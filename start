@@ -1,7 +1,50 @@
 #!/bin/bash
-# exit tmux
-# crontab -e
-# >>> @reboot /home/pi/rpi/start
 
-/bin/sleep 10
-/usr/bin/sshpass -p 'raspberry' /usr/bin/ssh -o StrictHostKeyChecking=no pi@127.0.0.1 -t '~/rpi/rescue'
+# detach tmux
+# crontab -e -u dev
+# >>> @reboot /bin/sleep 10 && /home/dev/rpi/start
+
+tmux has-session -t pi
+
+if [ "$?" -eq 1 ] ; then
+
+  sudo /etc/init.d/ntp stop
+  sudo ntpd -q -g
+  sudo /etc/init.d/ntp start
+
+  mkdir -p ~/.config/mc
+  mkdir -p ~/.local/share/mc
+
+  ln -sf ~/rpi/mc.menu ~/.config/mc/menu
+  ln -sf ~/rpi/bashrc ~/.local/share/mc/bashrc
+  ln -sf ~/rpi/tmux.conf ~/.tmux.conf
+
+  tmux -u new-session -d -s pi
+
+  tmux rename-window -t pi:1 1
+  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+
+  tmux new-window -n 2
+  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+
+  tmux new-window -n 3
+  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+
+  tmux new-window -n 4
+  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+
+  tmux new-window -n 5
+  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+
+  tmux new-window -n 6
+  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+
+  tmux new-window -n IGB
+  tmux send 'cd ~/igb5 && node igb' ENTER
+
+  tmux new-window -n INFOS
+  tmux send 'cd ~/inf && node inf' ENTER
+
+fi
+
+tmux attach -t pi:1

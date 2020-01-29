@@ -100,7 +100,7 @@ mount-cardreader
   tput reset ; sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
 
 mount-hdd
-  tput reset ; sudo mount /dev/sdc1 /media/hdd
+  tput reset ; sudo mount /dev/sda1 /media/hdd
 
 mount-freebox
   #Tip : To know uid -> cat /etc/passwd
