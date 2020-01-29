@@ -20,7 +20,7 @@ sh start.sh
 ## .profile
 ```bash
 if [ -z "$TMUX" ]; then
-/bin/sh ~/rpi/rescue
+/bin/sh ~/rpi/start.sh
 fi
 ```
 
