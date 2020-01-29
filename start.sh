@@ -2,7 +2,7 @@
 
 # detach tmux
 # crontab -e -u dev
-# >>> @reboot /bin/sleep 10 && /home/dev/rpi/start.sh
+# >>> @reboot /bin/sleep 30 && /home/dev/rpi/start.sh
 
 tmux has-session -t pi
 
