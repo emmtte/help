@@ -1,5 +1,5 @@
 
-# PERSONAL USER MENU
+# MIDNIGHT COMMANDER USER MENU
 
 [![](https://img.shields.io/badge/rpi-raspberry_pi-c51a4a.svg?style=for-the-badge)](https://www.raspberrypi.org/downloads/raspbian/)
 [![](https://img.shields.io/badge/mc-midnight_commander-blue.svg?style=for-the-badge)](https://github.com/MidnightCommander/mc)
