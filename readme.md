@@ -34,5 +34,5 @@ Options ─> Configuration
 │ [x] Use internal view   │
 ```
 
-[![](https://img.shields.io/badge/(c)_2014--2018-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![](https://img.shields.io/badge/(c)_2014--2020-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
