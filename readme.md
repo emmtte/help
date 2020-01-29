@@ -17,7 +17,7 @@ sh start.sh
 ```
 
 
-## .profile
+### .profile
 ```bash
 if [ -z "$TMUX" ]; then
 /bin/sh ~/rpi/start.sh
