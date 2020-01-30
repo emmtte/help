@@ -47,4 +47,4 @@ if [ "$?" -eq 1 ] ; then
 
 fi
 
-tmux attach -t pi:1
+tmux attach -t pi
