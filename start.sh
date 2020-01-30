@@ -2,7 +2,8 @@
 
 # detach tmux
 # crontab -e -u dev
-# >>> @reboot /bin/sleep 10 && /home/dev/rpi/start.sh
+# >>> @reboot /bin/sleep 60 && /home/dev/rpi/start.sh
+# tmux attach 
 
 tmux has-session -t pi
 
@@ -13,10 +14,8 @@ if [ "$?" -eq 1 ] ; then
   sudo /etc/init.d/ntp start
 
   mkdir -p ~/.config/mc
-  mkdir -p ~/.local/share/mc
-
+  
   ln -sf ~/rpi/mc.menu ~/.config/mc/menu
-  ln -sf ~/rpi/bashrc ~/.local/share/mc/bashrc
   ln -sf ~/rpi/tmux.conf ~/.tmux.conf
 
   tmux -u new-session -d -s pi
