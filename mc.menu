@@ -1,3 +1,6 @@
+v neovim current file
+  nvim %f
+
 set auto date & time
   tput reset
   sudo /etc/init.d/ntp stop
