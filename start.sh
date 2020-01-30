@@ -4,6 +4,7 @@
 # crontab -e -u dev
 # >>> @reboot /bin/sleep 60 && /home/dev/rpi/start.sh
 # tmux attach 
+# >>> @reboot /bin/sleep 30 && /home/dev/rpi/start.sh
 
 tmux has-session -t pi
 
