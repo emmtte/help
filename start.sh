@@ -22,28 +22,28 @@ if [ "$?" -eq 1 ] ; then
   tmux -u new-session -d -s pi
 
   tmux rename-window -t pi:1 1
-  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+  tmux send "SHELL='/bin/bash' && mc /usr/bin/mc -x" ENTER
 
   tmux new-window -n 2
-  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+  tmux send "SHELL='/bin/bash' && /usr/bin/mc -x" ENTER
 
   tmux new-window -n 3
-  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+  tmux send "SHELL='/bin/bash' && /usr/bin/mc -x" ENTER
 
   tmux new-window -n 4
-  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+  tmux send "SHELL='/bin/bash' && /usr/bin/mc -x" ENTER
 
   tmux new-window -n 5
-  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+  tmux send "SHELL='/bin/bash' && /usr/bin/mc -x" ENTER
 
   tmux new-window -n 6
-  tmux send '/usr/bin/mc -x /home/dev/ /media/hdd/' ENTER
+  tmux send "SHELL='/bin/bash' && /usr/bin/mc -x" ENTER
 
   tmux new-window -n IGB
-  tmux send 'cd ~/igb5 && node igb' ENTER
+  tmux send "SHELL='/bin/bash' && cd ~/igb5 && node igb" ENTER
 
   tmux new-window -n INFOS
-  tmux send 'cd ~/inf && node inf' ENTER
+  tmux send "SHELL='/bin/bash' && cd ~/inf && node inf" ENTER
 
 fi
 
