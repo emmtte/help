@@ -1,6 +1,9 @@
 v neovim current file
   nvim %f
 
+Grafana restart
+  sudo service grafana-server restart
+
 set auto date & time
   tput reset
   sudo /etc/init.d/ntp stop
@@ -22,7 +25,7 @@ Sync from Google Drive (Pull)
   cd /media/hdd/drive
   drive pull --no-prompt -fix-clashes
 
-create new user
+_ create new user
   sudo adduser bot
   sudo adduser bot sudo
   sudo adduser bot adm
@@ -35,11 +38,11 @@ create new user
   sudo deluser pi adm
   sudo deluser -remove-home pi
 
-config: start tmux after logon
+config: tmux logon
   tput reset
   cat << 'EOF' | tee -a ~/.profile
   if [ -z "$TMUX" ]; then
-  /bin/sh ~/rpi/rescue
+  /bin/sh ~/rpi/start.sh
   fi
   EOF
 
@@ -75,7 +78,11 @@ git pull
 git discard the local changes
   tput reset ; git reset --hard ; git pull
 
-copy SD card photos & upload to Google Drive
+⠀
+  # blank symbol line before (U+2800)
+  tput reset
+
+import SD card photos & upload to Google Drive
   tput reset ; source ~/config.ini
   cd /media/hdd/drive
   drive pull --no-prompt --fix-clashes
@@ -86,15 +93,44 @@ copy SD card photos & upload to Google Drive
   sudo umount /media/cardreader
   drive push --no-prompt
   tm "SD card photos uploaded to Google Drive"
- 
+
+import SD card videos & merge & upload to youtube
+  tput reset ; source ~/config.ini
+  rm /media/hdd/youtube-upload/*
+  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
+  cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
+  sudo umount /media/cardreader
+  tm "Import done You can remove SD card reader"
+  cd /media/hdd/youtube-upload
+  FILES=`find *.* -printf "%%f + " | sort`
+  mkvmerge -o out.mkv $FILES
+  youtube-upload --title="-" --privacy="private" out.mkv
+  tm "Backup done Merge & uploaded to youtube"
+  sleep 30m
+  tm "Youtube done Can watch to youtube"
+
 backup photos & videos to backup hdd
   tput reset ; source ~/config.ini
   sudo mount -t ntfs-3g -L backup /media/backup
   mkdir /media/backup/photos /media/backup/videos
-  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/drive/Photos/ /media/backup/photos
-  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/youtube/ /media/backup/videos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/backup/photos/ /media/backup/photos
+  rsync --bwlimit=5000 --archive --no-o --no-g --delete --info=progress2 /media/hdd/backup/videos/ /media/backup/videos
   sudo umount /media/backup
   tm "Photos & Videos Backup done"
+
+backup videos from youtube download playlist
+  tput reset ; source ~/config.ini
+  if [ ! -d /media/hdd/videos ] ; then mkdir /media/hdd/videos ; fi
+  youtube-dl --limit-rate 4M --abort-on-error --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
+  --merge-output-format mp4 --output "/media/hdd/videos/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
+  tm "backup videos from youtube download playlist done"
+
+⠀
+  # blank symbol line before (U+2800)
+  tput reset
+
+mount backup drive  
+  sudo mount -t ntfs-3g -L backup /media/backup
 
 mount ntfs usbkey
   tput reset ; sudo mount -t ntfs-3g `ls /dev/disk/by-id/usb*-part1` /media/usbkey
@@ -185,7 +221,7 @@ move to "Freebox Server"
  cd %d ; set %t
  for FILE in "$@"; do
    echo "Copy : $FILE"
-   rsync --bwlimit=2000 --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "/media/freebox"
+   rsync --bwlimit=5000 --archive --no-o --no-g --info=progress2 --remove-sent-files "$FILE" "/media/freebox"
  done
  tm "Files moved to Freebox"
 
@@ -199,21 +235,6 @@ upload to Gdrive
   done
   cd /media/hdd/Drive
   if ! drive pull --no-prompt "Raspberry Pi/" ; then tm "ERROR Google push files ERROR PUSH DRIVE"; return; fi
-
-import videos & merge & upload to youtube
-  tput reset ; source ~/config.ini
-  #rm /media/hdd/youtube-upload/*
-  sudo mount `ls /dev/disk/by-id/usb-Generic_STORAGE_DEVICE_*-part1` /media/cardreader
-  cp -v /media/cardreader/DCIM/???_PANA/*.MP4 /media/hdd/youtube-upload
-  sudo umount /media/cardreader
-  tm "Import done You can remove SD card reader"
-  cd /media/hdd/youtube-upload
-  FILES=`find *.* type f -printf "%%f + " | sort`
-  mkvmerge -o out.mkv $FILES
-  youtube-upload --title="-" --privacy="private" out.mkv
-  tm "Backup done Merge & uploaded to youtube"
-  sleep 30m
-  tm "Youtube done Can watch to youtube"
 
 import gopro
   ID="/dev/disk/by-id/usb-GoPro_Storage_*-0:0-part1"
@@ -235,6 +256,7 @@ import usbkey
 
 + t t
 Upload to Google Music
+  tput reset ; source ~/config.ini
   account=%{account number}
   tput reset ; cd %d ; set %t
   for d in "$@"; do gms upload -u $account "$d"; done
@@ -242,6 +264,7 @@ Upload to Google Music
 
 + t t
 Download from Google Music
+  tput reset ; source ~/config.ini
   account=%{Give account number}
   gms download -u $account "/media/hdd/music/%album%/%title%"
   tm "Rasperry Pi gmusic download done"
@@ -314,13 +337,6 @@ tv-dl
     fi
   done < /media/hdd/tmp/youtube.txt
   tm "Youtube-dl tv-dl done"
-
-yt-dl-playlist
-  tput reset ; source ~/config.ini
-  if [ ! -d /media/hdd/youtube ] ; then mkdir /media/hdd/youtube ; fi
-  youtube-dl --limit-rate 4M --abort-on-error --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' \
-  --merge-output-format mp4 --output "/media/hdd/youtube/%%(title)s.%%(ext)s" https://www.youtube.com/playlist?list=$Playlist
-  tm "Youtube-dl dl playlist done"
 
 + f *.mp4 | f *.MP4 & t t
 conv mp4 to aac
@@ -425,6 +441,11 @@ download youtube playlist and merge with external music
   MP4Box $FILES -new merged.mp4
   mkvmerge -o output-with-sound.mkv -A input-video.mkv soundfile.mp3
 
+dounload music from youtube video
+  youtube-dl --extract-audio --audio-format mp3 $1 -o temp.mp3
+  avconv -i temp.mp3 -ss 00:13:58 -to 00:15:44 -c copy -y music.mp3
+  avconv -i "concat:1.MTS|2.MTS|3.MTS" -c copy output.mts
+
 switch to tmux background
   tmux switch-client -t bg
   tmux send -t bg:1 'tmux send -t pi:1 F2' ENTER
@@ -464,15 +485,17 @@ Uncrypt PDF
     shift
   done
 
-+ f \.pdf | f \.PDF | F \.pdf | F \.PDF
+⠀
+  # blank symbol line before (U+2800)
+  tput reset
+
 A Drive pull Documents and Snoozed
   tput reset ; source ~/config.ini
   GDRIVE=/media/hdd/drive ; cd $GDRIVE
   if ! drive pull --no-prompt -fix-clashes $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then tm "Merge PDF RROR PULL GDRIVE" ; exit; fi
 
-+ f \.pdf | f \.PDF & t t
-B Merge PDF
-  # Don't use pdftk files genarated are too big
++ t t
+B Merge PDF T source files t destination File
   # T source files t destination Files
   tput reset ; source ~/config.ini ; array=()
   set %T ; for FILE in "$@"; do
@@ -481,59 +504,18 @@ B Merge PDF
   set %t ; for FILE in "$@"; do
     if grep -r "Encrypt" "%d/$FILE" ; then echo "ERROR : $FILE CRYPTED" ; tm "ERROR PDF CRYPTED $FILE"; exit; fi
     array+=("%d/$FILE") ; done
-  /opt/sejda/bin/sejda-console merge -f "${array[@]}" -o "$(dirname "${array[-1]}")/!$(basename "${array[-1]}")"
+  pdfunite "${array[@]}" "$(dirname "${array[-1]}")/!$(basename "${array[-1]}")"
   rm "${array[@]}"
+  tm "ALL PDF FILES MERGED SUCCESSFULLY"
 
-+ f \.pdf | f \.PDF | F \.pdf | F \.PDF
 C Drive push Documents and Snoozed
   tput reset ; source ~/config.ini
   GDRIVE=/media/hdd/drive ; cd $GDRIVE
   if ! drive push --no-prompt $GDRIVE/Snoozed $GDRIVE/Documents $GDRIVE/Notices ; then iftt "Merge PDF" "ERROR PUSH GDRIVE" ; exit; fi
 
-Automatic Merge pdf files
-  ## TODO Delete only files merged
-  tput reset ; source ~/config.ini
-  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " `date`"
-  GDRIVE=/media/hdd/Drive
-  FILE=/tmp/gdrive.csv
-  ##Init
-  cd $GDRIVE
-  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Snoozed Dir"
-  rm -rf Snoozed Documents
-  if ! drive pull --no-prompt -fix-clashes "Snoozed/"; then tm "Auto Merge PDF Error pull, please fix clashes in Snoozed folder"; return; fi
-  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Empty"
-  if [ `find "Snoozed" -type d -empty` ] ; then tput setaf 2 ; echo -n "[info]" ; tput sgr0 ; echo "  Empty Snoozed Dir"; return; fi
-  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Test if Snoozed Dir Files Encrypts"
-  if grep -r "Encrypt" Snoozed ; then tm "`grep -r "Encrypt" Snoozed`"; return; fi
-  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Download Iftt csv file"
-  if ! drive pull --no-prompt --export csv --exports-dir /tmp --same-exports-dir --force tm; then tm "Auto Merge PDF Error pull for tm.xls" ; return; fi
-  tr -d '\r' < /tmp/tm.csv > $FILE
-  tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Read Iftt csv file"
-  while IFS=, read email in out ; do
-    tput setaf 3 ; echo -n "[info]" ; tput sgr0 ; echo " Search $in file..."
-    if [[ -n $(find "Snoozed" -name "$in") ]]
-        then
-        rm ~/files.csv
-        tput setaf 2 ; echo -n "[ ok ]" ; tput sgr0 ; echo " find $1"
-        find "Snoozed" -name "$in" | sort -r | tr '\n' ',' > ~/files.csv
-        cp ~/files.csv ~/files_rm.csv
-        echo "Snoozed/$out" >> ~/files.csv
-        tput setaf 1 ; echo -n "[FAIL]" ; tput sgr0 ; echo "cat ~/files.csv"
-        cat ~/files.csv
-        tput setaf 1 ; echo -n "[info]" ; tput sgr0 ; echo " END"
-        if ! drive pull --no-prompt "Documents/$out" ; then tm "Auto Merge PDF Error pull ref doc" ; return; fi
-        #mv "Documents/$out" "Snoozed/$out"
-        #/opt/sejda/bin/sejda-console merge -l ~/files.csv -o sejda_out.pdf
-        #mv sejda_out.pdf "Documents/$out"
-        #if ! drive push --no-prompt "Documents/$out" ; then tm "Auto Merge PDF Error push ref doc" ; return; fi
-        while IFS=, read f ; do
-        tput setaf 1 ; echo -n "[----]" ; tput sgr0 ; echo " delete $f"
-        #rm "$f"
-        done < ~/files_rm.csv
-    fi
-  done < "$FILE"
-  rm $FILE
-  #if ! drive pull --no-prompt "Snoozed/"; then tm "Upload Snoozed Error"; return; fi
+⠀
+  # blank symbol line before (U+2800)
+  tput reset
 
 disable bt and wifi
   tput reset
@@ -553,7 +535,7 @@ install: node.js
 
 install: prerequisites
   tput reset
-  sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync sshpass tmux ntfs-3g ghostscript
+  sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync tmux ntfs-3g ghostscript
 
 install: tmux
   # https://github.com/tmux/tmux
@@ -644,18 +626,6 @@ install: Samba
   EOF
   sudo service smbd restart
   sudo smbpasswd -a pi
-
-install: Sejda
-  # https://github.com/torakiki/sejda
-  tput reset
-  sudo apt-get -y install oracle-java8-jdk
-  curl -L -o sejda.zip https://github.com/torakiki/sejda/releases/download/v3.2.72/sejda-console-3.2.72-bin.zip
-  unzip sejda.zip
-  sudo mkdir /opt/sejda
-  sudo chown -R $USER:$USER /opt/sejda
-  mv sejda-console-3.2.72/* /opt/sejda/
-  rm -rf sejda.zip sejda-console-3.0.72
-  chmod +x /opt/sejda/bin/sejda-console
 
 install: ssh
   ssh-keygen
