@@ -146,7 +146,7 @@ mount-freebox
   tput reset ; sudo mount -t cifs //mafreebox.freebox.fr/Freebox/  /media/freebox -o user=freebox,password=Freebox4K,cache=none,uid=1001,iocharset=utf8,file_mode=0777,dir_mode=0777,vers=1.0
 
 format hdd drive
-  #Attention lignes suivantes pour formatter
+  #Remove comment sign for next lignes only to format HDD
   #sudo mkfs.ext4 /dev/sda1 -L RaspberryPi
   #sudo e2label /dev/sda1 RaspberryPi
   #sudo chown -R pi:pi /media/hdd
@@ -441,7 +441,7 @@ download youtube playlist and merge with external music
   MP4Box $FILES -new merged.mp4
   mkvmerge -o output-with-sound.mkv -A input-video.mkv soundfile.mp3
 
-dounload music from youtube video
+download music from youtube video
   youtube-dl --extract-audio --audio-format mp3 $1 -o temp.mp3
   avconv -i temp.mp3 -ss 00:13:58 -to 00:15:44 -c copy -y music.mp3
   avconv -i "concat:1.MTS|2.MTS|3.MTS" -c copy output.mts
