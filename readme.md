@@ -1,5 +1,5 @@
 
-# MIDNIGHT COMMANDER USER MENU
+# Midnight Commander User Menu
 ````
     ┌───┐             ┐                   ┌──┐          ┌─┬─┐     ┐           ┐
     │   │             │                   │  │ .        │ │ │ .   │     .     │
