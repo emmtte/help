@@ -101,11 +101,13 @@ make install
 ````
 
 ## oh my zsh
-
 ````sh
-sudo apt-get install zsh antigen
+sudo apt-get install zsh
+mkdir $HOME/.antigen
+curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
+/usr/bin/zsh
+. ~/.zshrc
 ````
 
 ## git
