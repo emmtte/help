@@ -15,6 +15,11 @@ sudo apt-get update
 sudo apt-get install git mc rsync tmux
 sudo ln -sf bash /bin/sh
 git clone https://github.com/emmtte/Raspberry-Pi-Headless-Setup.git ~/rpi
+cat << 'EOF' | tee -a ~/.profile
+  if [ -z "$TMUX" ]; then
+  /bin/sh ~/rpi/start.sh
+fi
+EOF
 cd rpi
 sh start.sh
 ```
