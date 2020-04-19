@@ -100,6 +100,14 @@ make
 make install
 ````
 
+## oh my zsh
+
+````sh
+sudo apt-get install zsh antigen
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+````
+
 ## git
 https://github.com/ManuCart/Raspberry-Pi
 ````sh
