@@ -1,12 +1,12 @@
 
-# Midnight Commander User Menu
+# Raspberry Pi Headless Setup
 ````
     ┌───┐             ┐                   ┌──┐          ┌─┬─┐     ┐           ┐
     │   │             │                   │  │ .        │ │ │ .   │     .     │
     ├──┬┘ ┌─┐ ┌─┐ ┌─┐ ├─┐ ┌─┐ ┌┐ ┌┐ ┐ ┌   ├──┘ ┐        │ │ │ ┐ ┌─┤ ┬─┐ ┐ ┌─┬ ├─┐ ┼
     │  │  ┌─┤ └─┐ │ │ │ │ ├─┘ │  │  │ │   │    │   ──   │ │ │ │ │ │ │ │ │ │ │ │ │ │
     ┴  └┘ └─┴ └─┘ ├─┘ └─┘ ┴─┘ ┴  ┴  └─┤   ┴    ┴        ┴   ┴ ┴ └─┴ ┴ ┴ ┴ └─┤ ┴ ┴ └┘
-                  ┴        ─User─Menu─┘                     ──────Commander─┘
+                  ┴  ──Headless─Setup─┘                     ──────Commander─┘
 ````
 ### Installation
 
@@ -14,11 +14,10 @@
 sudo apt-get update
 sudo apt-get install git mc rsync tmux
 sudo ln -sf bash /bin/sh
-git clone https://github.com/emmtte/Raspberry-Pi-User-Menu.git ~/rpi
+git clone https://github.com/emmtte/Raspberry-Pi-Headless-Setup.git ~/rpi
 cd rpi
 sh start.sh
 ```
-
 
 ### .profile
 ```bash
@@ -27,15 +26,18 @@ if [ -z "$TMUX" ]; then
 fi
 ```
 
-
-### Configuration
-
-```bash
-Options ─> Configuration
-┌ Other options ──────────┐
-│ [x] Use internal edit   │
-│ [x] Use internal view   │
-```
+## mc
+https://github.com/MidnightCommander/mc
+````sh
+sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
+wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
+tar xvfz 4.8.20.tar.gz
+cd mc-4.8.20
+autoconf
+./configure
+make
+make install
+````
 
 ## disable bt and wifi
 ````sh
@@ -85,19 +87,6 @@ git clone https://github.com/neovim/neovim.git
 cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
-````
-
-## mc
-https://github.com/MidnightCommander/mc
-````sh
-sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
-wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
-tar xvfz 4.8.20.tar.gz
-cd mc-4.8.20
-autoconf
-./configure
-make
-make install
 ````
 
 ## oh my zsh
