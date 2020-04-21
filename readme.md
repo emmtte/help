@@ -124,7 +124,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 ### OpenSSH
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/openssh</sup>
-````shell
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg)````shell
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
