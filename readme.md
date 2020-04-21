@@ -34,6 +34,8 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
 [![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)
+<div align="right"><a href="#raspberry-pi-headles-setup"><img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### [![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup) Git
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/git/git</sup>
