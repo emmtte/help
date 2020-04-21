@@ -23,6 +23,7 @@ Prerequisites
 ````shell
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
+
 <br/>
 ### Dropbox Uploader
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/andreafabrizi/Dropbox-Uploader</sup>
@@ -32,6 +33,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
+
 <br/>
 ### Git
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/git/git</sup>
@@ -49,6 +51,7 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
+
 <br/>
 ### Google Drive
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/odeke-em/drive</sup>
@@ -57,6 +60,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
 ````
+
 <br/>
 ### Google Music Scripts
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/thebigmunch/google-music-scripts</sup>
@@ -64,6 +68,7 @@ drive init /media/hdd/drive
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
 ````
+
 <br/>
 ### Midnight Commander
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/MidnightCommander/mc</sup>
