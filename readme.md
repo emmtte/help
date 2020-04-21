@@ -32,6 +32,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
+<br/><br/>
 
 ### Git
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/git/git</sup>
@@ -49,6 +50,7 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
+<br/><br/>
 
 ### Google Drive
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/odeke-em/drive</sup>
@@ -57,6 +59,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
 ````
+<br/><br/>
 
 ### Google Music Scripts
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/thebigmunch/google-music-scripts</sup>
@@ -64,6 +67,7 @@ drive init /media/hdd/drive
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
 ````
+<br/><br/>
 
 ### Midnight Commander
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/MidnightCommander/mc</sup>
@@ -81,6 +85,7 @@ autoconf
 make
 make install
 ````
+<br/><br/>
 
 ### Neovim
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/neovim/neovim</sup>
@@ -91,6 +96,7 @@ cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ````
+<br/><br/>
 
 ### Node.JS
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/nodejs/nodejs.org</sup>
@@ -101,6 +107,7 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O nod
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 ````
+<br/><br/>
 
 ### Oh My Zsh
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/ohmyzsh/ohmyzsh</sup>
@@ -112,6 +119,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 /usr/bin/zsh
 . ~/.zshrc
 ````
+<br/><br/>
 
 ### OpenSSH
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/openssh</sup>
@@ -134,12 +142,14 @@ PuttyGen.exe
 - Conversions => Import Key (id_rsa)
 - Save Private Key and Yes to save without a passphrase.
 - Choose a location and a name for the new .ppk key
+<br/><br/>
 
 ### Pi Hole
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/pi-hole/pi-hole</sup>
 ````shell
 curl -sSL https://install.pi-hole.net | bash
 ````
+<br/><br/>
 
 ### Samba
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/samba-team/samba</sup>
@@ -155,6 +165,7 @@ EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
 ````
+<br/><br/>
 
 ### Tmux
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tmux/tmux</sup>
@@ -175,6 +186,7 @@ cd ..
 rm tmux-2.8.tar.gz
 rm -rf tmux-2.8
 ````
+<br/><br/>
 
 ### Youtube Download
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/rg3/youtube-dl</sup>
@@ -186,6 +198,7 @@ echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ````
+<br/><br/>
 
 ### Youtube Upload
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tokland/youtube-upload</sup>
@@ -206,6 +219,7 @@ cd ..
 rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
 ````
+<br/><br/>
 
 ### Raspbian Procedures
 #### Disable Bluetooth and Wifi
