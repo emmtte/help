@@ -121,7 +121,7 @@ rm node.tar.gz
 
 
 ### Oh My Zsh
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/ohmyzsh/ohmyzsh</sup>
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/ohmyzsh/ohmyzsh</sup>
 ```shell
 sudo apt-get install zsh
 mkdir $HOME/.antigen
@@ -130,6 +130,11 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 /usr/bin/zsh
 . ~/.zshrc
 ```
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>https://github.com/zsh-users/antigen</sup>
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>https://github.com/romkatv/powerlevel10k</sup>
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>https://github.com/zsh-users/zsh-autosuggestions</sup>
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>https://github.com/zsh-users/zsh-completions</sup>
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>https://github.com/zsh-users/zsh-syntax-highlighting</sup>
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
