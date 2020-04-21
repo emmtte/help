@@ -35,7 +35,7 @@ dropbox_uploader init
 ````
 [![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)
 
-### Git
+### [![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup) Git
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/git/git</sup>
 ````shell
 sudo apt-get install git
@@ -51,7 +51,7 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
-<div style="text-align: right">[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)<div>
+
 <br/>
 
 ### Google Drive
