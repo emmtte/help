@@ -223,7 +223,7 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
 
 
 ### Youtube Upload
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tokland/youtube-upload</sup>  
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg)  <sup>https://github.com/tokland/youtube-upload</sup> 
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/alert.svg) <sup>https://github.com/tokland/youtube-upload/pull/264</sup>
 
 ```shell
