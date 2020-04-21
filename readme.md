@@ -96,47 +96,47 @@ make install
 
 ### Neovim
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/neovim/neovim</sup>
-````shell
+```shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
 git clone https://github.com/neovim/neovim.git
 cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### Node.JS
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/nodejs/nodejs.org</sup>
-````shell
+```shell
 VERSION=10.16.0
 sudo apt-get -y install build-essential
 wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### Oh My Zsh
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/ohmyzsh/ohmyzsh</sup>
-````shell
+```shell
 sudo apt-get install zsh
 mkdir $HOME/.antigen
 curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 /usr/bin/zsh
 . ~/.zshrc
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### OpenSSH
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/openssh</sup>
-````shell
+```shell
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
@@ -149,7 +149,7 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 EOF
 sudo service ssh restart
-````
+```
 
 #### PuttyGen
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg) <sup>puttygen.exe</sup>
@@ -162,16 +162,16 @@ sudo service ssh restart
 
 ### Pi Hole
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/pi-hole/pi-hole</sup>
-````shell
+```shell
 curl -sSL https://install.pi-hole.net | bash
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### Samba
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/samba-team/samba</sup>
-````shell
+```shell
 sudo apt-get -y install samba samba-common-bin
 cat << EOF | sudo tee -a /etc/samba/smb.conf
 [HDD]
@@ -182,17 +182,15 @@ browsable = yes
 EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### Tmux
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tmux/tmux</sup>
-````shell
-sudo apt-get install tmux
-````
-````shell
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg) <sup>```sudo apt-get install tmux```</sup>
+```shell
 tmux -V
 tmux kill-server
 sudo apt-get install -y libevent-dev libncurses5-dev
@@ -205,21 +203,21 @@ tmux -V
 cd ..
 rm tmux-2.8.tar.gz
 rm -rf tmux-2.8
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### Youtube Download
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/rg3/youtube-dl</sup>
-````shell
+```shell
 sudo apt-get -y install libavcodec-extra libav-tools
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
 echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
@@ -229,7 +227,7 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
 
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/alert.svg) <sup>https://github.com/tokland/youtube-upload/pull/264</sup>
 
-````shell
+```shell
 sudo pip install --upgrade google-api-python-client oauth2client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
@@ -242,19 +240,19 @@ youtube-upload --title="test" --privacy="private" samplevideo.mp4
 cd ..
 rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### Raspbian Procedures
 #### Disable Bluetooth and Wifi
-````shell
+```shell
 echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
 echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 sudo reboot
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
@@ -263,7 +261,7 @@ sudo reboot
 
 MIT License
 
-Copyright (c) ````2014-2020```` ````emmtte````
+Copyright (c) ```2014-2020``` ```emmtte```
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
