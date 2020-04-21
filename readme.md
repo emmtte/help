@@ -8,7 +8,7 @@
   * [Neovim](#neovim)
   * [Node.js](#node.js)
   * [Oh My Zsh](#oh-my-zsh)
-  * [OpenSSH](#ssh)
+  * [OpenSSH](#openssh)
   * [Pi Hole](#pi-hole)
   * [Raspbian](#raspbian)
   * [Samba](#samba)
@@ -16,74 +16,26 @@
   * [Wifi & Bluetooth](#disable-bt-and-wifi)
   * [Youtube Download](#youtube-download)
   * [Youtube Upload](#youtube-upload)
-
-
-### Installation
-
-```bash
-sudo apt-get update
-sudo apt-get install git mc rsync tmux
-sudo ln -sf bash /bin/sh
-git clone https://github.com/emmtte/Raspberry-Pi-Headless-Setup.git ~/rpi
-cat << 'EOF' | tee -a ~/.profile
-  if [ -z "$TMUX" ]; then
-  /bin/sh ~/rpi/start.sh
-fi
-EOF
-cd rpi
-sh start.sh
-```
-
-### .profile
-```bash
-if [ -z "$TMUX" ]; then
-/bin/sh ~/rpi/start.sh
-fi
-```
-
-## Midnight Commander
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/MidnightCommander/mc
-````sh
-sudo apt-get install mc
-````
-or
-````sh
-sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
-wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
-tar xvfz 4.8.20.tar.gz
-cd mc-4.8.20
-autoconf
-./configure
-make
-make install
+  * [Raspbian Procedures](#disable-bluetooth-and-wifi)
+    - Disable Bluetooth and Wifi
+    
+Prerequisites
+````shell
+sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
 
-## disable bt and wifi
-````sh
-echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
-echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
-sudo systemctl disable hciuart
-sudo reboot
+### Dropbox Uploader
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/andreafabrizi/Dropbox-Uploader
+````shell
+sudo curl -o /usr/local/bin/dropbox_uploader \
+https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
+sudo chmod +x /usr/local/bin/dropbox_uploader
+dropbox_uploader init
 ````
 
-### prerequisites
-````sh
-sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync tmux ntfs-3g ghostscript
-````
-
-## Drive
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/odeke-em/drive
-````sh
-go get -u github.com/odeke-em/drive/cmd/drive
-mkdir /media/hdd/drive
-drive init /media/hdd/drive
-````
-
-
-
-## Git
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/ManuCart/Raspberry-Pi
-````sh
+### Git
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/git/git
+````shell
 sudo apt-get install git
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
@@ -98,43 +50,41 @@ git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
 
-## Google Music Scripts
+### Google Drive
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/odeke-em/drive
+````shell
+go get -u github.com/odeke-em/drive/cmd/drive
+mkdir /media/hdd/drive
+drive init /media/hdd/drive
+````
+
+### Google Music Scripts
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/thebigmunch/google-music-scripts
-````sh
+````shell
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
 ````
 
-### node.js
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://nodejs.org
-````sh
-VERSION=10.16.0
-sudo apt-get -y install build-essential
-wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
-sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
-rm node.tar.gz
+### Midnight Commander
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/MidnightCommander/mc
+````shell
+sudo apt-get install mc
 ````
-
-### tmux
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tmux/tmux
-````sh
-tmux -V
-tmux kill-server
-sudo apt-get install -y libevent-dev libncurses5-dev
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
-tar xvfz tmux-2.8.tar.gz
-cd tmux-2.8
-./configure && make
-sudo cp ./tmux /usr/bin/tmux
-tmux -V
-cd ..
-rm tmux-2.8.tar.gz
-rm -rf tmux-2.8
+or
+````shell
+sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
+wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
+tar xvfz 4.8.20.tar.gz
+cd mc-4.8.20
+autoconf
+./configure
+make
+make install
 ````
 
 ### Neovim
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/neovim/neovim
-````sh
+````shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
 git clone https://github.com/neovim/neovim.git
 cd neovim
@@ -142,9 +92,19 @@ make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ````
 
-### oh my zsh
+### Node.JS
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/nodejs/nodejs.org
+````shell
+VERSION=10.16.0
+sudo apt-get -y install build-essential
+wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
+sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
+rm node.tar.gz
+````
+
+### Oh My Zsh
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/ohmyzsh/ohmyzsh
-````sh
+````shell
 sudo apt-get install zsh
 mkdir $HOME/.antigen
 curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
@@ -153,43 +113,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 . ~/.zshrc
 ````
 
-
-
-## Dropbox Uploader
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/andreafabrizi/Dropbox-Uploader
-````sh
-sudo curl -o /usr/local/bin/dropbox_uploader \
-https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
-sudo chmod +x /usr/local/bin/dropbox_uploader
-dropbox_uploader init
-````
-
-
-
-## Pi Hole
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) 
-````sh
-curl -sSL https://install.pi-hole.net | bash
-````
-
-## Samba
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) 
-````sh
-sudo apt-get -y install samba samba-common-bin
-cat << EOF | sudo tee -a /etc/samba/smb.conf
-[HDD]
-comment = Raspberry Pi Hard Drive
-path = /media/hdd
-read only = no
-browsable = yes
-EOF
-sudo service smbd restart
-sudo smbpasswd -a pi
-````
-
-## ssh
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) 
-````sh
+### OpenSSH
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/openssh
+````shell
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
@@ -209,9 +135,50 @@ PuttyGen.exe
 - Save Private Key and Yes to save without a passphrase.
 - Choose a location and a name for the new .ppk key
 
-## Youtube Download
+### Pi Hole
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/pi-hole/pi-hole
+````shell
+curl -sSL https://install.pi-hole.net | bash
+````
+
+### Samba
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/samba-team/samba
+````shell
+sudo apt-get -y install samba samba-common-bin
+cat << EOF | sudo tee -a /etc/samba/smb.conf
+[HDD]
+comment = Raspberry Pi Hard Drive
+path = /media/hdd
+read only = no
+browsable = yes
+EOF
+sudo service smbd restart
+sudo smbpasswd -a pi
+````
+
+### Tmux
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tmux/tmux
+````shell
+sudo apt-get install tmux
+````
+````shell
+tmux -V
+tmux kill-server
+sudo apt-get install -y libevent-dev libncurses5-dev
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
+tar xvfz tmux-2.8.tar.gz
+cd tmux-2.8
+./configure && make
+sudo cp ./tmux /usr/bin/tmux
+tmux -V
+cd ..
+rm tmux-2.8.tar.gz
+rm -rf tmux-2.8
+````
+
+### Youtube Download
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/rg3/youtube-dl
-````sh
+````shell
 sudo apt-get -y install libavcodec-extra libav-tools
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
@@ -220,12 +187,12 @@ mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ````
 
-## Youtube Upload
+### Youtube Upload
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tokland/youtube-upload
 
-Warning : https://github.com/tokland/youtube-upload/pull/264
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/alert.svg) https://github.com/tokland/youtube-upload/pull/264
 
-````sh
+````shell
 sudo pip install --upgrade google-api-python-client oauth2client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
@@ -238,6 +205,15 @@ youtube-upload --title="test" --privacy="private" samplevideo.mp4
 cd ..
 rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
+````
+
+### Raspbian Procedures
+#### Disable Bluetooth and Wifi
+````shell
+echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
+echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
+sudo systemctl disable hciuart
+sudo reboot
 ````
 
 ### License
