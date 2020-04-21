@@ -51,7 +51,7 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
-[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)
+<div style="text-align: right">[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)<div>
 <br/>
 
 ### Google Drive
