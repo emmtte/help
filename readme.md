@@ -2,18 +2,19 @@
 # Raspberry Pi Headless Setup
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Git](#git)
-  * [Google Drive](#drive)
-  * [Google Music](#gmusicapi-scripts)
+  * [Google Drive](#google-drive)
+  * [Google Music](#google-music-scripts)
   * [Midnight Commander](#midnight-commander)
-  * [Neovim](#nvim)
+  * [Neovim](#neovim)
   * [Node.js](#node.js)
+  * [Oh My Zsh](#oh-my-zsh)
   * [OpenSSH](#ssh)
   * [Pi Hole](#pi-hole)
   * [Raspbian](#raspbian)
   * [Samba](#samba)
   * [Tmux](#tmux)
   * [Wifi & Bluetooth](#disable-bt-and-wifi)
-  * [Youtube Download](#youtube-dl)
+  * [Youtube Download](#youtube-download)
   * [Youtube Upload](#youtube-upload)
 
 
@@ -40,8 +41,12 @@ if [ -z "$TMUX" ]; then
 fi
 ```
 
-## mc
+## Midnight Commander
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/MidnightCommander/mc
+````sh
+sudo apt-get install mc
+````
+or
 ````sh
 sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
 wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
@@ -61,59 +66,22 @@ sudo systemctl disable hciuart
 sudo reboot
 ````
 
-## prerequisites
+### prerequisites
 ````sh
 sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync tmux ntfs-3g ghostscript
 ````
 
-## node.js
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://nodejs.org
+## Drive
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/odeke-em/drive
 ````sh
-VERSION=10.16.0
-sudo apt-get -y install build-essential
-wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
-sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
-rm node.tar.gz
+go get -u github.com/odeke-em/drive/cmd/drive
+mkdir /media/hdd/drive
+drive init /media/hdd/drive
 ````
 
-## tmux
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tmux/tmux
-````sh
-tmux -V
-tmux kill-server
-sudo apt-get install -y libevent-dev libncurses5-dev
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
-tar xvfz tmux-2.8.tar.gz
-cd tmux-2.8
-./configure && make
-sudo cp ./tmux /usr/bin/tmux
-tmux -V
-cd ..
-rm tmux-2.8.tar.gz
-rm -rf tmux-2.8
-````
 
-## nvim
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/neovim/neovim
-````sh
-sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
-git clone https://github.com/neovim/neovim.git
-cd neovim
-make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
-````
 
-## oh my zsh
-````sh
-sudo apt-get install zsh
-mkdir $HOME/.antigen
-curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-/usr/bin/zsh
-. ~/.zshrc
-````
-
-## git
+## Git
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/ManuCart/Raspberry-Pi
 ````sh
 sudo apt-get install git
@@ -130,8 +98,65 @@ git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
 
-## Dropbox-Uploader
-https://github.com/andreafabrizi/Dropbox-Uploader
+## Google Music Scripts
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/thebigmunch/google-music-scripts
+````sh
+sudo apt-get install libav-tools #avconv
+sudo pip3.7 install -U google-music-scripts
+````
+
+### node.js
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://nodejs.org
+````sh
+VERSION=10.16.0
+sudo apt-get -y install build-essential
+wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
+sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
+rm node.tar.gz
+````
+
+### tmux
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tmux/tmux
+````sh
+tmux -V
+tmux kill-server
+sudo apt-get install -y libevent-dev libncurses5-dev
+wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
+tar xvfz tmux-2.8.tar.gz
+cd tmux-2.8
+./configure && make
+sudo cp ./tmux /usr/bin/tmux
+tmux -V
+cd ..
+rm tmux-2.8.tar.gz
+rm -rf tmux-2.8
+````
+
+### Neovim
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/neovim/neovim
+````sh
+sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
+git clone https://github.com/neovim/neovim.git
+cd neovim
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+````
+
+### oh my zsh
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/ohmyzsh/ohmyzsh
+````sh
+sudo apt-get install zsh
+mkdir $HOME/.antigen
+curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+/usr/bin/zsh
+. ~/.zshrc
+````
+
+
+
+## Dropbox Uploader
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/andreafabrizi/Dropbox-Uploader
 ````sh
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
@@ -139,27 +164,16 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
 
-## drive
-https://github.com/odeke-em/drive
-````sh
-go get -u github.com/odeke-em/drive/cmd/drive
-mkdir /media/hdd/drive
-drive init /media/hdd/drive
-````
 
-## google-music-scripts
-https://github.com/thebigmunch/google-music-scripts
-````sh
-sudo apt-get install libav-tools #avconv
-sudo pip3.7 install -U google-music-scripts
-````
 
 ## Pi Hole
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) 
 ````sh
 curl -sSL https://install.pi-hole.net | bash
 ````
 
 ## Samba
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) 
 ````sh
 sudo apt-get -y install samba samba-common-bin
 cat << EOF | sudo tee -a /etc/samba/smb.conf
@@ -174,6 +188,7 @@ sudo smbpasswd -a pi
 ````
 
 ## ssh
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) 
 ````sh
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
@@ -194,8 +209,8 @@ PuttyGen.exe
 - Save Private Key and Yes to save without a passphrase.
 - Choose a location and a name for the new .ppk key
 
-## youtube-dl
-https://github.com/rg3/youtube-dl
+## Youtube Download
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/rg3/youtube-dl
 ````sh
 sudo apt-get -y install libavcodec-extra libav-tools
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -205,8 +220,8 @@ mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ````
 
-## youtube-upload
-https://github.com/tokland/youtube-upload
+## Youtube Upload
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tokland/youtube-upload
 
 Warning : https://github.com/tokland/youtube-upload/pull/264
 
