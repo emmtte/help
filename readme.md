@@ -19,7 +19,7 @@
   * [Raspbian Procedures](#raspbian-Procedures)
     - [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
     
-Prerequisites
+#### Prerequisites
 ````shell
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
@@ -90,7 +90,9 @@ autoconf
 make
 make install
 ```
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Neovim
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/neovim/neovim</sup>
@@ -101,7 +103,9 @@ cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Node.JS
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/nodejs/nodejs.org</sup>
@@ -112,7 +116,9 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O nod
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Oh My Zsh
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/ohmyzsh/ohmyzsh</sup>
@@ -124,11 +130,13 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 /usr/bin/zsh
 . ~/.zshrc
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### OpenSSH
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/openssh</sup>
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg)````shell
+````shell
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
@@ -143,18 +151,22 @@ EOF
 sudo service ssh restart
 ````
 
-PuttyGen.exe
+#### PuttyGen
 - Conversions => Import Key (id_rsa)
 - Save Private Key and Yes to save without a passphrase.
 - Choose a location and a name for the new .ppk key
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Pi Hole
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/pi-hole/pi-hole</sup>
 ````shell
 curl -sSL https://install.pi-hole.net | bash
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Samba
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/samba-team/samba</sup>
@@ -170,7 +182,9 @@ EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Tmux
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tmux/tmux</sup>
@@ -191,7 +205,9 @@ cd ..
 rm tmux-2.8.tar.gz
 rm -rf tmux-2.8
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Youtube Download
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/rg3/youtube-dl</sup>
@@ -203,7 +219,9 @@ echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Youtube Upload
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tokland/youtube-upload</sup>
@@ -224,7 +242,9 @@ cd ..
 rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Raspbian Procedures
 #### Disable Bluetooth and Wifi
@@ -234,6 +254,9 @@ echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 sudo reboot
 ````
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### License
 
