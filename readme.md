@@ -72,10 +72,7 @@ sudo pip3.7 install -U google-music-scripts
 
 ### Midnight Commander
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/MidnightCommander/mc</sup>
-````shell
-sudo apt-get install mc
-````
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg)
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg)```sudo apt-get install mc```
 ```shell
 sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
 wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
