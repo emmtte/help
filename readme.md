@@ -16,8 +16,8 @@
   * [Wifi & Bluetooth](#disable-bt-and-wifi)
   * [Youtube Download](#youtube-download)
   * [Youtube Upload](#youtube-upload)
-  * [Raspbian Procedures](#disable-bluetooth-and-wifi)
-    - Disable Bluetooth and Wifi
+  * [Raspbian Procedures](#raspbian-Procedures)
+    - [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
     
 Prerequisites
 ````shell
