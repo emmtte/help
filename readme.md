@@ -12,7 +12,7 @@
   * [Raspbian](#raspbian)
   * [Samba](#samba)
   * [Tmux](#tmux)
-  * [Wifi & Bluetooth](disable bt and wifi)
+  * [Wifi & Bluetooth](#disable bt and wifi)
   * [Youtube Download](#youtube-dl)
   * [Youtube Upload](#youtube-upload)
 
@@ -247,6 +247,4 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-[![](https://img.shields.io/badge/(c)_2014--2020-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
