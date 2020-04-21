@@ -25,7 +25,7 @@ sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostsc
 ````
 
 ### Dropbox Uploader
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/andreafabrizi/Dropbox-Uploader
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/andreafabrizi/Dropbox-Uploader
 ````shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
@@ -34,7 +34,7 @@ dropbox_uploader init
 ````
 
 ### Git
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/git/git
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/git/git
 ````shell
 sudo apt-get install git
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
@@ -51,7 +51,7 @@ echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
 
 ### Google Drive
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/odeke-em/drive
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/odeke-em/drive
 ````shell
 go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
@@ -59,14 +59,14 @@ drive init /media/hdd/drive
 ````
 
 ### Google Music Scripts
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/thebigmunch/google-music-scripts
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/thebigmunch/google-music-scripts
 ````shell
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
 ````
 
 ### Midnight Commander
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/MidnightCommander/mc
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/MidnightCommander/mc
 ````shell
 sudo apt-get install mc
 ````
@@ -83,7 +83,7 @@ make install
 ````
 
 ### Neovim
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/neovim/neovim
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/neovim/neovim
 ````shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
 git clone https://github.com/neovim/neovim.git
@@ -93,7 +93,7 @@ sudo make install
 ````
 
 ### Node.JS
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/nodejs/nodejs.org
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/nodejs/nodejs.org
 ````shell
 VERSION=10.16.0
 sudo apt-get -y install build-essential
@@ -103,7 +103,7 @@ rm node.tar.gz
 ````
 
 ### Oh My Zsh
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/ohmyzsh/ohmyzsh
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/ohmyzsh/ohmyzsh
 ````shell
 sudo apt-get install zsh
 mkdir $HOME/.antigen
@@ -114,7 +114,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ````
 
 ### OpenSSH
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/openssh
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/openssh
 ````shell
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
@@ -136,13 +136,13 @@ PuttyGen.exe
 - Choose a location and a name for the new .ppk key
 
 ### Pi Hole
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/pi-hole/pi-hole
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/pi-hole/pi-hole
 ````shell
 curl -sSL https://install.pi-hole.net | bash
 ````
 
 ### Samba
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/samba-team/samba
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/samba-team/samba
 ````shell
 sudo apt-get -y install samba samba-common-bin
 cat << EOF | sudo tee -a /etc/samba/smb.conf
@@ -157,7 +157,7 @@ sudo smbpasswd -a pi
 ````
 
 ### Tmux
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tmux/tmux
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/tmux/tmux
 ````shell
 sudo apt-get install tmux
 ````
@@ -177,7 +177,7 @@ rm -rf tmux-2.8
 ````
 
 ### Youtube Download
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/rg3/youtube-dl
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/rg3/youtube-dl
 ````shell
 sudo apt-get -y install libavcodec-extra libav-tools
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -188,7 +188,7 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
 ````
 
 ### Youtube Upload
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tokland/youtube-upload
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) https://github.com/tokland/youtube-upload
 
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/alert.svg) https://github.com/tokland/youtube-upload/pull/264
 
