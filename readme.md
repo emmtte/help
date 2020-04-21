@@ -75,8 +75,8 @@ sudo pip3.7 install -U google-music-scripts
 ````shell
 sudo apt-get install mc
 ````
-or
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg)````shell
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg)
+```shell
 sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
 wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
 tar xvfz 4.8.20.tar.gz
@@ -85,7 +85,7 @@ autoconf
 ./configure
 make
 make install
-````
+```
 <br/>
 
 ### Neovim
