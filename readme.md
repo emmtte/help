@@ -33,11 +33,11 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
-<div align="right"><a href="#raspberry-pi-headless-setup"><img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### [![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup) Git
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/git/git</sup>
+### Git
 ````shell
 sudo apt-get install git
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
@@ -52,8 +52,9 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
-<br/>
 
 ### Google Drive
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/odeke-em/drive</sup>
@@ -62,8 +63,9 @@ go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
 ````
-[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Google Music Scripts
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/thebigmunch/google-music-scripts</sup>
@@ -71,7 +73,9 @@ drive init /media/hdd/drive
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
 ````
-<br/>
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 ### Midnight Commander
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/MidnightCommander/mc</sup>    
