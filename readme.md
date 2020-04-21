@@ -126,6 +126,9 @@ rm node.tar.gz
 
 ### Oh My Zsh
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/ohmyzsh/ohmyzsh</sup>
+
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg) <sup>pi@raspberry</sup>  
+<sup>
 ```shell
 sudo apt-get install zsh
 mkdir $HOME/.antigen
@@ -138,7 +141,17 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Power Level 10K``` https://github.com/romkatv/powerlevel10k</sup>  
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Auto Suggestions``` https://github.com/zsh-users/zsh-autosuggestions</sup>  
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Completions``` https://github.com/zsh-users/zsh-completions</sup>  
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Syntax Highlighting```https://github.com/zsh-users/zsh-syntax-highlighting</sup>  
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Syntax Highlighting```https://github.com/zsh-users/zsh-syntax-highlighting</sup>
+ 
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg) <sup>~/.zshrc</sup>  
+```
+antigen use oh-my-zsh
+antigen theme romkatv/powerlevel10k
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
 
