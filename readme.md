@@ -63,7 +63,7 @@ drive init /media/hdd/drive
 <br/>
 
 ### Google Music Scripts
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/thebigmunch/google-music-scripts</sup>
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/thebigmunch/google-music-scripts</sup>
 ````shell
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
@@ -71,12 +71,12 @@ sudo pip3.7 install -U google-music-scripts
 <br/>
 
 ### Midnight Commander
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/MidnightCommander/mc</sup>
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/MidnightCommander/mc</sup>
 ````shell
 sudo apt-get install mc
 ````
 or
-![](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg]````shell
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg)````shell
 sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
 wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
 tar xvfz 4.8.20.tar.gz
