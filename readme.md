@@ -23,7 +23,6 @@ Prerequisites
 ````shell
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
-<br/>
 
 ### Dropbox Uploader
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/andreafabrizi/Dropbox-Uploader</sup>
@@ -33,7 +32,6 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
-<br/>
 
 ### Git
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/git/git</sup>
@@ -51,7 +49,6 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
-<br/>
 
 ### Google Drive
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/odeke-em/drive</sup>
