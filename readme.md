@@ -12,7 +12,7 @@
   * [Raspbian](#raspbian)
   * [Samba](#samba)
   * [Tmux](#tmux)
-  * [Wifi & Bluetooth](#disable bt and wifi)
+  * [Wifi & Bluetooth](#disable-bt-and-wifi)
   * [Youtube Download](#youtube-dl)
   * [Youtube Upload](#youtube-upload)
 
