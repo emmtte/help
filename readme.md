@@ -188,7 +188,7 @@ sudo smbpasswd -a pi
 
 
 ### Tmux
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tmux/tmux</sup>
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tmux/tmux</sup>  
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg) <sup>```sudo apt-get install tmux```</sup>
 ```shell
 tmux -V
