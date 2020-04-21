@@ -33,8 +33,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
-[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](raspberry-pi-headles-setup)
-<br/>
+[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)
 
 ### Git
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/git/git</sup>
@@ -52,6 +51,7 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
+[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)
 <br/>
 
 ### Google Drive
@@ -61,6 +61,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
 ````
+[![-](https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](#raspberry-pi-headles-setup)
 <br/>
 
 ### Google Music Scripts
