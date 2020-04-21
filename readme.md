@@ -152,6 +152,7 @@ sudo service ssh restart
 ````
 
 #### PuttyGen
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg) <sup>puttygen.exe</sup>
 - Conversions => Import Key (id_rsa)
 - Save Private Key and Yes to save without a passphrase.
 - Choose a location and a name for the new .ppk key
