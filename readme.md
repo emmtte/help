@@ -33,6 +33,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ````
+![(https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg)](raspberry-pi-headles-setup)
 <br/>
 
 ### Git
