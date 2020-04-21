@@ -41,7 +41,7 @@ fi
 ```
 
 ## mc
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg)https://github.com/MidnightCommander/mc
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/MidnightCommander/mc
 ````sh
 sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
 wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
@@ -67,7 +67,7 @@ sudo apt-get install git gpac libav-tools mkvtoolnix mpv exiv2 mc rsync tmux ntf
 ````
 
 ## node.js
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg)https://nodejs.org
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://nodejs.org
 ````sh
 VERSION=10.16.0
 sudo apt-get -y install build-essential
@@ -77,7 +77,7 @@ rm node.tar.gz
 ````
 
 ## tmux
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg)https://github.com/tmux/tmux
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/tmux/tmux
 ````sh
 tmux -V
 tmux kill-server
@@ -94,7 +94,7 @@ rm -rf tmux-2.8
 ````
 
 ## nvim
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg)https://github.com/neovim/neovim
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/neovim/neovim
 ````sh
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
 git clone https://github.com/neovim/neovim.git
@@ -114,7 +114,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ````
 
 ## git
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg)https://github.com/ManuCart/Raspberry-Pi
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link.svg) https://github.com/ManuCart/Raspberry-Pi
 ````sh
 sudo apt-get install git
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
