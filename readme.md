@@ -155,16 +155,16 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 > ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/romkatv/powerlevel10k</sup>  
 > ```antigen theme romkatv/powerlevel10k```
 
-> **Auto Suggestions!
-> [-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>
+> **Auto Suggestions**  
+> [-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>  
 > ```antigen bundle zsh-users/zsh-autosuggestions```
 
-> Zsh Completions
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup>
+> **Zsh Completions**  
+> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup>  
 > ```antigen bundle zsh-users/zsh-completions```
 
-> Syntax Highlighting
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>
+> **Syntax Highlighting**  
+> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>  
 > ```antigen bundle zsh-users/zsh-syntax-highlighting```
 
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg) <sup>~/.zshrc</sup>  
