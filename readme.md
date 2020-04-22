@@ -146,13 +146,13 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 /usr/bin/zsh
 . ~/.zshrc
 ```
-> Antigen
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>
+> Antigen  
+> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>  
 >     antigen use oh-my-zsh\n
 >     antigen apply
 
-> powerlevel10k
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Power Level 10K``` https://github.com/romkatv/powerlevel10k</sup>
+> powerlevel10k  
+> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Power Level 10K``` https://github.com/romkatv/powerlevel10k</sup>  
 >     antigen theme romkatv/powerlevel10k
 
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Auto Suggestions``` https://github.com/zsh-users/zsh-autosuggestions</sup>
