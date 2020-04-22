@@ -1,6 +1,7 @@
 
 # Raspberry Pi Headless Setup
   * [Dropbox-Uploader](#dropbox-uploader)
+  * [Fuzzy Finder](#fuzzy-finder)
   * [Git](#git)
   * [Google Drive](#google-drive)
   * [Google Music](#google-music-scripts)
@@ -35,6 +36,14 @@ dropbox_uploader init
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
+### Fuzzy Finder
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/junegunn/fzf/#installation</sup>
+```shell
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ### Git
 ````shell
