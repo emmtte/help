@@ -183,6 +183,7 @@ sudo service ssh restart
 ```
 
 #### PuttyGen
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg) <sup>https://www.putty.org/</sup>  
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg) <sup>puttygen.exe</sup>
 - Conversions => Import Key (id_rsa)
 - Save Private Key and Yes to save without a passphrase.
