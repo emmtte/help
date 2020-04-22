@@ -155,7 +155,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 > ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/romkatv/powerlevel10k</sup>  
 > ```antigen theme romkatv/powerlevel10k```
 
-> **Auto Suggestions**  
+> **Zsh Auto Suggestions**  
 > [-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>  
 > ```antigen bundle zsh-users/zsh-autosuggestions```
 
@@ -163,7 +163,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 > ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup>  
 > ```antigen bundle zsh-users/zsh-completions```
 
-> **Syntax Highlighting**  
+> **Zsh Syntax Highlighting**  
 > ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>  
 > ```antigen bundle zsh-users/zsh-syntax-highlighting```
 
