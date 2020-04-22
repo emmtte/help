@@ -152,17 +152,20 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 > ```antigen apply```
 
 > **Powerlevel10k**  
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Power Level 10K``` https://github.com/romkatv/powerlevel10k</sup>  
+> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/romkatv/powerlevel10k</sup>  
 > ```antigen theme romkatv/powerlevel10k```
 
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Auto Suggestions``` https://github.com/zsh-users/zsh-autosuggestions</sup>
->     antigen bundle zsh-users/zsh-autosuggestions
+> **Auto Suggestions!
+> [-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>
+> ```antigen bundle zsh-users/zsh-autosuggestions```
 
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Completions``` https://github.com/zsh-users/zsh-completions</sup>
->     antigen bundle zsh-users/zsh-completions
+> Zsh Completions
+> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup>
+> ```antigen bundle zsh-users/zsh-completions```
 
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Syntax Highlighting```https://github.com/zsh-users/zsh-syntax-highlighting</sup>
->     antigen bundle zsh-users/zsh-syntax-highlighting
+> Syntax Highlighting
+> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>
+> ```antigen bundle zsh-users/zsh-syntax-highlighting```
 
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg) <sup>~/.zshrc</sup>  
 <div align="right"><a href="#raspberry-pi-headless-setup">
