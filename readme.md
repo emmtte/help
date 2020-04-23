@@ -150,7 +150,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 . ~/.zshrc
 ```
 #### Antigen  
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>  
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>
 ```
 antigen use oh-my-zsh  
 antigen apply
@@ -164,7 +164,7 @@ antigen apply
 ```
 
 #### Zsh Auto Suggestions
-[-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>  
+[-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>
 ```
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
@@ -177,7 +177,7 @@ antigen apply
 ```
 
 #### Zsh Syntax Highlighting  
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>  
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>
 ```
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
