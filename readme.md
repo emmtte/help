@@ -318,7 +318,7 @@ sudo reboot
 
 
 ### License
-
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg)  <sup>https://github.com/primer/octicons</sup>  
 MIT License
 
 Copyright (c) ```2014-2020``` ```emmtte```
