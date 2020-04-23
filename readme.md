@@ -149,27 +149,39 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 /usr/bin/zsh
 . ~/.zshrc
 ```
-> **Antigen**  
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>  
-> ```antigen use oh-my-zsh```  
-> ```antigen apply```
+#### Antigen  
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>  
+```
+antigen use oh-my-zsh  
+antigen apply
+```
 
-> **Powerlevel10k**  
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/romkatv/powerlevel10k</sup>  
-> ```antigen theme romkatv/powerlevel10k```
+#### Power Level 10k  
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/romkatv/powerlevel10k</sup>  
+```
+antigen theme romkatv/powerlevel10k
+antigen apply
+```
 
-> **Zsh Auto Suggestions**  
-> [-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>  
-> ```antigen bundle zsh-users/zsh-autosuggestions```
+#### Zsh Auto Suggestions
+[-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>  
+```
+antigen bundle zsh-users/zsh-autosuggestions
+antigen apply
+```
 
-> **Zsh Completions**  
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup>  
-> ```antigen bundle zsh-users/zsh-completions```
+#### Zsh Completions  
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup> ```
+antigen bundle zsh-users/zsh-completions
+antigen apply
+```
 
-> **Zsh Syntax Highlighting**  
-> ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>  
-> ```antigen bundle zsh-users/zsh-syntax-highlighting```
-
+#### Zsh Syntax Highlighting  
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>  
+```
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
+```
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg) <sup>~/.zshrc</sup>  
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
