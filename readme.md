@@ -130,8 +130,10 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O nod
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 ```
-> uninstall  
-> ```sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}```
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/x.svg) <sup>```uninstall```</sup>
+```
+sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
