@@ -206,7 +206,7 @@ sudo service ssh restart
 ```
 Window > Apprearance
 	Font: MesloLGS NF, 11-point
- [X] Allow selection of variable-pith fonts
+        [X] Allow selection of variable-pith fonts
 	Font quality:
 		( ) Antialiased     ( ) Non-Antialiased
 		(O) ClearType       ( ) Default
