@@ -11,6 +11,7 @@
   * [Oh My Zsh](#oh-my-zsh)
   * [OpenSSH](#openssh)
   * [Pi Hole](#pi-hole)
+  * [PuTTY](#putty)
   * [Raspbian](#raspbian)
   * [Samba](#samba)
   * [Tmux](#tmux)
@@ -198,6 +199,27 @@ sudo service ssh restart
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
+### PuTTY
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg) <sup>https://www.chiark.greenend.org.uk/~sgtatham/putty/</sup>  
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/text-size.svg) <sup>https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf</sup>  
+![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/package.svg) <sup>https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg</sup>
+```
+Window > Apprearance
+	Font: MesloLGS NF, 11-point
+ [X] Allow selection of variable-pith fonts
+	Font quality:
+		( ) Antialiased     ( ) Non-Antialiased
+		(O) ClearType       ( ) Default
+Window > Colours
+	[X] Allow terminal to specify ANSI colours
+	[X] Allow terminal to use xterm 256-colour mode
+	Indicate bolded text by changing:
+		( ) The font   (O) The colour   ( ) Both
+	[ ] Attempt to use logical palettes
+	[ ] Use system colours
+ ```
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ### Pi Hole
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/pi-hole/pi-hole</sup>
