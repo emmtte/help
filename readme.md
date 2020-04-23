@@ -210,11 +210,12 @@ sudo service ssh restart
 #### PuttyGen
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg) <sup>https://www.putty.org/</sup>  
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg) <sup>puttygen.exe</sup>
-- Conversions => Import Key (id_rsa)
-- Save Private Key and Yes to save without a passphrase.
-- Choose a location and a name for the new .ppk key
+```
+Conversions > Import Key > File > id_rsa
+Save Private Key > Yes > File > id_rsa.ppk
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
 
 ### PuTTY
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg) <sup>https://www.chiark.greenend.org.uk/~sgtatham/putty/</sup>  
