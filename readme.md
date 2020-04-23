@@ -171,7 +171,8 @@ antigen apply
 ```
 
 #### Zsh Completions  
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup> ```
+![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup>
+```
 antigen bundle zsh-users/zsh-completions
 antigen apply
 ```
