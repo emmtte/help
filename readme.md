@@ -7,7 +7,7 @@
   * [Google Music](#google-music-scripts)
   * [Midnight Commander](#midnight-commander)
   * [Neovim](#neovim)
-  * [Node.js](#node.js)
+  * [Node.js](#node-js)
   * [Oh My Zsh](#oh-my-zsh)
   * [OpenSSH](#openssh)
   * [Pi Hole](#pi-hole)
@@ -130,6 +130,8 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O nod
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 ```
+> Uninstall  
+> ```sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
