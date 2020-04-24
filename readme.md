@@ -88,7 +88,7 @@ echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 
 https://github.com/odeke-em/drive
 
-<img align="left" width="40" height="40" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
 
 <pre class="shell">
 go get -u github.com/odeke-em/drive/cmd/drive
