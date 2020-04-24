@@ -224,6 +224,10 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 ```
 
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```p10k configure```
+
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
