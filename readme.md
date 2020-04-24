@@ -83,16 +83,18 @@ echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Google Drive
+## Google Drive
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/odeke-em/drive
 
-````shell
+<img align="left" width="40" height="40" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+
+<pre class="shell">
 go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
-````
+</pre>
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
