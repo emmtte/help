@@ -24,8 +24,6 @@
 ````shell
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
-<br/>
-
 
 <img width="30" height="30" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">  
 
