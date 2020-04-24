@@ -9,36 +9,28 @@
 <a href="#google-drive">Google Drive</a>
 <a href="#google-music-scripts">Google Music</a>
 <a href="#midnight-commander">Midnight Commander</a>
+<a href="#neovim">Neovim</a>
+<a href="#node-js">Node JS</a>
+<a href="#oh-my-zsh">Oh My Zsh</a>
+<a href="#openssh">OpenSSH</a>
+<a href="#pi-hole">Pi Hole</a>
+<a href="#putty">PuTTY</a>
+<a href="#raspbian">Raspbian</a>
+<a href="#samba">Samba</a>
+<a href="#tmux">Tmux</a>
+<a href="#youtube-download">Youtube Download</a>
+<a href="#youtube-upload">Youtube Upload</a>
+<a href="#raspbian-Procedures">Raspbian Procedures</a>
+<a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
 </pre>
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/home.svg">
-
-  * [Dropbox-Uploader](#dropbox-uploader)
-  * [Fuzzy Finder](#fuzzy-finder)
-  * [Git](#git)
-  * [Google Drive](#google-drive)
-  * [Google Music](#google-music-scripts)
-  * [Midnight Commander](#midnight-commander)
-  * [Neovim](#neovim)
-  * [Node JS](#node-js)
-  * [Oh My Zsh](#oh-my-zsh)
-  * [OpenSSH](#openssh)
-  * [Pi Hole](#pi-hole)
-  * [PuTTY](#putty)
-  * [Raspbian](#raspbian)
-  * [Samba](#samba)
-  * [Tmux](#tmux)
-  * [Youtube Download](#youtube-download)
-  * [Youtube Upload](#youtube-upload)
-  * [Raspbian Procedures](#raspbian-Procedures)
-    - [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
 <summary>
 </summary>
 
-#### Prerequisites
-````shell
-sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
-````
+### Prerequisites
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg">
+```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
+
 ## Dropbox Uploader
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
