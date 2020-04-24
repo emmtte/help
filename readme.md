@@ -203,11 +203,11 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
 
 <pre>
-<b>Antigen</b> ……………………………………………… https://github.com/zsh-users/antigen
-<b>Power Level 10k</b> ………………………… https://github.com/romkatv/powerlevel10k
-<b>Zsh Auto Suggestions</b> …………… https://github.com/zsh-users/zsh-autosuggestions
-<b>Zsh Completions</b> ………………………… https://github.com/zsh-users/zsh-completions
-<b>Zsh Syntax Highlighting</b> …… https://github.com/zsh-users/zsh-syntax-highlighting
+<b>Antigen</b> ……………………………………………… <a href="https://github.com/zsh-users/antigen">https://github.com/zsh-users/antigen</a>
+<b>Power Level 10k</b> ………………………… <a href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a>
+<b>Zsh Auto Suggestions</b> …………… <a href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a>
+<b>Zsh Completions</b> ………………………… <a href="https://github.com/zsh-users/zsh-completions">https://github.com/zsh-users/zsh-completions</a>
+<b>Zsh Syntax Highlighting</b> …… <a href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a>
 </pre>
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
