@@ -115,7 +115,7 @@ drive init /media/hdd/drive
 
 https://github.com/thebigmunch/google-music-scripts
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
 sudo apt-get install libav-tools #avconv
@@ -177,10 +177,12 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 
 
 ### Oh My Zsh
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/ohmyzsh/ohmyzsh</sup>
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg) <sup>pi@raspberry</sup>  
-<sup>
+https://github.com/ohmyzsh/ohmyzsh
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+
 ```shell
 sudo apt-get install zsh
 mkdir $HOME/.antigen
@@ -189,8 +191,14 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 /usr/bin/zsh
 . ~/.zshrc
 ```
-#### Antigen  
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
+
+**Antigen**  https://github.com/zsh-users/antigen
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+
 ```
 antigen use oh-my-zsh  
 antigen apply
