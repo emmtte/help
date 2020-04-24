@@ -29,6 +29,7 @@
 
 ### Prerequisites
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg">
+
 ```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
 
 ## Dropbox Uploader
