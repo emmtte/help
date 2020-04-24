@@ -24,20 +24,21 @@
 ````shell
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
+## Dropbox Uploader
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
-<img align="left" width="60" height="60" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+https://github.com/andreafabrizi/Dropbox-Uploader
 
-### Dropbox Uploader
-https://github.com/andreafabrizi/Dropbox-Uploader  
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
 
-````shell
+```shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ## Fuzzy Finder
 <img align="left" width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
@@ -46,13 +47,12 @@ dropbox_uploader init
 
 <img align="left" width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
 
-<pre class="shell">
+```shell
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-</pre>
-
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ## Git
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
@@ -79,7 +79,7 @@ git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ## Google Drive
@@ -99,17 +99,22 @@ mkdir /media/hdd/drive
 drive init /media/hdd/drive
 </pre>
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Google Music Scripts
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/thebigmunch/google-music-scripts</sup>
-````shell
+## Google Music Scripts
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+
+https://github.com/thebigmunch/google-music-scripts
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+
+```shell
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
-````
+```
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ### Midnight Commander
