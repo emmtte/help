@@ -39,12 +39,10 @@ dropbox_uploader init
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
-<img align="left" width="58" height="58" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
 ### Fuzzy Finder
 <img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
-<pre><a href="https://github.com/junegunn/fzf/#installation">https://github.com/junegunn/fzf/#installation</a>https://github.com/junegunn/fzf/#installation</pre>
+<pre><a href="https://github.com/junegunn/fzf/#installation">https://github.com/junegunn/fzf/#installation</pre>
 
 ```shell
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -59,9 +57,13 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ### Git
 https://github.com/git/git
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg">
+<img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg">
 
-```sudo apt-get install git```
+<pre><a href="https://github.com/git/git">https://github.com/git/git</pre>
+
+<img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg">
+
+<pre>sudo apt-get install git</pre>
 
 ````shell
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
