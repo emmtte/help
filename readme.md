@@ -44,7 +44,7 @@ dropbox_uploader init
 ### Fuzzy Finder
 <img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
-<pre>https://github.com/junegunn/fzf/#installation</pre>
+<pre><a href="https://github.com/junegunn/fzf/#installation">https://github.com/junegunn/fzf/#installation</a>https://github.com/junegunn/fzf/#installation</pre>
 
 ```shell
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
