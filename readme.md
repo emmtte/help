@@ -25,7 +25,7 @@
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
 
-<img align="left" width="60" height="60" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+<img align="left" width="55" height="55" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 ### Dropbox Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader  
@@ -39,7 +39,7 @@ dropbox_uploader init
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
-<img align="left" width="70" height="70" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+<img align="left" width="55" height="55" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 ### Fuzzy Finder
 https://github.com/junegunn/fzf/#installation
@@ -52,12 +52,14 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-<img align="left" width="70" height="70" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+<img align="left" width="60" height="60" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 ### Git
 https://github.com/git/git
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg) ```sudo apt-get install git```
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg)
+
+```sudo apt-get install git```
 
 ````shell
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
