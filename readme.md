@@ -24,8 +24,10 @@
 ````shell
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
 ````
+<div align="left">< width="30" height="30" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a>https://github.com/andreafabrizi/Dropbox-Uploader</div>
 
-<img align="right" width="30" height="30" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+
+<img align="left" width="30" height="30" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 ### Dropbox Uploader
 https://github.com/andreafabrizi/Dropbox-Uploader  
