@@ -1,5 +1,9 @@
 
 # Raspberry Pi Headless Setup
+<summary>
+</summary>
+
+
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Fuzzy Finder](#fuzzy-finder)
   * [Git](#git)
@@ -38,21 +42,21 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ## Fuzzy Finder
-<img align="left" width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 <pre><a href="https://github.com/junegunn/fzf/#installation">https://github.com/junegunn/fzf/#installation</a></pre>
 
-<img align="left" width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
 
 ```shell
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ## Git
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
@@ -79,7 +83,7 @@ git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ## Google Drive
@@ -99,7 +103,7 @@ mkdir /media/hdd/drive
 drive init /media/hdd/drive
 </pre>
 <div align="right"><a href="#raspberry-pi-headless-setup">
-<img  width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ## Google Music Scripts
