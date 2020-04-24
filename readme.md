@@ -1,7 +1,7 @@
 
 # Raspberry Pi Headless Setup
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/home.svg">
 <pre>
 <a href="#dropbox-uploader">Dropbox-Uploader</a>
 <a href="#fuzzy-finder">Fuzzy Finder</a>
