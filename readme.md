@@ -202,64 +202,27 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
 
-**Antigen**
-
-<img align="left" width="20" height="20" src="https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png">
-
-https://github.com/zsh-users/antigen
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-```
-antigen use oh-my-zsh  
-antigen apply
-```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
-
-**Power Level 10k**  :  https://github.com/romkatv/powerlevel10k
+<pre>
+Antigen………………………………………………https://github.com/zsh-users/antigen
+Power Level 10k…………………………https://github.com/romkatv/powerlevel10k
+Zsh Auto Suggestions……………https://github.com/zsh-users/zsh-autosuggestions
+Zsh Completions…………………………https://github.com/zsh-users/zsh-completions
+Zsh Syntax Highlighting……https://github.com/zsh-users/zsh-syntax-highlighting
+</pre>
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
 ```
+antigen use oh-my-zsh
 antigen theme romkatv/powerlevel10k
-antigen apply
-```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
-
-**Zsh Auto Suggestions**  :  https://github.com/zsh-users/zsh-autosuggestions
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-```
-antigen bundle zsh-users/zsh-autosuggestions
-antigen apply
-```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
-
-**Zsh Completions**  :  https://github.com/zsh-users/zsh-completions
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-```
 antigen bundle zsh-users/zsh-completions
-antigen apply
-```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
-
-**Zsh Syntax Highlighting**  :  https://github.com/zsh-users/zsh-syntax-highlighting
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-```
+antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 ```
 
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -308,7 +271,8 @@ Window > Colours
 	[ ] Attempt to use logical palettes
 	[ ] Use system colours
  ```
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ## Pi Hole
@@ -316,7 +280,8 @@ Window > Colours
 ```shell
 curl -sSL https://install.pi-hole.net | bash
 ```
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ## Samba
@@ -333,7 +298,8 @@ EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
 ```
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
+<div align="right"><a href="#raspberry-pi-headless-setup">
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 ## Tmux
@@ -355,6 +321,7 @@ rm -rf tmux-2.8
 ```
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 
 ## Youtube Download
