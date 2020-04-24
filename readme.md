@@ -27,11 +27,8 @@ sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostsc
 <br/>
 
 ### Dropbox Uploader
-
-<img align="left" width="15" height="15" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">  
-
+<img width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 https://github.com/andreafabrizi/Dropbox-Uploader  
-
 ````shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
