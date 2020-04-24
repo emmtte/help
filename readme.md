@@ -44,6 +44,11 @@ dropbox_uploader init
 ### Fuzzy Finder
 https://github.com/junegunn/fzf/#installation
 
+<big><pre>
+**void** Click ([**Keycode**](#keycode) key) **const**
+</pre></big>
+
+
 ```shell
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
@@ -79,7 +84,10 @@ echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 
 
 ### Google Drive
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/odeke-em/drive</sup>
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg"
+
+https://github.com/odeke-em/drive
+
 ````shell
 go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
