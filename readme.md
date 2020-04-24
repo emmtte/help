@@ -203,11 +203,11 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
 
 <pre>
-Antigen………………………………………………https://github.com/zsh-users/antigen
-Power Level 10k…………………………https://github.com/romkatv/powerlevel10k
-Zsh Auto Suggestions……………https://github.com/zsh-users/zsh-autosuggestions
-Zsh Completions…………………………https://github.com/zsh-users/zsh-completions
-Zsh Syntax Highlighting……https://github.com/zsh-users/zsh-syntax-highlighting
+<b>Antigen</b> ……………………………………………… https://github.com/zsh-users/antigen
+<b>Power Level 10k</b> ………………………… https://github.com/romkatv/powerlevel10k
+<b>Zsh Auto Suggestions</b> …………… https://github.com/zsh-users/zsh-autosuggestions
+<b>Zsh Completions</b> ………………………… https://github.com/zsh-users/zsh-completions
+<b>Zsh Syntax Highlighting</b> …… https://github.com/zsh-users/zsh-syntax-highlighting
 </pre>
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
