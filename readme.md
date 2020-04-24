@@ -312,21 +312,13 @@ sudo smbpasswd -a pi
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
-
-<p>This is <a href="http://example.com/" title="Title">
-an example</a> inline link.
-Use the /newbot command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
-The name of your bot is displayed in contact details and elsewhere.
-The Username is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.
-Copy the token to the configuration file config.json
+<pre>
+Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
+The **name** of your bot is displayed in contact details and elsewhere.  
+The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.  
+Copy the **token** to the configuration file config.json
 Send a dummy message to your new bot
-
-
-
-
-</p>
-
-
+</pre>
 
 ## Tmux
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tmux/tmux</sup>  
