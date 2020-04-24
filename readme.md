@@ -2,14 +2,15 @@
 # Raspberry Pi Headless Setup
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/home.svg">
-<ol>
-<li><a href="#dropbox-uploader">Dropbox-Uploader</a></br></li>
-<li><a href="#fuzzy-finder">Fuzzy Finder</a></br></li>
-<li><a href="#git">Git</a></br></li>
-<li><a href="#google-drive">Google Drive</a></br></li>
-<li><a href="#google-music-scripts">Google Music</a></br></li>
-<li><a href="#midnight-commander">Midnight Commander</a></br></li>
-</ol>
+<pre>
+<a href="#dropbox-uploader">Dropbox-Uploader</a></br>
+<a href="#fuzzy-finder">Fuzzy Finder</a></br>
+<a href="#git">Git</a></br>
+<a href="#google-drive">Google Drive</a></br>
+<a href="#google-music-scripts">Google Music</a></br>
+<a href="#midnight-commander">Midnight Commander</a></br>
+</pre>
+
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/home.svg">
 
   * [Dropbox-Uploader](#dropbox-uploader)
