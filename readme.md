@@ -181,7 +181,7 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 
 https://github.com/ohmyzsh/ohmyzsh
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
 sudo apt-get install zsh
@@ -194,8 +194,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
 
-**Antigen**  https://github.com/zsh-users/antigen
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup>```Antigen``` https://github.com/zsh-users/antigen</sup>
+**Antigen**  :  https://github.com/zsh-users/antigen
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
 
