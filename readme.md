@@ -51,19 +51,16 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
-
-<img align="left" width="60" height="60" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
-### Git
-<img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+## Git
+<img align="left" width="40" height="40" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 <pre><a href="https://github.com/git/git">https://github.com/git/git</a></pre>
 
-<img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg">
+<img align="left" width="40" height="40" src="https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg">
 
 <pre>sudo apt-get install git</pre>
 
-<img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="40" height="40" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
 
 <pre class="shell">
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
