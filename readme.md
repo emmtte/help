@@ -42,7 +42,7 @@ sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostsc
 
 https://github.com/andreafabrizi/Dropbox-Uploader
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
 sudo curl -o /usr/local/bin/dropbox_uploader \
@@ -76,7 +76,7 @@ https://github.com/git/git
 
 ```sudo apt-get install git```
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
