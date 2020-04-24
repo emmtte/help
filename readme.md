@@ -196,9 +196,9 @@ https://github.com/ohmyzsh/ohmyzsh
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 mkdir $HOME/.antigen
 curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 /usr/bin/zsh
 . ~/.zshrc
 ```
