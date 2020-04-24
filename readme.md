@@ -48,19 +48,25 @@ dropbox_uploader init
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
+
+
 ## Fuzzy Finder
+
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
-<pre><a href="https://github.com/junegunn/fzf/#installation">https://github.com/junegunn/fzf/#installation</a></pre>
+https://github.com/junegunn/fzf
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
 ```shell
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
+
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
+
 
 ## Git
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
@@ -86,8 +92,10 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
+
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
 
 
 ## Google Drive
@@ -125,7 +133,7 @@ sudo pip3.7 install -U google-music-scripts
 <img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Midnight Commander
+## Midnight Commander
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/MidnightCommander/mc</sup>    
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/zap.svg) <sup>```sudo apt-get install mc```</sup>  
 
@@ -146,7 +154,7 @@ make install
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Neovim
+## Neovim
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/neovim/neovim</sup>
 ```shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
@@ -159,7 +167,7 @@ sudo make install
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Node JS
+## Node JS
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/nodejs/nodejs.org</sup>
 ```shell
 VERSION=10.16.0
@@ -176,7 +184,7 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Oh My Zsh
+## Oh My Zsh
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/ohmyzsh/ohmyzsh
@@ -196,46 +204,62 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 **Antigen**  :  https://github.com/zsh-users/antigen
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
 ```
 antigen use oh-my-zsh  
 antigen apply
 ```
 
-#### Power Level 10k  
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/romkatv/powerlevel10k</sup>  
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
+
+**Power Level 10k**  :  https://github.com/romkatv/powerlevel10k
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
 ```
 antigen theme romkatv/powerlevel10k
 antigen apply
 ```
 
-#### Zsh Auto Suggestions
-[-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-autosuggestions</sup>
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
+
+**Zsh Auto Suggestions**  :  https://github.com/zsh-users/zsh-autosuggestions
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
 ```
 antigen bundle zsh-users/zsh-autosuggestions
 antigen apply
 ```
 
-#### Zsh Completions  
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-completions</sup>
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
+
+**Zsh Completions**  :  https://github.com/zsh-users/zsh-completions
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
 ```
 antigen bundle zsh-users/zsh-completions
 antigen apply
 ```
 
-#### Zsh Syntax Highlighting  
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg) <sup> https://github.com/zsh-users/zsh-syntax-highlighting</sup>
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
+
+**Zsh Syntax Highlighting**  :  https://github.com/zsh-users/zsh-syntax-highlighting
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
 ```
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 ```
-![-](https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg) <sup>~/.zshrc</sup>  
-<div align="right"><a href="#raspberry-pi-headless-setup">
+
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
 
 
-### OpenSSH
+
+## OpenSSH
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/openssh</sup>
 ```shell
 ssh-keygen
@@ -252,17 +276,16 @@ EOF
 sudo service ssh restart
 ```
 
-#### PuttyGen
+### PuttyGen
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg) <sup>https://www.putty.org/</sup>  
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg) <sup>puttygen.exe</sup>
 ```
 Conversions > Import Key > File > id_rsa
 Save Private Key > Yes > File > id_rsa.ppk
 ```
-<div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
-### PuTTY
+## PuTTY
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg) <sup>https://www.chiark.greenend.org.uk/~sgtatham/putty/</sup>  
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/text-size.svg) <sup>https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf</sup>  
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/package.svg) <sup>https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg</sup>
@@ -281,19 +304,18 @@ Window > Colours
 	[ ] Attempt to use logical palettes
 	[ ] Use system colours
  ```
-<div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
 
-### Pi Hole
+
+## Pi Hole
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/pi-hole/pi-hole</sup>
 ```shell
 curl -sSL https://install.pi-hole.net | bash
 ```
-<div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
 
 
-### Samba
+## Samba
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/samba-team/samba</sup>
 ```shell
 sudo apt-get -y install samba samba-common-bin
@@ -307,11 +329,10 @@ EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
 ```
-<div align="right"><a href="#raspberry-pi-headless-setup">
-<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>  
 
 
-### Tmux
+## Tmux
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/tmux/tmux</sup>  
 ![-](https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg) <sup>```sudo apt-get install tmux```</sup>
 ```shell
@@ -332,7 +353,7 @@ rm -rf tmux-2.8
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Youtube Download
+## Youtube Download
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg) <sup>https://github.com/rg3/youtube-dl</sup>
 ```shell
 sudo apt-get -y install libavcodec-extra libav-tools
@@ -346,7 +367,7 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Youtube Upload
+## Youtube Upload
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg)  <sup>https://github.com/tokland/youtube-upload</sup>  
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/alert.svg) <sup>https://github.com/tokland/youtube-upload/pull/264</sup>
 
@@ -368,8 +389,8 @@ sudo rm -rf youtube-upload-master
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### Raspbian Procedures
-#### Disable Bluetooth and Wifi
+## Raspbian Procedures
+### Disable Bluetooth and Wifi
 ```shell
 echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
 echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
@@ -380,7 +401,7 @@ sudo reboot
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
-### License
+## License
 ![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg)  <sup>https://github.com/primer/octicons</sup>  
 
 MIT License
