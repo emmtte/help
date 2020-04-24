@@ -42,7 +42,7 @@ dropbox_uploader init
 <img align="left" width="58" height="58" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 ### Fuzzy Finder
-<img align="left" width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+<img align="left" width="30" height="30" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 <pre>https://github.com/junegunn/fzf/#installation</pre>
 
