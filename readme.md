@@ -189,10 +189,13 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 
 https://github.com/ohmyzsh/ohmyzsh
 
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
+
+```sudo apt-get install zsh```
+
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
-sudo apt-get install zsh
 mkdir $HOME/.antigen
 curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
