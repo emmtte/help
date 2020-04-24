@@ -202,7 +202,11 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
 
-**Antigen**  :  https://github.com/zsh-users/antigen
+### Antigen
+
+<img align="left" width="20" height="20" src="https://upload.wikimedia.org/wikipedia/commons/4/48/BLANK_ICON.png">
+
+https://github.com/zsh-users/antigen
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
