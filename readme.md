@@ -1,8 +1,15 @@
 
 # Raspberry Pi Headless Setup
-<summary>
-</summary>
 
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+<pre>
+<a href="#dropbox-uploader">Dropbox-Uploader</a>
+<a href="#fuzzy-finder">Fuzzy Finder</a>
+<a href="#git">Git</a>
+<a href="#google-drive">Google Drive</a>
+<a href="#google-music-scripts">Google Music</a>
+<a href="#midnight-commander">Midnight Commander</a>
+</pre>
 
   * [Dropbox-Uploader](#dropbox-uploader)
   * [Fuzzy Finder](#fuzzy-finder)
@@ -23,7 +30,9 @@
   * [Youtube Upload](#youtube-upload)
   * [Raspbian Procedures](#raspbian-Procedures)
     - [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
-    
+<summary>
+</summary>
+
 #### Prerequisites
 ````shell
 sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript
