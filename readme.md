@@ -39,15 +39,18 @@ dropbox_uploader init
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
-### Fuzzy Finder
-<img align="left" width="50" height="50" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+## Fuzzy Finder
+<img align="left" width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 <pre><a href="https://github.com/junegunn/fzf/#installation">https://github.com/junegunn/fzf/#installation</a></pre>
 
-```shell
+<img align="left" width="25" height="25" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
+
+<pre class="shell">
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-```
+</pre>
+
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
