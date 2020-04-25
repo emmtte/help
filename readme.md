@@ -23,14 +23,11 @@
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
 <b>Configurations</b>
-  • Security
-    ∙ Change default username and password
-    ∙ Key-based authentication (SSH)
-  • Network
-    ∙ <a href="#domain-name-system">Domain Name System</a>
-    ∙ <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
-  • Miscellaneous
-    ∙ <a href="#format-usb-key">Format USB Key</a>
+  • Change default username and password
+  • Key-based authentication (SSH)
+  • <a href="#domain-name-system">Domain Name System</a>
+  • <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
+  • <a href="#format-usb-key">Format USB Key</a>
 <b>Infinity Grid Trading Bot</b>
   • <a href="#grafana">Grafana</a>
   • <a href="#influxdb">Influxdb</a>
