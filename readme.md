@@ -166,11 +166,8 @@ sudo nvim /etc/grafana/grafana.ini
 [server]
   # Protocol (http, https, socket)
   protocol = http
-  # The ip address to bind to, empty will bind to all interfaces
-  ;http_addr =
   # The http port  to use
   http_port = 3000
-  Start grafana server
 ````
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
