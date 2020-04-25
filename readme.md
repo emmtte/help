@@ -22,8 +22,6 @@
   • <a href="#tmux">Tmux</a>
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
-
-
 <b>Configurations</b>
   • Security
     ∙ Change default username and password
@@ -33,8 +31,6 @@
     ∙ <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
   • Miscellaneous
     ∙ <a href="#format-usb-key">Format USB Key</a>
-
-
 <b>Infinity Grid Trading Bot</b>
   • <a href="#grafana">Grafana</a>
   • <a href="#influxdb">Influxdb</a>
