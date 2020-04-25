@@ -3,7 +3,7 @@
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-unordered.svg">
 <pre>
-<b>Headless Raspberry Pi Setup</b>
+<b>Tools Setup</b>
   • <a href="#dropbox-uploader">Dropbox-Uploader</a>
   • <a href="#fuzzy-finder">Fuzzy Finder</a>
   • <a href="#git">Git</a>
@@ -18,14 +18,24 @@
   • <a href="#putty">PuTTY</a>
   • <a href="#raspbian">Raspbian</a>
   • <a href="#samba">Samba</a>
-  • <a href="#telegram-bot">Telegram Bot</a>
+  • <a href="#telegram">Telegram</a>
   • <a href="#tmux">Tmux</a>
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
-  • <a href="#raspbian-Procedures">Raspbian Procedures</a>
+<b>Configurations</b>
+  • <i>Security</i>
+    ∙ Change default username and password
+    ∙ Key-based authentication (SSH)
+  • <i>Network</i>
+    ∙ <a href="#domain-name-system">Domain Name System</a>
     ∙ <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
+  • <i>Miscellaneous</i>
     ∙ <a href="#format-usb-key">Format USB Key</a>
-<b>Infinity Grid Trading Bot Setup</b>
+<b>Infinity Grid Trading Bot</b>
+  • <a href="#grafana">Grafana</a>
+  • <a href="#influxdb">Influxdb</a>
+  • <a href="#telegram">Telegram</a>
+  • <a href="#dependencies">Dependencies</a>
 </pre>
 
 <summary>
