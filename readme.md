@@ -300,6 +300,40 @@ sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 ```
 
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
+
+```json
+{
+  "name": "Infinity-Grid-Trading-Bot",
+  "version": "1.0.0",
+  "dependencies": {
+    "binance-api-node": "latest",
+    "bignumber.js": "latest",
+    "coinmarketcap-api": "latest",
+    "dropbox": "latest",
+    "isomorphic-fetch": "latest",
+    "nanoid": "latest",
+    "node-schedule": "latest",
+    "telegraf": "latest",
+    "tulind": "latest"
+  }
+}
+```
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
+
+<pre>
+binance-api-node : https://github.com/Ashlar/binance-api-node
+bignumber.js : https://github.com/MikeMcl/bignumber.js
+coinmarketcap-api : https://github.com/tiaanduplessis/coinmarketcap-api
+dropbox : https://github.com/dropbox/dropbox-sdk-js
+isomorphic-fetch : https://github.com/matthew-andrews/isomorphic-fetch
+nanoid : https://github.com/ai/nanoid
+node-schedule : https://github.com/node-schedule/node-schedule
+telegraf : https://github.com/telegraf/telegraf
+tulind : https://github.com/TulipCharts/tulipnode
+</pre>
+
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/x.svg">
 
 ```sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}```
