@@ -616,7 +616,7 @@ sudo rm -rf youtube-upload-master
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/person.svg">
 
-**#Username and Password
+### Username and Password
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
@@ -636,7 +636,7 @@ sudo deluser -remove-home pi
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
 
-**#Key-based authentication 
+#### Key-based authentication 
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
@@ -672,7 +672,7 @@ Save Private Key > Yes > File > id_rsa.ppk
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/globe.svg">
 
-**#Domain Name System
+###### Domain Name System
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
@@ -696,7 +696,7 @@ dig @1.1.1.1 api.binance.com +short
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/broadcast.svg">
 
-###### Disable Bluetooth and Wifi
+##### Disable Bluetooth and Wifi
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
@@ -709,7 +709,7 @@ sudo reboot
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
 
-###### Format USB key
+#### Format USB key
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
