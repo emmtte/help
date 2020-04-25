@@ -113,6 +113,7 @@ go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
 </pre>
+
 <div align="right"><a href="#raspberry-pi-headless-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
