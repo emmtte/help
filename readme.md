@@ -27,7 +27,7 @@
 <summary>
 </summary>
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg">
 
 ```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
 
@@ -501,7 +501,10 @@ sudo reboot
 
 
 ## License
-![Alt text](https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg)  <sup>https://github.com/primer/octicons</sup>  
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg">
+
+https://github.com/primer/octicons
 
 MIT License
 
