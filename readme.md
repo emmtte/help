@@ -22,7 +22,8 @@
 <a href="#youtube-download">Youtube Download</a>
 <a href="#youtube-upload">Youtube Upload</a>
 <a href="#raspbian-Procedures">Raspbian Procedures</a>
-<a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
+  .<a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
+  .<a href="#format-usb-key">Format USB Key</a>
 </pre>
 
 <summary>
@@ -506,6 +507,27 @@ echo "dtoverlay=pi3-disable-bt" | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 sudo reboot
 ```
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
+
+**Format USB key**
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+<pre>
+lsblk
+sudo fdisk /dev/sda
+<i>d,n,p,1,ENTER,ENTER,t,83,w</i>
+sudo mkfs.ext4 /dev/sda1
+sudo mkdir /media/key
+sudo mount /dev/sda1 /media/key
+sudo chown -R $USER:$USER /media/key
+mkdir /media/key/influxdb
+sudo chown -R influxdb:influxdb /media/key/influxdb
+sudo blkid /dev/sda1
+sudo mcedit /etc/fstab
+PARTUUID=ABCDEFGH-01 /media/key ext4 defaults 0 0 
+</pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
