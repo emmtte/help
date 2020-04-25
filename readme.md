@@ -3,6 +3,7 @@
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-unordered.svg">
 <pre>
+<b>Headless Raspberry Pi Setup</b>
 <a href="#dropbox-uploader">Dropbox-Uploader</a>
 <a href="#fuzzy-finder">Fuzzy Finder</a>
 <a href="#git">Git</a>
@@ -24,6 +25,7 @@
 <a href="#raspbian-Procedures">Raspbian Procedures</a>
   .<a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
   .<a href="#format-usb-key">Format USB Key</a>
+<b>Infinity Grid Trading Bot Setup</b>
 </pre>
 
 <summary>
