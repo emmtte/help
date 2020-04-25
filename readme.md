@@ -508,7 +508,7 @@ sudo smbpasswd -a pi
 
 
 
-## Telegram Bot
+## Telegram
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
 
 https://telegram.me/botfather
