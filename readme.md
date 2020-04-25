@@ -418,48 +418,6 @@ antigen apply
 
 
 
-## OpenSSH
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
-https://github.com/openssh
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```shell
-ssh-keygen
-mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
-sudo chmod 644 ~/.ssh/authorized_keys
-sudo chown $USER:$USER ~/.ssh/authorized_keys
-cat << EOF | sudo tee -a /etc/ssh/sshd_config
-#AuthorizedKeysFile /home/$USER/.ssh/authorized_keys
-UsePAM yes
-PermitRootLogin no
-PasswordAuthentication no
-ChallengeResponseAuthentication no
-EOF
-sudo service ssh restart
-```
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
-
-https://www.putty.org/
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg">
-
-**puttygen.exe**
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```
-Conversions > Import Key > File > id_rsa
-Save Private Key > Yes > File > id_rsa.ppk
-```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
-
-
 ## PuTTY
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
@@ -654,10 +612,91 @@ sudo rm -rf youtube-upload-master
 
 
 
-## Raspbian Procedures
+## Configuration
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/person.svg">
+
+#**Username and Password
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+sudo adduser bot
+sudo adduser bot sudo
+sudo adduser bot adm
+sudo visudo
+  pi   ALL=(ALL) ALL
+  bot  ALL=(ALL) NOPASSWD: ALL
+sudo reboot
+sudo apt-get update
+sudo deluser pi sudo
+sudo deluser pi adm
+sudo deluser -remove-home pi
+```
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
+
+#**Key-based authentication 
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```shell
+ssh-keygen
+mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
+sudo chmod 644 ~/.ssh/authorized_keys
+sudo chown $USER:$USER ~/.ssh/authorized_keys
+cat << EOF | sudo tee -a /etc/ssh/sshd_config
+#AuthorizedKeysFile /home/$USER/.ssh/authorized_keys
+UsePAM yes
+PermitRootLogin no
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+EOF
+sudo service ssh restart
+```
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
+
+https://www.putty.org/
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg">
+
+**puttygen.exe**
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+Conversions > Import Key > File > id_rsa
+Save Private Key > Yes > File > id_rsa.ppk
+```
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/globe.svg">
+
+#**Domain Name System
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+<pre>
+sudo apt-get install resolvconf
+sudo dpkg-reconfigure resolvconf
+<i>Prepare /etc/resolv.conf for dynamic updates?</i> No
+sudo nvim /etc/resolv.conf
+<i>nameserver 127.0.0.1</i>
+sudo apt-get install dnsmasq dnsutils
+sudo nvim /etc/dhcpcd.conf
+<i>interface eth0
+  static ip_address=192.168.0.1/24
+  static routers=192.168.0.254
+  static domain_name_servers=127.0.0.1 8.8.8.8</i>
+sudo /etc/init.d/networking restart
+/etc/init.d/dnsmasq status
+dig api.binance.com
+dig @1.1.1.1 api.binance.com +short
+</pre>
+
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/broadcast.svg">
 
-**Disable Bluetooth and Wifi**
+#**Disable Bluetooth and Wifi**
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
