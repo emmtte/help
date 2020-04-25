@@ -391,13 +391,16 @@ https://telegram.me/botfather
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-ordered.svg">
 
 <pre>
-<b>1.</b> Use the <i>/newbot<i/> command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
+<b>1.</b> Use the <i>/newbot</i> command to create a new bot.
+   The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
 
-<b>2.</b> The <i>name<i/> of your bot is displayed in contact details and elsewhere.  
+<b>2.</b> The <i>name</i> of your bot is displayed in contact details and elsewhere.  
 
-<b>3.</b> The <i>Username<i/> is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.  
+<b>3.</b> The <i>Username</i> is a short name, to be used in mentions and telegram.me links.
+   Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters,
+   numbers, and underscores. Your bot's username must end in ‘bot’.  
 
-<b>4.</b> Copy the <i>token<i/> to the configuration file config.json
+<b>4.</b> Copy the <i>token</i> to the configuration file config.json
 
 <b>5.</b> Send a dummy message to your new bot
 </pre>
