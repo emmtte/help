@@ -31,6 +31,11 @@
 
 ```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
 
+<div align="right"><a href="#license">
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-opened.svg"></a></div>
+
+
+
 ## Dropbox Uploader
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
@@ -44,6 +49,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
+
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
@@ -131,7 +137,7 @@ sudo pip3.7 install -U google-music-scripts
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -159,7 +165,7 @@ make install
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -179,7 +185,7 @@ sudo make install
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -203,7 +209,7 @@ rm node.tar.gz
 ```sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -252,7 +258,7 @@ antigen apply
 ```p10k configure```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -294,7 +300,7 @@ Save Private Key > Yes > File > id_rsa.ppk
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -331,7 +337,7 @@ Window > Colours
  ```
  
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -347,7 +353,7 @@ curl -sSL https://install.pi-hole.net | bash
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -372,7 +378,7 @@ sudo smbpasswd -a pi
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -388,7 +394,7 @@ Send a dummy message to your new bot
 </pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 	
 	
 	
@@ -419,7 +425,7 @@ rm -rf tmux-2.8
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -440,7 +446,7 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -471,7 +477,7 @@ sudo rm -rf youtube-upload-master
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
@@ -490,7 +496,7 @@ sudo reboot
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img width="20" height="20 src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
