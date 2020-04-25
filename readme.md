@@ -7,6 +7,7 @@
   • <a href="#dropbox-uploader">Dropbox-Uploader</a>
   • <a href="#fuzzy-finder">Fuzzy Finder</a>
   • <a href="#git">Git</a>
+  • <a href="#go-language">Go Language</a>
   • <a href="#google-drive">Google Drive</a>
   • <a href="#google-music-scripts">Google Music</a>
   • <a href="#grafana">Grafana</a>
@@ -103,6 +104,31 @@ git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
+
+<div align="right"><a href="#headless-raspberry-pi-setup">
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
+
+
+## Go Language
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+
+https://github.com/golang/go
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+VERSION=1.14.2.linux-armv6l
+curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
+sudo tar -C /usr/local -xzf go$VERSION.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+cat << ! >> ~/.bashrc
+export GOPATH=~/.bin/go
+export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
+!
+source ~/.bashrc
+mkdir ~/.bin ~/.bin/go
+```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
