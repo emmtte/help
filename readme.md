@@ -4,27 +4,27 @@
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-unordered.svg">
 <pre>
 <b>Headless Raspberry Pi Setup</b>
-<a href="#dropbox-uploader">Dropbox-Uploader</a>
-<a href="#fuzzy-finder">Fuzzy Finder</a>
-<a href="#git">Git</a>
-<a href="#google-drive">Google Drive</a>
-<a href="#google-music-scripts">Google Music</a>
-<a href="#midnight-commander">Midnight Commander</a>
-<a href="#neovim">Neovim</a>
-<a href="#node-js">Node JS</a>
-<a href="#oh-my-zsh">Oh My Zsh</a>
-<a href="#openssh">OpenSSH</a>
-<a href="#pi-hole">Pi Hole</a>
-<a href="#putty">PuTTY</a>
-<a href="#raspbian">Raspbian</a>
-<a href="#samba">Samba</a>
-<a href="#telegram-bot">Telegram Bot</a>
-<a href="#tmux">Tmux</a>
-<a href="#youtube-download">Youtube Download</a>
-<a href="#youtube-upload">Youtube Upload</a>
-<a href="#raspbian-Procedures">Raspbian Procedures</a>
-  .<a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
-  .<a href="#format-usb-key">Format USB Key</a>
+  • <a href="#dropbox-uploader">Dropbox-Uploader</a>
+  • <a href="#fuzzy-finder">Fuzzy Finder</a>
+  • <a href="#git">Git</a>
+  • <a href="#google-drive">Google Drive</a>
+  • <a href="#google-music-scripts">Google Music</a>
+  • <a href="#midnight-commander">Midnight Commander</a>
+  • <a href="#neovim">Neovim</a>
+  • <a href="#node-js">Node JS</a>
+  • <a href="#oh-my-zsh">Oh My Zsh</a>
+  • <a href="#openssh">OpenSSH</a>
+  • <a href="#pi-hole">Pi Hole</a>
+  • <a href="#putty">PuTTY</a>
+  • <a href="#raspbian">Raspbian</a>
+  • <a href="#samba">Samba</a>
+  • <a href="#telegram-bot">Telegram Bot</a>
+  • <a href="#tmux">Tmux</a>
+  • <a href="#youtube-download">Youtube Download</a>
+  • <a href="#youtube-upload">Youtube Upload</a>
+  • <a href="#raspbian-Procedures">Raspbian Procedures</a>
+    <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
+    <a href="#format-usb-key">Format USB Key</a>
 <b>Infinity Grid Trading Bot Setup</b>
 </pre>
 
