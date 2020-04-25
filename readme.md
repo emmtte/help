@@ -23,8 +23,8 @@
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
   • <a href="#raspbian-Procedures">Raspbian Procedures</a>
-    <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
-    <a href="#format-usb-key">Format USB Key</a>
+    ∙ <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
+    ∙ <a href="#format-usb-key">Format USB Key</a>
 <b>Infinity Grid Trading Bot Setup</b>
 </pre>
 
