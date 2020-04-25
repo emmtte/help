@@ -401,19 +401,25 @@ https://telegram.me/botfather
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-ordered.svg">
 
 <pre>
-<b>1.</b> Use the <i>/newbot</i> command to create a new bot.
+<b>1.</b> Use the <b>/newbot</b> command to create a new bot.
    The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
-
-<b>2.</b> The <i>name</i> of your bot is displayed in contact details and elsewhere.  
-
-<b>3.</b> The <i>Username</i> is a short name, to be used in mentions and telegram.me links.
+<b>2.</b> The <b>name</b> of your bot is displayed in contact details and elsewhere.  
+<b>3.</b> The <b>Username</b> is a short name, to be used in mentions and telegram.me links.
    Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters,
    numbers, and underscores. Your bot's username must end in ‘bot’.  
-
-<b>4.</b> Copy the <i>token</i> to the configuration file config.json
-
+<b>4.</b> Copy the <b>token</b> to the configuration file config.json
 <b>5.</b> Send a dummy message to your new bot
+<b>6.</b> Go to following url <b><i>https://api.telegram.org/bottoken/getUpdates</i></b>
+<b>7.</b> Look for <b>"chat":{"id":</b>
+<b>8.</b> Copy the chatid to the configuration file .env or config.json
 </pre>
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+sudo apt-get install -y jq
+curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].message.chat.id
+```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
