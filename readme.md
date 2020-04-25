@@ -30,7 +30,7 @@
   • <a href="#format-usb-key">Format USB Key</a>
 <b>Infinity Grid Trading Bot</b>
   • <a href="#grafana">Grafana</a>
-  • <a href="#influxdb">Influxdb</a>
+  • <a href="#influxdb">InfluxDB</a>
   • <a href="#telegram">Telegram</a>
   • <a href="#dependencies">Dependencies</a>
 </pre>
@@ -146,6 +146,91 @@ https://github.com/thebigmunch/google-music-scripts
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
 ```
+
+<div align="right"><a href="#headless-raspberry-pi-setup">
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
+
+## Grafana
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+
+https://github.com/grafana/grafana
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+wget https://dl.grafana.com/oss/release/grafana_6.7.0_armhf.deb 
+sudo dpkg -i grafana_6.7.0_armhf.deb
+rm grafana_6.7.0_armhf.deb
+sudo nvim /etc/grafana/grafana.ini
+```
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
+````
+[server]
+  # Protocol (http, https, socket)
+  protocol = http
+  # The ip address to bind to, empty will bind to all interfaces
+  ;http_addr =
+  # The http port  to use
+  http_port = 3000
+  Start grafana server
+````
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+````
+sudo service grafana-server restart
+````
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
+
+http://localhost:3000/login (default admin/admin)
+
+<div align="right"><a href="#headless-raspberry-pi-setup">
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+
+
+## InfluxDB
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+
+https://github.com/influxdata/influxdb
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+wget https://dl.influxdata.com/influxdb/releases/influxdb_1.7.9_armhf.deb
+sudo dpkg -i influxdb_1.7.9_armhf.deb
+rm influxdb_1.7.9_armhf.deb
+sudo nvim /etc/influxdb/influxdb.conf
+```
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
+```
+[http]
+  # Determines whether HTTP endpoint is enabled.
+  enabled = true
+  # The bind address used by the HTTP service.
+  bind-address = ":8086"
+  # Determines whether user authentication is enabled over HTTP/HTTPS.
+  auth-enabled = false
+[meta]
+  dir = "/media/key/influxdb"
+[data]
+  dir = "/media/key/influxdb/data"
+  wal-dir = "/media/key/influxdb/wal"
+````
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+````
+sudo service influxdb restart
+influx
+> CREATE DATABASE binance
+> #DROP DATABASE binance
+````
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
