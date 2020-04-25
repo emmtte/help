@@ -3,36 +3,31 @@
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-unordered.svg">
 <pre>
-<b>Tools Setup</b>
+<b>Setup</b>
   • <a href="#dropbox-uploader">Dropbox-Uploader</a>
   • <a href="#fuzzy-finder">Fuzzy Finder</a>
   • <a href="#git">Git</a>
   • <a href="#google-drive">Google Drive</a>
   • <a href="#google-music-scripts">Google Music</a>
+  • <a href="#grafana">Grafana</a>
+  • <a href="#influxdb">InfluxDB</a>
   • <a href="#midnight-commander">Midnight Commander</a>
   • <a href="#neovim">Neovim</a>
   • <a href="#node-js">Node JS</a>
   • <a href="#oh-my-zsh">Oh My Zsh</a>
-  • <a href="#openssh">OpenSSH</a>
   • <a href="#pi-hole">Pi Hole</a>
   • <a href="#putty">PuTTY</a>
-  • <a href="#raspbian">Raspbian</a>
   • <a href="#samba">Samba</a>
   • <a href="#telegram">Telegram</a>
   • <a href="#tmux">Tmux</a>
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
-<b>Configurations</b>
-  • Change default username and password
-  • Key-based authentication (SSH)
+<b>Configuration</b>
+  • <a href="#username-and-password">Username and Password</a> 
+  • <a href="#key-based-authentication">Key-based authentication</a> 
   • <a href="#domain-name-system">Domain Name System</a>
   • <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
   • <a href="#format-usb-key">Format USB Key</a>
-<b>Infinity Grid Trading Bot</b>
-  • <a href="#grafana">Grafana</a>
-  • <a href="#influxdb">InfluxDB</a>
-  • <a href="#telegram">Telegram</a>
-  • <a href="#dependencies">Dependencies</a>
 </pre>
 
 <summary>
