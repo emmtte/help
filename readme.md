@@ -17,6 +17,7 @@
 <a href="#putty">PuTTY</a>
 <a href="#raspbian">Raspbian</a>
 <a href="#samba">Samba</a>
+<a href="#telegram-bot">Telegram Bot</a>
 <a href="#tmux">Tmux</a>
 <a href="#youtube-download">Youtube Download</a>
 <a href="#youtube-upload">Youtube Upload</a>
@@ -382,15 +383,23 @@ sudo smbpasswd -a pi
 
 
 
-## Telegram
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+## Telegram Bot
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
+
+https://telegram.me/botfather
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-ordered.svg">
 
 <pre>
-Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
-The **name** of your bot is displayed in contact details and elsewhere.  
-The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.  
-Copy the **token** to the configuration file config.json
-Send a dummy message to your new bot
+<b>1.</b> Use the <i>/newbot<i/> command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
+
+<b>2.</b> The <i>name<i/> of your bot is displayed in contact details and elsewhere.  
+
+<b>3.</b> The <i>Username<i/> is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.  
+
+<b>4.</b> Copy the <i>token<i/> to the configuration file config.json
+
+<b>5.</b> Send a dummy message to your new bot
 </pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
