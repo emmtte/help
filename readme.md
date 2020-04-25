@@ -194,12 +194,12 @@ sudo make install
 ## Node JS
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
-https://github.com/nodejs/nodejs.org
+https://github.com/nodejs/node
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
-VERSION=10.16.0
+VERSION=14.0.0
 sudo apt-get -y install build-essential
 wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
