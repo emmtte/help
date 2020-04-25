@@ -27,12 +27,12 @@
 <summary>
 </summary>
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
 
 ```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
 
 <div align="right"><a href="#license">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-opened.svg"></a></div>
+<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg"></a></div>
 
 
 
