@@ -44,7 +44,7 @@ https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
-<div align="right"><a href="#raspberry-pi-headless-setup">
+<div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
@@ -62,7 +62,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
-<div align="right"><a href="#raspberry-pi-headless-setup">
+<div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
@@ -92,7 +92,7 @@ git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
 ````
 
-<div align="right"><a href="#raspberry-pi-headless-setup">
+<div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
@@ -114,7 +114,7 @@ mkdir /media/hdd/drive
 drive init /media/hdd/drive
 </pre>
 
-<div align="right"><a href="#raspberry-pi-headless-setup">
+<div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
