@@ -302,12 +302,16 @@ rm node.tar.gz
     "binance-api-node": "latest",
     "bignumber.js": "latest",
     "coinmarketcap-api": "latest",
+    "date-fns": "latest",
     "dropbox": "latest",
+    "fs": "latest",
+    "influx": "latest",
     "isomorphic-fetch": "latest",
     "nanoid": "latest",
     "node-schedule": "latest",
     "telegraf": "latest",
-    "tulind": "latest"
+    "tulind": "latest",
+    "util": "latest"
   }
 }
 ```
