@@ -658,19 +658,18 @@ sudo reboot
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
-```
-sudo adduser bot
-sudo adduser bot sudo
-sudo adduser bot adm
-sudo visudo
-  pi   ALL=(ALL) ALL
-  bot  ALL=(ALL) NOPASSWD: ALL
-sudo reboot
+<pre>
+sudo passwd root
+logout
+<i>login as root</i>
+usermod -l <b>NewUserName</b> pi
+usermod -m -d /home/<b>NewUserName</b> <b>NewUserName</b>
+logout
+<i>login as <b>NewUserName</b></i>
+passwd
 sudo apt-get update
-sudo deluser pi sudo
-sudo deluser pi adm
-sudo deluser -remove-home pi
-```
+sudo passwd -l root
+</pre>
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
 
