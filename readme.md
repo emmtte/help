@@ -644,13 +644,13 @@ sudo umount /media/cardreader
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
-```
+<pre>
 <b>4</b> Localisation Options >  <b>I1</b> Change Locale > fr_FR.UTF-8 UTF-8
 <b>4</b> Localisation Options >  <b>I2</b> Change Timezone >  Europe and Time zone : Paris
 <b>5</b> Interfacing Options > <b>P1</b> Camera > Disable
 <b>7</b> Advanced Options > <b>A1</b> Expand Filesystem
 sudo reboot
-```
+</pre>
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/person.svg">
 
