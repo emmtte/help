@@ -515,7 +515,7 @@ https://telegram.me/botfather
 <b>5.</b> Send a dummy message to your new bot
 <b>6.</b> Go to following url <a href="https://api.telegram.org/bottoken/getUpdates">https://api.telegram.org/<b>TOKEN</b>/getUpdates</a>
 <b>7.</b> Look for <b>"chat":{"id":</b>
-<b>8.</b> Copy the chatid to the configuration file .env or config.json
+<b>8.</b> Copy the <b>chatid</b> to the configuration file .env or config.json
 </pre>
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
