@@ -781,7 +781,7 @@ https://github.com/primer/octicons
 <pre>
 MIT License
 
-Copyright (c) Headless-Raspberry-Pi-Setup <i>2014-2020   emmtte</i>
+Copyright (c) Headless-Raspberry-Pi-Setup <i>March 9, 2013</i>
 Copyright (c) Infinity-Grid-Trading-Bot   <i>May 1, 2018 </i>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
