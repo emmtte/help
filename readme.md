@@ -24,6 +24,7 @@
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
 <b>Configuration</b>
+  • <a href="#operating-system">Operating System</a> 
   • <a href="#username-and-password">Username and Password</a> 
   • <a href="#key-based-authentication">Key-based authentication</a> 
   • <a href="#domain-name-system">Domain Name System</a>
@@ -613,6 +614,39 @@ sudo rm -rf youtube-upload-master
 
 
 ## Configuration
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/home.svg">
+
+#### Operating System
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+#Use lsblk to check /dev/sdc
+rm /media/hdd/raspbian.zip
+curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
+#curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_full_latest
+#curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
+#unzip -p raspbian.zip | sudo dd of=/dev/sda bs=4M status=progress conv=fsync
+unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sda bs=4M conv=fsync
+sudo mkdir /media/cardreader
+sudo mount /dev/sda1 /media/cardreader
+sudo touch /media/cardreader/ssh
+sudo umount /media/cardreader
+```
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```sudo raspi-config```
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+<b>4</b> Localisation Options >  <b>I1</b> Change Locale > fr_FR.UTF-8 UTF-8
+<b>4</b> Localisation Options >  <b>I2</b> Change Timezone >  Europe and Time zone : Paris
+<b>5</b> Interfacing Options > <b>P1</b> Camera > Disable
+<b>7</b> Advanced Options > <b>A1</b> Expand Filesystem
+sudo reboot
+```
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/person.svg">
 
