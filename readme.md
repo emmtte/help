@@ -345,7 +345,11 @@ rm node.tar.gz
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
-```npm install```
+```
+mkdir ~/igtb && cd ~/igtb
+wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
+npm install
+```
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
 
