@@ -446,6 +446,8 @@ Window > Apprearance
 	Font quality:
 		( ) Antialiased     ( ) Non-Antialiased
 		(O) ClearType       ( ) Default
+Window > Translation
+        Remote character set = UTF-8
 Window > Colours
 	[X] Allow terminal to specify ANSI colours
 	[X] Allow terminal to use xterm 256-colour mode
@@ -453,6 +455,8 @@ Window > Colours
 		( ) The font   (O) The colour   ( ) Both
 	[ ] Attempt to use logical palettes
 	[ ] Use system colours
+Connection > Data
+	Terminal-type string = xterm-256color or putty-256color
  ```
  
 <div align="right"><a href="#headless-raspberry-pi-setup">
