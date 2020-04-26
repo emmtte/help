@@ -751,7 +751,7 @@ sudo reboot
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
-<pre>
+<big><pre>
 lsblk
 sudo fdisk /dev/sda
 <i>d,n,p,1,ENTER,ENTER,t,83,w</i>
@@ -764,7 +764,7 @@ sudo chown -R influxdb:influxdb /media/key/influxdb
 sudo blkid /dev/sda1
 sudo mcedit /etc/fstab
 PARTUUID=ABCDEFGH-01 /media/key ext4 defaults 0 0 
-</pre>
+</pre></big>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
