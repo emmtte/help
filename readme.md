@@ -346,8 +346,10 @@ rm node.tar.gz
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```
-mkdir ~/bot && cd ~/bot
+mkdir ~/bot 
+cd ~/bot
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
+wget https://github.com/emmtte/Headless-Raspberry-Pi-Setup/blob/master/.prettierrc
 npm install
 ```
 
