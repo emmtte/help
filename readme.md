@@ -319,37 +319,13 @@ sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 ```
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
-
-```json
-{
-  "name": "Infinity-Grid-Trading-Bot",
-  "version": "1.0.0",
-  "dependencies": {
-    "binance-api-node": "latest",
-    "bignumber.js": "latest",
-    "coinmarketcap-api": "latest",
-    "date-fns": "latest",
-    "dropbox": "latest",
-    "fs": "latest",
-    "influx": "latest",
-    "isomorphic-fetch": "latest",
-    "nanoid": "latest",
-    "node-schedule": "latest",
-    "telegraf": "latest",
-    "tulind": "latest",
-    "util": "latest"
-  }
-}
-```
-
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```
 mkdir ~/bot 
 cd ~/bot
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
-wget https://github.com/emmtte/Headless-Raspberry-Pi-Setup/blob/master/.prettierrc
+wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.prettierrc
 npm install
 ```
 
