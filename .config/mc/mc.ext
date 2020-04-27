@@ -4,3 +4,5 @@ shell/i/.json
         Open=/usr/local/bin/nvim %f
 shell/i/.yml
         Open=/usr/local/bin/nvim %f
+shell/i/.ini
+        Open=/usr/local/bin/nvim %f
