@@ -1,0 +1,6 @@
+shell/i/.js
+        Open=/usr/local/bin/nvim %f
+shell/i/.json
+        Open=/usr/local/bin/nvim %f
+shell/i/.yml
+        Open=/usr/local/bin/nvim %f
