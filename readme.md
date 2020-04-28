@@ -332,7 +332,6 @@ npm install
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
 
 <pre>
-<a href="https://github.com/zsh-users/antigen">https://github.com/zsh-users/antigen</a>https://github.com/zsh-users/antigen">https://github.com/zsh-users/antigen
 binance-api-node : <a href="https://github.com/Ashlar/binance-api-node">https://github.com/Ashlar/binance-api-node
 bignumber.js : <a href="https://github.com/MikeMcl/bignumber.js">https://github.com/MikeMcl/bignumber.js
 coinmarketcap-api : <a href="https://github.com/tiaanduplessis/coinmarketcap-api">https://github.com/tiaanduplessis/coinmarketcap-api
