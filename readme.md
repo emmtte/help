@@ -332,15 +332,16 @@ npm install
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
 
 <pre>
-binance-api-node : https://github.com/Ashlar/binance-api-node
-bignumber.js : https://github.com/MikeMcl/bignumber.js
-coinmarketcap-api : https://github.com/tiaanduplessis/coinmarketcap-api
-dropbox : https://github.com/dropbox/dropbox-sdk-js
-isomorphic-fetch : https://github.com/matthew-andrews/isomorphic-fetch
-nanoid : https://github.com/ai/nanoid
-node-schedule : https://github.com/node-schedule/node-schedule
-telegraf : https://github.com/telegraf/telegraf
-tulind : https://github.com/TulipCharts/tulipnode
+<a href="https://github.com/zsh-users/antigen">https://github.com/zsh-users/antigen</a>https://github.com/zsh-users/antigen">https://github.com/zsh-users/antigen
+binance-api-node : <a href="https://github.com/Ashlar/binance-api-node">https://github.com/Ashlar/binance-api-node
+bignumber.js : <a href="https://github.com/MikeMcl/bignumber.js">https://github.com/MikeMcl/bignumber.js
+coinmarketcap-api : <a href="https://github.com/tiaanduplessis/coinmarketcap-api">https://github.com/tiaanduplessis/coinmarketcap-api
+dropbox : <a href="https://github.com/dropbox/dropbox-sdk-js">https://github.com/dropbox/dropbox-sdk-js
+isomorphic-fetch : <a href="https://github.com/matthew-andrews/isomorphic-fetch">https://github.com/matthew-andrews/isomorphic-fetch
+nanoid : <a href="https://github.com/ai/nanoid">https://github.com/ai/nanoid
+node-schedule : <a href="https://github.com/node-schedule/node-schedule">https://github.com/node-schedule/node-schedule
+telegraf : <a href="https://github.com/telegraf/telegraf">https://github.com/telegraf/telegraf
+tulind : <a href="https://github.com/TulipCharts/tulipnode">https://github.com/TulipCharts/tulipnode
 </pre>
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/x.svg">
