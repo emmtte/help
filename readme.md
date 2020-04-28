@@ -332,15 +332,15 @@ npm install
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
 
 <pre>
-binance-api-node : <a href="https://github.com/Ashlar/binance-api-node">https://github.com/Ashlar/binance-api-node
-bignumber.js : <a href="https://github.com/MikeMcl/bignumber.js">https://github.com/MikeMcl/bignumber.js
-coinmarketcap-api : <a href="https://github.com/tiaanduplessis/coinmarketcap-api">https://github.com/tiaanduplessis/coinmarketcap-api
-dropbox : <a href="https://github.com/dropbox/dropbox-sdk-js">https://github.com/dropbox/dropbox-sdk-js
-isomorphic-fetch : <a href="https://github.com/matthew-andrews/isomorphic-fetch">https://github.com/matthew-andrews/isomorphic-fetch
-nanoid : <a href="https://github.com/ai/nanoid">https://github.com/ai/nanoid
-node-schedule : <a href="https://github.com/node-schedule/node-schedule">https://github.com/node-schedule/node-schedule
-telegraf : <a href="https://github.com/telegraf/telegraf">https://github.com/telegraf/telegraf
-tulind : <a href="https://github.com/TulipCharts/tulipnode">https://github.com/TulipCharts/tulipnode
+binance-api-node : <a href="https://github.com/Ashlar/binance-api-node">https://github.com/Ashlar/binance-api-node</a>
+bignumber.js : <a href="https://github.com/MikeMcl/bignumber.js">https://github.com/MikeMcl/bignumber.js</a>
+coinmarketcap-api : <a href="https://github.com/tiaanduplessis/coinmarketcap-api">https://github.com/tiaanduplessis/coinmarketcap-api</a>
+dropbox : <a href="https://github.com/dropbox/dropbox-sdk-js">https://github.com/dropbox/dropbox-sdk-js</a>
+isomorphic-fetch : <a href="https://github.com/matthew-andrews/isomorphic-fetch">https://github.com/matthew-andrews/isomorphic-fetch</a>
+nanoid : <a href="https://github.com/ai/nanoid">https://github.com/ai/nanoid</a>
+node-schedule : <a href="https://github.com/node-schedule/node-schedule">https://github.com/node-schedule/node-schedule</a>
+telegraf : <a href="https://github.com/telegraf/telegraf">https://github.com/telegraf/telegraf</a>
+tulind : <a href="https://github.com/TulipCharts/tulipnode">https://github.com/TulipCharts/tulipnode</a>
 </pre>
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/x.svg">
