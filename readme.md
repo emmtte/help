@@ -420,7 +420,7 @@ https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.r
 ```
 Terminal > Keyboard
         The Function keys and keypad
-	        (O) ESC[n~  ( ) Linux    ( ) Xterm R6 
+	        ( ) ESC[n~  ( ) Linux    (O) Xterm R6 
 		( ) VT400   ( ) VT100+   ( ) SCO
 Window > Apprearance
 	Font: MesloLGS NF, 11-point
