@@ -434,7 +434,7 @@ Window > Colours
 	[ ] Attempt to use logical palettes
 	[ ] Use system colours
 Connection > Data
-	Terminal-type string = xterm-256color or putty-256color
+	Terminal-type string = putty-256color
  ```
  
 <div align="right"><a href="#headless-raspberry-pi-setup">
