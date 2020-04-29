@@ -418,6 +418,10 @@ https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.r
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/browser.svg">
 
 ```
+Terminal > Keyboard
+        The Function keys and keypad
+	        (O) ESC[n~  ( ) Linux    ( ) Xterm R6 
+		( ) VT400   ( ) VT100+   ( ) SCO
 Window > Apprearance
 	Font: MesloLGS NF, 11-point
         [X] Allow selection of variable-pith fonts
@@ -434,7 +438,7 @@ Window > Colours
 	[ ] Attempt to use logical palettes
 	[ ] Use system colours
 Connection > Data
-	Terminal-type string = putty-256color
+	Terminal-type string = xterm-256color
  ```
  
 <div align="right"><a href="#headless-raspberry-pi-setup">
