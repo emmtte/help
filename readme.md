@@ -308,6 +308,37 @@ make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ```
 
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
+
+#### Universal Ctags
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
+
+https://github.com/universal-ctags/ctags
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
+<pre>
+git clone https://github.com/universal-ctags/ctags.git
+cd ctags
+./autogen.sh
+./configure
+make
+sudo make install
+ctags -R
+</pre>
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg.svg">
+
+<pre>
+<a href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a>
+<a href="https://github.com/neoclide/coc.nvim">https://github.com/neoclide/coc.nvim</a>
+<a href="https://github.com/drewtempelmeyer/palenight.vim">https://github.com/drewtempelmeyer/palenight.vim</a>
+<a href="https://github.com/vim-airline/vim-airline">https://github.com/vim-airline/vim-airline</a>
+<a href="https://github.com/edkolev/tmuxline.vim">https://github.com/edkolev/tmuxline.vim</a>
+<a href="https://github.com/majutsushi/tagbar">https://github.com/majutsushi/tagbar</a>
+</pre>
+
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
