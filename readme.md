@@ -393,7 +393,7 @@ curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
-```
+<pre>
 nvim  ~/.zshrc
 <i>
 source $HOME/.antigen/antigen.zsh
@@ -405,7 +405,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 </i>
 . ~/.zshrc
-```
+</pre>
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
