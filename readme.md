@@ -268,7 +268,7 @@ https://github.com/MidnightCommander/mc
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
- ```shell
+ <pre>
 sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
 wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
 tar xvfz 4.8.20.tar.gz
@@ -277,7 +277,12 @@ autoconf
 ./configure
 make
 make install
-```
+<b> Optional Skin </b>
+wget -O ~/.local/share/mc/skins/ https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.local/share/mc/skins/palenight.ini
+nvim ~/.config/mc/ini
+<i>[Midnight Commander]
+skin=palenight</i>
+<pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
