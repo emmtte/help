@@ -282,7 +282,7 @@ wget -O ~/.local/share/mc/skins/ https://raw.githubusercontent.com/emmtte/Headle
 nvim ~/.config/mc/ini
 <i>[Midnight Commander]
 skin=palenight</i>
-<pre>
+</pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
