@@ -377,7 +377,8 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 mkdir $HOME/.antigen
 curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 /usr/bin/zsh
-. ~/.zshrc
+
+
 ```
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
@@ -393,12 +394,17 @@ curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
 ```
+nvim  ~/.zshrc
+<i>
+source $HOME/.antigen/antigen.zsh
 antigen use oh-my-zsh
 antigen theme romkatv/powerlevel10k
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
+</i>
+. ~/.zshrc
 ```
 
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
