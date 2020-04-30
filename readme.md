@@ -286,6 +286,8 @@ nvim ~/.config/mc/ini
 <i>[Midnight Commander]
 skin=palenight</i>
 
+<b>Selected Editor</b>
+echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
 </pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
