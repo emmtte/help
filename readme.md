@@ -328,7 +328,7 @@ sudo make install
 ctags -R
 </pre>
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg.svg">
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
 
 <pre>
 <a href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a>
@@ -337,6 +337,26 @@ ctags -R
 <a href="https://github.com/vim-airline/vim-airline">https://github.com/vim-airline/vim-airline</a>
 <a href="https://github.com/edkolev/tmuxline.vim">https://github.com/edkolev/tmuxline.vim</a>
 <a href="https://github.com/majutsushi/tagbar">https://github.com/majutsushi/tagbar</a>
+</pre>
+
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+
+<pre>
+nvim ~/.config/nvim/init.vim
+<i>
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+autocmd VimEnter * PlugInstall
+endif
+call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'majutsushi/tagbar'
+call plug#end()
+</i>
 </pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
