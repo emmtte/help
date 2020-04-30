@@ -277,11 +277,15 @@ autoconf
 ./configure
 make
 make install
-<b> Optional Skin </b>
-wget -O ~/.local/share/mc/skins/ https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.local/share/mc/skins/palenight.ini
+
+<b>Optional Skin</b>
+wget -O ~/.local/share/mc/skins/ \
+https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.local/share/mc/skins/palenight.ini
 nvim ~/.config/mc/ini
+
 <i>[Midnight Commander]
 skin=palenight</i>
+
 </pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
