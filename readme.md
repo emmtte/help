@@ -29,6 +29,7 @@
   • <a href="#key-based-authentication">Key-based authentication</a> 
   • <a href="#domain-name-system">Domain Name System</a>
   • <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
+  • <a href="#remove-swap-file">Remove Swap File</a>
   • <a href="#format-usb-key">Format USB Key</a>
 </pre>
 
@@ -798,6 +799,19 @@ sudo systemctl disable hciuart
 sudo reboot
 ```
 
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/sync.svg">
+
+#### Remove Swap File
+
+<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+
+```
+sudo dphys-swapfile swapoff
+sudo dphys-swapfile uninstall
+sudo update-rc.d dphys-swapfile remove
+sudo systemctl disable dphys-swapfile.service
+
+```
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
 
 #### Format USB key
