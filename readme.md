@@ -220,9 +220,10 @@ https://github.com/influxdata/influxdb
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```
-wget https://dl.influxdata.com/influxdb/releases/influxdb_1.7.9_armhf.deb
-sudo dpkg -i influxdb_1.7.9_armhf.deb
-rm influxdb_1.7.9_armhf.deb
+VERSION=1.8.0
+wget https://dl.influxdata.com/influxdb/releases/influxdb_$VERSION_armhf.deb
+sudo dpkg -i influxdb_$VERSION_armhf.deb
+rm influxdb_$VERSION_armhf.deb
 sudo nvim /etc/influxdb/influxdb.conf
 ```
 
