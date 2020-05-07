@@ -573,7 +573,7 @@ https://telegram.me/botfather
    numbers, and underscores. Your bot's username must end in ‘bot’.  
 <b>4.</b> Copy the <b>TOKEN</b> to the configuration file .env or config.json
 <b>5.</b> Send a dummy message to your new bot
-<b>6.</b> Go to following url <a href="https://api.telegram.org/bottoken/getUpdates">https://api.telegram.org/<b>TOKEN</b>/getUpdates</a>
+<b>6.</b> Go to following url <a href="https://api.telegram.org/bottoken/getUpdates">https://api.telegram.org/bot<b>TOKEN</b>/getUpdates</a>
 <b>7.</b> Look for <b>"chat":{"id":</b>
 <b>8.</b> Copy the <b>chatid</b> to the configuration file .env or config.json
 </pre>
