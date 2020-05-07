@@ -125,9 +125,10 @@ curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.ta
 sudo tar -C /usr/local -xzf go$VERSION.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 cat << ! >> ~/.bashrc
-export GOPATH=~/.bin/go
+export GOPATH=\$HOME/gopath
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
+source ~/.bashrc # To reload the settings and get the newly set ones # Or open a fresh terminal
 source ~/.bashrc
 mkdir ~/.bin ~/.bin/go
 ```
