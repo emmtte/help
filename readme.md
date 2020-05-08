@@ -104,7 +104,8 @@ VERSION=1.14.2.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
 sudo tar -C /usr/local -xzf go$VERSION.tar.gz
 cat << ! >> ~/.bashrc
-export GOPATH=$HOME/go
+export GOPATH=\$HOME/go
+export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc
 ```
