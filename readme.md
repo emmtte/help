@@ -5,7 +5,6 @@
 <pre>
 <b>Setup</b>
   • <a href="#dropbox-uploader">Dropbox-Uploader</a>
-  • <a href="#fuzzy-finder">Fuzzy Finder</a>
   • <a href="#git">Git</a>
   • <a href="#go-language">Go Language</a>
   • <a href="#google-drive">Google Drive</a>
@@ -15,7 +14,6 @@
   • <a href="#midnight-commander">Midnight Commander</a>
   • <a href="#neovim">Neovim</a>
   • <a href="#node-js">Node JS</a>
-  • <a href="#oh-my-zsh">Oh My Zsh</a>
   • <a href="#pi-hole">Pi Hole</a>
   • <a href="#putty">PuTTY</a>
   • <a href="#samba">Samba</a>
@@ -57,24 +55,6 @@ sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
-```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
-
-
-## Fuzzy Finder
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
-https://github.com/junegunn/fzf
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-```shell
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
 ```
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
@@ -415,60 +395,6 @@ tulind : <a href="https://github.com/TulipCharts/tulipnode">https://github.com/T
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
-
-
-## Oh My Zsh
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
-https://github.com/ohmyzsh/ohmyzsh
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
-
-```sudo apt-get install zsh```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```shell
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-mkdir $HOME/.antigen
-curl -L git.io/antigen > $HOME/.antigen/antigen.zsh
-/usr/bin/zsh
-
-
-```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
-
-<pre>
-<a href="https://github.com/zsh-users/antigen">https://github.com/zsh-users/antigen</a>
-<a href="https://github.com/romkatv/powerlevel10k">https://github.com/romkatv/powerlevel10k</a>
-<a href="https://github.com/zsh-users/zsh-autosuggestions">https://github.com/zsh-users/zsh-autosuggestions</a>
-<a href="https://github.com/zsh-users/zsh-completions">https://github.com/zsh-users/zsh-completions</a>
-<a href="https://github.com/zsh-users/zsh-syntax-highlighting">https://github.com/zsh-users/zsh-syntax-highlighting</a>
-</pre>
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-<pre>
-nvim  ~/.zshrc
-<i>
-source $HOME/.antigen/antigen.zsh
-antigen use oh-my-zsh
-antigen theme romkatv/powerlevel10k
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen apply
-</i>
-. ~/.zshrc
-</pre>
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```p10k configure```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 
 
