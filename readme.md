@@ -1,6 +1,6 @@
-# Headless Raspberry Pi Setup
-<summary>
 <pre>
+HEADLESS RASPBERRY PI SETUP
+---------------------------
 <b>Setup</b>
   • <a href="#dropbox-uploader">Dropbox-Uploader</a>
   • <a href="#git">Git</a>
@@ -28,38 +28,29 @@
   • <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
   • <a href="#remove-swap-file">Remove Swap File</a>
   • <a href="#format-usb-key">Format USB Key</a>
-</pre>
-</summary>
 
+<b>>_</b>
+sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
 
-```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
-
-
-
-
-### Dropbox Uploader
-<pre>
+DROPBOX UPLOADER
+----------------
 <a href="https://github.com/andreafabrizi/Dropbox-Uploader">https://github.com/andreafabrizi/Dropbox-Uploader</a>
-</pre>
 
-<pre class="shell">
 <b>>_</b>
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
-</pre>
 
-### Git
-<pre>
+
+<b>
+GIT
+---</b>
 <a href="https://github.com/git/git">https://github.com/git/git</a>
-</pre>
 
-<pre class="shell">
 <b>>_</b>
 sudo apt-get install git
-</pre>
-<pre class="shell">
+
 <b>>_</b>
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
@@ -72,11 +63,13 @@ git remote set-url origin git@github.com:emmtte/Raspberry-Pi-User-Menu.git
 git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
-</pre>
 
-## Go Language
-https://github.com/golang/go
-```
+<b>
+GO LANGUAGE
+-----------</b>
+<a href="https://github.com/golang/go">https://github.com/golang/go</a>
+
+<b>>_</b>
 VERSION=1.14.2.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
 sudo tar -C /usr/local -xzf go$VERSION.tar.gz
@@ -85,7 +78,7 @@ export GOPATH=\$HOME/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc
-```
+</pre>
 
 ## Google Drive
 <a name="chapter1"></a>
