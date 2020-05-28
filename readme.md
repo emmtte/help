@@ -160,9 +160,10 @@ https://github.com/grafana/grafana
 <img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```
-wget https://dl.grafana.com/oss/release/grafana_6.7.0_armhf.deb 
-sudo dpkg -i grafana_6.7.0_armhf.deb
-rm grafana_6.7.0_armhf.deb
+sudo apt-get install -y adduser libfontconfig1
+wget https://dl.grafana.com/oss/release/grafana_7.0.1_armhf.deb
+sudo dpkg -i grafana_7.0.1_armhf.deb
+rm grafana_7.0.1_armhf.deb
 sudo nvim /etc/grafana/grafana.ini
 ```
 
