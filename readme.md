@@ -19,6 +19,7 @@
   • <a href="#tmux">Tmux</a>
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
+  • <a href="#chapter1">here</a> to read chapter 4.
 <b>Configuration</b>
   • <a href="#operating-system">Operating System</a> 
   • <a href="#username-and-password">Username and Password</a> 
@@ -87,6 +88,7 @@ source ~/.bashrc
 ```
 
 ## Google Drive
+<a name="chapter1"></a>
 https://github.com/odeke-em/drive
 ```sudo apt-get install git```
 <pre class="shell">
