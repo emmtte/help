@@ -36,9 +36,8 @@
 
 
 
-## Dropbox Uploader
+### Dropbox Uploader
 <pre>
-🔗
 <a href="https://github.com/andreafabrizi/Dropbox-Uploader">https://github.com/andreafabrizi/Dropbox-Uploader</a>
 </pre>
 
@@ -50,8 +49,11 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 </pre>
 
-## Git
-https://github.com/git/git
+### Git
+<pre>
+<a href="https://github.com/git/git">https://github.com/git/git</a>
+</pre>
+
 <pre class="shell">
 <b>>_</b>
 sudo apt-get install git
