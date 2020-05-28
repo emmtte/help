@@ -39,7 +39,7 @@
 ## Dropbox Uploader
 <pre>
 🔗
-<a href="https://github.com/andreafabrizi/Dropbox-Uploader"></a>
+<a href="https://github.com/andreafabrizi/Dropbox-Uploader">https://github.com/andreafabrizi/Dropbox-Uploader</a>
 </pre>
 
 <pre class="shell">
