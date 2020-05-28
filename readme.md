@@ -37,7 +37,11 @@
 
 
 ## Dropbox Uploader
-https://github.com/andreafabrizi/Dropbox-Uploader
+<pre>
+🔗
+<a href="https://github.com/andreafabrizi/Dropbox-Uploader"</a>https://github.com/andreafabrizi/Dropbox-Uploader
+</pre>
+
 <pre class="shell">
 <b>>_</b>
 sudo curl -o /usr/local/bin/dropbox_uploader \
