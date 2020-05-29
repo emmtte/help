@@ -6,6 +6,19 @@
  - [Git](#git)
  - [Go Language](#go-language)
  - [Google Drive](#google-drive)
+ - [Google Music](#google-music-scripts)
+ - [Grafana](#grafana)
+ - [InfluxDB](#influxdb)
+ - [Midnight Commander](#midnight-commander)
+ - [Neovim](#neovim)
+ - [Node JS](#node-js)
+ - [Pi Hole](#pi-hole)
+ - [PuTTY](#putty)
+ - [Samba](#samba)
+ - [Telegram](#telegram)
+ - [Tmux](#tmux)
+
+
 
 • 
 
@@ -15,29 +28,9 @@
 
 • 
 
-• [Google Music](#google-music-scripts)
+• 
 
-• [Grafana](#grafana)
-
-• [InfluxDB](#influxdb)
-
-• [Midnight Commander](#midnight-commander)
-
-• [Neovim](#neovim)
-
-• [Node JS](#node-js)
-
-• [Pi Hole](#pi-hole)
-
-• [PuTTY](#putty)
-
-• [Samba](#samba)
-
-• [Telegram](#telegram)
-
-• [Tmux](#tmux)
-
-• [Youtube Download](#youtube-download)
+• 
 
 • [Youtube Upload](#youtube-upload)
 
@@ -594,5 +587,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjMwNTI2NDUsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbMjAxMTcyNzI5NSwtNjI0NDk1ODI1XX0=
 -->
