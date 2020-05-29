@@ -1,14 +1,19 @@
 # Headless Raspberry Pi Setup
 **Setup**
 - [Dropbox-Uploader](#dropbox-uploader)
-- [](#)
+- [Git](#git)
+- [Go Language](#go-language)
+- [Google Drive](#google-drive)
+- [Google Music](#google-music-scripts)
+- [Grafana](#grafana)
+- 
 
 
-  • <a href="#git">Git</a>
-  • <a href="#go-language">Go Language</a>
-  • <a href="#google-drive">Google Drive</a>
-  • <a href="#google-music-scripts">Google Music</a>
-  • <a href="#grafana">Grafana</a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
   • <a href="#influxdb">InfluxDB</a>
   • <a href="#midnight-commander">Midnight Commander</a>
   • <a href="#neovim">Neovim</a>
@@ -654,5 +659,5 @@ SOFTWARE.
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTI2Mjk2MDJdfQ==
+eyJoaXN0b3J5IjpbMTI0MzQ4MTQyOV19
 -->
