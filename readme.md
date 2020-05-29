@@ -269,24 +269,11 @@ npm install
 
  - binance-api-node : https://github.com/Ashlar/binance-api-node
  - bignumber.js : https://github.com/MikeMcl/bignumber.js
- - 
-
-
-
-
-
-
-dropbox : https://github.com/dropbox/dropbox-sdk-js
-
-isomorphic-fetch : https://github.com/matthew-andrews/isomorphic-fetch
-
-nanoid : https://github.com/ai/nanoid
-
-node-schedule : https://github.com/node-schedule/node-schedule
-
-telegraf : https://github.com/telegraf/telegraf
-
-tulind : https://github.com/TulipCharts/tulipnode
+ - coinmarketcap-api : https://github.com/tiaanduplessis/coinmarketcap-api
+ - nanoid : https://github.com/ai/nanoid
+ - node-schedule : https://github.com/node-schedule/node-schedule
+ - telegraf : https://github.com/telegraf/telegraf
+ - tulind : https://github.com/TulipCharts/tulipnode
 
 ````
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
@@ -296,9 +283,8 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 ## PuTTY
 https://www.chiark.greenend.org.uk/~sgtatham/putty/
 
-https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-
-https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
+ - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+ - https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
 
 ````
 Terminal Keyboard
@@ -570,5 +556,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA3NDYzMzAxNiwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
 -->
