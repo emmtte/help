@@ -17,21 +17,9 @@
 • [Tmux](#tmux)
 • [Youtube Download](#youtube-download)
 • [Youtube Upload](#youtube-upload)
+**Configuration**
 • [](#)
 
-
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-  • <a href="#"></a>
-**Configuration**
   • <a href="#operating-system">Operating System</a> 
   • <a href="#username-and-password">Username and Password</a> 
   • <a href="#key-based-authentication">Key-based authentication</a> 
@@ -665,5 +653,5 @@ SOFTWARE.
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2Mzg5NDU2MF19
+eyJoaXN0b3J5IjpbOTcyOTQ4NjUyXX0=
 -->
