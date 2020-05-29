@@ -1,6 +1,7 @@
 # Headless Raspberry Pi Setup
-<pre><img width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-unordered.svg"> <b>Setup</b>
-  • <a href="#dropbox-uploader">Dropbox-Uploader</a>
+Setup
+  • [Dropbox-Uploader](#dropbox-uploader)
+  <a href="#dropbox-uploader"></a
   • <a href="#git">Git</a>
   • <a href="#go-language">Go Language</a>
   • <a href="#google-drive">Google Drive</a>
@@ -651,5 +652,5 @@ SOFTWARE.
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0NTE3ODMxNl19
+eyJoaXN0b3J5IjpbNDg5MTMzNzIyXX0=
 -->
