@@ -57,12 +57,12 @@ dropbox_uploader init
 <img  width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ## Git
-<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;&nbsp;https://github.com/git/git
+<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;https://github.com/git/git
 
-<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">&nbsp;&nbsp;```sudo apt-get install git```
+<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">&nbsp;```sudo apt-get install git```
 
 <pre>
-<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">&nbsp;&nbsp;
+<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
