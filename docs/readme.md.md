@@ -6,17 +6,29 @@
 • [Google Drive](#google-drive)
 • [Google Music](#google-music-scripts)
 • [Grafana](#grafana)
+• [](#influxdb)
+• [](#midnight-commander)
+• [](#neovim)
+• [](#node-js)
+• [](#pi-hole)
+• [](#putty)
+• [](#samba)
+• [](#telegram)
+• [](#tmux)
+• [](#)
+• [](#)
 • [](#)
 
-  • <a href="#influxdb">InfluxDB</a>
-  • <a href="#midnight-commander">Midnight Commander</a>
-  • <a href="#neovim">Neovim</a>
-  • <a href="#node-js">Node JS</a>
-  • <a href="#pi-hole">Pi Hole</a>
-  • <a href="#putty">PuTTY</a>
-  • <a href="#samba">Samba</a>
-  • <a href="#telegram">Telegram</a>
-  • <a href="#tmux">Tmux</a>
+
+  • <a href="#">InfluxDB</a>
+  • <a href="#">Midnight Commander</a>
+  • <a href="#">Neovim</a>
+  • <a href="#">Node JS</a>
+  • <a href="#">Pi Hole</a>
+  • <a href="#">PuTTY</a>
+  • <a href="#">Samba</a>
+  • <a href="#">Telegram</a>
+  • <a href="#">Tmux</a>
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
 **Configuration**
@@ -653,5 +665,5 @@ SOFTWARE.
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODM3OTkyMjRdfQ==
+eyJoaXN0b3J5IjpbNTI2NjQxODc4XX0=
 -->
