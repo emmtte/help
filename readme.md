@@ -1,30 +1,55 @@
 # Headless Raspberry Pi Setup
+
 **Setup**
+
 • [Dropbox-Uploader](#dropbox-uploader)
+
 • [Git](#git)
+
 • [Go Language](#go-language)
+
 • [Google Drive](#google-drive)
+
 • [Google Music](#google-music-scripts)
+
 • [Grafana](#grafana)
+
 • [InfluxDB](#influxdb)
+
 • [Midnight Commander](#midnight-commander)
+
 • [Neovim](#neovim)
+
 • [Node JS](#node-js)
+
 • [Pi Hole](#pi-hole)
+
 • [PuTTY](#putty)
+
 • [Samba](#samba)
+
 • [Telegram](#telegram)
+
 • [Tmux](#tmux)
+
 • [Youtube Download](#youtube-download)
+
 • [Youtube Upload](#youtube-upload)
 
 **Configuration**
+
 • [Operating System](#operating-system)
+
 • [Username and Password](#username-and-password)
+
 • [Key-based authentication](#key-based-authentication)
+
 • [Domain Name System](#domain-name-system)
+
 • [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
+
 • [Remove Swap File](#remove-swap-file)
+
 • [Format USB Key](#format-usb-key)
 
 ````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
@@ -85,9 +110,9 @@ drive init /media/hdd/drive
 
 
 
-## Google Music Script
+## Google Music
 
-https://github.com/thebigmunch/google-music-scripts">
+https://github.com/thebigmunch/google-music-scripts
 
 ````
 sudo apt-get install libav-tools #avconv
@@ -263,14 +288,23 @@ npm install
 ````
 
 **Packages**
+
 binance-api-node : https://github.com/Ashlar/binance-api-node
+
 bignumber.js : https://github.com/MikeMcl/bignumber.js
+
 coinmarketcap-api : https://github.com/tiaanduplessis/coinmarketcap-api
+
 dropbox : https://github.com/dropbox/dropbox-sdk-js
+
 isomorphic-fetch : https://github.com/matthew-andrews/isomorphic-fetch
+
 nanoid : https://github.com/ai/nanoid
+
 node-schedule : https://github.com/node-schedule/node-schedule
+
 telegraf : https://github.com/telegraf/telegraf
+
 tulind : https://github.com/TulipCharts/tulipnode
 
 ````
@@ -282,6 +316,7 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 https://www.chiark.greenend.org.uk/~sgtatham/putty/
 
 https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+
 https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
 
 ````
@@ -387,10 +422,6 @@ mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ````
 
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-<h2 id="youtube-upload">
-
 
 ## Youtube Upload
 
@@ -398,7 +429,7 @@ https://github.com/tokland/youtube-upload
 https://github.com/tokland/youtube-upload/pull/264
 
 
-```shell
+````shell
 sudo pip install --upgrade google-api-python-client oauth2client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
@@ -411,12 +442,12 @@ youtube-upload --title="test" --privacy="private" samplevideo.mp4
 cd ..
 rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
-```
+````
 
 
 ## Configuration
 #### Operating System
-```
+````shell
 #Use lsblk to check /dev/sdc
 rm /media/hdd/raspbian.zip
 curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
@@ -428,22 +459,24 @@ sudo mkdir /media/cardreader
 sudo mount /dev/sda1 /media/cardreader
 sudo touch /media/cardreader/ssh
 sudo umount /media/cardreader
-```
+````
 
 ####  Raspberry Pi Configuration
 ```sudo raspi-config```
 
 **4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
+
 **4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
+
 **5** Interfacing Options **>** **P1** Camera > Disable
+
 **7** Advanced Options **>** **A1** Expand Filesystem
 
 #### Change Password
 
 
 #### Key-based authentication
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-<pre class=" language-shell"><code class="prism  language-shell">
+````
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
@@ -456,44 +489,40 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 EOF
 sudo service ssh restart
-</code></pre>```
+````
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
-<p><a href="https://www.putty.org/">
-https://www.putty.org/</a></p>
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg">
-<p><strong>
-**puttygen.exe</strong></p>**
+https://www.putty.org/
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-<pre><code>
-```
+**puttygen.exe**
+
+
+````
 Conversions &gt;> Import Key &gt;> File &gt;> id_rsa
 Save Private Key &gt;> Yes &gt;> File &gt;> id_rsa.ppk
-</code></pre>```
+````
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/globe.svg">
-<h4 id="domain-name-system">
-Domain Name System</h4>
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-<pre>sudo apt-get install resolvconf
+#### Domain Name System
+````
+sudo apt-get install resolvconf
 sudo dpkg-reconfigure resolvconf
-<i>Prepare /etc/resolv.conf for dynamic updates?</i> No
-sudo nvim /etc/resolv.conf
-<i>nameserver 127.0.0.1</i>
+````
+*Prepare /etc/resolv.conf for dynamic updates?* **No**
+````sudo nvim /etc/resolv.conf````
+*nameserver 127.0.0.1*
+````
 sudo apt-get install dnsmasq dnsutils
 sudo nvim /etc/dhcpcd.conf
-<i>interface eth0
+interface eth0
   static ip_address=192.168.0.1/24
   static routers=192.168.0.254
   static domain_name_servers=127.0.0.1 8.8.8.8</i>
 sudo /etc/init.d/networking restart
 /etc/init.d/dnsmasq status
+````
+````
 dig api.binance.com
 dig @1.1.1.1 api.binance.com +short
-</pre>
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/broadcast.svg">
+````
 
 #### Disable Bluetooth and Wifi
 
@@ -504,20 +533,14 @@ sudo systemctl disable hciuart
 sudo reboot
 ```
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/sync.svg">
-<h4 id="remove-swap-file">
-#### Remove Swap File</h4>
+#### Remove Swap File
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-<pre><code>
 ```
 sudo dphys-swapfile swapoff
 sudo dphys-swapfile uninstall
 sudo update-rc.d dphys-swapfile remove
 sudo systemctl disable dphys-swapfile.service
-
-</code></pre>```
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
+```
 
 #### Format USB key
 
@@ -525,7 +548,9 @@ sudo systemctl disable dphys-swapfile.service
 lsblk
 sudo fdisk /dev/sda
 ````
-**Press keys** *d, n, p, 1, ENTER, ENTER, t, 83, w*
+
+**Press keys : ** *d, n, p, 1, ENTER, ENTER, t, 83, w*
+
 ````
 sudo mkfs.ext4 /dev/sda1
 sudo mkdir /media/key
@@ -542,6 +567,7 @@ PARTUUID=ABCDEFGH-01 /media/key ext4 defaults 0 0
 ## MIT License
 
 Copyright (c) Headless-Raspberry-Pi-Setup *March 9, 2013*
+
 Copyright (c) Infinity-Grid-Trading-Bot         *May 1, 2018*
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -561,3 +587,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTYyNDQ5NTgyNV19
+-->
