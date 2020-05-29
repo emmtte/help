@@ -1,67 +1,49 @@
 # Headless Raspberry Pi Setup
+**Setup**
+• [Dropbox-Uploader](#dropbox-uploader)
+• [Git](#git)
+• [Go Language](#go-language)
+• [Google Drive](#google-drive)
+• [Google Music](#google-music-scripts)
+• [Grafana](#grafana)
+• [InfluxDB](#influxdb)
+• [Midnight Commander](#midnight-commander)
+• [Neovim](#neovim)
+• [Node JS](#node-js)
+• [Pi Hole](#pi-hole)
+• [PuTTY](#putty)
+• [Samba](#samba)
+• [Telegram](#telegram)
+• [Tmux](#tmux)
+• [Youtube Download](#youtube-download)
+• [Youtube Upload](#youtube-upload)
 
+**Configuration**
+• [Operating System](#operating-system)
+• [Username and Password](#username-and-password)
+• [Key-based authentication](#key-based-authentication)
+• [Domain Name System](#domain-name-system)
+• [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
+• [Remove Swap File](#remove-swap-file)
+• [Format USB Key](#format-usb-key)
 
-<pre>
-<img width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-unordered.svg"> <b>Setup</b>
-  • <a href="#dropbox-uploader">Dropbox-Uploader</a>
-  • <a href="#git">Git</a>
-  • <a href="#go-language">Go Language</a>
-  • <a href="#google-drive">Google Drive</a>
-  • <a href="#google-music-scripts">Google Music</a>
-  • <a href="#grafana">Grafana</a>
-  • <a href="#influxdb">InfluxDB</a>
-  • <a href="#midnight-commander">Midnight Commander</a>
-  • <a href="#neovim">Neovim</a>
-  • <a href="#node-js">Node JS</a>
-  • <a href="#pi-hole">Pi Hole</a>
-  • <a href="#putty">PuTTY</a>
-  • <a href="#samba">Samba</a>
-  • <a href="#telegram">Telegram</a>
-  • <a href="#tmux">Tmux</a>
-  • <a href="#youtube-download">Youtube Download</a>
-  • <a href="#youtube-upload">Youtube Upload</a>
-<b>Configuration</b>
-  • <a href="#operating-system">Operating System</a> 
-  • <a href="#username-and-password">Username and Password</a> 
-  • <a href="#key-based-authentication">Key-based authentication</a> 
-  • <a href="#domain-name-system">Domain Name System</a>
-  • <a href="#disable-bluetooth-and-wifi">Disable Bluetooth and Wifi</a>
-  • <a href="#remove-swap-file">Remove Swap File</a>
-  • <a href="#format-usb-key">Format USB Key</a>
-</pre>
-
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
-info
-
-
-![image](https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg)&nbsp;&nbsp;```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
-
-
-<div align="right"><a href="#license">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg"></a></div>
-
-
+````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
 
 ## Dropbox Uploader
-<img align="left" width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;https://github.com/andreafabrizi/Dropbox-Uploader
-<pre>
-<img  width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+https://github.com/andreafabrizi/Dropbox-Uploader
+````
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
-</pre>
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+````
 
 ## Git
-<div align="left"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path></svg>&nbsp;<a href="https://github.com/git/git">https://github.com/git/git</a></div>
+https://github.com/git/git
 
-<pre align="left"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M1.75 1.5a.25.25 0 00-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 01.75.75v2.19l2.72-2.72a.75.75 0 01.53-.22h6.5a.25.25 0 00.25-.25v-9.5a.25.25 0 00-.25-.25H1.75zM0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0114.25 13H8.06l-2.573 2.573A1.457 1.457 0 013 14.543V13H1.75A1.75 1.75 0 010 11.25v-9.5zM9 9a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg>&nbsp;sudo apt-get install git</pre>
+````sudo apt-get install git````
 
-<pre align="left"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M0 2.75C0 1.784.784 1 1.75 1h12.5c.966 0 1.75.784 1.75 1.75v10.5A1.75 1.75 0 0114.25 15H1.75A1.75 1.75 0 010 13.25V2.75zm1.75-.25a.25.25 0 00-.25.25v10.5c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V2.75a.25.25 0 00-.25-.25H1.75zM7.25 8a.75.75 0 01-.22.53l-2.25 2.25a.75.75 0 11-1.06-1.06L5.44 8 3.72 6.28a.75.75 0 111.06-1.06l2.25 2.25c.141.14.22.331.22.53zm1.5 1.5a.75.75 0 000 1.5h3a.75.75 0 000-1.5h-3z"></path></svg>
+````
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
@@ -72,87 +54,58 @@ ssh -vT git@github.com
 git remote set-url origin git@github.com:emmtte/Raspberry-Pi-User-Menu.git
 git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
-echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
-</pre>
-
-
+echo -e "Host github.com \n IdentityFile ~/.ssh/github" &gt;&gt; ~/.ssh/config
+````
 
 ## Go Language
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
 https://github.com/golang/go
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```
+````
 VERSION=1.14.2.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
 sudo tar -C /usr/local -xzf go$VERSION.tar.gz
-cat << ! >> ~/.bashrc
+cat &lt;&lt; ! &gt;&gt; ~/.bashrc
 export GOPATH=\$HOME/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc
-```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+````
 
 
 ## Google Drive
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/odeke-em/drive
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
+`sudo apt-get install git`
 
-```sudo apt-get install git```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/code.svg">
-
-<pre class="shell">
+````
 go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
-</pre>
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+````
 
 
-## Google Music Scripts
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
-https://github.com/thebigmunch/google-music-scripts
+## Google Music Script
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+https://github.com/thebigmunch/google-music-scripts">
 
-```shell
+````
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
-```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+````
 
 
 ## Grafana
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/grafana/grafana
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```
+````
 sudo apt-get install -y adduser libfontconfig1
 wget https://dl.grafana.com/oss/release/grafana_7.0.1_armhf.deb
 sudo dpkg -i grafana_7.0.1_armhf.deb
 rm grafana_7.0.1_armhf.deb
 sudo nvim /etc/grafana/grafana.ini
-```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
+````
 
 ````
 [server]
@@ -162,26 +115,15 @@ sudo nvim /etc/grafana/grafana.ini
   http_port = 3000
 ````
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
 ````
 sudo service grafana-server restart
 ````
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
-
-http://localhost:3000/login (default admin/admin)
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+http://localhost:3000/login  (_default admin/admin_)
 
 ## InfluxDB
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/influxdata/influxdb
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```
 VERSION=1.8.0
@@ -190,8 +132,6 @@ sudo dpkg -i influxdb_$VERSION_armhf.deb
 rm influxdb_$VERSION_armhf.deb
 sudo nvim /etc/influxdb/influxdb.conf
 ```
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
 
 ```
 [http]
@@ -206,35 +146,23 @@ sudo nvim /etc/influxdb/influxdb.conf
 [data]
   dir = "/media/key/influxdb/data"
   wal-dir = "/media/key/influxdb/wal"
-````
+```
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-````
+```
 sudo service influxdb restart
 influx
 > CREATE DATABASE binance
 > #DROP DATABASE binance
-````
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+```
 
 
 ## Midnight Commander
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
 https://github.com/MidnightCommander/mc
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
+```sudo apt-get install mc```
 
-```sudo apt-get install mc```  
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
- <pre>
+```
 sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
 wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
 tar xvfz 4.8.20.tar.gz
@@ -243,30 +171,29 @@ autoconf
 ./configure
 make
 make install
+```
 
-<b>Optional Skin</b>
+**Optional**
+```
 wget -O ~/.local/share/mc/skins/ \
 https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.local/share/mc/skins/palenight.ini
 nvim ~/.config/mc/ini
+```
 
-<i>[Midnight Commander]
-skin=palenight</i>
+```
+[Midnight Commander]
+skin=palenight
+```
 
-<b>Selected Editor</b>
+**Select Editor**
+```
 echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
-</pre>
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+```
 
 
 ## Neovim
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/neovim/neovim
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
@@ -275,18 +202,11 @@ cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ```
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
-
 #### Universal Ctags
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/universal-ctags/ctags
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-<pre>
+````
 git clone https://github.com/universal-ctags/ctags.git
 cd ctags
 ./autogen.sh
@@ -294,22 +214,18 @@ cd ctags
 make
 sudo make install
 ctags -R
-</pre>
+````
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/rocket.svg">
+#### Plugins
 
-<pre>
-<a href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a>
-<a href="https://github.com/neoclide/coc.nvim">https://github.com/neoclide/coc.nvim</a>
-<a href="https://github.com/drewtempelmeyer/palenight.vim">https://github.com/drewtempelmeyer/palenight.vim</a>
-<a href="https://github.com/vim-airline/vim-airline">https://github.com/vim-airline/vim-airline</a>
-<a href="https://github.com/edkolev/tmuxline.vim">https://github.com/edkolev/tmuxline.vim</a>
-<a href="https://github.com/majutsushi/tagbar">https://github.com/majutsushi/tagbar</a>
-</pre>
+https://github.com/junegunn/vim-plug
+https://github.com/neoclide/coc.nvim
+https://github.com/drewtempelmeyer/palenight.vim
+https://github.com/vim-airline/vim-airline
+https://github.com/edkolev/tmuxline.vim
+https://github.com/majutsushi/tagbar
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/file-code.svg">
-
-<pre>
+````
 nvim ~/.config/nvim/init.vim
 <i>
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
@@ -324,81 +240,52 @@ Plug 'vim-airline/vim-airline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 call plug#end()
-</i>
-</pre>
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+````
 
 
 ## Node JS
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
-
 https://github.com/nodejs/node
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```shell
+````
 VERSION=14.0.0
 sudo apt-get -y install build-essential
 wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
-```
+````
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```
+````
 mkdir ~/bot 
 cd ~/bot
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.prettierrc
 npm install
-```
+````
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/quote.svg">
+**Packages**
+binance-api-node : https://github.com/Ashlar/binance-api-node
+bignumber.js : https://github.com/MikeMcl/bignumber.js
+coinmarketcap-api : https://github.com/tiaanduplessis/coinmarketcap-api
+dropbox : https://github.com/dropbox/dropbox-sdk-js
+isomorphic-fetch : https://github.com/matthew-andrews/isomorphic-fetch
+nanoid : https://github.com/ai/nanoid
+node-schedule : https://github.com/node-schedule/node-schedule
+telegraf : https://github.com/telegraf/telegraf
+tulind : https://github.com/TulipCharts/tulipnode
 
-<pre>
-binance-api-node : <a href="https://github.com/Ashlar/binance-api-node">https://github.com/Ashlar/binance-api-node</a>
-bignumber.js : <a href="https://github.com/MikeMcl/bignumber.js">https://github.com/MikeMcl/bignumber.js</a>
-coinmarketcap-api : <a href="https://github.com/tiaanduplessis/coinmarketcap-api">https://github.com/tiaanduplessis/coinmarketcap-api</a>
-dropbox : <a href="https://github.com/dropbox/dropbox-sdk-js">https://github.com/dropbox/dropbox-sdk-js</a>
-isomorphic-fetch : <a href="https://github.com/matthew-andrews/isomorphic-fetch">https://github.com/matthew-andrews/isomorphic-fetch</a>
-nanoid : <a href="https://github.com/ai/nanoid">https://github.com/ai/nanoid</a>
-node-schedule : <a href="https://github.com/node-schedule/node-schedule">https://github.com/node-schedule/node-schedule</a>
-telegraf : <a href="https://github.com/telegraf/telegraf">https://github.com/telegraf/telegraf</a>
-tulind : <a href="https://github.com/TulipCharts/tulipnode">https://github.com/TulipCharts/tulipnode</a>
-</pre>
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/x.svg">
-
-```sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
-
+````
+sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
+````
 
 
 ## PuTTY
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
-
 https://www.chiark.greenend.org.uk/~sgtatham/putty/
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/text-size.svg">
-
 https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/package.svg">
-
 https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/browser.svg">
-
-```
-Terminal > Keyboard
+````
+Terminal Keyboard
         The Function keys and keypad
 	        ( ) ESC[n~  ( ) Linux    (O) Xterm R6 
 		( ) VT400   ( ) VT100+   ( ) SCO
@@ -419,39 +306,22 @@ Window > Colours
 	[ ] Use system colours
 Connection > Data
 	Terminal-type string = xterm-256color
- ```
- 
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+````
 
 
 ## Pi Hole
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/pi-hole/pi-hole
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```shell
-curl -sSL https://install.pi-hole.net | bash
-```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
-
+``curl -sSL https://install.pi-hole.net | bash``
 
 ## Samba
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/samba-team/samba
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```shell
+````
 sudo apt-get -y install samba samba-common-bin
-cat << EOF | sudo tee -a /etc/samba/smb.conf
+cat &lt;&lt;<< EOF | sudo tee -a /etc/samba/smb.conf
 [HDD]
 comment = Raspberry Pi Hard Drive
 path = /media/hdd
@@ -460,22 +330,12 @@ browsable = yes
 EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
-```
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+````
 
 
 ## Telegram
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
-
 https://telegram.me/botfather
 
-
-
-<pre>
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/list-ordered.svg">
 <b>1.</b> Use the <b>/newbot</b> command to create a new bot.
    The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
 <b>2.</b> The <b>name</b> of your bot is displayed in contact details and elsewhere.  
@@ -487,30 +347,17 @@ https://telegram.me/botfather
 <b>6.</b> Go to following url <a href="https://api.telegram.org/bottoken/getUpdates">https://api.telegram.org/bot<b>TOKEN</b>/getUpdates</a>
 <b>7.</b> Look for <b>"chat":{"id":</b>
 <b>8.</b> Copy the <b>chatid</b> to the configuration file .env or config.json
-</pre>
-
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```
 sudo apt-get install -y jq
 curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].message.chat.id
 ```
 
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-	
-	
-	
 ## Tmux
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/tmux/tmux
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">
-
-```sudo apt-get install tmux```</sup>
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+```sudo apt-get install tmux```
 
 ```shell
 tmux -V
@@ -519,7 +366,7 @@ sudo apt-get install -y libevent-dev libncurses5-dev
 wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
 tar xvfz tmux-2.8.tar.gz
 cd tmux-2.8
-./configure && make
+./configure &amp;&amp;& make
 sudo cp ./tmux /usr/bin/tmux
 tmux -V
 cd ..
@@ -527,42 +374,29 @@ rm tmux-2.8.tar.gz
 rm -rf tmux-2.8
 ```
 
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
-
-
 ## Youtube Download
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/rg3/youtube-dl
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```shell
+````
 sudo apt-get -y install libavcodec-extra libav-tools
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
-echo "<youtube-dl Playlist Link>" > ~/.youtube-dl
+echo "&lt;<youtube-dl Playlist Link&gt;" &gt;>" > ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
-```
+````
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
+<h2 id="youtube-upload">
 
 
 ## Youtube Upload
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">
 
 https://github.com/tokland/youtube-upload
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/alert.svg">
-
 https://github.com/tokland/youtube-upload/pull/264
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
 sudo pip install --upgrade google-api-python-client oauth2client progressbar2
@@ -579,18 +413,9 @@ rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
 ```
 
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
-
-
 
 ## Configuration
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/home.svg">
-
 #### Operating System
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
 ```
 #Use lsblk to check /dev/sdc
 rm /media/hdd/raspbian.zip
@@ -605,51 +430,25 @@ sudo touch /media/cardreader/ssh
 sudo umount /media/cardreader
 ```
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
+####  Raspberry Pi Configuration
 ```sudo raspi-config```
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+**4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
+**4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
+**5** Interfacing Options **>** **P1** Camera > Disable
+**7** Advanced Options **>** **A1** Expand Filesystem
 
-<pre>
-<b>4</b> Localisation Options >  <b>I1</b> Change Locale > fr_FR.UTF-8 UTF-8
-<b>4</b> Localisation Options >  <b>I2</b> Change Timezone >  Europe and Time zone : Paris
-<b>5</b> Interfacing Options > <b>P1</b> Camera > Disable
-<b>7</b> Advanced Options > <b>A1</b> Expand Filesystem
-sudo reboot
-</pre>
+#### Change Password
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/person.svg">
 
-#### Username and Password
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-<pre>
-sudo passwd root
-logout
-<i>login as root</i>
-usermod -l <b>NewUserName</b> pi
-usermod -m -d /home/<b>NewUserName</b> <b>NewUserName</b>
-logout
-<i>login as <b>NewUserName</b></i>
-passwd
-sudo apt-get update
-sudo passwd -l root
-</pre>
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
-
-#### Key-based authentication 
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-```shell
+#### Key-based authentication
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+<pre class=" language-shell"><code class="prism  language-shell">
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
 sudo chown $USER:$USER ~/.ssh/authorized_keys
-cat << EOF | sudo tee -a /etc/ssh/sshd_config
+cat &lt;&lt; EOF | sudo tee -a /etc/ssh/sshd_config
 #AuthorizedKeysFile /home/$USER/.ssh/authorized_keys
 UsePAM yes
 PermitRootLogin no
@@ -657,31 +456,28 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 EOF
 sudo service ssh restart
-```
+</code></pre>```
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
-
-https://www.putty.org/
-
+<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/link-external.svg">
+<p><a href="https://www.putty.org/">
+https://www.putty.org/</a></p>
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/device-desktop.svg">
-
-**puttygen.exe**
+<p><strong>
+**puttygen.exe</strong></p>**
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
+<pre><code>
 ```
-Conversions > Import Key > File > id_rsa
-Save Private Key > Yes > File > id_rsa.ppk
-```
+Conversions &gt;> Import Key &gt;> File &gt;> id_rsa
+Save Private Key &gt;> Yes &gt;> File &gt;> id_rsa.ppk
+</code></pre>```
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/globe.svg">
-
-#### Domain Name System
+<h4 id="domain-name-system">
+Domain Name System</h4>
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-<pre>
-sudo apt-get install resolvconf
+<pre>sudo apt-get install resolvconf
 sudo dpkg-reconfigure resolvconf
 <i>Prepare /etc/resolv.conf for dynamic updates?</i> No
 sudo nvim /etc/resolv.conf
@@ -697,12 +493,9 @@ sudo /etc/init.d/networking restart
 dig api.binance.com
 dig @1.1.1.1 api.binance.com +short
 </pre>
-
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/broadcast.svg">
 
 #### Disable Bluetooth and Wifi
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 
 ```shell
 echo "dtoverlay=pi3-disable-wifi" | sudo tee -a /boot/config.txt
@@ -712,28 +505,28 @@ sudo reboot
 ```
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/sync.svg">
-
-#### Remove Swap File
+<h4 id="remove-swap-file">
+#### Remove Swap File</h4>
 
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
+<pre><code>
 ```
 sudo dphys-swapfile swapoff
 sudo dphys-swapfile uninstall
 sudo update-rc.d dphys-swapfile remove
 sudo systemctl disable dphys-swapfile.service
 
-```
+</code></pre>```
 <img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/key.svg">
 
 #### Format USB key
 
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
-
-<pre>
+````
 lsblk
 sudo fdisk /dev/sda
-<i>d,n,p,1,ENTER,ENTER,t,83,w</i>
+````
+**Press keys** *d, n, p, 1, ENTER, ENTER, t, 83, w*
+````
 sudo mkfs.ext4 /dev/sda1
 sudo mkdir /media/key
 sudo mount /dev/sda1 /media/key
@@ -743,26 +536,13 @@ sudo chown -R influxdb:influxdb /media/key/influxdb
 sudo blkid /dev/sda1
 sudo mcedit /etc/fstab
 PARTUUID=ABCDEFGH-01 /media/key ext4 defaults 0 0 
-</pre>
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+````
 
 
+## MIT License
 
-## License
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/info.svg">
-
-https://github.com/primer/octicons
-
-<img align="left" width="20" height="20" img src="https://raw.githubusercontent.com/primer/octicons/master/icons/tasklist.svg">
-
-<pre>
-MIT License
-
-Copyright (c) Headless-Raspberry-Pi-Setup <i>March 9, 2013</i>
-Copyright (c) Infinity-Grid-Trading-Bot   <i>May 1, 2018 </i>
+Copyright (c) Headless-Raspberry-Pi-Setup *March 9, 2013*
+Copyright (c) Infinity-Grid-Trading-Bot         *May 1, 2018*
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -781,7 +561,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-</pre>
-
-<div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
