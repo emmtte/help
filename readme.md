@@ -44,24 +44,25 @@ info
 
 
 ## Dropbox Uploader
-![](https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg =19x19)&nbsp;&nbsp;https://github.com/andreafabrizi/Dropbox-Uploader
+<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;https://github.com/andreafabrizi/Dropbox-Uploader
 <pre>
-<img  width="19" height="19" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg"> sudo curl -o /usr/local/bin/dropbox_uploader \
+<img  width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 </pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ## Git
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;&nbsp;https://github.com/git/git
+<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;&nbsp;https://github.com/git/git
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">&nbsp;&nbsp;```sudo apt-get install git```
+<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">&nbsp;&nbsp;```sudo apt-get install git```
 
-<img align="left" width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">&nbsp;&nbsp;
-```shell
+<pre>
+<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">&nbsp;&nbsp;
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
@@ -73,7 +74,7 @@ git remote set-url origin git@github.com:emmtte/Raspberry-Pi-User-Menu.git
 git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" >> ~/.ssh/config
-````
+</pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
