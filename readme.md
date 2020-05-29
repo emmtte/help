@@ -17,38 +17,18 @@
  - [Samba](#samba)
  - [Telegram](#telegram)
  - [Tmux](#tmux)
-
-
-
-• 
-
-• 
-
-• 
-
-• 
-
-• 
-
-• 
-
-• [Youtube Upload](#youtube-upload)
+ - [Youtube Download](#youtube-download)
+ - [Youtube Upload](#youtube-upload)
 
 **Configuration**
 
-• [Operating System](#operating-system)
-
-• [Username and Password](#username-and-password)
-
-• [Key-based authentication](#key-based-authentication)
-
-• [Domain Name System](#domain-name-system)
-
-• [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
-
-• [Remove Swap File](#remove-swap-file)
-
-• [Format USB Key](#format-usb-key)
+ - [Operating System](#operating-system)
+ - [Username and Password](#username-and-password)
+ - [Key-based authentication](#key-based-authentication)
+ - [Domain Name System](#domain-name-system)
+ - [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
+ - [Remove Swap File](#remove-swap-file)
+ - [Format USB Key](#format-usb-key)
 
 ````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
 
@@ -587,5 +567,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxMTcyNzI5NSwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbLTI2NDM2NzYyMSwtNjI0NDk1ODI1XX0=
 -->
