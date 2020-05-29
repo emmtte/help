@@ -2,13 +2,18 @@
 
 **Setup**
 
-• [Dropbox-Uploader](#dropbox-uploader)
+ - [Dropbox-Uploader](#dropbox-uploader)
+ - [Git](#git)
+ - [Go Language](#go-language)
+ - [Google Drive](#google-drive)
 
-• [Git](#git)
+• 
 
-• [Go Language](#go-language)
+• 
 
-• [Google Drive](#google-drive)
+• 
+
+• 
 
 • [Google Music](#google-music-scripts)
 
@@ -589,5 +594,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbLTE1MjMwNTI2NDUsLTYyNDQ5NTgyNV19
 -->
