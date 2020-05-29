@@ -533,9 +533,8 @@ PARTUUID=ABCDEFGH-01 /media/key ext4 defaults 0 0
 
 ## MIT License
 
-Copyright (c) Headless-Raspberry-Pi-Setup *March 9, 2013*
-
-Copyright (c) Infinity-Grid-Trading-Bot         *May 1, 2018*
+ - Copyright (c) Headless-Raspberry-Pi-Setup *March 9, 2013*
+ - Copyright (c) Infinity-Grid-Trading-Bot         *May 1, 2018*
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -556,5 +555,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02Mj
+Q0OTU4MjVdfQ==
 -->
