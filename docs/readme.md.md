@@ -6,31 +6,31 @@
 • [Google Drive](#google-drive)
 • [Google Music](#google-music-scripts)
 • [Grafana](#grafana)
-• [](#influxdb)
-• [](#midnight-commander)
-• [](#neovim)
-• [](#node-js)
-• [](#pi-hole)
-• [](#putty)
-• [](#samba)
-• [](#telegram)
-• [](#tmux)
-• [](#)
-• [](#)
+• [InfluxDB](#influxdb)
+• [Midnight Commander](#midnight-commander)
+• [Neovim](#neovim)
+• [Node JS](#node-js)
+• [Pi Hole](#pi-hole)
+• [PuTTY](#putty)
+• [Samba](#samba)
+• [Telegram](#telegram)
+• [Tmux](#tmux)
+• [Youtube Download](#youtube-download)
+• [Youtube Upload](#youtube-upload)
 • [](#)
 
 
-  • <a href="#">InfluxDB</a>
-  • <a href="#">Midnight Commander</a>
-  • <a href="#">Neovim</a>
-  • <a href="#">Node JS</a>
-  • <a href="#">Pi Hole</a>
-  • <a href="#">PuTTY</a>
-  • <a href="#">Samba</a>
-  • <a href="#">Telegram</a>
-  • <a href="#">Tmux</a>
-  • <a href="#youtube-download">Youtube Download</a>
-  • <a href="#youtube-upload">Youtube Upload</a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
+  • <a href="#"></a>
 **Configuration**
   • <a href="#operating-system">Operating System</a> 
   • <a href="#username-and-password">Username and Password</a> 
@@ -665,5 +665,5 @@ SOFTWARE.
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTI2NjQxODc4XX0=
+eyJoaXN0b3J5IjpbMjA2Mzg5NDU2MF19
 -->
