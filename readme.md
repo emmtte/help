@@ -44,9 +44,9 @@ info
 
 
 ## Dropbox Uploader
-<img align="left" width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;https://github.com/andreafabrizi/Dropbox-Uploader
+<img align="left" width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;https://github.com/andreafabrizi/Dropbox-Uploader
 <pre>
-<img  width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+<img  width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
@@ -54,13 +54,13 @@ dropbox_uploader init
 </pre>
 
 <div align="right"><a href="#headless-raspberry-pi-setup">
-<img  width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
+<img  width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 ## Git
 <pre>
-<img width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;<a href="https://github.com/git/git">https://github.com/git/git</a>
-<img width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">&nbsp;sudo apt-get install git
-<img width="18" height="18" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
+<img width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/repo.svg">&nbsp;<a href="https://github.com/git/git">https://github.com/git/git</a>
+<img width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/issue-closed.svg">&nbsp;sudo apt-get install git
+<img width="14" height="14" src="https://raw.githubusercontent.com/primer/octicons/master/icons/terminal.svg">
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
