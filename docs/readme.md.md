@@ -1,7 +1,15 @@
 # Headless Raspberry Pi Setup
-Setup
+**Setup**
+
+ - [ ] 
+ - [ ] List item
+
   • [Dropbox-Uploader](#dropbox-uploader)
-  <a href="#dropbox-uploader"></a
+ 
+
+ - List item
+
+ [Dropbox-Uploader](#dropbox-uploader)
   • <a href="#git">Git</a>
   • <a href="#go-language">Go Language</a>
   • <a href="#google-drive">Google Drive</a>
@@ -18,7 +26,7 @@ Setup
   • <a href="#tmux">Tmux</a>
   • <a href="#youtube-download">Youtube Download</a>
   • <a href="#youtube-upload">Youtube Upload</a>
-<b>Configuration</b>
+**Configuration**
   • <a href="#operating-system">Operating System</a> 
   • <a href="#username-and-password">Username and Password</a> 
   • <a href="#key-based-authentication">Key-based authentication</a> 
@@ -652,5 +660,5 @@ SOFTWARE.
 <img  width="20" height="20" src="https://raw.githubusercontent.com/primer/octicons/master/icons/chevron-up.svg"></a></div>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg5MTMzNzIyXX0=
+eyJoaXN0b3J5IjpbMTg2NjM3OTMwN119
 -->
