@@ -221,12 +221,12 @@ ctags -R
 
 #### Plugins
 
-https://github.com/junegunn/vim-plug
-https://github.com/neoclide/coc.nvim
-https://github.com/drewtempelmeyer/palenight.vim
-https://github.com/vim-airline/vim-airline
-https://github.com/edkolev/tmuxline.vim
-https://github.com/majutsushi/tagbar
+ - https://github.com/junegunn/vim-plug
+ - https://github.com/neoclide/coc.nvim
+ - https://github.com/drewtempelmeyer/palenight.vim
+ - https://github.com/vim-airline/vim-airline
+ - https://github.com/edkolev/tmuxline.vim
+ - https://github.com/majutsushi/tagbar
 
 ````
 nvim ~/.config/nvim/init.vim
@@ -267,11 +267,14 @@ npm install
 
 **Packages**
 
-binance-api-node : https://github.com/Ashlar/binance-api-node
+ - binance-api-node : https://github.com/Ashlar/binance-api-node
+ - bignumber.js : https://github.com/MikeMcl/bignumber.js
+ - 
 
-bignumber.js : https://github.com/MikeMcl/bignumber.js
 
-coinmarketcap-api : https://github.com/tiaanduplessis/coinmarketcap-api
+
+
+
 
 dropbox : https://github.com/dropbox/dropbox-sdk-js
 
@@ -567,5 +570,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2NDM2NzYyMSwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbMjA3NDYzMzAxNiwtNjI0NDk1ODI1XX0=
 -->
