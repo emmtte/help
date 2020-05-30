@@ -502,7 +502,7 @@ sudo umount /media/cardreader
 ```sudo raspi-config```
 
 #### Configuration
-
+ - **1** Change User Password **>**  
  - **4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
  - **4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
  - **5** Interfacing Options **>** **P1** Camera > Disable
@@ -627,9 +627,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTQ3NjM0MTUsODE0NzE1OTY3LC0xNj
-YyOTcxOTQ3LC0xNTIwOTIxMDUzLC0xODEwNDM4Mjc5LDE0MzM3
-MDU1NjksMTY3OTA4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOT
-MxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEy
-MDczOTg3ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbLTIzOTgzNzMxMyw4MTQ3MTU5NjcsLTE2Nj
+I5NzE5NDcsLTE1MjA5MjEwNTMsLTE4MTA0MzgyNzksMTQzMzcw
+NTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0NTM5Mz
+EsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOCwtMTIw
+NzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
