@@ -241,6 +241,9 @@ ctags -R
  >````
  - https://github.com/edkolev/tmuxline.vim
  - https://github.com/majutsushi/tagbar
+ >````
+ >Plug 'majutsushi/tagbar'
+ >````
 
 ````
 nvim ~/.config/nvim/init.vim
@@ -257,6 +260,13 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 call plug#end()
 ````
+
+**
+>````
+>:PlugInstall
+>:PlugUpdate
+>:CheckHealth
+>````
 
 #### neovim-remote
  - https://github.com/mhinz/neovim-remote
@@ -592,7 +602,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzk3ODQ2ODMzLDE0MzM3MDU1NjksMTY3OT
+eyJoaXN0b3J5IjpbMzY2NTc1NjgwLDE0MzM3MDU1NjksMTY3OT
 A4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOTMxLC0yMDIzNjI4
 NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLT
 YyNDQ5NTgyNV19
