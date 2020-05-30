@@ -256,7 +256,10 @@ call plug#end()
 
 #### neovim-remote
 https://github.com/mhinz/neovim-remote
-````pip3 install neovim-remote````
+````
+pip3 install neovim-remote
+NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
+````
 
 
 ## Node JS
@@ -570,7 +573,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4MTMxNjY4MCwtNDc3NDUzOTMxLC0yMD
-IzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3
-ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbLTEzNDIxMjc0MDYsLTQ3NzQ1MzkzMSwtMj
+AyMzYyODcwNiw4NjU4OTU0MDEsMzU3MTUzMTE4LC0xMjA3Mzk4
+Nzg0LC02MjQ0OTU4MjVdfQ==
 -->
