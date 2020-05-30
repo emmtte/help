@@ -230,9 +230,15 @@ ctags -R
  - https://github.com/neoclide/coc.nvim
  - https://github.com/drewtempelmeyer/palenight.vim
 >````
+>Plug 'drewtempelmeyer/palenight.vim'
 >set background=dark
->colorscheme palenight````
+>colorscheme palenight
+>````
  - https://github.com/vim-airline/vim-airline
+ >````
+ >Plugin 'vim-airline/vim-airline'
+ >Plugin 'vim-airline/vim-airline-themes'
+ >````
  - https://github.com/edkolev/tmuxline.vim
  - https://github.com/majutsushi/tagbar
 
@@ -586,8 +592,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NjkwMjc1NDAsMTQzMzcwNTU2OSwxNj
-c5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2
-Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NC
-wtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbNzk3ODQ2ODMzLDE0MzM3MDU1NjksMTY3OT
+A4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOTMxLC0yMDIzNjI4
+NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLT
+YyNDQ5NTgyNV19
 -->
