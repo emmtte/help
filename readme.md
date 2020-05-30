@@ -33,7 +33,7 @@
 
 ##### Prerequisites
 
-````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
+````sudo apt-get install flac lame gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
 
 ## Dropbox Uploader
  - https://github.com/andreafabrizi/Dropbox-Uploader
@@ -95,6 +95,7 @@ drive init /media/hdd/drive
 https://github.com/thebigmunch/google-music-scripts
 
 ````
+sudo apt-get install flac lame
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
 ````
@@ -620,9 +621,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjM4ODE2NjYsODE0NzE1OTY3LC0xNj
-YyOTcxOTQ3LC0xNTIwOTIxMDUzLC0xODEwNDM4Mjc5LDE0MzM3
-MDU1NjksMTY3OTA4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOT
-MxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEy
-MDczOTg3ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbMTA5MzY5MTk5MCwtMTM2Mzg4MTY2Niw4MT
+Q3MTU5NjcsLTE2NjI5NzE5NDcsLTE1MjA5MjEwNTMsLTE4MTA0
+MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3ND
+A2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1
+NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
