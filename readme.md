@@ -8,6 +8,7 @@
  - [Google Drive](#google-drive)
  - [Google Music](#google-music-scripts)
  - [Grafana](#grafana)
+ - [](#grafana)
  - [InfluxDB](#influxdb)
  - [Midnight Commander](#midnight-commander)
  - [Neovim](#neovim)
@@ -559,6 +560,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY1ODk1NDAxLDM1NzE1MzExOCwtMTIwNz
-M5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbMTgxMjE0OTc4OCw4NjU4OTU0MDEsMzU3MT
+UzMTE4LC0xMjA3Mzk4Nzg0LC02MjQ0OTU4MjVdfQ==
 -->
