@@ -374,7 +374,12 @@ Window > Colours
 Connection > Data
 	Terminal-type string = xterm-256color
 ````
-
+Download and install the DejaVu font in Windows.
+Run PuTTY and create a new session with the following settings
+Window-Appearance-Font = DejaVu Sans Mono for Powerline
+Verify your linux locale LANG=en_US.UTF-8
+Verify that your .vimrc has "set encoding=utf-8"
+Verify your term session is capable of 256 colors (TERM=xterm-256color)
 
 ## Pi Hole
 
@@ -620,8 +625,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MTA0MzgyNzksMTQzMzcwNTU2OSwxNj
-c5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2
-Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NC
-wtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbLTE1MjA5MjEwNTMsLTE4MTA0MzgyNzksMT
+QzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0
+NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOC
+wtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
