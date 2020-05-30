@@ -254,6 +254,9 @@ Plug 'majutsushi/tagbar'
 call plug#end()
 ````
 
+####[neovim-remote](https://github.com/mhinz/neovim-remote)
+[neovim-remote](https://github.com/mhinz/neovim-remote)
+
 
 ## Node JS
 https://github.com/nodejs/node
@@ -566,7 +569,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3NzQ1MzkzMSwtMjAyMzYyODcwNiw4Nj
-U4OTU0MDEsMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02MjQ0OTU4
-MjVdfQ==
+eyJoaXN0b3J5IjpbMTA2ODM5MTc4MywtNDc3NDUzOTMxLC0yMD
+IzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3
+ODQsLTYyNDQ5NTgyNV19
 -->
