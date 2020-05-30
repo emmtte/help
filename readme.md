@@ -381,7 +381,14 @@ Font quality:
  - [x] ClearType
  - [ ] Default
 Window > Colours
-
+ - [x] Allow terminal to specify ANSI colours
+ - [x] Allow terminal to use xterm 256-colour mode
+Indicate bolded text by changing:
+ - [ ] The font
+ - [x] The colour
+ - [ ] Both
+ - [ ] Attempt to use logical palettes
+ - [ ] Use system colours
 
 Download and install the DejaVu font in Windows.
 Run PuTTY and create a new session with the following settings
@@ -634,9 +641,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODQ0ODg3NiwtMTUyMDkyMTA1MywtMT
-gxMDQzODI3OSwxNDMzNzA1NTY5LDE2NzkwODY3NDUsLTEzNDIx
-Mjc0MDYsLTQ3NzQ1MzkzMSwtMjAyMzYyODcwNiw4NjU4OTU0MD
-EsMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02MjQ0OTU4MjVdfQ==
+eyJoaXN0b3J5IjpbLTE2NjI5NzE5NDcsLTE1MjA5MjEwNTMsLT
+E4MTA0MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMzQy
+MTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1ND
+AxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 
 -->
