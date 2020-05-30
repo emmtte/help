@@ -218,12 +218,13 @@ cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ````
-#### Exubera Ctags
+#### Exuberant Ctags
 
-https://github.com/universal-ctags/ctags
+https://github.com/romainl/ctags-patterns-for-javascript
 
 ````
 sudo apt-get install exuberant-ctags
+wget 
 ````
 
 #### Plugins
@@ -564,7 +565,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1ODgwNzAyLC0yMDIzNjI4NzA2LDg2NT
-g5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgy
-NV19
+eyJoaXN0b3J5IjpbLTIwNDQyMDkzMjMsLTIwMjM2Mjg3MDYsOD
+Y1ODk1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1
+ODI1XX0=
 -->
