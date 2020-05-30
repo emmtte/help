@@ -295,7 +295,7 @@ npm install
 ````npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier````
 
 **Docs Packages**
-
+````npm install -g jsdoc````
 
 ````
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
@@ -579,7 +579,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4OTUwNjgxOCwtMTM0MjEyNzQwNiwtND
-c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
-MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbNDE1MTI5OTg1LC0xMzQyMTI3NDA2LC00Nz
+c0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzEx
+OCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
