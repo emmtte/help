@@ -227,7 +227,18 @@ ctags -R
 #### Plugins
 
  - https://github.com/junegunn/vim-plug
+ >````
+ >if empty(glob('~/.config/nvim/autoload/plug.vim'))
+ >silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+ >\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ >autocmd VimEnter * PlugInstall
+ >endif
+ >call plug#begin()
+ >
  - https://github.com/neoclide/coc.nvim
+ >````
+ >Plug 'neoclide/coc.nvim', {'branch': 'release'}
+ >````
  - https://github.com/drewtempelmeyer/palenight.vim
 >````
 >Plug 'drewtempelmeyer/palenight.vim'
@@ -602,8 +613,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3NDA4NDcxMiwxNDMzNzA1NTY5LDE2Nz
-kwODY3NDUsLTEzNDIxMjc0MDYsLTQ3NzQ1MzkzMSwtMjAyMzYy
-ODcwNiw4NjU4OTU0MDEsMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC
-02MjQ0OTU4MjVdfQ==
+eyJoaXN0b3J5IjpbMjU5NzU5NjA0LDE0MzM3MDU1NjksMTY3OT
+A4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOTMxLC0yMDIzNjI4
+NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLT
+YyNDQ5NTgyNV19
 -->
