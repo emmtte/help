@@ -413,7 +413,7 @@ sudo smbpasswd -a pi
  3. The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.
  4. Copy the **TOKEN** to the configuration file .env or config.json
  5. Send a dummy message to your new bot
- 6. Go to following url https://api.telegram.org/bot**TOKEN**/getUpdates
+ 6. Go to following url https://api.telegram.org/botTOKEN/getUpdates
  7. Look for ``"chat":{"id":``
  8. Copy the **chatid** to the configuration file .env or config.json
 ````
@@ -625,8 +625,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjA5MjEwNTMsLTE4MTA0MzgyNzksMT
-QzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0
-NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOC
-wtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbODcxMTY2NDM1LC0xNTIwOTIxMDUzLC0xOD
+EwNDM4Mjc5LDE0MzM3MDU1NjksMTY3OTA4Njc0NSwtMTM0MjEy
+NzQwNiwtNDc3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMS
+wzNTcxNTMxMTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
 -->
