@@ -128,12 +128,14 @@ sudo service grafana-server restart
 http://localhost:3000/login  (_default admin/admin_)
 
 ## Http Server
-[https://github.com/http-party/http-server](https://github.com/http-party/http-server)
+https://github.com/http-party/http-server
+
 ##### Installation
 
 ````npm install --global http-server````
 
-####
+````http-server /media/key/igb````
+
 
 ## InfluxDB
 
@@ -568,6 +570,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNjc1MjM0MDcsODY1ODk1NDAxLDM1Nz
+eyJoaXN0b3J5IjpbLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1Nz
 E1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
