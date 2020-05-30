@@ -479,8 +479,7 @@ sudo rm -rf youtube-upload-master
 
 
 ## Configuration
-#### Operating System
-##### Configuration
+#### Create SD Card
 ````shell
 #Use lsblk to check /dev/sdc
 rm /media/hdd/raspbian.zip
@@ -497,19 +496,16 @@ sudo umount /media/cardreader
 
 ####  Raspberry Pi Configuration
 
-##### Installation
+
+#### Configuration
 
 ```sudo raspi-config```
 
-#### Configuration
- - **1** Change User Password **>**  
+ - **1** Change User Password
  - **4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
  - **4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
  - **5** Interfacing Options **>** **P1** Camera > Disable
  - **7** Advanced Options **>** **A1** Expand Filesystem
-
-#### Change Password
-
 
 #### Key-based authentication
 ````
@@ -627,9 +623,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIzOTgzNzMxMyw4MTQ3MTU5NjcsLTE2Nj
-I5NzE5NDcsLTE1MjA5MjEwNTMsLTE4MTA0MzgyNzksMTQzMzcw
-NTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0NTM5Mz
-EsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOCwtMTIw
-NzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbNjcwNTY1MzA1LDgxNDcxNTk2NywtMTY2Mj
+k3MTk0NywtMTUyMDkyMTA1MywtMTgxMDQzODI3OSwxNDMzNzA1
+NTY5LDE2NzkwODY3NDUsLTEzNDIxMjc0MDYsLTQ3NzQ1MzkzMS
+wtMjAyMzYyODcwNiw4NjU4OTU0MDEsMzU3MTUzMTE4LC0xMjA3
+Mzk4Nzg0LC02MjQ0OTU4MjVdfQ==
 -->
