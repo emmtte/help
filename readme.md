@@ -375,20 +375,6 @@ Connection > Data
 	Terminal-type string = xterm-256color
 ````
 
-Font quality:
- - [ ] Antialiased
- - [ ] Non-Antialiased
- - [x] ClearType
- - [ ] Default
-Window > Colours
- - [x] Allow terminal to specify ANSI colours
- - [x] Allow terminal to use xterm 256-colour mode
-Indicate bolded text by changing:
- - [ ] The font
- - [x] The colour
- - [ ] Both
- - [ ] Attempt to use logical palettes
- - [ ] Use system colours
 
 Download and install the DejaVu font in Windows.
 Run PuTTY and create a new session with the following settings
@@ -641,9 +627,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjI5NzE5NDcsLTE1MjA5MjEwNTMsLT
-E4MTA0MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMzQy
-MTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1ND
-AxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
-
+eyJoaXN0b3J5IjpbODE0NzE1OTY3LC0xNjYyOTcxOTQ3LC0xNT
+IwOTIxMDUzLC0xODEwNDM4Mjc5LDE0MzM3MDU1NjksMTY3OTA4
+Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOTMxLC0yMDIzNjI4Nz
+A2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLTYy
+NDQ5NTgyNV19
 -->
