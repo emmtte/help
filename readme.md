@@ -381,7 +381,7 @@ curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].mess
 
 ## Tmux
 
-https://github.com/tmux/tmux
+ - https://github.com/tmux/tmux
 
 ```sudo apt-get install tmux```
 
@@ -401,8 +401,7 @@ rm -rf tmux-2.8
 ````
 
 ## Youtube Download
-
-https://github.com/rg3/youtube-dl
+ - https://github.com/rg3/youtube-dl
 
 ````
 sudo apt-get -y install libavcodec-extra libav-tools
@@ -415,9 +414,8 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
 
 
 ## Youtube Upload
-
-https://github.com/tokland/youtube-upload
-https://github.com/tokland/youtube-upload/pull/264
+ - https://github.com/tokland/youtube-upload
+ - https://github.com/tokland/youtube-upload/pull/264
 
 
 ````shell
@@ -485,7 +483,7 @@ EOF
 sudo service ssh restart
 ````
 
-https://www.putty.org/
+ - https://www.putty.org/
 
 **puttygen.exe**
 
@@ -585,7 +583,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1NjczMjkwNiwxNjc5MDg2NzQ1LC0xMz
+eyJoaXN0b3J5IjpbMTQzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMz
 QyMTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1
 NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX
 0=
