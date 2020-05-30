@@ -218,18 +218,12 @@ cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ````
-#### Universal Ctags
+#### Exubera Ctags
 
 https://github.com/universal-ctags/ctags
 
 ````
-git clone https://github.com/universal-ctags/ctags.git
-cd ctags
-./autogen.sh
-./configure
-make
-sudo make install
-ctags -R
+sudo apt-get install exuberant-ctags
 ````
 
 #### Plugins
@@ -570,6 +564,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1Nz
-E1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbMTY1ODgwNzAyLC0yMDIzNjI4NzA2LDg2NT
+g5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgy
+NV19
 -->
