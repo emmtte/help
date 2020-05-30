@@ -292,16 +292,20 @@ npm install
  - tulind : https://github.com/TulipCharts/tulipnode
 
 **Dev Packages**
-[https://github.com/eslint/eslint](https://github.com/eslint/eslint)
+https://github.com/eslint/eslint
+https://github.com/prettier/prettier
 
 ````npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier````
 
 **Docs Packages**
 https://github.com/jsdoc/jsdoc
-
-````npm install -g jsdoc````
-```jsdoc yourJavaScriptFile.js```
+https://github.com/SoftwareBrothers/better-docs
+````
+npm install -g jsdoc
 npm install --save-dev better-docs
+````
+```jsdoc yourJavaScriptFile.js```
+
 
 ````
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
@@ -585,7 +589,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU1NzU0MzIxNCwtMTM0MjEyNzQwNiwtND
-c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
-MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbLTQzODQzOTA4LC0xMzQyMTI3NDA2LC00Nz
+c0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzEx
+OCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
