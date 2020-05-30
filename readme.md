@@ -296,6 +296,7 @@ npm install
 
 **Docs Packages**
 ````npm install -g jsdoc````
+```jsdoc yourJavaScriptFile.js```
 
 ````
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
@@ -579,7 +580,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE1MTI5OTg1LC0xMzQyMTI3NDA2LC00Nz
-c0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzEx
-OCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbMTk1ODg4MTEzNywtMTM0MjEyNzQwNiwtND
+c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
+MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
 -->
