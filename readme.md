@@ -45,7 +45,7 @@ dropbox_uploader init
 ````
 
 ## Git
- - https://github.com/git/git
+https://github.com/git/git
 
 ````sudo apt-get install git````
 
@@ -64,7 +64,7 @@ echo -e "Host github.com \n IdentityFile ~/.ssh/github" &gt;&gt; ~/.ssh/config
 ````
 
 ## Go Language
- - https://github.com/golang/go
+https://github.com/golang/go
 ````
 VERSION=1.14.2.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
@@ -79,7 +79,7 @@ source ~/.bashrc
 
 ## Google Drive
 
- - https://github.com/odeke-em/drive
+https://github.com/odeke-em/drive
 
 `sudo apt-get install git`
 
@@ -92,7 +92,7 @@ drive init /media/hdd/drive
 
 
 ## Google Music
- - https://github.com/thebigmunch/google-music-scripts
+https://github.com/thebigmunch/google-music-scripts
 
 ````
 sudo apt-get install libav-tools #avconv
@@ -101,7 +101,7 @@ sudo pip3.7 install -U google-music-scripts
 
 
 ## Grafana
- - https://github.com/grafana/grafana
+https://github.com/grafana/grafana
 
 ````
 sudo apt-get install -y adduser libfontconfig1
@@ -126,7 +126,7 @@ sudo service grafana-server restart
 http://localhost:3000/login  (_default admin/admin_)
 
 ## Http Server
- - https://github.com/http-party/http-server
+https://github.com/http-party/http-server
 
 ##### Installation
 
@@ -136,7 +136,7 @@ http://localhost:3000/login  (_default admin/admin_)
 
 
 ## InfluxDB
- - https://github.com/influxdata/influxdb
+https://github.com/influxdata/influxdb
 
 ```
 VERSION=1.8.0
@@ -170,7 +170,7 @@ influx
 
 
 ## Midnight Commander
- - https://github.com/MidnightCommander/mc
+https://github.com/MidnightCommander/mc
 
 ```sudo apt-get install mc```
 
@@ -204,7 +204,7 @@ echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
 
 
 ## Neovim
- - https://github.com/neovim/neovim
+https://github.com/neovim/neovim
 
 ````shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
@@ -287,7 +287,7 @@ call plug#end()
 >````
 
 #### neovim-remote
- - https://github.com/mhinz/neovim-remote
+https://github.com/mhinz/neovim-remote
 ````
 pip3 install neovim-remote
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
@@ -295,7 +295,7 @@ NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 
 
 ## Node JS
- - https://github.com/nodejs/node
+https://github.com/nodejs/node
 
 ````
 VERSION=14.0.0
@@ -347,7 +347,7 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 
 
 ## PuTTY
- - https://www.chiark.greenend.org.uk/~sgtatham/putty/
+https://www.chiark.greenend.org.uk/~sgtatham/putty/
  - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
  - https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
 
@@ -385,7 +385,7 @@ Verify your term session is capable of 256 colors (TERM=xterm-256color)
 
 ## Pi Hole
 
- - https://github.com/pi-hole/pi-hole
+https://github.com/pi-hole/pi-hole
 
 ``curl -sSL https://install.pi-hole.net | bash``
 
@@ -627,9 +627,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODE0NzE1OTY3LC0xNjYyOTcxOTQ3LC0xNT
-IwOTIxMDUzLC0xODEwNDM4Mjc5LDE0MzM3MDU1NjksMTY3OTA4
-Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOTMxLC0yMDIzNjI4Nz
-A2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLTYy
-NDQ5NTgyNV19
+eyJoaXN0b3J5IjpbMTU5ODM3NzAxMCw4MTQ3MTU5NjcsLTE2Nj
+I5NzE5NDcsLTE1MjA5MjEwNTMsLTE4MTA0MzgyNzksMTQzMzcw
+NTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0NTM5Mz
+EsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOCwtMTIw
+NzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
