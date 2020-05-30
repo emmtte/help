@@ -375,7 +375,15 @@ Connection > Data
 	Terminal-type string = xterm-256color
 ````
 
- - [ ] List item
+ - [x] List item
+ Font quality:
+ - [ ] Antialiased
+ - [ ] Non-Antialiased
+ - [ ] ClearType
+ - [x] Default
+
+		( ) Antialiased     ( ) Non-Antialiased
+		(O) ClearType       ( ) Default
 
 Download and install the DejaVu font in Windows.
 Run PuTTY and create a new session with the following settings
@@ -628,7 +636,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUxNzE4MzE4NywtMTUyMDkyMTA1MywtMT
+eyJoaXN0b3J5IjpbMTYzMzk5MzE3NCwtMTUyMDkyMTA1MywtMT
 gxMDQzODI3OSwxNDMzNzA1NTY5LDE2NzkwODY3NDUsLTEzNDIx
 Mjc0MDYsLTQ3NzQ1MzkzMSwtMjAyMzYyODcwNiw4NjU4OTU0MD
 EsMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02MjQ0OTU4MjVdfQ==
