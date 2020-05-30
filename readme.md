@@ -291,6 +291,12 @@ npm install
  - telegraf : https://github.com/telegraf/telegraf
  - tulind : https://github.com/TulipCharts/tulipnode
 
+**Dev Packages**
+````npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier````
+
+**Docs Packages**
+
+
 ````
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
 ````
@@ -573,7 +579,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDIxMjc0MDYsLTQ3NzQ1MzkzMSwtMj
-AyMzYyODcwNiw4NjU4OTU0MDEsMzU3MTUzMTE4LC0xMjA3Mzk4
-Nzg0LC02MjQ0OTU4MjVdfQ==
+eyJoaXN0b3J5IjpbLTQ4OTUwNjgxOCwtMTM0MjEyNzQwNiwtND
+c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
+MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
 -->
