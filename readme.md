@@ -234,7 +234,7 @@ ctags -R
  >autocmd VimEnter * PlugInstall
  >endif
  >call plug#begin()
- >
+ >````
  - https://github.com/neoclide/coc.nvim
  >````
  >Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -254,6 +254,7 @@ ctags -R
  - https://github.com/majutsushi/tagbar
  >````
  >Plug 'majutsushi/tagbar'
+ >call plug#end()
  >````
 
 ````
@@ -274,6 +275,8 @@ call plug#end()
 
 **Commands**
 >````
+>:Tmuxline
+>:Tagbar
 >:PlugInstall
 >:PlugUpdate
 >:CheckHealth
@@ -613,7 +616,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjU5NzU5NjA0LDE0MzM3MDU1NjksMTY3OT
+eyJoaXN0b3J5IjpbMTkwMDQ5NTM0LDE0MzM3MDU1NjksMTY3OT
 A4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOTMxLC0yMDIzNjI4
 NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOTg3ODQsLT
 YyNDQ5NTgyNV19
