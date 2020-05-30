@@ -298,13 +298,14 @@ https://github.com/prettier/prettier
 ````npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier````
 
 **Docs Packages**
-https://github.com/jsdoc/jsdoc
-https://github.com/SoftwareBrothers/better-docs
+
+ - https://github.com/jsdoc/jsdoc
+ - https://github.com/SoftwareBrothers/better-docs
 ````
 npm install -g jsdoc
 npm install --save-dev better-docs
-````
-```jsdoc yourJavaScriptFile.js```
+jsdoc your-documented-file.js -t ./node_modules/better-docs
+```
 
 
 ````
@@ -589,7 +590,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQzODQzOTA4LC0xMzQyMTI3NDA2LC00Nz
-c0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzEx
-OCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbMTU0NTkxMTQzMCwtMTM0MjEyNzQwNiwtND
+c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
+MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
 -->
