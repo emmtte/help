@@ -391,7 +391,7 @@ https://github.com/pi-hole/pi-hole
 
 ## Samba
 
- - https://github.com/samba-team/samba
+https://github.com/samba-team/samba
 
 ````
 sudo apt-get -y install samba samba-common-bin
@@ -408,7 +408,7 @@ sudo smbpasswd -a pi
 
 
 ## Telegram
- - https://telegram.me/botfather
+https://telegram.me/botfather
 
  1. Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
  2. The **name** of your bot is displayed in contact details and elsewhere.
@@ -425,7 +425,7 @@ curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].mess
 
 ## Tmux
 
- - https://github.com/tmux/tmux
+https://github.com/tmux/tmux
 
 ```sudo apt-get install tmux```
 
@@ -445,7 +445,7 @@ rm -rf tmux-2.8
 ````
 
 ## Youtube Download
- - https://github.com/rg3/youtube-dl
+https://github.com/rg3/youtube-dl
 
 ````
 sudo apt-get -y install libavcodec-extra libav-tools
@@ -501,7 +501,7 @@ sudo umount /media/cardreader
 
 ```sudo raspi-config```
 
-##### Configuration
+#### Configuration
 
  - **4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
  - **4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
@@ -627,9 +627,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5ODM3NzAxMCw4MTQ3MTU5NjcsLTE2Nj
-I5NzE5NDcsLTE1MjA5MjEwNTMsLTE4MTA0MzgyNzksMTQzMzcw
-NTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3NDA2LC00Nzc0NTM5Mz
-EsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzExOCwtMTIw
-NzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbLTE0MTQ3NjM0MTUsODE0NzE1OTY3LC0xNj
+YyOTcxOTQ3LC0xNTIwOTIxMDUzLC0xODEwNDM4Mjc5LDE0MzM3
+MDU1NjksMTY3OTA4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOT
+MxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEy
+MDczOTg3ODQsLTYyNDQ5NTgyNV19
 -->
