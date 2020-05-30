@@ -8,7 +8,7 @@
  - [Google Drive](#google-drive)
  - [Google Music](#google-music-scripts)
  - [Grafana](#grafana)
- - [](#grafana)
+ - [Http Server](#http-server)
  - [InfluxDB](#influxdb)
  - [Midnight Commander](#midnight-commander)
  - [Neovim](#neovim)
@@ -126,6 +126,14 @@ sudo service grafana-server restart
 ````
 
 http://localhost:3000/login  (_default admin/admin_)
+
+## Http Server
+[https://github.com/http-party/http-server](https://github.com/http-party/http-server)
+##### Installation
+
+````npm install --global http-server````
+
+####
 
 ## InfluxDB
 
@@ -560,6 +568,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxMjE0OTc4OCw4NjU4OTU0MDEsMzU3MT
-UzMTE4LC0xMjA3Mzk4Nzg0LC02MjQ0OTU4MjVdfQ==
+eyJoaXN0b3J5IjpbLTEzNjc1MjM0MDcsODY1ODk1NDAxLDM1Nz
+E1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
