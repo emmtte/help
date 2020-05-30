@@ -30,6 +30,8 @@
  - [Remove Swap File](#remove-swap-file)
  - [Format USB Key](#format-usb-key)
 
+##### Prerequisites
+
 ````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
 
 ## Dropbox Uploader
@@ -189,22 +191,22 @@ skin=palenight
 ```
 
 **Select Editor**
-```
+````
 echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
-```
+````
 
 
 ## Neovim
 
 https://github.com/neovim/neovim
 
-```shell
+````shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
 git clone https://github.com/neovim/neovim.git
 cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
-```
+````
 #### Universal Ctags
 
 https://github.com/universal-ctags/ctags
@@ -338,22 +340,18 @@ sudo smbpasswd -a pi
 ## Telegram
 https://telegram.me/botfather
 
-<b>1.</b> Use the <b>/newbot</b> command to create a new bot.
-   The BotFather will ask you for a name and username, then generate an authorization token for your new bot.  
-<b>2.</b> The <b>name</b> of your bot is displayed in contact details and elsewhere.  
-<b>3.</b> The <b>Username</b> is a short name, to be used in mentions and telegram.me links.
-   Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters,
-   numbers, and underscores. Your bot's username must end in ‘bot’.  
-<b>4.</b> Copy the <b>TOKEN</b> to the configuration file .env or config.json
-<b>5.</b> Send a dummy message to your new bot
-<b>6.</b> Go to following url <a href="https://api.telegram.org/bottoken/getUpdates">https://api.telegram.org/bot<b>TOKEN</b>/getUpdates</a>
-<b>7.</b> Look for <b>"chat":{"id":</b>
-<b>8.</b> Copy the <b>chatid</b> to the configuration file .env or config.json
-
-```
+ 1. Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
+ 2. The **name** of your bot is displayed in contact details and elsewhere.
+ 3. The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.
+ 4. Copy the **TOKEN** to the configuration file .env or config.json
+ 5. Send a dummy message to your new bot
+ 6. Go to following url https://api.telegram.org/bot**TOKEN**/getUpdates
+ 7. Look for ``"chat":{"id":``
+ 8. Copy the **chatid** to the configuration file .env or config.json
+````
 sudo apt-get install -y jq
 curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].message.chat.id
-```
+````
 
 ## Tmux
 
@@ -361,7 +359,7 @@ https://github.com/tmux/tmux
 
 ```sudo apt-get install tmux```
 
-```shell
+````shell
 tmux -V
 tmux kill-server
 sudo apt-get install -y libevent-dev libncurses5-dev
@@ -374,7 +372,7 @@ tmux -V
 cd ..
 rm tmux-2.8.tar.gz
 rm -rf tmux-2.8
-```
+````
 
 ## Youtube Download
 
@@ -384,7 +382,7 @@ https://github.com/rg3/youtube-dl
 sudo apt-get -y install libavcodec-extra libav-tools
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
-echo "&lt;<youtube-dl Playlist Link&gt;" &gt;>" > ~/.youtube-dl
+echo "PLAYLIST_LINK" >> ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
 ````
@@ -414,6 +412,7 @@ sudo rm -rf youtube-upload-master
 
 ## Configuration
 #### Operating System
+##### Configuration
 ````shell
 #Use lsblk to check /dev/sdc
 rm /media/hdd/raspbian.zip
@@ -429,15 +428,17 @@ sudo umount /media/cardreader
 ````
 
 ####  Raspberry Pi Configuration
+
+##### Installation
+
 ```sudo raspi-config```
 
-**4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
+##### Configuration
 
-**4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
-
-**5** Interfacing Options **>** **P1** Camera > Disable
-
-**7** Advanced Options **>** **A1** Expand Filesystem
+ - **4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
+ - **4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
+ - **5** Interfacing Options **>** **P1** Camera > Disable
+ - **7** Advanced Options **>** **A1** Expand Filesystem
 
 #### Change Password
 
@@ -474,8 +475,11 @@ sudo apt-get install resolvconf
 sudo dpkg-reconfigure resolvconf
 ````
 *Prepare /etc/resolv.conf for dynamic updates?* **No**
+
 ````sudo nvim /etc/resolv.conf````
+
 *nameserver 127.0.0.1*
+
 ````
 sudo apt-get install dnsmasq dnsutils
 sudo nvim /etc/dhcpcd.conf
@@ -516,7 +520,7 @@ lsblk
 sudo fdisk /dev/sda
 ````
 
-**Press keys : ** *d, n, p, 1, ENTER, ENTER, t, 83, w*
+**Press keys** : *d, n, p, 1, ENTER, ENTER, t, 83, w*
 
 ````
 sudo mkfs.ext4 /dev/sda1
@@ -555,6 +559,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02Mj
-Q0OTU4MjVdfQ==
+eyJoaXN0b3J5IjpbODY1ODk1NDAxLDM1NzE1MzExOCwtMTIwNz
+M5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
