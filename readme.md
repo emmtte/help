@@ -224,7 +224,8 @@ https://github.com/romainl/ctags-patterns-for-javascript
 
 ````
 sudo apt-get install exuberant-ctags
-wget 
+wget https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/ctagsrc -O /home/pi/~/.ctags
+ctags -R
 ````
 
 #### Plugins
@@ -565,7 +566,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDQyMDkzMjMsLTIwMjM2Mjg3MDYsOD
-Y1ODk1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1
-ODI1XX0=
+eyJoaXN0b3J5IjpbODY5NzA5MjgsLTIwMjM2Mjg3MDYsODY1OD
+k1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1
+XX0=
 -->
