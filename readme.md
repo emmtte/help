@@ -218,6 +218,7 @@ cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ````
+
 #### Exuberant Ctags
 
 https://github.com/romainl/ctags-patterns-for-javascript
@@ -239,7 +240,6 @@ ctags -R
 
 ````
 nvim ~/.config/nvim/init.vim
-<i>
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
 \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -566,7 +566,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY5NzA5MjgsLTIwMjM2Mjg3MDYsODY1OD
-k1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1
-XX0=
+eyJoaXN0b3J5IjpbLTQ3NzQ1MzkzMSwtMjAyMzYyODcwNiw4Nj
+U4OTU0MDEsMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02MjQ0OTU4
+MjVdfQ==
 -->
