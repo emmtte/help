@@ -79,7 +79,7 @@ source ~/.bashrc
 
 ## Google Drive
 
-https://github.com/odeke-em/drive
+ - https://github.com/odeke-em/drive
 
 `sudo apt-get install git`
 
@@ -93,7 +93,7 @@ drive init /media/hdd/drive
 
 ## Google Music
 
-https://github.com/thebigmunch/google-music-scripts
+ - https://github.com/thebigmunch/google-music-scripts
 
 ````
 sudo apt-get install libav-tools #avconv
@@ -255,7 +255,7 @@ call plug#end()
 ````
 
 #### neovim-remote
-https://github.com/mhinz/neovim-remote
+ - https://github.com/mhinz/neovim-remote
 ````
 pip3 install neovim-remote
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
@@ -263,7 +263,7 @@ NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 
 
 ## Node JS
-https://github.com/nodejs/node
+ - https://github.com/nodejs/node
 
 ````
 VERSION=14.0.0
@@ -292,8 +292,8 @@ npm install
  - tulind : https://github.com/TulipCharts/tulipnode
 
 **Dev Packages**
-https://github.com/eslint/eslint
-https://github.com/prettier/prettier
+ - https://github.com/eslint/eslint
+ - https://github.com/prettier/prettier
 
 ````npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier````
 
@@ -305,8 +305,9 @@ https://github.com/prettier/prettier
 npm install -g jsdoc
 npm install --save-dev better-docs
 jsdoc your-documented-file.js -t ./node_modules/better-docs
-```
+````
 
+**Uninstall**
 
 ````
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
@@ -590,7 +591,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU0NTkxMTQzMCwtMTM0MjEyNzQwNiwtND
-c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
-MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbODE4OTQ1NTMwLC0xMzQyMTI3NDA2LC00Nz
+c0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzEx
+OCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
 -->
