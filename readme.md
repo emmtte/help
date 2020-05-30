@@ -36,7 +36,7 @@
 ````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
 
 ## Dropbox Uploader
-https://github.com/andreafabrizi/Dropbox-Uploader
+ - https://github.com/andreafabrizi/Dropbox-Uploader
 ````
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
@@ -45,7 +45,7 @@ dropbox_uploader init
 ````
 
 ## Git
-https://github.com/git/git
+ - https://github.com/git/git
 
 ````sudo apt-get install git````
 
@@ -64,7 +64,7 @@ echo -e "Host github.com \n IdentityFile ~/.ssh/github" &gt;&gt; ~/.ssh/config
 ````
 
 ## Go Language
-https://github.com/golang/go
+ - https://github.com/golang/go
 ````
 VERSION=1.14.2.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
@@ -310,8 +310,7 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 
 
 ## PuTTY
-https://www.chiark.greenend.org.uk/~sgtatham/putty/
-
+ - https://www.chiark.greenend.org.uk/~sgtatham/putty/
  - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
  - https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
 
@@ -342,13 +341,13 @@ Connection > Data
 
 ## Pi Hole
 
-https://github.com/pi-hole/pi-hole
+ - https://github.com/pi-hole/pi-hole
 
 ``curl -sSL https://install.pi-hole.net | bash``
 
 ## Samba
 
-https://github.com/samba-team/samba
+ - https://github.com/samba-team/samba
 
 ````
 sudo apt-get -y install samba samba-common-bin
@@ -365,7 +364,7 @@ sudo smbpasswd -a pi
 
 
 ## Telegram
-https://telegram.me/botfather
+ - https://telegram.me/botfather
 
  1. Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
  2. The **name** of your bot is displayed in contact details and elsewhere.
@@ -586,7 +585,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY3OTA4Njc0NSwtMTM0MjEyNzQwNiwtND
-c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
-MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
+eyJoaXN0b3J5IjpbMTg1NjczMjkwNiwxNjc5MDg2NzQ1LC0xMz
+QyMTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1
+NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX
+0=
 -->
