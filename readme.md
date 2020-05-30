@@ -92,7 +92,6 @@ drive init /media/hdd/drive
 
 
 ## Google Music
-
  - https://github.com/thebigmunch/google-music-scripts
 
 ````
@@ -102,8 +101,7 @@ sudo pip3.7 install -U google-music-scripts
 
 
 ## Grafana
-
-https://github.com/grafana/grafana
+ - https://github.com/grafana/grafana
 
 ````
 sudo apt-get install -y adduser libfontconfig1
@@ -128,7 +126,7 @@ sudo service grafana-server restart
 http://localhost:3000/login  (_default admin/admin_)
 
 ## Http Server
-https://github.com/http-party/http-server
+ - https://github.com/http-party/http-server
 
 ##### Installation
 
@@ -138,8 +136,7 @@ https://github.com/http-party/http-server
 
 
 ## InfluxDB
-
-https://github.com/influxdata/influxdb
+ - https://github.com/influxdata/influxdb
 
 ```
 VERSION=1.8.0
@@ -173,8 +170,7 @@ influx
 
 
 ## Midnight Commander
-
-https://github.com/MidnightCommander/mc
+ - https://github.com/MidnightCommander/mc
 
 ```sudo apt-get install mc```
 
@@ -208,8 +204,7 @@ echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
 
 
 ## Neovim
-
-https://github.com/neovim/neovim
+ - https://github.com/neovim/neovim
 
 ````shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
@@ -591,7 +586,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODE4OTQ1NTMwLC0xMzQyMTI3NDA2LC00Nz
-c0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1NzE1MzEx
-OCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbMTY3OTA4Njc0NSwtMTM0MjEyNzQwNiwtND
+c3NDUzOTMxLC0yMDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMx
+MTgsLTEyMDczOTg3ODQsLTYyNDQ5NTgyNV19
 -->
