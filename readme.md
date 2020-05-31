@@ -33,7 +33,7 @@
 
 ##### Prerequisites
 
-````sudo apt-get install flac lame gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
+````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
 
 ## Dropbox Uploader
  - https://github.com/andreafabrizi/Dropbox-Uploader
@@ -93,7 +93,6 @@ drive init /media/hdd/drive
 
 ## Google Music
 https://github.com/thebigmunch/google-music-scripts
-
 ````
 sudo apt-get install flac lame
 sudo apt-get install libav-tools #avconv
@@ -160,6 +159,7 @@ sudo nvim /etc/influxdb/influxdb.conf
 [data]
   dir = "/media/key/influxdb/data"
   wal-dir = "/media/key/influxdb/wal"
+  index-version = "tsi1"
 ```
 
 ```
@@ -621,9 +621,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MzY5MTk5MCwtMTM2Mzg4MTY2Niw4MT
-Q3MTU5NjcsLTE2NjI5NzE5NDcsLTE1MjA5MjEwNTMsLTE4MTA0
-MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMzQyMTI3ND
-A2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1NDAxLDM1
-NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
+eyJoaXN0b3J5IjpbLTEyOTY0MDMwODAsMTA5MzY5MTk5MCwtMT
+M2Mzg4MTY2Niw4MTQ3MTU5NjcsLTE2NjI5NzE5NDcsLTE1MjA5
+MjEwNTMsLTE4MTA0MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2Nz
+Q1LC0xMzQyMTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYs
+ODY1ODk1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0ND
+k1ODI1XX0=
 -->
