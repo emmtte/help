@@ -34,23 +34,23 @@
 
 ##### Prerequisites
 
-````sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript````
+```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
 
 ## Dropbox Uploader
  - https://github.com/andreafabrizi/Dropbox-Uploader
-````
+```
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
 sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
-````
+```
 
 ## Git
 https://github.com/git/git
 
-````sudo apt-get install git````
+```sudo apt-get install git```
 
-````
+```
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
@@ -62,11 +62,11 @@ git remote set-url origin git@github.com:emmtte/Raspberry-Pi-User-Menu.git
 git config --global user.name "emmtte"
 git config --global user.email "John.Smith@example.com"
 echo -e "Host github.com \n IdentityFile ~/.ssh/github" &gt;&gt; ~/.ssh/config
-````
+```
 
 ## Go Language
 https://github.com/golang/go
-````
+```
 VERSION=1.14.2.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
 sudo tar -C /usr/local -xzf go$VERSION.tar.gz
@@ -75,7 +75,7 @@ export GOPATH=\$HOME/go
 export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 !
 source ~/.bashrc
-````
+```
 
 
 ## Google Drive
@@ -84,45 +84,45 @@ https://github.com/odeke-em/drive
 
 `sudo apt-get install git`
 
-````
+```
 go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
-````
+```
 
 
 
 ## Google Music
 https://github.com/thebigmunch/google-music-scripts
-````
+```
 sudo apt-get install flac lame
 sudo apt-get install libav-tools #avconv
 sudo pip3.7 install -U google-music-scripts
-````
+```
 
 
 ## Grafana
 https://github.com/grafana/grafana
 
-````
+```
 sudo apt-get install -y adduser libfontconfig1
 wget https://dl.grafana.com/oss/release/grafana_7.0.1_armhf.deb
 sudo dpkg -i grafana_7.0.1_armhf.deb
 rm grafana_7.0.1_armhf.deb
 sudo nvim /etc/grafana/grafana.ini
-````
+```
 
-````
+```
 [server]
   # Protocol (http, https, socket)
   protocol = http
   # The http port  to use
   http_port = 3000
-````
+```
 
-````
+```
 sudo service grafana-server restart
-````
+```
 
 http://localhost:3000/login  (_default admin/admin_)
 
@@ -131,9 +131,9 @@ https://github.com/http-party/http-server
 
 ##### Installation
 
-````npm install --global http-server````
+```npm install --global http-server```
 
-````http-server /media/key/igb````
+````http-server /media/key/igb```
 
 
 ## InfluxDB
@@ -345,7 +345,7 @@ jsdoc your-documented-file.js -t ./node_modules/better-docs
 
 ```
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
-````
+```
 
 
 ## PuTTY
@@ -353,7 +353,7 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/
  - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
  - https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
 
-````
+```
 Terminal Keyboard
         The Function keys and keypad
 	        ( ) ESC[n~  ( ) Linux    (O) Xterm R6 
@@ -375,7 +375,7 @@ Window > Colours
 	[ ] Use system colours
 Connection > Data
 	Terminal-type string = xterm-256color
-````
+```
 
 
 Download and install the DejaVu font in Windows.
@@ -411,7 +411,7 @@ https://github.com/pi-hole/pi-hole
 
 https://github.com/samba-team/samba
 
-````
+```
 sudo apt-get -y install samba samba-common-bin
 cat &lt;&lt;<< EOF | sudo tee -a /etc/samba/smb.conf
 [HDD]
@@ -422,7 +422,7 @@ browsable = yes
 EOF
 sudo service smbd restart
 sudo smbpasswd -a pi
-````
+```
 
 
 ## Telegram
@@ -447,7 +447,7 @@ https://github.com/tmux/tmux
 
 ```sudo apt-get install tmux```
 
-````shell
+```shell
 tmux -V
 tmux kill-server
 sudo apt-get install -y libevent-dev libncurses5-dev
@@ -460,19 +460,19 @@ tmux -V
 cd ..
 rm tmux-2.8.tar.gz
 rm -rf tmux-2.8
-````
+```
 
 ## Youtube Download
 https://github.com/rg3/youtube-dl
 
-````
+```
 sudo apt-get -y install libavcodec-extra libav-tools
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
 echo "PLAYLIST_LINK" >> ~/.youtube-dl
 mkdir /medi/hdd/youtube-dl
 youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
-````
+```
 
 
 ## Youtube Upload
@@ -480,7 +480,7 @@ youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtub
  - https://github.com/tokland/youtube-upload/pull/264
 
 
-````shell
+```shell
 sudo pip install --upgrade google-api-python-client oauth2client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
 unzip master.zip
@@ -493,12 +493,12 @@ youtube-upload --title="test" --privacy="private" samplevideo.mp4
 cd ..
 rm samplevideo.mp4 master.zip
 sudo rm -rf youtube-upload-master
-````
+```
 
 
 ## Configuration
 #### Create SD Card
-````shell
+```shell
 #Use lsblk to check /dev/sdc
 rm /media/hdd/raspbian.zip
 curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
@@ -510,7 +510,7 @@ sudo mkdir /media/cardreader
 sudo mount /dev/sda1 /media/cardreader
 sudo touch /media/cardreader/ssh
 sudo umount /media/cardreader
-````
+```
 
 #### Configuration
 
@@ -523,7 +523,7 @@ sudo umount /media/cardreader
  - **7** Advanced Options **>** **A1** Expand Filesystem
 
 #### Key-based authentication
-````
+```
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
@@ -536,30 +536,30 @@ PasswordAuthentication no
 ChallengeResponseAuthentication no
 EOF
 sudo service ssh restart
-````
+```
 
  - https://www.putty.org/
 
 **puttygen.exe**
 
 
-````
+```
 Conversions &gt;> Import Key &gt;> File &gt;> id_rsa
 Save Private Key &gt;> Yes &gt;> File &gt;> id_rsa.ppk
-````
+```
 
 #### Domain Name System
-````
+```
 sudo apt-get install resolvconf
 sudo dpkg-reconfigure resolvconf
-````
+```
 *Prepare /etc/resolv.conf for dynamic updates?* **No**
 
 ````sudo nvim /etc/resolv.conf````
 
 *nameserver 127.0.0.1*
 
-````
+```
 sudo apt-get install dnsmasq dnsutils
 sudo nvim /etc/dhcpcd.conf
 interface eth0
@@ -568,11 +568,11 @@ interface eth0
   static domain_name_servers=127.0.0.1 8.8.8.8</i>
 sudo /etc/init.d/networking restart
 /etc/init.d/dnsmasq status
-````
-````
+```
+```
 dig api.binance.com
 dig @1.1.1.1 api.binance.com +short
-````
+```
 
 #### Disable Bluetooth and Wifi
 
@@ -594,14 +594,14 @@ sudo systemctl disable dphys-swapfile.service
 
 #### Format USB key
 
-````
+```
 lsblk
 sudo fdisk /dev/sda
-````
+```
 
 **Press keys** : *d, n, p, 1, ENTER, ENTER, t, 83, w*
 
-````
+```
 sudo mkfs.ext4 /dev/sda1
 sudo mkdir /media/key
 sudo mount /dev/sda1 /media/key
@@ -611,7 +611,7 @@ sudo chown -R influxdb:influxdb /media/key/influxdb
 sudo blkid /dev/sda1
 sudo mcedit /etc/fstab
 PARTUUID=ABCDEFGH-01 /media/key ext4 defaults 0 0 
-````
+```
 
 
 ## MIT License
@@ -638,11 +638,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTcyOTExNTc5OCw5Nzg5NzIwNDQsNTgyMz
-QwNjc5LDczNDMxMjEwOCwtMTI5NjQwMzA4MCwxMDkzNjkxOTkw
-LC0xMzYzODgxNjY2LDgxNDcxNTk2NywtMTY2Mjk3MTk0NywtMT
-UyMDkyMTA1MywtMTgxMDQzODI3OSwxNDMzNzA1NTY5LDE2Nzkw
-ODY3NDUsLTEzNDIxMjc0MDYsLTQ3NzQ1MzkzMSwtMjAyMzYyOD
-cwNiw4NjU4OTU0MDEsMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02
-MjQ0OTU4MjVdfQ==
+eyJoaXN0b3J5IjpbMTEwNjYyNjQsOTc4OTcyMDQ0LDU4MjM0MD
+Y3OSw3MzQzMTIxMDgsLTEyOTY0MDMwODAsMTA5MzY5MTk5MCwt
+MTM2Mzg4MTY2Niw4MTQ3MTU5NjcsLTE2NjI5NzE5NDcsLTE1Mj
+A5MjEwNTMsLTE4MTA0MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2
+NzQ1LC0xMzQyMTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MD
+YsODY1ODk1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0
+NDk1ODI1XX0=
 -->
