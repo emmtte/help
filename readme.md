@@ -200,66 +200,66 @@ skin=palenight
 ```
 
 **Select Editor**
-````
+```
 echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
-````
+```
 
 
 ## Neovim
 https://github.com/neovim/neovim
 
-````shell
+```shell
 sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
 git clone https://github.com/neovim/neovim.git
 cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
-````
+```
 
 #### Exuberant Ctags
 
 https://github.com/romainl/ctags-patterns-for-javascript
 
-````
+```
 sudo apt-get install exuberant-ctags
 wget https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/ctagsrc -O /home/pi/~/.ctags
 ctags -R
-````
+```
 
 #### Plugins
 
  - https://github.com/junegunn/vim-plug
- >````
+ >```
  >if empty(glob('~/.config/nvim/autoload/plug.vim'))
  >silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
  >\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
  >autocmd VimEnter * PlugInstall
  >endif
  >call plug#begin()
- >````
+ >```
  - https://github.com/neoclide/coc.nvim
- >````
+ >```
  >Plug 'neoclide/coc.nvim', {'branch': 'release'}
- >````
+ >```
  - https://github.com/drewtempelmeyer/palenight.vim
->````
+>```
 >Plug 'drewtempelmeyer/palenight.vim'
 >set background=dark
 >colorscheme palenight
->````
+>```
  - https://github.com/vim-airline/vim-airline
- >````
+ >```
  >Plugin 'vim-airline/vim-airline'
  >Plugin 'vim-airline/vim-airline-themes'
- >````
+ >```
  - https://github.com/edkolev/tmuxline.vim
  - https://github.com/majutsushi/tagbar
- >````
+ >```
  >Plug 'majutsushi/tagbar'
  >call plug#end()
- >````
+ >```
 
-````
+```
 nvim ~/.config/nvim/init.vim
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
 silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
@@ -273,10 +273,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'edkolev/tmuxline.vim'
 Plug 'majutsushi/tagbar'
 call plug#end()
-````
+```
 
 **Commands**
->````
+>```
 >:Tmuxline
 >:Tagbar
 >:PlugInstall
@@ -286,34 +286,34 @@ call plug#end()
 >:Prettier
 >:Eslint
 >:run ctags script.mjs
->````
+>```
 
 #### neovim-remote
 https://github.com/mhinz/neovim-remote
-````
+```
 pip3 install neovim-remote
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
-````
+```
 
 
 ## Node JS
 https://github.com/nodejs/node
 
-````
+```
 VERSION=14.0.0
 sudo apt-get -y install build-essential
 wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
-````
+```
 
-````
+```
 mkdir ~/bot 
 cd ~/bot
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.prettierrc
 npm install
-````
+```
 
 **Packages**
 
@@ -329,21 +329,21 @@ npm install
  - https://github.com/eslint/eslint
  - https://github.com/prettier/prettier
 
-````npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier````
+```npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier```
 
 **Docs Packages**
 
  - https://github.com/jsdoc/jsdoc
  - https://github.com/SoftwareBrothers/better-docs
-````
+```
 npm install -g jsdoc
 npm install --save-dev better-docs
 jsdoc your-documented-file.js -t ./node_modules/better-docs
-````
+```
 
 **Uninstall**
 
-````
+```
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
 ````
 
@@ -638,11 +638,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc4OTcyMDQ0LDU4MjM0MDY3OSw3MzQzMT
-IxMDgsLTEyOTY0MDMwODAsMTA5MzY5MTk5MCwtMTM2Mzg4MTY2
-Niw4MTQ3MTU5NjcsLTE2NjI5NzE5NDcsLTE1MjA5MjEwNTMsLT
-E4MTA0MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2NzQ1LC0xMzQy
-MTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYsODY1ODk1ND
-AxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0NDk1ODI1XX0=
-
+eyJoaXN0b3J5IjpbMTcyOTExNTc5OCw5Nzg5NzIwNDQsNTgyMz
+QwNjc5LDczNDMxMjEwOCwtMTI5NjQwMzA4MCwxMDkzNjkxOTkw
+LC0xMzYzODgxNjY2LDgxNDcxNTk2NywtMTY2Mjk3MTk0NywtMT
+UyMDkyMTA1MywtMTgxMDQzODI3OSwxNDMzNzA1NTY5LDE2Nzkw
+ODY3NDUsLTEzNDIxMjc0MDYsLTQ3NzQ1MzkzMSwtMjAyMzYyOD
+cwNiw4NjU4OTU0MDEsMzU3MTUzMTE4LC0xMjA3Mzk4Nzg0LC02
+MjQ0OTU4MjVdfQ==
 -->
