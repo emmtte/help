@@ -15,6 +15,7 @@
  - [Node JS](#node-js)
  - [Pi Hole](#pi-hole)
  - [PuTTY](#putty)
+ - [Ready Media](#ready-media)
  - [Samba](#samba)
  - [Telegram](#telegram)
  - [Tmux](#tmux)
@@ -384,6 +385,21 @@ Verify your linux locale LANG=en_US.UTF-8
 Verify that your .vimrc has "set encoding=utf-8"
 Verify your term session is capable of 256 colors (TERM=xterm-256color)
 
+## Ready Media
+[https://sourceforge.net/projects/minidlna/](https://sourceforge.net/projects/minidlna/)
+```
+sudo apt-get install minidlna -y
+sudo nvim /etc/minidlna.conf
+```
+```
+friendly_name=Raspberry Pi
+media_dir=/media/hdd/minidlna
+```
+```
+sudo service minidlna restart
+sudo chmod a+rX /media/hdd/minidlna
+```
+
 ## Pi Hole
 
 https://github.com/pi-hole/pi-hole
@@ -621,10 +637,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTY0MDMwODAsMTA5MzY5MTk5MCwtMT
-M2Mzg4MTY2Niw4MTQ3MTU5NjcsLTE2NjI5NzE5NDcsLTE1MjA5
-MjEwNTMsLTE4MTA0MzgyNzksMTQzMzcwNTU2OSwxNjc5MDg2Nz
-Q1LC0xMzQyMTI3NDA2LC00Nzc0NTM5MzEsLTIwMjM2Mjg3MDYs
-ODY1ODk1NDAxLDM1NzE1MzExOCwtMTIwNzM5ODc4NCwtNjI0ND
-k1ODI1XX0=
+eyJoaXN0b3J5IjpbNzM0MzEyMTA4LC0xMjk2NDAzMDgwLDEwOT
+M2OTE5OTAsLTEzNjM4ODE2NjYsODE0NzE1OTY3LC0xNjYyOTcx
+OTQ3LC0xNTIwOTIxMDUzLC0xODEwNDM4Mjc5LDE0MzM3MDU1Nj
+ksMTY3OTA4Njc0NSwtMTM0MjEyNzQwNiwtNDc3NDUzOTMxLC0y
+MDIzNjI4NzA2LDg2NTg5NTQwMSwzNTcxNTMxMTgsLTEyMDczOT
+g3ODQsLTYyNDQ5NTgyNV19
 -->
