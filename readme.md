@@ -51,6 +51,21 @@ https://github.com/git/git
 ```sudo apt-get install git```
 
 ```
+sudo apt-get update
+sudo apt-get install git -y
+mkdir -p ~/.ssh
+ssh-keygen -t rsa -b 4096 -C "John.Smith@example.com" -f ~/.ssh/github -P ""
+echo "Host *
+  AddKeysToAgent yes
+  IdentityFile ~/.ssh/github" >> ~/.ssh/config
+echo "Please add the following SSH key on https://github.com/settings/ssh/new"
+cat ~/.ssh/github.pub
+read -p "Press enter to continue..."
+ssh -T git@github.com
+echo "You have finished successfully! Now you can use git command."
+```
+
+```
 git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
 cd rpi
 ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
