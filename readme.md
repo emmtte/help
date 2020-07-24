@@ -82,7 +82,7 @@ echo -e "Host github.com \n IdentityFile ~/.ssh/github" &gt;&gt; ~/.ssh/config
 ## Go Language
 https://github.com/golang/go
 ```
-VERSION=1.14.2.linux-armv6l
+VERSION=1.14.6.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
 sudo tar -C /usr/local -xzf go$VERSION.tar.gz
 cat &lt;&lt; ! &gt;&gt; ~/.bashrc
