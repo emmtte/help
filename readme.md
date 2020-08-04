@@ -181,7 +181,7 @@ sudo nvim /etc/influxdb/influxdb.conf
 ```
 sudo service influxdb restart
 influx
-> CREATE DATABASE binance
+> CREATE DATABASE "binance" WITH DURATION 1w REPLICATION 1
 > #DROP DATABASE binance
 ```
 
@@ -322,12 +322,21 @@ sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 ```
 
+**Yarn**
+```
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update && sudo apt install yarn
+yarn install
+```
+
+**Infinity Grid Trading Bot
 ```
 mkdir ~/bot 
 cd ~/bot
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.prettierrc
-npm install
+yarn install
 ```
 
 **Packages**
@@ -343,17 +352,12 @@ npm install
 **Dev Packages**
  - https://github.com/eslint/eslint
  - https://github.com/prettier/prettier
+```yarn install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier```
 
-```npm install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier```
-
-**Docs Packages**
-
- - https://github.com/jsdoc/jsdoc
- - https://github.com/SoftwareBrothers/better-docs
+**Execution**
 ```
-npm install -g jsdoc
-npm install --save-dev better-docs
-jsdoc your-documented-file.js -t ./node_modules/better-docs
+cd $HOME/binance
+concurrently "yarn run bot" "yarn run server"
 ```
 
 **Uninstall**
