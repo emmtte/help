@@ -183,7 +183,10 @@ sudo service influxdb restart
 influx
 > CREATE DATABASE "binance" WITH DURATION 1w REPLICATION 1
 > #DROP DATABASE binance
+> USE binance
 > DELETE WHERE time < 'YYYY-MM-DD'
+> SHOW RETENTION POLICIES
+> ALTER RETENTION POLICY <retention_policy_name> ON binance3 DURATION 3d REPLICATION 1 DEFAULT
 ```
 
 
