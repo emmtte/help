@@ -464,7 +464,7 @@ https://telegram.me/botfather
 sudo apt-get install -y jq
 curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].message.chat.id
 ````
-##### Private Channel
+#### Private Channel
 To send messages to your private channels you have to get your channel’s internal ID:
  1. Convert your channel to public with some **@channelName**
  2. Send message to this channel through Bot API https://api.telegram.org/botTOKEN/sendMessage?chat_id=@channelName&text=test
