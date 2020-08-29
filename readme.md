@@ -449,6 +449,7 @@ sudo smbpasswd -a pi
 
 
 ## Telegram
+
 https://telegram.me/botfather
 
  1. Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
@@ -456,13 +457,21 @@ https://telegram.me/botfather
  3. The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.
  4. Copy the **TOKEN** to the configuration file .env or config.json
  5. Send a dummy message to your new bot
- 6. Go to following url https://api.telegram.org/botTOKEN/getUpdates
+ 6. Go to following url https://api.telegram.org/**botTOKEN**/getUpdates
  7. Look for ``"chat":{"id":``
  8. Copy the **chatid** to the configuration file .env or config.json
 ````
 sudo apt-get install -y jq
 curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].message.chat.id
 ````
+### Private Channel
+To send messages to your private channels you have to get your channel’s internal ID:
+ 1. Convert your channel to public with some **@channelName**
+ 2. Send message to this channel through Bot API https://api.telegram.org/**botTOKEN**/sendMessage?chat_id=**@channelName**&text=test
+ 3. As response you will get info with chat_id of your channel.
+{ “ok” : true, “result” : { “chat” : { “id” : -1000000000000, “title” : “Private Channel”, “type” : “channel” }, “date” : 000000000, “message_id” : 1, “text” : “test” } }
+ 4. Now you can convert your Channel back to private and send message directly to this chat_id “-1000000000000” (minus is important!)
+https://api.telegram.org/**botTOKEN**/sendMessage?chat_id=-1000000000000&text=123
 
 ## Tmux
 
