@@ -278,6 +278,11 @@ ctags -R
  >call plug#end()
  >```
 
+- https://github.com/MTDL9/vim-log-highlighting
+>```
+>Plug 'mtdl9/vim-log-highlighting'
+>```
+
 ```
 nvim ~/.config/nvim/init.vim
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
