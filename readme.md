@@ -324,7 +324,7 @@ NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 https://github.com/nodejs/node
 
 ```
-VERSION=14.0.0
+VERSION=14.13.1
 sudo apt-get -y install build-essential
 wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
