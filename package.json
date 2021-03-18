@@ -1,23 +1,15 @@
 {
-  "name": "Infinity-Grid-Trading-Bot",
-  "version": "0.0.1",
+  "name": "binance",
+  "version": "1",
+  "license": "UNLICENSED",
   "dependencies": {
     "binance-api-node": "latest",
-    "bignumber.js": "latest",
     "coinmarketcap-api": "latest",
-    "concurrently": "latest",
+    "cron": "latest",
     "date-fns": "latest",
-    "dropbox": "latest",
-    "http-server": "latest",
-    "influx": "latest",
-    "isomorphic-fetch": "latest",
     "nanoid": "latest",
-    "node-schedule": "latest",
+    "node-scp": "^0.0.14",
     "telegraf": "latest",
-    "tulind": "latest",
-  },
-  "scripts": {
-     "bot": "node igb.js",
-     "server": "node http-server /media/bot/igb"
-  },
+    "tulind": "latest"
+  }
 }
