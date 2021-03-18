@@ -1,8 +1,4 @@
-shell/i/.js
-        Open=/usr/local/bin/nvim %f
-shell/i/.json
-        Open=/usr/local/bin/nvim %f
-shell/i/.yml
-        Open=/usr/local/bin/nvim %f
-shell/i/.ini
-        Open=/usr/local/bin/nvim %f
+regex/menu|hotlist|\.(env|ext|js|mjs|keymap|json|conf|log|yml|yaml|ini|sh|md|menu|vim|txt)$
+  Open=nvr -p %f ; tmux select-window -t VI
+default/*
+  Edit=nvr -p %f ; tmux select-window -t VI
