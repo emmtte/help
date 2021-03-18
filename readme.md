@@ -2,13 +2,14 @@
 
 **Setup**
 
+ - [Bitwarden](#bitwarden)
  - [Dropbox-Uploader](#dropbox-uploader)
  - [Go Language](#go-language)
  - [Google Drive](#google-drive)
- - [Google Music](#google-music)
  - [Midnight Commander](#midnight-commander)
  - [Neovim](#neovim)
  - [Node JS](#node-js)
+ - [Kodi](#kodi)
  - [Pi Hole](#pi-hole)
  - [PuTTY](#putty)
  - [Ready Media](#ready-media)
@@ -90,9 +91,7 @@ export PATH=\$GOPATH:\$GOPATH/bin:\$PATH
 source ~/.bashrc
 ```
 
-
 ## Google Drive
-
 https://github.com/odeke-em/drive
 ```
 sudo apt install -y git
@@ -100,6 +99,32 @@ go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
 ```
+
+## Kodi
+https://github.com/xbmc/xbmc/blob/master/docs/README.Linux.md
+````
+sudo apt-get install kodi kodi-eventclients-kodi-send
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install -y debhelper autoconf automake autopoint gettext autotools-dev cmake curl default-jre doxygen gawk gcc gdc gperf libasound2-dev libass-dev libavahi-client-dev libavahi-common-dev libbluetooth-dev libbluray-dev libbz2-dev libcdio-dev libp8-platform-dev libcrossguid-dev libcurl4-openssl-dev libcwiid-dev libdbus-1-dev libegl1-mesa-dev libenca-dev libflac-dev libfmt-dev libfontconfig-dev libfreetype6-dev libfribidi-dev libfstrcmp-dev libgcrypt-dev libgif-dev libgles2-mesa-dev libgl1-mesa-dev libglu1-mesa-dev libgnutls28-dev libgpg-error-dev libgtest-dev libiso9660-dev libjpeg-dev liblcms2-dev libltdl-dev liblzo2-dev libmicrohttpd-dev default-libmysqlclient-dev libnfs-dev libogg-dev libpcre3-dev libplist-dev libpng-dev libpulse-dev libshairplay-dev libsmbclient-dev libspdlog-dev libsqlite3-dev libssl-dev libtag1-dev libtiff5-dev libtinyxml-dev libtool libudev-dev libva-dev libvdpau-dev libvorbis-dev libxmu-dev libxrandr-dev libxslt1-dev libxt-dev lsb-release meson nasm ninja-build python-dev python-pil python-pip rapidjson-dev swig unzip uuid-dev yasm zip zlib1g-dev libcec-dev libfmt-dev liblirc-dev libdrm-dev libunistring-dev libgbm-dev libinput-dev libxkbcommon-dev tar make
+sudo apt install -y python3-dev
+sudo apt install libdav1d-dev
+
+mkdir kodi
+curl -L https://github.com/xbmc/xbmc/archive/19.0RC1-Matrix.tar.gz | tar -xz -C kodi --strip-components=1
+cd kodi
+sudo make -C tools/depends/target/flatbuffers PREFIX=/usr/local -j 2
+cd ..
+mkdir kodi-build
+cd kodi-build
+cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles -DGBM_RENDER_SYSTEM=gles
+cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles -DENABLE_VAAPI=OFF -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_DEBUGFISSION=OFF -DENABLE_TESTING=OFF -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_INTERNAL_FMT=ON
+cmake --build . -- VERBOSE=1 -j3
+sudo make install -j 2
+sudo make uninstall -j 2
+cd ..
+sudo usermod -a -G input,video pi
+````
 
 
 ## Midnight Commander
@@ -257,11 +282,18 @@ yarn add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettie
 
 ```
 
-
 **Uninstall**
 ```
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
 ```
+
+
+## Pi Hole
+https://github.com/pi-hole/pi-hole
+````
+curl -sSL https://install.pi-hole.net | bash
+````
+
 
 ## PuTTY
 https://www.chiark.greenend.org.uk/~sgtatham/putty/
@@ -311,13 +343,6 @@ sudo nvim /etc/minidlna.conf
 sudo service minidlna restart
 sudo chmod a+rX /media/hdd/minidlna
 ```
-
-
-## Pi Hole
-https://github.com/pi-hole/pi-hole
-````
-curl -sSL https://install.pi-hole.net | bash
-````
 
 
 ## Telegram
