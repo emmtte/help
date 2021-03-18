@@ -34,7 +34,20 @@
 
 ##### Prerequisites
 
-```sudo apt-get install gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
+```sudo apt install -y gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
+
+## Bitwarden
+https://bitwarden.com/help/article/cli/#download-and-install
+````
+sudo yarn global add @bitwarden/cli
+bw login [email] [password]
+export BW_SESSION="[token]"
+bw export --format csv
+bw export --format json
+gpg -c bitwarden_export.csv
+gpg -c bitwarden_export.json
+bw lock
+````
 
 ## Dropbox Uploader
  - https://github.com/andreafabrizi/Dropbox-Uploader
@@ -45,39 +58,6 @@ sudo chmod +x /usr/local/bin/dropbox_uploader
 dropbox_uploader init
 ```
 
-## Git
-https://github.com/git/git
-
-```sudo apt-get install git```
-
-```
-sudo apt-get update
-sudo apt-get install git -y
-mkdir -p ~/.ssh
-ssh-keygen -t rsa -b 4096 -C "John.Smith@example.com" -f ~/.ssh/github -P ""
-echo "Host *
-  AddKeysToAgent yes
-  IdentityFile ~/.ssh/github" >> ~/.ssh/config
-echo "Please add the following SSH key on https://github.com/settings/ssh/new"
-cat ~/.ssh/github.pub
-read -p "Press enter to continue..."
-ssh -T git@github.com
-echo "You have finished successfully! Now you can use git command."
-```
-
-```
-git clone git@github.com:emmtte/Raspberry-Pi-User-Menu.git ~/rpi
-cd rpi
-ssh-keygen -t rsa -b 4096 -C "Raspberry Pi" -f $HOME/.ssh/github
-# Copy contents github.pub to github.com
-eval $(ssh-agent -s)
-ssh-add ~/.ssh/github
-ssh -vT git@github.com
-git remote set-url origin git@github.com:emmtte/Raspberry-Pi-User-Menu.git
-git config --global user.name "emmtte"
-git config --global user.email "John.Smith@example.com"
-echo -e "Host github.com \n IdentityFile ~/.ssh/github" &gt;&gt; ~/.ssh/config
-```
 
 ## Go Language
 https://github.com/golang/go
@@ -96,114 +76,28 @@ source ~/.bashrc
 ## Google Drive
 
 https://github.com/odeke-em/drive
-
-`sudo apt-get install git`
-
 ```
+sudo apt install -y git
 go get -u github.com/odeke-em/drive/cmd/drive
 mkdir /media/hdd/drive
 drive init /media/hdd/drive
 ```
 
 
-
-## Google Music
-https://github.com/thebigmunch/google-music-scripts
-```
-sudo apt-get install flac lame
-sudo apt-get install libav-tools #avconv
-sudo pip3.7 install -U google-music-scripts
-```
-
-
-## Grafana
-https://github.com/grafana/grafana
-
-```
-sudo apt-get install -y adduser libfontconfig1
-wget https://dl.grafana.com/oss/release/grafana_7.0.1_armhf.deb
-sudo dpkg -i grafana_7.0.1_armhf.deb
-rm grafana_7.0.1_armhf.deb
-sudo nvim /etc/grafana/grafana.ini
-```
-
-```
-[server]
-  # Protocol (http, https, socket)
-  protocol = http
-  # The http port  to use
-  http_port = 3000
-```
-
-```
-sudo service grafana-server restart
-```
-
-http://localhost:3000/login  (_default admin/admin_)
-
-## Http Server
-https://github.com/http-party/http-server
-
-##### Installation
-
-```npm install --global http-server```
-
-```http-server /media/key/igb```
-
-
-## InfluxDB
-https://github.com/influxdata/influxdb
-
-```
-VERSION=1.8.0
-wget https://dl.influxdata.com/influxdb/releases/influxdb_$VERSION_armhf.deb
-sudo dpkg -i influxdb_$VERSION_armhf.deb
-rm influxdb_$VERSION_armhf.deb
-sudo nvim /etc/influxdb/influxdb.conf
-```
-
-```
-[http]
-  # Determines whether HTTP endpoint is enabled.
-  enabled = true
-  # The bind address used by the HTTP service.
-  bind-address = ":8086"
-  # Determines whether user authentication is enabled over HTTP/HTTPS.
-  auth-enabled = false
-[meta]
-  dir = "/media/key/influxdb"
-[data]
-  dir = "/media/key/influxdb/data"
-  wal-dir = "/media/key/influxdb/wal"
-  index-version = "tsi1"
-```
-
-```
-sudo service influxdb restart
-influx
-> CREATE DATABASE "binance" WITH DURATION 1w REPLICATION 1
-> #DROP DATABASE binance
-> USE binance
-> DELETE WHERE time < 'YYYY-MM-DD'
-> SHOW RETENTION POLICIES
-> ALTER RETENTION POLICY <retention_policy_name> ON binance3 DURATION 3d REPLICATION 1 DEFAULT
-```
-
-
 ## Midnight Commander
 https://github.com/MidnightCommander/mc
-
-```sudo apt-get install mc```
-
 ```
-sudo apt-gen install autogen autoconf libtool gettext libslang2-dev
-wget https://github.com/MidnightCommander/mc/archive/4.8.20.tar.gz
-tar xvfz 4.8.20.tar.gz
-cd mc-4.8.20
-autoconf
+sudo apt install -y mc
+sudo apt install -y autogen autoconf libtool gettext libslang2-dev autopoint glib2.0
+wget http://ftp.midnight-commander.org/mc-4.8.25.tar.xz
+tar xf mc-4.8.25.tar.xz
+cd mc-4.8.25
 ./configure
-make
-make install
+make -j3
+sudo make install
+cd..
+rm mc-4.8.25.tar.xz
+rm -rf mc-4.8.25
 ```
 
 **Optional**
@@ -322,21 +216,17 @@ NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 
 ## Node JS
 https://github.com/nodejs/node
-
+https://github.com/yarnpkg/yarn
 ```
-VERSION=14.13.1
-sudo apt-get -y install build-essential
-wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
+VERSION=15.9.0
+sudo apt -y install build-essential
+#wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
+wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.gz -O node.tar.gz
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
-```
-
-**Yarn**
-```
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update && sudo apt install yarn
-yarn install
+sudo npm install --global yarn
+yarn install <package>
+yarn upgrade
 ```
 
 **Infinity Grid Trading Bot
@@ -414,49 +304,27 @@ Verify that your .vimrc has "set encoding=utf-8"
 Verify your term session is capable of 256 colors (TERM=xterm-256color)
 
 ## Ready Media
-[https://sourceforge.net/projects/minidlna/](https://sourceforge.net/projects/minidlna/)
+https://sourceforge.net/projects/minidlna/
 ```
-sudo apt-get install minidlna -y
+sudo apt install -y minidlna
 sudo nvim /etc/minidlna.conf
-```
-```
-root_container=B
-friendly_name=Raspberry Pi
-media_dir=/media/hdd/minidlna
-```
-```
+  root_container=B
+  friendly_name=Raspberry Pi
+  media_dir=/media/hdd/minidlna
 sudo service minidlna restart
 sudo chmod a+rX /media/hdd/minidlna
 ```
 
+
 ## Pi Hole
-
 https://github.com/pi-hole/pi-hole
-
-``curl -sSL https://install.pi-hole.net | bash``
-
-## Samba
-
-https://github.com/samba-team/samba
-
-```
-sudo apt-get -y install samba samba-common-bin
-cat &lt;&lt;<< EOF | sudo tee -a /etc/samba/smb.conf
-[HDD]
-comment = Raspberry Pi Hard Drive
-path = /media/hdd
-read only = no
-browsable = yes
-EOF
-sudo service smbd restart
-sudo smbpasswd -a pi
-```
+````
+curl -sSL https://install.pi-hole.net | bash
+````
 
 
 ## Telegram
-
 https://telegram.me/botfather
-
  1. Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
  2. The **name** of your bot is displayed in contact details and elsewhere.
  3. The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.
@@ -478,45 +346,39 @@ To send messages to your private channels you have to get your channel’s inter
  4. Now you can convert your Channel back to private and send message directly to this chat_id "-1000000000000" (minus is important!)
 https://api.telegram.org/botTOKEN/sendMessage?chat_id=-1000000000000&text=test
 
+
 ## Tmux
-
 https://github.com/tmux/tmux
-
-```sudo apt-get install tmux```
-
-```shell
+````
+sudo apt install -y tmux
 tmux -V
 tmux kill-server
-sudo apt-get install -y libevent-dev libncurses5-dev
-wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz
-tar xvfz tmux-2.8.tar.gz
-cd tmux-2.8
-./configure &amp;&amp;& make
-sudo cp ./tmux /usr/bin/tmux
-tmux -V
+sudo apt install -y libevent-dev libncurses5-dev
+wget https://github.com/tmux/tmux/releases/download/3.1c/tmux-3.1c.tar.gz
+tar xvfz tmux-3.1c.tar.gz
+cd tmux-3.1c
+./configure
+make -j3
+sudo make install
 cd ..
-rm tmux-2.8.tar.gz
-rm -rf tmux-2.8
-```
+rm -rf tmux-3.1c
+rm tmux-3.1c.tar.gz
+````
+
 
 ## Youtube Download
 https://github.com/rg3/youtube-dl
-
 ```
-sudo apt-get -y install libavcodec-extra libav-tools
+sudo apt -y install libavcodec-extra ffmpeg
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 sudo chmod a+rx /usr/local/bin/youtube-dl
-echo "PLAYLIST_LINK" >> ~/.youtube-dl
-mkdir /medi/hdd/youtube-dl
-youtube-dl --output "/media/hdd/youtube-dl/%(title)s.%(ext)s" https://www.youtube.com/playlist?list=`cat ~/.youtube-dl`
+sudo  youtube-dl -U
 ```
 
 
 ## Youtube Upload
  - https://github.com/tokland/youtube-upload
  - https://github.com/tokland/youtube-upload/pull/264
-
-
 ```shell
 sudo pip install --upgrade google-api-python-client oauth2client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
@@ -536,17 +398,16 @@ sudo rm -rf youtube-upload-master
 ## Configuration
 #### Create SD Card
 ```shell
-#Use lsblk to check /dev/sdc
-rm /media/hdd/raspbian.zip
-curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_lite_latest
-#curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_full_latest
-#curl --progress-bar -L -o /media/hdd/raspbian.zip https://downloads.raspberrypi.org/raspbian_latest
-#unzip -p raspbian.zip | sudo dd of=/dev/sda bs=4M status=progress conv=fsync
-unzip -p /media/hdd/raspbian.zip | sudo dd of=/dev/sda bs=4M conv=fsync
-sudo mkdir /media/cardreader
-sudo mount /dev/sda1 /media/cardreader
-sudo touch /media/cardreader/ssh
-sudo umount /media/cardreader
+rm /home/pi/raspios.zip
+curl --progress-bar -L -o /home/pi/raspios.zip https://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip
+curl --progress-bar -L -o /home/pi/raspios-arm64.zip https://downloads.raspberrypi.org/raspios_arm64/images/raspios_arm64-2020-08-24/2020-08-20-raspios-buster-arm64.zip
+lsblk
+unzip -p /home/pi/raspios.zip | sudo dd of=/dev/sda bs=4M status=progress conv=fsync
+unzip -p /home/pi/raspios-arm64.zip | sudo dd of=/dev/sda bs=4M status=progress conv=fsync
+sudo mkdir /media/sd
+sudo mount /dev/sda1 /media/sd
+sudo touch /media/sd/ssh
+sudo umount /media/sd
 ```
 
 #### Configuration
@@ -559,19 +420,31 @@ sudo umount /media/cardreader
  - **5** Interfacing Options **>** **P1** Camera > Disable
  - **7** Advanced Options **>** **A1** Expand Filesystem
 
+````
+1 System Options Configure system settings
+S4 Hostname          Set name for this computer on a network
+
+2 Display Options      Configure display settings
+D2 Underscan       Remove black border around screen
+Would you like to enable compensation for displays with overscan? No
+
+4 Performance Options  Configure performance settings
+P2 GPU Memory          Change the amount of memory made available to the GPU
+
+6 Advanced Options     Configure advanced settings
+A2 GL Driver               Enable/disable experimental desktop GL driver
+G1 Legacy        Original non-GL desktop driver
+````
+
 #### Key-based authentication
 ```
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
 sudo chown $USER:$USER ~/.ssh/authorized_keys
-cat &lt;&lt; EOF | sudo tee -a /etc/ssh/sshd_config
-#AuthorizedKeysFile /home/$USER/.ssh/authorized_keys
-UsePAM yes
-PermitRootLogin no
-PasswordAuthentication no
-ChallengeResponseAuthentication no
-EOF
+sudo nvim /etc/ssh/sshd_config
+>>> PermitRootLogin no
+>>> PasswordAuthentication no
 sudo service ssh restart
 ```
 
@@ -586,30 +459,39 @@ Save Private Key &gt;> Yes &gt;> File &gt;> id_rsa.ppk
 ```
 
 #### Domain Name System
-```
-sudo apt-get install resolvconf
-sudo dpkg-reconfigure resolvconf
-```
-*Prepare /etc/resolv.conf for dynamic updates?* **No**
+## DNS Server
+**Installation**
+````
+sudo apt install dnsmasq
+sudo nvim /etc/dnsmasq.conf
+  domain-needed
+  bogus-priv
+  no-resolv
+  cache-size=1000
+  server=1.1.1.1
+  server=1.0.0.1
+  server=8.8.8.8
+  server=8.8.4.4
+sudo systemctl restart dnsmasq
+sudo systemctl status dnsmasq
+````
 
-````sudo nvim /etc/resolv.conf````
+**Configuration**
+````
+sudo nvim /etc/dhcp/dhclient.conf
+  prepend domain-name-servers 127.0.0.1;
+  #prepend domain-name-servers 127.0.0.1, 1.1.1.1, 1.0.0.1, 8.8.8.8, 8.8.4.4;
+sudo service networking restart
+````
 
-*nameserver 127.0.0.1*
-
-```
-sudo apt-get install dnsmasq dnsutils
-sudo nvim /etc/dhcpcd.conf
-interface eth0
-  static ip_address=192.168.0.1/24
-  static routers=192.168.0.254
-  static domain_name_servers=127.0.0.1 8.8.8.8</i>
-sudo /etc/init.d/networking restart
-/etc/init.d/dnsmasq status
-```
-```
-dig api.binance.com
-dig @1.1.1.1 api.binance.com +short
-```
+**Test**
+````
+sudo apt install -y dnsutils
+dig www.google.com
+dig www.google.com @localhost
+dig @1.1.1.1 www.google.com +short
+sudo tail -n 200 /var/log/syslog
+````
 
 #### Disable Bluetooth and Wifi
 
@@ -629,25 +511,29 @@ sudo update-rc.d dphys-swapfile remove
 sudo systemctl disable dphys-swapfile.service
 ```
 
-#### Format USB key
-
+#### Format or Install HDD or KEY
 ```
 lsblk
 sudo fdisk /dev/sda
 ```
-
 **Press keys** : *d, n, p, 1, ENTER, ENTER, t, 83, w*
-
+**Press keys** : *d, n, p, 1, +265.8G, n,p,2, w*
 ```
-sudo mkfs.ext4 /dev/sda1
+lsblk
+#sudo mkfs.ext4 /dev/sda1 
+#sudo mkfs.ext4 /dev/sdb1
+sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=0 /dev/sda1
+sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=0 /dev/sdb1
 sudo mkdir /media/key
-sudo mount /dev/sda1 /media/key
-sudo chown -R $USER:$USER /media/key
-mkdir /media/key/influxdb
-sudo chown -R influxdb:influxdb /media/key/influxdb
+sudo mkdir /media/hdd
+sudo mount /dev/sda1 /media/hdd
+sudo mount /dev/sdb1 /media/key
+sudo mount /dev/sda2 /mnt/hdd
+#sudo chown -R $USER:$USER /media/key
 sudo blkid /dev/sda1
-sudo mcedit /etc/fstab
-PARTUUID=ABCDEFGH-01 /media/key ext4 defaults 0 0 
+sudo blkid /dev/sdb1
+sudo nvim /etc/fstab
+UUID=7157e807-4902-4a3a-93e2-901ee840e092 /media/hdd ext4 nofail,defaults 0 0
 ```
 
 
