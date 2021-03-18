@@ -149,12 +149,10 @@ wget -O ~/.local/share/mc/skins/ \
 https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.local/share/mc/skins/palenight.ini
 nvim ~/.config/mc/ini
 ```
-
 ```
 [Midnight Commander]
 skin=palenight
 ```
-
 **Select Editor**
 ```
 echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
@@ -163,96 +161,26 @@ echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
 
 ## Neovim
 https://github.com/neovim/neovim
-
 ```shell
-sudo apt-get install -y git libtool libtool-bin autoconf automake cmake g++ pkg-config unzip libffi-dev
 git clone https://github.com/neovim/neovim.git
 cd neovim
-make CMAKE_BUILD_TYPE=RelWithDebInfo
+make CMAKE_BUILD_TYPE=RelWithDebInfo -j3
 sudo make install
+cd ..
+rm -rf neovim
 ```
-
 #### Exuberant Ctags
-
 https://github.com/romainl/ctags-patterns-for-javascript
-
 ```
 sudo apt-get install exuberant-ctags
 wget https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/ctagsrc -O /home/pi/~/.ctags
 ctags -R
 ```
-
-#### Plugins
-
- - https://github.com/junegunn/vim-plug
- >```
- >if empty(glob('~/.config/nvim/autoload/plug.vim'))
- >silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
- >\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
- >autocmd VimEnter * PlugInstall
- >endif
- >call plug#begin()
- >```
- - https://github.com/neoclide/coc.nvim
- >```
- >Plug 'neoclide/coc.nvim', {'branch': 'release'}
- >```
- - https://github.com/drewtempelmeyer/palenight.vim
->```
->Plug 'drewtempelmeyer/palenight.vim'
->set background=dark
->colorscheme palenight
->```
- - https://github.com/vim-airline/vim-airline
- >```
- >Plugin 'vim-airline/vim-airline'
- >Plugin 'vim-airline/vim-airline-themes'
- >```
- - https://github.com/edkolev/tmuxline.vim
- - https://github.com/majutsushi/tagbar
- >```
- >Plug 'majutsushi/tagbar'
- >call plug#end()
- >```
-
-- https://github.com/MTDL9/vim-log-highlighting
->```
->Plug 'mtdl9/vim-log-highlighting'
->```
-
-```
-nvim ~/.config/nvim/init.vim
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-autocmd VimEnter * PlugInstall
-endif
-call plug#begin()
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'majutsushi/tagbar'
-call plug#end()
-```
-
-**Commands**
->```
->:Tmuxline
->:Tagbar
->:PlugInstall
->:PlugUpdate
->:PlugClean
->:CheckHealth
->:Prettier
->:Eslint
->:run ctags script.mjs
->```
-
 #### neovim-remote
 https://github.com/mhinz/neovim-remote
 ```
-pip3 install neovim-remote
+sudo apt install -y python3-pip
+sudo pip3 install neovim-remote
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 ```
 
