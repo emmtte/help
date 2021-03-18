@@ -183,6 +183,13 @@ sudo apt install -y python3-pip
 sudo pip3 install neovim-remote
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 ```
+### Plugins
+https://github.com/junegunn/vim-plug
+https://github.com/neoclide/coc.nvim
+https://github.com/drewtempelmeyer/palenight.vim
+https://github.com/vim-airline/vim-airline
+https://github.com/edkolev/tmuxline.vim
+https://github.com/majutsushi/tagbar
 
 
 ## Node JS
