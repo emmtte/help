@@ -184,17 +184,17 @@ sudo pip3 install neovim-remote
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 ```
 ### Plugins
-https://github.com/junegunn/vim-plug
-https://github.com/neoclide/coc.nvim
-https://github.com/drewtempelmeyer/palenight.vim
-https://github.com/vim-airline/vim-airline
-https://github.com/edkolev/tmuxline.vim
-https://github.com/majutsushi/tagbar
+- https://github.com/junegunn/vim-plug
+- https://github.com/neoclide/coc.nvim
+- https://github.com/drewtempelmeyer/palenight.vim
+- https://github.com/vim-airline/vim-airline
+- https://github.com/edkolev/tmuxline.vim
+- https://github.com/majutsushi/tagbar
 
 
 ## Node JS
-https://github.com/nodejs/node
-https://github.com/yarnpkg/yarn
+- https://github.com/nodejs/node
+- https://github.com/yarnpkg/yarn
 ```
 VERSION=15.9.0
 sudo apt -y install build-essential
