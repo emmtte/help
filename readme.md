@@ -3,20 +3,15 @@
 **Setup**
 
  - [Dropbox-Uploader](#dropbox-uploader)
- - [Git](#git)
  - [Go Language](#go-language)
  - [Google Drive](#google-drive)
  - [Google Music](#google-music)
- - [Grafana](#grafana)
- - [Http Server](#http-server)
- - [InfluxDB](#influxdb)
  - [Midnight Commander](#midnight-commander)
  - [Neovim](#neovim)
  - [Node JS](#node-js)
  - [Pi Hole](#pi-hole)
  - [PuTTY](#putty)
  - [Ready Media](#ready-media)
- - [Samba](#samba)
  - [Telegram](#telegram)
  - [Tmux](#tmux)
  - [Youtube Download](#youtube-download)
@@ -33,8 +28,31 @@
  - [Format USB Key](#format-usb-key)
 
 ##### Prerequisites
+```shell
+sudo apt update
+sudo apt upgrade
+sudo apt dist-upgrade
+sudo apt install -y ntp rsync ntfs-3g exiv2
+sudo apt install -y gpac libav-tools mkvtoolnix mpv ghostscript
+```
+**Change Hostname**
+```shell
+hostnamectl set-hostname <hostname>
+sudo nvim /etc/hosts
+>>> replace raspberrypi by <hostname>
+```
 
-```sudo apt install -y gpac libav-tools mkvtoolnix mpv exiv2 rsync ntfs-3g ghostscript```
+**Auto Start**
+```shell
+sudo nvim /etc/rc.local
+  su pi -c "/usr/bin/bash /home/pi/headless.sh"
+  exit 0
+```
+```shell
+nvim ~/.profile
+  ~/headless.sh
+```
+
 
 ## Bitwarden
 https://bitwarden.com/help/article/cli/#download-and-install
@@ -225,46 +243,25 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.gz -O node
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 sudo npm install --global yarn
-yarn install <package>
 yarn upgrade
 ```
 
 **Infinity Grid Trading Bot
-```
-mkdir ~/bot 
-cd ~/bot
+```shell
+mkdir ~/binance
+cd ~/binance
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.prettierrc
 yarn install
+yarn add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
+
 ```
 
-**Packages**
-
- - binance-api-node : https://github.com/Ashlar/binance-api-node
- - bignumber.js : https://github.com/MikeMcl/bignumber.js
- - coinmarketcap-api : https://github.com/tiaanduplessis/coinmarketcap-api
- - nanoid : https://github.com/ai/nanoid
- - node-schedule : https://github.com/node-schedule/node-schedule
- - telegraf : https://github.com/telegraf/telegraf
- - tulind : https://github.com/TulipCharts/tulipnode
-
-**Dev Packages**
- - https://github.com/eslint/eslint
- - https://github.com/prettier/prettier
-```yarn install --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier```
-
-**Execution**
-```
-cd $HOME/binance
-concurrently "yarn run bot" "yarn run server"
-```
 
 **Uninstall**
-
 ```
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
 ```
-
 
 ## PuTTY
 https://www.chiark.greenend.org.uk/~sgtatham/putty/
