@@ -56,7 +56,7 @@ nvim ~/.profile
 
 
 ## Bitwarden
-https://bitwarden.com/help/article/cli/#download-and-install
+- https://bitwarden.com/help/article/cli/#download-and-install
 ````
 sudo yarn global add @bitwarden/cli
 bw login [email] [password]
@@ -69,7 +69,7 @@ bw lock
 ````
 
 ## Dropbox Uploader
- - https://github.com/andreafabrizi/Dropbox-Uploader
+- https://github.com/andreafabrizi/Dropbox-Uploader
 ```
 sudo curl -o /usr/local/bin/dropbox_uploader \
 https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh
@@ -79,7 +79,7 @@ dropbox_uploader init
 
 
 ## Go Language
-https://github.com/golang/go
+- https://github.com/golang/go
 ```
 VERSION=1.14.6.linux-armv6l
 curl -L -o go$VERSION.tar.gz https://storage.googleapis.com/golang/go$VERSION.tar.gz
@@ -92,7 +92,7 @@ source ~/.bashrc
 ```
 
 ## Google Drive
-https://github.com/odeke-em/drive
+- https://github.com/odeke-em/drive
 ```
 sudo apt install -y git
 go get -u github.com/odeke-em/drive/cmd/drive
@@ -101,7 +101,7 @@ drive init /media/hdd/drive
 ```
 
 ## Kodi
-https://github.com/xbmc/xbmc/blob/master/docs/README.Linux.md
+- https://github.com/xbmc/xbmc/blob/master/docs/README.Linux.md
 ````
 sudo apt-get install kodi kodi-eventclients-kodi-send
 sudo apt update -y
@@ -128,7 +128,7 @@ sudo usermod -a -G input,video pi
 
 
 ## Midnight Commander
-https://github.com/MidnightCommander/mc
+- https://github.com/MidnightCommander/mc
 ```
 sudo apt install -y mc
 sudo apt install -y autogen autoconf libtool gettext libslang2-dev autopoint glib2.0
@@ -160,7 +160,7 @@ echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
 
 
 ## Neovim
-https://github.com/neovim/neovim
+- https://github.com/neovim/neovim
 ```shell
 git clone https://github.com/neovim/neovim.git
 cd neovim
@@ -170,14 +170,14 @@ cd ..
 rm -rf neovim
 ```
 #### Exuberant Ctags
-https://github.com/romainl/ctags-patterns-for-javascript
+- https://github.com/romainl/ctags-patterns-for-javascript
 ```
 sudo apt-get install exuberant-ctags
 wget https://raw.githubusercontent.com/romainl/ctags-patterns-for-javascript/master/ctagsrc -O /home/pi/~/.ctags
 ctags -R
 ```
 #### neovim-remote
-https://github.com/mhinz/neovim-remote
+- https://github.com/mhinz/neovim-remote
 ```
 sudo apt install -y python3-pip
 sudo pip3 install neovim-remote
@@ -224,16 +224,16 @@ sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man
 
 
 ## Pi Hole
-https://github.com/pi-hole/pi-hole
+- https://github.com/pi-hole/pi-hole
 ````
 curl -sSL https://install.pi-hole.net | bash
 ````
 
 
 ## PuTTY
-https://www.chiark.greenend.org.uk/~sgtatham/putty/
- - https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
- - https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
+- https://www.chiark.greenend.org.uk/~sgtatham/putty/
+- https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
+- https://github.com/mbadolato/iTerm2-Color-Schemes/blob/master/putty/Subliminal.reg
 
 ```
 Terminal Keyboard
@@ -268,7 +268,7 @@ Verify that your .vimrc has "set encoding=utf-8"
 Verify your term session is capable of 256 colors (TERM=xterm-256color)
 
 ## Ready Media
-https://sourceforge.net/projects/minidlna/
+- https://sourceforge.net/projects/minidlna/
 ```
 sudo apt install -y minidlna
 sudo nvim /etc/minidlna.conf
@@ -281,31 +281,31 @@ sudo chmod a+rX /media/hdd/minidlna
 
 
 ## Telegram
-https://telegram.me/botfather
- 1. Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
- 2. The **name** of your bot is displayed in contact details and elsewhere.
- 3. The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.
- 4. Copy the **TOKEN** to the configuration file .env or config.json
- 5. Send a dummy message to your new bot
- 6. Go to following url https://api.telegram.org/botTOKEN/getUpdates
- 7. Look for ``"chat":{"id":``
- 8. Copy the **chatid** to the configuration file .env or config.json
+- https://telegram.me/botfather
+1. Use the **/newbot** command to create a new bot. The BotFather will ask you for a name and username, then generate an authorization token for your new bot.
+2. The **name** of your bot is displayed in contact details and elsewhere.
+3. The **Username** is a short name, to be used in mentions and telegram.me links. Usernames are 5-32 characters long and are case insensitive, but may only include Latin characters, numbers, and underscores. Your bot's username must end in ‘bot’.
+4. Copy the **TOKEN** to the configuration file .env or config.json
+5. Send a dummy message to your new bot
+6. Go to following url https://api.telegram.org/botTOKEN/getUpdates
+7. Look for ``"chat":{"id":``
+8. Copy the **chatid** to the configuration file .env or config.json
 ````
 sudo apt-get install -y jq
 curl https://api.telegram.org/bot$TELEGRAM_TOKEN/getUpdates | jq .result[0].message.chat.id
 ````
 #### Private Channel
 To send messages to your private channels you have to get your channel’s internal ID:
- 1. Convert your channel to public with some **@channelName**
- 2. Send message to this channel through Bot API https://api.telegram.org/botTOKEN/sendMessage?chat_id=@channelName&text=test
- 3. As response you will get info with chat_id of your channel.
+1. Convert your channel to public with some **@channelName**
+2. Send message to this channel through Bot API https://api.telegram.org/botTOKEN/sendMessage?chat_id=@channelName&text=test
+3. As response you will get info with chat_id of your channel.
 { "ok" : true, "result" : { "chat" : { "id" : -1000000000000, "title" : "Private Channel", "type" : "channel" }, "date" : 000000000, "message_id" : 1, "text" : "test" } }
- 4. Now you can convert your Channel back to private and send message directly to this chat_id "-1000000000000" (minus is important!)
+4. Now you can convert your Channel back to private and send message directly to this chat_id "-1000000000000" (minus is important!)
 https://api.telegram.org/botTOKEN/sendMessage?chat_id=-1000000000000&text=test
 
 
 ## Tmux
-https://github.com/tmux/tmux
+- https://github.com/tmux/tmux
 ````
 sudo apt install -y tmux
 tmux -V
@@ -324,7 +324,7 @@ rm tmux-3.1c.tar.gz
 
 
 ## Youtube Download
-https://github.com/rg3/youtube-dl
+- https://github.com/rg3/youtube-dl
 ```
 sudo apt -y install libavcodec-extra ffmpeg
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -334,8 +334,8 @@ sudo  youtube-dl -U
 
 
 ## Youtube Upload
- - https://github.com/tokland/youtube-upload
- - https://github.com/tokland/youtube-upload/pull/264
+- https://github.com/tokland/youtube-upload
+- https://github.com/tokland/youtube-upload/pull/264
 ```shell
 sudo pip install --upgrade google-api-python-client oauth2client progressbar2
 wget https://github.com/tokland/youtube-upload/archive/master.zip
@@ -371,11 +371,11 @@ sudo umount /media/sd
 
 ```sudo raspi-config```
 
- - **1** Change User Password
- - **4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
- - **4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
- - **5** Interfacing Options **>** **P1** Camera > Disable
- - **7** Advanced Options **>** **A1** Expand Filesystem
+- **1** Change User Password
+- **4** Localisation Options **>** **I1** Change Locale **>** fr_FR.UTF-8 UTF-8
+- **4** Localisation Options **>** **I2** Change Timezone **>**  Europe and Time zone : Paris
+- **5** Interfacing Options **>** **P1** Camera > Disable
+- **7** Advanced Options **>** **A1** Expand Filesystem
 
 ````
 1 System Options Configure system settings
@@ -496,8 +496,8 @@ UUID=7157e807-4902-4a3a-93e2-901ee840e092 /media/hdd ext4 nofail,defaults 0 0
 
 ## MIT License
 
- - Copyright (c) Headless-Raspberry-Pi-Setup *March 9, 2013*
- - Copyright (c) Infinity-Grid-Trading-Bot         *May 1, 2018*
+- Copyright (c) Headless-Raspberry-Pi-Setup *March 9, 2013*
+- Copyright (c) Infinity-Grid-Trading-Bot         *May 1, 2018*
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
