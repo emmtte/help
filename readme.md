@@ -395,6 +395,13 @@ G1 Legacy        Original non-GL desktop driver
 
 #### Key-based authentication
 ```
+mkdir .ssh
+cd .ssh
+touch authorized_keys
+nano authorized_keys
+sudo chmod 644 ~/.ssh/authorized_keys
+sudo chown $USER:$USER ~/.ssh/authorized_keys
+
 ssh-keygen
 mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
 sudo chmod 644 ~/.ssh/authorized_keys
