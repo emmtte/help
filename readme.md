@@ -31,8 +31,8 @@
 ##### Prerequisites
 ```shell
 sudo apt update
-sudo apt upgrade
-sudo apt dist-upgrade
+sudo apt upgrade -y
+sudo apt dist-upgrade -y
 sudo apt install -y ntp rsync ntfs-3g exiv2
 sudo apt install -y gpac libav-tools mkvtoolnix mpv ghostscript
 ```
