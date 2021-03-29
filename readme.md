@@ -102,28 +102,35 @@ drive init /media/hdd/drive
 
 ## Kodi
 - https://github.com/xbmc/xbmc/blob/master/docs/README.Linux.md
+- https://forum.kodi.tv/showthread.php?tid=351221&pid=3015416#pid3015416
 ````
 sudo apt-get install kodi kodi-eventclients-kodi-send
+
 sudo apt update -y
 sudo apt upgrade -y
-sudo apt install -y debhelper autoconf automake autopoint gettext autotools-dev cmake curl default-jre doxygen gawk gcc gdc gperf libasound2-dev libass-dev libavahi-client-dev libavahi-common-dev libbluetooth-dev libbluray-dev libbz2-dev libcdio-dev libp8-platform-dev libcrossguid-dev libcurl4-openssl-dev libcwiid-dev libdbus-1-dev libegl1-mesa-dev libenca-dev libflac-dev libfmt-dev libfontconfig-dev libfreetype6-dev libfribidi-dev libfstrcmp-dev libgcrypt-dev libgif-dev libgles2-mesa-dev libgl1-mesa-dev libglu1-mesa-dev libgnutls28-dev libgpg-error-dev libgtest-dev libiso9660-dev libjpeg-dev liblcms2-dev libltdl-dev liblzo2-dev libmicrohttpd-dev default-libmysqlclient-dev libnfs-dev libogg-dev libpcre3-dev libplist-dev libpng-dev libpulse-dev libshairplay-dev libsmbclient-dev libspdlog-dev libsqlite3-dev libssl-dev libtag1-dev libtiff5-dev libtinyxml-dev libtool libudev-dev libva-dev libvdpau-dev libvorbis-dev libxmu-dev libxrandr-dev libxslt1-dev libxt-dev lsb-release meson nasm ninja-build python-dev python-pil python-pip rapidjson-dev swig unzip uuid-dev yasm zip zlib1g-dev libcec-dev libfmt-dev liblirc-dev libdrm-dev libunistring-dev libgbm-dev libinput-dev libxkbcommon-dev tar make
-sudo apt install -y python3-dev
-sudo apt install libdav1d-dev
-
+sudo apt install debhelper autoconf automake autopoint gettext autotools-dev cmake curl default-jre doxygen gawk gcc gdc gperf libasound2-dev libass-dev libavahi-client-dev libavahi-common-dev libbluetooth-dev libbluray-dev libbz2-dev libcdio-dev libp8-platform-dev libcrossguid-dev libcurl4-openssl-dev libcwiid-dev libfstrcmp-dev libgcrypt20-dev libgif-dev libgles2-mesa-dev libgl1-mesa-dev libglu1-mesa-dev libgnutls28-dev libgpg-error-dev libiso9660-dev libjpeg-dev liblcms2-dev libltdl-dev liblzo2-dev libmicrohttpd-dev libnfs-dev libogg-dev libpcre3-dev libplist-dev libpng-dev libpulse-dev libshairplay-dev libsmbclient-dev libsqlite3-dev libssl-dev libtag1-dev libtiff5-dev libtinyxml-dev libtool libudev-dev libva-dev libvdpau-dev libvorbis-dev libxmu-dev libxrandr-dev libxslt1-dev libxt-dev lsb-release python3-dev python3-pil rapidjson-dev swig unzip uuid-dev yasm zip zlib1g-dev
+sudo apt install libcec-dev libfmt-dev liblirc-dev libdrm-dev libunistring-dev libgbm-dev libinput-dev 
 mkdir kodi
-curl -L https://github.com/xbmc/xbmc/archive/19.0RC1-Matrix.tar.gz | tar -xz -C kodi --strip-components=1
+curl -L https://github.com/xbmc/xbmc/archive/19.0-Matrix.tar.gz | tar -xz -C kodi --strip-components=1
 cd kodi
-sudo make -C tools/depends/target/flatbuffers PREFIX=/usr/local -j 2
-cd ..
 mkdir kodi-build
 cd kodi-build
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles -DGBM_RENDER_SYSTEM=gles
-cmake ../kodi -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles -DENABLE_VAAPI=OFF -DENABLE_INTERNAL_CROSSGUID=ON -DENABLE_DEBUGFISSION=OFF -DENABLE_TESTING=OFF -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_INTERNAL_FMT=ON
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles -DENABLE_VAAPI=OFF -DENABLE_VDPAU=OFF -DENABLE_DEBUGFISSION=OFF -DENABLE_TESTING=OFF -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_INTERNAL_FMT=ON
+sudo raspi-config > Performance Options > GPU Memory > 16
 cmake --build . -- VERBOSE=1 -j3
+sudo nvim /boot/config.txt
+disable_overscan=1
+gpu_mem=512
+hdmi_enable_4kp60=1
+dtoverlay=vc4-fkms-v3d,cma-256
+dtoverlay=rpivid-v4l2
+
+./kodi-gbm --portable
+
 sudo make install -j 2
+sudo usermod -a -G input,video,render pi
+
 sudo make uninstall -j 2
-cd ..
-sudo usermod -a -G input,video pi
 ````
 
 
