@@ -125,7 +125,7 @@ hdmi_enable_4kp60=1
 dtoverlay=vc4-fkms-v3d,cma-256
 dtoverlay=rpivid-v4l2
 
-./kodi-gbm --portable
+/home/pi/kodi/kodi-build/kodi-gbm --portable
 
 sudo make install -j 2
 sudo usermod -a -G input,video,render pi
