@@ -46,7 +46,7 @@ sudo nvim /etc/hosts
 **Auto Start**
 ```shell
 sudo nvim /etc/rc.local
-  su pi -c "/usr/bin/bash /home/pi/headless.sh"
+  su pi -c "/usr/bin/bash /home/pi/headless.sh" &
   exit 0
 ```
 ```shell
