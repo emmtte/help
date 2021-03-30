@@ -106,31 +106,44 @@ drive init /media/hdd/drive
 ````
 sudo apt-get install kodi kodi-eventclients-kodi-send
 
+sudo raspi-config > Performance Options > GPU Memory > 16
 sudo apt update -y
 sudo apt upgrade -y
 sudo apt install debhelper autoconf automake autopoint gettext autotools-dev cmake curl default-jre doxygen gawk gcc gdc gperf libasound2-dev libass-dev libavahi-client-dev libavahi-common-dev libbluetooth-dev libbluray-dev libbz2-dev libcdio-dev libp8-platform-dev libcrossguid-dev libcurl4-openssl-dev libcwiid-dev libfstrcmp-dev libgcrypt20-dev libgif-dev libgles2-mesa-dev libgl1-mesa-dev libglu1-mesa-dev libgnutls28-dev libgpg-error-dev libiso9660-dev libjpeg-dev liblcms2-dev libltdl-dev liblzo2-dev libmicrohttpd-dev libnfs-dev libogg-dev libpcre3-dev libplist-dev libpng-dev libpulse-dev libshairplay-dev libsmbclient-dev libsqlite3-dev libssl-dev libtag1-dev libtiff5-dev libtinyxml-dev libtool libudev-dev libva-dev libvdpau-dev libvorbis-dev libxmu-dev libxrandr-dev libxslt1-dev libxt-dev lsb-release python3-dev python3-pil rapidjson-dev swig unzip uuid-dev yasm zip zlib1g-dev
-sudo apt install libcec-dev libfmt-dev liblirc-dev libdrm-dev libunistring-dev libgbm-dev libinput-dev 
-mkdir kodi
-curl -L https://github.com/xbmc/xbmc/archive/19.0-Matrix.tar.gz | tar -xz -C kodi --strip-components=1
-cd kodi
-mkdir kodi-build
-cd kodi-build
+sudo apt install  libcap-dev libcec-dev libfmt-dev liblirc-dev libdrm-dev libunistring-dev libgbm-dev libinput-dev libsndio-dev  libavahi-core-dev libdav1d-dev libxkbcommon-dev
+sudo cp -r /usr/include/libdrm /usr/include/drm
+
+git clone -b gbm_matrix --depth 1 https://github.com/popcornmix/xbmc.git kodi
+cd kodi && mkdir kodi-build && cd kodi-build
 cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCORE_PLATFORM_NAME=gbm -DAPP_RENDER_SYSTEM=gles -DENABLE_VAAPI=OFF -DENABLE_VDPAU=OFF -DENABLE_DEBUGFISSION=OFF -DENABLE_TESTING=OFF -DENABLE_INTERNAL_FLATBUFFERS=ON -DENABLE_INTERNAL_FFMPEG=ON -DENABLE_INTERNAL_SPDLOG=ON -DENABLE_INTERNAL_FMT=ON
-sudo raspi-config > Performance Options > GPU Memory > 16
 cmake --build . -- VERBOSE=1 -j3
+
 sudo nvim /boot/config.txt
 disable_overscan=1
-gpu_mem=512
+gpu_mem=64
 hdmi_enable_4kp60=1
-dtoverlay=vc4-fkms-v3d,cma-256
+dtoverlay=vc4-fkms-v3d,cma-512
+max_framebuffers=3
 dtoverlay=rpivid-v4l2
+disable_fw_kms_setup=1
 
 /home/pi/kodi/kodi-build/kodi-gbm --portable
 
 sudo make install -j 2
+home/pi/kodi/kodi-build/kodi-gbm --portable
+sudo make uninstall -j 2
+
 sudo usermod -a -G input,video,render pi
 
-sudo make uninstall -j 2
+curl -L -o skin.embuary.zip https://github.com/sualfred/skin.embuary/archive/master.zip
+unzip -p skin.embuary.zip skin.embuary-master/addon.xml > addon.xml
+nvim addon.xml
+<import addon="xbmc.gui" version="5.15.0"/>
+zip addon.xml skin.embuary.zip addon.xml
+
+/home/pi/.kodi/userdata/keymaps/remote.xml
+<keymap><global><remote><red>contextmenu</red></remote></global></keymap>
+
 ````
 
 
