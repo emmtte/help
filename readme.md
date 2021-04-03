@@ -223,14 +223,11 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.gz -O node
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 sudo npm install --global yarn
-```
 
-**Infinity Grid Trading Bot
-```shell
+**Infinity Grid Trading Bot**
 mkdir ~/binance
-cd ~/binance
-wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/package.json
-wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.prettierrc
+cp {.env,package.json,.prettierrc} /home/pi/binance
+cd binance
 yarn install
 yarn add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
 yarn upgrade
