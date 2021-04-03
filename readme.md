@@ -223,8 +223,9 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.gz -O node
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 sudo npm install --global yarn
-
+```
 **Infinity Grid Trading Bot**
+```
 mkdir ~/binance
 cp {.env,package.json,.prettierrc,.eslintrc.json} /home/pi/binance
 cd binance
