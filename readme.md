@@ -223,7 +223,6 @@ wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.gz -O node
 sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
 rm node.tar.gz
 sudo npm install --global yarn
-yarn upgrade
 ```
 
 **Infinity Grid Trading Bot
@@ -234,7 +233,7 @@ wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master
 wget https://raw.githubusercontent.com/emmtte/Headless-Raspberry-Pi-Setup/master/.prettierrc
 yarn install
 yarn add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
-
+yarn upgrade
 ```
 
 **Uninstall**
