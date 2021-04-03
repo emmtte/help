@@ -226,7 +226,7 @@ sudo npm install --global yarn
 
 **Infinity Grid Trading Bot**
 mkdir ~/binance
-cp {.env,package.json,.prettierrc} /home/pi/binance
+cp {.env,package.json,.prettierrc,.eslintrc.json} /home/pi/binance
 cd binance
 yarn install
 yarn add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier
