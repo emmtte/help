@@ -1,33 +1,5 @@
 # Headless Raspberry Pi Setup
 
-**Setup**
-
- - [Bitwarden](#bitwarden)
- - [Dropbox-Uploader](#dropbox-uploader)
- - [Go Language](#go-language)
- - [Google Drive](#google-drive)
- - [Midnight Commander](#midnight-commander)
- - [Neovim](#neovim)
- - [Node JS](#node-js)
- - [Kodi](#kodi)
- - [Pi Hole](#pi-hole)
- - [PuTTY](#putty)
- - [Ready Media](#ready-media)
- - [Telegram](#telegram)
- - [Tmux](#tmux)
- - [Youtube Download](#youtube-download)
- - [Youtube Upload](#youtube-upload)
-
-**Configuration**
-
- - [Operating System](#operating-system)
- - [Username and Password](#username-and-password)
- - [Key-based authentication](#key-based-authentication)
- - [Domain Name System](#domain-name-system)
- - [Disable Bluetooth and Wifi](#disable-bluetooth-and-wifi)
- - [Remove Swap File](#remove-swap-file)
- - [Format USB Key](#format-usb-key)
-
 ##### Prerequisites
 ```shell
 sudo apt update
