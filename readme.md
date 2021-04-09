@@ -5,7 +5,7 @@
 sudo apt update
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
-sudo apt install -y ntp rsync ntfs-3g exiv2
+sudo apt install -y ntp rsync ntfs-3g fail2ban
 sudo apt install -y gpac libav-tools mkvtoolnix mpv ghostscript
 ```
 **Change Hostname**
@@ -77,6 +77,7 @@ drive init /media/hdd/drive
 - https://forum.kodi.tv/showthread.php?tid=351221&pid=3015416#pid3015416
 ````
 sudo apt-get install kodi kodi-eventclients-kodi-send
+
 
 sudo raspi-config > Performance Options > GPU Memory > 16
 sudo apt update -y
@@ -154,6 +155,7 @@ echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
 ## Neovim
 - https://github.com/neovim/neovim
 ```shell
+sudo apt install cmake libtool-bin
 git clone https://github.com/neovim/neovim.git
 cd neovim
 make CMAKE_BUILD_TYPE=RelWithDebInfo -j3
@@ -175,7 +177,15 @@ sudo apt install -y python3-pip
 sudo pip3 install neovim-remote
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 ```
-### Plugins
+#### vimv
+- https://github.com/thameera/vimv
+```
+sudo curl -o /usr/local/bin/vimv https://raw.githubusercontent.com/thameera/vimv/master/vimv
+sudo chmod +x /usr/local/bin/vimv
+cd <directory to rename>
+vimv
+```
+#### Plugins
 - https://github.com/junegunn/vim-plug
 - https://github.com/neoclide/coc.nvim
 - https://github.com/drewtempelmeyer/palenight.vim
@@ -292,6 +302,14 @@ To send messages to your private channels you have to get your channel’s inter
 4. Now you can convert your Channel back to private and send message directly to this chat_id "-1000000000000" (minus is important!)
 https://api.telegram.org/botTOKEN/sendMessage?chat_id=-1000000000000&text=test
 
+## Telegram-uplod
+- https://github.com/Nekmo/telegram-upload
+````
+sudo pip3 install -U telegram-upload
+youtube-dl -f 'bestvideo[width<=640]+bestaudio/best[width<=640]'
+ffmpeg -i video.mp4 -vcodec copy -acodec copy fixed.mp4
+telegram-upload fixed.mp4 --caption fixed.mp4
+````
 
 ## Tmux
 - https://github.com/tmux/tmux
