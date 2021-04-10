@@ -41,7 +41,7 @@ bw lock
 ````
 
 ## DNSmasq
-https://thekelleys.org.uk/dnsmasq/doc.html
+- https://thekelleys.org.uk/dnsmasq/doc.html
 ```
 sudo apt install dnsmasq
 sudo nvim /etc/dnsmasq.conf
