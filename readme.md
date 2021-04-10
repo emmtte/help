@@ -76,6 +76,12 @@ drive init /media/hdd/drive
 - https://github.com/xbmc/xbmc
 ````
 sudo apt-get install kodi kodi-inputstream-adaptive kodi-inputstream-rtmp kodi-eventclients-kodi-send
+sudo nvim /boot/config.txt
+hdmi_ignore_cec_init=1
+gpu_mem=512
+dtparam=audio=on
+dtoverlay=vc4-fkms-v3d
+disable_overscan=1
 nvim /home/pi/.kodi/userdata/keymaps/remote.xml
 <keymap><global><remote><red>contextmenu</red></remote></global></keymap>
 ````
