@@ -5,8 +5,11 @@
 sudo apt update
 sudo apt upgrade -y
 sudo apt dist-upgrade -y
-sudo apt install -y ntp rsync ntfs-3g fail2ban
+sudo apt install -y ntp rsync ntfs-3g
 sudo apt install -y gpac libav-tools mkvtoolnix mpv ghostscript
+
+sudo apt install -y fail2ban
+sudo fail2ban-client status sshd
 ```
 **Change Hostname**
 ```shell
