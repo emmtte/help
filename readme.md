@@ -40,6 +40,36 @@ gpg -c bitwarden_export.json
 bw lock
 ````
 
+## DNSmasq
+https://thekelleys.org.uk/dnsmasq/doc.html
+```
+sudo apt install dnsmasq
+sudo nvim /etc/dnsmasq.conf
+  domain-needed
+  bogus-priv
+  no-resolv
+  cache-size=1000
+  server=1.1.1.1
+  server=1.0.0.1
+  server=8.8.8.8
+  server=8.8.4.4
+sudo systemctl restart dnsmasq
+sudo systemctl status dnsmasq
+sudo nvim /etc/dhcp/dhclient.conf
+  prepend domain-name-servers 127.0.0.1;
+  #prepend domain-name-servers 127.0.0.1, 1.1.1.1, 1.0.0.1, 8.8.8.8, 8.8.4.4;
+sudo service networking restart
+````
+
+**Test**
+```
+sudo apt install -y dnsutils
+dig www.google.com
+dig www.google.com @localhost
+dig @1.1.1.1 www.google.com +short
+sudo tail -n 200 /var/log/syslog
+```
+
 ## Dropbox Uploader
 - https://github.com/andreafabrizi/Dropbox-Uploader
 ```
@@ -382,41 +412,6 @@ sudo service ssh restart
 Conversions &gt;> Import Key &gt;> File &gt;> id_rsa
 Save Private Key &gt;> Yes &gt;> File &gt;> id_rsa.ppk
 ```
-
-#### Domain Name System
-## DNS Server
-**Installation**
-````
-sudo apt install dnsmasq
-sudo nvim /etc/dnsmasq.conf
-  domain-needed
-  bogus-priv
-  no-resolv
-  cache-size=1000
-  server=1.1.1.1
-  server=1.0.0.1
-  server=8.8.8.8
-  server=8.8.4.4
-sudo systemctl restart dnsmasq
-sudo systemctl status dnsmasq
-````
-
-**Configuration**
-````
-sudo nvim /etc/dhcp/dhclient.conf
-  prepend domain-name-servers 127.0.0.1;
-  #prepend domain-name-servers 127.0.0.1, 1.1.1.1, 1.0.0.1, 8.8.8.8, 8.8.4.4;
-sudo service networking restart
-````
-
-**Test**
-````
-sudo apt install -y dnsutils
-dig www.google.com
-dig www.google.com @localhost
-dig @1.1.1.1 www.google.com +short
-sudo tail -n 200 /var/log/syslog
-````
 
 #### Disable Bluetooth and Wifi
 
