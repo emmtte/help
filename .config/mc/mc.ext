@@ -1,4 +1,0 @@
-regex/menu|hotlist|\.(env|ext|js|mjs|keymap|json|conf|log|yml|yaml|ini|sh|md|menu|vim|txt)$
-  Open=nvr -p %f ; tmux select-window -t VI
-default/*
-  Edit=nvr -p %f ; tmux select-window -t VI
