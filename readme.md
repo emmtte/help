@@ -101,7 +101,7 @@ cd..
 rm mc-4.8.25.tar.xz
 rm -rf mc-4.8.25
 ```
-####Select Editor
+#### Select Editor
 ```
 echo "SELECTED_EDITOR='/usr/local/bin/nvim'" | tee -a ~/.selected_editor
 ```
