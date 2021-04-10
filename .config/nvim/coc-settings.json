@@ -1,5 +1,0 @@
-{ "diagnostic.enableSign": true,
-  "diagnostic.enableHighlightLineNumber": true,
-  "diagnostic.errorSign": "X",
-  "diagnostic.warningSign": "!",
-  "diagnostic.infoSign": "i" }
