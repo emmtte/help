@@ -107,8 +107,10 @@ drive init /media/hdd/drive
 
 ## Kodi
 - https://github.com/xbmc/xbmc
+- https://github.com/Catch-up-TV-and-More/plugin.video.catchuptvandmore
+- https://github.com/sualfred/skin.embuary
 ````
-sudo apt-get install kodi kodi-gbm kodi-inputstream-adaptive kodi-inputstream-rtmp kodi-eventclients-kodi-send
+sudo apt-get install kodi kodi-gbm kodi-inputstream-adaptive kodi-inputstream-rtmp kodi-eventclients-kodi-send kodi-pvr-iptvsimple
 sudo nvim /boot/config.txt
 hdmi_ignore_cec_init=1
 gpu_mem=512
