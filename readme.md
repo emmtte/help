@@ -189,7 +189,7 @@ vimv
 - https://github.com/nodejs/node
 - https://github.com/yarnpkg/yarn
 ```
-VERSION=15.13.0
+VERSION=16.2.0
 sudo apt -y install build-essential
 #wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-armv7l.tar.gz -O node.tar.gz
 wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.gz -O node.tar.gz
