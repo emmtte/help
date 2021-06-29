@@ -390,11 +390,15 @@ A2 GL Driver               Enable/disable experimental desktop GL driver
 G1 Legacy        Original non-GL desktop driver
 ````
 
-#### Config logger time stanp
+#### rsyslog
 ```
 sudo nvim /etc/rsyslog.conf
+# Use traditional timestamp format.
 # To enable high precision timestamps, comment out the following line.
+#
 # $ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+$template template,"%timegenerated%.%timegenerated:1:4:date-subseconds% %syslogtag%%msg%\n"
+$ActionFileDefaultTemplate template
 sudo service rsyslog restart
 ```
 
