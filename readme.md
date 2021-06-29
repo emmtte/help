@@ -390,6 +390,14 @@ A2 GL Driver               Enable/disable experimental desktop GL driver
 G1 Legacy        Original non-GL desktop driver
 ````
 
+#### Config logger time stanp
+```
+sudo nvim /etc/rsyslog.conf
+# To enable high precision timestamps, comment out the following line.
+# $ActionFileDefaultTemplate RSYSLOG_TraditionalFileFormat
+sudo service rsyslog restart
+```
+
 #### Key-based authentication
 ```
 mkdir .ssh
