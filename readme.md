@@ -346,6 +346,13 @@ sudo mount /dev/sda1 /media/sd
 sudo touch /media/sd/ssh
 sudo umount /media/sd
 ```
+#### Erase SD Card
+```
+lsblk
+dd status=progress if=/dev/zero of=/dev/sda
+```
+
+
 
 #### Configuration
 
