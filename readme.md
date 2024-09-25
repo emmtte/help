@@ -408,13 +408,10 @@ sudo service ssh restart
 
  - https://www.putty.org/
 
+#### PuTTY Key Generator
 **puttygen.exe**
-
-
-```
-Conversions &gt;> Import Key &gt;> File &gt;> id_rsa
-Save Private Key &gt;> Yes &gt;> File &gt;> id_rsa.ppk
-```
+Load an existing private key file 
+Save the generated key > Save private key
 
 #### Disable Bluetooth and Wifi
 
