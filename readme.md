@@ -452,7 +452,7 @@ lsblk
 sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=0 /dev/sda1
 sudo mkdir /media/hdd
 sudo mount /dev/sda1 /media/hdd
-#sudo chown -R $USER:$USER /media/key
+sudo chown -R $USER:$USER /media/hdd
 sudo blkid /dev/sda1
 sudo nvim /etc/fstab
 UUID=cbf4e384-98ea-423c-a072-607c506428ce /media/hdd ext4 nofail,defaults 0 0
