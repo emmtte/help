@@ -449,17 +449,11 @@ sudo fdisk /dev/sda
 ```
 lsblk
 #sudo mkfs.ext4 /dev/sda1 
-#sudo mkfs.ext4 /dev/sdb1
 sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=0 /dev/sda1
-sudo mkfs.ext4 -E lazy_itable_init=0,lazy_journal_init=0 /dev/sdb1
-sudo mkdir /media/key
 sudo mkdir /media/hdd
 sudo mount /dev/sda1 /media/hdd
-sudo mount /dev/sdb1 /media/key
-sudo mount /dev/sda2 /mnt/hdd
 #sudo chown -R $USER:$USER /media/key
 sudo blkid /dev/sda1
-sudo blkid /dev/sdb1
 sudo nvim /etc/fstab
 UUID=7157e807-4902-4a3a-93e2-901ee840e092 /media/hdd ext4 nofail,defaults 0 0
 ```
