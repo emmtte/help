@@ -174,10 +174,11 @@ vimv
 ```
 VERSION=22.9.0
 sudo apt -y install build-essential
-wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.gz -O node.tar.gz
-sudo tar -xvf node.tar.gz --strip 1 -C /usr/local
-rm node.tar.gz
+wget https://nodejs.org/dist/v$VERSION/node-v$VERSION-linux-arm64.tar.xz -O node.tar.xz
+sudo tar -xf node.tar.xz --strip 1 -C /usr/local
+rm node.tar.xz
 sudo npm install --global yarn
+node -v
 ```
 **Infinity Grid Trading Bot**
 ```
