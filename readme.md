@@ -455,7 +455,7 @@ sudo mount /dev/sda1 /media/hdd
 #sudo chown -R $USER:$USER /media/key
 sudo blkid /dev/sda1
 sudo nvim /etc/fstab
-UUID=7157e807-4902-4a3a-93e2-901ee840e092 /media/hdd ext4 nofail,defaults 0 0
+UUID=cbf4e384-98ea-423c-a072-607c506428ce /media/hdd ext4 nofail,defaults 0 0
 ```
 
 
