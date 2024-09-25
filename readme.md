@@ -426,9 +426,9 @@ sudo reboot
 
 ```
 sudo dphys-swapfile swapoff
-sudo dphys-swapfile uninstall
-sudo update-rc.d dphys-swapfile remove
+sudo rm /var/swap
 sudo systemctl disable dphys-swapfile.service
+sudo systemctl stop dphys-swapfile.service 
 ```
 
 #### Format or Install HDD or KEY
