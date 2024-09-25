@@ -396,15 +396,10 @@ sudo service rsyslog restart
 ```
 mkdir .ssh
 cd .ssh
-touch authorized_keys
-nano authorized_keys
-sudo chmod 644 ~/.ssh/authorized_keys
-sudo chown $USER:$USER ~/.ssh/authorized_keys
+nvim authorized_keys
 
-ssh-keygen
-mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys
-sudo chmod 644 ~/.ssh/authorized_keys
-sudo chown $USER:$USER ~/.ssh/authorized_keys
+ssh-keygen -t ed25519
+mv ~/.ssh/id_ed25519.pub ~/.ssh/authorized_keys
 sudo nvim /etc/ssh/sshd_config
 >>> PermitRootLogin no
 >>> PasswordAuthentication no
