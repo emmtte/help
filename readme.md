@@ -148,7 +148,7 @@ ctags -R
 - https://github.com/mhinz/neovim-remote
 ```
 sudo apt install -y python3-pip
-sudo pip3 install neovim-remote
+sudo pip3 install neovim-remote --break-system-packages
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket nvim
 ```
 #### vimv
